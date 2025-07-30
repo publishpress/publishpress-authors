@@ -632,6 +632,10 @@ class Utils
         $taxonomy = get_taxonomy('author');
         $postTypes = $taxonomy->object_type;
 
+        if (!$postTypes || !is_array($postTypes)) {
+            return [];
+        }
+
         if (($keyToUnset = array_search('customize_changeset', $postTypes)) !== false) {
             unset($postTypes[$keyToUnset]);
         }

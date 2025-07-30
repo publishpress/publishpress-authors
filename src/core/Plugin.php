@@ -1137,7 +1137,11 @@ class Plugin
     {
         global $wpdb;
 
-        $post_types = array_values(Utils::getAuthorTaxonomyPostTypes());
+        $post_types = array_values(Utils::get_enabled_post_types());
+
+        if (empty($post_types)) {
+            $post_types = ['post'];
+        }
 
         $post_types = array_map('esc_sql', $post_types);
         $post_types_in = "'" . implode("','", $post_types) . "'";
