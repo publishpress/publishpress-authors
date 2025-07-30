@@ -247,6 +247,12 @@ There are two ways to install the PublishPress Authors plugin:
 
 == Changelog ==
 
+= [4.8.1] - 30 July 2025 =
+
+* Fixed: PHP Fatal error: Uncaught TypeError: array_search(): Argument #2 ($haystack) must be of type array, null given, #2081
+* Update: Add Maintenance button to create Author Categories table, #2046
+* Update: Add a loco.xml file for Authors Pro, #2055
+
 = [4.8.0] - 23 July 2025 =
 
 * Feature: Add new Rest API endpoint to create and update Authors and their fields, #2065
