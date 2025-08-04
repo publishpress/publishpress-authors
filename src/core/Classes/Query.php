@@ -178,6 +178,17 @@ class Query
             $term = $query->queried_object;
         }
 
+        // Polylang support: ensure term is in current language
+        if (function_exists('pll_get_term') && function_exists('pll_current_language')) {
+            $translated_term_id = pll_get_term($term->term_id, pll_current_language());
+            if ($translated_term_id && $translated_term_id != $term->term_id) {
+                $translated_term = get_term($translated_term_id, 'author');
+                if ($translated_term && !is_wp_error($translated_term)) {
+                    $term = $translated_term;
+                }
+            }
+        }
+
         if (empty($term)) {
             return $where;
         }
@@ -205,7 +216,20 @@ class Query
             && isset($current_author->term_id)
             && (int)$current_author->term_id > 0
         ) {
-            $current_user_term_id = $current_author->term_id;
+            $current_user_base_term_id = $current_author->term_id;
+
+            // Apply language translation for current user term
+            if (function_exists('pll_current_language') && function_exists('pll_get_term')) {
+                $current_language = pll_current_language();
+                if ($current_language) {
+                    $translated_current_term = pll_get_term($current_user_base_term_id, $current_language);
+                    $current_user_term_id = $translated_current_term ? $translated_current_term : $current_user_base_term_id;
+                } else {
+                    $current_user_term_id = $current_user_base_term_id;
+                }
+            } else {
+                $current_user_term_id = $current_user_base_term_id;
+            }
         } else {
             $current_user_term_id = 0;
         }
