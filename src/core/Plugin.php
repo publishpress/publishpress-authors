@@ -1437,27 +1437,33 @@ class Plugin
 
         if (!empty($query->query_vars['search'])) {
             $search = trim($query->query_vars['search'], '*');
+            $search_parts = preg_split('/\s+/', $search);
 
-            $query->query_vars['custom_author_search'] = $search;
+            $meta_query = ['relation' => 'AND'];
 
-            $query->query_vars['meta_query'] = [
-                'relation' => 'OR',
-                [
-                    'key' => 'first_name',
-                    'value' => $search,
-                    'compare' => 'LIKE'
-                ],
-                [
-                    'key' => 'last_name',
-                    'value' => $search,
-                    'compare' => 'LIKE'
-                ],
-                [
-                    'key' => 'user_email',
-                    'value' => $search,
-                    'compare' => 'LIKE'
-                ]
-            ];
+            foreach ($search_parts as $part) {
+                $meta_query[] = [
+                    'relation' => 'OR',
+                    [
+                        'key' => 'first_name',
+                        'value' => $part,
+                        'compare' => 'LIKE'
+                    ],
+                    [
+                        'key' => 'last_name',
+                        'value' => $part,
+                        'compare' => 'LIKE'
+                    ],
+                    [
+                        'key' => 'user_email',
+                        'value' => $part,
+                        'compare' => 'LIKE'
+                    ]
+                ];
+            }
+
+            $query->query_vars['meta_query'] = $meta_query;
+            $query->query_vars['custom_term_search'] = $search;
 
             unset($query->query_vars['search']);
         }
