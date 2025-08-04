@@ -278,6 +278,10 @@ class Plugin
             );
 
             add_filter('admin_footer_text', [$this, 'update_footer_admin']);
+
+            // Term queries for the author taxonomy
+            add_action('pre_get_terms', [$this, 'modify_author_term_search']);
+            add_filter('terms_clauses', [$this, 'include_term_name_in_search'], 10, 3);
         }
 
         // Query modifications for the author page
@@ -1416,6 +1420,71 @@ class Plugin
         $pieces['where'] = str_replace('t.name LIKE', 'tt.description LIKE', $pieces['where']);
 
         return $pieces;
+    }
+
+    public function modify_author_term_search($query) {
+        global $pagenow;
+
+        if (
+            ! is_admin() ||
+            $pagenow !== 'edit-tags.php' ||
+            (isset($_GET['taxonomy']) && $_GET['taxonomy'] !== self::$coauthor_taxonomy) ||
+            ! isset($query->query_vars['taxonomy']) ||
+            ! in_array(self::$coauthor_taxonomy, (array)$query->query_vars['taxonomy'])
+        ) {
+            return;
+        }
+
+        if (!empty($query->query_vars['search'])) {
+            $search = trim($query->query_vars['search'], '*');
+
+            $query->query_vars['custom_author_search'] = $search;
+
+            $query->query_vars['meta_query'] = [
+                'relation' => 'OR',
+                [
+                    'key' => 'first_name',
+                    'value' => $search,
+                    'compare' => 'LIKE'
+                ],
+                [
+                    'key' => 'last_name',
+                    'value' => $search,
+                    'compare' => 'LIKE'
+                ],
+                [
+                    'key' => 'user_email',
+                    'value' => $search,
+                    'compare' => 'LIKE'
+                ]
+            ];
+
+            unset($query->query_vars['search']);
+        }
+    }
+
+    public function include_term_name_in_search($clauses, $taxonomies, $args) {
+        global $pagenow, $wpdb;
+
+        if (
+            ! is_admin() ||
+            $pagenow !== 'edit-tags.php' ||
+            (isset($_GET['taxonomy']) && $_GET['taxonomy'] !== self::$coauthor_taxonomy) ||
+            ! isset($args['taxonomy']) ||
+            ! in_array(self::$coauthor_taxonomy, (array)$args['taxonomy']) ||
+            empty($args['custom_author_search'])
+        ) {
+            return $clauses;
+        }
+
+        $search = esc_sql($wpdb->esc_like($args['custom_author_search']));
+
+        $clauses['where'] .= $wpdb->prepare(
+            " OR t.name LIKE %s",
+            '%' . $search . '%'
+        );
+
+        return $clauses;
     }
 
     /**
