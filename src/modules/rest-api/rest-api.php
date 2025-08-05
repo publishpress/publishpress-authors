@@ -305,7 +305,7 @@ if (!class_exists('MA_REST_API')) {
 
             if ($author_type === 'existing_user') {
                 $existing_author = Author::get_by_user_id($user_id);
-                $remove_single_user_map_restriction = $legacyPlugin->modules->multiple_authors->options->remove_single_user_map_restriction === 'yes';
+                $remove_single_user_map_restriction = publishpress_authors_remove_single_user_map_restriction();
 
                 if (!$remove_single_user_map_restriction && $existing_author) {
                     return new WP_Error(

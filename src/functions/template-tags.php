@@ -1941,6 +1941,24 @@ if (!function_exists('get_ppma_get_all_user_roles')) {
     }
 }
 
+if (!function_exists('publishpress_authors_remove_single_user_map_restriction')) {
+    /**
+     * Determine if single user map restriction should be removed
+     */
+    function publishpress_authors_remove_single_user_map_restriction() {
+         $legacyPlugin = Factory::getLegacyPlugin();
+
+         $remove = $legacyPlugin->modules->multiple_authors->options->enable_guest_author_user === 'yes';
+
+         if (function_exists('pll_current_language') && function_exists('pll_get_term')) {
+            // This restriction should be removed for Polylang due to multi-lang feature
+            $remove = true;
+         }
+
+        return apply_filters('publishpress_authors_remove_single_user_map_restriction', $remove);
+    }
+}
+
 // Keep backward compatibility with Bylines, legacy versions of PublishPress Authors and CoAuthors
 if (PUBLISHPRESS_AUTHORS_LOAD_COAUTHORS_FUNCTIONS) {
     require_once 'coauthors-functions.php';

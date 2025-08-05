@@ -55,13 +55,13 @@ class Admin_Ajax
      public static function handle_filter_authors_search()
      {
          header('Content-Type: application/javascript');
- 
+
         if (empty($_GET['nonce'])
             || !wp_verify_nonce(sanitize_key($_GET['nonce']), 'authors-user-search')
         ) {
             wp_send_json_error(null, 403);
         }
- 
+
         if (! Capability::currentUserCanEditPostAuthors()) {
             wp_send_json_error(null, 403);
         }
@@ -91,20 +91,20 @@ class Admin_Ajax
      public static function handle_filter_posts_search()
      {
          header('Content-Type: application/javascript');
- 
+
         if (empty($_GET['nonce'])
             || !wp_verify_nonce(sanitize_key($_GET['nonce']), 'authors-post-search')
         ) {
             wp_send_json_error(null, 403);
         }
- 
+
         if (! Capability::currentUserCanEditPostAuthors()) {
             wp_send_json_error(null, 403);
         }
 
         $search     = !empty($_GET['q']) ? sanitize_text_field($_GET['q']) : '';
         $post_type  = !empty($_GET['post_type']) ? sanitize_text_field($_GET['post_type']) : 'post';
-        
+
         $post_args = [
             'post_type'         => $post_type,
             'post_status'       => 'publish',
@@ -311,12 +311,12 @@ class Admin_Ajax
         $response['content'] = esc_html__('Request status.', 'publishpress-authors');
 
         //do not process request if nonce validation failed
-        if (empty($_POST['nonce']) 
+        if (empty($_POST['nonce'])
             || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'mapped_author_nonce')
         ) {
             $response['status']  = 'error';
             $response['content'] = esc_html__(
-                'Security error. Kindly reload this page and try again', 
+                'Security error. Kindly reload this page and try again',
                 'publishpress-authors'
             );
         } else {
@@ -324,8 +324,9 @@ class Admin_Ajax
             $author_id   = !empty($_POST['author_id']) ? (int) $_POST['author_id'] : 0;
             $term_id     = !empty($_POST['term_id']) ? (int) $_POST['term_id'] : 0;
             $legacyPlugin = Factory::getLegacyPlugin();
-            $remove_single_user_map_restriction = $legacyPlugin->modules->multiple_authors->options->remove_single_user_map_restriction === 'yes';
+            $remove_single_user_map_restriction = publishpress_authors_remove_single_user_map_restriction();
             $enable_guest_author_user = $legacyPlugin->modules->multiple_authors->options->enable_guest_author_user === 'yes';
+
 
             if (!$remove_single_user_map_restriction && $author_id > 0) {
                 $author = Author::get_by_user_id($author_id);
@@ -333,7 +334,7 @@ class Admin_Ajax
                     if ((int)$author->term_id !== (int)$term_id) {
                         $response['status']  = 'error';
                         $response['content'] = esc_html__(
-                            'Sorry, this WordPress user is already mapped to another Author. By default, each user can only be connected to one Author profile.', 
+                            'Sorry, this WordPress user is already mapped to another Author. By default, each user can only be connected to one Author profile.',
                             'publishpress-authors'
                         );
                         wp_send_json($response);
@@ -341,7 +342,7 @@ class Admin_Ajax
                     }
                 }
             }
-            
+
             if (!$enable_guest_author_user && $author_id === 0) {
                 $response['status']  = 'error';
                 $response['content'] = esc_html__(
@@ -363,12 +364,12 @@ class Admin_Ajax
                         && (int)$author_slug_user->ID != (int)$author_id)
                     ) {
                         /**
-                         * Return error if author is not linked or 
+                         * Return error if author is not linked or
                          * linked author ID is not equal return ID
                          */
                         $response['status']  = 'error';
                         $response['content'] = esc_html__(
-                            'Another user with Author URL already exists.', 
+                            'Another user with Author URL already exists.',
                             'publishpress-authors'
                         );
                         wp_send_json($response);
@@ -392,12 +393,12 @@ class Admin_Ajax
         $response['content'] = esc_html__('Request status.', 'publishpress-authors');
 
         //do not process request if nonce validation failed
-        if (empty($_POST['nonce']) 
+        if (empty($_POST['nonce'])
             || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'generate_author_slug_nonce')
         ) {
             $response['status']  = 'error';
             $response['content'] = esc_html__(
-                'Security error. Kindly reload this page and try again', 
+                'Security error. Kindly reload this page and try again',
                 'publishpress-authors'
             );
         } elseif (empty($_POST['author_name'])) {
@@ -410,8 +411,8 @@ class Admin_Ajax
 
             $new_slug           = $generated_slug;
             while (get_term_by('slug', $new_slug, 'author')) {
-                if ($generated_slug_n == '') { 
-                    $generated_slug_n = 1; 
+                if ($generated_slug_n == '') {
+                    $generated_slug_n = 1;
                 } else {
                     $generated_slug_n++;
                 }
