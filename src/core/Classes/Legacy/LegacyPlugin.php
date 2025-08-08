@@ -205,6 +205,10 @@ class LegacyPlugin
             $defaultDirs['ultimatemember-integration'] = PP_AUTHORS_MODULES_PATH;
         }
 
+        if (Utils::isMolonguiAuthorshipActivated()) {
+            $defaultDirs['molongui-authorship-migration'] = PP_AUTHORS_MODULES_PATH;
+        }
+
         if (Utils::isCompatibleYoastSeoInstalled()) {
             $defaultDirs['yoast-seo-integration'] = PP_AUTHORS_MODULES_PATH;
         }

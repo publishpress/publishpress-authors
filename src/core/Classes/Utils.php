@@ -808,6 +808,11 @@ class Utils
         return true;
     }
 
+    public static function isMolonguiAuthorshipActivated()
+    {
+        return defined('MOLONGUI_AUTHORSHIP_VERSION');
+    }
+
     public static function getDefaultLayout()
     {
         if (! is_null(self::$defaultLayout)) {

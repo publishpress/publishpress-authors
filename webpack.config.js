@@ -10,6 +10,7 @@ module.exports = {
         'Components/LogBox': './src/modules/multiple-authors/assets/js/Components/LogBox.jsx',
         'Components/DataMigrationBox': './src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx',
         'coauthors-migration': './src/modules/multiple-authors/assets/js/coauthors-migration.jsx',
+        'molongui-authorship-migration': './src/modules/multiple-authors/assets/js/molongui-authorship-migration.jsx',
         'sync-post-author': './src/modules/multiple-authors/assets/js/sync-post-author.jsx',
         'sync-author-slug': './src/modules/multiple-authors/assets/js/sync-author-slug.jsx',
         'byline-migration': './src/modules/byline-migration/assets/js/byline-migration.jsx',
