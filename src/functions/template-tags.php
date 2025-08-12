@@ -288,7 +288,8 @@ if (!function_exists('multiple_authors_get_author_recent_posts')) {
         $id_only = true,
         $limit = 5,
         $orderby = 'post_date',
-        $order = 'DESC'
+        $order = 'DESC',
+        $post_types = []
     ) {
         if (!$author) {
             $author = Author::get_by_user_id(get_current_user_id());
@@ -310,6 +311,10 @@ if (!function_exists('multiple_authors_get_author_recent_posts')) {
                 ]
             ]
         ];
+
+        if (! empty($post_types)) {
+            $author_recent_args['post_type'] = $post_types;
+        }
 
         if ($id_only) {
             $author_recent_args['fields'] = 'ids';

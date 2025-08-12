@@ -34,18 +34,18 @@ class AuthorBoxesAjax
         $response['content'] = esc_html__('An error occured.', 'publishpress-authors');
 
         //do not process request if nonce validation failed
-        if (empty($_POST['nonce']) 
+        if (empty($_POST['nonce'])
             || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'author-boxes-request-nonce')
         ) {
             $response['status']  = 'error';
             $response['content'] = esc_html__(
-                'Security error. Kindly reload this page and try again', 
+                'Security error. Kindly reload this page and try again',
                 'publishpress-authors'
             );
         } elseif (!current_user_can(apply_filters('pp_multiple_authors_manage_layouts_cap', 'ppma_manage_layouts'))) {
             $response['status']  = 'error';
             $response['content'] = esc_html__(
-                'You do not have permission to perform this action', 
+                'You do not have permission to perform this action',
                 'publishpress-authors'
             );
         } else {
@@ -82,12 +82,12 @@ class AuthorBoxesAjax
         $response['content'] = esc_html__('An error occured.', 'publishpress-authors');
 
         //do not process request if nonce validation failed
-        if (empty($_POST['nonce']) 
+        if (empty($_POST['nonce'])
             || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'author-boxes-request-nonce')
         ) {
             $response['status']  = 'error';
             $response['content'] = esc_html__(
-                'Security error. Kindly reload this page and try again', 
+                'Security error. Kindly reload this page and try again',
                 'publishpress-authors'
             );
         } else {
@@ -100,7 +100,7 @@ class AuthorBoxesAjax
             // add dashicons
             $dashicons_data = file_get_contents($moduleAssetIconsPath . 'dashicons-icons.json');
             $field_icons['Dashicons'] = json_decode($dashicons_data, true);
-            
+
             if ($enable_font_awesome) {
                 // add font awesome
                 $fontawesome_data = file_get_contents($moduleAssetIconsPath . 'fontawesome-icons.json');
@@ -124,12 +124,12 @@ class AuthorBoxesAjax
         $response['content'] = esc_html__('An error occured.', 'publishpress-authors');
 
         //do not process request if nonce validation failed
-        if (empty($_POST['nonce']) 
+        if (empty($_POST['nonce'])
             || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'author-boxes-request-nonce')
         ) {
             $response['status']  = 'error';
             $response['content'] = esc_html__(
-                'Security error. Kindly reload this page and try again', 
+                'Security error. Kindly reload this page and try again',
                 'publishpress-authors'
             );
         } else {
@@ -149,7 +149,7 @@ class AuthorBoxesAjax
             } else {
                 $preview_authors = [Author::get_by_term_id($author_term_id)];
             }
-            
+
             $preview_args            = [];
             $preview_args['authors'] = $preview_authors;
             $preview_args['preview_author_post']    = $preview_author_post;
@@ -181,12 +181,12 @@ class AuthorBoxesAjax
         $response['content'] = esc_html__('An error occured.', 'publishpress-authors');
 
         //do not process request if nonce validation failed
-        if (empty($_POST['nonce']) 
+        if (empty($_POST['nonce'])
             || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'author-boxes-request-nonce')
         ) {
             $response['status']  = 'error';
             $response['content'] = esc_html__(
-                'Security error. Kindly reload this page and try again', 
+                'Security error. Kindly reload this page and try again',
                 'publishpress-authors'
             );
         } else {
@@ -219,17 +219,17 @@ class AuthorBoxesAjax
 </?php
 /**
  * Custom Author Boxes template
- * 
- * This file should be placed in /publishpress-authors/author-boxes/ 
- * Inside your theme and it will automatically be available for 
- * selection in settings layouts and this file slug can be use as layout 
+ *
+ * This file should be placed in /publishpress-authors/author-boxes/
+ * Inside your theme and it will automatically be available for
+ * selection in settings layouts and this file slug can be use as layout
  * parameter in shortcode.
- * 
+ *
  * The layout name will be this file name.
- * 
+ *
  * $ppma_template_authors is a global variable and an array of authors.
  * $ppma_template_authors_post is a global variable of the author post.
- * This sometimes may be different from global $post as user can  get authors 
+ * This sometimes may be different from global $post as user can  get authors
  * for specific post.
  */
 
@@ -249,7 +249,7 @@ if (!$ppma_instance_id) {
 
 $instance_id = $ppma_instance_id;
 ?>
-<?php 
+<?php
 $author_separator = $args['box_tab_layout_author_separator']['value'];
 $li_style         = (empty($args['author_inline_display']['value'])) ? true : false;
 $box_post_id      = $args['post_id'];
@@ -334,7 +334,14 @@ if (!empty($shortcodes_data) && is_array($shortcodes_data)) {
                 </?php foreach ($author_category_data['authors'] as $index => $author) : ?>
                     </?php if ($author && is_object($author) && isset($author->term_id)) : ?>
 <?php if ($args['author_recent_posts_show']['value']) : ?>
-                    </?php $author_recent_posts = multiple_authors_get_author_recent_posts($author, true, <?php echo esc_html($args['author_recent_posts_limit']['value']); ?>, '<?php echo esc_html($args['author_recent_posts_orderby']['value']); ?>', '<?php echo esc_html($args['author_recent_posts_order']['value']); ?>'); ?>
+<?php $selected_post_types = '';
+if (!empty($args['author_recent_posts_post_types']['value'])) {
+$selected_post_types = is_array($args['author_recent_posts_post_types']['value']) ? $args['author_recent_posts_post_types']['value'] : [];
+$selected_post_types = "'" . implode("','", $selected_post_types) . "'";
+}
+$selected_post_types_string = "[$selected_post_types]";
+?>
+                    </?php $author_recent_posts = multiple_authors_get_author_recent_posts($author, true, <?php echo esc_html($args['author_recent_posts_limit']['value']); ?>, '<?php echo esc_html($args['author_recent_posts_orderby']['value']); ?>', '<?php echo esc_html($args['author_recent_posts_order']['value']); ?>', <?php echo $selected_post_types_string; ?>); ?>
 <?php else : ?>
                     </?php $author_recent_posts = []; ?>
 <?php endif; ?>
@@ -373,7 +380,7 @@ $profile_author_category_content = '';
 if (!empty($args['profile_fields_' . $key . '_author_categories']['value'])) :
     $profile_author_categories_divider = !empty($args['profile_fields_' . $key . '_author_categories_divider']['value']) ? $args['profile_fields_' . $key . '_author_categories_divider']['value'] : '';
     ?>
-    
+
     <?php
         $profile_author_category_prefix = '';
         $profile_author_category_suffix = '';
@@ -386,7 +393,7 @@ if (!empty($args['profile_fields_' . $key . '_author_categories']['value'])) :
             $profile_author_category_prefix = ' [';
             $profile_author_category_suffix = '] ';
         }
-        
+
         $profile_author_category_content = '</?php if (!empty($current_author_category)) : ?><span class="field-author-category ' . $key . '">' . $profile_author_category_prefix . '</?php echo $current_author_category["singular_title"]; ?>' . $profile_author_category_suffix . '</span></?php endif; ?>';
     ?>
 <?php
@@ -425,7 +432,7 @@ if ($profile_display === 'icon_prefix_value_suffix') {
 if ($profile_show_field) : ?>
 <?php
 $profile_field_html = '
-    
+
                             </?php if (!empty(trim($author->'. esc_attr($key) .'))) : ?>
         ';
 
@@ -435,7 +442,7 @@ $profile_field_html = '
     $profile_field_html .= '                        <'. esc_html($profile_html_tag) .'';
     $profile_field_html .= ' class="ppma-author-'. esc_attr($key) .'-profile-data ppma-author-field-meta '. esc_attr('ppma-author-field-type-' . $data['type']) .'" aria-label="'. esc_attr(($data['label'])) .'"';
     if ($profile_html_tag === 'a') {
-        
+
         $profile_field_html .= ' href="'. $profile_value_prefix. '</?php echo $author->'. esc_attr($key) .'; ?>' .'" '. $rel_html .' '. $target_html .'';
     }
     $profile_field_html .= '>' . "\n" . str_repeat(" ", 32);
@@ -490,7 +497,7 @@ $display_name_markup = '';
             } elseif ($name_author_categories_divider == 'space') {
                 $name_author_category_prefix = ' ';
             }
-                
+
             $name_author_categories_position = !empty($args['name_author_categories_position']['value']) ? $args['name_author_categories_position']['value'] : 'after';
             if ($name_author_categories_position == 'after') {
                 $after_name_author_category_content = '</?php if (!empty($current_author_category)) : ?><span class="name-author-category ' . $key . '">' . $name_author_category_prefix . '</?php echo $current_author_category["singular_title"]; ?>' . $name_author_category_suffix . '</span></?php endif; ?>';;
@@ -504,7 +511,7 @@ $display_name_markup = '';
                 }
                 $before_name_author_category_content = '</?php if (!empty($current_author_category)) : ?><span class="name-author-category ' . $key . '">' . $name_author_category_prefix . '</?php echo $current_author_category["singular_title"]; ?>' . $name_author_category_suffix . '</span></?php endif; ?>';;
             }
-            
+
     endif;
 
     $display_name_markup .= '<'.esc_html($args['name_html_tag']['value']) .' class="pp-author-boxes-name multiple-authors-name">' . "\n"; ?>
@@ -624,7 +631,7 @@ endif ?>
 <span class="ppma-layout-suffix"><?php echo html_entity_decode($args['box_tab_layout_suffix']['value']); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 <?php echo $authors_shortcode_output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 </<?php echo ($li_style ? 'div' : 'span'); ?>>
-<?php 
+<?php
 
 $custom_styles = AuthorBoxesStyles::getTitleFieldStyles($args, $custom_styles);
 $custom_styles = AuthorBoxesStyles::getAvatarFieldStyles($args, $custom_styles);
@@ -641,7 +648,7 @@ $custom_styles = AuthorBoxesStyles::getCustomCssFieldStyles($args, $custom_style
 <style>
     <?php echo html_entity_decode($custom_styles); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 <?php echo "\n"; ?></style>
-            <?php 
+            <?php
             $response['content'] = ob_get_clean();
         }
 
