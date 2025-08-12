@@ -774,6 +774,11 @@ body.edit-php.post-type-ppma_boxes .tablenav.top .alignleft.actions:not(.bulkact
   z-index: 999;
 }
 
+.ppma-promo-overlay-row .ppma-promo-upgrade-notice.no-bg {
+    background: transparent;
+    box-shadow: none;
+}
+
 .ppma-promo-overlay-row .ppma-promo-upgrade-notice p {
     line-height: 1.4em;
     font-size: 16px;
