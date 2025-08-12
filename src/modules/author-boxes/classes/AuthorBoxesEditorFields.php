@@ -1040,6 +1040,21 @@ class AuthorBoxesEditorFields
         return $fields;
     }
 
+    private static function getPostTypesOptions()
+    {
+        $options = [];
+        if (Utils::isAuthorsProActive()) {
+            $post_types = get_post_types(['public' => true], 'objects');
+            foreach ($post_types as $post_type) {
+                $options[$post_type->name] = $post_type->label;
+            }
+        } else {
+            $options['any'] = esc_html__('All Post Types', 'publishpress-authors');
+        }
+
+        return $options;
+    }
+
     /**
      * Add bio fields to the author boxes editor.
      *
@@ -1190,6 +1205,17 @@ class AuthorBoxesEditorFields
             'label'       => esc_html__('Show Recent Posts', 'publishpress-authors'),
             'type'        => 'checkbox',
             'sanitize'    => 'absint',
+            'tab'         => 'author_recent_posts',
+        ];
+
+        $pro_message = '<a class="upgrade-link" href="https://publishpress.com/links/authors-banner" target="_blank"><span class="dashicons dashicons-lock ppma-pro-loc-icon" tabindex="0"></span></a> &nbsp; ' . esc_html__('Selecting Post Types for Recent Posts is a PRO feature.', 'publishpress-authors');
+        $fields['author_recent_posts_post_types'] = [
+            'label'       => esc_html__('Recent Post Types', 'publishpress-authors'),
+            'type'        => 'multiselect_pro',
+            'sanitize'    => 'sanitize_text_field',
+            'options'     => self::getPostTypesOptions(),
+            'description' =>  Utils::isAuthorsProActive() ? esc_html__('Select post types to include in recent posts. Leave empty to show all post types.', 'publishpress-authors') : $pro_message,
+            'placeholder' => esc_html__('Select post types...', 'publishpress-authors'),
             'tab'         => 'author_recent_posts',
         ];
         $fields['author_recent_posts_title_show'] = [

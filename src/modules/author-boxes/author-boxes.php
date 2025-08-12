@@ -256,6 +256,7 @@ class MA_Author_Boxes extends Module
         $meta_data = [];
         $preview_author_post = isset($_POST['preview_author_post']) ? sanitize_text_field($_POST['preview_author_post']) : '';
         $parent_author_box = isset($_POST['parent_author_box']) ? sanitize_text_field($_POST['parent_author_box']) : '';
+
         foreach ($fields as $key => $args) {
             if (!isset($_POST[$key]) || in_array($key, $excluded_input)) {
                 continue;
@@ -268,7 +269,12 @@ class MA_Author_Boxes extends Module
                 $meta_data[$key] = $value;
             } else {
                 $sanitize = isset($args['sanitize']) ? $args['sanitize'] : 'sanitize_text_field';
-                $meta_data[$key] = (isset($_POST[$key]) && $_POST[$key] !== '') ? $sanitize($_POST[$key]) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+                if (isset($_POST[$key]) && $_POST[$key] !== '') {
+                    $value = $_POST[$key]; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+                    $meta_data[$key] = is_array($value) ? map_deep($value, $sanitize) : $sanitize($value);
+                } else {
+                    $meta_data[$key] = '';
+                }
             }
         }
 
@@ -1659,12 +1665,19 @@ class MA_Author_Boxes extends Module
                                                     <?php if ($author && is_object($author) && isset($author->term_id)) : ?>
                                                         <?php
                                                         if ($args['author_recent_posts_show']['value']) :
+                                                            $selected_post_types = [];
+                                                            if (!empty($args['author_recent_posts_post_types']['value'])) {
+                                                                $selected_post_types = is_array($args['author_recent_posts_post_types']['value'])
+                                                                    ? $args['author_recent_posts_post_types']['value']
+                                                                    : explode(',', $args['author_recent_posts_post_types']['value']);
+                                                            }
                                                             $author_recent_posts = multiple_authors_get_author_recent_posts(
                                                                 $author,
                                                                 true,
                                                                 $args['author_recent_posts_limit']['value'],
                                                                 $args['author_recent_posts_orderby']['value'],
-                                                                $args['author_recent_posts_order']['value']
+                                                                $args['author_recent_posts_order']['value'],
+                                                                $selected_post_types
                                                             );
                                                         else :
                                                             $author_recent_posts = [];
@@ -2072,6 +2085,8 @@ class MA_Author_Boxes extends Module
             $th_style = '';
             $colspan  = '';
         }
+
+        $pro_active = Utils::isAuthorsProActive();
         ?>
         <?php if ($args['group_start'] === true) :
            ?>
@@ -2133,6 +2148,32 @@ class MA_Author_Boxes extends Module
                                 <?php echo esc_html($label); ?>
                             </option>
                         <?php endforeach; ?>
+                    </select>
+                <?php
+                elseif ('multiselect_pro' === $args['type']) :
+                    $selected_values = is_array($args['value']) ? $args['value'] : [];
+                    $field_name = $pro_active ? $key : 'promo_dummy';
+                    $select_class = $pro_active ? '' : 'ppma-blur';
+                    ?>
+                    <select name="<?php echo esc_attr($field_name); ?>[]"
+                        style="width: 95%;"
+                        class="<?php echo $pro_active ? 'authors-select2 authors-select2-default-select' : $select_class; ?>"
+                        id="<?php echo $pro_active ? esc_attr($key) : ''; ?>"
+                        placeholder="<?php echo esc_attr($args['placeholder']); ?>"
+                        data-placeholder="<?php echo esc_attr($args['placeholder']); ?>"
+                        <?php echo (isset($args['readonly']) && $args['readonly'] === true || ! $pro_active) ? 'readonly' : ''; ?>
+                        <?php echo ($pro_active) ? 'multiple' : ''; ?>
+                        />
+                        <?php
+                        if (!empty($args['options'])) :
+                            foreach ($args['options'] as $key => $label) : ?>
+                                <option value="<?php echo esc_attr($key); ?>"
+                                    <?php selected(in_array($key, $selected_values), true); ?>>
+                                    <?php echo esc_html($label); ?>
+                                </option>
+                            <?php
+                            endforeach;
+                        endif; ?>
                     </select>
                 <?php
                 elseif ('optgroup_select' === $args['type']) :

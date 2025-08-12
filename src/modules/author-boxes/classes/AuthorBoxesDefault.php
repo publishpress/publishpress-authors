@@ -102,6 +102,7 @@ class AuthorBoxesDefault
         $editor_data['meta_link_hover_color'] = '#ffffff';
         //recent posts default
         $editor_data['author_recent_posts_title_show'] = 1;
+        $editor_data['author_recent_posts_post_types'] = [];
         $editor_data['author_recent_posts_empty_show'] = 1;
         $editor_data['author_recent_posts_limit'] = 5;
         $editor_data['author_recent_posts_orderby'] = 'date';
@@ -260,6 +261,7 @@ class AuthorBoxesDefault
         $editor_data['meta_link_hover_color'] = '#ffffff';
         //recent posts default
         $editor_data['author_recent_posts_title_show'] = 0;
+        $editor_data['author_recent_posts_post_types'] = [];
         $editor_data['author_recent_posts_empty_show'] = 0;
         $editor_data['author_recent_posts_limit'] = 5;
         $editor_data['author_recent_posts_orderby'] = 'date';
@@ -288,34 +290,34 @@ class AuthorBoxesDefault
             column-gap: 20px;
             width: 100%;
         }
-        
+
         .pp-multiple-authors-wrapper.pp-multiple-authors-layout-boxed-right {
                min-width: min(calc(100vw - 8* 25px), 710px) !important;
         }
-        
+
         .pp-multiple-authors-wrapper.pp-multiple-authors-layout-boxed-right .pp-author-boxes-description.multiple-authors-description {
             margin-bottom: 25px;
         }
-        
+
         .pp-multiple-authors-wrapper.pp-multiple-authors-layout-boxed-right a.ppma-author-field-meta {
             margin-right: 10px !important;
         }
-        
+
         .pp-multiple-authors-wrapper.pp-multiple-authors-layout-boxed-right .pp-multiple-authors-boxes-li .pp-author-boxes-avatar,
         .pp-multiple-authors-wrapper.pp-multiple-authors-layout-boxed-right .pp-multiple-authors-boxes-li .pp-author-boxes-avatar-details {
             flex: 1;
             margin: auto;
         }
-        
+
         .pp-multiple-authors-wrapper.pp-multiple-authors-layout-boxed-right .pp-multiple-authors-boxes-li .pp-author-boxes-avatar .avatar-image {
             float: right;
             margin-right: 10px;
         }
-        
+
         .pp-multiple-authors-wrapper.pp-multiple-authors-layout-boxed-right .pp-multiple-authors-boxes-li .pp-author-boxes-avatar-details {
             margin: auto 0;
         }
-        
+
         @media screen and (max-width: 768px) {
             .pp-multiple-authors-wrapper.pp-multiple-authors-layout-boxed-right .pp-multiple-authors-boxes-li {
                 display: block;
@@ -373,6 +375,7 @@ class AuthorBoxesDefault
         $editor_data['meta_link_hover_color'] = '#ffffff';
         //recent posts default
         $editor_data['author_recent_posts_title_show'] = 1;
+        $editor_data['author_recent_posts_post_types'] = [];
         $editor_data['author_recent_posts_empty_show'] = 1;
         $editor_data['author_recent_posts_limit'] = 5;
         $editor_data['author_recent_posts_orderby'] = 'date';
@@ -451,6 +454,7 @@ class AuthorBoxesDefault
         $editor_data['meta_link_hover_color'] = '#ffffff';
         //recent posts default
         $editor_data['author_recent_posts_title_show'] = 1;
+        $editor_data['author_recent_posts_post_types'] = [];
         $editor_data['author_recent_posts_empty_show'] = 1;
         $editor_data['author_recent_posts_limit'] = 5;
         $editor_data['author_recent_posts_orderby'] = 'date';
@@ -535,6 +539,7 @@ class AuthorBoxesDefault
         $editor_data['meta_link_hover_color'] = '#ffffff';
         //recent posts default
         $editor_data['author_recent_posts_title_show'] = 1;
+        $editor_data['author_recent_posts_post_types'] = [];
         $editor_data['author_recent_posts_empty_show'] = 1;
         $editor_data['author_recent_posts_limit'] = 5;
         $editor_data['author_recent_posts_orderby'] = 'date';
@@ -623,6 +628,7 @@ class AuthorBoxesDefault
         $editor_data['meta_link_hover_color'] = '#ffffff';
         //recent posts default
         $editor_data['author_recent_posts_title_show'] = 1;
+        $editor_data['author_recent_posts_post_types'] = [];
         $editor_data['author_recent_posts_empty_show'] = 1;
         $editor_data['author_recent_posts_limit'] = 5;
         $editor_data['author_recent_posts_orderby'] = 'date';
@@ -674,10 +680,10 @@ class AuthorBoxesDefault
     }
 
     /**
-     * Add editor data default values 
+     * Add editor data default values
      *
      * @param array $editor_data
-     * 
+     *
      * @return array
      */
     public static function addEditorDataDefaultValues($editor_data) {
