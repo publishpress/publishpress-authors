@@ -20,6 +20,7 @@
                 category_name: form.find('#category-name').val(),
                 plural_name: form.find('#category-plural-name').val(),
                 schema_property: form.find('#category-schema-property').val(),
+                post_types: authorCategories.proActive ? form.find('#category-post-types').val() : [],
                 enabled_category: form.find('#category-enabled-category').is(':checked') ? 1 : 0,
                 nonce: authorCategories.nonce,
             };

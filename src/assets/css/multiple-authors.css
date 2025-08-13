@@ -649,7 +649,8 @@ body.edit-php.post-type-ppma_boxes .tablenav.top .alignleft.actions:not(.bulkact
     position: sticky;
 }
 
-.ppma-promo-overlay-area {
+.ppma-promo-overlay-area,
+.ppma-promo-overlay-row {
     position: relative;
 }
 

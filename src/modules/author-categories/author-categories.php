@@ -24,6 +24,7 @@
 use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthorCategories\AuthorCategoriesSchema;
 use MultipleAuthorCategories\AuthorCategoriesTable;
+use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Factory;
 
 /**
@@ -120,13 +121,20 @@ class MA_Author_Categories extends Module
         }
 
         $moduleAssetsUrl = PP_AUTHORS_URL . 'src/modules/author-categories/assets';
-
+        $proActive = Utils::isAuthorsProActive();
         // Load jquery and jquery ui for sortable
         wp_enqueue_script('jquery');
         wp_enqueue_script('jquery-ui-sortable');
 
         // Inline edit script
         wp_enqueue_script('author-categories-inline-edit', $moduleAssetsUrl . '/js/inline-edit.js', ['jquery'], PP_AUTHORS_VERSION);
+        wp_localize_script(
+            'author-categories-inline-edit',
+            'authorCategoriesInlineEdit',
+            [
+                'proActive' => $proActive
+            ]
+        );
 
         // Drag and drop re-order script
         wp_enqueue_script('author-category-reorder', $moduleAssetsUrl . '/js/category-reorder.js', ['jquery', 'jquery-ui-sortable'], PP_AUTHORS_VERSION);
@@ -134,6 +142,7 @@ class MA_Author_Categories extends Module
             'author-category-reorder',
             'authorCategoriesReorder',
             [
+                'proActive' => $proActive,
                 'nonce'     => wp_create_nonce('author-categories-reorder-nonce')
             ]
         );
@@ -144,6 +153,7 @@ class MA_Author_Categories extends Module
             'author-categories-js',
             'authorCategories',
             [
+                'proActive' => $proActive,
                 'nonce'     => wp_create_nonce('author-categories-save-nonce')
             ]
         );
@@ -162,7 +172,7 @@ class MA_Author_Categories extends Module
         if (!isset($_GET['page']) || $_GET['page'] !== self::MENU_SLUG) {
             return $args;
         }
-        
+
         return array_merge(
             $args,
             [
@@ -230,16 +240,16 @@ class MA_Author_Categories extends Module
         $response['content']    = '';
         $response_message       = esc_html__('An error occured.', 'publishpress-authors');
 
-        if (empty($_POST['nonce']) 
+        if (empty($_POST['nonce'])
             || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'author-categories-save-nonce')
         ) {
             $response_message = esc_html__(
-                'Security error. Kindly reload this page and try again', 
+                'Security error. Kindly reload this page and try again',
                 'publishpress-authors'
             );
         } elseif (!current_user_can(apply_filters('pp_multiple_authors_manage_categories_cap', 'ppma_manage_author_categories'))) {
             $response_message = esc_html__(
-                'You do not have permission to perform this action', 
+                'You do not have permission to perform this action',
                 'publishpress-authors'
             );
         } else {
@@ -247,51 +257,56 @@ class MA_Author_Categories extends Module
             $category_name = isset($_POST['category_name']) ? sanitize_text_field($_POST['category_name']) : '';
             $plural_name = isset($_POST['plural_name']) ? sanitize_text_field($_POST['plural_name']) : '';
             $schema_property = isset($_POST['schema_property']) ? sanitize_text_field($_POST['schema_property']) : '';
+            $post_types = isset($_POST['post_types']) && is_array($_POST['post_types']) ? array_map('sanitize_text_field', $_POST['post_types']) : [];
             $enabled_category = isset($_POST['enabled_category']) ? intval($_POST['enabled_category']) : 0;
             $slug = sanitize_title($category_name);
 
             if (empty($category_name)) {
                 $response_message = esc_html__(
-                    'Singular name is required.', 
+                    'Singular name is required.',
                     'publishpress-authors'
                 );
             } elseif (empty($plural_name)) {
                 $response_message = esc_html__(
-                    'Plural name is required.', 
+                    'Plural name is required.',
                     'publishpress-authors'
                 );
             } elseif(!empty(get_ppma_author_categories(['slug' => $slug]))) {
                 $response_message = esc_html__(
-                    'Author category with this name already exist.', 
+                    'Author category with this name already exist.',
                     'publishpress-authors'
                 );
             } else {
                 $category_args = [
                     'category_name'     => $category_name,
                     'plural_name'       => $plural_name,
-                    'meta_data'       => ['schema_property' => $schema_property],
+                    'meta_data'       => [
+                        'schema_property' => $schema_property,
+                        'post_types' => $post_types
+                    ],
                     'slug'              => $slug,
                     'category_order'    => 0,
                     'category_status'   => $enabled_category,
                     'created_at'        => current_time('mysql', true)
                 ];
                 $added_category = $this->addAuthorCategory($category_args);
+
                 if ($added_category && !empty($added_category)) {
                     $response_message = esc_html__(
-                        'Category added.', 
+                        'Category added.',
                         'publishpress-authors'
                     );
                     $response['status']     = 'success';
-                            
+
                     ob_start();
-                    
+
                     $ajax_author_categories_table = new AuthorCategoriesTable();
                     $ajax_author_categories_table->single_row($added_category);
                     $response['content'] = ob_get_clean();
 
                 } else {
                     $response_message = esc_html__(
-                        'Error inserting new author category.', 
+                        'Error inserting new author category.',
                         'publishpress-authors'
                     );
                 }
@@ -313,16 +328,16 @@ class MA_Author_Categories extends Module
      */
     public function handleEditCategory() {
 
-        if (empty($_POST['nonce']) 
+        if (empty($_POST['nonce'])
             || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'ppma-category-inline-edit-nonce')
         ) {
             wp_die(esc_html__(
-                'Security error. Kindly reload this page and try again', 
+                'Security error. Kindly reload this page and try again',
                 'publishpress-authors'
             ));
         } elseif (!current_user_can(apply_filters('pp_multiple_authors_manage_categories_cap', 'ppma_manage_author_categories'))) {
             wp_die(esc_html__(
-                'You do not have permission to perform this action', 
+                'You do not have permission to perform this action',
                 'publishpress-authors'
             ));
         } else {
@@ -330,18 +345,19 @@ class MA_Author_Categories extends Module
             $category_name = isset($_POST['singular_name']) ? sanitize_text_field($_POST['singular_name']) : '';
             $plural_name = isset($_POST['plural_name']) ? sanitize_text_field($_POST['plural_name']) : '';
             $schema_property = isset($_POST['schema_property']) ? sanitize_text_field($_POST['schema_property']) : '';
+            $post_types = isset($_POST['post_types']) && is_array($_POST['post_types']) ? array_map('sanitize_text_field', $_POST['post_types']) : [];
             $category_status = isset($_POST['enabled_category']) ? intval($_POST['enabled_category']) : 0;
             $category_id = isset($_POST['category_id']) ? intval($_POST['category_id']) : 0;
             $slug = sanitize_title($category_name);
             $existing_category = get_ppma_author_categories(['slug' => $slug]);
             if (empty($category_name) || empty($plural_name) || empty($category_id)) {
                 wp_die(esc_html__(
-                    'All fields are required.', 
+                    'All fields are required.',
                     'publishpress-authors'
                 ));
             } elseif (!empty($existing_category) && (int)$existing_category['id'] !== (int)$category_id) {
                 wp_die(esc_html__(
-                    'Author category with this name already exist.', 
+                    'Author category with this name already exist.',
                     'publishpress-authors'
                 ));
             } else {
@@ -349,14 +365,17 @@ class MA_Author_Categories extends Module
                 $category_args = [
                     'category_name'     => $category_name,
                     'plural_name'       => $plural_name,
-                    'meta_data'       => ['schema_property' => $schema_property],
+                    'meta_data'       => [
+                        'schema_property' => $schema_property,
+                        'post_types' => $post_types
+                    ],
                     'slug'              => $slug,
                     'category_status'   => $category_status
                 ];
                 $edited_category = $this->editAuthorCategory($category_args, $category_id);
                 if ($edited_category && !empty($edited_category)) {
                     ob_start();
-                    
+
                     $ajax_author_categories_table = new AuthorCategoriesTable();
                     $ajax_author_categories_table->single_row($edited_category);
                     // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -364,7 +383,7 @@ class MA_Author_Categories extends Module
                     wp_die();
                 } else {
                     wp_die(esc_html__(
-                        'Error updating category data.', 
+                        'Error updating category data.',
                         'publishpress-authors'
                     ));
                 }
@@ -380,17 +399,17 @@ class MA_Author_Categories extends Module
         $response['status']     = 'error';
         $response['content']    = '';
         $response_message       = esc_html__('An error occured.', 'publishpress-authors');
-     
-        if (empty($_POST['nonce']) 
+
+        if (empty($_POST['nonce'])
             || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'author-categories-reorder-nonce')
         ) {
             $response_message = esc_html__(
-                'Security error. Kindly reload this page and try again.', 
+                'Security error. Kindly reload this page and try again.',
                 'publishpress-authors'
             );
         } elseif (empty($_POST['categories'])) {
             $response_message = esc_html__(
-                'Invalid form data.', 
+                'Invalid form data.',
                 'publishpress-authors'
             );
         } else {
@@ -401,7 +420,7 @@ class MA_Author_Categories extends Module
             }
 
             $response_message = esc_html__(
-                'Category order updated.', 
+                'Category order updated.',
                 'publishpress-authors'
             );
             $response['status']     = 'success';
@@ -415,20 +434,20 @@ class MA_Author_Categories extends Module
      * Add new author category
      *
      * @param array $insert_args
-     * 
+     *
      * @return array|bool
      */
     private function addAuthorCategory($insert_args) {
         global $wpdb;
-    
+
         $table_name = AuthorCategoriesSchema::tableName();
-    
+
         $meta_data = [];
         if (isset($insert_args['meta_data'])) {
             $meta_data = $insert_args['meta_data'];
             unset($insert_args['meta_data']);
         }
-    
+
         // Check if the slug already exists
         if (isset($insert_args['slug'])) {
             $slug = $insert_args['slug'];
@@ -436,28 +455,27 @@ class MA_Author_Categories extends Module
                 "SELECT id FROM $table_name WHERE slug = %s",
                 $slug
             ));
-    
+
             if ($existing_id) {
-                // Return existing category if found
                 return get_ppma_author_categories(['id' => $existing_id]);
             }
         }
-    
+
         // Proceed with insertion if slug doesn't exist
         $result = $wpdb->insert($table_name, $insert_args);
-    
+
         if ($result === false) {
             return false;
         }
-    
+
         $category_id = $wpdb->insert_id;
-    
+
         if ((int) $category_id > 0) {
             foreach ($meta_data as $meta_data_key => $meta_data_value) {
                 self::updateAuthorCategoryMeta($category_id, $meta_data_key, $meta_data_value);
             }
             do_action('publishpress_author_categories_flush_cache', $category_id);
-            return get_ppma_author_categories(['id' => $category_id]);
+            return get_ppma_author_categories(['id' => $category_id, 'no_cache' => true]);
         } else {
             return false;
         }
@@ -468,7 +486,7 @@ class MA_Author_Categories extends Module
      *
      * @param array $edit_args
      * @param integer $id
-     * 
+     *
      * @return array|bool
      */
     private function editAuthorCategory($edit_args, $id) {
@@ -505,7 +523,7 @@ class MA_Author_Categories extends Module
 
     public function updateAuthorCategoryMeta($category_id, $meta_key, $meta_value) {
         global $wpdb;
-        
+
         $table_name     = AuthorCategoriesSchema::metaTableName();
 
         if (empty($meta_value)) {
@@ -539,7 +557,7 @@ class MA_Author_Categories extends Module
 
                 $result = $wpdb->update(
                     $table_name,
-                    $data, 
+                    $data,
                     $where
                 );
             }
@@ -556,6 +574,7 @@ class MA_Author_Categories extends Module
     public function manageAuthorCategories() {
 
         $this->author_categories_table->prepare_items();
+        $proActive = Utils::isAuthorsProActive();
         ?>
 
         <div class="wrap">
@@ -582,7 +601,7 @@ class MA_Author_Categories extends Module
 
             <div id="col-container" class="wp-clearfix">
                 <div id="col-left">
-                    <div class="col-wrap">  
+                    <div class="col-wrap">
                         <div class="form-wrap">
                             <h2><?php esc_html_e('Add Author Category', 'publishpress-authors'); ?></h2>
                             <form id="addauthorcategory" method="post" action="#" class="validate">
@@ -607,6 +626,56 @@ class MA_Author_Categories extends Module
                                         '<a target="_blank" href="https://publishpress.com/knowledge-base/author-categories-schema/">',
                                         '</a>'
                                     ); ?></p>
+                                </div>
+                                <?php
+                                $promoClass = ! $proActive ? 'ppma-blur' : '';
+                                ?>
+                                <div class="form-field category-post-types-wrap">
+                                    <label class="<?php echo esc_attr($promoClass); ?>" for="category-post-types"><?php esc_html_e('Post Types', 'publishpress-authors'); ?></label>
+                                    <?php if (! $proActive) : ?>
+                                        <div class="<?php echo esc_attr($promoClass); ?>">
+                                    <?php endif; ?>
+                                    <select
+                                        style="width: 95%;"
+                                        class="authors-select2-default-select"
+                                        <?php if ($proActive) : ?>
+                                        name="category-post-types[]"
+                                        id="category-post-types"
+                                        <?php endif; ?>
+                                        data-placeholder="<?php esc_attr_e('Select Post Type...', 'publishpress-authors'); ?>"
+                                        multiple
+                                    >
+                                        <?php
+                                        if ($proActive) {
+                                            $enabled_post_types = Utils::get_enabled_post_types();
+                                            $post_type_objects = get_post_types(['public' => true], 'objects');
+                                            foreach ($enabled_post_types as $post_type_name) {
+                                                if (isset($post_type_objects[$post_type_name])) {
+                                                    $post_type = $post_type_objects[$post_type_name];
+                                                    printf(
+                                                        '<option value="%s">%s</option>',
+                                                        esc_attr($post_type->name),
+                                                        esc_html($post_type->label)
+                                                    );
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                    <?php if (! $proActive) : ?>
+                                        </div>
+                                        <div class="ppma-promo-overlay-row">
+                                            <div class="ppma-promo-upgrade-notice no-bg" style="margin-top: -50px;">
+                                                <p>
+                                                    <a class="upgrade-link" href="https://publishpress.com/links/authors-menu" target="__blank">
+                                                        <span class="dashicons dashicons-lock"></span>
+                                                        <?php echo esc_html__('Upgrade to Pro', 'publishpress-authors'); ?>
+                                                    </a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                    <p class="<?php echo esc_attr($promoClass); ?>"><?php esc_html_e('Select which post types this category applies to. Leave empty for all post types.', 'publishpress-authors'); ?></p>
                                 </div>
                                 <div class="form-field category-enabled-category-wrap">
                                     <label for="category-enabled-category">
@@ -681,7 +750,7 @@ class MA_Author_Categories extends Module
             'category_status'   => 0,
             'created_at'        => current_time('mysql', true)
         ];
-        
+
         foreach ($default_categories as $default_category) {
             $this->addAuthorCategory($default_category);
         }
@@ -694,7 +763,7 @@ class MA_Author_Categories extends Module
         global $wpdb;
 
         $table_name     = AuthorCategoriesSchema::relationTableName();
-        
+
         $wpdb->delete($table_name, ['post_id' => $post_id], ['%d']);
     }
 
@@ -742,7 +811,7 @@ class MA_Author_Categories extends Module
             AuthorCategoriesSchema::createMetaTableIfNotExists();
             update_option('ppma_author_categories_meta_installed', 1);
         }
-        
+
         if (empty(get_option('ppma_author_categories_cap_upgrade'))) {
             $capability_roles = ['editor', 'author', 'contributor'];
             foreach ($capability_roles as $capability_role) {
