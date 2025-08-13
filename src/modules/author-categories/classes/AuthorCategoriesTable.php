@@ -76,6 +76,7 @@ class AuthorCategoriesTable extends \WP_List_Table
             'cb' => '<input type="checkbox" />',
             'category_name' => esc_html__('Name', 'publishpress-authors'),
             'plural_name' => esc_html__('Plural Name', 'publishpress-authors'),
+            'post_types' => esc_html__('Post Types', 'publishpress-authors'),
             'slug' => esc_html__('Slug', 'publishpress-authors'),
             'category_status' => esc_html__('Enable Category', 'publishpress-authors'),
         ];
@@ -349,11 +350,12 @@ class AuthorCategoriesTable extends \WP_List_Table
     {
         //Build row actions
         $actions = [];
-
         if (current_user_can(apply_filters('pp_multiple_authors_manage_categories_cap', 'ppma_manage_author_categories'))) {
             $schema_property = !empty($item['schema_property']) ? $item['schema_property'] : '';
+            $post_types_data = isset($item['post_types']) ? maybe_unserialize($item['post_types']) : [];
+            $post_types_json = json_encode($post_types_data);
             $actions['inline hide-if-no-js'] = sprintf(
-                '<button type="button" class="button-link editinline" aria-label="%s" aria-expanded="false" data-category_id="' . $item['id'] . '" data-category_name="' . $item['category_name'] . '" data-plural_name="' . $item['plural_name'] . '" data-schema_property="' . $schema_property . '" data-slug="' . $item['slug'] . '" data-category_status="' . $item['category_status'] . '">%s</button>',
+                '<button type="button" class="button-link editinline" aria-label="%s" aria-expanded="false" data-category_id="' . $item['id'] . '" data-category_name="' . $item['category_name'] . '" data-plural_name="' . $item['plural_name'] . '" data-schema_property="' . $schema_property . '" data-slug="' . $item['slug'] . '" data-category_status="' . $item['category_status'] . '"  data-post_types=\'' . esc_attr($post_types_json) . '\'>%s</button>',
                 /* translators: %s: Taxonomy term name. */
                 esc_attr(sprintf(esc_html__('Quick edit &#8220;%s&#8221; inline', 'publishpress-authors'), $item['category_name'])),
                 esc_html__('Quick&nbsp;Edit', 'publishpress-authors')
@@ -412,12 +414,39 @@ class AuthorCategoriesTable extends \WP_List_Table
     }
 
     /**
+    * Render the post types column
+    *
+    * @param array $item
+    *
+    * @return string
+    */
+    protected function column_post_types($item)
+    {
+        $post_types = [];
+        if (isset($item['post_types']) && !empty($item['post_types'])) {
+            $stored_post_types = maybe_unserialize($item['post_types']);
+            if (is_array($stored_post_types)) {
+                $post_type_objects = get_post_types(['public' => true], 'objects');
+                foreach ($stored_post_types as $post_type_name) {
+                    if (isset($post_type_objects[$post_type_name])) {
+                        $post_types[] = $post_type_objects[$post_type_name]->label;
+                    }
+                }
+            }
+        }
+
+        return !empty($post_types) ? implode(', ', $post_types) : esc_html__('All', 'publishpress-authors');
+    }
+
+    /**
      * Outputs the hidden row displayed when inline editing
      *
      * @since 3.1.0
      */
     public function inline_edit()
     {
+        $proActive = Utils::isAuthorsProActive();
+        $promoClass = ! $proActive ? 'ppma-blur' : '';
         ?>
 
         <form method="get">
@@ -443,6 +472,50 @@ class AuthorCategoriesTable extends \WP_List_Table
                                     <label>
                                         <span class="title"><?php esc_html_e('Schema Property', 'publishpress-authors'); ?></span>
                                         <span class="input-text-wrap"><input type="text" name="schema_property" class="schema_property" value=""/></span>
+                                    </label>
+
+                                    <label>
+                                        <span class="title <?php echo esc_attr($promoClass); ?>"><?php esc_html_e('Post Types', 'publishpress-authors'); ?></span>
+                                        <span class="input-text-wrap <?php echo esc_attr($promoClass); ?>">
+                                            <select
+                                                style="width: 70%;"
+                                                class="post_types"
+                                                <?php if ($proActive) : ?>
+                                                        name="post_types[]"
+                                                <?php endif; ?>
+                                                data-placeholder="<?php esc_attr_e('Select Post Type...', 'publishpress-authors'); ?>"
+                                                multiple
+                                            >
+                                                <?php
+                                                if ($proActive) {
+                                                    $enabled_post_types = Utils::get_enabled_post_types();
+                                                    $post_type_objects = get_post_types(['public' => true], 'objects');
+                                                    foreach ($enabled_post_types as $post_type_name) {
+                                                        if (isset($post_type_objects[$post_type_name])) {
+                                                            $post_type = $post_type_objects[$post_type_name];
+                                                            printf(
+                                                                '<option value="%s">%s</option>',
+                                                                esc_attr($post_type->name),
+                                                                esc_html($post_type->label)
+                                                            );
+                                                        }
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                        </span>
+                                        <?php if (! $proActive) : ?>
+                                            <div class="ppma-promo-overlay-row">
+                                                <div class="ppma-promo-upgrade-notice no-bg" style="margin-top: -70px;">
+                                                    <p>
+                                                        <a class="upgrade-link" href="https://publishpress.com/links/authors-menu" target="__blank">
+                                                            <span class="dashicons dashicons-lock"></span>
+                                                            <?php echo esc_html__('Upgrade to Pro', 'publishpress-authors'); ?>
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
                                     </label>
 
 

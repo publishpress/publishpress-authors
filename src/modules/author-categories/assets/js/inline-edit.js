@@ -131,6 +131,7 @@ window.wp = window.wp || {};
 			var schema_property = element.attr('data-schema_property');
 			var category_status = Number(element.attr('data-category_status'));
 			var enabled_category = category_status > 0 ? true : false;
+			var postTypesData = authorCategoriesInlineEdit.proActive ? element.attr('data-post_types') : false;
 
 			editRow = $('#inline-edit').clone(true), rowData = $('#inline_' + id);
 			$('td', editRow).attr('colspan', $('th:visible, td:visible', '.wp-list-table.widefat:first thead').length);
@@ -142,7 +143,28 @@ window.wp = window.wp || {};
 			$(':input[name="plural_name"]', editRow).val(plural_name);
 			$(':input[name="schema_property"]', editRow).val(schema_property);
 			$(':input[name="enabled_category"]', editRow).prop('checked', enabled_category);
+			var $postTypeSelect = $('select[name="post_types[]"]', editRow);
+			if ($postTypeSelect) {
+				$postTypeSelect.find('option').prop('selected', false);
+			}
+			if (postTypesData && postTypesData !== '[]') {
+				try {
+					var postTypes = JSON.parse(postTypesData);
 
+					if (Array.isArray(postTypes)) {
+						postTypes.forEach(function (postType) {
+							$postTypeSelect.find('option[value="' + postType + '"]').prop('selected', true);
+						});
+					}
+				} catch (e) {
+					console.log('Error parsing post types data:', e);
+				}
+			}
+			if ($postTypeSelect) {
+				$postTypeSelect.ppma_select2({
+					placeholder: $(this).attr("placeholder")
+				});
+			}
 
 			$(editRow).attr('id', 'edit-' + id).addClass('inline-editor').show();
 			$('.singular_name', editRow).eq(0).trigger('focus');

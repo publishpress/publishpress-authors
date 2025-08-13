@@ -1656,6 +1656,9 @@ if (!function_exists('get_ppma_author_categories')) {
             'orderby'           => 'category_order',
             'order'             => 'ASC',
             'count_only'        => false,
+            'no_cache'          => false,
+            'post_type'         => [],
+            'post_type_and_empty' => '',
             'meta_query'        => []
         ];
 
@@ -1664,6 +1667,11 @@ if (!function_exists('get_ppma_author_categories')) {
         $table_name      = $wpdb->prefix . 'ppma_author_categories';
         $meta_table_name = $wpdb->prefix . 'ppma_author_categories_meta';
 
+        if (! Utils::isAuthorsProActive()) {
+            // make sure post type query doesn't work even if added to custom query unless pro is active
+            $args['post_type'] = [];
+            $args['post_type_and_empty'] = '';
+        }
 
         $paged           = intval($args['paged']);
         $limit           = intval($args['limit']);
@@ -1675,6 +1683,9 @@ if (!function_exists('get_ppma_author_categories')) {
         $orderby         = sanitize_sql_orderby($args['orderby'] . ' ' . strtoupper($args['order']));
         $category_status = sanitize_text_field($args['category_status']);
         $count_only      = boolval($args['count_only']);
+        $no_cache        = boolval($args['no_cache']);
+        $post_types      = !empty($args['post_types']) && is_array($args['post_types']) ? array_map('sanitize_key', $args['post_types'], ) : [];
+        $post_type_and_empty = !empty($args['post_type_and_empty']) ? sanitize_text_field($args['post_type_and_empty']) : '';
 
         if (empty($orderby)) {
             $orderby = 'category_order ASC';
@@ -1699,31 +1710,85 @@ if (!function_exists('get_ppma_author_categories')) {
 
         $category_results = wp_cache_get($cache_key, 'author_categories_results_cache');
         $single_result = false;
-        if ($category_results === false) {
+        if ($no_cache || $category_results === false) {
             $category_results = [];
             if ($field_search) {
+                // Single result
                 $query = $wpdb->prepare(
-                    "SELECT {$table_name}.*, {$meta_table_name}.meta_key, {$meta_table_name}.meta_value
-                    FROM {$table_name}
-                    LEFT JOIN {$meta_table_name} ON {$table_name}.id = {$meta_table_name}.category_id
+                    "SELECT * FROM {$table_name}
                     WHERE {$table_name}.{$field_search} = %s
                     ORDER BY {$orderby}
                     LIMIT 1",
                     $field_value
                 );
-                $category_results = $wpdb->get_row($query, \ARRAY_A);
+                $category_row = $wpdb->get_row($query, ARRAY_A);
+
+                if ($category_row) {
+                    // Fetch all meta for this ID
+                    $meta_query = $wpdb->prepare(
+                        "SELECT meta_key, meta_value
+                        FROM {$meta_table_name}
+                        WHERE category_id = %d",
+                        $category_row['id']
+                    );
+                    $metas = $wpdb->get_results($meta_query, ARRAY_A);
+
+                    // Merge meta into main row
+                    foreach ($metas as $meta) {
+                        $category_row[$meta['meta_key']] = $meta['meta_value'];
+                    }
+                }
+
+                $category_results = $category_row;
+
                 $single_result = true;
             } else {
+                // Multiple results
 
                 $offset = ($paged - 1) * $limit;
 
                 if ($count_only) {
-                    $query = "SELECT * FROM {$table_name} WHERE 1=1";
+                    $query = "SELECT COUNT(*) FROM {$table_name} WHERE 1=1";
                 } else {
-                    $query = "SELECT {$table_name}.*, {$meta_table_name}.meta_key, {$meta_table_name}.meta_value
-                    FROM {$table_name}
-                    LEFT JOIN {$meta_table_name} ON {$table_name}.id = {$meta_table_name}.category_id
-                    WHERE 1=1";
+                    $query = "SELECT * FROM {$table_name} WHERE 1=1";
+                }
+
+                if (!empty($post_types)) {
+                    $like_conditions = [];
+                    $prepare_values = [];
+
+                    foreach ($post_types as $post_type) {
+                        $like_conditions[] = "meta_value LIKE %s";
+                        $prepare_values[] = '%"' . $wpdb->esc_like($post_type) . '"%';
+                    }
+
+                    $subquery = $wpdb->prepare(
+                        "SELECT DISTINCT category_id
+                        FROM {$meta_table_name}
+                        WHERE meta_key = 'post_types'
+                        AND (" . implode(' OR ', $like_conditions) . ")",
+                        ...$prepare_values
+                    );
+
+                    $query .= " AND {$table_name}.id IN ({$subquery})";
+                } elseif (!empty($post_type_and_empty)) {
+                    $post_type = $post_type_and_empty;
+
+                    $subquery = $wpdb->prepare(
+                        "SELECT DISTINCT category_id
+                        FROM {$meta_table_name}
+                        WHERE meta_key = 'post_types'
+                        AND (meta_value LIKE %s OR meta_value IS NULL OR meta_value = '')",
+                        '%"' . $wpdb->esc_like($post_type) . '"%'
+                    );
+
+                    $query .= " AND ({$table_name}.id IN ({$subquery}) OR {$table_name}.id NOT IN (
+                        SELECT DISTINCT category_id
+                        FROM {$meta_table_name}
+                        WHERE meta_key = 'post_types'
+                        AND meta_value IS NOT NULL
+                        AND meta_value != ''
+                    ))";
                 }
 
                 if (!empty($search)) {
@@ -1743,18 +1808,40 @@ if (!function_exists('get_ppma_author_categories')) {
                 }
 
                 if ($count_only) {
-                    $query = str_replace("SELECT *", "SELECT COUNT(*)", $query);
                     return $wpdb->get_var($query);
                 }
 
-                $query .= $wpdb->prepare(
-                    " ORDER BY {$orderby} LIMIT %d OFFSET %d",
-                    $limit,
-                    $offset
+                $query .= " ORDER BY {$orderby} LIMIT %d OFFSET %d";
+                $query = $wpdb->prepare($query, $limit, $offset);
+
+                $categories = $wpdb->get_results($query, ARRAY_A);
+                if (!$categories) {
+                    return [];
+                }
+
+                // Query metas
+                $ids = wp_list_pluck($categories, 'id');
+                $placeholders = implode(',', array_fill(0, count($ids), '%d'));
+                $meta_query = $wpdb->prepare(
+                    "SELECT category_id, meta_key, meta_value
+                    FROM {$meta_table_name}
+                    WHERE category_id IN ($placeholders)",
+                    ...$ids
                 );
+                $metas = $wpdb->get_results($meta_query, ARRAY_A);
 
+                // Merge metas into main categories
+                foreach ($metas as $meta) {
+                    foreach ($categories as &$cat) {
+                        if ($cat['id'] == $meta['category_id']) {
+                            $cat[$meta['meta_key']] = $meta['meta_value'];
+                        }
+                    }
+                }
+                unset($cat);
 
-                $category_results = $wpdb->get_results($query, \ARRAY_A);
+                $category_results = $categories;
+
                 wp_cache_set($cache_key, $category_results, 'author_categories_results_cache', 3600);
             }
         }

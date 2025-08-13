@@ -344,7 +344,10 @@ class Post_Editor
             $classes[] = 'authors-current-user-can-assign';
         }
 
-        $author_categories = get_ppma_author_categories(['category_status' => 1]);
+        $author_categories = get_ppma_author_categories([
+            'category_status' => 1,
+            'post_type_and_empty' => $post->post_type
+        ]);
 
         if (!empty($author_categories)) {
             $author_relations  = get_ppma_author_relations(['post_id' => $post->ID]);

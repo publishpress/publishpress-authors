@@ -32,7 +32,9 @@
         /**
          * Author list editor tab switch
          */
-        $('.author-list-wrap .shortcode-textarea.static').val(getShortCodes());
+        if ($('.author-list-wrap .shortcode-textarea.static').length) {
+            $('.author-list-wrap .shortcode-textarea.static').val(getShortCodes());
+        }
         $(document).on('click', '.author-list-tab li', function (event) {
 
             event.preventDefault();
@@ -143,14 +145,14 @@
             }
 
             shortcode += ']';
-            
+
             return shortcode;
         }
 
         function generateAuthorListPreview() {
             $('.author-list-wrap .preview-skeleton').show();
             $('.preview-shortcode-wrap').hide();
-            
+
             var data = {
                 action: "author_list_editor_do_shortcode",
                 shortcode:  $('.author-list-wrap .shortcode-textarea.static').val(),
