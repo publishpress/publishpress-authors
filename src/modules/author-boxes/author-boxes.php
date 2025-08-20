@@ -1928,9 +1928,13 @@ class MA_Author_Boxes extends Module
                                                                 <?php endif; ?>
                                                                 <?php echo $bio_row_extra ; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
-                                                                <?php if ($args['meta_view_all_show']['value']) : ?>
+                                                                <?php if ($args['meta_view_all_show']['value']) :
+                                                                $view_all_link = !empty($args['meta_custom_link']['value']) ?
+                                                                $args['meta_custom_link']['value'] :
+                                                                    $author->link;
+                                                                ?>
                                                                     <<?php echo esc_html($args['meta_html_tag']['value']); ?> class="pp-author-boxes-meta multiple-authors-links">
-                                                                        <a href="<?php echo esc_url($author->link); ?>" title="<?php echo esc_attr($args['meta_label']['value']); ?>">
+                                                                        <a href="<?php echo esc_url($view_all_link); ?>" title="<?php echo esc_attr($args['meta_label']['value']); ?>">
                                                                             <span><?php echo esc_html($args['meta_label']['value']); ?></span>
                                                                         </a>
                                                                     </<?php echo esc_html($args['meta_html_tag']['value']); ?>>
@@ -2061,6 +2065,7 @@ class MA_Author_Boxes extends Module
             'post_id'     => false,
             'group_start' => false,
             'group_end'   => false,
+            'pro'         => false,
         ];
 
         $args      = array_merge($defaults, $args);
@@ -2085,7 +2090,7 @@ class MA_Author_Boxes extends Module
             $th_style = '';
             $colspan  = '';
         }
-
+        $pro_feature = $args['pro'] === true;
         $pro_active = Utils::isAuthorsProActive();
         ?>
         <?php if ($args['group_start'] === true) :
@@ -2509,6 +2514,13 @@ class MA_Author_Boxes extends Module
                         </div>
                     </div>
                 <?php else : ?>
+                    <?php
+                    if ($pro_feature && ! $pro_active) {
+                        $key = 'promo_field';
+                        $args['readonly'] = true;
+                        echo '<span class="ppma-promo-overlay-row">';
+                    }
+                    ?>
                     <input name="<?php echo esc_attr($key); ?>"
                         id="<?php echo esc_attr($key); ?>"
                         type="<?php echo esc_attr($args['type']); ?>"
@@ -2516,13 +2528,25 @@ class MA_Author_Boxes extends Module
                         placeholder="<?php echo esc_attr($args['placeholder']); ?>"
                         <?php echo (isset($args['readonly']) && $args['readonly'] === true) ? 'readonly' : ''; ?>
                          />
+                    <?php
+                    if ($pro_feature && ! $pro_active) {
+                        ?>
+                        <span class="ppma-promo-simply-overlay editor-area">
+                            <a class="upgrade-link" href="https://publishpress.com/links/authors-menu" target="__blank">
+                                <span class="dashicons dashicons-lock"></span>
+                            </a>
+                        </span>
+                        <?php
+                        echo '</span>';
+                    }
+                    ?>
                 <?php endif; ?>
                 <?php if (isset($args['description']) && !empty($args['description'])) : ?>
                         <?php if($args['type'] !== 'checkbox') : ?>
                             <br />
                         <?php endif; ?>
                         <span class="field-description description">
-                            <?php echo $args['description']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
+                            <?php echo $args['description']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                         </span>
                 <?php endif; ?>
             </td>
