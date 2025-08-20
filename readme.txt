@@ -7,7 +7,7 @@ Tags: multiple authors, authors, guest authors, author bio, author layouts
 Requires at least: 5.5
 Requires PHP: 7.2.5
 Tested up to: 6.8
-Stable tag: 4.8.0
+Stable tag: 4.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -246,6 +246,21 @@ There are two ways to install the PublishPress Authors plugin:
 5. Activate the PublishPress Authors plugin.
 
 == Changelog ==
+
+= [4.9.0] - 20 August 2025 =
+
+* Compat: Polylang compat: Posts not showing in frontend when switching language,  #1721
+* Update: Add maintenance button to Import from Molongui, #2063
+* Fixed: objectcache.notice: The cache key 47732 is incompatible with prefetching and the group get_post_authors:authors, #2087
+* Fixed: No authors found when searching by last name and/or first name, #1531
+* Fixed: No results displayed when searching authors by email address, #1523
+* Feature: Allow user to choose post types for Author Box Recent Posts [PRO], #1560
+* Feature: Allow users to chose an author box for posts [PRO], #1761
+* Feature: Add post type options to Author Categories [PRO], #1561
+* Feature: Sort authors in Author Lists by number of posts [PRO], #1598
+* Feature: Allow a custom link for Author Box "View All Posts" [PRO], #2048
+* Feature: Add option to remove the link from the Author Box display name [Pro], #1855
+* Feature: Exclude users from Author lists based on Roles, Author Types and Author Categories [PRO], #2086
 
 = [4.8.1] - 30 July 2025 =
 
