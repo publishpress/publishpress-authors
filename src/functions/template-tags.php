@@ -429,6 +429,48 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
             $user_roles = $other_roles;
         }
 
+        // exclude roles
+        if (isset($instance['exclude_roles']) && !empty($instance['exclude_roles'])) {
+            $exclude_user_roles = explode(',', $instance['exclude_roles']);
+        } else {
+            $exclude_user_roles = [];
+        }
+
+        // exclude author category ids
+        if (isset($instance['exclude_category_id']) && !empty($instance['exclude_category_id'])) {
+            $exclude_category_ids = array_map('intval', explode(',', $instance['exclude_category_id']));
+        } else {
+            $exclude_category_ids = [];
+        }
+
+        $exclude_guests_only = false;
+        $exclude_users_only = false;
+        $exclude_exclude_real_user = false;
+        $exclude_exclude_guest_user = false;
+
+        if (isset($instance['exclude_authors']) && !empty($instance['exclude_authors'])) {
+            $exclude_author_types = explode(',', $instance['exclude_authors']);
+            if (count($exclude_author_types) < 3) {
+                if (in_array('users', $exclude_author_types) && in_array('guests_users', $exclude_author_types)) {
+                    $exclude_user_roles = array_merge($exclude_user_roles, array_keys(get_ppma_get_all_user_roles()));
+                } else if (in_array('users', $exclude_author_types) && in_array('guests', $exclude_author_types)) {
+                    $exclude_exclude_guest_user = true;
+                } else if (in_array('guests_users', $exclude_author_types) && in_array('guests', $exclude_author_types)) {
+                    $exclude_exclude_real_user = true;
+                } else if (in_array('users', $exclude_author_types)) {
+                    $exclude_users_only = true;
+                } else if (in_array('guests_users', $exclude_author_types)) {
+                    $exclude_user_roles[] = 'ppma_guest_author';
+                } else if (in_array('guests', $exclude_author_types)) {
+                    $exclude_guests_only = true;
+                }
+            }
+        }
+
+        if ($exclude_users_only) {
+            $exclude_user_roles = $other_roles;
+        }
+
         //add sort option
         if (!isset($args['order']) && isset($instance['order'])) {
             $args['order'] = $instance['order'];
@@ -505,7 +547,8 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
             $meta_order = false;
         }
 
-        if (true === $args['hide_empty'] || $search_text || $meta_order || $last_article_date || !empty($user_roles) || $guests_only || $exclude_real_user || $exclude_guest_user) {
+        if (true === $args['hide_empty'] || $search_text || $meta_order || $last_article_date || !empty($user_roles) || $guests_only || $exclude_real_user || $exclude_guest_user || !empty($exclude_user_roles) || $exclude_guests_only || $exclude_exclude_real_user || $exclude_exclude_guest_user || !empty($exclude_category_ids)) {
+
             $postTypes = Utils::get_enabled_post_types();
             $postTypes = array_map(function($item) {
                 return '"' . $item . '"';
@@ -534,6 +577,19 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
             // Add author_category filtering to custom query
             if (!empty($category_ids)) {
                 $term_query .= "LEFT JOIN {$wpdb->termmeta} AS tm_cat ON (t.term_id = tm_cat.term_id AND tm_cat.meta_key = 'author_category') ";
+            }
+
+            if (!empty($exclude_user_roles) || $exclude_guests_only || $exclude_exclude_real_user || $exclude_exclude_guest_user) {
+                $term_query .= "LEFT JOIN {$wpdb->termmeta} tm3 ON t.term_id = tm3.term_id AND tm3.meta_key = 'user_id' ";
+            }
+
+            if (!empty($exclude_user_roles) || $exclude_exclude_real_user || $exclude_exclude_guest_user) {
+                $term_query .= "LEFT JOIN {$wpdb->users} u2 ON u2.ID = tm3.meta_value ";
+                $term_query .= "LEFT JOIN {$wpdb->usermeta} um2 ON u2.ID = um2.user_id ";
+            }
+
+            if (!empty($exclude_category_ids)) {
+                $term_query .= "LEFT JOIN {$wpdb->termmeta} AS tm_exclude_cat ON (t.term_id = tm_exclude_cat.term_id AND tm_exclude_cat.meta_key = 'author_category') ";
             }
 
             $term_query .= "WHERE tt.taxonomy = 'author' ";
@@ -583,6 +639,67 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
                         tm.meta_key = 'user_id'
                         AND ($role_conditions_string)
                     )
+                ) ";
+            }
+
+            if (!empty($exclude_category_ids)) {
+                $term_query .= "AND (tm_exclude_cat.meta_value IS NULL OR tm_exclude_cat.meta_value NOT IN (" . implode(',', $exclude_category_ids) . ")) ";
+            }
+
+            if ($exclude_guests_only) {
+                $term_query .= "AND NOT (tm3.meta_value IS NULL OR tm3.meta_value = '' OR tm3.meta_value = 0) ";
+            }
+
+            if ($exclude_exclude_real_user) {
+                $role_condition = '%"ppma_guest_author"%';
+                $term_query .= "AND NOT (
+                    tm3.meta_key IS NULL
+                    OR tm3.meta_value IS NULL
+                    OR tm3.meta_value = ''
+                    OR tm3.meta_value = '0'
+                    OR (
+                        tm3.meta_key = 'user_id'
+                        AND um2.meta_value LIKE '{$role_condition}'
+                    )
+                ) ";
+            }
+
+            if ($exclude_exclude_guest_user) {
+                $role_conditions = [];
+                foreach ($other_roles as $role) {
+                    $role_conditions[] = $wpdb->prepare("um2.meta_value LIKE %s", '%"' . $wpdb->esc_like($role) . '"%');
+                }
+                $role_conditions_string = implode(' OR ', $role_conditions);
+                $term_query .= "AND NOT (
+                    tm3.meta_key IS NULL
+                    OR tm3.meta_value IS NULL
+                    OR tm3.meta_value = ''
+                    OR tm3.meta_value = '0'
+                    OR (
+                        tm3.meta_key = 'user_id'
+                        AND ($role_conditions_string)
+                    )
+                ) ";
+            }
+
+            if (!empty($exclude_user_roles)) {
+                $exclude_role_conditions = [];
+                foreach ($exclude_user_roles as $role) {
+                    $exclude_role_conditions[] = $wpdb->prepare("um_exclude.meta_value LIKE %s", '%"' . $wpdb->esc_like($role) . '"%');
+                }
+                $exclude_role_conditions_string = implode(' OR ', $exclude_role_conditions);
+
+                $term_query .= "AND t.term_id NOT IN (
+                    SELECT DISTINCT t_exclude.term_id
+                    FROM {$wpdb->terms} t_exclude
+                    INNER JOIN {$wpdb->term_taxonomy} tt_exclude ON tt_exclude.term_id = t_exclude.term_id
+                    LEFT JOIN {$wpdb->termmeta} tm_exclude ON tm_exclude.term_id = t_exclude.term_id
+                    LEFT JOIN {$wpdb->users} u_exclude ON u_exclude.ID = tm_exclude.meta_value
+                    LEFT JOIN {$wpdb->usermeta} um_exclude ON u_exclude.ID = um_exclude.user_id
+                    WHERE tt_exclude.taxonomy = 'author'
+                    AND tm_exclude.meta_key = 'user_id'
+                    AND um_exclude.meta_key = '{$wpdb->prefix}capabilities'
+                    AND ($exclude_role_conditions_string)
                 ) ";
             }
 
