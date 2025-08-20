@@ -812,7 +812,8 @@ class Post_Editor
             wp_cache_delete($cache_key, 'author_categories_relation_cache');
 
             // post authors
-            wp_cache_delete($post_id, 'get_post_authors:authors');
+            $authors_cache_key = 'authors_' . $post_id;
+            wp_cache_delete($authors_cache_key, 'get_post_authors:authors');
         }
     }
 }

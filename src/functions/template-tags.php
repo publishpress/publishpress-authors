@@ -81,6 +81,7 @@ if (!function_exists('get_post_authors')) {
 
         $post = get_post($postId);
 
+        $authors_cache_key = 'authors_' . $postId;
         if (
             $post &&
             ! is_wp_error($post) &&
@@ -113,7 +114,7 @@ if (!function_exists('get_post_authors')) {
 
         $authorsInstances = false;
         if (!$ignoreCache) {
-            $authorsInstances = wp_cache_get($postId, 'get_post_authors:authors');
+            $authorsInstances = wp_cache_get($authors_cache_key, 'get_post_authors:authors');
         }
 
         if (false !== $authorsInstances) {
@@ -181,7 +182,7 @@ if (!function_exists('get_post_authors')) {
             }
         }
 
-        wp_cache_set($postId, $authorsInstances, 'get_post_authors:authors');
+        wp_cache_set($authors_cache_key, $authorsInstances, 'get_post_authors:authors');
 
         return (array)$authorsInstances;
     }
