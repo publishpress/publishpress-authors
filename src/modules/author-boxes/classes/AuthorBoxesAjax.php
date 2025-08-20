@@ -569,9 +569,10 @@ endif ?>
 <?php endif; ?>
                             <?php echo $bio_row_extra ; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
-<?php if ($args['meta_view_all_show']['value']) : ?>
+<?php if ($args['meta_view_all_show']['value']) :
+ $view_all_link = !empty($args['meta_custom_link']['value']) ? $args['meta_custom_link']['value'] : '</?php echo esc_url($author->link); ?>'; ?>
                             <<?php echo esc_html($args['meta_html_tag']['value']); ?> class="pp-author-boxes-meta multiple-authors-links">
-                                <a href="</?php echo esc_url($author->link); ?>" title="<?php echo esc_attr($args['meta_label']['value']); ?>">
+                                <a href="<?php echo $view_all_link; ?>">
                                     <span>
                                         <?php echo esc_html($args['meta_label']['value']); ?>
                                     </span>

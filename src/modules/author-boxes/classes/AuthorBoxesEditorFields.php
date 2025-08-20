@@ -434,6 +434,14 @@ class AuthorBoxesEditorFields
             'sanitize' => 'sanitize_text_field',
             'tab'      => 'meta',
         ];
+        $fields['meta_custom_link'] = [
+            'label'    => esc_html__('Custom "View All Posts" Link', 'publishpress-authors'),
+            'type'     => 'url',
+            'sanitize' => 'esc_url_raw',
+            'tab'      => 'meta',
+            'description' => esc_html__('Enter a custom URL for the "View All Posts" link. Leave empty to use the default author posts page.', 'publishpress-authors'),
+            'pro'      => true,
+        ];
         $fields['meta_size'] = [
             'label'    => esc_html__('View All Posts Link Size', 'publishpress-authors'),
             'type'     => 'number',

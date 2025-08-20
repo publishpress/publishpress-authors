@@ -256,6 +256,7 @@ class AuthorBoxesDefault
         $editor_data['meta_view_all_show'] = 0;
         $editor_data['meta_html_tag'] = 'span';
         $editor_data['meta_label'] = __('View all posts', 'publishpress-authors');
+        $editor_data['meta_custom_link'] = '';
         $editor_data['meta_background_color'] = '#655997';
         $editor_data['meta_color'] = '#ffffff';
         $editor_data['meta_link_hover_color'] = '#ffffff';
@@ -361,6 +362,7 @@ class AuthorBoxesDefault
         $editor_data['avatar_border_radius'] = 50;
         //name default
         $editor_data['name_show'] = 1;
+        $editor_data['name_disable_link'] = 0;
         $editor_data['name_html_tag'] = 'div';
         //bio default
         $editor_data['avatar_border_radius'] = 50;
@@ -370,6 +372,7 @@ class AuthorBoxesDefault
         $editor_data['meta_view_all_show'] = 0;
         $editor_data['meta_html_tag'] = 'span';
         $editor_data['meta_label'] = __('View all posts', 'publishpress-authors');
+        $editor_data['meta_custom_link'] = '';
         $editor_data['meta_background_color'] = '#655997';
         $editor_data['meta_color'] = '#ffffff';
         $editor_data['meta_link_hover_color'] = '#ffffff';
@@ -449,6 +452,7 @@ class AuthorBoxesDefault
         $editor_data['meta_view_all_show'] = 0;
         $editor_data['meta_html_tag'] = 'span';
         $editor_data['meta_label'] = __('View all posts', 'publishpress-authors');
+        $editor_data['meta_custom_link'] = '';
         $editor_data['meta_background_color'] = '#655997';
         $editor_data['meta_color'] = '#ffffff';
         $editor_data['meta_link_hover_color'] = '#ffffff';
@@ -534,6 +538,7 @@ class AuthorBoxesDefault
         $editor_data['meta_view_all_show'] = 0;
         $editor_data['meta_html_tag'] = 'span';
         $editor_data['meta_label'] = __('View all posts', 'publishpress-authors');
+        $editor_data['meta_custom_link'] = '';
         $editor_data['meta_background_color'] = '#655997';
         $editor_data['meta_color'] = '#ffffff';
         $editor_data['meta_link_hover_color'] = '#ffffff';
@@ -623,6 +628,7 @@ class AuthorBoxesDefault
         $editor_data['meta_view_all_show'] = 0;
         $editor_data['meta_html_tag'] = 'span';
         $editor_data['meta_label'] = __('View all posts', 'publishpress-authors');
+        $editor_data['meta_custom_link'] = '';
         $editor_data['meta_background_color'] = '#655997';
         $editor_data['meta_color'] = '#ffffff';
         $editor_data['meta_link_hover_color'] = '#ffffff';
