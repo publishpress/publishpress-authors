@@ -102,10 +102,21 @@
             } else if (author_type == 'category_id' && category_id.length > 0) {
                 shortcode += ' category_id="' + category_id.join(',') + '"';
             }
-            // add exclude_term_id
-            var exclude_term_id = $('.author-list-tab-content .input #exclude_term_id-exclude_term_id').val();
-            if (exclude_term_id.length > 0) {
+
+            // add exclude user roles, authors, term_id or category_id
+            var author_type_exclude = $('.author-list-tab-content .input input[name="author_list[author_type_exclude]"]:checked').val();
+            var exclude_roles = $('.author-list-tab-content .input #author_type_exclude-exclude_roles').val();
+            var exclude_authors = $('.author-list-tab-content .input #author_type_exclude-exclude_authors').val();
+            var exclude_term_id = $('.author-list-tab-content .input #author_type_exclude-exclude_term_id').val();
+            var exclude_category_id = $('.author-list-tab-content .input #author_type_exclude-exclude_category_id').val();
+            if (exclude_roles && exclude_roles.length > 0) {
+                shortcode += ' exclude_roles="' + exclude_roles.join(',') + '"';
+            } if (exclude_authors && exclude_authors.length > 0) {
+                shortcode += ' exclude_authors="' + exclude_authors.join(',') + '"';
+            } if (exclude_term_id && exclude_term_id.length > 0) {
                 shortcode += ' exclude_term_id="' + exclude_term_id.join(',') + '"';
+            } if (exclude_category_id && exclude_category_id.length > 0) {
+                shortcode += ' exclude_category_id="' + exclude_category_id.join(',') + '"';
             }
 
             // add limit_per_page
