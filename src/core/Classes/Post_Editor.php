@@ -455,6 +455,7 @@ class Post_Editor
             }
             ?>
             <?php if (!$bulkEdit) : ?>
+                <?php echo self::render_editor_author_box_settings($post->ID);  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                 <div class="ppma-authors-display-option-wrapper">
                     <input name="ppma_save_disable_author_box" type="hidden" value="1" />
                     <input name="ppma_disable_author_box"
@@ -490,6 +491,31 @@ class Post_Editor
             </div>
             <?php
         }
+    }
+
+    public static function render_editor_author_box_settings($post_id) {
+        ob_start();
+        ?>
+        <div class="ppma-promo-overlay-row">
+            <div class="ppma-author-box-selection ppma-blur" style="margin-bottom: 15px;">
+                <label><?php _e('Author Box Layout:', 'publishpress-authors'); ?></label>
+                <select class="authors-select2-default-select" style="width: 100%;">
+                    <option value=""><?php _e('Use Global Setting', 'publishpress-authors'); ?></option>
+                </select>
+            </div>
+            <div class="ppma-promo-simply-overlay editor-area">
+                <p>
+                    <a class="upgrade-link" href="https://publishpress.com/links/authors-menu" target="__blank">
+                        <span class="dashicons dashicons-lock"></span>
+                    </a>
+                </p>
+            </div>
+        </div>
+        <?php
+
+        $editor_author_box = ob_get_clean();
+
+        return apply_filters('ppma_editor_author_box_settings', $editor_author_box, $post_id);
     }
 
     /**
@@ -647,9 +673,12 @@ class Post_Editor
         $disableAuthorBox = isset($_POST['ppma_disable_author_box']) ? (int)$_POST['ppma_disable_author_box'] : 0;
 
         Utils::set_post_authors($post_id, $authors, true, $fallbackUserId, $author_categories);
+
         if (isset($_POST['ppma_save_disable_author_box']) && (int)$_POST['ppma_save_disable_author_box'] > 0) {
             update_post_meta($post_id, 'ppma_disable_author_box', $disableAuthorBox);
         }
+
+        do_action('publishpress_authors_post_authors_metabox_action_saved', $post_id);
 
         do_action('publishpress_authors_flush_cache_for_post', $post_id);
     }

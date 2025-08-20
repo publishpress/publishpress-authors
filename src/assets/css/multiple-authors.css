@@ -664,8 +664,6 @@ body.edit-php.post-type-ppma_boxes .tablenav.top .alignleft.actions:not(.bulkact
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
     align-items: center;
     text-align: center;
     z-index: 10;
@@ -684,6 +682,21 @@ body.edit-php.post-type-ppma_boxes .tablenav.top .alignleft.actions:not(.bulkact
     break-inside: avoid;
     white-space: nowrap;
     gap: 4px;
+}
+
+.ppma-promo-simply-overlay.editor-area {
+    padding-bottom: 0;
+}
+
+.ppma-promo-simply-overlay a {
+    color: #000;
+    text-decoration: none;
+}
+
+.ppma-promo-simply-overlay a:active,
+.ppma-promo-simply-overlay a:focus {
+    outline: none;
+    box-shadow: none;
 }
 
 .ppma-pro-loc-icon {
