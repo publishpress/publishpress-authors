@@ -1869,7 +1869,15 @@ class MA_Author_Boxes extends Module
                                                             <?php if ($author_categories_title_option == 'before_individual' && !empty($author_category_data['title'])) :
                                                                 $display_name_markup .= '<' . $author_categories_title_html_tag . ' class="ppma-category-group-title">' . $author_categories_title_prefix . '' . $author_category_data['singular_title'] . '' . $author_categories_title_suffix . '</' . $author_categories_title_html_tag . '>';
                                                             endif;
-                                                            $display_name_markup .= $before_name_author_category_content . '<a href="'. esc_url($author->link) .'" rel="author" title="'. esc_attr($author->display_name) .'" class="author url fn">'. esc_html($display_name_prefix . $author->display_name . $display_name_suffix) .'</a>'. $after_name_author_category_content;
+                                                            $display_name_markup .= $before_name_author_category_content;
+                                                            if (!$args['name_disable_link']['value']) {
+                                                                $display_name_markup .= '<a href="'. esc_url($author->link) .'" rel="author" title="'. esc_attr($author->display_name) .'" class="author url fn">';
+                                                            }
+                                                            $display_name_markup .= esc_html($display_name_prefix . $author->display_name . $display_name_suffix);
+                                                            if (!$args['name_disable_link']['value']) {
+                                                                $display_name_markup .= '</a>';
+                                                            }
+                                                            $display_name_markup .= $after_name_author_category_content;
                                                             if ($author_categories_title_option == 'after_individual' && !empty($author_category_data['title'])) :
                                                                 $display_name_markup .= '<' . $author_categories_title_html_tag . ' class="ppma-category-group-title">' . $author_categories_title_prefix . '' . $author_category_data['singular_title'] . '' . $author_categories_title_suffix . '</' . $author_categories_title_html_tag . '>';
                                                             endif;
@@ -2132,13 +2140,23 @@ class MA_Author_Boxes extends Module
                          />
                         <?php
                 elseif ('checkbox' === $args['type']) :
+                    if ($pro_feature && ! $pro_active) {
+                        $key = 'promo_field';
+                        $args['readonly'] = true;
+                    }
                     ?>
                     <input name="<?php echo esc_attr($key); ?>"
                         id="<?php echo esc_attr($key); ?>"
                         type="<?php echo esc_attr($args['type']); ?>"
                         value="1"
-                        <?php echo (isset($args['readonly']) && $args['readonly'] === true) ? 'readonly' : ''; ?>
+                        <?php echo (isset($args['readonly']) && $args['readonly'] === true) ? 'disabled' : ''; ?>
                         <?php checked($args['value'], 1); ?> />
+                    <?php if ($pro_feature && ! $pro_active) : ?>
+                        <a class="upgrade-link" href="https://publishpress.com/links/authors-banner" target="_blank">
+                            <span class="dashicons dashicons-lock ppma-pro-loc-icon"></span>
+                        </a>
+                        <?php echo '&nbsp; ' . esc_html__('This setting is a PRO feature.', 'publishpress-authors'); ?>
+                    <?php endif; ?>
                 <?php
                 elseif ('select' === $args['type']) :
                     ?>

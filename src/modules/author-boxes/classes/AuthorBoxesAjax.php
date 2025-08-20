@@ -518,7 +518,15 @@ $display_name_markup = '';
     <?php if ($author_categories_title_option == 'before_individual') :
         $display_name_markup .= str_repeat(" ", 32) . '</?php if (!empty($author_category_data["title"])) : ?>' . "\n" . str_repeat(" ", 36) . '<' . $author_categories_title_html_tag . ' class="ppma-category-group-title">' . "\n" . str_repeat(" ", 40) . $author_categories_title_prefix . '</?php echo $author_category_data["singular_title"]; ?>' . '' . $author_categories_title_suffix . "\n"  . str_repeat(" ", 36) . '</' . $author_categories_title_html_tag . '>' . "\n" . str_repeat(" ", 32) . '</?php endif; ?>' . "\n";
     endif;
-    $display_name_markup .= str_repeat(" ", 32) . $before_name_author_category_content . str_repeat(" ", 32) . '<a href="</?php echo esc_url($author->link); ?>" rel="author" title="</?php echo esc_attr($author->display_name); ?>" class="author url fn">' . "\n" . str_repeat(" ", 36) . $display_name_prefix . '</?php echo esc_html($author->display_name); ?>' . $display_name_suffix . "\n" . str_repeat(" ", 32) . '</a>' . "\n" . str_repeat(" ", 32) . $after_name_author_category_content;
+    $display_name_markup .= str_repeat(" ", 32) . $before_name_author_category_content . str_repeat(" ", 32);
+    if (!$args['name_disable_link']['value']) {
+    $display_name_markup .= '<a href="</?php echo esc_url($author->link); ?>" rel="author" title="</?php echo esc_attr($author->display_name); ?>" class="author url fn">';
+    }
+    $display_name_markup .= "\n" . str_repeat(" ", 36) . $display_name_prefix . '</?php echo esc_html($author->display_name); ?>' . $display_name_suffix . "\n" . str_repeat(" ", 32);
+    if (!$args['name_disable_link']['value']) {
+    $display_name_markup .= '</a>';
+    }
+    $display_name_markup .= "\n" . str_repeat(" ", 32) . $after_name_author_category_content;
     if ($author_categories_title_option == 'after_individual') :
         $display_name_markup .= str_repeat(" ", 32) . '</?php if (!empty($author_category_data["title"])) : ?>' . str_repeat(" ", 36) . '<' . $author_categories_title_html_tag . ' class="ppma-category-group-title">' . "\n" . str_repeat(" ", 40) . $author_categories_title_prefix . '</?php echo $author_category_data["singular_title"]; ?>' . $author_categories_title_suffix . "\n" . str_repeat(" ", 36) . '</' . $author_categories_title_html_tag . '>' . "\n" . str_repeat(" ", 32) . '</?php endif; ?>' . "\n";
     endif;

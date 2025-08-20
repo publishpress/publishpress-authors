@@ -610,6 +610,7 @@
             ];
             var name_refresh_trigger = [
                 'name_show',
+                'name_disable_link',
                 'name_author_categories',
                 'name_author_categories_divider',
                 'name_author_categories_position',

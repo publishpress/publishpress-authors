@@ -291,6 +291,13 @@ class AuthorBoxesEditorFields
             ],
             'tab'      => 'name',
         ];
+        $fields['name_disable_link'] = [
+            'label'    => esc_html__('Remove Display Name Link', 'publishpress-authors'),
+            'type'     => 'checkbox',
+            'sanitize' => 'sanitize_text_field',
+            'tab'      => 'name',
+            'pro'      => true,
+        ];
         $fields['display_name_prefix'] = [
             'label'       => esc_html__('Display Name Prefix', 'publishpress-authors'),
             'type'        => 'text',
