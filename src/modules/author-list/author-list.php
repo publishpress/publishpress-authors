@@ -411,7 +411,7 @@ class MA_Author_List extends Module
         ];
         $fields['group_by'] = [
             'label'             => esc_html__('Group By', 'publishpress-authors'),
-            'description'       => esc_html__('For authors_index layout, you can group user by profile fields.', 'publishpress-authors'),
+            'description'       => '',
             'type'              => 'select',
             'options'           => $author_fields,
             'sanitize'          => 'sanitize_text_field',
@@ -422,7 +422,7 @@ class MA_Author_List extends Module
         ];
         $fields['featured_image_size'] = [
             'label'             => esc_html__('Featured Image Size', 'publishpress-authors'),
-            'description'       => esc_html__('For authors_recent layout, you can select the featured image size..', 'publishpress-authors'),
+            'description'       => '',
             'type'              => 'select',
             'options'           => $featured_image_options,
             'sanitize'          => 'sanitize_text_field',
