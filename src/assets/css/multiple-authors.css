@@ -224,14 +224,6 @@ body.taxonomy-author .form-field.term-description-wrap {
     margin-left: 5px;
 }
 
-.ppma-authors-display-option-wrapper {
-    margin-top: 10px;
-}
-
-.ppma-authors-display-option-wrapper input[type="checkbox"] {
-    vertical-align: bottom;
-}
-
 /* Fix the width of the Mapped user field in the New Author form */
 .edit-tags-php.taxonomy-author .authors-select2-user-select,
 .term-php.taxonomy-author .authors-select2-user-select,
