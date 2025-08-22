@@ -1223,15 +1223,15 @@ class AuthorBoxesEditorFields
             'tab'         => 'author_recent_posts',
         ];
 
-        $pro_message = '<a class="upgrade-link" href="https://publishpress.com/links/authors-banner" target="_blank"><span class="dashicons dashicons-lock ppma-pro-loc-icon" tabindex="0"></span></a> &nbsp; ' . esc_html__('Selecting Post Types for Recent Posts is a PRO feature.', 'publishpress-authors');
         $fields['author_recent_posts_post_types'] = [
             'label'       => esc_html__('Recent Post Types', 'publishpress-authors'),
             'type'        => 'multiselect_pro',
             'sanitize'    => 'sanitize_text_field',
             'options'     => self::getPostTypesOptions(),
-            'description' =>  Utils::isAuthorsProActive() ? esc_html__('Select post types to include in recent posts. Leave empty to show all post types.', 'publishpress-authors') : $pro_message,
+            'description' =>  esc_html__('Select post types to include in recent posts. Leave empty to show all post types.', 'publishpress-authors'),
             'placeholder' => esc_html__('Select post types...', 'publishpress-authors'),
             'tab'         => 'author_recent_posts',
+            'pro'      => true,
         ];
         $fields['author_recent_posts_title_show'] = [
             'label'       => esc_html__('Show Recent Posts Title', 'publishpress-authors'),

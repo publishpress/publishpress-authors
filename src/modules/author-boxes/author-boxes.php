@@ -2100,6 +2100,13 @@ class MA_Author_Boxes extends Module
         }
         $pro_feature = $args['pro'] === true;
         $pro_active = Utils::isAuthorsProActive();
+
+        $th_class = $td_class  = '';
+        if ($pro_feature && ! $pro_active) {
+            $tab_class .= ' ppma-promo-overlay-row';
+            $td_class .= ' ppma-promo-overlay-row';
+            $th_class .= 'ppma-blur';
+        }
         ?>
         <?php if ($args['group_start'] === true) :
            ?>
@@ -2119,13 +2126,13 @@ class MA_Author_Boxes extends Module
             style="<?php echo esc_attr($tab_style); ?>"
             >
             <?php if (!empty($args['label'])) : ?>
-                <th scope="row" style="<?php echo esc_attr($th_style); ?>">
+                <th scope="row" class="<?php echo esc_attr($th_class); ?>" style="<?php echo esc_attr($th_style); ?>">
                     <label for="<?php echo esc_attr($key); ?>">
                         <?php echo esc_html($args['label']); ?>
                     </label>
                 </th>
             <?php endif; ?>
-            <td class="input" colspan="<?php echo esc_attr($colspan); ?>">
+            <td class="input <?php echo esc_attr($td_class); ?>" colspan="<?php echo esc_attr($colspan); ?>">
                 <?php
                 if ('number' === $args['type']) :
                     ?>
@@ -2151,12 +2158,17 @@ class MA_Author_Boxes extends Module
                         value="1"
                         <?php echo (isset($args['readonly']) && $args['readonly'] === true) ? 'disabled' : ''; ?>
                         <?php checked($args['value'], 1); ?> />
-                    <?php if ($pro_feature && ! $pro_active) : ?>
-                        <a class="upgrade-link" href="https://publishpress.com/links/authors-banner" target="_blank">
-                            <span class="dashicons dashicons-lock ppma-pro-loc-icon"></span>
-                        </a>
-                        <?php echo '&nbsp; ' . esc_html__('This setting is a PRO feature.', 'publishpress-authors'); ?>
-                    <?php endif; ?>
+                    <?php
+                    if ($pro_feature && ! $pro_active) {
+                        ?>
+                        <span class="ppma-promo-simply-overlay" style="position: initial;">
+                            <a class="upgrade-link" href="https://publishpress.com/links/authors-menu" target="__blank">
+                                <span class="dashicons dashicons-lock"></span> <?php esc_html_e('Pro feature', 'publishpress-authors'); ?>
+                            </a>
+                        </span>
+                        <?php
+                    }
+                    ?>
                 <?php
                 elseif ('select' === $args['type']) :
                     ?>
@@ -2177,6 +2189,9 @@ class MA_Author_Boxes extends Module
                     $selected_values = is_array($args['value']) ? $args['value'] : [];
                     $field_name = $pro_active ? $key : 'promo_dummy';
                     $select_class = $pro_active ? '' : 'ppma-blur';
+                    if ($pro_feature && ! $pro_active) {
+                        echo '<div class="ppma-promo-overlay-row">';
+                    }
                     ?>
                     <select name="<?php echo esc_attr($field_name); ?>[]"
                         style="width: 95%;"
@@ -2198,6 +2213,19 @@ class MA_Author_Boxes extends Module
                             endforeach;
                         endif; ?>
                     </select>
+
+                    <?php
+                    if ($pro_feature && ! $pro_active) {
+                        ?>
+                        <span class="ppma-promo-simply-overlay">
+                            <a class="upgrade-link" href="https://publishpress.com/links/authors-menu" target="__blank">
+                                <span class="dashicons dashicons-lock"></span> <?php esc_html_e('Pro feature', 'publishpress-authors'); ?>
+                            </a>
+                        </span>
+                        <?php
+                        echo '</div>';
+                    }
+                    ?>
                 <?php
                 elseif ('optgroup_select' === $args['type']) :
                     ?>
@@ -2549,9 +2577,9 @@ class MA_Author_Boxes extends Module
                     <?php
                     if ($pro_feature && ! $pro_active) {
                         ?>
-                        <span class="ppma-promo-simply-overlay editor-area">
+                        <span class="ppma-promo-simply-overlay">
                             <a class="upgrade-link" href="https://publishpress.com/links/authors-menu" target="__blank">
-                                <span class="dashicons dashicons-lock"></span>
+                                <span class="dashicons dashicons-lock"></span> <?php esc_html_e('Pro feature', 'publishpress-authors'); ?>
                             </a>
                         </span>
                         <?php
