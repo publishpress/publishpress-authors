@@ -224,14 +224,6 @@ body.taxonomy-author .form-field.term-description-wrap {
     margin-left: 5px;
 }
 
-.ppma-authors-display-option-wrapper {
-    margin-top: 10px;
-}
-
-.ppma-authors-display-option-wrapper input[type="checkbox"] {
-    vertical-align: bottom;
-}
-
 /* Fix the width of the Mapped user field in the New Author form */
 .edit-tags-php.taxonomy-author .authors-select2-user-select,
 .term-php.taxonomy-author .authors-select2-user-select,
@@ -667,7 +659,7 @@ body.edit-php.post-type-ppma_boxes .tablenav.top .alignleft.actions:not(.bulkact
     align-items: center;
     text-align: center;
     z-index: 10;
-    padding: 6px 12px;
+    padding: 9px 12px;
     line-height: 1;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
     background: #feb123;

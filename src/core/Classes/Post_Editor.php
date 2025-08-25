@@ -456,18 +456,6 @@ class Post_Editor
             ?>
             <?php if (!$bulkEdit) : ?>
                 <?php echo self::render_editor_author_box_settings($post->ID);  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-                <div class="ppma-authors-display-option-wrapper">
-                    <input name="ppma_save_disable_author_box" type="hidden" value="1" />
-                    <input name="ppma_disable_author_box"
-                            id="ppma_disable_author_box"
-                            value="1"
-                            type="checkbox"
-                            <?php checked((int)get_post_meta($post->ID, 'ppma_disable_author_box', true), 1); ?>
-                        />
-                    <label for="ppma_disable_author_box">
-                        <?php echo esc_html_e('Disable the default author display under this post', 'publishpress-authors'); ?>
-                    </label>
-                </div>
             <?php endif; ?>
             <div style="display: none">
                 <div id="publishpress-authors-user-author-wrapper">
@@ -496,20 +484,35 @@ class Post_Editor
     public static function render_editor_author_box_settings($post_id) {
         ob_start();
         ?>
-        <div class="ppma-promo-overlay-row">
-            <div class="ppma-author-box-selection ppma-blur" style="margin-bottom: 15px;">
-                <label><?php _e('Author Box Layout:', 'publishpress-authors'); ?></label>
-                <select class="authors-select2-default-select" style="width: 100%;">
-                    <option value=""><?php _e('Use Global Setting', 'publishpress-authors'); ?></option>
-                </select>
-            </div>
-            <div class="ppma-promo-simply-overlay editor-area">
-                <p>
-                    <a class="upgrade-link" href="https://publishpress.com/links/authors-menu" target="__blank">
-                        <span class="dashicons dashicons-lock"></span>
-                    </a>
-                </p>
-            </div>
+        <div class="ppma-author-box-selection" style="margin-bottom: 15px;">
+            <label for="ppma_author_box_select"><?php _e('Author Box', 'publishpress-authors'); ?></label>
+            <?php
+            $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
+            if (isset($layouts['authors_index'])) {
+                unset($layouts['authors_index']);
+            }
+            if (isset($layouts['authors_recent'])) {
+                unset($layouts['authors_recent']);
+            }
+
+            $selected_box = $post_id ? get_post_meta($post_id, 'ppma_selected_author_box', true) : '';
+
+            // legacy setting
+            if ((int) get_post_meta($post_id, 'ppma_disable_author_box', true) > 0) {
+                $selected_box = 'none';
+            }
+            ?>
+            <select name="ppma_author_box_select" class="authors-select2-default-select" id="ppma_author_box_select" style="width: 100%;">
+                <option value=""><?php _e('Default Author Box', 'publishpress-authors'); ?></option>
+                <option value="none"<?php selected($selected_box, 'none'); ?>><?php _e('Hide Author Box', 'publishpress-authors'); ?></option>
+                <?php foreach ($layouts as $layout => $text):
+                    $selected = $selected_box == $layout;
+                    ?>
+                    <option value="<?php echo esc_attr($layout); ?>" <?php selected($selected, true); ?>>
+                        <?php echo esc_html($text); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
         </div>
         <?php
 
@@ -670,12 +673,20 @@ class Post_Editor
         $authors = self::remove_dirty_authors_from_authors_arr($authors);
 
         $fallbackUserId = isset($_POST['fallback_author_user']) ? (int)$_POST['fallback_author_user'] : null;
-        $disableAuthorBox = isset($_POST['ppma_disable_author_box']) ? (int)$_POST['ppma_disable_author_box'] : 0;
 
         Utils::set_post_authors($post_id, $authors, true, $fallbackUserId, $author_categories);
 
-        if (isset($_POST['ppma_save_disable_author_box']) && (int)$_POST['ppma_save_disable_author_box'] > 0) {
-            update_post_meta($post_id, 'ppma_disable_author_box', $disableAuthorBox);
+        if (isset($_POST['ppma_author_box_select'])) {
+            $selected_box = sanitize_text_field($_POST['ppma_author_box_select']);
+
+            if (empty($selected_box)) {
+                delete_post_meta($post_id, 'ppma_selected_author_box');
+            } else {
+                update_post_meta($post_id, 'ppma_selected_author_box', $selected_box);
+            }
+
+            // delete legacy option for author box disabled
+            delete_post_meta($post_id, 'ppma_disable_author_box');
         }
 
         do_action('publishpress_authors_post_authors_metabox_action_saved', $post_id);

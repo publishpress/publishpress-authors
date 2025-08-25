@@ -411,7 +411,7 @@ class MA_Author_List extends Module
         ];
         $fields['group_by'] = [
             'label'             => esc_html__('Group By', 'publishpress-authors'),
-            'description'       => esc_html__('For authors_index layout, you can group user by profile fields.', 'publishpress-authors'),
+            'description'       => '',
             'type'              => 'select',
             'options'           => $author_fields,
             'sanitize'          => 'sanitize_text_field',
@@ -422,7 +422,7 @@ class MA_Author_List extends Module
         ];
         $fields['featured_image_size'] = [
             'label'             => esc_html__('Featured Image Size', 'publishpress-authors'),
-            'description'       => esc_html__('For authors_recent layout, you can select the featured image size..', 'publishpress-authors'),
+            'description'       => '',
             'type'              => 'select',
             'options'           => $featured_image_options,
             'sanitize'          => 'sanitize_text_field',
@@ -607,7 +607,7 @@ class MA_Author_List extends Module
             'roles'                 => '',
             'term_id'               => '',
             'category_id'           => [],
-            'author_type_exclude'   => 'exclude_term_id',
+            'author_type_exclude'   => 'exclude_roles',
             'exclude_authors'       => '',
             'exclude_roles'         => '',
             'exclude_term_id'       => '',
@@ -657,7 +657,7 @@ class MA_Author_List extends Module
             'roles'                 => '',
             'term_id'               => '',
             'category_id'           => [],
-            'author_type_exclude'   => 'exclude_term_id',
+            'author_type_exclude'   => 'exclude_roles',
             'exclude_authors'       => '',
             'exclude_roles'         => '',
             'exclude_term_id'       => '',
@@ -809,7 +809,7 @@ class MA_Author_List extends Module
                 'roles'                 => '',
                 'term_id'               => '',
                 'category_id'           => [],
-                'author_type_exclude'   => 'exclude_term_id',
+                'author_type_exclude'   => 'exclude_roles',
                 'exclude_authors'       => '',
                 'exclude_roles'         => '',
                 'exclude_term_id'       => '',
@@ -1102,8 +1102,8 @@ class MA_Author_List extends Module
                     $restrict_pro = false;
                     if ($key === 'author_type_exclude') {
                         $restrict_pro = true;
-                        if (! $pro_active || empty($args['value'])) {
-                            $args['value'] = 'exclude_term_id';
+                        if (empty($args['value'])) {
+                            $args['value'] = 'exclude_roles';
                         }
                     }
                     ?>
@@ -1134,7 +1134,7 @@ class MA_Author_List extends Module
                         <?php
                             foreach ($args['options'] as $option_key => $options_label) :
                                 $show_promo = false;
-                                if ($restrict_pro && ! $pro_active && in_array($option_key, ['exclude_roles', 'exclude_authors', 'exclude_category_id'])) {
+                                if ($restrict_pro && ! $pro_active && in_array($option_key, ['exclude_roles', 'exclude_authors', 'exclude_term_id', 'exclude_category_id'])) {
                                     $show_promo = true;
                                     $name_group = 'promo';
                                 } else {

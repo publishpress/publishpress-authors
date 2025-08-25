@@ -55,10 +55,17 @@ trait Author_box
     {
         global $post;
 
-        $disabled = (is_object($post)
-            && isset($post->ID)
-            && (int) get_post_meta($post->ID, 'ppma_disable_author_box', true) > 0
-        ) ? true : false;
+        $disabled = false;
+
+        if (is_object($post) && isset($post->ID)) {
+            if ((int) get_post_meta($post->ID, 'ppma_disable_author_box', true) > 0) {
+                // legacy option
+                $disabled = true;
+            } else if(get_post_meta($post->ID, 'ppma_selected_author_box', true) == 'none') {
+                // new option
+                $disabled = true;
+            }
+        }
 
         return $disabled;
     }
@@ -162,7 +169,7 @@ trait Author_box
 
         if ($target == 'the_content') {
             $post_specific_box = get_post_meta($post->ID, 'ppma_selected_author_box', true);
-            if (!empty($post_specific_box)) {
+            if (!empty($post_specific_box && $post_specific_box !== 'none')) {
                 $layout = $post_specific_box;
             }
         }

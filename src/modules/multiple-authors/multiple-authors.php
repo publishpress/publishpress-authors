@@ -693,7 +693,7 @@ if (!class_exists('MA_Multiple_Authors')) {
 
             add_settings_field(
                 'layout',
-                __('Layout:', 'publishpress-authors'),
+                __('Default Layout:', 'publishpress-authors'),
                 [$this, 'settings_layout_option'],
                 $this->module->options_group_name,
                 $this->module->options_group_name . '_display'
