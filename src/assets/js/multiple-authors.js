@@ -251,7 +251,7 @@ jQuery(document).ready(function ($) {
             });
         });
     }
-    
+
     if ($("body").hasClass("post-php") || $("body").hasClass("post-new-php")) {
         authorsSelect2($(".authors-select2.authors-search"));
         authorsUserSelect2($('.authors-user-search'));
@@ -264,7 +264,7 @@ jQuery(document).ready(function ($) {
     if ($('.authors-user-term-id-search').length > 0) {
         authorsUserTermIdSelect2($('.authors-user-term-id-search'));
     }
-    
+
     if ($("body").hasClass("post-php") || $("body").hasClass("post-new-php")  || $("body").hasClass("edit-php")) {
         //prevent deletion of default field
             var default_fields = ['first_name', 'last_name', 'user_email', 'user_url'];
@@ -391,7 +391,7 @@ jQuery(document).ready(function ($) {
                     $post_ids.push(new_id);
                 }
             });
-        
+
         if (!$post_ids.length) {
             $bulk_row
                 .find("#bulk-titles .ntdelitem .button-link")
@@ -473,6 +473,12 @@ jQuery(document).ready(function ($) {
                     };
                 }
             }
+        });
+    });
+
+    $(".authors-select2-default-select").each(function () {
+        $(this).ppma_select2({
+            placeholder: $(this).attr("placeholder")
         });
     });
 
@@ -616,7 +622,7 @@ jQuery(document).ready(function ($) {
 
     function setEditorContentIfEmpty(editorId, content) {
         var editor = tinymce.get(editorId);
-        
+
         if (editor) {
             var currentContent = editor.getContent().trim();
             if (!currentContent) {
@@ -688,7 +694,7 @@ jQuery(document).ready(function ($) {
         $('form#edittag tr.form-field:not(.ppma-tab-content)')
             .addClass('ppma-tab-content ppma-general-tab')
             .attr('data-tab', 'general');
-        
+
         /**
          * Add view link to author url field
          */
@@ -718,7 +724,7 @@ jQuery(document).ready(function ($) {
             var display_name_input       = $( '#name' );
             var first_name_input          = $( '#authors-first_name' );
             var last_name_input          = $( '#authors-last_name' );
-            if ( display_name_input.length 
+            if ( display_name_input.length
                 && (
                     display_name_format === 'first_name_last_name' && first_name_input.length && last_name_input.length
                     || display_name_format === 'last_name_first_name' && first_name_input.length && last_name_input.length
@@ -775,23 +781,23 @@ jQuery(document).ready(function ($) {
                             display_firstname : $('#authors-first_name').val() || '',
                             display_lastname  : $('#authors-last_name').val() || ''
                         };
-    
+
                     if ( inputs.display_firstname && inputs.display_lastname ) {
                         inputs.display_firstlast = inputs.display_firstname + ' ' + inputs.display_lastname;
                         inputs.display_lastfirst = inputs.display_lastname + ' ' + inputs.display_firstname;
                     }
-    
+
                     $.each( $('option', display_name_select), function( i, el ){
                         dub.push( el.value );
                     });
-    
+
                     $.each(inputs, function( id, value ) {
                         if ( ! value ) {
                             return;
                         }
-    
+
                         var val = value.replace(/<\/?[a-z][^>]*>/gi, '');
-    
+
                         if ( inputs[id].length && $.inArray( val, dub ) === -1 ) {
                             dub.push(val);
                             $('<option />', {
@@ -903,7 +909,7 @@ jQuery(document).ready(function ($) {
         field_object,
         field_error_count = 0,
         field_error_message = '<div style="color:red;">' + MultipleAuthorsStrings.isRequiredWarning + '</div><ul>';
-        
+
         $.each($('form#edittag tr.form-field.required-tab'), function (i, field) {
             field_object = $(this).find('td input');
             if (field_object.length === 0) {
@@ -1035,12 +1041,12 @@ jQuery(document).ready(function ($) {
     });
 
     /**
-     * Author profile edit active class for when 
+     * Author profile edit active class for when
      * user is editing own profile.
-     * 
-     * i.) Remove active class from main author 
+     *
+     * i.) Remove active class from main author
      * profile if it has one .
-     * 
+     *
      * ii.) Add active class to new author profile
      * link
      */
@@ -1056,19 +1062,19 @@ jQuery(document).ready(function ($) {
             .removeClass('current')
             .find('ul li.current')
             .removeClass('current');
-        
+
         //add class to user author menu
         profile_menu
             .removeClass('wp-not-current-submenu')
             .addClass('current');
-        
+
         profile_menu
             .find('a')
             .removeClass('wp-not-current-submenu')
             .addClass('current');
-             
+
     }
-    
+
     if ($("body").hasClass("post-type-ppmacf_field") && $("#ppmacf_type").length > 0) {
         showHideSocialProfileField();
     }

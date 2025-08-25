@@ -38,7 +38,7 @@
 
                     var tabs = '<div class="ppma-field-icon-tabs">';
                     var tabContents = $('<div class="author-field-icons-tab-contents"></div>');
-            
+
                     var first_item = false;
                     $.each(author_field_icons, function(parent, iconLists) {
                         var active_tab = !first_item ? 'active' : '';
@@ -46,8 +46,8 @@
 
                         var tabContent = $('<div class="author-field-icons-tab-content ' + tab_content_class + '" id="' + parent.toLowerCase() + '"></div>');
                         tabs += '<button class="author-field-icons-tab-button ' + active_tab + '" data-target="' + parent.toLowerCase() + '">' + parent + '</button>';
-            
-                        var iconList = $('<div class="icon-list"></div>'); 
+
+                        var iconList = $('<div class="icon-list"></div>');
                         iconLists.forEach(function(icon) {
                             var icon_active_class = '';
 
@@ -71,7 +71,7 @@
 
                     container.append(tabContents);
                     $('#author-field-icons-container').html(container);
-            
+
                     tb_show(popup_header, '#TB_inline?width=600&height=400&inlineId=author-field-icons-modal'); // Open modal
 
                 }
@@ -364,6 +364,8 @@
                             field.prop('checked', false);
                         }
                         field.val(1);
+                    } else if (field.is('select') && field.prop('multiple')) {
+                        field.val(value);
                     } else if (key === 'shortcodes') {
                         if (value.shortcode && value.position) {
                             var shortcodes = value.shortcode;
@@ -600,6 +602,7 @@
             var post_refresh_trigger = [
                 'author_recent_posts_show',
                 'author_recent_posts_title_show',
+                'author_recent_posts_post_types',
                 'author_recent_posts_empty_show',
                 'author_recent_posts_limit',
                 'author_recent_posts_orderby',
@@ -607,6 +610,7 @@
             ];
             var name_refresh_trigger = [
                 'name_show',
+                'name_disable_link',
                 'name_author_categories',
                 'name_author_categories_divider',
                 'name_author_categories_position',
@@ -795,8 +799,16 @@
                     if (input.attr('type') === 'checkbox') {
                         input_value = (input.is(':checked')) ? '1' : '';
                         editor_values[input_name] = input_value;
-                    } else if (input_name.endsWith('[]')) {
+                    } else if (input.is('select') && input.prop('multiple')) {
                         var real_name = input_name;
+                        var match = input_name.match(/^(.*?)\[/);
+                        if (match) {
+                            real_name = match[1];
+                        }
+                        input_value = input.val() || [];
+                        editor_values[real_name] = input_value;
+                    } else if (input_name.endsWith('[]')) {
+                                var real_name = input_name;
                         var match = input_name.match(/^(.*?)\[/);
                         if (match) {
                             real_name = match[1];
@@ -818,27 +830,27 @@
         }
 
         /**
-         * Get array input values same way php will get $_POST['name] 
+         * Get array input values same way php will get $_POST['name]
          * with all sub arrays key in a single name.
-         * 
-         * @param {*} inputName 
-         * @returns 
+         *
+         * @param {*} inputName
+         * @returns
          */
         function collectMultipleInputData(inputName) {
             var multipleInputData = {};
-          
+
             var inputs = document.querySelectorAll('input[name^="' + inputName + '["]');
-            
+
             inputs.forEach(input => {
               const name = input.name.match(/\[([^\]]+)\]\[]/)[1];
               const value = input.value;
-              
+
               if (!multipleInputData[name]) {
                 multipleInputData[name] = [];
               }
               multipleInputData[name].push(value);
             });
-          
+
             return multipleInputData;
         }
 

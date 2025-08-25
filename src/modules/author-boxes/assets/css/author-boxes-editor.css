@@ -151,6 +151,7 @@
 }
 
 .ppma-author-boxes-editor-table input[type=text],
+.ppma-author-boxes-editor-table input[type=url],
 .ppma-author-boxes-editor-table input[type=number],
 .ppma-author-boxes-editor-table select {
     width: 95%;

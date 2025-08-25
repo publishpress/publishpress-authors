@@ -35,8 +35,8 @@ trait Author_box
      */
     protected function should_display_author_box()
     {
-        $display = !$this->is_post_author_box_disabled() 
-            && $this->is_valid_page_to_display_author_box() 
+        $display = !$this->is_post_author_box_disabled()
+            && $this->is_valid_page_to_display_author_box()
             && $this->is_valid_post_type_to_display_author_box();
 
         // Apply a filter
@@ -46,19 +46,26 @@ trait Author_box
     }
 
     /**
-     * Return true if author box display is disabled 
+     * Return true if author box display is disabled
      * for current global $post.
-     * 
+     *
      * @return bool
      */
     protected function is_post_author_box_disabled()
     {
         global $post;
 
-        $disabled = (is_object($post)
-            && isset($post->ID)
-            && (int) get_post_meta($post->ID, 'ppma_disable_author_box', true) > 0
-        ) ? true : false;
+        $disabled = false;
+
+        if (is_object($post) && isset($post->ID)) {
+            if ((int) get_post_meta($post->ID, 'ppma_disable_author_box', true) > 0) {
+                // legacy option
+                $disabled = true;
+            } else if(get_post_meta($post->ID, 'ppma_selected_author_box', true) == 'none') {
+                // new option
+                $disabled = true;
+            }
+        }
 
         return $disabled;
     }
@@ -158,6 +165,13 @@ trait Author_box
             $this->postCache[$post_id] = $post;
         } else {
             $post = $this->postCache[$post_id];
+        }
+
+        if ($target == 'the_content') {
+            $post_specific_box = get_post_meta($post->ID, 'ppma_selected_author_box', true);
+            if (!empty($post_specific_box && $post_specific_box !== 'none')) {
+                $layout = $post_specific_box;
+            }
         }
 
         if ($term_id) {
@@ -349,7 +363,7 @@ trait Author_box
             $output  = array_filter($output);
             $authors = join($separator, $output);
         }
-        
+
         return $authors;
     }
 }

@@ -291,6 +291,13 @@ class AuthorBoxesEditorFields
             ],
             'tab'      => 'name',
         ];
+        $fields['name_disable_link'] = [
+            'label'    => esc_html__('Remove Display Name Link', 'publishpress-authors'),
+            'type'     => 'checkbox',
+            'sanitize' => 'sanitize_text_field',
+            'tab'      => 'name',
+            'pro'      => true,
+        ];
         $fields['display_name_prefix'] = [
             'label'       => esc_html__('Display Name Prefix', 'publishpress-authors'),
             'type'        => 'text',
@@ -433,6 +440,14 @@ class AuthorBoxesEditorFields
             'type'     => 'text',
             'sanitize' => 'sanitize_text_field',
             'tab'      => 'meta',
+        ];
+        $fields['meta_custom_link'] = [
+            'label'    => esc_html__('Custom "View All Posts" Link', 'publishpress-authors'),
+            'type'     => 'url',
+            'sanitize' => 'esc_url_raw',
+            'tab'      => 'meta',
+            'description' => esc_html__('Enter a custom URL for the "View All Posts" link. Leave empty to use the default author posts page.', 'publishpress-authors'),
+            'pro'      => true,
         ];
         $fields['meta_size'] = [
             'label'    => esc_html__('View All Posts Link Size', 'publishpress-authors'),
@@ -1040,6 +1055,21 @@ class AuthorBoxesEditorFields
         return $fields;
     }
 
+    private static function getPostTypesOptions()
+    {
+        $options = [];
+        if (Utils::isAuthorsProActive()) {
+            $post_types = get_post_types(['public' => true], 'objects');
+            foreach ($post_types as $post_type) {
+                $options[$post_type->name] = $post_type->label;
+            }
+        } else {
+            $options['any'] = esc_html__('All Post Types', 'publishpress-authors');
+        }
+
+        return $options;
+    }
+
     /**
      * Add bio fields to the author boxes editor.
      *
@@ -1191,6 +1221,17 @@ class AuthorBoxesEditorFields
             'type'        => 'checkbox',
             'sanitize'    => 'absint',
             'tab'         => 'author_recent_posts',
+        ];
+
+        $fields['author_recent_posts_post_types'] = [
+            'label'       => esc_html__('Recent Post Types', 'publishpress-authors'),
+            'type'        => 'multiselect_pro',
+            'sanitize'    => 'sanitize_text_field',
+            'options'     => self::getPostTypesOptions(),
+            'description' =>  esc_html__('Select post types to include in recent posts. Leave empty to show all post types.', 'publishpress-authors'),
+            'placeholder' => esc_html__('Select post types...', 'publishpress-authors'),
+            'tab'         => 'author_recent_posts',
+            'pro'      => true,
         ];
         $fields['author_recent_posts_title_show'] = [
             'label'       => esc_html__('Show Recent Posts Title', 'publishpress-authors'),

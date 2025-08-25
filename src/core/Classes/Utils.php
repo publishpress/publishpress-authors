@@ -808,6 +808,11 @@ class Utils
         return true;
     }
 
+    public static function isMolonguiAuthorshipActivated()
+    {
+        return defined('MOLONGUI_AUTHORSHIP_VERSION');
+    }
+
     public static function getDefaultLayout()
     {
         if (! is_null(self::$defaultLayout)) {
@@ -1118,30 +1123,6 @@ class Utils
     {
         ?>
         <div class="ppma-advertisement-right-sidebar">
-            <div class="advertisement-box-content postbox ppma-advert">
-                <div class="postbox-header ppma-advert">
-                    <h3 class="advertisement-box-header hndle is-non-sortable">
-                        <span><?php echo esc_html__('Upgrade to PublishPress Authors Pro', 'publishpress-authors'); ?></span>
-                    </h3>
-                </div>
-
-                <div class="inside ppma-advert">
-                    <p><?php echo esc_html__('Enhance the power of PublishPress Authors with the Pro version:', 'publishpress-authors'); ?>
-                    </p>
-                    <ul>
-                        <li><?php echo esc_html__('Add new Author Fields', 'publishpress-authors'); ?></li>
-                        <li><?php echo esc_html__('Add fields for social networks', 'publishpress-authors'); ?></li>
-                        <li><?php echo esc_html__('Extra features for Author Lists', 'publishpress-authors'); ?></li>
-                        <li><?php echo esc_html__('Create Author Boxes with authors organized in categories', 'publishpress-authors'); ?></li>
-                        <li><?php echo esc_html__('Support for Polylang', 'publishpress-authors'); ?></li>
-                        <li><?php echo esc_html__('Remove PublishPress ads and branding', 'publishpress-authors'); ?></li>
-                        <li><?php echo esc_html__('Fast, professional support', 'publishpress-authors'); ?></li>
-                    </ul>
-                    <div class="upgrade-btn">
-                        <a href="https://publishpress.com/links/authors-menu" target="__blank"><?php echo esc_html__('Upgrade to Pro', 'publishpress-authors'); ?></a>
-                    </div>
-                </div>
-            </div>
             <div class="advertisement-box-content postbox ppma-advert">
                 <div class="postbox-header ppma-advert">
                     <h3 class="advertisement-box-header hndle is-non-sortable">

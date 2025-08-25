@@ -224,14 +224,6 @@ body.taxonomy-author .form-field.term-description-wrap {
     margin-left: 5px;
 }
 
-.ppma-authors-display-option-wrapper {
-    margin-top: 10px;
-}
-
-.ppma-authors-display-option-wrapper input[type="checkbox"] {
-    vertical-align: bottom;
-}
-
 /* Fix the width of the Mapped user field in the New Author form */
 .edit-tags-php.taxonomy-author .authors-select2-user-select,
 .term-php.taxonomy-author .authors-select2-user-select,
@@ -649,9 +641,65 @@ body.edit-php.post-type-ppma_boxes .tablenav.top .alignleft.actions:not(.bulkact
     position: sticky;
 }
 
+.ppma-promo-overlay-area,
+.ppma-promo-overlay-row {
+    position: relative;
+}
+
 .ppma-blur {
     opacity: .6;
     pointer-events: none;
+}
+
+.ppma-promo-simply-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+    padding: 9px 12px;
+    line-height: 1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+    background: #feb123;
+    color: #000 !important;
+    font-weight: normal;
+    text-decoration: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 1px solid #fca871;
+    break-inside: avoid;
+    white-space: nowrap;
+    gap: 4px;
+}
+
+.ppma-promo-simply-overlay.editor-area {
+    padding-bottom: 0;
+}
+
+.ppma-promo-simply-overlay a {
+    color: #000;
+    text-decoration: none;
+}
+
+.ppma-promo-simply-overlay a:active,
+.ppma-promo-simply-overlay a:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.ppma-pro-loc-icon {
+    cursor: pointer;
+    background: #FCB223;
+    color: #000;
+    border-radius: 100%;
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+    margin-left: 5px !important;
 }
 
 .ppma-requirement-row.ppma-pro-locked-row>td:not(.ppma-pro-overlay-contet) {
@@ -730,6 +778,11 @@ body.edit-php.post-type-ppma_boxes .tablenav.top .alignleft.actions:not(.bulkact
   box-sizing: border-box;
   box-shadow: 0 0 25px #ccc;
   z-index: 999;
+}
+
+.ppma-promo-overlay-row .ppma-promo-upgrade-notice.no-bg {
+    background: transparent;
+    box-shadow: none;
 }
 
 .ppma-promo-overlay-row .ppma-promo-upgrade-notice p {
