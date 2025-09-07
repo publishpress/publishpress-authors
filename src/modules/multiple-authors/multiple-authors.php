@@ -2599,7 +2599,7 @@ echo '<span class="ppma_settings_field_description">'
             <p class="ppma_settings_field_description">
                 <?php echo esc_html__('This setting may be disabled for users who can not edit others posts.', 'publishpress-authors'); ?>
                 <a href="https://publishpress.com/knowledge-base/troubleshooting/#default-author-is-not-applied-to-new-posts" target="_blank">
-                    <?php echo esc_html('Click here for more details.', 'publishpress-authors'); ?>
+                    <?php echo esc_html__('Click here for more details.', 'publishpress-authors'); ?>
                 </a>
             </p>
             <?php
