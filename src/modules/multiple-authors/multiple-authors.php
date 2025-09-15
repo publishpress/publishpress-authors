@@ -2584,7 +2584,7 @@ echo '<span class="ppma_settings_field_description">'
                         name="<?php echo esc_attr($this->module->options_group_name) . '[default_author_for_new_posts]'; ?>"
                         data-nonce="<?php echo esc_attr(wp_create_nonce('authors-search')); ?>"
                         class="default-authors-select2"
-                        data-placeholder="<?php esc_attr_e('Search for an author', 'authors'); ?>" style="width: 350px">
+                        data-placeholder="<?php esc_attr_e('Search for an author', 'publishpress-authors'); ?>" style="width: 350px">
                     <option value=""></option>
                     <?php
                     if (!empty($value)) {
@@ -2620,7 +2620,7 @@ echo '<span class="ppma_settings_field_description">'
                         name="<?php echo esc_attr($this->module->options_group_name) . '[fallback_user_for_guest_post]'; ?>"
                         data-nonce="<?php echo esc_attr(wp_create_nonce('authors-user-search')); ?>"
                         class="authors-select2 authors-user-search fallback-user-search-select2"
-                        data-placeholder="<?php esc_attr_e('Search for a fallback author', 'authors'); ?>" style="width: 350px">
+                        data-placeholder="<?php esc_attr_e('Search for a fallback author', 'publishpress-authors'); ?>" style="width: 350px">
                     <option value=""></option>
                     <?php
                     if (!empty($value)) {
