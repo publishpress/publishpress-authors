@@ -353,8 +353,15 @@ class Author
             update_term_meta($term_id, 'user_id', $userId);
             update_term_meta($term_id, 'user_id_' . $userId, $userId);
         } else {
+            if (!empty($author->user_login)) {
+                $user_login = $author->user_login;
+            } elseif (!empty($author->slug)) {
+                $user_login = $author->slug;
+            } else {
+                $user_login = sanitize_title($new_author_email);
+            }
             $user_data = [
-                'user_login'    => !empty($author->user_login)? $author->user_login : sanitize_title($new_author_email),
+                'user_login'    => $user_login,
                 'display_name'  => $author->display_name,
                 'user_email'    => $new_author_email,
                 'user_pass'     => wp_generate_password(),
