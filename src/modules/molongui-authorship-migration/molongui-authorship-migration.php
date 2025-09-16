@@ -414,7 +414,7 @@ if (!class_exists('MA_Molongui_Authorship_Migration')) {
             }
 
             if (!empty($ppma_authors)) {
-                Utils::set_post_authors($post_id, $ppma_authors);
+                Utils::set_post_authors($post_id, $ppma_authors, true);
             }
 
             update_post_meta($post_id, 'ppma_post_migrated', 1);

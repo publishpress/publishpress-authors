@@ -150,7 +150,7 @@ class Utils
             );
         }
 
-        Utils::set_post_authors($post_id, $authors);
+        Utils::set_post_authors($post_id, $authors, true);
 
         do_action('publishpress_authors_flush_cache_for_post', $post_id);
 
@@ -166,11 +166,21 @@ class Utils
      * @param int $fallbackUserId User ID for using as the author in case no author or if only guests are selected
      * @param array $categories for authors
      */
-    public static function set_post_authors($postId, $authors, $syncPostAuthor = true, $fallbackUserId = null, $author_categories = [])
+    public static function set_post_authors($postId, $authors, $syncPostAuthor = false, $fallbackUserId = null, $author_categories = [])
     {
         static::set_post_authors_name_meta($postId, $authors);
 
         if ($syncPostAuthor) {
+            /**
+             * TODO:
+             * At this point, this is becoming an issue, we;ve received numerous report
+             * on multiple query on page load including #2119 that reports +1,200 insert
+             * on media page, and a report on some cache clearing on everypage load affecting performance.
+             * I'll need to monitor the effect of this function and see any alternative that's more efficient.
+             *
+             * At least, we shouldn't call this function on post update again and $syncPostAuthor parameter
+             * should be optional.
+             */
             static::sync_post_author_column($postId, $authors, $fallbackUserId);
         }
 
@@ -271,6 +281,7 @@ class Utils
      */
     public static function sync_post_author_column($postId, $authors, $fallbackUserId = null)
     {
+
         $functionSetPostAuthor = function ($postId, $authorId) {
             global $wpdb;
 
