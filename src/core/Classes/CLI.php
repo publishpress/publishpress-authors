@@ -122,7 +122,7 @@ class CLI
 
             $author = Author::get_by_user_id($post->post_author);
             if ($author) {
-                Utils::set_post_authors($post_id, [$author]);
+                Utils::set_post_authors($post_id, [$author], true);
                 WP_CLI::log("Found existing author and assigned to post {$post_id}.");
             } else {
                 $author = Author::create_from_user((int)$post->post_author);
@@ -131,7 +131,7 @@ class CLI
                     $failures++;
                     continue;
                 }
-                Utils::set_post_authors($post_id, [$author]);
+                Utils::set_post_authors($post_id, [$author], true);
                 WP_CLI::log("Created author and assigned to post {$post_id}.");
             }
 
