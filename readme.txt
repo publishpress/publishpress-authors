@@ -7,7 +7,7 @@ Tags: multiple authors, authors, guest authors, author bio, author layouts
 Requires at least: 5.5
 Requires PHP: 7.2.5
 Tested up to: 6.8
-Stable tag: 4.9.0
+Stable tag: 4.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -250,6 +250,14 @@ There are two ways to install the PublishPress Authors plugin:
 5. Activate the PublishPress Authors plugin.
 
 == Changelog ==
+
+= [4.9.1] - 16 September 2025 =
+
+* Fixed: Excess queries in Media Library and page load, #2119
+* Update: Allow users to hide editor Author Box in settings, #2110
+* Fixed: Bug with converting "Guest Author With No User Account" to "Guest Author With User Account", #2107
+* Changed: Move Author Profiles "Enable Guest Author With No User Account" to "Advanced Tab(legacy), #2109
+* Update: Translations update, #2113
 
 = [4.9.0] - 25 August 2025 =
 
