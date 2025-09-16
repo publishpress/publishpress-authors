@@ -1035,7 +1035,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                 ),
                 [$this, 'settings_enable_guest_author_user'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_guest_authors'
+                $this->module->options_group_name . '_advanced'
             );
 
             add_settings_field(
