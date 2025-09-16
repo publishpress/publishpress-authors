@@ -224,6 +224,10 @@ Author bios can be a tricky area in WordPress because many themes try to add the
 
 There are other plugins available such as Co-Authors Plus, Simple Author Box, Molongui, Starbox and more. These are all really good plugins. PublishPress Authors stands out because of the advanced features and flexibility.
 
+= Where do I report security bugs found in this plugin? =
+
+Please report security bugs found in the source code of the PublishPress Authors plugin through the [Patchstack Vulnerability Disclosure  Program](https://patchstack.com/database/vdp/9e5fc182-a8cd-4ee8-a80e-e77816bbed20). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 == Installation ==
 
 There are two ways to install the PublishPress Authors plugin:
