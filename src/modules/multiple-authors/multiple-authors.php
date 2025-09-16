@@ -128,6 +128,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'enable_guest_author_user'     => 'no',
                     'author_boxes_opt_out'         => 'no',
                     'enable_guest_author_acount'   => 'yes',
+                    'remove_editor_author_box_selection'   => 'no',
                     'default_avatar'               => '',
                     'display_name_format'          => 'custom',
                 ],
@@ -679,6 +680,14 @@ if (!class_exists('MA_Multiple_Authors')) {
                 'append_to_content',
                 __('Show below the content:', 'publishpress-authors'),
                 [$this, 'settings_append_to_content_option'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_display'
+            );
+
+            add_settings_field(
+                'remove_editor_author_box_selection',
+                __('Hide editor Author Box selection:', 'publishpress-authors'),
+                [$this, 'settings_remove_editor_author_box_selection_option'],
                 $this->module->options_group_name,
                 $this->module->options_group_name . '_display'
             );
@@ -1253,6 +1262,27 @@ if (!class_exists('MA_Multiple_Authors')) {
                 . checked($value, 'yes', false) . ' />';
             echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">' . esc_html__(
                     'This will display the authors box at the end of the content.',
+                    'publishpress-authors'
+                ) . '</span>';
+            echo '</label>';
+        }
+
+        /**
+         * Displays the field to choose display or not the author box at the
+         * end of the content
+         *
+         * @param array
+         */
+        public function settings_remove_editor_author_box_selection_option($args = [])
+        {
+            $id    = $this->module->options_group_name . '_remove_editor_author_box_selection';
+            $value = isset($this->module->options->remove_editor_author_box_selection) ? $this->module->options->remove_editor_author_box_selection : 'yes';
+
+            echo '<label for="' . esc_attr($id) . '">';
+            echo '<input type="checkbox" value="yes" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[remove_editor_author_box_selection]" '
+                . checked($value, 'yes', false) . ' />';
+            echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">' . esc_html__(
+                    'This will remove post editor author box selection.',
                     'publishpress-authors'
                 ) . '</span>';
             echo '</label>';
@@ -2855,6 +2885,10 @@ echo '<span class="ppma_settings_field_description">'
 
             if (!isset($new_options['append_to_content'])) {
                 $new_options['append_to_content'] = 'no';
+            }
+
+            if (!isset($new_options['remove_editor_author_box_selection'])) {
+                $new_options['remove_editor_author_box_selection'] = 'no';
             }
 
             if (!isset($new_options['author_for_new_users']) || !is_array($new_options['author_for_new_users'])) {

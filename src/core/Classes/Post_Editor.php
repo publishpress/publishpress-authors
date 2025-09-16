@@ -483,6 +483,13 @@ class Post_Editor
 
     public static function render_editor_author_box_settings($post_id) {
         ob_start();
+         $legacyPlugin = Factory::getLegacyPlugin();
+        $remove_editor_author_box = isset($legacyPlugin->modules->multiple_authors->options->remove_editor_author_box_selection)
+                && 'yes' === $legacyPlugin->modules->multiple_authors->options->remove_editor_author_box_selection;
+
+        if ($remove_editor_author_box) {
+            return;
+        }
         ?>
         <div class="ppma-author-box-selection" style="margin-bottom: 15px;">
             <label for="ppma_author_box_select"><?php _e('Author Box', 'publishpress-authors'); ?></label>
@@ -668,6 +675,11 @@ class Post_Editor
             return;
         }
 
+
+         $legacyPlugin = Factory::getLegacyPlugin();
+        $remove_editor_author_box = isset($legacyPlugin->modules->multiple_authors->options->remove_editor_author_box_selection)
+                && 'yes' === $legacyPlugin->modules->multiple_authors->options->remove_editor_author_box_selection;
+
         $authors = isset($_POST['authors']) ? Utils::sanitizeArray($_POST['authors']) : []; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
         $author_categories = isset($_POST['author_categories']) ? Utils::sanitizeArray($_POST['author_categories']) : []; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
         $authors = self::remove_dirty_authors_from_authors_arr($authors);
@@ -676,7 +688,7 @@ class Post_Editor
 
         Utils::set_post_authors($post_id, $authors, true, $fallbackUserId, $author_categories);
 
-        if (isset($_POST['ppma_author_box_select'])) {
+        if (!$remove_editor_author_box && isset($_POST['ppma_author_box_select'])) {
             $selected_box = sanitize_text_field($_POST['ppma_author_box_select']);
 
             if (empty($selected_box)) {
