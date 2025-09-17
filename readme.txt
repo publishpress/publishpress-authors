@@ -251,7 +251,7 @@ There are two ways to install the PublishPress Authors plugin:
 
 == Changelog ==
 
-= [4.9.1] - 16 September 2025 =
+= [4.9.1] - 17 September 2025 =
 
 * Fixed: Excess queries in Media Library and page load, #2119
 * Update: Allow users to hide editor Author Box in settings, #2110
