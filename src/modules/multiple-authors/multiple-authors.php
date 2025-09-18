@@ -128,7 +128,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'enable_guest_author_user'     => 'no',
                     'author_boxes_opt_out'         => 'no',
                     'enable_guest_author_acount'   => 'yes',
-                    'remove_editor_author_box_selection'   => 'no',
+                    'show_editor_author_box_selection'   => 'yes',
                     'default_avatar'               => '',
                     'display_name_format'          => 'custom',
                 ],
@@ -685,9 +685,9 @@ if (!class_exists('MA_Multiple_Authors')) {
             );
 
             add_settings_field(
-                'remove_editor_author_box_selection',
-                __('Hide editor Author Box selection:', 'publishpress-authors'),
-                [$this, 'settings_remove_editor_author_box_selection_option'],
+                'show_editor_author_box_selection',
+                __('Show Author Box selection:', 'publishpress-authors'),
+                [$this, 'settings_show_editor_author_box_selection_option'],
                 $this->module->options_group_name,
                 $this->module->options_group_name . '_display'
             );
@@ -1273,16 +1273,16 @@ if (!class_exists('MA_Multiple_Authors')) {
          *
          * @param array
          */
-        public function settings_remove_editor_author_box_selection_option($args = [])
+        public function settings_show_editor_author_box_selection_option($args = [])
         {
-            $id    = $this->module->options_group_name . '_remove_editor_author_box_selection';
-            $value = isset($this->module->options->remove_editor_author_box_selection) ? $this->module->options->remove_editor_author_box_selection : 'yes';
+            $id    = $this->module->options_group_name . '_show_editor_author_box_selection';
+            $value = isset($this->module->options->show_editor_author_box_selection) ? $this->module->options->show_editor_author_box_selection : 'yes';
 
             echo '<label for="' . esc_attr($id) . '">';
-            echo '<input type="checkbox" value="yes" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[remove_editor_author_box_selection]" '
+            echo '<input type="checkbox" value="yes" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[show_editor_author_box_selection]" '
                 . checked($value, 'yes', false) . ' />';
             echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">' . esc_html__(
-                    'This will remove post editor author box selection.',
+                    'Allow users to choose which Author Box is used on each post.',
                     'publishpress-authors'
                 ) . '</span>';
             echo '</label>';
@@ -2887,8 +2887,8 @@ echo '<span class="ppma_settings_field_description">'
                 $new_options['append_to_content'] = 'no';
             }
 
-            if (!isset($new_options['remove_editor_author_box_selection'])) {
-                $new_options['remove_editor_author_box_selection'] = 'no';
+            if (!isset($new_options['show_editor_author_box_selection'])) {
+                $new_options['show_editor_author_box_selection'] = 'no';
             }
 
             if (!isset($new_options['author_for_new_users']) || !is_array($new_options['author_for_new_users'])) {
