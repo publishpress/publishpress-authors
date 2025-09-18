@@ -181,7 +181,7 @@ class WP_Cli extends WP_CLI_Command
                     $coauthors = [$coauthor];
                 }
 
-                Utils::set_post_authors($singlePost->ID, $coauthors);
+                Utils::set_post_authors($singlePost->ID, $coauthors, true);
 
                 \WP_CLI::line(
                     $postsTotal . ': Post #' . $singlePost->ID . ' has been assigned "' . $originalAuthor . '" as the author'

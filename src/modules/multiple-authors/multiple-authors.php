@@ -128,6 +128,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'enable_guest_author_user'     => 'no',
                     'author_boxes_opt_out'         => 'no',
                     'enable_guest_author_acount'   => 'yes',
+                    'show_editor_author_box_selection'   => 'yes',
                     'default_avatar'               => '',
                     'display_name_format'          => 'custom',
                 ],
@@ -684,6 +685,14 @@ if (!class_exists('MA_Multiple_Authors')) {
             );
 
             add_settings_field(
+                'show_editor_author_box_selection',
+                __('Show Author Box selection:', 'publishpress-authors'),
+                [$this, 'settings_show_editor_author_box_selection_option'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_display'
+            );
+
+            add_settings_field(
                 'disable_quick_edit_author_box',
                 __('Disable the "Authors" box when using "Quick Edit":', 'publishpress-authors'),
                 [$this, 'settings_disable_quick_edit_author_box_option'],
@@ -1035,7 +1044,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                 ),
                 [$this, 'settings_enable_guest_author_user'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_guest_authors'
+                $this->module->options_group_name . '_advanced'
             );
 
             add_settings_field(
@@ -1253,6 +1262,27 @@ if (!class_exists('MA_Multiple_Authors')) {
                 . checked($value, 'yes', false) . ' />';
             echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">' . esc_html__(
                     'This will display the authors box at the end of the content.',
+                    'publishpress-authors'
+                ) . '</span>';
+            echo '</label>';
+        }
+
+        /**
+         * Displays the field to choose display or not the author box at the
+         * end of the content
+         *
+         * @param array
+         */
+        public function settings_show_editor_author_box_selection_option($args = [])
+        {
+            $id    = $this->module->options_group_name . '_show_editor_author_box_selection';
+            $value = isset($this->module->options->show_editor_author_box_selection) ? $this->module->options->show_editor_author_box_selection : 'yes';
+
+            echo '<label for="' . esc_attr($id) . '">';
+            echo '<input type="checkbox" value="yes" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[show_editor_author_box_selection]" '
+                . checked($value, 'yes', false) . ' />';
+            echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">' . esc_html__(
+                    'Allow users to choose which Author Box is used on each post.',
                     'publishpress-authors'
                 ) . '</span>';
             echo '</label>';
@@ -2584,7 +2614,7 @@ echo '<span class="ppma_settings_field_description">'
                         name="<?php echo esc_attr($this->module->options_group_name) . '[default_author_for_new_posts]'; ?>"
                         data-nonce="<?php echo esc_attr(wp_create_nonce('authors-search')); ?>"
                         class="default-authors-select2"
-                        data-placeholder="<?php esc_attr_e('Search for an author', 'authors'); ?>" style="width: 350px">
+                        data-placeholder="<?php esc_attr_e('Search for an author', 'publishpress-authors'); ?>" style="width: 350px">
                     <option value=""></option>
                     <?php
                     if (!empty($value)) {
@@ -2599,7 +2629,7 @@ echo '<span class="ppma_settings_field_description">'
             <p class="ppma_settings_field_description">
                 <?php echo esc_html__('This setting may be disabled for users who can not edit others posts.', 'publishpress-authors'); ?>
                 <a href="https://publishpress.com/knowledge-base/troubleshooting/#default-author-is-not-applied-to-new-posts" target="_blank">
-                    <?php echo esc_html('Click here for more details.', 'publishpress-authors'); ?>
+                    <?php echo esc_html__('Click here for more details.', 'publishpress-authors'); ?>
                 </a>
             </p>
             <?php
@@ -2620,7 +2650,7 @@ echo '<span class="ppma_settings_field_description">'
                         name="<?php echo esc_attr($this->module->options_group_name) . '[fallback_user_for_guest_post]'; ?>"
                         data-nonce="<?php echo esc_attr(wp_create_nonce('authors-user-search')); ?>"
                         class="authors-select2 authors-user-search fallback-user-search-select2"
-                        data-placeholder="<?php esc_attr_e('Search for a fallback author', 'authors'); ?>" style="width: 350px">
+                        data-placeholder="<?php esc_attr_e('Search for a fallback author', 'publishpress-authors'); ?>" style="width: 350px">
                     <option value=""></option>
                     <?php
                     if (!empty($value)) {
@@ -2855,6 +2885,10 @@ echo '<span class="ppma_settings_field_description">'
 
             if (!isset($new_options['append_to_content'])) {
                 $new_options['append_to_content'] = 'no';
+            }
+
+            if (!isset($new_options['show_editor_author_box_selection'])) {
+                $new_options['show_editor_author_box_selection'] = 'no';
             }
 
             if (!isset($new_options['author_for_new_users']) || !is_array($new_options['author_for_new_users'])) {
