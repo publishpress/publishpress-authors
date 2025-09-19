@@ -810,20 +810,20 @@ class MA_Author_Custom_Fields extends Module
             if (self::getFieldMeta($post->ID, 'field_status') !== 'off') {
                 ?>
                 <div style="color: green;">
-                    <?php echo esc_html_e('Active', 'publishpress-authors'); ?>
+                    <?php esc_html_e('Active', 'publishpress-authors'); ?>
                 </div>
             <?php } else { ?>
                 <div style="color: red;">
-                    <?php echo esc_html_e('Disabled', 'publishpress-authors'); ?>
+                    <?php esc_html_e('Disabled', 'publishpress-authors'); ?>
                 </div>
             <?php
             }
         } elseif ($column === 'requirement') {
             if (self::getFieldMeta($post->ID, 'requirement') !== 'required') {
                 ?>
-                <?php echo esc_html_e('Optional', 'publishpress-authors'); ?>
+                <?php esc_html_e('Optional', 'publishpress-authors'); ?>
             <?php } else { ?>
-                <?php echo esc_html_e('Required', 'publishpress-authors'); ?>
+                <?php esc_html_e('Required', 'publishpress-authors'); ?>
             <?php
             }
         } elseif ($column === 'type') {
