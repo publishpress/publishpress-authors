@@ -571,7 +571,7 @@ endif ?>
 <?php if ($args['author_bio_show']['value']) : ?>
                             <<?php echo esc_html($args['author_bio_html_tag']['value']); ?> class="pp-author-boxes-description multiple-authors-description author-description-</?php echo esc_attr($index); ?>">
 <?php if ($args['author_bio_link']['value']) : ?><a href="</?php echo esc_url($author->link); ?>" title="</?php echo esc_attr__('Author', 'publishpress-authors'); ?>"><?php endif; ?>
-                                </?php echo $author->get_description(<?php echo esc_html($args['author_bio_limit']['value']); ?>); ?>
+                                </?php echo wpautop($author->get_description(<?php echo esc_html($args['author_bio_limit']['value']); ?>)); ?>
 <?php if ($args['author_bio_link']['value']) : ?></a><?php endif; ?>
                             </<?php echo esc_html($args['author_bio_html_tag']['value']); ?>>
 <?php endif; ?>
