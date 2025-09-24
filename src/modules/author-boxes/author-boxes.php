@@ -1715,7 +1715,7 @@ class MA_Author_Boxes extends Module
                                                                 }
 
                                                                 if ($data['type'] === 'wysiwyg') {
-                                                                    $field_value = $author->$key;
+                                                                    $field_value = wpautop($author->$key);
                                                                 } else {
                                                                     $field_value = esc_html($author->$key);
                                                                 }
@@ -1928,7 +1928,7 @@ class MA_Author_Boxes extends Module
                                                                         <?php if ($args['author_bio_link']['value']) : ?>
                                                                             <a href="<?php echo esc_url($author->link); ?>" title="<?php echo esc_attr__('Author', 'publishpress-authors'); ?>">
                                                                         <?php endif; ?>
-                                                                            <?php echo $author->get_description($args['author_bio_limit']['value']);  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+                                                                            <?php echo wpautop($author->get_description($args['author_bio_limit']['value']));  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                                                                         <?php if ($args['author_bio_link']['value']) : ?>
                                                                             </a>
                                                                         <?php endif; ?>
