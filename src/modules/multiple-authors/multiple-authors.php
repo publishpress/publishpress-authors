@@ -2796,12 +2796,16 @@ echo '<span class="ppma_settings_field_description">'
             $actions = apply_filters('pp_authors_maintenance_actions', $actions);
 
             if (isset($GLOBALS['coauthors_plus']) && !empty($GLOBALS['coauthors_plus'])) {
-                $actions['copy_coauthor_plus_data'] = [
-                    'title'       => esc_html__('Copy Co-Authors Plus Data', 'publishpress-authors'),
-                    'description' => esc_html__('This action will copy the authors from the plugin Co-Authors Plus allowing you to migrate to PublishPress Authors without losing any data. This action can be run multiple times.', 'publishpress-authors'),
-                    'button_link' => '',
-                    'after'       => '<div id="publishpress-authors-coauthors-migration"></div>',
+                $coauthors_plus_actions = [
+                    'copy_coauthor_plus_data' => [
+                        'title'       => esc_html__('Copy Co-Authors Plus Data', 'publishpress-authors'),
+                        'description' => esc_html__('This action will copy the authors from the plugin Co-Authors Plus allowing you to migrate to PublishPress Authors without losing any data. This action can be run multiple times.', 'publishpress-authors'),
+                        'button_link' => '',
+                        'after'       => '<div id="publishpress-authors-coauthors-migration"></div>',
+                    ]
                 ];
+
+                $actions = array_merge($coauthors_plus_actions, $actions);
             }
 
             $actions['delete_mapped_authors'] = [
