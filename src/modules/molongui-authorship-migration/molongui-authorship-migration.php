@@ -147,12 +147,16 @@ if (!class_exists('MA_Molongui_Authorship_Migration')) {
 
         public function registerMaintenanceAction($actions)
         {
-            $actions['copy_molongui_authorship_data'] = [
-                'title' => esc_html__('Copy Molongui Authorship Data', 'publishpress-authors'),
-                'description' => esc_html__('This action will copy the authors from the plugin Molongui Authorship allowing you to migrate to PublishPress Authors without losing any data including post author relation. This action can be run multiple times.', 'publishpress-authors'),
-                'button_link' => '',
-                'after' => '<div id="publishpress-authors-molongui-authorship-migration"></div>',
+            $molongui_actions = [
+                'copy_molongui_authorship_data' => [
+                    'title' => esc_html__('Copy Molongui Authorship Data', 'publishpress-authors'),
+                    'description' => esc_html__('This action will copy the authors from the plugin Molongui Authorship allowing you to migrate to PublishPress Authors without losing any data including post author relation. This action can be run multiple times.', 'publishpress-authors'),
+                    'button_link' => '',
+                    'after' => '<div id="publishpress-authors-molongui-authorship-migration"></div>',
+                ]
             ];
+
+            $actions = array_merge($molongui_actions, $actions);
 
             return $actions;
         }
