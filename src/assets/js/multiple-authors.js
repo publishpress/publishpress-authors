@@ -709,6 +709,7 @@ jQuery(document).ready(function ($) {
         /**
          * Add required to display name field
          */
+        $('form#addtag .form-field.term-name-wrap label').append(' <span class="required">*</span>');
         $('form#edittag tr.form-field.term-name-wrap').addClass('required-tab');
         $('form#edittag tr.form-field.term-name-wrap th label').after(' <span class="required">*</span>');
 
