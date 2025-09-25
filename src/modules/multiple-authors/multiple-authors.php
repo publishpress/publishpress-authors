@@ -91,6 +91,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'append_to_content'            => 'yes',
                     'preppend_to_content'          => 'no',
                     'author_for_new_users'         => [],
+                    'mapped_author_roles'          => ['administrator', 'editor', 'author', 'contributor', 'ppma_guest_author'],
                     'layout'                       => Utils::getDefaultLayout(),
                     'force_empty_author'           => 'no',
                     'username_in_search_field'      => 'no',
@@ -596,6 +597,17 @@ if (!class_exists('MA_Multiple_Authors')) {
                 'author_page_post_types',
                 __('Post types to display on the author\'s profile page:', 'publishpress-authors'),
                 [$this, 'settings_author_page_post_types_option'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_general'
+            );
+
+            add_settings_field(
+                'mapped_author_roles',
+                __(
+                    'Roles available as Mapped Authors:',
+                    'publishpress-authors'
+                ),
+                [$this, 'settings_mapped_author_roles_option'],
                 $this->module->options_group_name,
                 $this->module->options_group_name . '_general'
             );
@@ -1713,6 +1725,35 @@ if (!class_exists('MA_Multiple_Authors')) {
                 echo '<input type="text" class="color-picker" data-default-color="#655997" name="' . esc_attr($this->module->options_group_name) . '[color_scheme]" value="' . esc_attr(
                 $value
                 ) . '"/>';
+
+            echo '</label>';
+        }
+
+        /**
+         * @param array $args
+         */
+        public function settings_mapped_author_roles_option($args = [])
+        {
+            $id     = $this->module->options_group_name . '_mapped_author_roles';
+            $values = isset($this->module->options->mapped_author_roles) ? $this->module->options->mapped_author_roles : [];
+
+            echo '<label for="' . esc_attr($id) . '">';
+
+            echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[mapped_author_roles][]" multiple="multiple" class="chosen-select" data-placeholder="'.  esc_attr__('Select roles', 'publishpress-authors') .'">';
+
+            $roles = get_editable_roles();
+
+            foreach ($roles as $role => $data) {
+                $selected = in_array($role, $values) ? 'selected="selected"' : '';
+                echo '<option value="' . esc_attr($role) . '" ' . $selected . '>' . esc_html($data['name']) . '</option>';
+            }
+
+            echo '</select>';
+
+            echo '<p class="ppma_settings_field_description">' . esc_html__(
+                    'Choose which WordPress user roles can be selected as Mapped Authors. Users in these roles will appear in author search results and Authors Mapped user selection.',
+                    'publishpress-authors'
+                ) . '</p>';
 
             echo '</label>';
         }
@@ -2893,6 +2934,10 @@ echo '<span class="ppma_settings_field_description">'
 
             if (!isset($new_options['show_editor_author_box_selection'])) {
                 $new_options['show_editor_author_box_selection'] = 'no';
+            }
+
+            if (!isset($new_options['mapped_author_roles']) || !is_array($new_options['mapped_author_roles'])) {
+                $new_options['mapped_author_roles'] = [];
             }
 
             if (!isset($new_options['author_for_new_users']) || !is_array($new_options['author_for_new_users'])) {
