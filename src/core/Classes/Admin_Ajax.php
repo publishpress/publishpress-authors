@@ -221,10 +221,20 @@ class Admin_Ajax
             wp_send_json_error(null, 403);
         }
 
+        $legacyPlugin = Factory::getLegacyPlugin();
+        $allowed_roles = isset($legacyPlugin->modules->multiple_authors->options->mapped_author_roles)
+            ? $legacyPlugin->modules->multiple_authors->options->mapped_author_roles
+            : [];
+
         $user_args = [
             'number' => apply_filters('ppma_authors_editor_user_result_limit', 20),
-            'capability' => 'edit_posts',
         ];
+        if (!empty($allowed_roles)) {
+            $user_args['role__in'] = $allowed_roles;
+        } else {
+            $user_args['capability'] = 'edit_posts';
+        }
+
         if (!empty($_GET['q'])) {
             $user_args['search'] = sanitize_text_field('*' . $_GET['q'] . '*');
         }
