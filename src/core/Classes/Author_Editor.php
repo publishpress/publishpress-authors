@@ -352,7 +352,7 @@ class Author_Editor
         $author_boxes_opt_out = $legacyPlugin->modules->multiple_authors->options->author_boxes_opt_out === 'yes';
         $fields = [
             'user_id'     => [
-                'label'    => esc_html__('Mapped User', 'publishpress-authors'),
+                'label'    => esc_html__('Registered User', 'publishpress-authors'),
                 'type'     => 'ajax_user_select',
                 'sanitize' => 'intval',
                 'tab'      => 'general',
@@ -1099,7 +1099,7 @@ class Author_Editor
                 return new WP_Error(
                     'publishpress_authors_mapped_user_required',
                     esc_html__(
-                        'Mapped user is required.',
+                        'Registered User is required.',
                         'publishpress-authors'
                     )
                 );

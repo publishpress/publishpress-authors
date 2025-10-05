@@ -356,7 +356,7 @@ class Admin_Ajax
             if (!$enable_guest_author_user && $author_id === 0) {
                 $response['status']  = 'error';
                 $response['content'] = esc_html__(
-                    'Mapped user is required.',
+                    'Registered User is required.',
                     'publishpress-authors'
                 );
                 wp_send_json($response);
