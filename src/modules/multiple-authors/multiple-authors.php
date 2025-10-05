@@ -132,6 +132,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'show_editor_author_box_selection'   => 'yes',
                     'default_avatar'               => '',
                     'display_name_format'          => 'custom',
+                    'translate_author_taxonomy' => 'yes'
                 ],
                 'options_page'         => false,
                 'autoload'             => true,
@@ -1007,6 +1008,18 @@ if (!class_exists('MA_Multiple_Authors')) {
                 );
             }
 
+
+            /**
+             * Integration
+             */
+
+            add_settings_section(
+                $this->module->options_group_name . '_integration',
+                __return_false(),
+                [$this, 'settings_section_integration'],
+                $this->module->options_group_name
+            );
+
             /**
              * Maintenance
              */
@@ -1174,6 +1187,11 @@ if (!class_exists('MA_Multiple_Authors')) {
         public function settings_section_maintenance()
         {
             echo '<input type="hidden" id="ppma-tab-maintenance" />';
+        }
+
+        public function settings_section_integration()
+        {
+            echo '<input type="hidden" id="ppma-tab-integration" />';
         }
 
         public function settings_section_guest_authors()
@@ -3067,6 +3085,7 @@ echo '<span class="ppma_settings_field_description">'
                     '#ppma-tab-guest-author' => esc_html__('Author Profiles', 'publishpress-authors'),
                     '#ppma-tab-author-pages' => esc_html__('Author Pages', 'publishpress-authors'),
                     '#ppma-tab-shortcodes'  => esc_html__('Shortcodes', 'publishpress-authors'),
+                    '#ppma-tab-integration'  => esc_html__('Integration', 'publishpress-authors'),
                     '#ppma-tab-maintenance' => esc_html__('Maintenance', 'publishpress-authors'),
                     '#ppma-tab-advanced' => esc_html__('Advanced', 'publishpress-authors'),
                 ]
