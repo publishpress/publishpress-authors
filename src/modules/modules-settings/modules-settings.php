@@ -201,7 +201,18 @@ if (!class_exists('MA_Modules_Settings')) {
                         if (!empty($tabs)) {
                             echo '<ul id="publishpress-authors-settings-tabs" class="nav-tab-wrapper">';
                             foreach ($tabs as $tabLink => $tabLabel) {
-                                $li_style = $tabLink === '#ppma-tab-author-pages' ? 'display: none;' : '';
+                                $li_style = '';
+
+                                // Hide author-pages tab
+                                if ($tabLink === '#ppma-tab-author-pages') {
+                                    $li_style = 'display: none;';
+                                }
+
+                                // Hide integration tab if no active integrations
+                                if ($tabLink === '#ppma-tab-integration' && !apply_filters('publishpress_authors_has_active_integrations', false)) {
+                                    $li_style = 'display: none;';
+                                }
+
                                 echo '<li style="'. esc_attr($li_style) .'" class="nav-tab ' . ($tabLink === $ppma_active_tab ? 'nav-tab-active' : '') . '">';
                                 echo '<a href="' . esc_url($tabLink) . '" data-tab-content="' . esc_attr($tabLink) . '">' . esc_html($tabLabel) . '</a>';
                                 echo '</li>';
