@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Authors\n"
-"POT-Creation-Date: 2025-10-06 04:07+0000\n"
+"POT-Creation-Date: 2025-10-07 08:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Anderson Grudtner Martins <anderson@publishpress.com>\n"
 "Language-Team: Anderson Grudtner Martins <anderson@publishpress.com>\n"
@@ -526,7 +526,7 @@ msgid "All Post Types"
 msgstr ""
 
 #: src/modules/multiple-authors/multiple-authors.php:1890
-msgid "Allow authors to be created without a mapped user."
+msgid "Allow authors to be created without a connected user account."
 msgstr ""
 
 #: src/modules/multiple-authors/multiple-authors.php:1844
@@ -1336,9 +1336,8 @@ msgstr ""
 
 #: src/modules/multiple-authors/multiple-authors.php:1771
 msgid ""
-"Choose which WordPress user roles can be selected as Mapped Authors. Users "
-"in these roles will appear in author search results and Authors Mapped user "
-"selection."
+"Choose which WordPress user roles can be selected using the \"Registered "
+"Author With User Account\" option for author profiles."
 msgstr ""
 
 #: src/modules/multiple-authors/multiple-authors.php:2821
@@ -1731,12 +1730,12 @@ msgstr ""
 msgid "Delete all guest authors"
 msgstr ""
 
-#: src/modules/multiple-authors/multiple-authors.php:2878
-msgid "Delete Guest Authors"
+#: src/modules/multiple-authors/multiple-authors.php:2871
+msgid "Delete Connections Between Author Profiles and Users"
 msgstr ""
 
-#: src/modules/multiple-authors/multiple-authors.php:2871
-msgid "Delete Mapped Authors"
+#: src/modules/multiple-authors/multiple-authors.php:2878
+msgid "Delete Guest Authors"
 msgstr ""
 
 #: src/modules/author-list/classes/AuthorListTable.php:384
@@ -3425,7 +3424,7 @@ msgid "Roles"
 msgstr ""
 
 #: src/modules/multiple-authors/multiple-authors.php:607
-msgid "Roles available as Mapped Authors:"
+msgid "Roles available for Author Profiles:"
 msgstr ""
 
 #: src/modules/author-list/author-list.php:909
@@ -3973,7 +3972,7 @@ msgid ""
 "This action can reset the PublishPress Authors data before using other "
 "maintenance options. It will delete all author profiles that are mapped to a "
 "WordPress user account. This will not delete the WordPress user accounts, "
-"but any links between the posts and multiple authors will be lost."
+"but any links between the posts and author profiles will be lost."
 msgstr ""
 
 #: src/modules/multiple-authors/multiple-authors.php:2861
