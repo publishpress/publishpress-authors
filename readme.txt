@@ -251,7 +251,7 @@ There are two ways to install the PublishPress Authors plugin:
 
 == Changelog ==
 
-= [4.10.0] - 13 October 2025 =
+= [4.10.0] - 14 October 2025 =
 
 * Update: Add a setting to choose which roles are available as Mapped Authors, #1693
 * Update: Allow subscribers as multiple author selection, #1693
