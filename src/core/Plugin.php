@@ -1307,6 +1307,11 @@ class Plugin
                 //Jannah theme support multiple author but with global $authordata been set by the theme
                 $authors = [$authordata];
             } else {
+                $enabledPostTypes = Utils::get_enabled_post_types();
+                $postType = get_post_type();
+                if ($postType && !in_array($postType, $enabledPostTypes)) {
+                    return $authorDisplayName;
+                }
                 $authors = get_post_authors(get_post());
             }
 

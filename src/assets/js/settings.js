@@ -9,7 +9,7 @@ jQuery(document).ready(function ($) {
         $(this).addClass('nav-tab-active');
 
         var panel = $(this).find('a').first().attr('data-tab-content');
-        
+
         if ($customSettings) {
             $('table[id^="ppma-"] tr').hide();
         } else {
@@ -28,8 +28,15 @@ jQuery(document).ready(function ($) {
        ppmaTab = ppmaSettings.tab;
        $('#publishpress-authors-settings-tabs a[href="#' + ppmaTab + '"]').click();
     } else if (browserSupportStorage() && getStorageData('ppma_settings_active_tab')) {
-        ppmaTab = getStorageData('ppma_settings_active_tab');
-        $('#publishpress-authors-settings-tabs a[href="#' + ppmaTab + '"]').click();
+        // Find the tab link
+        const $tabLink = $('#publishpress-authors-settings-tabs a[href="#' + getStorageData('ppma_settings_active_tab') + '"]');
+        const $tabLi = $tabLink.closest('li');
+
+        // Check if it exists and is visible
+        if ($tabLink.length && $tabLi.is(':visible')) {
+            ppmaTab = getStorageData('ppma_settings_active_tab');
+            $tabLink.click();
+        }
     }
 
     var $hiddenFields = $('input[id^="ppma-tab-"]');
@@ -163,26 +170,26 @@ jQuery(document).ready(function ($) {
     }
     /**
      * Save local storage data
-     * @param {*} storageName 
-     * @param {*} storageValue 
+     * @param {*} storageName
+     * @param {*} storageValue
      */
     function saveStorageData(storageName, storageValue) {
       removeStorageData(storageName);
       window.localStorage.setItem(storageName, JSON.stringify(storageValue));
     }
-    
+
     /**
      * Get local storage data
-     * @param {*} storageName 
-     * @returns 
+     * @param {*} storageName
+     * @returns
      */
     function getStorageData(storageName) {
       return JSON.parse(window.localStorage.getItem(storageName));
     }
-    
+
     /**
      * Remove local storage data
-     * @param {*} storageName 
+     * @param {*} storageName
      */
     function removeStorageData(storageName) {
       window.localStorage.removeItem(storageName);

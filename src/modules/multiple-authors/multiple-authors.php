@@ -91,6 +91,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'append_to_content'            => 'yes',
                     'preppend_to_content'          => 'no',
                     'author_for_new_users'         => [],
+                    'mapped_author_roles'          => ['administrator', 'editor', 'author', 'contributor', 'ppma_guest_author'],
                     'layout'                       => Utils::getDefaultLayout(),
                     'force_empty_author'           => 'no',
                     'username_in_search_field'      => 'no',
@@ -131,6 +132,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'show_editor_author_box_selection'   => 'yes',
                     'default_avatar'               => '',
                     'display_name_format'          => 'custom',
+                    'translate_author_taxonomy' => 'yes'
                 ],
                 'options_page'         => false,
                 'autoload'             => true,
@@ -601,6 +603,17 @@ if (!class_exists('MA_Multiple_Authors')) {
             );
 
             add_settings_field(
+                'mapped_author_roles',
+                __(
+                    'Roles available for Author Profiles:',
+                    'publishpress-authors'
+                ),
+                [$this, 'settings_mapped_author_roles_option'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_general'
+            );
+
+            add_settings_field(
                 'author_for_new_users',
                 __(
                     'Automatically create author profiles:',
@@ -995,6 +1008,18 @@ if (!class_exists('MA_Multiple_Authors')) {
                 );
             }
 
+
+            /**
+             * Integration
+             */
+
+            add_settings_section(
+                $this->module->options_group_name . '_integration',
+                __return_false(),
+                [$this, 'settings_section_integration'],
+                $this->module->options_group_name
+            );
+
             /**
              * Maintenance
              */
@@ -1162,6 +1187,11 @@ if (!class_exists('MA_Multiple_Authors')) {
         public function settings_section_maintenance()
         {
             echo '<input type="hidden" id="ppma-tab-maintenance" />';
+        }
+
+        public function settings_section_integration()
+        {
+            echo '<input type="hidden" id="ppma-tab-integration" />';
         }
 
         public function settings_section_guest_authors()
@@ -1720,6 +1750,35 @@ if (!class_exists('MA_Multiple_Authors')) {
         /**
          * @param array $args
          */
+        public function settings_mapped_author_roles_option($args = [])
+        {
+            $id     = $this->module->options_group_name . '_mapped_author_roles';
+            $values = isset($this->module->options->mapped_author_roles) ? $this->module->options->mapped_author_roles : [];
+
+            echo '<label for="' . esc_attr($id) . '">';
+
+            echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[mapped_author_roles][]" multiple="multiple" class="chosen-select" data-placeholder="'.  esc_attr__('Select roles', 'publishpress-authors') .'">';
+
+            $roles = get_editable_roles();
+
+            foreach ($roles as $role => $data) {
+                $selected = in_array($role, $values) ? 'selected="selected"' : '';
+                echo '<option value="' . esc_attr($role) . '" ' . $selected . '>' . esc_html($data['name']) . '</option>';
+            }
+
+            echo '</select>';
+
+            echo '<p class="ppma_settings_field_description">' . esc_html__(
+                    'Choose which WordPress user roles can be selected using the "Registered Author With User Account" option for author profiles.',
+                    'publishpress-authors'
+                ) . '</p>';
+
+            echo '</label>';
+        }
+
+        /**
+         * @param array $args
+         */
         public function settings_author_for_new_users_option($args = [])
         {
             $id     = $this->module->options_group_name . '_author_for_new_users';
@@ -1829,7 +1888,7 @@ if (!class_exists('MA_Multiple_Authors')) {
 
             echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">'
                 . esc_html__(
-                    'Allow authors to be created without a mapped user.',
+                    'Allow authors to be created without a connected user account.',
                     'publishpress-authors'
                 )
                 . '</span>';
@@ -2796,17 +2855,21 @@ echo '<span class="ppma_settings_field_description">'
             $actions = apply_filters('pp_authors_maintenance_actions', $actions);
 
             if (isset($GLOBALS['coauthors_plus']) && !empty($GLOBALS['coauthors_plus'])) {
-                $actions['copy_coauthor_plus_data'] = [
-                    'title'       => esc_html__('Copy Co-Authors Plus Data', 'publishpress-authors'),
-                    'description' => esc_html__('This action will copy the authors from the plugin Co-Authors Plus allowing you to migrate to PublishPress Authors without losing any data. This action can be run multiple times.', 'publishpress-authors'),
-                    'button_link' => '',
-                    'after'       => '<div id="publishpress-authors-coauthors-migration"></div>',
+                $coauthors_plus_actions = [
+                    'copy_coauthor_plus_data' => [
+                        'title'       => esc_html__('Copy Co-Authors Plus Data', 'publishpress-authors'),
+                        'description' => esc_html__('This action will copy the authors from the plugin Co-Authors Plus allowing you to migrate to PublishPress Authors without losing any data. This action can be run multiple times.', 'publishpress-authors'),
+                        'button_link' => '',
+                        'after'       => '<div id="publishpress-authors-coauthors-migration"></div>',
+                    ]
                 ];
+
+                $actions = array_merge($coauthors_plus_actions, $actions);
             }
 
             $actions['delete_mapped_authors'] = [
-                'title'        => esc_html__('Delete Mapped Authors', 'publishpress-authors'),
-                'description'  => esc_html__('This action can reset the PublishPress Authors data before using other maintenance options. It will delete all author profiles that are mapped to a WordPress user account. This will not delete the WordPress user accounts, but any links between the posts and multiple authors will be lost.', 'publishpress-authors'),
+                'title'        => esc_html__('Delete Connections Between Author Profiles and Users', 'publishpress-authors'),
+                'description'  => esc_html__('This action can reset the PublishPress Authors data before using other maintenance options. It will delete all author profiles that are mapped to a WordPress user account. This will not delete the WordPress user accounts, but any links between the posts and author profiles will be lost.', 'publishpress-authors'),
                 'button_label' => esc_html__('Delete all authors mapped to users', 'publishpress-authors'),
                 'button_icon'  => 'dashicons-warning',
             ];
@@ -2889,6 +2952,10 @@ echo '<span class="ppma_settings_field_description">'
 
             if (!isset($new_options['show_editor_author_box_selection'])) {
                 $new_options['show_editor_author_box_selection'] = 'no';
+            }
+
+            if (!isset($new_options['mapped_author_roles']) || !is_array($new_options['mapped_author_roles'])) {
+                $new_options['mapped_author_roles'] = [];
             }
 
             if (!isset($new_options['author_for_new_users']) || !is_array($new_options['author_for_new_users'])) {
@@ -3018,6 +3085,7 @@ echo '<span class="ppma_settings_field_description">'
                     '#ppma-tab-guest-author' => esc_html__('Author Profiles', 'publishpress-authors'),
                     '#ppma-tab-author-pages' => esc_html__('Author Pages', 'publishpress-authors'),
                     '#ppma-tab-shortcodes'  => esc_html__('Shortcodes', 'publishpress-authors'),
+                    '#ppma-tab-integration'  => esc_html__('Integration', 'publishpress-authors'),
                     '#ppma-tab-maintenance' => esc_html__('Maintenance', 'publishpress-authors'),
                     '#ppma-tab-advanced' => esc_html__('Advanced', 'publishpress-authors'),
                 ]
@@ -3184,6 +3252,10 @@ echo '<span class="ppma_settings_field_description">'
             if (is_archive() && Util::isAuthor()) {
                 $authors = [get_archive_author()];
             } else {
+                $enabledPostTypes = Utils::get_enabled_post_types();
+                if (!in_array($post->post_type, $enabledPostTypes)) {
+                    return false;
+                }
                 $authors = get_post_authors($post);
             }
 

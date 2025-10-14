@@ -352,7 +352,7 @@ class Author_Editor
         $author_boxes_opt_out = $legacyPlugin->modules->multiple_authors->options->author_boxes_opt_out === 'yes';
         $fields = [
             'user_id'     => [
-                'label'    => esc_html__('Mapped User', 'publishpress-authors'),
+                'label'    => esc_html__('Registered User', 'publishpress-authors'),
                 'type'     => 'ajax_user_select',
                 'sanitize' => 'intval',
                 'tab'      => 'general',
@@ -814,7 +814,7 @@ class Author_Editor
             echo '</div>';
             ?>
             <div class="form-field term-author_email-wrap" style="display: none;">
-                <label class="ppma-account-email"><?php echo esc_html__('Author Email', 'publishpress-authors'); ?></label>
+                <label class="ppma-account-email"><?php echo esc_html__('Author Email', 'publishpress-authors'); ?> <span class="required">*</span></label>
                 <?php
                 echo static::get_rendered_author_partial( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     [
@@ -826,7 +826,7 @@ class Author_Editor
             echo '</div>';
             ?>
             <div class="form-field term-user_id-wrap">
-                <label for="tag-user-id"><?php echo esc_html__('Select Author Account', 'publishpress-authors'); ?></label>
+                <label for="tag-user-id"><?php echo esc_html__('User Account', 'publishpress-authors'); ?> <span class="required">*</span></label>
                 <?php
                 echo static::get_rendered_author_partial( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     [
@@ -989,6 +989,7 @@ class Author_Editor
             $legacyPlugin = Factory::getLegacyPlugin();
             $author_id = (int)$_POST['authors-new'];
             $enable_guest_author_user = $legacyPlugin->modules->multiple_authors->options->enable_guest_author_user === 'yes';
+            $author_type = !empty($_POST['authors-author_type']) ? sanitize_text_field($_POST['authors-author_type']) : '';
             /**
              * Check if term with this user exist
              */
@@ -1058,7 +1059,7 @@ class Author_Editor
             }
 
             // create guest author user
-            if (!empty($_POST['authors-author_type']) && $_POST['authors-author_type'] === 'new_user') {
+            if ($author_type === 'new_user') {
                 if (empty($_POST['authors-author_email'])) {
                     return new WP_Error(
                         'publishpress_authors_email_required',
@@ -1095,11 +1096,11 @@ class Author_Editor
                 }
             }
 
-            if (!$enable_guest_author_user && $author_id === 0) {
+            if ((!$enable_guest_author_user || $author_type === 'existing_user') && $author_id === 0) {
                 return new WP_Error(
                     'publishpress_authors_mapped_user_required',
                     esc_html__(
-                        'Mapped user is required.',
+                        'Registered User is required.',
                         'publishpress-authors'
                     )
                 );

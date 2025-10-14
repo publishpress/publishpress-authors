@@ -168,6 +168,13 @@ class Utils
      */
     public static function set_post_authors($postId, $authors, $syncPostAuthor = false, $fallbackUserId = null, $author_categories = [])
     {
+        $post_type = get_post_field('post_type', $postId);
+        $enabledPostTypes = Utils::get_enabled_post_types();
+
+        if ($post_type && !in_array($post_type, $enabledPostTypes)) {
+            return;
+        }
+
         static::set_post_authors_name_meta($postId, $authors);
 
         if ($syncPostAuthor) {
