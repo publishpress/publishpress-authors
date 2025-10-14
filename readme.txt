@@ -7,7 +7,7 @@ Tags: multiple authors, authors, guest authors, author bio, author layouts
 Requires at least: 5.5
 Requires PHP: 7.2.5
 Tested up to: 6.8
-Stable tag: 4.9.1
+Stable tag: 4.10.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -250,6 +250,19 @@ There are two ways to install the PublishPress Authors plugin:
 5. Activate the PublishPress Authors plugin.
 
 == Changelog ==
+
+= [4.10.0] - 14 October 2025 =
+
+* Update: Add a setting to choose which roles are available as Mapped Authors, #1693
+* Update: Allow subscribers as multiple author selection, #1693
+* Fixed: Author profile rich editor field Line breaks not reflecting in the frontend, #2132
+* Update: Add a settings to disable Polylang Author Profiles translation, #2144
+* Update: Replace "Mapped User" with "Registered User" in Author Editor, #2146
+* Update: Move Import button to the top of Maintenance lists, #2108
+* Update: Add required (*) to new author field name, #2129
+* Fixed: Prevent author filter on post type not enabled for Authors, #2140
+* Fixed: Media Library queries, #2131
+* Fixed: Prevent duplicate queries on get_post_authors, #2141
 
 = [4.9.1] - 18 September 2025 =
 

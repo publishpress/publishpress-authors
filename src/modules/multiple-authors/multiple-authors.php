@@ -605,7 +605,7 @@ if (!class_exists('MA_Multiple_Authors')) {
             add_settings_field(
                 'mapped_author_roles',
                 __(
-                    'Roles available as Mapped Authors:',
+                    'Roles available for Author Profiles:',
                     'publishpress-authors'
                 ),
                 [$this, 'settings_mapped_author_roles_option'],
@@ -1769,7 +1769,7 @@ if (!class_exists('MA_Multiple_Authors')) {
             echo '</select>';
 
             echo '<p class="ppma_settings_field_description">' . esc_html__(
-                    'Choose which WordPress user roles can be selected as Mapped Authors. Users in these roles will appear in author search results and Authors Mapped user selection.',
+                    'Choose which WordPress user roles can be selected using the "Registered Author With User Account" option for author profiles.',
                     'publishpress-authors'
                 ) . '</p>';
 
@@ -1888,7 +1888,7 @@ if (!class_exists('MA_Multiple_Authors')) {
 
             echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">'
                 . esc_html__(
-                    'Allow authors to be created without a mapped user.',
+                    'Allow authors to be created without a connected user account.',
                     'publishpress-authors'
                 )
                 . '</span>';
@@ -2868,8 +2868,8 @@ echo '<span class="ppma_settings_field_description">'
             }
 
             $actions['delete_mapped_authors'] = [
-                'title'        => esc_html__('Delete Mapped Authors', 'publishpress-authors'),
-                'description'  => esc_html__('This action can reset the PublishPress Authors data before using other maintenance options. It will delete all author profiles that are mapped to a WordPress user account. This will not delete the WordPress user accounts, but any links between the posts and multiple authors will be lost.', 'publishpress-authors'),
+                'title'        => esc_html__('Delete Connections Between Author Profiles and Users', 'publishpress-authors'),
+                'description'  => esc_html__('This action can reset the PublishPress Authors data before using other maintenance options. It will delete all author profiles that are mapped to a WordPress user account. This will not delete the WordPress user accounts, but any links between the posts and author profiles will be lost.', 'publishpress-authors'),
                 'button_label' => esc_html__('Delete all authors mapped to users', 'publishpress-authors'),
                 'button_icon'  => 'dashicons-warning',
             ];
