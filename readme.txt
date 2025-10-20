@@ -251,4 +251,4 @@ There are two ways to install the PublishPress Authors plugin:
 
 == Changelog ==
 
-The full changelog can be found on [GitHub](https://raw.githubusercontent.com/publishpress/publishpress-authors/refs/heads/master/CHANGELOG.md).
+The full changelog can be found on [GitHub](https://github.com/publishpress/publishpress-authors/blob/master/CHANGELOG.md).
