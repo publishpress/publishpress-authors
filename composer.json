@@ -53,8 +53,8 @@
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2"
   },
   "scripts": {
-    "build": "ppbuild build",
-    "build:dir": "ppbuild build-dir",
+    "build": "/scripts/pbuild build",
+    "build:dir": "/scripts/pbuild build-dir",
     "build:clean": "ppbuild clean",
     "get:version": "ppbuild version",
     "check:longpath": "longpath .",
