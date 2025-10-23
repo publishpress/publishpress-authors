@@ -1,5 +1,6 @@
 *.code-workspace export-ignore
 .babelrc export-ignore
+.env.example export-ignore
 .env.testing.linux.dist export-ignore
 .env.testing.mac.dist export-ignore
 .gitattributes export-ignore
