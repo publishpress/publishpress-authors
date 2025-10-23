@@ -30,3 +30,5 @@
 - /vendor/psr/container/README.md
 - /vendor/publishpress/wordpress-version-notices/.env.testing.dist
 - /vendor/symfony/polyfill-ctype/README.md
+- .env
+- .env.example
