@@ -39,3 +39,4 @@ builder.yml
 .env
 
 version.txt
+.phplint-cache
