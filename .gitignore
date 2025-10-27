@@ -37,3 +37,5 @@ builder.yml
 
 /dev-workspace/.cache
 .env
+
+version.txt
