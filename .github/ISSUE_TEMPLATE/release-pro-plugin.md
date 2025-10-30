@@ -4,6 +4,7 @@ about: Describes default checklist for releasing the Pro plugin;
 title: Release Pro v[VERSION]
 labels: release
 assignees: ''
+type: task
 ---
 
 To release the Pro plugin please make sure to check all the checkboxes below.
