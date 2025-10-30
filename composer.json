@@ -56,7 +56,6 @@
     "build": "/scripts/pbuild build",
     "build:dir": "/scripts/pbuild build-dir",
     "build:clean": "/scripts/pbuild clean",
-    "get:version": "/scripts/pbuild version",
     "check:longpath": "longpath .",
     "pre-autoload-dump": "composer dumpautoload --working-dir=./lib",
     "pre-update-cmd": "composer update --working-dir=./lib",
