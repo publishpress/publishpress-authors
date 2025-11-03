@@ -508,7 +508,12 @@ class MA_Author_Boxes extends Module
 
         $messages[self::POST_TYPE_BOXES] = [
             'updated' => sprintf(
-                _n('%1$s %2$s updated.', '%1$s %3$s updated.', $countsUpdated),
+                _n(
+                    '%1$s %2$s updated.',
+                    '%1$s %3$s updated.',
+                    $countsUpdated,
+                    'publishpress-authors'
+                ),
                 $countsUpdated,
                 $postTypeNameSingular,
                 $postTypeNamePlural
@@ -517,26 +522,42 @@ class MA_Author_Boxes extends Module
                 _n(
                     '%1$s %2$s not updated, somebody is editing it.',
                     '%1$s %3$s not updated, somebody is editing them.',
-                    $countsLocked
+                    $countsLocked,
+                    'publishpress-authors'
                 ),
                 $countsLocked,
                 $postTypeNameSingular,
                 $postTypeNamePlural
             ),
             'deleted' => sprintf(
-                _n('%1$s %2$s permanently deleted.', '%1$s %3$s permanently deleted.', $countsDeleted),
+                _n(
+                    '%1$s %2$s permanently deleted.',
+                    '%1$s %3$s permanently deleted.',
+                    $countsDeleted,
+                    'publishpress-authors'
+                ),
                 $countsDeleted,
                 $postTypeNameSingular,
                 $postTypeNamePlural
             ),
             'trashed' => sprintf(
-                _n('%1$s %2$s moved to the Trash.', '%1$s %3$s moved to the Trash.', $countsTrashed),
+                _n(
+                    '%1$s %2$s moved to the Trash.',
+                    '%1$s %3$s moved to the Trash.',
+                    $countsTrashed,
+                    'publishpress-authors'
+                ),
                 $countsTrashed,
                 $postTypeNameSingular,
                 $postTypeNamePlural
             ),
             'untrashed' => sprintf(
-                _n('%1$s %2$s restored from the Trash.', '%1$s %3$s restored from the Trash.', $countsUntrashed),
+                _n(
+                    '%1$s %2$s restored from the Trash.',
+                    '%1$s %3$s restored from the Trash.',
+                    $countsUntrashed,
+                    'publishpress-authors'
+                ),
                 $countsUntrashed,
                 $postTypeNameSingular,
                 $postTypeNamePlural

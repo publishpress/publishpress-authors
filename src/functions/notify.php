@@ -59,9 +59,9 @@ if (!function_exists('wp_notify_postauthor')) {
                 $notify_message .= sprintf(__('E-mail : %s'), $comment->comment_author_email) . "\r\n";
                 $notify_message .= sprintf(__('URL    : %s'), $comment->comment_author_url) . "\r\n";
                 $notify_message .= sprintf(
-                        __('Whois  : http://whois.arin.net/rest/ip/%s'),
-                        $comment->comment_author_IP
-                    ) . "\r\n";
+                    __('Whois  : %s'),
+                    'http://whois.arin.net/rest/ip/' . $comment->comment_author_IP
+                ) . "\r\n";
                 $notify_message .= __('Comment: ') . "\r\n" . $comment->comment_content . "\r\n\r\n";
                 $notify_message .= __('You can see all comments on this post here: ') . "\r\n";
                 /* translators: 1: blog name, 2: post title */
