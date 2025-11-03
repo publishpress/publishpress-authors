@@ -670,10 +670,12 @@ class Post_Editor
             return;
         }
 
+        $taxonomy = get_taxonomy('author');
         if (
             !isset($_POST['authors-save'])
             || !wp_verify_nonce(sanitize_key($_POST['authors-save']), 'authors-save')
-            || !current_user_can(get_taxonomy('author')->cap->assign_terms)
+            || !$taxonomy
+            || !current_user_can($taxonomy->cap->assign_terms)
         ) {
             return;
         }

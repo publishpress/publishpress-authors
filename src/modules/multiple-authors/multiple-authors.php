@@ -3253,7 +3253,7 @@ echo '<span class="ppma_settings_field_description">'
                 $authors = [get_archive_author()];
             } else {
                 $enabledPostTypes = Utils::get_enabled_post_types();
-                if (!in_array($post->post_type, $enabledPostTypes)) {
+                if (!$post || !in_array($post->post_type, $enabledPostTypes)) {
                     return false;
                 }
                 $authors = get_post_authors($post);
