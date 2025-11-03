@@ -138,7 +138,7 @@ class YoastAuthor extends Author
         if (!is_object($guest_author)) {
             return [];
         }
-        $schema_id = $this->context->site_url . Schema_IDs::PERSON_LOGO_HASH;
+        $schema_id = $this->context->site_url . Schema_IDs::PERSON_HASH;
         $data      = [
             '@type' => $this->type,
             '@id'   => $schema_id . \wp_hash($guest_author->term_id . $guest_author->ID . 'guest'),
@@ -223,11 +223,11 @@ class YoastAuthor extends Author
                     $ppmacf_social_profile = get_post_meta($author_field->ID, 'ppmacf_social_profile', true);
                     $ppmacf_type = get_post_meta($author_field->ID, 'ppmacf_type', true);
                     $ppmacf_schema_property = get_post_meta($author_field->ID, 'ppmacf_schema_property', true);
-                    
+
                     if ($ppmacf_type == 'url' && (int) $ppmacf_social_profile === 1) {
                         $same_as_urls[] = $field_value;
                     }
-                    
+
                     if (!empty($ppmacf_schema_property)) {
                         if (isset($data[$ppmacf_schema_property])) {
                             $schema_property_value = \array_values(\array_unique((array)$data[$ppmacf_schema_property]));
