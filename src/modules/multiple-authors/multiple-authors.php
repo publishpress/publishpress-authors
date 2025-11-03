@@ -4682,7 +4682,7 @@ echo '<span class="ppma_settings_field_description">'
             }
 
             if (!empty($validPostAuthors)) {
-                Utils::set_post_authors($postId, $validPostAuthors);
+                Utils::set_post_authors($postId, $validPostAuthors, true);
 
                 do_action('publishpress_authors_flush_cache_for_post', $postId);
             }
