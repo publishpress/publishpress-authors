@@ -1,6 +1,17 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+= [4.10.1] - 06 November 2025 =
+
+* Fixed: Author search doesn't include "Guest Author With No User Account", #2161
+* Fixed: Creating post using PublishPress Planner calendar shows ["post_author" is empty], #2163
+* Fixed: PHP Warning: Attempt to read property "post_type" on null, #2157
+* Fixed: Yoast SEO schema validation shows only one author for posts with multiple authors, #2169
+* Fixed: Author url been replaced by current user url when editing other authors, #2174
+* Update: Show error message when editing author with user account without permissions, #2175
+* Fixed: Errors when opening the PublishPress Authors translation file (.po or .pot), #2156
+* Update: Authors Translation Updates v.4.10.0, #2159
+
 = [4.10.0] - 14 October 2025 =
 
 * Update: Add a setting to choose which roles are available as Mapped Authors, #1693
