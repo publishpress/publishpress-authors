@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-= [4.10.1] - 03 November 2025 =
+= [4.10.1] - 06 November 2025 =
 
 * Fixed: Author search doesn't include "Guest Author With No User Account", #2161
 * Fixed: Creating post using PublishPress Planner calendar shows ["post_author" is empty], #2163
