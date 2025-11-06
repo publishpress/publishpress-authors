@@ -146,12 +146,19 @@ class SchemaFacade
         if (!function_exists('publishpress_authors_get_post_authors')) {
             require_once PP_AUTHORS_BASE_PATH . 'functions/template-tags.php';
         }
-        
+
         $author_objects = get_post_authors($context->post->ID, false, false);
 
         $ids     = [];
-        $authors = [];
         $authors_schema_data = [];
+        $existing_person_ids = [];
+
+        // Collect existing Person schema IDs to avoid duplicates
+        foreach ($data as $piece) {
+            if (isset($piece['@type']) && $piece['@type'] === 'Person' && isset($piece['@id'])) {
+                $existing_person_ids[] = $piece['@id'];
+            }
+        }
 
         // Add the authors to the schema.
         foreach ($author_objects as $author) {
@@ -175,41 +182,55 @@ class SchemaFacade
                     }
 
                     $ids[]     = [ '@id' => $author_data['@id'] ];
-                    $authors[] = $author_data;
+
+                    // Only add to graph if not already present
+                    if (!in_array($author_data['@id'], $existing_person_ids)) {
+                        $data[] = $author_data;
+                        $existing_person_ids[] = $author_data['@id'];
+                    }
+
                     $authors_schema_data[$author->user_email] = $author_data;
                 }
             }
         }
 
+        // Set authors based on count
+        $authors = null;
         if (count($author_objects) === 1) {
             $authors = $ids[0];
+        } elseif (count($author_objects) > 1) {
+            $authors = $ids;
         }
 
         foreach ($data as $key => $piece) {
             if (!is_array($piece)) {
                 continue;
             }
-            
-            if (count($author_objects) === 1 && isset($piece['@type']) && !is_array($piece['@type']) && $piece['@type'] === 'Person') {
-                $data[$key] = wp_parse_args($author_data, $piece);
-            }
-            // add author category schema property
-            if (isset($piece['@type']) && !is_array($piece['@type']) && $piece['@type'] === 'WebPage') {
-                $author_categorized = false;
-                foreach (get_ppma_author_categories() as $author_category) {
-                    if (!empty($author_category['schema_property'])) {
-                        if (!$author_categorized) {
-                            $author_categorized = ppma_post_authors_categorized();
-                        }
-                        if (isset($author_categorized[$author_category['slug']])) {
-                            $category_schema = [];
-                            foreach ($author_categorized[$author_category['slug']] as $author_categorized_author) {
-                                if (isset($authors_schema_data[$author_categorized_author->user_email])) {
-                                    $category_schema[] = $authors_schema_data[$author_categorized_author->user_email];
-                                }
+
+            // Add author property to Article and WebPage schema types
+            if (isset($piece['@type']) && !is_array($piece['@type'])) {
+                if (in_array($piece['@type'], ['Article', 'WebPage']) && !empty($authors)) {
+                    $data[$key]['author'] = $authors;
+                }
+
+                // add author category schema property
+                if ($piece['@type'] === 'WebPage') {
+                    $author_categorized = false;
+                    foreach (get_ppma_author_categories() as $author_category) {
+                        if (!empty($author_category['schema_property'])) {
+                            if (!$author_categorized) {
+                                $author_categorized = ppma_post_authors_categorized();
                             }
-                            if (count($category_schema) > 0) {
-                                $data[$key][$author_category['schema_property']] = count($category_schema) > 1 ? $category_schema : $category_schema[0];
+                            if (isset($author_categorized[$author_category['slug']])) {
+                                $category_schema = [];
+                                foreach ($author_categorized[$author_category['slug']] as $author_categorized_author) {
+                                    if (isset($authors_schema_data[$author_categorized_author->user_email])) {
+                                        $category_schema[] = $authors_schema_data[$author_categorized_author->user_email];
+                                    }
+                                }
+                                if (count($category_schema) > 0) {
+                                    $data[$key][$author_category['schema_property']] = count($category_schema) > 1 ? $category_schema : $category_schema[0];
+                                }
                             }
                         }
                     }
@@ -233,7 +254,7 @@ class SchemaFacade
         if (!function_exists('publishpress_authors_get_post_authors')) {
             require_once PP_AUTHORS_BASE_PATH . 'functions/template-tags.php';
         }
-        
+
         $author_objects = get_post_authors($presentation->context->post->id, false, false);
 
         // Fallback in case of error.
@@ -255,7 +276,7 @@ class SchemaFacade
      * Replace author name for yoast SEO
      *
      * @param string $title current page title
-     * 
+     *
      * @return string
      */
     public function handleAuthorWpseoTitle($title)
@@ -270,7 +291,7 @@ class SchemaFacade
 
         return $title;
     }
-  
+
     /**
     * Change Enhanced Slack sharing data labels.
     *
@@ -288,7 +309,7 @@ class SchemaFacade
         if (!function_exists('publishpress_authors_get_post_authors')) {
             require_once PP_AUTHORS_BASE_PATH . 'functions/template-tags.php';
         }
-    
+
         if (array_key_exists(\__( 'Written by', 'wordpress-seo' ), $data)) {
             $author_objects = get_post_authors($presentation->model->object_id, false, false);
             $author_names = [];

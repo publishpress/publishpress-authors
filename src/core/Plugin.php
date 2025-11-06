@@ -1441,59 +1441,61 @@ class Plugin
         }
 
         if (!empty($query->query_vars['search'])) {
-            $search = trim($query->query_vars['search'], '*');
-            $search_parts = preg_split('/\s+/', $search);
+            $search = trim($query->query_vars['search']);
+            $query->query_vars['custom_author_search'] = $search;
 
-            $meta_query = ['relation' => 'AND'];
-
-            foreach ($search_parts as $part) {
-                $meta_query[] = [
-                    'relation' => 'OR',
-                    [
-                        'key' => 'first_name',
-                        'value' => $part,
-                        'compare' => 'LIKE'
-                    ],
-                    [
-                        'key' => 'last_name',
-                        'value' => $part,
-                        'compare' => 'LIKE'
-                    ],
-                    [
-                        'key' => 'user_email',
-                        'value' => $part,
-                        'compare' => 'LIKE'
-                    ]
-                ];
-            }
-
-            $query->query_vars['meta_query'] = $meta_query;
-            $query->query_vars['custom_term_search'] = $search;
-
+            // Prevent WordPress default search
             unset($query->query_vars['search']);
         }
     }
 
     public function include_term_name_in_search($clauses, $taxonomies, $args) {
-        global $pagenow, $wpdb;
+        global $wpdb, $pagenow;
 
         if (
             ! is_admin() ||
             $pagenow !== 'edit-tags.php' ||
-            (isset($_GET['taxonomy']) && $_GET['taxonomy'] !== self::$coauthor_taxonomy) ||
-            ! isset($args['taxonomy']) ||
-            ! in_array(self::$coauthor_taxonomy, (array)$args['taxonomy']) ||
-            empty($args['custom_author_search'])
+            empty($args['custom_author_search']) ||
+            empty($args['taxonomy']) ||
+            ! in_array(self::$coauthor_taxonomy, (array)$args['taxonomy'])
         ) {
             return $clauses;
         }
 
-        $search = esc_sql($wpdb->esc_like($args['custom_author_search']));
+        $search = trim($args['custom_author_search']);
+        $search_parts = preg_split('/\s+/', $search);
 
-        $clauses['where'] .= $wpdb->prepare(
-            " OR t.name LIKE %s",
-            '%' . $search . '%'
-        );
+        $taxonomy = esc_sql(self::$coauthor_taxonomy);
+
+        $or_clauses = [];
+
+        foreach ($search_parts as $part) {
+            $esc = $wpdb->esc_like($part);
+
+            // Search term name or slug
+            $or_clauses[] = $wpdb->prepare("t.name LIKE %s", "%$esc%");
+            $or_clauses[] = $wpdb->prepare("t.slug LIKE %s", "%$esc%");
+
+            // Search meta using EXISTS subquery to avoid duplicates
+            $or_clauses[] = "EXISTS (
+                SELECT 1
+                FROM $wpdb->termmeta AS tm
+                WHERE tm.term_id = t.term_id
+                AND (
+                    (tm.meta_key = 'first_name' AND tm.meta_value LIKE '{$esc}%')
+                    OR (tm.meta_key = 'last_name' AND tm.meta_value LIKE '{$esc}%')
+                    OR (tm.meta_key = 'user_email' AND tm.meta_value LIKE '{$esc}%')
+                )
+            )";
+        }
+
+        if (!empty($or_clauses)) {
+            $clauses['where'] .= " AND tt.taxonomy = '{$taxonomy}' AND (" . implode(' OR ', $or_clauses) . ")";
+        }
+
+        if (!empty($clauses['orderby']) && stripos($clauses['fields'], "t.name") === false) {
+            $clauses['fields'] .= ", t.name";
+        }
 
         return $clauses;
     }

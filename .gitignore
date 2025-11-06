@@ -34,3 +34,9 @@ builder.yml
 *.code-workspace
 
 /lib/**/.git
+
+/dev-workspace/.cache
+.env
+
+version.txt
+.phplint-cache

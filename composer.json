@@ -22,6 +22,7 @@
     }
   ],
   "config": {
+    "process-timeout": 1600,
     "preferred-install": "dist",
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true
@@ -53,20 +54,20 @@
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2"
   },
   "scripts": {
-    "build": "ppbuild build",
-    "build:dir": "ppbuild build-dir",
-    "build:clean": "ppbuild clean",
-    "get:version": "ppbuild version",
+    "build": "/scripts/pbuild build",
+    "build:dir": "/scripts/pbuild build-dir",
+    "build:clean": "/scripts/pbuild clean",
     "check:longpath": "longpath .",
     "pre-autoload-dump": "composer dumpautoload --working-dir=./lib",
     "pre-update-cmd": "composer update --working-dir=./lib",
     "pre-install-cmd": "composer install --working-dir=./lib",
     "check:phpcs": "phpcs --standard=PSR12 ./src/ publishpress-authors.php --colors",
-    "check:lint": "phplint ./src",
+    "check:lint": "phplint",
     "check:mess": "phpmd ./src ansi phpmd-ruleset.xml",
     "check:copy": "phpcpd --fuzzy ./src",
     "fix:phpcs": "phpcbf .src/ publishpress-authors.php --colors",
-    "chromedriver": "chromedriver --url-base=wd/hub"
+    "chromedriver": "chromedriver --url-base=wd/hub",
+    "info:versions": "bash ./dev-workspace/scripts/dependency-versions.sh"
   },
   "extra": {
     "plugin-name": "publishpress-authors",
