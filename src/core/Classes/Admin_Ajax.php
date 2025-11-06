@@ -337,6 +337,34 @@ class Admin_Ajax
             $remove_single_user_map_restriction = publishpress_authors_remove_single_user_map_restriction();
             $enable_guest_author_user = $legacyPlugin->modules->multiple_authors->options->enable_guest_author_user === 'yes';
 
+            if ($author_id > 0 && (int)$author_id !== get_current_user_id()) {
+                $user = get_user_by('id', $author_id);
+
+                if ($user) {
+                    // Prevent editing administrators
+                    if (in_array('administrator', $user->roles)) {
+                        $response['status']  = 'error';
+                        $response['content'] = esc_html__(
+                            'You cannot edit an author profile linked to an administrator account.',
+                            'publishpress-authors'
+                        );
+                        wp_send_json($response);
+                        exit;
+                    }
+
+                    // Check if user has permission to edit this user
+                    if (!current_user_can(get_taxonomy('author')->cap->manage_terms)
+                        || !current_user_can('edit_user', $author_id)) {
+                        $response['status']  = 'error';
+                        $response['content'] = esc_html__(
+                            'You do not have permission to edit this author profile because it is linked to a user account you do not have permission to edit.',
+                            'publishpress-authors'
+                        );
+                        wp_send_json($response);
+                        exit;
+                    }
+                }
+            }
 
             if (!$remove_single_user_map_restriction && $author_id > 0) {
                 $author = Author::get_by_user_id($author_id);

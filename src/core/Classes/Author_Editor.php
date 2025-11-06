@@ -665,18 +665,16 @@ class Author_Editor
          * Note: Prevent ability to edit administrator completely.
          */
         if ($user && (int)$user_id !== get_current_user_id()) {
-
             // Prevent editing administrators completely
             if (in_array('administrator', $user->roles)) {
                 $user_id = false;
                 $user = false;
             }
-            // Check if the user lacks the necessary capabilities and fallback to current user
+            // Check if the user lacks the necessary capabilities and prevent the user update
             elseif (!current_user_can(get_taxonomy('author')->cap->manage_terms)
                     || !current_user_can('edit_user', $user_id)) {
-                // Fallback to current user if they lack permissions
-                $user_id    = get_current_user_id();
-                $user       = get_user_by('id', $user_id);
+                $user_id = false;
+                $user = false;
             }
         }
 
