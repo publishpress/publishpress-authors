@@ -1068,6 +1068,18 @@ class AuthorBoxesEditorFields
         return $options;
     }
 
+    private static function getAuthorCategoriesOptions()
+    {
+        $categories = get_ppma_author_categories(['category_status' => 1]);
+        $options = [];
+
+        foreach ($categories as $category) {
+            $options[$category['id']] = $category['category_name'];
+        }
+
+        return $options;
+    }
+
     /**
      * Add bio fields to the author boxes editor.
      *
@@ -1081,6 +1093,25 @@ class AuthorBoxesEditorFields
             'type'        => 'checkbox',
             'sanitize'    => 'absint',
             'tab'         => 'author_bio',
+        ];
+        $fields['author_bio_display_position'] = [
+            'label'    => esc_html__('Display Biographical Info For', 'publishpress-authors'),
+            'type'     => 'select',
+            'sanitize' => 'sanitize_text_field',
+            'options'  => [
+                'all'   => esc_html__('All Authors', 'publishpress-authors'),
+                'first' => esc_html__('First Author Only', 'publishpress-authors'),
+                'last'  => esc_html__('Last Author Only', 'publishpress-authors'),
+            ],
+            'tab'      => 'author_bio',
+        ];
+        $fields['author_bio_hide_categories'] = [
+            'label'    => esc_html__('Hide Biographic for user in Author Categories', 'publishpress-authors'),
+            'placeholder' => esc_html__('Select Author Categories...', 'publishpress-authors'),
+            'type'     => 'multiselect',
+            'sanitize' => 'sanitize_text_field',
+            'options'  => self::getAuthorCategoriesOptions(),
+            'tab'      => 'author_bio',
         ];
         $fields['author_bio_link'] = [
             'label'       => esc_html__('Enable Biographical Link', 'publishpress-authors'),
