@@ -1267,6 +1267,15 @@ class MA_Author_Boxes extends Module
 
         $editor_data['post_id'] = $post_id;
 
+        // set boxed_categories defautlt fields
+        if (
+        isset($editor_data['author_categories_layout'])
+        && $editor_data['author_categories_layout'] === 'boxed_categories'
+        && !isset($editor_data['author_bio_display_position'])
+        ) {
+            $editor_data['author_bio_display_position'] = 'first';
+        }
+
         //set social profile defaults
         $social_fields = ['facebook', 'twitter', 'x', 'instagram', 'linkedin', 'youtube', 'tiktok'];
         foreach ($social_fields as $social_field) {
@@ -1608,6 +1617,19 @@ class MA_Author_Boxes extends Module
                 }
             endforeach;
         }
+
+        // Check display position setting
+        $display_position = !empty($args['author_bio_display_position']['value'])
+            ? $args['author_bio_display_position']['value']
+            : 'all';
+
+        // Check if bio should be hidden for author categories
+        $hide_for_categories = !empty($args['author_bio_hide_categories']['value'])
+            ? $args['author_bio_hide_categories']['value']
+            : [];
+
+        // Initialize global author index
+        $global_author_index = 0;
         ?>
 
         <?php if ($admin_preview) : ?>
@@ -1945,6 +1967,24 @@ class MA_Author_Boxes extends Module
                                                                 endif ?>
                                                                 <?php echo $name_row_extra ; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                                                                 <?php if ($args['author_bio_show']['value']) : ?>
+                                                                    <?php
+                                                                        // Check bio display position logic
+                                                                        $should_show_bio = true;
+                                                                        if ($display_position !== 'all') {
+                                                                            if ($display_position === 'first' && $global_author_index !== 0) {
+                                                                                $should_show_bio = false;
+                                                                            } elseif ($display_position === 'last' && $global_author_index !== $author_counts - 1) {
+                                                                                $should_show_bio = false;
+                                                                            }
+                                                                        }
+
+                                                                        // Check category override
+                                                                        if ($should_show_bio && !empty($hide_for_categories) && in_array($author_category_data['id'], $hide_for_categories)) {
+                                                                            $should_show_bio = false;
+                                                                        }
+                                                                    ?>
+
+                                                                    <?php if ($should_show_bio) :  ?>
                                                                         <<?php echo esc_html($args['author_bio_html_tag']['value']); ?> class="pp-author-boxes-description multiple-authors-description author-description-<?php echo esc_attr($index); ?>">
                                                                         <?php if ($args['author_bio_link']['value']) : ?>
                                                                             <a href="<?php echo esc_url($author->link); ?>" title="<?php echo esc_attr__('Author', 'publishpress-authors'); ?>">
@@ -1954,6 +1994,7 @@ class MA_Author_Boxes extends Module
                                                                             </a>
                                                                         <?php endif; ?>
                                                                         </<?php echo esc_html($args['author_bio_html_tag']['value']); ?>>
+                                                                    <?php endif; ?>
                                                                 <?php endif; ?>
                                                                 <?php echo $bio_row_extra ; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
@@ -2003,6 +2044,7 @@ class MA_Author_Boxes extends Module
                                                     <?php if ($li_style) : ?>
                                                         </li>
                                                     <?php endif; ?>
+                                                    <?php $global_author_index++; ?>
                                                 <?php endforeach; ?>
                                             <?php endif; ?>
                                         <?php if ($li_style) : ?>
@@ -2204,6 +2246,31 @@ class MA_Author_Boxes extends Module
                                 <?php echo esc_html($label); ?>
                             </option>
                         <?php endforeach; ?>
+                    </select>
+                <?php
+                elseif ('multiselect' === $args['type']) :
+                    $selected_values = is_array($args['value']) ? $args['value'] : [];
+                    $field_name = $key;
+                    ?>
+                    <select name="<?php echo esc_attr($field_name); ?>[]"
+                        style="width: 95%;"
+                        class="authors-select2 authors-select2-default-select"
+                        id="<?php echo esc_attr($key); ?>"
+                        placeholder="<?php echo esc_attr($args['placeholder']); ?>"
+                        data-placeholder="<?php echo esc_attr($args['placeholder']); ?>"
+                        <?php echo (isset($args['readonly']) && $args['readonly'] === true) ? 'readonly' : ''; ?>
+                        <?php echo 'multiple'; ?>
+                        />
+                        <?php
+                        if (!empty($args['options'])) :
+                            foreach ($args['options'] as $key => $label) : ?>
+                                <option value="<?php echo esc_attr($key); ?>"
+                                    <?php selected(in_array($key, $selected_values), true); ?>>
+                                    <?php echo esc_html($label); ?>
+                                </option>
+                            <?php
+                            endforeach;
+                        endif; ?>
                     </select>
                 <?php
                 elseif ('multiselect_pro' === $args['type']) :
