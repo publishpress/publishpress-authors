@@ -431,6 +431,22 @@ class MA_Author_Custom_Fields extends Module
 
         $metabox->add_field(
             [
+                'name' => __('Show in REST API', 'publishpress-authors'),
+                'id' => self::META_PREFIX . 'show_in_rest',
+                'type' => 'select',
+                'options' => [
+                    'on' => __('Yes', 'publishpress-authors'),
+                    'off' => __('No', 'publishpress-authors'),
+                ],
+                'desc' => __(
+                    'Control whether this field is included in REST API responses.',
+                    'publishpress-authors'
+                ),
+            ]
+        );
+
+        $metabox->add_field(
+            [
                 'name' => __('Open Link in New Tab', 'publishpress-authors'),
                 'id' => self::META_PREFIX . 'target',
                 'type' => 'checkbox',
@@ -530,6 +546,7 @@ class MA_Author_Custom_Fields extends Module
                         'target'        => self::getFieldMeta($post->ID, 'target'),
                         'field_status' => self::getFieldMeta($post->ID, 'field_status'),
                         'requirement' => self::getFieldMeta($post->ID, 'requirement'),
+                        'show_in_rest' => self::getFieldMeta($post->ID, 'show_in_rest'),
                         'description' => self::getFieldMeta($post->ID, 'description'),
                         'post_id'     => $post->ID,
                     ];
@@ -895,6 +912,7 @@ class MA_Author_Custom_Fields extends Module
         update_post_meta($post_id, self::META_PREFIX . 'slug', $data['post_name']);
         update_post_meta($post_id, self::META_PREFIX . 'type', $data['type']);
         update_post_meta($post_id, self::META_PREFIX . 'field_status', $data['field_status']);
+        update_post_meta($post_id, self::META_PREFIX . 'show_in_rest', isset($data['show_in_rest']) ? $data['show_in_rest'] : 'on');
         update_post_meta($post_id, self::META_PREFIX . 'requirement', isset($data['requirement']) ? $data['requirement'] : '' );
         update_post_meta($post_id, self::META_PREFIX . 'social_profile', isset($data['social_profile']) ? $data['social_profile'] : '' );
         update_post_meta($post_id, self::META_PREFIX . 'schema_property', isset($data['schema_property']) ? $data['schema_property'] : '' );
@@ -932,6 +950,7 @@ class MA_Author_Custom_Fields extends Module
             'post_name'    => 'user_email',
             'type'         => 'email',
             'field_status'  => 'on',
+            'show_in_rest'  => 'off',
             'description'  => '',
         ];
         //add user url

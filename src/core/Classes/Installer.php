@@ -71,7 +71,7 @@ class Installer
     public static function runUpgradeTasks($currentVersions)
     {
         $legacyPlugin = Factory::getLegacyPlugin();
-        
+
         if (version_compare($currentVersions, '2.0.2', '<')) {
             // Do not execute the post_author migration to post terms if Co-Authors Plus is activated.
             if (!isset($GLOBALS['coauthors_plus']) || empty($GLOBALS['coauthors_plus'])) {
@@ -117,6 +117,9 @@ class Installer
         }
         if (version_compare($currentVersions, '4.7.5', '<')) {
             MA_Author_Boxes::authorBoxesMetaDefaultLabelUpdate();
+        }
+        if (version_compare($currentVersions, '4.11.0', '<')) {
+            self::migrateEmailFieldRestVisibility();
         }
 
         /**
@@ -444,6 +447,24 @@ class Installer
     private static function createDefaultCustomFields()
     {
         MA_Author_Custom_Fields::createDefaultCustomFields();
+    }
+
+    /**
+     * Update existing email field to hide in REST API
+     */
+    private static function migrateEmailFieldRestVisibility()
+    {
+        $email_field = get_posts([
+            'post_type' => 'ppmacf_field',
+            'post_status' => 'publish',
+            'name' => 'user_email',
+            'posts_per_page' => 1
+        ]);
+
+        if (!empty($email_field)) {
+            $field_id = $email_field[0]->ID;
+            update_post_meta($field_id, 'ppmacf_show_in_rest', 'off');
+        }
     }
 
     /**

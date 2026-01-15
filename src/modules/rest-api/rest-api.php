@@ -221,7 +221,7 @@ if (!class_exists('MA_REST_API')) {
             $authors_fields = apply_filters('multiple_authors_author_fields', $authors_fields, false);
             $authors_fields = array_keys($authors_fields);
 
-            $excluded_fields = ['user_id', 'user_email', 'avatar'];
+            $excluded_fields = ['user_id', 'avatar'];
             $excluded_fields = apply_filters('ppma_rest_api_authors_meta_excluded_fields', $excluded_fields);
 
             foreach ($authors as $author) {
@@ -245,11 +245,14 @@ if (!class_exists('MA_REST_API')) {
                 ];
 
                 //add other fields
-                foreach ($authors_fields as $authors_field) {
-                    if (in_array($authors_field, $excluded_fields)) {
+                foreach ($authors_fields as $field_name => $field_config) {
+                    if (in_array($field_name, $excluded_fields)) {
                         continue;
                     }
-                    $currentAuthorData[$authors_field] = $author->$authors_field;
+                    if (isset($field_config['show_in_rest']) && $field_config['show_in_rest'] === 'off') {
+                        continue;
+                    }
+                    $currentAuthorData[$field_name] = $author->$field_name;
                 }
 
                 $authorsData[] = $currentAuthorData;
@@ -578,11 +581,18 @@ if (!class_exists('MA_REST_API')) {
                 'edit_link' => get_edit_term_link($author->term_id, 'author')
             ];
 
-            // Add all author fields to response
+            // Add only fields with show_in_rest enabled
             foreach (array_keys($available_fields) as $field_name) {
-                if (!in_array($field_name, ['user_id', 'avatar'])) {
-                    $response_data[$field_name] = $author->$field_name;
+                if (in_array($field_name, ['user_id', 'avatar'])) {
+                    continue;
                 }
+
+                $field_config = $available_fields[$field_name];
+                if (isset($field_config['show_in_rest']) && $field_config['show_in_rest'] === 'off') {
+                    continue;
+                }
+
+                $response_data[$field_name] = $author->$field_name;
             }
 
             return new WP_REST_Response($response_data, $status_code);
