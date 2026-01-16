@@ -21,3 +21,5 @@ services:
             - ../.cache/terminal/.npm/_logs:/root/.npm/_logs
             - ../.cache/terminal/.composer/cache:/root/.composer/cache
             - ../.cache/terminal/.composer/auth.json:/root/.composer/auth.json
+        environment:
+            - PLUGIN_NAME="PublishPress Authors"
