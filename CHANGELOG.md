@@ -1,6 +1,18 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+= [4.11.0] - 16 January 2026 =
+
+* Update: Add a setting to hide Author box Biographical Info for users in specific Author Categories, #2207
+* Update: Add a setting to show Author box Biographical Info for the first or last author only, #2208
+* Update: Add a setting to Hide/Show Author Fields in Rest API, #2203
+* Fixed: Critical error when trying to create an Author Category in Arabic, #2185
+* Fixed: Authors changes Rank Math "Publisher" schema, #2196
+* Fixed: PHP Warning: Undefined variable $featured_image, #2186
+* Fixed: Author Box "X" icon is missing by default from Author Fields, #2205
+* Update: Ensure users can only modify authors for posts they have permission to edit, #2220
+* Update: ES-FR-IT-Authors_TranslationUpdates_v.4.10.1, #2218
+
 = [4.10.1] - 06 November 2025 =
 
 * Fixed: Author search doesn't include "Guest Author With No User Account", #2161
