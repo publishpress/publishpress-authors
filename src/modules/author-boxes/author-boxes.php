@@ -1285,12 +1285,14 @@ class MA_Author_Boxes extends Module
             ) {
                 $editor_data['profile_fields_'.$social_field.'_display'] = 'icon';
             }
-            //set default ucon value
+            //set default icon value
             if (!isset($editor_data['profile_fields_'.$social_field.'_display_icon'])
                 || (isset($editor_data['profile_fields_'.$social_field.'_display_icon']) && empty($editor_data['profile_fields_'.$social_field.'_display_icon']))
             ) {
                 if ($social_field === 'tiktok') {
                     $editor_data['profile_fields_'.$social_field.'_display_icon'] = '<i class="fab fa-'.$social_field.'"></i>';
+                } elseif ($social_field === 'x') {
+                    $editor_data['profile_fields_'.$social_field.'_display_icon'] = '<i class="fab fa-x-twitter"></i>';
                 } else {
                     $editor_data['profile_fields_'.$social_field.'_display_icon'] = '<span class="dashicons dashicons-'.$social_field.'"></span>';
                 }
