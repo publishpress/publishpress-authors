@@ -2180,6 +2180,32 @@ if (!function_exists('get_ppma_get_all_user_roles')) {
     }
 }
 
+if (!function_exists('ppma_generate_slug')) {
+    /**
+     * Generate a URL-safe slug that preserves Arabic and other
+     * non-english characters #2185
+     *
+     * @param string $text The text to generate slug from
+     * @return string The generated slug
+     */
+    function ppma_generate_slug($text) {
+        // Convert to lowercase and replace spaces with hyphens
+        $slug = strtolower($text);
+        $slug = preg_replace('/\s+/', '-', $slug);
+
+        // Keep all Unicode letters, numbers, and hyphens
+        $slug = preg_replace('/[^\p{L}\p{N}-]/u', '', $slug);
+
+        // Replace multiple hyphens with single hyphen
+        $slug = preg_replace('/-+/', '-', $slug);
+
+        // Remove hyphens from start and end
+        $slug = trim($slug, '-');
+
+        return $slug;
+    }
+}
+
 if (!function_exists('publishpress_authors_remove_single_user_map_restriction')) {
     /**
      * Determine if single user map restriction should be removed
