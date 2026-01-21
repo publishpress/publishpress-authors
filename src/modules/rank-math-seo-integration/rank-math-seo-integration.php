@@ -206,15 +206,15 @@ if (!class_exists('MA_Rank_Math_Seo_Integration')) {
 
                     if (isset($data['publisher']) && !empty($data['richSnippet']['@type'])) {
 
-                        $canUpdate = true;
+                        $canUpdate = false;
 
                         // #1901 - Do not override publisher for NewsArticle
                         $richSnippetType = [];
                         if (isset($data['richSnippet']['@type'])) {
                             $richSnippetType = (array) $data['richSnippet']['@type'];
                         }
-                        if (in_array('NewsArticle', $richSnippetType, true)) {
-                            $canUpdate = false;
+                        if (!in_array('NewsArticle', $richSnippetType, true)) {
+                            $canUpdate = true;
                         }
 
                         // #2196 - Never override Organization publisher with Person data
@@ -222,12 +222,14 @@ if (!class_exists('MA_Rank_Math_Seo_Integration')) {
                         if (isset($data['publisher']['@type'])) {
                             $publisherTypes = (array) $data['publisher']['@type'];
                         }
+
+                        // Only update for person alone
                         if (
                             $canUpdate &&
-                            in_array('Organization', $publisherTypes, true) &&
-                            !in_array('Person', $publisherTypes, true)
+                            count($publisherTypes) === 1 &&
+                            in_array('Person', $publisherTypes, true)
                         ) {
-                            $canUpdate = false;
+                            $canUpdate = true;
                         }
 
                         if ($canUpdate) {
