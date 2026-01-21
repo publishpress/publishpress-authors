@@ -9,4 +9,5 @@ help:
 .PHONY: update
 
 update:
+	rm -f ./.cache/.last_image_update_check
 	bash ./scripts/services-pull-images.sh "$$@"
