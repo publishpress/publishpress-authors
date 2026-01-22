@@ -206,28 +206,24 @@ if (!class_exists('MA_Rank_Math_Seo_Integration')) {
 
                     if (isset($data['publisher']) && !empty($data['richSnippet']['@type'])) {
 
-                        $canUpdate = true;
-
-                        // #1901 - Do not override publisher for NewsArticle
-                        $richSnippetType = [];
-                        if (isset($data['richSnippet']['@type'])) {
-                            $richSnippetType = (array) $data['richSnippet']['@type'];
-                        }
-                        if (in_array('NewsArticle', $richSnippetType, true)) {
-                            $canUpdate = false;
-                        }
-
-                        // #2196 - Never override Organization publisher with Person data
                         $publisherTypes = [];
+                        $richSnippetType = [];
                         if (isset($data['publisher']['@type'])) {
                             $publisherTypes = (array) $data['publisher']['@type'];
                         }
+                        if (isset($data['richSnippet']['@type'])) {
+                            $richSnippetType = (array) $data['richSnippet']['@type'];
+                        }
+
+                        // #2196 - Never override Organization publisher with Person data
+                        // #1901 - Do not override publisher for NewsArticle
+                        $canUpdate = false;
                         if (
-                            $canUpdate &&
-                            in_array('Organization', $publisherTypes, true) &&
-                            !in_array('Person', $publisherTypes, true)
+                            count($publisherTypes) === 1
+                            && in_array('Person', $publisherTypes, true)
+                            && !in_array('NewsArticle', $richSnippetType, true)
                         ) {
-                            $canUpdate = false;
+                            $canUpdate = true;
                         }
 
                         if ($canUpdate) {

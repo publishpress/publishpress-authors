@@ -113,6 +113,9 @@ class Plugin
         add_shortcode('publishpress_authors_data', [$this, 'shortcodeAuthorsData']);
         add_shortcode('publishpress_authors_list', [$this, 'shortcodeAuthorsList']);
 
+        // Register custom query var for pagination
+        add_filter('query_vars', [$this, 'add_ppma_page_query_var']);
+
         // Action to display the author box
         add_action('pp_multiple_authors_show_author_box', [$this, 'action_echo_author_box'], 10, 5);
 
@@ -2005,9 +2008,10 @@ class Plugin
             $author_lists       = $legacyPlugin->modules->author_list->options->author_list_data;
             $author_list_data   = isset($author_lists[$attributes['list_id']]) ? $author_lists[$attributes['list_id']] : false;
             if ($author_list_data) {
+                $list_id = $attributes['list_id'];
                 $attributes = $author_list_data['shortcode_args'];
+                $attributes['list_id'] = $list_id;
             }
-
         }
 
         $attributes = wp_parse_args($attributes, $defaults);
@@ -2115,32 +2119,37 @@ class Plugin
         return $capabilities;
     }
 
-        /**
-         * Prevent ACF Extended from modifying authors list and edit page
-         *
-         * @param mixed $value
-         * @return mixed
-         */
-        public function disable_acfe_ui_for_authors($value)
-        {
-            global $current_screen, $pagenow;
+    public function add_ppma_page_query_var($query_vars) {
+        $query_vars[] = 'ppma_page';
+        return $query_vars;
+    }
 
-            if (!is_admin()) {
-                return $value;
-            }
+    /**
+     * Prevent ACF Extended from modifying authors list and edit page
+     *
+     * @param mixed $value
+     * @return mixed
+     */
+    public function disable_acfe_ui_for_authors($value)
+    {
+        global $current_screen, $pagenow;
 
-            if (!in_array($pagenow, ['edit-tags.php', 'term.php'])) {
-                return $value;
-            }
-
-            $screen_taxonomy = $current_screen ? $current_screen->taxonomy : '';
-
-            $taxonomy = isset($_GET['taxonomy']) ? sanitize_key($_GET['taxonomy']) : $screen_taxonomy;
-
-            if ($taxonomy === 'author') {
-                return false;
-            }
-
+        if (!is_admin()) {
             return $value;
         }
+
+        if (!in_array($pagenow, ['edit-tags.php', 'term.php'])) {
+            return $value;
+        }
+
+        $screen_taxonomy = $current_screen ? $current_screen->taxonomy : '';
+
+        $taxonomy = isset($_GET['taxonomy']) ? sanitize_key($_GET['taxonomy']) : $screen_taxonomy;
+
+        if ($taxonomy === 'author') {
+            return false;
+        }
+
+        return $value;
+    }
 }
