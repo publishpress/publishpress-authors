@@ -621,7 +621,9 @@
             var bio_refresh_trigger = [
                 'author_bio_show',
                 'author_bio_link',
-                'author_bio_limit'
+                'author_bio_limit',
+                'author_bio_display_position',
+                'author_bio_hide_categories'
             ];
             var avatar_refresh_trigger = [
                 'avatar_show',

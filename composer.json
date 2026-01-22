@@ -54,10 +54,10 @@
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2"
   },
   "scripts": {
-    "build": "/scripts/pbuild build",
-    "build:dir": "/scripts/pbuild build-dir",
-    "build:clean": "/scripts/pbuild clean",
-    "check:longpath": "longpath .",
+    "build": "build zip",
+    "build:dir": "build dir",
+    "build:clean": "build clean",
+    "check:longpath": "find-long-paths .",
     "pre-autoload-dump": "composer dumpautoload --working-dir=./lib",
     "pre-update-cmd": "composer update --working-dir=./lib",
     "pre-install-cmd": "composer install --working-dir=./lib",

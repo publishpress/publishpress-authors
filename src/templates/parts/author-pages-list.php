@@ -44,15 +44,15 @@ $extra_post_class          .= ($show_post_featured_image) ? ' has-featured-image
 
 $featured_image_style      = '';
 if ($author_post_custom_width > 0) {
-    $featured_image_style  .= 'width: '.$author_post_custom_width.'px;'; 
+    $featured_image_style  .= 'width: '.$author_post_custom_width.'px;';
 }
 if ($author_post_custom_height > 0) {
-    $featured_image_style  .= 'height: '.$author_post_custom_height.'px;max-height: '.$author_post_custom_height.'px;'; 
+    $featured_image_style  .= 'height: '.$author_post_custom_height.'px;max-height: '.$author_post_custom_height.'px;';
 }
 ?>
 <div class="ppma-author-pages site-main alignwide has-global-padding">
     <div class="ppma-page-header">
-        <?php 
+        <?php
         if ($show_author_page_title) {
             the_archive_title('<'.$author_pages_title_header.' class="ppma-page-title page-title">', '</'.$author_pages_title_header.'>');
         } ?>
@@ -70,6 +70,7 @@ if ($author_post_custom_height > 0) {
         <?php if (have_posts()) : ?>
             <?php while ( have_posts() ) : the_post(); ?>
                     <?php
+                    $featured_image = '';
                     $featured_image_alt = '';
                     if (has_post_thumbnail()) {
                         $image_data = wp_get_attachment_image_src(get_post_thumbnail_id(), 'single-post-thumbnail');

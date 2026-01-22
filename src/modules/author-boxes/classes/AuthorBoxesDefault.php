@@ -237,7 +237,7 @@ class AuthorBoxesDefault
         // x default
         $editor_data['profile_fields_x_html_tag'] = 'a';
         $editor_data['profile_fields_x_display'] = 'icon';
-        $editor_data['profile_fields_x_display_icon'] = '<span class="dashicons dashicons-twitter"></span>';
+        $editor_data['profile_fields_x_display_icon'] = '<i class="fab fa-x-twitter"></i>';
         $editor_data['profile_fields_x_display_icon_background_color'] = '#655997';
         $editor_data['profile_fields_x_color'] = '#ffffff';
         $editor_data['profile_fields_x_display_icon_border_radius'] = 100;

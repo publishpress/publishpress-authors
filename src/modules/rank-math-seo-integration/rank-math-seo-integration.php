@@ -123,7 +123,7 @@ if (!class_exists('MA_Rank_Math_Seo_Integration')) {
         }
 
         /**
-         * Add support for structured data for author terms 
+         * Add support for structured data for author terms
          * in Rank Math Seo plugin.
          *
          * @param $output
@@ -160,7 +160,7 @@ if (!class_exists('MA_Rank_Math_Seo_Integration')) {
         }
 
         /**
-         * Add support for structured data for post multiple authors 
+         * Add support for structured data for post multiple authors
          * in Rank Math Seo plugin.
          *
          * @param $output
@@ -198,41 +198,60 @@ if (!class_exists('MA_Rank_Math_Seo_Integration')) {
                             }
                         }
                     }
-                    
+
                     if (isset($data['richSnippet'])) {
                         $data['richSnippet']['author'] = $profile_page_authors;
                     }
                     $data['ProfilePage'] = $author_profile_data;
 
-                    /**
-                     * I still don't understand why publisher shouldn't be replaced in case of Guest author 
-                     * for NewsArticle but here's the issue that warrant the update https://github.com/publishpress/PublishPress-Authors/issues/1901
-                     */
-                    if (isset($data['publisher']) && !empty($data['richSnippet']['@type']) && $data['richSnippet']['@type'] !== 'NewsArticle') {
-                        $data_publisher = $data['publisher'];
-                        if (isset($author_profile_data['@name'])) {
-                            $data_publisher['name'] = $author_profile_data['@name'];
-                        } elseif (isset($author_profile_data['name'])) {
-                            $data_publisher['name'] = $author_profile_data['name'];
+                    if (isset($data['publisher']) && !empty($data['richSnippet']['@type'])) {
+
+                        $publisherTypes = [];
+                        $richSnippetType = [];
+                        if (isset($data['publisher']['@type'])) {
+                            $publisherTypes = (array) $data['publisher']['@type'];
                         }
-                        if (isset($author_profile_data['sameAs'])) {
-                            $data_publisher['sameAs'] = $author_profile_data['sameAs'];
+                        if (isset($data['richSnippet']['@type'])) {
+                            $richSnippetType = (array) $data['richSnippet']['@type'];
                         }
-                        
-                        if (isset($author_profile_data['@image'])) {
-                            if (isset($data_publisher['image'])) {
-                                $data_publisher['image'] = $author_profile_data['@image'];
-                            } elseif (isset($data_publisher['logo'])) {
-                                $data_publisher['logo'] = $author_profile_data['@image'];
+
+                        // #2196 - Never override Organization publisher with Person data
+                        // #1901 - Do not override publisher for NewsArticle
+                        $canUpdate = false;
+                        if (
+                            count($publisherTypes) === 1
+                            && in_array('Person', $publisherTypes, true)
+                            && !in_array('NewsArticle', $richSnippetType, true)
+                        ) {
+                            $canUpdate = true;
+                        }
+
+                        if ($canUpdate) {
+                            $data_publisher = $data['publisher'];
+                            if (isset($author_profile_data['@name'])) {
+                                $data_publisher['name'] = $author_profile_data['@name'];
+                            } elseif (isset($author_profile_data['name'])) {
+                                $data_publisher['name'] = $author_profile_data['name'];
                             }
-                        } elseif (isset($author_profile_data['image'])) {
-                            if (isset($data_publisher['image'])) {
-                                $data_publisher['image'] = $author_profile_data['image'];
-                            } elseif (isset($data_publisher['logo'])) {
-                                $data_publisher['logo'] = $author_profile_data['image'];
+                            if (isset($author_profile_data['sameAs'])) {
+                                $data_publisher['sameAs'] = $author_profile_data['sameAs'];
                             }
+
+                            if (isset($author_profile_data['@image'])) {
+                                if (isset($data_publisher['image'])) {
+                                    $data_publisher['image'] = $author_profile_data['@image'];
+                                } elseif (isset($data_publisher['logo'])) {
+                                    $data_publisher['logo'] = $author_profile_data['@image'];
+                                }
+                            } elseif (isset($author_profile_data['image'])) {
+                                if (isset($data_publisher['image'])) {
+                                    $data_publisher['image'] = $author_profile_data['image'];
+                                } elseif (isset($data_publisher['logo'])) {
+                                    $data_publisher['logo'] = $author_profile_data['image'];
+                                }
+                            }
+                            $data['publisher']       = $data_publisher;
                         }
-                        $data['publisher']       = $data_publisher;
                     }
 
                     //replace author at every possible location
@@ -240,7 +259,7 @@ if (!class_exists('MA_Rank_Math_Seo_Integration')) {
                         if (isset($details['author'])) {
                             $data[$index]['author'] = $publisher_profile_page_authors;
                         }
-                        
+
                         // add author category schema property
                         if ($index == 'WebPage') {
                             $author_categorized = false;
@@ -281,7 +300,7 @@ if (!class_exists('MA_Rank_Math_Seo_Integration')) {
          */
         protected function add_author_schema_property($data, $author)
         {
-    
+
             $author_fields = get_posts(
                 [
                     'post_type' => PPAuthorFields::POST_TYPE_CUSTOM_FIELDS,
@@ -311,13 +330,13 @@ if (!class_exists('MA_Rank_Math_Seo_Integration')) {
                     ],
                 ]
             );
-    
+
             $same_as_urls = [];
-    
+
             if (! empty($author->user_url)) {
                 $same_as_urls[] = $author->user_url;
             }
-    
+
             if (!empty($author_fields)) {
                 foreach ($author_fields as $author_field) {
 
@@ -344,13 +363,13 @@ if (!class_exists('MA_Rank_Math_Seo_Integration')) {
                     }
                 }
             }
-    
+
             // When CAP adds it, add the social profiles here.
             if (! empty($same_as_urls)) {
                 $same_as_urls   = \array_values(\array_unique($same_as_urls));
                 $data['sameAs'] = $same_as_urls;
             }
-    
+
             return $data;
         }
     }

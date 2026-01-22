@@ -643,6 +643,9 @@ class Post_Editor
 
         if (!empty($post_ids) && !empty($authors)) {
             foreach ($post_ids as $post_id) {
+                if (!current_user_can('edit_post', $post_id)) {
+                    continue;
+                }
                 Utils::set_post_authors($post_id, $authors, true, $fallbackUserId);
                 Utils::set_post_authors($post_id, $authors, true, $fallbackUserId, $author_categories);
                 set_transient("post_quick_edited_{$post_id}", true, 60);
@@ -677,6 +680,10 @@ class Post_Editor
             || !$taxonomy
             || !current_user_can($taxonomy->cap->assign_terms)
         ) {
+            return;
+        }
+
+        if (!current_user_can('edit_post', $post_id)) {
             return;
         }
 

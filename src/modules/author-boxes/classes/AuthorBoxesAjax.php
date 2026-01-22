@@ -237,6 +237,7 @@ global $ppma_template_authors, $ppma_template_authors_post, $post, $ppma_instanc
 
 $authors            = $ppma_template_authors;
 $author_counts      = count($authors);
+$global_author_index = 0;
 $post_id = isset($ppma_template_authors_post->ID) ? $ppma_template_authors_post->ID : $post->ID;
 //Group author by categories
 $author_categories_data = ppma_get_grouped_post_authors($post_id, $authors);
@@ -298,6 +299,19 @@ if (!empty($shortcodes_data) && is_array($shortcodes_data)) {
         }
     endforeach;
 }
+
+// Check display position setting
+$display_position = !empty($args['author_bio_display_position']['value'])
+    ? $args['author_bio_display_position']['value']
+    : 'all';
+
+// Check if bio should be hidden for author categories
+$hide_for_categories = '';
+if (!empty($args['author_bio_hide_categories']['value'])) {
+$hide_for_categories = is_array($args['author_bio_hide_categories']['value']) ? $args['author_bio_hide_categories']['value'] : [];
+$hide_for_categories = "'" . implode("','", $hide_for_categories) . "'";
+}
+$hide_for_categories_string = "[$hide_for_categories]";
 ?>
 
 <<?php echo ($li_style ? 'div' : 'span'); ?> class="<?php echo $body_class; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>">
@@ -569,11 +583,29 @@ if ($display_name_position === 'after_avatar') :
 endif ?>
 <?php echo $name_row_extra ; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 <?php if ($args['author_bio_show']['value']) : ?>
+
+    </?php
+    $should_show_bio = true;
+    if ('<?php echo $display_position; ?>' !== 'all') {
+        if ('<?php echo $display_position; ?>' === 'first' && $global_author_index !== 0) {
+            $should_show_bio = false;
+        } elseif ('<?php echo $display_position; ?>' === 'last' && $global_author_index !== $author_counts - 1) {
+            $should_show_bio = false;
+        }
+    }
+
+    // Then check category override
+    if ($should_show_bio && !empty(<?php echo $hide_for_categories_string; ?>) && in_array($author_category_data['id'], <?php echo $hide_for_categories_string; ?>)) {
+        $should_show_bio = false;
+    }
+    if ($should_show_bio) :
+    ?>
                             <<?php echo esc_html($args['author_bio_html_tag']['value']); ?> class="pp-author-boxes-description multiple-authors-description author-description-</?php echo esc_attr($index); ?>">
 <?php if ($args['author_bio_link']['value']) : ?><a href="</?php echo esc_url($author->link); ?>" title="</?php echo esc_attr__('Author', 'publishpress-authors'); ?>"><?php endif; ?>
                                 </?php echo wpautop($author->get_description(<?php echo esc_html($args['author_bio_limit']['value']); ?>)); ?>
 <?php if ($args['author_bio_link']['value']) : ?></a><?php endif; ?>
                             </<?php echo esc_html($args['author_bio_html_tag']['value']); ?>>
+    </?php endif; ?>
 <?php endif; ?>
                             <?php echo $bio_row_extra ; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
@@ -625,6 +657,7 @@ endif ?>
 <?php if ($li_style) : ?>
                 </li>
 <?php endif; ?>
+</?php $global_author_index++; ?>
             </?php endforeach; ?>
         </?php endif; ?>
 <?php if ($li_style) : ?>

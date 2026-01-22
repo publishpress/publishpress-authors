@@ -338,7 +338,21 @@ class Authors_Widget extends WP_Widget
         $showEmpty = isset($instance['show_empty']) ? $instance['show_empty'] : false;
 
         if (isset($instance['limit_per_page']) && (int)$instance['limit_per_page'] > 0 && !isset($instance['page'])) {
-            $instance['page'] = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
+            // Check both parameters, prioritize ppma_page if both exist
+            $ppma_page = get_query_var('ppma_page');
+            if (empty($ppma_page) && isset($_GET['ppma_page'])) {
+                $ppma_page = $_GET['ppma_page'];
+            }
+            $paged = get_query_var('paged');
+
+            if ($ppma_page && is_numeric($ppma_page)) {
+                $instance['page'] = (int)$ppma_page;
+            } elseif ($paged && is_numeric($paged)) {
+                $instance['page'] = (int)$paged;
+            } else {
+                $instance['page'] = 1;
+            }
         }
 
         $author_results   = publishpress_authors_get_all_authors(array('hide_empty' => !$showEmpty), $instance);
@@ -348,12 +362,30 @@ class Authors_Widget extends WP_Widget
             $per_page    = $author_results['per_page'];
             $page        = $author_results['page'];
             $pages       = ceil($total_terms/$per_page);
-            $pagination  = paginate_links(
-                [
-                    'current' => $page,
-                    'total' => ceil($total_terms / $per_page)
-                ]
-            );
+
+            if (
+                (isset($instance['list_id']) && !empty($instance['list_id']))
+                ||
+                (isset($_GET['page']) && $_GET['page'] === 'ppma-author-list')
+            ) {
+                $base_url = remove_query_arg('ppma_page', $_SERVER['REQUEST_URI']);
+                $pagination = paginate_links(
+                    [
+                        'base' => $base_url . '%_%',
+                        'format' => (strpos($base_url, '?') !== false) ? '&ppma_page=%#%' : '?ppma_page=%#%',
+                        'current' => $page,
+                        'total' => $pages,
+                        'add_args' => []
+                    ]
+                );
+            } else {
+                $pagination = paginate_links(
+                    [
+                        'current' => $page,
+                        'total' => $pages
+                    ]
+                );
+            }
 
         } else {
             $authors    = $author_results;
@@ -386,8 +418,10 @@ class Authors_Widget extends WP_Widget
         // search box
         $search_box_html = '';
         if (isset($instance['search_box']) && $instance['search_box']) {
+            $current_url = remove_query_arg(['ppma_page', 'paged', 'seach_query', 'search_field'], $_SERVER['REQUEST_URI']);
+
             $search_box_html .= '<div class="pp-multiple-authors-searchbox searchbox">';
-            $search_box_html .= '<form action="" method="GET">';
+            $search_box_html .= '<form action="' . esc_url($current_url) . '" method="GET">';
             $search_box_html .= '<input class="widefat" id="authors-search-input" name="seach_query" type="search" value="'. esc_attr($search_query) .'" placeholder="'. esc_attr($search_placeholder) .'">';
             if ($filter_fields) {
                 $search_box_html .= '<select id="authors-search-filter" name="search_field">';
