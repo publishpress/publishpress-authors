@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-= [4.11.0] - 19 January 2026 =
+[4.11.0] - 22 January, 2026
 
 * Update: Add a setting to hide Author box Biographical Info for users in specific Author Categories, #2207
 * Update: Add a setting to show Author box Biographical Info for the first or last author only, #2208
@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Ensure users can only modify authors for posts they have permission to edit, #2220
 * Update: ES-FR-IT-Authors_TranslationUpdates_v.4.10.1, #2218
 
-= [4.10.1] - 06 November 2025 =
+[4.10.1] - 06 November, 2025
 
 * Fixed: Author search doesn't include "Guest Author With No User Account", #2161
 * Fixed: Creating post using PublishPress Planner calendar shows ["post_author" is empty], #2163
@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Errors when opening the PublishPress Authors translation file (.po or .pot), #2156
 * Update: Authors Translation Updates v.4.10.0, #2159
 
-= [4.10.0] - 14 October 2025 =
+[4.10.0] - 14 October, 2025
 
 * Update: Add a setting to choose which roles are available as Mapped Authors, #1693
 * Update: Allow subscribers as multiple author selection, #1693
@@ -38,7 +38,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Media Library queries, #2131
 * Fixed: Prevent duplicate queries on get_post_authors, #2141
 
-= [4.9.1] - 18 September 2025 =
+[4.9.1] - 18 September, 2025
 
 * Fixed: Excess queries in Media Library and page load, #2119
 * Update: Allow users to hide editor Author Box in settings, #2110
@@ -46,7 +46,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Changed: Move Author Profiles "Enable Guest Author With No User Account" to "Advanced Tab(legacy), #2109
 * Update: Translations update, #2113
 
-= [4.9.0] - 25 August 2025 =
+[4.9.0] - 25 August, 2025
 
 * Feature: Allow users to choose an author box for posts, #1761
 * Compat: Polylang compat: Posts not showing in frontend when switching language,  #1721
@@ -61,13 +61,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Feature: Add option to remove the link from the Author Box display name [Pro], #1855
 * Feature: Exclude users from Author lists based on Roles, Author Types and Author Categories [PRO], #2086
 
-= [4.8.1] - 30 July 2025 =
+[4.8.1] - 30 July, 2025
 
 * Fixed: PHP Fatal error: Uncaught TypeError: array_search(): Argument #2 ($haystack) must be of type array, null given, #2081
 * Update: Add Maintenance button to create Author Categories table, #2046
 * Update: Add a loco.xml file for Authors Pro, #2055
 
-= [4.8.0] - 23 July 2025 =
+[4.8.0] - 23 July, 2025
 
 * Feature: Add new Rest API endpoint to create and update Authors and their fields, #2065
 * Fixed: Issue with get_the_author_posts_link(), #2054
@@ -78,12 +78,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Compat: ACF Compatibility when secondary author is editing post ACF Block, #2024
 * Update: Pro upgrade nudges, #2058
 
-= [4.7.6] - 22 April 2025 =
+[4.7.6] - 22 April, 2025
 
 * Fixes: Limit Author boxes custom template to theme directory, #2034
 * Update: Authors FREE Translation Updates_v.4.7.5, #2033
 
-= [4.7.5] - 07 April 2025 =
+[4.7.5] - 07 April, 2025
 
 * Update: Add field to assign Authors to default Author Category from Author Edit screen, #1808
 * Update: Add Authors to their assigned defauly category on new post, #1808
@@ -103,7 +103,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Authors Translation Updates v.4.7.4, #2004
 * Update: Translation pt_BR, #2005
 
-= [4.7.4] - 20 Feb 2025 =
+[4.7.4] - 20 Feb, 2025
 
 * Fixed: Fix data sanitization on author categories
 * Fixed: PHP Warning with Rank Math, #1970
@@ -123,7 +123,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Update text for bulk edit, #1978
 * Update: Authors Translation Updates v.4.7.3, #1966
 
-= [4.7.3] - 16 Dec 2024 =
+[4.7.3] - 16 Dec, 2024
 
 * Fixed: Can't change the layout for new Author Lists, #1892
 * Fixed: HTML Title Issue with AIO SEO, #1899
@@ -146,13 +146,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Moving Authors to new category is not reflecting after saving and reloading post, #1932
 * Update: Authors Translation Updates v.4.7.2, #1919
 
-= [4.7.2] - 15 Oct 2024 =
+[4.7.2] - 15 Oct, 2024
 
 * Update: Improve Author User data update capability check
 * Fixed: Fix Guest Author conversion not working for Author without email, #1908
 * Update: Brazil Translation Update, #1910
 
-= [4.7.1] - 10 July 2024 =
+[4.7.1] - 10 July, 2024
 
 * Update: Add Trash feature to Authors Lists, #1848
 * Fixed: Author Box Export Template not same as layout, #1754
@@ -165,7 +165,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Update promo box, #1840
 * Update: Authors Translation Updates_v.4.7.0, #1853
 
-= [4.7.0] - 20 June 2024 =
+[4.7.0] - 20 June, 2024
 
 * Update: Add Authors List Menu, #1009
 * Update: Move Author Pages to the Main Menu, #1779
@@ -175,7 +175,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Update Author Box text labels, #1795
 * Update: Authors Translation Updates, #1799
 
-= [4.6.0] - 03 June 2024 =
+[4.6.0] - 03 June, 2024
 
 * Update: Add Author Boxes Gutenberg Block, #11
 * Update: Add Author box icon search, #1771
@@ -189,7 +189,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Only enable the Author Box on Posts on new installation, #1766
 * Update: Authors Translation Updates v.4.5.0, #1770
 
-= [4.5.0] - 15 May 2024 =
+[4.5.0] - 15 May, 2024
 
 * Update: Add new author box : Boxed (Categories), #1737
 * Update: Add new author box : Two Columns (Categories), #1738
@@ -206,7 +206,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Update promo box to add "Support for Polylang", #1727
 * Update: Translation Updates and typo error in Authors FREE v.4.4.1, #1715
 
-= [4.4.1] - 3 April 2024 =
+[4.4.1] - 3 April, 2024
 
 * Update: Add a setting to choose which Author types are allowed, #1692
 * Fixed: SEO Framework: deprecated Hook notice in error log, #1700
@@ -217,7 +217,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Disable the lightweight Guest Authors feature by default for new installation, #1703
 * Update: Translation Updates ES-FR-IT Authors FREE v4.4.0, #1695
 
-= [4.4.0] - 6 Mar 2024 =
+[4.4.0] - 6 Mar, 2024
 
 * Update: Add User Account option for Guest Authors, #1287
 * Update: Add Schema option for Author Categories, #1642
@@ -226,7 +226,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fatal error: Uncaught TypeError: Illegal offset type in isset or empty, #1644
 * Update: Translation Updates for Authors FREE v. 4.3.2, #1673
 
-= [4.3.2] - 22 Feb 2024 =
+[4.3.2] - 22 Feb, 2024
 
 * Update: Add author_categories parameter to authors data shortcode [publishpress_authors_data author_categories="reviewer"], #1658
 * Update: Add author_categories parameter to authors box shortcode [publishpress_authors_box author_categories="reviewer,coauthor"], #1658
@@ -238,7 +238,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Show Post Default Author box in Author box lists, #1639
 * Update: Authors FREE Translations Updates 25 January 2024, #1636
 
-= [4.3.1] - 24 Jan 2024 =
+[4.3.1] - 24 Jan, 2024
 
 * Update: Allow users to choose the target=”_blank” attribute for author field links, #1600
 * Update: Add rel options on Author Field Link, #1488
@@ -250,7 +250,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: PHP 8.2 Deprecated notices, #1533
 * Update: Authors Translation Updates January 2024, #1617
 
-= [4.3.0] - 10 Jan 2024 =
+[4.3.0] - 10 Jan, 2024
 
 * Feature: Add the ability to group / categorize Authors (Author Categories), #58
 * Update: Add user_id and term_id parameter to [publishpress_authors_box] shortcode, #1602
@@ -269,7 +269,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Add filter to disable settings flush_rewrite_rules when authors page is enabled/disabled, #1425
 * Update: ES-FR-IT translation updates September 2023, #1478
 
-= [4.2.1] - 04 Sep 2023 =
+[4.2.1] - 04 Sep, 2023
 
 * Feature: Allow users to re-order Author Boxes fields, #1441
 * Feature: Allow user to control the order of fields in the "Author Profile" via "Author Fields" Drag and Drop, #1463
@@ -287,7 +287,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: [publishpress_authors_list] shortcode issue, #1448
 * Fixed: Authors data shortcode separator does not having space, #1445
 
-= [4.2.0] - 16 Aug 2023 =
+[4.2.0] - 16 Aug, 2023
 
 * Changed: Replaced Pimple library with a prefixed version of the library to avoid conflicts with other plugins;
 * Changed: Replaced Psr/Container library with a prefixed version of the library to avoid conflicts with other plugins;
@@ -296,13 +296,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Changed: Updated internal libraries to latest versions;
 * Changed: Refactor some occurrences of "plugins_loaded" replacing it by a new action: "plublishpress_authors_loaded" which runs after the requirements and libraries are loaded, but before the plugin is initialized;
 
-= [4.1.7] - 10 Jul 2023 =
+[4.1.7] - 10 Jul, 2023
 
 * Feature: New "Display Name" setting, #1407
 * Fixed: Improve "display name as publicly” field, #1409
 * Fixed: Warning: Attempt to read property "display_name" when editing guest author, #1410
 
-= [4.1.6] - 4 Jul 2023 =
+[4.1.6] - 4 Jul, 2023
 
 * Feature: Added author boxes author separator field, #1379
 * Feature: Added Prefix and suffix fields for author box row #1382
@@ -321,7 +321,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Drop the ad for Blocks, #1317
 * Fixed: Issues with Divi WordPress Theme, #1383
 
-= [4.1.5] - 1 Jun 2023 =
+[4.1.5] - 1 Jun, 2023
 
 * Fixed: Author boxes styles not working after migration from legacy layout, #1341
 * Fixed: Last column has different size on Author List, #1345
@@ -332,11 +332,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Authors FREE ES-IT Translation Updates May 12, 2023, #1343
 * Fixed: French translation update for Authors FREE May 2023, #1347
 
-= [4.1.4] - 10 May 2023 =
+[4.1.4] - 10 May, 2023
 
 * Update: Add support legacy layout slug in author boxes, #1334
 
-= [4.1.3] - 9 May 2023 =
+[4.1.3] - 9 May, 2023
 
 * Update: Remove support for legacy layouts and twig dependency, #1204
 * Feature: Allow users to choose a default avatar, #1301
@@ -354,7 +354,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Authors not in alphabetical order for authors_index layout, #1267
 * Fixed: Problem with select required field when updating authors, #1257
 
-= [4.1.2] - 31 Jan 2023 =
+[4.1.2] - 31 Jan, 2023
 
 * Update: Add "SameAs" schema option to links, #1189
 * Fixed: Compability Issue with beaver builder, #1227
@@ -368,14 +368,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Replace "Biographical Info" with "Author Bio", #1176
 * Update: ES-FR-IT Translations Updates January 2023, #1177
 
-= [4.1.1] - 16 Jan 2023 =
+[4.1.1] - 16 Jan, 2023
 
 * Update: Update Author Pages Schema to Person Schema type, #1163
 * Fixed: Incorrect display name is being used for schema, #1160
 * Update: Extra text for "Display Name" field, #1161
 * Update: ES-FR-IT Translations Updates January 2023, #1177
 
-= [4.1.0] - 04 Jan 2023 =
+[4.1.0] - 04 Jan, 2023
 
 * Update: Integrate PublishPress Authors with Yoast, #1102
 * Update: Add support for structured data for authors for RankMath SEO Plugin, #391
@@ -390,7 +390,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Code looking for wrong function before getting multiple authors in the author box, #571
 * Update: Italian Translation Update December 2022, #1145
 
-= [4.0.1] - 06 Dec 2022 =
+[4.0.1] - 06 Dec, 2022
 
 * Fixed: Icon does not hide when there is no value, #1103
 * Fixed: Author pages pulling excerpts from content, #1112
@@ -398,7 +398,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Author Field Link is not Active link, #1105
 * Fixed: Link does not rendered on WYSIWYG field, #1101
 
-= [4.0.0] - 29 Nov 2022 =
+[4.0.0] - 29 Nov, 2022
 
 * Update: Added last_article_date to publishpress_authors_list shortcode [publishpress_authors_list last_article_date="1 year ago"]
 * Update: Allow to set Author Boxes previewing authors, #913
@@ -426,7 +426,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Authors_ES-IT_Translation_Update-19-October 2022, #979
 * Update: FRENCH_Translation Update_Authors 20 October2022, #984
 
-= [3.30.1] - 02 Nov 2022 =
+[3.30.1] - 02 Nov, 2022
 
 * Update: Added last_article_date to publishpress_authors_list shortcode [publishpress_authors_list last_article_date="1 year ago"]
 * Update: Allow to set Author Boxes previewing authors, #913
@@ -444,7 +444,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Authors_ES-IT_Translation_Update-19-October 2022, #979
 * Update: FRENCH_Translation Update_Authors 20 October2022, #984
 
-= [3.30.0] - 18 Oct 2022 =
+[3.30.0] - 18 Oct, 2022
 
 * Feature: Add new improved layouts (Author Boxes), #896
 * Update: Deprecate Twig layout as legacy, #758
@@ -461,12 +461,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Authors-FR-TranslationUpdate-September2022, #908
 * Update: NewAuthors-Version3.22.0-ES-FR-IT-TranslationUpdate-7October2022, #932
 
-= [3.23.0] - 3 Oct 2022 =
+[3.23.0] - 3 Oct, 2022
 
 * Update: Upgrade twig to v1.44.7, #921
 * Update: Update minimum php requirement to PHP 7.2.5
 
-= [3.22.0] - 1 Sep 2022 =
+[3.22.0] - 1 Sep, 2022
 
 * Update: Added avatar to publishpress_authors_data shortcode [publishpress_authors_data field="avatar"]  #887
 * Update: Added settings to disable mapped user check when creating author, #885
@@ -476,11 +476,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Added Custom fields to Authors REST API data #877
 * Update: Authors_ES_FR_IT_Translations_August17-2022, #876
 
-= [3.21.1] - 23 Aug 2022 =
+[3.21.1] - 23 Aug, 2022
 
 * Fixed: Empty author result when using [publishpress_authors_list] shortcode, #878
 
-= [3.21.0] - 17 Aug 2022 =
+[3.21.0] - 17 Aug, 2022
 
 * Update: Improved REST API support, #509
 * Feature: Add profile field sorting options to the Authors List (first_name last_name custom_field_slug), #257
@@ -497,7 +497,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Broken closing div in author page, #841
 * Update: Authors-ES-FR-IT- Translation-Update-August2022, #847
 
-= [3.20.1] - 08 Aug 2022 =
+[3.20.1] - 08 Aug, 2022
 
 * Feature: Added 'search_box' option to authors shortcode and widget, #780
 * Feature: Added 'search_field' option to authors shortcode and widget, #780
@@ -507,7 +507,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Allow users to edit "Authors Recent", "Authors Index" and default layouts, #801
 * Update: ES-FR-IT translation updates, #804
 
-= [3.20.0] - 28 Jul 2022 =
+[3.20.0] - 28 Jul, 2022
 
 * Fixed: Bulk edit not working, #741
 * Feature: Added 'authors_recent' layout for Authors List, #124
@@ -521,7 +521,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Feature: Add new options to author list widget, #788
 * Update: Italian and spanish translation update, #772
 
-= [3.19.1] - 18 Jul 2022 =
+[3.19.1] - 18 Jul, 2022
 
 * Feature: Add a setting for selecting Fallback user for Guest Authors, #743
 * Feature: Allow users to limit the length of a bio in a layout using author.get_description(150), #754
@@ -531,14 +531,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Change "Display" tab to "Author Boxes" in settings, #755
 * Update: Remain on active tab after updating settings, #746
 
-= [3.19.0] - 27 Jun 2022 =
+[3.19.0] - 27 Jun, 2022
 
 * Feature: Added new Author Profile Pages, #417
 * Added: Settings tab for "Author Pages", #729
 * Update: Authors taxonomy queries improvement, #527
 * Added: Added filter to authors rest response, #726
 
-= [3.18.0] - 13 Jun 2022 =
+[3.18.0] - 13 Jun, 2022
 
 * Fixed: Allow authors to have the same name, #682
 * Added: Extend [publishpress_authors_data] shortcode to return authors user object, #697
@@ -551,7 +551,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Author Box shortcode is in the wrong place, #695
 * Fixed: Small typo in shortcode, #693
 
-= [3.17.0] - 30 May 2022 =
+[3.17.0] - 30 May, 2022
 
 * Added: Option to enable/disable loading font awesome assets in frontend, #625
 * Added: Support for user fields WPML translations, #642
@@ -559,7 +559,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Multiple Authors Compability with Yoast SEO authors's title, #672
 * Update: Change [author_box] to [publishpress_authors_box] in shortcode tab, #670
 
-= [3.16.3] - 18 May 2022 =
+[3.16.3] - 18 May, 2022
 
 * Added: Add an Author Filter for Posts, #90
 * Update: Enable Author Profile for Administator and other roles with 'ppma_manage_authors', #649
@@ -567,7 +567,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Run the WordPress VIP scans on Authors, #639
 * Fixed: Authors menu links can be split up by PODS content types, #684
 
-= [3.16.2] - 09 May 2022 =
+[3.16.2] - 09 May, 2022
 
 * Fixed: Fix incorrect "Mine" counter in admin posts list, #591
 * Fixed: Fix error with subscribers/non admin inability to see see Author page posts, #584
@@ -576,7 +576,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Update: Use built-in capability check when searching users via ajax, #645
 * Added: Disable Free version with Pro is active #615
 
-= [3.16.1] - 13 Apr 2022 =
+[3.16.1] - 13 Apr, 2022
 
 * Fixed: Fix author mapped to user error when adding new author, #626;
 * Fixed: Fix test for checking the author link in the frontend;
@@ -584,7 +584,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fix Fatal error when "Create missed post authors" button is clicked, #623;
 * Fixed: Fix author profile allowing to add html tags in the bio text, #619;
 
-= [3.16.0] - 23 Mar 2022 =
+[3.16.0] - 23 Mar, 2022
 
 * Added: Add option to authors update their own profile, #24;
 * Fixed: Fix new author form not allowing to map a user to multiple authors, #64;
@@ -594,11 +594,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fix description field that were displayed in the author profile after navigating throw the tabs, #605;
 * Fixed: Fix small extra spacing in image link, #607;
 
-= [3.15.1] - 17 Mar 2022 =
+[3.15.1] - 17 Mar, 2022
 
 * Fixed: Fix fatal error: Cannot declare class PublishPress\WordPressBanners\BannersMain;
 
-= [3.15.0] - 16 Mar 2022 =
+[3.15.0] - 16 Mar, 2022
 
 * Fixed: Fix error where secondary authors were dropped off the posts if loading author pages on sites using plain permalinks, #593;
 * Fixed: Fix error when trying to create an author for user that already is author, #592;
@@ -621,7 +621,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Changed: Added conditional looking for WP_DEBUG = true before logging some errors;
 * Fixed: Fix WordPress Banners library using autoload to fix an issue about file not found "BannersMain.php" on the Pro plugin, or sites that rely on Composer;
 
-= [3.14.10] - 16 Mar 2022 =
+[3.14.10] - 16 Mar, 2022
 
 * Fixed: Fix the character "&" in the Bibliographical Info field, which was converted to "&amp;", #566;
 * Fixed: Fix PHP 8 compatibility addressing the error: PHP Fatal error: Uncaught TypeError: array_key_exists, #585;
@@ -637,14 +637,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fix the banner about PublishPress Blocks that was displayed even if Blocks is already activated, #549;
 * Changed: Error log messages are only added if WP_DEBUG is enabled;
 
-= [3.14.9] - 18 Nov 2021 =
+[3.14.9] - 18 Nov, 2021
 
 * Fixed: The author profile URL for guest authors was not added to the schema for Google rich results with Yoast SEO, #545;
 * Fixed: PHP Fatal error: Call to undefined method stdClass::get_avatar_url(), #544;
 * Fixed: Call to undefined method stdClass::is_guest() in rest-api.php, #546;
 * Changed: Show the reviews banner on any admin page;
 
-= [3.14.8] - 04 Nov 2021 =
+[3.14.8] - 04 Nov, 2021
 
 * Fixed: HTML special chars in the author name are not displayed correctly, #531;
 * Fixed: Access denied while creating posts with contributor and another user as default author, #534;
@@ -653,7 +653,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fix style for buttons in the settings page, #537;
 * Added: Add notice asking for a review;
 
-= [3.14.7] - 21 Sep 2021 =
+[3.14.7] - 21 Sep, 2021
 
 * Fixed: Fix robots meta tag when Yoast SEO is installed and it is not the authors page, #508;
 * Fixed: Can't save multiple authors if Yoast SEO is activated, #504;
@@ -664,7 +664,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Authors mapped to user are treated as as guest authors after removing all other authors in the post edit page, #523;
 * Fixed: PHP notice: Trying to get property of non-object in Post_Editor.php on line 293, #521;
 
-= [3.14.6] - 14 Sep 2021 =
+[3.14.6] - 14 Sep, 2021
 
 * Fixed: Fix the output of guest authors data on the frontend, #500;
 * Fixed: Fix "get_multiple_authors" resulting on error 500 when post author is zero, #511;
@@ -672,7 +672,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fix PHP Notice: Trying to get property 'display_name' of non-object on authors column for post_author = 0, #514;
 * Fixed: Fix Yoast SEO structured data schema. Bumped min Yoast SEO version to 14.0, #472;
 
-= [3.14.5] - 01 Sep 2021 =
+[3.14.5] - 01 Sep, 2021
 
 * Fixed: Fix query for author posts doesn't work if instead of the author name we have the author ID or term ID, #487;
 * Fixed: Fix reduced font size for the author description, #435;
@@ -681,7 +681,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fix PHP warnings for the shortcode "authors_list", used in the Pro plugin, #498;
 * Fixed: Add "author" taxonomy to Polylang, #18;
 
-= [3.14.4] - 19 Aug 2021 =
+[3.14.4] - 19 Aug, 2021
 
 * Fixed: Fix author profiles that are automatically created for users that are not on the selected user roles, #464;
 * Fixed: Fix authors not created when registered from the frontend for the selected user roles, #420;
@@ -689,17 +689,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fix PHP notice: Trying to get property 'name' of non-object in Utils.php, #485;
 * Fixed: Fix PHP notice: Trying to access array offset on value of type bool in class-wp-list-util.php, #486;
 
-= [3.14.3] - 01 Aug 2021 =
+[3.14.3] - 01 Aug, 2021
 
 * Fixed: Add class "bypostauthor" for secondary authors on comments, #154;
 * Fixed: Fixed the author byline on 3rd party themes in the front-end, #473;
 * Added: Added CSS class with the author slug to each author in the default layouts;
 
-= [3.14.2] - 21 Jul 2021 =
+[3.14.2] - 21 Jul, 2021
 
 * Fixed: Fix error on block editor for posts with guest authors, #463;
 
-= [3.14.1] - 20 Jul 2021 =
+[3.14.1] - 20 Jul, 2021
 
 * Changed: Invert position of Edit User and Edit Author Profile links in the term actions, #453;
 * Fixed: Fix sanitization of the user_id before adding it to a query;
@@ -708,7 +708,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Add compatibility with PublishPress' calendar to support multiple authors in the calendar form;
 * Fixed: Fix the warning: Undefined array key "post" in multiple-authors.php file, when opening the General settings page, #459;
 
-= [3.14.0] - 26 May 2021 =
+[3.14.0] - 26 May, 2021
 
 * Added: Added new setting for selecting multiple post types to display in the author page, #436;
 * Added: Added new function "get_by_id" to the Author class, accepting positive integer for User ID, and negative integer for term ID, #423;
@@ -717,7 +717,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Changed: Legacy shortcodes are loaded by default, but defining the constant PUBLISHPRESS_AUTHORS_LOAD_LEGACY_SHORTCODES = false will prevent to load them, #426;
 * Fixed: Fix the Author::get_avatar_url method returning the avatar URL, #443;
 
-= [3.13.1] - 22 Apr 2021 =
+[3.13.1] - 22 Apr, 2021
 
 * Fixed: Fix the color scheme for the Pro plugin, #411;
 * Fixed: Fix the links style for the boxed and centered layouts, #414;
@@ -727,7 +727,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fix the CLI subcommand create-terms-for-posts adding support for the following arguments: [--post_type=<ptype>] [--posts_per_page=<num>] [--paged=<page>], #415;
 * Changed: Temporarily disabled the CLI subcommands: update-author-terms, assign-coauthors, assign-user-to-coauthor, reassign-terms, rename-coauthor, swap-coauthors, remove-terms-from-revisions, #415;
 
-= [3.13.0] - 18 Mar 2021 =
+[3.13.0] - 18 Mar, 2021
 
 * Added: Improve layout for Centered box and add a color picker to choose a base color, #376, #377;
 * Added: Added new filter to extend the "post" variable exposed to the layouts. The new filter: "publishpress_authors_layout_post_properties", #384;
@@ -740,7 +740,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: PHP Fatal error: Uncaught Error: [] operator not supported for strings in MA_Multiple_Authors->filter_workflow_receiver_post_authors #403;
 * Changed: Change the default layout to "boxed", #370;
 
-= [3.12.0] - 23 Feb 2021 =
+[3.12.0] - 23 Feb, 2021
 
 * Added: Added filters for customizing the byline on Elementor skins: publishpress_authors_elementor_posts_skin_cards_byline, publishpress_authors_elementor_posts_skin_classic_byline, #335;
 * Changed: Improved the style for the Boxed layout, #332;
@@ -761,7 +761,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Improved performance on author pages reducing the number of database queries only looking for an author taxonomy if a user was not found;
 * Fixed: Fix the Authors List widget title alignment wrapping it on a H2 tag;
 
-= [3.11.0] - 25 Jan 2021 =
+[3.11.0] - 25 Jan, 2021
 
 * Added: Added fields for setting the plural and single title to the author box and widget, #75;
 * Added: Added Rest API support to list the post's authors, #311;
@@ -782,7 +782,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fixed multiple footers displayed when both Free and Pro are activated, #312;
 * Fixed: Fix PHP error when an older version of YoastSEO is installed and the warning "not compatible YoastSEO" is showed;
 
-= [3.10.0] - 15 Dec 2020 =
+[3.10.0] - 15 Dec, 2020
 
 * Fixed: Changed the way we sync post_author column: Current user will only be set as author if no terms where found for the post, or there are only guest authors. If post_author is empty, we set it for the current user, creating an author term for it, #286.
 * Fixed: Duplicated queries for the same given email in the method MultipleAuthors\Classes\Author_Utils::get_author_term_id_by_email(). Added a cache for the query results and an option to ignore the cache, #293;
@@ -799,20 +799,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Added: Added new constant "PUBLISHPRESS_AUTHORS_SYNC_POST_AUTHOR_CHUNK_SIZE" for defining the size of the chunck of posts to convert authors in the maintenance task: Update author field on posts. Default to 10;
 * Removed: Removed the support to the filter "coauthors_auto_apply_template_tags", #297;
 
-= [3.9.0] - 24 Nov 2020 =
+[3.9.0] - 24 Nov, 2020
 
 * Added: Added support to Bulk Edit for authors in the post list, #263 and #280;
 * Fixed: Fixed maintenance tasks to consider all the selected post types and not "post" only, #276;
 * Fixed: Fixed compatibility issue with the WP RSS Aggregator plugin, #278;
 * Fixed: Restored the posts count in the Authors and Users list, #275;
 
-= [3.8.1] - 05 Nov 2020 =
+[3.8.1] - 05 Nov, 2020
 
 * Fixed: Fixed the consistency of avatar dimensions between the img tag attributes and the CSS, #258;
 * Fixed: Fixed edit_posts permission check for the PublishPress calendar, #264;
 * Fixed: Restored the post count column in the Authors list, #95;
 
-= [3.8.0] - 08 Aug 2020 =
+[3.8.0] - 08 Aug, 2020
 
 * Fixed: Fixed PHP warning about undefined "default_author_for_new_posts" attribute for the module options;
 * Fixed: Fixed the empty setting field "Default author for new posts", #242;
@@ -822,36 +822,36 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Added: Added new maintenance task to sync post_author with author terms for all posts, #171;
 * Added: Added basic support for multiple authors in the Ultimate Members plugin's posts, #251;
 
-= [3.7.3] - 21 Sep 2020 =
+[3.7.3] - 21 Sep, 2020
 
 * Fixed: Fixed unresponsive author select box for new posts, #244;
 
-= [3.7.2] - 14 Sep 2020 =
+[3.7.2] - 14 Sep, 2020
 
 * Fixed: Fixed the reordering issue on authors in the post edit page;
 
-= [3.7.1] - 11 Sep 2020 =
+[3.7.1] - 11 Sep, 2020
 
 * Fixed: Fixed the authors field in the quick edit panel. It was displaying all authors instead of only the post authors, #236;
 
-= [3.7.0] - 10 Sep 2020 =
+[3.7.0] - 10 Sep, 2020
 
 * Fixed: Fixed performance issue in the post list and edit page removing avatars from the authors fields, #227;
 * Added: Added option to change the default author for new posts in the site, #50;
 
-= [3.6.3] - 04 Sep 2020 =
+[3.6.3] - 04 Sep, 2020
 
 * Fixed: Fix error "Uncaught Error: Call to a member function add_cap() on null", #223;
 
-= [3.6.2] - 03 Sep 2020 =
+[3.6.2] - 03 Sep, 2020
 
 * Fixed: Fix error "Call to a member function get_error_message() on boolean", a regression bug result of the recent updates, #221;
 
-= [3.6.1] - 03 Sep 2020 =
+[3.6.1] - 03 Sep, 2020
 
 * Fixed: Fix admin notice for Co-Authors Plus displaying even when the plugin is not installed;
 
-= [3.6.0] - 02 Sep 2020 =
+[3.6.0] - 02 Sep, 2020
 
 * Added: Added support to update authors for posts using the quick edit form, #180;
 * Added: Added argument "$ignoreCache" to the get_multiple_authors;
@@ -865,7 +865,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fixed fatal error that happens when get_term returns an error;
 * Fixed: Upgrade link and banner were displayed for all users with access to the admin, #208;
 
-= [3.5.1] - 20 Aug 2020 =
+[3.5.1] - 20 Aug, 2020
 
 * Fixed: Avoid warnings regarding constants already defined;
 * Fixed: Fixed the cache for the get_multiple_authors function for archive pages, #190;
@@ -875,7 +875,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fixed Plugin::filter_user_has_cap() to use the correct user, not the current one, #186;
 * Fixed: Removed leftovers from the deprecated capability: ppma_edit_orphan_post, #193;
 
-= [3.5.0] - 06 Aug 2020 =
+[3.5.0] - 06 Aug, 2020
 
 * Added: Added a new widget to display all the authors, #76;
 * Added: Added option to display the username in the authors search field, #162;
@@ -884,12 +884,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fix PHP notice on author page when user is not an author, #156;
 * Fixed: Fixed notice when a post doesn't exist after deleting the post, #167;
 
-= [3.4.0] - 23 Jul 2020 =
+[3.4.0] - 23 Jul, 2020
 
 * Added: Add new filter "publishpress_authors_author_attribute" for customizing author attributes in the layouts;
 * Fixed: Fix syntax on the file Author_Editor.php removing an invalid char;
 
-= [3.3.2] - 13 Jul 2020 =
+[3.3.2] - 13 Jul, 2020
 
 * Fixed: Fix the text domain loading, fixing the translations;
 * Fixed: Fix "orphan" authors when the mapped user is deleted, converting them in guest authors, #142;
@@ -899,7 +899,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Changed: Updated the min PHP version to 5.6;
 * Changed: Updated the WordPress tested up to version, to 5.4;
 
-= [3.3.1] - 27 May 2020 =
+[3.3.1] - 27 May, 2020
 
 * Added: Added the static function "get_by_email" to the Author class for getting an author by his e-mail address;
 * Changed: Improved error messages;
@@ -910,7 +910,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Improved integration with PublishPress adding support for multiple authors in the calendar. #129, #131;
 * Fixed: Updated the POT file;
 
-= [3.3.0] - 05 May 2020 =
+[3.3.0] - 05 May, 2020
 
 * Added: Some error messages are now added to the error log;
 * Added: Added links to the slug column in the authors list to open the authors page in the frontend;
@@ -945,7 +945,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: The author object is now compatible with the main properties of WP_User objects, so guest authors can be treated as users on most cases;
 * Fixed: The custom user_url is not returned for authors mapped to user;
 
-= [3.2.4] - 13 Apr 2020 =
+[3.2.4] - 13 Apr, 2020
 
 * Added: Button to migrate data from the Bylines (Daniel Bachhuber) plugin;
 * Added: Button to migrate data from the Byline (Matt Dulin) plugin;
@@ -961,19 +961,19 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Fix the result of the function get_the_author_posts_link for supporting multiple authors;
 * Changed: Renamed the name of the Widget, from Multiple Authors to Authors;
 
-= [3.2.3] - 16 Mar 2020 =
+[3.2.3] - 16 Mar, 2020
 
 * Fixed: Wrong URL for the file multiple-authors-widget.css;
 * Fixed: Fixed the author page for compatibility to the Genesis framework;
 * Added: Added new filter to bypass the installation and data migration on special cases;
 * Added: Add top banner for the Pro version;
 
-= [3.2.2] - 25 Feb 2020 =
+[3.2.2] - 25 Feb, 2020
 
 * Fixed: Undefined class Authors_Iterator, #26;
 * Fixed: Error message related to Phing class file not found. Removed Phing from the package;
 
-= [3.2.1] - 13 Feb 2020 =
+[3.2.1] - 13 Feb, 2020
 
 * Fixed: Fixed the query for migrating posts' authors when installed for the first time;
 * Fixed: Fixed the assets URL for the plugin when it is installed in a folder different from wp-content/plugins
@@ -986,6 +986,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Changed: Refactored the code to support the Pro version;
 * Removed: Removed the CMB2 library dependency;
 
-= [3.2.0] - 03 Jan 2020 =
+[3.2.0] - 03 Jan, 2020
 
 * First free public release. Based on PublishPress Multiple Authors v3.1.0.
