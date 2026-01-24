@@ -95,14 +95,14 @@ if (!class_exists('MA_UltimateMember')) {
                 }
 
                 $author = Author::get_by_user_id($args['author']);
+                if ($author && is_object($author)) {
+                    $args['tax_query'][] = [
+                        'taxonomy' => 'author',
+                        'field' => 'id',
+                        'terms' => [$author->term_id],
+                    ];
+                }
 
-                unset($args['author']);
-
-                $args['tax_query'][] = [
-                    'taxonomy' => 'author',
-                    'field' => 'id',
-                    'terms' => [$author->term_id],
-                ];
             }
 
             return $args;
