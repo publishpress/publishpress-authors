@@ -4775,7 +4775,17 @@ echo '<span class="ppma_settings_field_description">'
 
                 $wpdb->update($wpdb->terms, ['slug' => $user->user_nicename], ['term_id' => $author->term_id]);
 
-                if (is_object($wp_rewrite)) {
+                /**
+                 * Filter whether to flush rewrite rules on user profile update.
+                 *
+                 * @param bool $should_flush Whether to flush rewrite rules. Default true.
+                 * @param int $userId The ID of the user being updated.
+                 * @param WP_User $oldUserData The old user data.
+                 * @param object $author The author object.
+                 */
+                $should_flush = apply_filters( 'pp_authors_should_flush_rewrite_rules_on_user_profile_update', true, $userId, $oldUserData, $author );
+
+                if ($should_flush && is_object($wp_rewrite)) {
                     $wp_rewrite->flush_rules(); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.flush_rules_flush_rules
                 }
             }
