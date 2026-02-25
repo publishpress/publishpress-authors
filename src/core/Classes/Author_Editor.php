@@ -258,11 +258,11 @@ class Author_Editor
         foreach ($fields_tabs as $key => $args) {
             $active_tab = ($key === self::AUTHOR_EDITOR_DEFAULT_TAB) ? ' nav-tab-active' : '';
         ?>
-        <a data-tab="<?php esc_attr_e($key); ?>"
-            class="<?php esc_attr_e('tab-link nav-tab' . $active_tab ); ?>"
+        <a data-tab="<?php echo esc_attr($key); ?>"
+            class="<?php echo esc_attr('tab-link nav-tab' . $active_tab ); ?>"
             href="#"
             >
-            <?php esc_html_e($args['label']); ?>
+            <?php echo esc_html($args['label']); ?>
         </a>
         <?php
         }
