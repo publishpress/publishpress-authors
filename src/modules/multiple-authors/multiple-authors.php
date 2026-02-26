@@ -1351,6 +1351,36 @@ if (!class_exists('MA_Multiple_Authors')) {
         }
 
         /**
+         * Safely interpolate translated strings without triggering ValueError
+         * when a translation contains malformed sprintf placeholders.
+         *
+         * @param string $format
+         *
+         * @return string
+         */
+        private function safe_sprintf($format)
+        {
+            $arguments = func_get_args();
+            array_shift($arguments);
+
+            foreach ($arguments as $index => $replacement) {
+                $format = str_replace('%' . ($index + 1) . '$s', $replacement, $format);
+            }
+
+            foreach ($arguments as $replacement) {
+                $position = strpos($format, '%s');
+
+                if (false === $position) {
+                    break;
+                }
+
+                $format = substr_replace($format, $replacement, $position, 2);
+            }
+
+            return str_replace('%%', '%', $format);
+        }
+
+        /**
          * PublishPress Authors Shortcodes
          *
          * @param array $shortcodes
@@ -1371,7 +1401,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_2' => [
                         'shortcode'   => '[publishpress_authors_box layout="'. $default_layout .'"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'You can specify layout by using author boxes layout slug. You can see full details of each layout option %1$s in this guide %2$s.',
                                 'publishpress-authors'
@@ -1382,7 +1412,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_3' => [
                         'shortcode'   => '[publishpress_authors_box layout="'. $default_layout .'" show_title="true"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'You can also decide whether or not to show the main title, using %1$s or %2$s .',
                                 'publishpress-authors'
@@ -1414,7 +1444,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_7' => [
                         'shortcode'   => '[publishpress_authors_box layout="'. $default_layout .'" archive="1"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'If you are having problems showing PublishPress Authors on author profile pages, you can use this shortcode below. The argument %s forces the plugin to retrieve the Author from the profile page and not any other posts on the same screen.',
                                 'publishpress-authors'
@@ -1424,7 +1454,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_8' => [
                         'shortcode'   => '[publishpress_authors_box layout="'. $default_layout .'" archive="true"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'There is one final option to mention. This is mostly useful if you\'re using a theme or page builder to customize the Author profile pages you find at URLs such as /author/username/. You can use the following shortcode on the authors page to display the profile of the current author. You just need to add the parameter %s.',
                                 'publishpress-authors'
@@ -1452,7 +1482,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_2' => [
                         'shortcode'   => '[publishpress_authors_data field="display_name"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s %4$s %5$s %6$s %7$s. You can see full details and parameters %8$s in this guide %9$s.',
                                 'publishpress-authors'
@@ -1491,7 +1521,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_6' => [
                         'shortcode'   => '[publishpress_authors_data user_objects="true"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'You can also decide to return an array list of authors by using user_objects="true" which will return all the authors object data as an array. You can check full details and sample usage %2$s in this guide%3$s.',
                                 'publishpress-authors'
@@ -1521,7 +1551,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_2' => [
                         'shortcode'   => '[publishpress_authors_list layout="'. $default_layout .'"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'You can specify layout by using author boxes layout slug. You can see full details of each layout option %1$s in this guide %2$s. %3$s %4$s This shortcode also provides two custom layouts: %5$s %6$s.',
                                 'publishpress-authors'
@@ -1536,7 +1566,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_3' => [
                         'shortcode'   => '[publishpress_authors_list layout="'. $default_layout .'" layout_columns="2"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'You can define the number of layout columns by using %1$s to show authors in 2 column.',
                                 'publishpress-authors'
@@ -1546,7 +1576,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_4' => [
                         'shortcode'   => '[publishpress_authors_list layout="authors_recent" limit_per_page="12"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'You can choose the number of authors per page using %1$s . %2$s Pagination will be automatically added if required.',
                                 'publishpress-authors'
@@ -1557,7 +1587,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_5' => [
                         'shortcode'   => '[publishpress_authors_list layout="authors_recent" show_empty="1"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'You can limit the result to only authors who are assigned to posts by using %1$s . %2$s Alternatively, use %3$s to show all authors, including those without any posts.',
                                 'publishpress-authors'
@@ -1569,7 +1599,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_6' => [
                         'shortcode'   => '[publishpress_authors_list layout="authors_recent" authors="guests"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'You can limit the result to only guest authors by using %1$s . %2$s Alternatively, %3$s will show only authors with a WordPress account.',
                                 'publishpress-authors'
@@ -1581,7 +1611,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_7' => [
                         'shortcode'   => '[publishpress_authors_list layout="authors_recent" authors_recent_col="4"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'If you are using the authors_recent layout, you can define the number of columns by using %1$s .',
                                 'publishpress-authors'
@@ -1591,7 +1621,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_8' => [
                         'shortcode'   => '[publishpress_authors_list layout="authors_index" group_by="last_name"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'For authors_index layout, you can group user by profile field by using %1$s .',
                                 'publishpress-authors'
@@ -1601,7 +1631,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_9' => [
                         'shortcode'   => '[publishpress_authors_list orderby="count"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'To order the results based on post count, use %1$s . To order the results by name, use %2$s . Alternatively, you can order by profile fields like %3$s, %4$s etc',
                                 'publishpress-authors'
@@ -1614,7 +1644,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_10' => [
                         'shortcode'   => '[publishpress_authors_list orderby="name" order="asc"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'To further customize the order of results, use %1$s or %2$s .',
                                 'publishpress-authors'
@@ -1625,7 +1655,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_11' => [
                         'shortcode'   => '[publishpress_authors_list layout="authors_recent" search_box="true"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'To display a search box for authors, use %1$s .',
                                 'publishpress-authors'
@@ -1635,7 +1665,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_12' => [
                         'shortcode'   => '[publishpress_authors_list search_box="true" search_field="first_name,last_name" layout="authors_recent"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'You can also show a dropdown menu that allows users to search on specific author fields. You can add fields to the dropdown using %1$s . This requires the search box to be active.',
                                 'publishpress-authors'
@@ -1645,7 +1675,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     ],
                     'option_13' => [
                         'shortcode'   => '[publishpress_authors_list last_article_date="1 year ago"]',
-                        'description' => sprintf(
+                        'description' => $this->safe_sprintf(
                             esc_html__(
                                 'You can limit the author list to users with a published post within a specific period using %1$s . This accept english date value like 1 week ago, 1 month ago, 6 months ago, 1 year ago etc.',
                                 'publishpress-authors'
@@ -4775,7 +4805,17 @@ echo '<span class="ppma_settings_field_description">'
 
                 $wpdb->update($wpdb->terms, ['slug' => $user->user_nicename], ['term_id' => $author->term_id]);
 
-                if (is_object($wp_rewrite)) {
+                /**
+                 * Filter whether to flush rewrite rules on user profile update.
+                 *
+                 * @param bool $should_flush Whether to flush rewrite rules. Default true.
+                 * @param int $userId The ID of the user being updated.
+                 * @param WP_User $oldUserData The old user data.
+                 * @param object $author The author object.
+                 */
+                $should_flush = apply_filters( 'pp_authors_should_flush_rewrite_rules_on_user_profile_update', true, $userId, $oldUserData, $author );
+
+                if ($should_flush && is_object($wp_rewrite)) {
                     $wp_rewrite->flush_rules(); // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.flush_rules_flush_rules
                 }
             }

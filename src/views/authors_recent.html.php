@@ -1,4 +1,4 @@
-<div class="pp-multiple-authors-wrapper pp-multiple-authors-recent alignwide <?php esc_attr_e($context['css_class']); ?> pp-multiple-authors-layout-<?php esc_attr_e($context['layout']); ?>">
+<div class="pp-multiple-authors-wrapper pp-multiple-authors-recent alignwide <?php echo esc_attr($context['css_class']); ?> pp-multiple-authors-layout-<?php echo esc_attr($context['layout']); ?>">
     <?php if (!empty($context['search_box_html'])) : ?>
         <?php echo $context['search_box_html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
     <?php endif; ?>
@@ -6,11 +6,11 @@
         <?php foreach ($context['results'] as $index => $result) :
             $author = $result['author'];
             ?>
-            <div class="author_index_<?php esc_attr_e($index); ?> author_<?php esc_attr_e($author->slug); ?> ppma-author-entry ppma-col-md-3 ppma-col-sm-4 ppma-col-12">
-                <div class="name-row"><a href="<?php echo esc_url($author->link); ?>" class="<?php esc_attr_e($context['item_class']); ?>" rel="author" title="<?php esc_attr_e($author->display_name); ?>">
+            <div class="author_index_<?php echo esc_attr($index); ?> author_<?php echo esc_attr($author->slug); ?> ppma-author-entry ppma-col-md-3 ppma-col-sm-4 ppma-col-12">
+                <div class="name-row"><a href="<?php echo esc_url($author->link); ?>" class="<?php echo esc_attr($context['item_class']); ?>" rel="author" title="<?php echo esc_attr($author->display_name); ?>">
                     <h4><?php echo $author->display_name; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></h4>
                     </a>
-                    <a href="<?php echo esc_url($author->link); ?>" title="<?php esc_attr_e($author->display_name); ?>">
+                    <a href="<?php echo esc_url($author->link); ?>" title="<?php echo esc_attr($author->display_name); ?>">
                     <?php if ($author->get_avatar()) : ?>
                         <?php echo $author->get_avatar(107);  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                     <?php else : ?>
@@ -23,26 +23,26 @@
                         <?php if ($result['recent_posts']) : ?>
                             <?php foreach ($result['recent_posts'] as $post_id => $post) : ?>
                                 <?php if ($post['featuired_image']) : ?>
-                                    <div class="ppma-col-5 featured-image-col post-<?php esc_attr_e($post_id); ?>">
+                                    <div class="ppma-col-5 featured-image-col post-<?php echo esc_attr($post_id); ?>">
                                         <a href="<?php echo esc_url($post['permalink']); ?>">
                                             <img src="<?php echo esc_url($post['featuired_image']); ?>">
                                         </a>
                                     </div>
 
-                                    <div class="ppma-col-5 post-<?php esc_attr_e($post_id); ?>">
+                                    <div class="ppma-col-5 post-<?php echo esc_attr($post_id); ?>">
                                         <div class="text">
                                             <a href="<?php echo esc_url($post['permalink']); ?>" class="headline">
-                                                <?php esc_html_e($post['post_title']); ?>
+                                                <?php echo esc_html($post['post_title']); ?>
                                             </a>
                                         </div>
                                     </div>
                                 <?php else : ?>
-                                    <div class="ppma-col-12 post-column post-<?php esc_attr_e($post_id); ?>">
+                                    <div class="ppma-col-12 post-column post-<?php echo esc_attr($post_id); ?>">
                                         <div class="ppma-row-article-block secondary">
                                             <div class="ppma-col-12">
                                                 <div class="text">
                                                     <a href="<?php echo esc_url($post['permalink']); ?>" class="headline">
-                                                        <?php esc_html_e($post['post_title']); ?>
+                                                        <?php echo esc_html($post['post_title']); ?>
                                                     </a>
                                                 </div>
                                             </div>
