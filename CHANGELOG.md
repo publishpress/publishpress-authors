@@ -1,6 +1,12 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.12.0] - 26 February, 2026
+
+* Fixed: Updating site with PublishPress Authors to Danish language produced errors, #2247
+* Fixed: Introduced filter to prevent rewrite rules flush on user updates, #2244
+* Update: Replace esc_attr_e and esc_html_e with proper escaping functions for non-translatable strings, #2189
+
 [4.11.0] - 22 January, 2026
 
 * Update: Add a setting to hide Author box Biographical Info for users in specific Author Categories, #2207
