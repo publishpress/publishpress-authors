@@ -1828,7 +1828,7 @@ if (!class_exists('MA_Multiple_Authors')) {
             echo '</select>';
 
             echo '<p class="ppma_settings_field_description">' . esc_html__(
-                    'Author profiles can be mapped to WordPress user accounts. This option allows you to automatically create author profiles when users are created in these roles. You can also do this for existing users by clicking the "Create missed authors from role" button in the Maintenance tab.',
+                    'Author profiles can be mapped to WordPress user accounts. This option allows you to automatically create author profiles when users are created in these roles. You can also do this for existing users by clicking the "Create PublishPress Authors Profiles for all users in a role" button in the Maintenance tab.',
                     'publishpress-authors'
                 ) . '</p>';
 

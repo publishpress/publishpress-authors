@@ -242,11 +242,6 @@ body.block-editor-page select[id^="post-author-selector-"] {
     display: none !important;
 }
 
-/* Fix the size of a settings field */
-#multiple_authors_multiple_authors_options_author_for_new_users_chosen {
-    max-width: 350px;
-}
-
 /* Hide the author field in the quick-edit panel until we support it */
 .inline-edit-author {
     display: none !important;
