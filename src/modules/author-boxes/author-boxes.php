@@ -108,6 +108,9 @@ class MA_Author_Boxes extends Module
     public function init()
     {
         add_action('multiple_authors_admin_submenu', [$this, 'adminSubmenu'], 50);
+        add_filter('post_row_actions', [$this, 'addDuplicateRowAction'], 10, 2);
+        add_action('admin_action_ppma_duplicate_author_box', [$this, 'handleDuplicateAuthorBoxAction']);
+        add_action('admin_notices', [$this, 'showDuplicateNotice']);
         add_filter('post_updated_messages', [$this, 'setPostUpdateMessages']);
         add_filter('bulk_post_updated_messages', [$this, 'setPostBulkUpdateMessages'], 10, 2);
         add_action('add_meta_boxes', [$this, 'addPreviewMetabox']);
@@ -582,6 +585,173 @@ class MA_Author_Boxes extends Module
         }
 
         return $actions;
+    }
+
+    /**
+     * Add duplicate row action to Author Boxes list table.
+     *
+     * @param array   $actions Current row actions.
+     * @param WP_Post $post Current post object.
+     *
+     * @return array
+     */
+    public function addDuplicateRowAction($actions, $post)
+    {
+        if (!is_object($post) || !isset($post->post_type) || $post->post_type !== self::POST_TYPE_BOXES) {
+            return $actions;
+        }
+
+        if (!current_user_can('edit_post', $post->ID)) {
+            return $actions;
+        }
+
+        $postTypeObject = get_post_type_object(self::POST_TYPE_BOXES);
+        $createCapability = !empty($postTypeObject->cap->create_posts) ? $postTypeObject->cap->create_posts : 'edit_posts';
+
+        if (!current_user_can($createCapability)) {
+            return $actions;
+        }
+
+        $duplicateUrl = wp_nonce_url(
+            admin_url('admin.php?action=ppma_duplicate_author_box&post=' . absint($post->ID)),
+            'ppma_duplicate_author_box_' . absint($post->ID)
+        );
+
+        $duplicateAction = [
+            'duplicate' => sprintf(
+                '<a href="%s">%s</a>',
+                esc_url($duplicateUrl),
+                esc_html__('Duplicate', 'publishpress-authors')
+            ),
+        ];
+
+        $actionsWithDuplicate = [];
+        $inserted = false;
+
+        foreach ($actions as $actionKey => $actionMarkup) {
+            $actionsWithDuplicate[$actionKey] = $actionMarkup;
+
+            if ($actionKey === 'edit') {
+                $actionsWithDuplicate = array_merge($actionsWithDuplicate, $duplicateAction);
+                $inserted = true;
+            }
+        }
+
+        if (!$inserted) {
+            $actionsWithDuplicate = array_merge($actionsWithDuplicate, $duplicateAction);
+        }
+
+        return $actionsWithDuplicate;
+    }
+
+    /**
+     * Handle duplicate author box action.
+     *
+     * @return void
+     */
+    public function handleDuplicateAuthorBoxAction()
+    {
+        $postId = isset($_GET['post']) ? absint($_GET['post']) : 0;
+
+        if ($postId <= 0) {
+            wp_die(esc_html__('Invalid Author Box.', 'publishpress-authors'));
+        }
+
+        $post = get_post($postId);
+        if (!is_object($post) || $post->post_type !== self::POST_TYPE_BOXES) {
+            wp_die(esc_html__('Invalid Author Box.', 'publishpress-authors'));
+        }
+
+        if (!current_user_can('edit_post', $postId)) {
+            wp_die(esc_html__('You are not allowed to duplicate this Author Box.', 'publishpress-authors'));
+        }
+
+        $postTypeObject = get_post_type_object(self::POST_TYPE_BOXES);
+        $createCapability = !empty($postTypeObject->cap->create_posts) ? $postTypeObject->cap->create_posts : 'edit_posts';
+        if (!current_user_can($createCapability)) {
+            wp_die(esc_html__('You are not allowed to create Author Boxes.', 'publishpress-authors'));
+        }
+
+        check_admin_referer('ppma_duplicate_author_box_' . $postId);
+
+        $topMenuOrder = 0;
+        $firstAuthorBox = get_posts(
+            [
+                'post_type'      => self::POST_TYPE_BOXES,
+                'post_status'    => 'any',
+                'posts_per_page' => 1,
+                'orderby'        => 'menu_order',
+                'order'          => 'ASC',
+            ]
+        );
+
+        if (!empty($firstAuthorBox) && isset($firstAuthorBox[0]->menu_order)) {
+            $topMenuOrder = (int)$firstAuthorBox[0]->menu_order - 1;
+        }
+
+        $newPostId = wp_insert_post(
+            [
+                'post_type'      => self::POST_TYPE_BOXES,
+                'post_title'     => sprintf(
+                    esc_html__('%s (Copy)', 'publishpress-authors'),
+                    $post->post_title
+                ),
+                'post_content'   => $post->post_content,
+                'post_status'    => $post->post_status,
+                'post_excerpt'   => $post->post_excerpt,
+                'menu_order'     => $topMenuOrder,
+                'comment_status' => $post->comment_status,
+                'ping_status'    => $post->ping_status,
+                'post_author'    => get_current_user_id(),
+            ],
+            true
+        );
+
+        if (is_wp_error($newPostId)) {
+            wp_die(esc_html__('Could not duplicate the Author Box.', 'publishpress-authors'));
+        }
+
+        $metaKeys = get_post_custom_keys($postId);
+        if (!empty($metaKeys)) {
+            foreach ($metaKeys as $metaKey) {
+                if (in_array($metaKey, ['_edit_lock', '_edit_last'], true)) {
+                    continue;
+                }
+
+                $metaValues = get_post_meta($postId, $metaKey, false);
+                if (!empty($metaValues)) {
+                    foreach ($metaValues as $metaValue) {
+                        add_post_meta($newPostId, $metaKey, $metaValue);
+                    }
+                }
+            }
+        }
+
+        $redirectUrl = add_query_arg(
+            [
+                'ppma_author_box_duplicated' => 1,
+            ],
+            admin_url('edit.php?post_type=' . self::POST_TYPE_BOXES)
+        );
+
+        wp_safe_redirect($redirectUrl);
+        exit;
+    }
+
+    /**
+     * Show notice when an author box has been duplicated.
+     *
+     * @return void
+     */
+    public function showDuplicateNotice()
+    {
+        if (empty($_GET['ppma_author_box_duplicated'])) {
+            return;
+        }
+
+        echo '<div class="notice notice-success is-dismissible"><p>'
+            . esc_html__('Author Box duplicated.', 'publishpress-authors')
+            . '</p></div>';
     }
 
     /**
