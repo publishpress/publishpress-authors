@@ -1228,8 +1228,7 @@ class AuthorBoxesEditorFields
                 'h5'   => esc_html__('H5', 'publishpress-authors'),
                 'h6'   => esc_html__('H6', 'publishpress-authors'),
                 'div'  => esc_html__('div', 'publishpress-authors'),
-                'span' => esc_html__('span', 'publishpress-authors'),
-                'p'    => esc_html__('p', 'publishpress-authors')
+                'span' => esc_html__('span', 'publishpress-authors')
             ],
             'tab'      => 'author_bio',
         ];
