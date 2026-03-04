@@ -862,3 +862,35 @@ body.edit-php.post-type-ppmacf_field #TB_ajaxContent {
         width: 90%;
     }
 }
+
+/* Legacy widget icons in block-based Widgets inserter */
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_list_widget .block-editor-block-types-list__item-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_widget .block-editor-block-types-list__item-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_list_widget .block-editor-block-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_widget .block-editor-block-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_list_widget:hover .block-editor-block-types-list__item-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_widget:hover .block-editor-block-types-list__item-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_list_widget:focus .block-editor-block-types-list__item-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_widget:focus .block-editor-block-types-list__item-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_list_widget:active .block-editor-block-types-list__item-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_widget:active .block-editor-block-types-list__item-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_list_widget:hover .block-editor-block-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_widget:hover .block-editor-block-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_list_widget:focus .block-editor-block-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_widget:focus .block-editor-block-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_list_widget:active .block-editor-block-icon,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_widget:active .block-editor-block-icon {
+    color: #655897 !important;
+}
+
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_list_widget .block-editor-block-icon svg,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_widget .block-editor-block-icon svg,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_list_widget .block-editor-block-icon svg path,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_widget .block-editor-block-icon svg path,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_list_widget:hover .block-editor-block-icon svg,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_widget:hover .block-editor-block-icon svg,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_list_widget:hover .block-editor-block-icon svg path,
+button.block-editor-block-types-list__item.editor-block-list-item-legacy-widget\/multiple_authors_widget:hover .block-editor-block-icon svg path {
+    fill: currentColor !important;
+    color: currentColor !important;
+}
