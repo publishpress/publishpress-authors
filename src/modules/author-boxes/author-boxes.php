@@ -1437,6 +1437,10 @@ class MA_Author_Boxes extends Module
 
         $editor_data['post_id'] = $post_id;
 
+        if (isset($editor_data['author_bio_html_tag']) && $editor_data['author_bio_html_tag'] === 'p') {
+            $editor_data['author_bio_html_tag'] = 'div';
+        }
+
         // set boxed_categories defautlt fields
         if (
         isset($editor_data['author_categories_layout'])

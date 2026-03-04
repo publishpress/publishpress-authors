@@ -93,7 +93,7 @@ class AuthorBoxesDefault
         //bio default
         $editor_data['author_bio_show'] = 1;
         $editor_data['author_bio_link'] = 0;
-        $editor_data['author_bio_html_tag'] = 'p';
+        $editor_data['author_bio_html_tag'] = 'div';
         //meta default
         $editor_data['meta_view_all_show'] = 0;
         $editor_data['meta_html_tag'] = 'span';
@@ -182,7 +182,7 @@ class AuthorBoxesDefault
         //bio default
         $editor_data['avatar_border_radius'] = 50;
         $editor_data['author_bio_show'] = 1;
-        $editor_data['author_bio_html_tag'] = 'p';
+        $editor_data['author_bio_html_tag'] = 'div';
         // email default
         $editor_data['profile_fields_user_email_html_tag'] = 'a';
         $editor_data['profile_fields_user_email_value_prefix'] = 'mailto:';
@@ -369,7 +369,7 @@ class AuthorBoxesDefault
         //bio default
         $editor_data['avatar_border_radius'] = 50;
         $editor_data['author_bio_show'] = 1;
-        $editor_data['author_bio_html_tag'] = 'p';
+        $editor_data['author_bio_html_tag'] = 'div';
         //meta default
         $editor_data['meta_view_all_show'] = 0;
         $editor_data['meta_html_tag'] = 'span';
@@ -450,7 +450,7 @@ class AuthorBoxesDefault
         $editor_data['name_disable_link'] = 0;
         $editor_data['name_html_tag'] = 'div';
         //bio default
-        $editor_data['author_bio_html_tag'] = 'p';
+        $editor_data['author_bio_html_tag'] = 'div';
         //meta default
         $editor_data['meta_view_all_show'] = 0;
         $editor_data['meta_html_tag'] = 'span';
@@ -537,7 +537,7 @@ class AuthorBoxesDefault
         $editor_data['name_disable_link'] = 0;
         $editor_data['name_html_tag'] = 'div';
         //bio default
-        $editor_data['author_bio_html_tag'] = 'p';
+        $editor_data['author_bio_html_tag'] = 'div';
         //meta default
         $editor_data['meta_view_all_show'] = 0;
         $editor_data['meta_html_tag'] = 'span';
@@ -628,7 +628,7 @@ class AuthorBoxesDefault
         $editor_data['name_disable_link'] = 0;
         $editor_data['name_html_tag'] = 'div';
         //bio default
-        $editor_data['author_bio_html_tag'] = 'p';
+        $editor_data['author_bio_html_tag'] = 'div';
         //meta default
         $editor_data['meta_view_all_show'] = 0;
         $editor_data['meta_html_tag'] = 'span';
