@@ -17,6 +17,7 @@ msgstr ""
 
 #: src/functions/template-tags.php:1134 src/functions/template-tags.php:1755
 #: src/functions/template-tags.php:1134 src/functions/template-tags.php:1755
+#: src/functions/template-tags.php:1134 src/functions/template-tags.php:1755
 msgid " and "
 msgstr " e "
 
