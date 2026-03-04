@@ -95,6 +95,14 @@ class Query
             $author_id = $query->query_vars['author'];
             $author    = Author::get_by_user_id($author_id);
 
+            if (! $query->is_main_query()) {
+                $no_found_rows = apply_filters('publishpress_authors_ppma_filter_no_found_rows', true, $query);
+
+                if ($no_found_rows) {
+                    $query->set('no_found_rows', true);
+                }
+            }
+
             if ($author
                 && is_object($author)
                 && isset($author->term_id)
