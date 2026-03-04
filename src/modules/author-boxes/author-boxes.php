@@ -3089,7 +3089,7 @@ class MA_Author_Boxes extends Module
 
         wp_localize_script( 'author-boxes-block', 'authorBoxesBlock', array(
             'ajax_url' => admin_url( 'admin-ajax.php' ),
-            'block_title' => __('Author Box', 'publishpress-authors'),
+            'block_title' => __('PublishPress Authors Box', 'publishpress-authors'),
             'select_label' => __('Select an author box', 'publishpress-authors'),
         ));
 

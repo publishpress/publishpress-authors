@@ -17,7 +17,10 @@
 
     registerBlockType(blockName, {
         title: authorBoxesBlock.block_title,
-        icon: 'groups',
+        icon: {
+            src: 'groups',
+            foreground: '#655897',
+        },
         category: 'common',
         attributes: {
             selectedBoxId: {
