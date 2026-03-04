@@ -26,6 +26,8 @@ $current_author_data       = Author::get_by_term_id($current_author_term_id);
 $author_pages_bio_layout   = $legacyPlugin->modules->multiple_authors->options->author_pages_bio_layout;
 $show_author_pages_bio     = $legacyPlugin->modules->multiple_authors->options->show_author_pages_bio === 'yes';
 $show_post_featured_image  = $legacyPlugin->modules->multiple_authors->options->show_author_post_featured_image === 'yes';
+$link_post_featured_image  = isset($legacyPlugin->modules->multiple_authors->options->link_author_post_featured_image)
+    && $legacyPlugin->modules->multiple_authors->options->link_author_post_featured_image === 'yes';
 $show_post_excerpt         = $legacyPlugin->modules->multiple_authors->options->show_author_post_excerpt === 'yes';
 $show_post_authors         = $legacyPlugin->modules->multiple_authors->options->show_author_post_authors === 'yes';
 $show_post_date            = $legacyPlugin->modules->multiple_authors->options->show_author_post_date === 'yes';
@@ -87,7 +89,13 @@ if ($author_post_custom_height > 0) {
                     <article id="post-<?php the_ID(); ?>" <?php post_class($extra_post_class); ?>>
                         <div class="ppma-grid-post-thumb">
                             <?php if ($show_post_featured_image) : ?>
+                                <?php if ($link_post_featured_image) : ?>
+                                    <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php echo esc_attr(get_the_title()); ?>">
+                                <?php endif; ?>
                                 <img src="<?php echo esc_url($featured_image); ?>" alt="<?php echo esc_attr($featured_image_alt); ?>" style="<?php echo esc_attr($featured_image_style); ?>">
+                                <?php if ($link_post_featured_image) : ?>
+                                    </a>
+                                <?php endif; ?>
                             <?php endif; ?>
                         </div>
 
