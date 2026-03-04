@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Authors\n"
 "POT-Creation-Date: 2026-02-26 12:05+0000\n"
-"PO-Revision-Date: 2026-03-04 10:18+0000\n"
+"PO-Revision-Date: 2026-03-04 17:31+0000\n"
 "Last-Translator: Anderson Grudtner Martins <anderson@publishpress.com>\n"
 "Language-Team: Anderson Grudtner Martins <anderson@publishpress.com>\n"
 "MIME-Version: 1.0\n"
@@ -2212,6 +2212,18 @@ msgstr "Aṣiṣe. Awọn ọrọ onkọwe ko le ṣe atunṣe."
 msgid "Error: "
 msgstr "Aṣiṣe: "
 
+#: src/modules/author-categories/author-categories.php:622
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
+#, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+"Apeere: nigbati iye yii ba ti ṣeto si reviewedBy, gbogbo awọn olumulo ninu "
+"ẹka yii yoo wa ni afikun si ohun-ini reviewedBy ti ifiweranṣẹ. O le ka "
+"siwaju %1$s ninu itọsọna yii.%2$s"
+
 #: src/modules/author-list/author-list.php:451
 msgid "Exclude Authors"
 msgstr "Yọ Awọn Onkọwe Kuro"
@@ -2365,18 +2377,6 @@ msgid ""
 msgstr ""
 "Fun akopọ authors_index, o le darapọ awọn olumulo nipasẹ aaye profaili nipa "
 "lilo %1$s."
-
-#: src/modules/author-categories/author-categories.php:622
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
-#, php-format
-msgid ""
-"For example, when this value is set to reviewedBy, all users under this "
-"category will be added to post reviewedBy property. You can read more %1$s "
-"in this guide.%2$s"
-msgstr ""
-"Fun apẹẹrẹ, nigbati iye yii ba ṣeto si reviewedBy, gbogbo awọn olumulo labẹ "
-"ẹka yii yoo wa ni afikun si ohun-ini post reviewedBy. O le ka siwaju %1$s "
-"ninu itọsọna yii.%2$s"
 
 #: src/core/Classes/Author_Editor.php:313
 #: src/modules/author-list/author-list.php:316

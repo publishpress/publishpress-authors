@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Authors\n"
 "POT-Creation-Date: 2026-02-26 12:05+0000\n"
-"PO-Revision-Date: 2026-03-04 10:20+0000\n"
+"PO-Revision-Date: 2026-03-04 17:32+0000\n"
 "Last-Translator: Anderson Grudtner Martins <anderson@publishpress.com>\n"
 "Language-Team: Anderson Grudtner Martins <anderson@publishpress.com>\n"
 "MIME-Version: 1.0\n"
@@ -2183,6 +2183,17 @@ msgstr "오류. 저자 조건을 초기화할 수 없습니다."
 msgid "Error: "
 msgstr "오류: "
 
+#: src/modules/author-categories/author-categories.php:622
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
+#, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+"예시: 이 값이 reviewedBy로 설정되면, 이 범주의 모든 사용자가 게시물의 reviewedBy 속성에 추가됩니다. 이 가이드에서 "
+"%1$s에 대한 자세한 내용을 읽을 수 있습니다.%2$s"
+
 #: src/modules/author-list/author-list.php:451
 msgid "Exclude Authors"
 msgstr "저자 제외"
@@ -2332,17 +2343,6 @@ msgid ""
 "For authors_index layout, you can group user by profile field by using %1$s "
 "."
 msgstr "%1$s를 사용하여 프로필 필드별로 사용자를 그룹화할 수 있습니다."
-
-#: src/modules/author-categories/author-categories.php:622
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
-#, php-format
-msgid ""
-"For example, when this value is set to reviewedBy, all users under this "
-"category will be added to post reviewedBy property. You can read more %1$s "
-"in this guide.%2$s"
-msgstr ""
-"예를 들어, 이 값이 reviewedBy로 설정되면, 이 범주에 속하는 모든 사용자가 게시물 reviewedBy 속성에 추가됩니다. 이 "
-"가이드에서 더 많은 내용을 %1$s 읽을 수 있습니다.%2$s"
 
 #: src/core/Classes/Author_Editor.php:313
 #: src/modules/author-list/author-list.php:316

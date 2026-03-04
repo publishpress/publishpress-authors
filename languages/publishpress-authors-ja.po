@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Authors\n"
 "POT-Creation-Date: 2026-02-26 12:05+0000\n"
-"PO-Revision-Date: 2026-03-04 10:20+0000\n"
+"PO-Revision-Date: 2026-03-04 17:32+0000\n"
 "Last-Translator: Anderson Grudtner Martins <anderson@publishpress.com>\n"
 "Language-Team: Anderson Grudtner Martins <anderson@publishpress.com>\n"
 "MIME-Version: 1.0\n"
@@ -2182,6 +2182,17 @@ msgstr "エラー。著者の条件をリセットできませんでした。"
 msgid "Error: "
 msgstr "エラー: "
 
+#: src/modules/author-categories/author-categories.php:622
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
+#, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+"例: この値が reviewedBy に設定されると、このカテゴリのすべてのユーザーが投稿の reviewedBy "
+"プロパティに追加されます。詳細はこのガイドで %1$s 読むことができます。%2$s"
+
 #: src/modules/author-list/author-list.php:451
 msgid "Exclude Authors"
 msgstr "著者を除外"
@@ -2331,17 +2342,6 @@ msgid ""
 "For authors_index layout, you can group user by profile field by using %1$s "
 "."
 msgstr "%1$s を使用してプロファイルフィールドでユーザーをグループ化できます（authors_index レイアウト用）。"
-
-#: src/modules/author-categories/author-categories.php:622
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
-#, php-format
-msgid ""
-"For example, when this value is set to reviewedBy, all users under this "
-"category will be added to post reviewedBy property. You can read more %1$s "
-"in this guide.%2$s"
-msgstr ""
-"例えば、この値が reviewedBy に設定されている場合、このカテゴリ内のすべてのユーザーが投稿の reviewedBy "
-"プロパティに追加されます。このガイドで%1$sについてもっと読むことができます。%2$s"
 
 #: src/core/Classes/Author_Editor.php:313
 #: src/modules/author-list/author-list.php:316

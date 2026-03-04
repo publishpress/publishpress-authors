@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Authors\n"
 "POT-Creation-Date: 2021-11-04 15:04-0300\n"
-"PO-Revision-Date: 2026-03-04 10:18+0000\n"
+"PO-Revision-Date: 2026-03-04 17:31+0000\n"
 "Last-Translator: Anderson Grudtner Martins <anderson@publishpress.com>\n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -2254,6 +2254,18 @@ msgstr "Ошибка. Условия автора не могли быть сб�
 msgid "Error: "
 msgstr "Ошибка: "
 
+#: src/modules/author-categories/author-categories.php:622
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
+#, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+"Пример: когда это значение установлено на reviewedBy, все пользователи в "
+"этой категории будут добавлены в свойство reviewedBy поста. Вы можете "
+"прочитать больше %1$s в этом руководстве.%2$s"
+
 #: src/modules/author-list/author-list.php:451
 msgid "Exclude Authors"
 msgstr "Исключить авторов"
@@ -2407,18 +2419,6 @@ msgid ""
 msgstr ""
 "Для макета authors_index вы можете группировать пользователей по полю "
 "профиля, используя %1$s."
-
-#: src/modules/author-categories/author-categories.php:622
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
-#, php-format
-msgid ""
-"For example, when this value is set to reviewedBy, all users under this "
-"category will be added to post reviewedBy property. You can read more %1$s "
-"in this guide.%2$s"
-msgstr ""
-"Например, когда это значение установлено на reviewedBy, все пользователи в "
-"этой категории будут добавлены к свойству поста reviewedBy. Вы можете "
-"прочитать больше %1$s в этом руководстве.%2$s"
 
 #: src/core/Classes/Author_Editor.php:313
 #: src/modules/author-list/author-list.php:316

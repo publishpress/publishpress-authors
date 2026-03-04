@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Authors\n"
-"POT-Creation-Date: 2026-03-04 10:14+0000\n"
+"POT-Creation-Date: 2026-03-04 17:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Anderson Grudtner Martins <anderson@publishpress.com>\n"
 "Language-Team: Anderson Grudtner Martins <anderson@publishpress.com>\n"
@@ -2196,6 +2196,15 @@ msgstr ""
 msgid "Error: "
 msgstr ""
 
+#: src/modules/author-categories/author-categories.php:622
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
+#, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+
 #: src/modules/author-list/author-list.php:451
 msgid "Exclude Authors"
 msgstr ""
@@ -2343,15 +2352,6 @@ msgstr ""
 #, php-format
 msgid ""
 "For authors_index layout, you can group user by profile field by using %1$s ."
-msgstr ""
-
-#: src/modules/author-categories/author-categories.php:622
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
-#, php-format
-msgid ""
-"For example, when this value is set to reviewedBy, all users under this "
-"category will be added to post reviewedBy property. You can read more %1$s "
-"in this guide.%2$s"
 msgstr ""
 
 #: src/core/Classes/Author_Editor.php:313

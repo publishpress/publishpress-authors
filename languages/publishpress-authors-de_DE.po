@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress - PublishPress Authors\n"
 "POT-Creation-Date: 2021-11-04 15:04-0300\n"
-"PO-Revision-Date: 2026-03-04 10:18+0000\n"
+"PO-Revision-Date: 2026-03-04 17:31+0000\n"
 "Last-Translator: Anderson Grudtner Martins <anderson@publishpress.com>\n"
 "Language-Team: German\n"
 "MIME-Version: 1.0\n"
@@ -2265,6 +2265,18 @@ msgstr "Fehler. Autorenbegriffe konnten nicht zurückgesetzt werden."
 msgid "Error: "
 msgstr "Fehler: "
 
+#: src/modules/author-categories/author-categories.php:622
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
+#, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+"Beispiel: Wenn dieser Wert auf reviewedBy gesetzt ist, werden alle Benutzer "
+"in dieser Kategorie zur reviewedBy-Eigenschaft des Beitrags hinzugefügt. "
+"Sie können mehr %1$s in diesem Leitfaden lesen.%2$s"
+
 #: src/modules/author-list/author-list.php:451
 msgid "Exclude Authors"
 msgstr "Autoren ausschließen"
@@ -2418,18 +2430,6 @@ msgid ""
 msgstr ""
 "Für das Layout authors_index können Sie Benutzer nach Profilfeld mithilfe "
 "von %1$s gruppieren."
-
-#: src/modules/author-categories/author-categories.php:622
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
-#, php-format
-msgid ""
-"For example, when this value is set to reviewedBy, all users under this "
-"category will be added to post reviewedBy property. You can read more %1$s "
-"in this guide.%2$s"
-msgstr ""
-"Zum Beispiel, wenn dieser Wert auf reviewedBy gesetzt ist, werden alle "
-"Benutzer unter dieser Kategorie zur Eigenschaft post reviewedBy "
-"hinzugefügt. Sie können mehr %1$s in diesem Handbuch lesen.%2$s"
 
 #: src/core/Classes/Author_Editor.php:313
 #: src/modules/author-list/author-list.php:316

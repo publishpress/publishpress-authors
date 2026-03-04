@@ -620,7 +620,7 @@ class MA_Author_Categories extends Module
                                     <input name="category-schema-property" id="category-schema-property" type="text" value="" size="40" autocomplete="off" />
                                     <p id="category-plural-description"><?php printf(
                                         esc_html__(
-                                            'For example, when this value is set to reviewedBy, all users under this category will be added to post reviewedBy property. You can read more %1$s in this guide.%2$s',
+                                            'Example: when this value is set to reviewedBy, all users in this category will be added to post\'s reviewedBy property. You can read more %1$s in this guide.%2$s',
                                             'publishpress-authors'
                                         ),
                                         '<a target="_blank" href="https://publishpress.com/knowledge-base/author-categories-schema/">',
