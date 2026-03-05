@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.13.0] - 04 March, 2026
+[4.13.0] - 05 March, 2026
 
 * Update: Add a setting to allow Author Pages featured images link to blog post, #2235
 * Update: Add a duplicate button for Author Boxes, #2234
