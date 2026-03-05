@@ -17,6 +17,9 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: src/functions/template-tags.php:618 src/functions/template-tags.php:1239
+#: src/functions/template-tags.php:618 src/functions/template-tags.php:1239
+#: src/functions/template-tags.php:618 src/functions/template-tags.php:1239
+#: src/functions/template-tags.php:618 src/functions/template-tags.php:1239
 msgid " and "
 msgstr " e "
 

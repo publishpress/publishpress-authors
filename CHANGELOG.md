@@ -1,6 +1,18 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.13.0] - 05 March, 2026
+
+* Update: Add a setting to allow Author Pages featured images link to blog post, #2235
+* Update: Add a duplicate button for Author Boxes, #2234
+* Update: Remove 'p' option from Author Box Biographical Info HTML Tag due to rich editor support, #2226
+* Fixed: Update the block to be more indentifiable with icon color, #2238
+* Update: Add description on Author Category schema edit field, #2198
+* Update: Update "Automatically create author profiles box" settings size and description, #2201
+* Fixed: Improve Author Query Performance, #2224
+* Update: Connect the plugin to Weblate, #2245
+* Update: ES-FR-IT Authors Translation Updates_v.4.12.0, #2256
+
 [4.12.0] - 26 February, 2026
 
 * Fixed: Updating site with PublishPress Authors to Danish language produced errors, #2247

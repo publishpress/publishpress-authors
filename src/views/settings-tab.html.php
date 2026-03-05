@@ -1,4 +1,4 @@
-<?php 
+<?php
 global $ppma_custom_settings;
 
 $section_content = get_ppma_section_content($context['options_group_name']);
@@ -39,6 +39,7 @@ if (is_array($ppma_custom_settings)) {
                                 break;
                             case 'multiple_authors_multiple_authors_options_author_post_title_header':
                             case 'multiple_authors_multiple_authors_options_show_author_post_featured_image':
+                            case 'multiple_authors_multiple_authors_options_link_author_post_featured_image':
                             case 'multiple_authors_multiple_authors_options_author_post_custom_width':
                             case 'multiple_authors_multiple_authors_options_author_post_custom_height':
                             case 'multiple_authors_multiple_authors_options_show_author_post_excerpt':

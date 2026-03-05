@@ -3052,7 +3052,6 @@ msgid "You do not have permission to perform this action"
 msgstr ""
 
 #: src/core/Classes/Author_Editor.php:679
-#, fuzzy
 #| msgid ""
 #| "You don’t have to choose a Mapped User. Leave this choice blank and you "
 #| "can create a Guest Author with no WordPress account."

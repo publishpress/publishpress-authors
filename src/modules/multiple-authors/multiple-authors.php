@@ -106,6 +106,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'author_legacy_layout_simple_list' => '',
                     'author_pages_grid_layout_column' => '4',
                     'show_author_post_featured_image' => 'yes',
+                    'link_author_post_featured_image' => 'no',
                     'show_author_post_excerpt'     => 'yes',
                     'remove_single_user_map_restriction'  => 'no',
                     'show_author_post_authors'     => 'yes',
@@ -881,6 +882,17 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'publishpress-authors'
                 ),
                 [$this, 'settings_show_author_post_featured_image'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_author_pages'
+            );
+
+            add_settings_field(
+                'link_author_post_featured_image',
+                __(
+                    'Link featured image to post:',
+                    'publishpress-authors'
+                ),
+                [$this, 'settings_link_author_post_featured_image'],
                 $this->module->options_group_name,
                 $this->module->options_group_name . '_author_pages'
             );
@@ -1828,7 +1840,7 @@ if (!class_exists('MA_Multiple_Authors')) {
             echo '</select>';
 
             echo '<p class="ppma_settings_field_description">' . esc_html__(
-                    'Author profiles can be mapped to WordPress user accounts. This option allows you to automatically create author profiles when users are created in these roles. You can also do this for existing users by clicking the "Create missed authors from role" button in the Maintenance tab.',
+                    'Author profiles can be mapped to WordPress user accounts. This option allows you to automatically create author profiles when users are created in these roles. You can also do this for existing users by clicking the "Create PublishPress Authors Profiles for all users in a role" button in the Maintenance tab.',
                     'publishpress-authors'
                 ) . '</p>';
 
@@ -2476,6 +2488,30 @@ echo '<span class="ppma_settings_field_description">'
         /**
          * @param array $args
          */
+        public function settings_link_author_post_featured_image($args = [])
+        {
+            $id    = $this->module->options_group_name . '_link_author_post_featured_image';
+            $value = isset($this->module->options->link_author_post_featured_image) ? $this->module->options->link_author_post_featured_image : '';
+
+            echo '<label for="' . esc_attr($id) . '">';
+
+            echo '<input type="checkbox" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[link_author_post_featured_image]" value="yes" ' . ($value === 'yes' ? 'checked="checked"' : '') . '/>';
+
+            echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">'
+                . esc_html__(
+                    'This will make the featured image clickable and link to the post.',
+                    'publishpress-authors'
+                )
+                . '</span>';
+
+
+            echo '</label>';
+        }
+
+
+        /**
+         * @param array $args
+         */
         public function settings_show_author_page_title($args = [])
         {
             $id    = $this->module->options_group_name . '_show_author_page_title';
@@ -3022,6 +3058,10 @@ echo '<span class="ppma_settings_field_description">'
 
             if (!isset($new_options['show_author_post_featured_image'])) {
                 $new_options['show_author_post_featured_image'] = 'no';
+            }
+
+            if (!isset($new_options['link_author_post_featured_image'])) {
+                $new_options['link_author_post_featured_image'] = 'no';
             }
 
             if (!isset($new_options['show_author_post_excerpt'])) {
