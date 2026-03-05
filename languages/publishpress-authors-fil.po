@@ -2,12 +2,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Authors\n"
 "POT-Creation-Date: 2026-02-26 12:05+0000\n"
-"PO-Revision-Date: 2026-03-04 09:07+0000\n"
+"PO-Revision-Date: 2026-03-04 17:31+0000\n"
 "Last-Translator: Anderson Grudtner Martins <anderson@publishpress.com>\n"
 "Language-Team: Anderson Grudtner Martins <anderson@publishpress.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"|| n % 10 == 6 || n % 10 == 9);\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -26,6 +27,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-5: *.min.js\n"
 "X-Poedit-SearchPathExcluded-6: src/assets/lib\n"
 "Language: fil\n"
+"|| n % 10 == 6 || n % 10 == 9);: \n"
 "Plural-Forms: nplurals=2; plural=n != 1 && n != 2 && n != 3 && (n % 10 == 4 || n % 10 == 6 || n % 10 == 9);\n"
 
 #: src/functions/template-tags.php:1134 src/functions/template-tags.php:1755
@@ -36,47 +38,42 @@ msgstr " at "
 msgid "\"post_author\" is empty"
 msgstr "\"post_author\" ay walang laman"
 
-#: src/modules/author-boxes/author-boxes.php:544
+#: src/modules/author-boxes/author-boxes.php:547
 #, php-format
 msgid "%1$s %2$s moved to the Trash."
 msgid_plural "%1$s %3$s moved to the Trash."
 msgstr[0] "%1$s %2$s inilipat sa Basurahan.|%1$s %3$s inilipat sa Basurahan."
 msgstr[1] "%1$s %2$s inilipat sa Basurahan.|%1$s %3$s inilipat sa Basurahan."
 
-#: src/modules/author-boxes/author-boxes.php:522
+#: src/modules/author-boxes/author-boxes.php:525
 #, php-format
 msgid "%1$s %2$s not updated, somebody is editing it."
 msgid_plural "%1$s %3$s not updated, somebody is editing them."
-msgstr[0] ""
-msgstr[1] ""
-"%1$s %2$s hindi na-update, may nag-eedit nito.|%1$s %3$s hindi na-update, "
-"may nag-eedit sa kanila."
-msgstr[1] ""
-"%1$s %2$s hindi na-update, may nag-eedit nito.|%1$s %3$s hindi na-update, "
-"may nag-eedit sa kanila."
+msgstr[0] "%1$s %2$s ay hindi na-update, may nag-eedit nito."
+msgstr[1] "%1$s %3$s ay hindi na-update, may nag-eedit sa kanila."
 
-#: src/modules/author-boxes/author-boxes.php:533
+#: src/modules/author-boxes/author-boxes.php:536
 #, php-format
 msgid "%1$s %2$s permanently deleted."
 msgid_plural "%1$s %3$s permanently deleted."
 msgstr[0] "%1$s %2$s permanenteng tinanggal.|%1$s %3$s permanenteng tinanggal."
 msgstr[1] "%1$s %2$s permanenteng tinanggal.|%1$s %3$s permanenteng tinanggal."
 
-#: src/modules/author-boxes/author-boxes.php:555
+#: src/modules/author-boxes/author-boxes.php:558
 #, php-format
 msgid "%1$s %2$s restored from the Trash."
 msgid_plural "%1$s %3$s restored from the Trash."
 msgstr[0] "%1$s %2$s naibalik mula sa Basurahan.|%1$s %3$s naibalik mula sa Basurahan."
 msgstr[1] "%1$s %2$s naibalik mula sa Basurahan.|%1$s %3$s naibalik mula sa Basurahan."
 
-#: src/modules/author-boxes/author-boxes.php:511
+#: src/modules/author-boxes/author-boxes.php:514
 #, php-format
 msgid "%1$s %2$s updated."
 msgid_plural "%1$s %3$s updated."
 msgstr[0] "%1$s %2$s na-update.|%1$s %3$s na-update."
 msgstr[1] ""
 
-#: src/modules/author-boxes/author-boxes.php:425
+#: src/modules/author-boxes/author-boxes.php:428
 #: src/modules/author-custom-fields/author-custom-fields.php:183
 #, php-format
 msgid "%1$s Image"
@@ -182,19 +179,19 @@ msgstr "%1s Timbang"
 msgid "%1sView all posts%2s by %3s"
 msgstr "%1sTingnan ang lahat ng mga post%2s ni %3s"
 
-#: src/modules/author-boxes/author-boxes.php:418
+#: src/modules/author-boxes/author-boxes.php:421
 #: src/modules/author-custom-fields/author-custom-fields.php:176
 #, fuzzy, php-format
 msgid "%2$s"
 msgstr "%2$s"
 
-#: src/modules/author-boxes/author-boxes.php:431
+#: src/modules/author-boxes/author-boxes.php:434
 #: src/modules/author-custom-fields/author-custom-fields.php:189
 #, php-format
 msgid "%2$s list"
 msgstr "%2$s listahan"
 
-#: src/modules/author-boxes/author-boxes.php:430
+#: src/modules/author-boxes/author-boxes.php:433
 #: src/modules/author-custom-fields/author-custom-fields.php:188
 #, php-format
 msgid "%2$s list navigation"
@@ -211,6 +208,11 @@ msgstr "%d/%d: Sinusuri ang post %d"
 #: src/core/Classes/Installer.php:227
 msgid "%d/%d: Inspecting the user %d"
 msgstr "%d/%d: Sinusuri ang gumagamit %d"
+
+#: src/modules/author-boxes/author-boxes.php:696
+#, php-format
+msgid "%s (Copy)"
+msgstr "%s (Kopya)"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:821
 msgid ""
@@ -246,7 +248,7 @@ msgstr ", at "
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:683
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:970
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1149
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1362
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1361
 msgid "100 - Thin"
 msgstr "100 - Manipis"
 
@@ -256,7 +258,7 @@ msgstr "100 - Manipis"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:684
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:971
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1150
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1363, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1362, fuzzy
 msgid "200 - Extra light"
 msgstr "200 - Extra light"
 
@@ -266,7 +268,7 @@ msgstr "200 - Extra light"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:685
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:972
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1151
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1364
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1363
 msgid "300 - Light"
 msgstr "300 - Maliwanag"
 
@@ -276,7 +278,7 @@ msgstr "300 - Maliwanag"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:686
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:973
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1152
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1365, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1364, fuzzy
 msgid "400 - Normal"
 msgstr "400 - Normal"
 
@@ -286,7 +288,7 @@ msgstr "400 - Normal"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:687
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:974
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1153
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1366
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1365
 msgid "500 - Medium"
 msgstr "500 - Katamtaman"
 
@@ -296,7 +298,7 @@ msgstr "500 - Katamtaman"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:688
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:975
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1154
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1367, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1366, fuzzy
 msgid "600 - Semi bold"
 msgstr "600 - Semi bold"
 
@@ -306,7 +308,7 @@ msgstr "600 - Semi bold"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:689
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:976
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1155
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1368, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1367, fuzzy
 msgid "700 - Bold"
 msgstr "700 - Bold"
 
@@ -316,7 +318,7 @@ msgstr "700 - Bold"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:690
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:977
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1156
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1369, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1368, fuzzy
 msgid "800 - Extra bold"
 msgstr "800 - Extra bold"
 
@@ -326,7 +328,7 @@ msgstr "800 - Extra bold"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:691
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:978
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1157
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1370
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1369
 msgid "900 - Black"
 msgstr "900 - Itim"
 
@@ -344,11 +346,11 @@ msgstr "[]"
 msgid "About"
 msgstr "Tungkol"
 
-#: src/modules/multiple-authors/multiple-authors.php:3719, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:3759, fuzzy
 msgid "Access denied"
 msgstr "Access denied"
 
-#: src/modules/author-boxes/author-boxes.php:2364
+#: src/modules/author-boxes/author-boxes.php:2538
 msgid "Action"
 msgstr "Aksyon"
 
@@ -357,7 +359,7 @@ msgstr "Aksyon"
 msgid "Active"
 msgstr "Aktibo"
 
-#: src/modules/author-boxes/author-boxes.php:2392
+#: src/modules/author-boxes/author-boxes.php:2566
 msgid "Add"
 msgstr "Magdagdag"
 
@@ -435,7 +437,7 @@ msgstr "Magdagdag ng suporta para sa WPEngine object cache."
 msgid "Add compatibility with the Yoast SEO plugin"
 msgstr "Magdagdag ng suporta para sa Yoast SEO plugin"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1648
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1647
 msgid "Add Custom CSS styles here..."
 msgstr "Magdagdag ng Custom CSS na istilo dito..."
 
@@ -462,7 +464,7 @@ msgstr "Magdagdag ng opsyon sa migrasyon para sa Molongui Authorship"
 msgid "Add New"
 msgstr "Magdagdag ng Bago"
 
-#: src/modules/author-boxes/author-boxes.php:415
+#: src/modules/author-boxes/author-boxes.php:418
 #: src/modules/author-custom-fields/author-custom-fields.php:173
 #, php-format
 msgid "Add New %1$s"
@@ -509,11 +511,11 @@ msgstr "Idagdag ang suporta para sa mga custom na field sa mga profile ng may-ak
 msgid "Adding the author term %d to the post %d"
 msgstr "Idinadagdag ang termino ng may-akda %d sa post %d"
 
-#: src/modules/multiple-authors/multiple-authors.php:3120, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:3160, fuzzy
 msgid "Advanced"
 msgstr "Advanced"
 
-#: src/modules/author-boxes/author-boxes.php:2354
+#: src/modules/author-boxes/author-boxes.php:2528
 msgid "After All Authors"
 msgstr "Pagkatapos ng Lahat ng May-akda"
 
@@ -521,7 +523,7 @@ msgstr "Pagkatapos ng Lahat ng May-akda"
 msgid "After Avatar"
 msgstr "Pagkatapos ng Avatar"
 
-#: src/modules/author-boxes/author-boxes.php:2353
+#: src/modules/author-boxes/author-boxes.php:2527
 msgid "After Biographical Info Row"
 msgstr "Pagkatapos ng Biographical Info Row"
 
@@ -529,11 +531,11 @@ msgstr "Pagkatapos ng Biographical Info Row"
 msgid "After Name"
 msgstr "Pagkatapos ng Pangalan"
 
-#: src/modules/author-boxes/author-boxes.php:2352
+#: src/modules/author-boxes/author-boxes.php:2526
 msgid "After Name Row"
 msgstr "Pagkatapos ng Name Row"
 
-#: src/modules/author-boxes/author-boxes.php:2351
+#: src/modules/author-boxes/author-boxes.php:2525
 msgid "After View all posts Row"
 msgstr "Pagkatapos ng View all posts Row"
 
@@ -574,25 +576,25 @@ msgstr "Lahat ay nakaayos. Walang mga post na kailangang i-update"
 msgid "All Post Types"
 msgstr "Lahat ng Uri ng Post"
 
-#: src/modules/multiple-authors/multiple-authors.php:1920
+#: src/modules/multiple-authors/multiple-authors.php:1932
 msgid "Allow authors to be created without a connected user account."
 msgstr "Payagan ang mga may-akda na malikha nang walang nakakonektang user account."
 
-#: src/modules/multiple-authors/multiple-authors.php:1874
+#: src/modules/multiple-authors/multiple-authors.php:1886
 msgid "Allow authors to be created without a real user account."
 msgstr "Payagan ang mga may-akda na malikha nang walang totoong user account."
 
-#: src/modules/multiple-authors/multiple-authors.php:2156
+#: src/modules/multiple-authors/multiple-authors.php:2168
 msgid "Allow User to Choose"
 msgstr "Payagan ang User na Pumili"
 
-#: src/modules/multiple-authors/multiple-authors.php:1314
+#: src/modules/multiple-authors/multiple-authors.php:1326
 msgid "Allow users to choose which Author Box is used on each post."
 msgstr ""
 "Payagan ang mga user na pumili kung aling Author Box ang gagamitin sa bawat "
 "post."
 
-#: src/modules/multiple-authors/multiple-authors.php:1088
+#: src/modules/multiple-authors/multiple-authors.php:1100
 msgid "Allow users to opt out of Author Boxes"
 msgstr "Payagan ang mga user na hindi sumali sa Author Boxes"
 
@@ -670,12 +672,12 @@ msgstr ""
 "mga user?"
 
 #: src/core/Authors_Widget.php:186
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1337
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1336
 msgid "Ascending"
 msgstr "Paakyat"
 
 #: src/core/Plugin.php:591 src/core/Classes/Author_Editor.php:345
-#: src/modules/author-boxes/author-boxes.php:1992
+#: src/modules/author-boxes/author-boxes.php:2166
 #: src/modules/author-categories/author-categories.php:719
 #: src/modules/author-categories/author-categories.php:721
 msgid "Author"
@@ -685,132 +687,135 @@ msgstr "May-akda"
 msgid "Author Bio"
 msgstr "Bio ng May-akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:833
+#: src/modules/multiple-authors/multiple-authors.php:834
 msgid "Author bio layout:"
 msgstr "I-layout ang bio ng may-akda:"
 
 #: src/core/Classes/Post_Editor.php:497
-#: src/modules/author-boxes/author-boxes.php:404
-#: src/modules/author-boxes/author-boxes.php:506
-#: src/modules/author-boxes/author-boxes.php:2918
+#: src/modules/author-boxes/author-boxes.php:407
+#: src/modules/author-boxes/author-boxes.php:509
 msgid "Author Box"
 msgstr "Kahon ng May-akda"
 
-#: src/modules/author-boxes/author-boxes.php:482
+#: src/modules/author-boxes/author-boxes.php:485
 msgid "Author Box added."
 msgstr "Nagdagdag ng Kahon ng May-akda."
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1593
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1592
 msgid "Author Box Background Color"
 msgstr "Kulay ng Background ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1572
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1571
 msgid "Author Box Border Color"
 msgstr "Kulay ng Hangganan ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1587
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1586
 msgid "Author Box Border Radius (px)"
 msgstr "Radyus ng Hangganan ng Kahon ng May-akda (px)"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1554
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1553
 msgid "Author Box Border Style"
 msgstr "Estilo ng Hangganan ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1548
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1547
 msgid "Author Box Border Width (px)"
 msgstr "Lapad ng Hangganan ng Kahon ng May-akda (px)"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1599
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1598
 msgid "Author Box Color"
 msgstr "Kulay ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/author-boxes.php:1043
+#: src/modules/author-boxes/author-boxes.php:753
+msgid "Author Box duplicated."
+msgstr "Nadoble ang Author Box."
+
+#: src/modules/author-boxes/author-boxes.php:1213
 msgid "Author Box Editor"
 msgstr "Editor ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1506
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1505
 msgid "Author Box Margin Bottom"
 msgstr "Margin sa Ibaba ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1512
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1511
 msgid "Author Box Margin Left"
 msgstr "Margin sa Kaliwa ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1518
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1517
 msgid "Author Box Margin Right"
 msgstr "Margin sa Kanan ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1500
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1499
 msgid "Author Box Margin Top"
 msgstr "Margin sa Itaas ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1530
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1529
 msgid "Author Box Padding Bottom"
 msgstr "Padding sa Ibaba ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1536
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1535
 msgid "Author Box Padding Left"
 msgstr "Padding sa Kaliwa ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1542
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1541
 msgid "Author Box Padding Right"
 msgstr "Padding sa Kanan ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1524
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1523
 msgid "Author Box Padding Top"
 msgstr "Padding sa Itaas ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/author-boxes.php:1026
+#: src/modules/author-boxes/author-boxes.php:1196
 msgid "Author Box Preview"
 msgstr "Preview ng Author Box"
 
-#: src/modules/author-boxes/author-boxes.php:483
+#: src/modules/author-boxes/author-boxes.php:486
 msgid "Author Box saved."
 msgstr "Naka-save ang Author Box."
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1623
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1622
 msgid "Author Box Shadow Blur"
 msgstr "Blur ng Anino ng Author Box"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1605
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1604
 msgid "Author Box Shadow Color"
 msgstr "Kulay ng Anino ng Author Box"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1611
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1610
 msgid "Author Box Shadow Horizontal Offset"
 msgstr "Horisontal na Offset ng Anino ng Author Box"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1629
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1628
 msgid "Author Box Shadow Spread"
 msgstr "Saklaw ng Anino ng Author Box"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1617
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1616
 msgid "Author Box Shadow Vertical Offset"
 msgstr "Bertikal na Offset ng Anino ng Author Box"
 
-#: src/modules/author-boxes/author-boxes.php:484
+#: src/modules/author-boxes/author-boxes.php:487
 msgid "Author Box submitted."
 msgstr "Naisumite ang Author Box."
 
-#: src/modules/author-boxes/author-boxes.php:480
-#: src/modules/author-boxes/author-boxes.php:481
+#: src/modules/author-boxes/author-boxes.php:483
+#: src/modules/author-boxes/author-boxes.php:484
 msgid "Author Box updated."
 msgstr "Na-update ang Author Box."
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1578
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1577
 msgid "Author Box Width (%)"
 msgstr "Lapad ng Author Box (%)"
 
 #: src/modules/author-boxes/author-boxes.php:76
-#: src/modules/author-boxes/author-boxes.php:405
-#: src/modules/author-boxes/author-boxes.php:463
-#: src/modules/author-boxes/author-boxes.php:464
-#: src/modules/author-boxes/author-boxes.php:507
-#: src/modules/multiple-authors/multiple-authors.php:3114
+#: src/modules/author-boxes/author-boxes.php:408
+#: src/modules/author-boxes/author-boxes.php:466
+#: src/modules/author-boxes/author-boxes.php:467
+#: src/modules/author-boxes/author-boxes.php:510
+#: src/modules/multiple-authors/multiple-authors.php:3154
 msgid "Author Boxes"
 msgstr "Mga Author Box"
 
-#: src/modules/author-boxes/author-boxes.php:1133
+#: src/modules/author-boxes/author-boxes.php:1303
 #: src/modules/author-categories/author-categories.php:65
 #: src/modules/author-categories/author-categories.php:203
 #: src/modules/author-categories/author-categories.php:204
@@ -848,7 +853,7 @@ msgstr "Posisyon ng Mga Kategorya ng Author"
 msgid "Author Category"
 msgstr "Kategorya ng Author"
 
-#: src/modules/author-boxes/author-boxes.php:198
+#: src/modules/author-boxes/author-boxes.php:201
 msgid "Author Category Boxes"
 msgstr "Mga Kahon ng Kategorya ng Author"
 
@@ -921,7 +926,7 @@ msgstr "Email ng May-akda"
 msgid "Author Field"
 msgstr "Larangan ng May-akda"
 
-#: src/modules/author-boxes/author-boxes.php:1137
+#: src/modules/author-boxes/author-boxes.php:1307
 #: src/modules/author-custom-fields/author-custom-fields.php:64
 #: src/modules/author-custom-fields/author-custom-fields.php:163
 #: src/modules/author-custom-fields/author-custom-fields.php:221
@@ -937,7 +942,7 @@ msgstr "Pagpipilian sa Pamagat ng Pag-grupo ng May-akda"
 msgid "Author Index List"
 msgstr "Listahan ng Index ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1468
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1467
 msgid "Author inline display"
 msgstr "Inline na pagpapakita ng may-akda"
 
@@ -981,27 +986,27 @@ msgstr "Pamagat ng Pahina ng May-Akda"
 #: src/modules/author-pages/author-pages.php:60
 #: src/modules/author-pages/author-pages.php:106
 #: src/modules/author-pages/author-pages.php:107
-#: src/modules/multiple-authors/multiple-authors.php:3116
+#: src/modules/multiple-authors/multiple-authors.php:3156
 msgid "Author Pages"
 msgstr "Mga Pahina ng May-Akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:852
+#: src/modules/multiple-authors/multiple-authors.php:853
 msgid "Author pages excerpt ellipsis:"
 msgstr "Pagsasalin ng mga pahina ng May-Akda:"
 
-#: src/modules/multiple-authors/multiple-authors.php:800
+#: src/modules/multiple-authors/multiple-authors.php:801
 msgid "Author pages layout:"
 msgstr "Kalayuan ng mga pahina ng May-Akda:"
 
-#: src/modules/multiple-authors/multiple-authors.php:789
+#: src/modules/multiple-authors/multiple-authors.php:790
 msgid "Author pages posts limit:"
 msgstr "Limitasyon ng mga post sa mga pahina ng May-Akda:"
 
-#: src/modules/multiple-authors/multiple-authors.php:863
+#: src/modules/multiple-authors/multiple-authors.php:864
 msgid "Author pages title header:"
 msgstr "Pamagat ng header ng mga pahina ng May-Akda:"
 
-#: src/modules/multiple-authors/multiple-authors.php:871
+#: src/modules/multiple-authors/multiple-authors.php:872
 msgid "Author post title header:"
 msgstr "Pamagat ng header ng post ng May-Akda:"
 
@@ -1015,8 +1020,8 @@ msgstr ""
 "nagbibigay-daan sa mga gumagamit na maghanap sa mga tiyak na larangan ng "
 "may-akda."
 
-#: src/modules/multiple-authors/multiple-authors.php:343
 #: src/modules/multiple-authors/multiple-authors.php:344
+#: src/modules/multiple-authors/multiple-authors.php:345
 msgid "Author Profile"
 msgstr "Profile ng May-Akda"
 
@@ -1028,41 +1033,43 @@ msgstr "Tinanggal ang profile ng May-Akda."
 msgid "Author profile updated."
 msgstr "Na-update ang profile ng May-Akda."
 
-#: src/modules/multiple-authors/multiple-authors.php:3115
+#: src/modules/multiple-authors/multiple-authors.php:3155
 msgid "Author Profiles"
 msgstr "Mga Profile ng May-Akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:1830
+#: src/modules/multiple-authors/multiple-authors.php:1842
 msgid ""
 "Author profiles can be mapped to WordPress user accounts. This option "
 "allows you to automatically create author profiles when users are created "
 "in these roles. You can also do this for existing users by clicking the "
-"\"Create missed authors from role\" button in the Maintenance tab."
+"\"Create PublishPress Authors Profiles for all users in a role\" button in "
+"the Maintenance tab."
 msgstr ""
-"Maaaring i-map ang mga profile ng May-Akda sa mga account ng gumagamit ng "
-"WordPress. Ang opsyong ito ay nagbibigay-daan sa iyo upang awtomatikong "
-"lumikha ng mga profile ng may-akda kapag ang mga gumagamit ay nilikha sa "
-"mga tungkuling ito. Maaari mo ring gawin ito para sa mga umiiral na "
-"gumagamit sa pamamagitan ng pag-click sa button na \"Lumikha ng mga "
-"nawawalang may-akda mula sa tungkulin\" sa tab na Pangangalaga."
+"Maaaring i-map ang mga profile ng may-akda sa mga account ng WordPress "
+"user. Ang opsyong ito ay nagbibigay-daan sa iyo upang awtomatikong lumikha "
+"ng mga profile ng may-akda kapag ang mga gumagamit ay nilikha sa mga "
+"tungkuling ito. Maaari mo rin itong gawin para sa mga umiiral na gumagamit "
+"sa pamamagitan ng pag-click sa \"Lumikha ng PublishPress Authors Profiles "
+"para sa lahat ng gumagamit sa isang tungkulin\" na button sa Maintenance "
+"tab."
 
 #: src/modules/author-list/author-list.php:600
 msgid "Author Recent List"
 msgstr "Listahan ng Kamakailang May-akda"
 
-#: src/modules/author-boxes/author-boxes.php:1145
+#: src/modules/author-boxes/author-boxes.php:1315
 msgid "Author Recent Posts"
 msgstr "Kamakailang Mga Post ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1476
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1475
 msgid "Author Row Prefix"
 msgstr "Prefix ng Row ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1484
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1483
 msgid "Author Row Suffix"
 msgstr "Suffix ng Row ng May-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1492
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1491
 msgid "Author Separator"
 msgstr "Separator ng May-akda"
 
@@ -1073,7 +1080,7 @@ msgid "Author Type"
 msgstr "Uri ng May-akda"
 
 #: src/core/Classes/Term_Editor.php:79
-#: src/modules/multiple-authors/multiple-authors.php:3213
+#: src/modules/multiple-authors/multiple-authors.php:3253
 msgid "Author URL"
 msgstr "URL ng May-akda"
 
@@ -1103,12 +1110,12 @@ msgstr "Listahan ng May-akda"
 #: src/modules/author-list/author-list.php:443
 #: src/modules/author-list/author-list.php:457
 #: src/modules/editflow-integration/editflow-integration.php:114
-#: src/modules/multiple-authors/multiple-authors.php:328
 #: src/modules/multiple-authors/multiple-authors.php:329
-#: src/modules/multiple-authors/multiple-authors.php:377
+#: src/modules/multiple-authors/multiple-authors.php:330
 #: src/modules/multiple-authors/multiple-authors.php:378
-#: src/modules/multiple-authors/multiple-authors.php:397
-#: src/modules/multiple-authors/multiple-authors.php:1333
+#: src/modules/multiple-authors/multiple-authors.php:379
+#: src/modules/multiple-authors/multiple-authors.php:398
+#: src/modules/multiple-authors/multiple-authors.php:1345
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:82
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:165
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:358
@@ -1118,11 +1125,11 @@ msgstr "Listahan ng May-akda"
 msgid "Authors"
 msgstr "Mga May-akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:1396
+#: src/modules/multiple-authors/multiple-authors.php:1408
 msgid "Authors Box"
 msgstr "Kahon ng Mga May-akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:1477
+#: src/modules/multiple-authors/multiple-authors.php:1489
 msgid "Authors Data"
 msgstr "Data ng Mga May-akda"
 
@@ -1139,7 +1146,7 @@ msgid "Authors Index"
 msgstr "Index ng Mga May-akda"
 
 #: src/core/Authors_Widget.php:23
-#: src/modules/multiple-authors/multiple-authors.php:1546
+#: src/modules/multiple-authors/multiple-authors.php:1558
 msgid "Authors List"
 msgstr "Listahan ng Mga May-akda"
 
@@ -1160,12 +1167,12 @@ msgstr "Kamakailang Mga May-akda"
 msgid "Authors Settings"
 msgstr "Mga Setting ng May-akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:618
+#: src/modules/multiple-authors/multiple-authors.php:619
 msgid "Automatically create author profiles:"
 msgstr "Awtomatikong lumikha ng mga profile ng may-akda:"
 
 #: src/core/Classes/Author_Editor.php:316
-#: src/modules/author-boxes/author-boxes.php:1117, fuzzy
+#: src/modules/author-boxes/author-boxes.php:1287, fuzzy
 msgid "Avatar"
 msgstr "Avatar"
 
@@ -1197,7 +1204,7 @@ msgstr "Pinagmulan ng Avatar"
 msgid "Back to Authors"
 msgstr "Bumalik sa Mga May-akda"
 
-#: src/modules/author-boxes/author-boxes.php:1093
+#: src/modules/author-boxes/author-boxes.php:1263
 #: src/modules/author-custom-fields/author-custom-fields.php:770, fuzzy
 msgid "Banner"
 msgstr "Banner"
@@ -1207,7 +1214,7 @@ msgid "Before Name"
 msgstr "Bago ang Pangalan"
 
 #: src/core/Classes/Author_Editor.php:362
-#: src/modules/author-boxes/author-boxes.php:1125
+#: src/modules/author-boxes/author-boxes.php:1295
 msgid "Biographical Info"
 msgstr "Impormasyon sa Talambuhay"
 
@@ -1270,15 +1277,15 @@ msgstr "Pagbuo ng Bloke"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:682
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:969
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1148
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1361
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1360
 msgid "Bold"
 msgstr "Naka-bold"
 
-#: src/modules/author-boxes/author-boxes.php:1149
+#: src/modules/author-boxes/author-boxes.php:1319
 msgid "Box Layout"
 msgstr "Layout ng Kahon"
 
-#: src/modules/author-boxes/author-boxes.php:1113
+#: src/modules/author-boxes/author-boxes.php:1283
 msgid "Box Title"
 msgstr "Pamagat ng Kahon"
 
@@ -1338,7 +1345,7 @@ msgstr "Naka-kahon"
 msgid "Boxed (Categories)"
 msgstr "Naka-kahon (Mga Kategorya)"
 
-#: src/modules/multiple-authors/multiple-authors.php:1121
+#: src/modules/multiple-authors/multiple-authors.php:1133
 msgid "Boxed legacy layout Author Box:"
 msgstr "Naka-kahon na legacy layout ng Author Box:"
 
@@ -1354,7 +1361,7 @@ msgstr "Built-in na Layout"
 msgid "By"
 msgstr "Ni"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:532
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:540
 msgid "Cancel"
 msgstr "Kanselahin"
 
@@ -1363,7 +1370,7 @@ msgstr "Kanselahin"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:492
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:992
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1169
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1382
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1381
 msgid "Capitalize"
 msgstr "Gawing Malalaki"
 
@@ -1380,7 +1387,7 @@ msgstr "Nai-update ang kaayusan ng Kategorya."
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:529
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1035
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1206
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1419
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1418
 msgid "Center"
 msgstr "Sentro"
 
@@ -1388,11 +1395,11 @@ msgstr "Sentro"
 msgid "Centered"
 msgstr "Naka-sentro"
 
-#: src/modules/multiple-authors/multiple-authors.php:1129
+#: src/modules/multiple-authors/multiple-authors.php:1141
 msgid "Centered legacy layout Author Box:"
 msgstr "Naka-sentro na legacy layout ng Author Box:"
 
-#: src/modules/author-boxes/author-boxes.php:2616
+#: src/modules/author-boxes/author-boxes.php:2790
 #, php-format
 msgid "Change %1s"
 msgstr "Palitan ang %1s"
@@ -1405,7 +1412,7 @@ msgstr "Cheatin’ uh?"
 msgid "Choose from the most used Authors"
 msgstr "Pumili mula sa mga pinaka-ginagamit na May-akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:1801
+#: src/modules/multiple-authors/multiple-authors.php:1813
 msgid ""
 "Choose which WordPress user roles can be selected using the \"Registered "
 "Author With User Account\" option for author profiles."
@@ -1414,15 +1421,15 @@ msgstr ""
 "gamit ang \"Rehistradong May-akda na may User Account\" na opsyon para sa "
 "mga profile ng may-akda."
 
-#: src/modules/multiple-authors/multiple-authors.php:2851
-#: src/modules/multiple-authors/multiple-authors.php:2857
-#: src/modules/multiple-authors/multiple-authors.php:2863
-#: src/modules/multiple-authors/multiple-authors.php:2870
+#: src/modules/multiple-authors/multiple-authors.php:2887
+#: src/modules/multiple-authors/multiple-authors.php:2893
+#: src/modules/multiple-authors/multiple-authors.php:2899
+#: src/modules/multiple-authors/multiple-authors.php:2906
 msgid "Click here for documentation"
 msgstr "I-click dito para sa dokumentasyon"
 
-#: src/modules/multiple-authors/multiple-authors.php:1949
-#: src/modules/multiple-authors/multiple-authors.php:2721
+#: src/modules/multiple-authors/multiple-authors.php:1961
+#: src/modules/multiple-authors/multiple-authors.php:2757
 msgid "Click here for more details."
 msgstr "I-click dito para sa karagdagang detalye."
 
@@ -1445,7 +1452,7 @@ msgstr ""
 "kanilang pagkakasunod-sunod. I-click ang <strong>Alisin</strong> upang "
 "alisin sila."
 
-#: src/modules/author-boxes/author-boxes.php:2477
+#: src/modules/author-boxes/author-boxes.php:2651
 msgid ""
 "Click the \"Generate Template\" button under the text area. Wait for the "
 "code to be generated."
@@ -1459,12 +1466,12 @@ msgstr ""
 "I-click upang baguhin ang may-akdang ito, o i-drag upang baguhin ang "
 "kanilang posisyon"
 
-#: src/modules/multiple-authors/multiple-authors.php:1727
-#: src/modules/multiple-authors/multiple-authors.php:1728
+#: src/modules/multiple-authors/multiple-authors.php:1739
+#: src/modules/multiple-authors/multiple-authors.php:1740
 msgid "Click To Copy!"
 msgstr "I-click upang Kopyahin!"
 
-#: src/modules/multiple-authors/multiple-authors.php:4623
+#: src/modules/multiple-authors/multiple-authors.php:4663
 msgid "Click to run the update now"
 msgstr "I-click upang patakbuhin ang update ngayon"
 
@@ -1484,21 +1491,21 @@ msgstr "Coauthors"
 #: src/modules/byline-migration/byline-migration.php:145
 #: src/modules/bylines-migration/bylines-migration.php:147
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:134
-#: src/modules/multiple-authors/multiple-authors.php:4089
+#: src/modules/multiple-authors/multiple-authors.php:4129
 msgid "Collecting data for the migration..."
 msgstr "Nangangalap ng data para sa migration..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4021
-#: src/modules/multiple-authors/multiple-authors.php:4052
+#: src/modules/multiple-authors/multiple-authors.php:4061
+#: src/modules/multiple-authors/multiple-authors.php:4092
 msgid "Collecting data..."
 msgstr "Nangangalap ng data..."
 
-#: src/modules/multiple-authors/multiple-authors.php:734
+#: src/modules/multiple-authors/multiple-authors.php:735
 msgid "Color scheme:"
 msgstr "Schema ng kulay:"
 
-#: src/templates/parts/author-pages-grid.php:142
-#: src/templates/parts/author-pages-list.php:131
+#: src/templates/parts/author-pages-grid.php:150
+#: src/templates/parts/author-pages-list.php:139
 msgid "Comment counts"
 msgstr "Bilang ng mga komento"
 
@@ -1510,7 +1517,7 @@ msgstr "I-configure"
 msgid "Configure Author List Options"
 msgstr "I-configure ang mga Opsyon sa Listahan ng May-akda"
 
-#: src/modules/author-boxes/author-boxes.php:2480
+#: src/modules/author-boxes/author-boxes.php:2654
 msgid ""
 "Congratulations. Your can now choose your template inside the PublishPress "
 "Authors Settings."
@@ -1530,12 +1537,12 @@ msgstr "Kontrolin kung ang field na ito ay isasama sa mga tugon ng REST API."
 msgid "Convert to Guest Author With User Account"
 msgstr "I-convert sa Guest Author na may User Account"
 
-#: src/modules/author-boxes/author-boxes.php:2449
-#: src/modules/author-boxes/author-boxes.php:2521
+#: src/modules/author-boxes/author-boxes.php:2623
+#: src/modules/author-boxes/author-boxes.php:2695
 msgid "Copied to Clipboard!"
 msgstr "Nakopya sa Clipboard!"
 
-#: src/modules/multiple-authors/multiple-authors.php:1726
+#: src/modules/multiple-authors/multiple-authors.php:1738
 msgid "Copied!"
 msgstr "Nakopya!"
 
@@ -1549,11 +1556,11 @@ msgstr "Kopyahin ang Data ng Byline"
 msgid "Copy Bylines Data"
 msgstr "Kopyahin ang Data ng Bylines"
 
-#: src/modules/multiple-authors/multiple-authors.php:2890
+#: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "Copy Co-Authors Plus Data"
 msgstr "Kopyahin ang Data ng Co-Authors Plus"
 
-#: src/modules/multiple-authors/multiple-authors.php:4094
+#: src/modules/multiple-authors/multiple-authors.php:4134
 msgid "Copy Co-Authors Plus data"
 msgstr "Kopyahin ang data ng Co-Authors Plus"
 
@@ -1562,20 +1569,24 @@ msgstr "Kopyahin ang data ng Co-Authors Plus"
 msgid "Copy Molongui Authorship Data"
 msgstr "Kopyahin ang Data ng Molongui Authorship"
 
-#: src/modules/author-boxes/author-boxes.php:2479
+#: src/modules/author-boxes/author-boxes.php:2653
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "Kopyahin ang nabuo na code at i-paste ito sa loob ng bagong nilikhang file."
 
-#: src/modules/author-boxes/author-boxes.php:2445
-#: src/modules/author-boxes/author-boxes.php:2516
+#: src/modules/author-boxes/author-boxes.php:2619
+#: src/modules/author-boxes/author-boxes.php:2690
 msgid "Copy to Clipboard"
 msgstr "Kopyahin sa Clipboard"
 
 #: src/modules/byline-migration/byline-migration.php:149
 #: src/modules/bylines-migration/bylines-migration.php:151
-#: src/modules/multiple-authors/multiple-authors.php:4093
+#: src/modules/multiple-authors/multiple-authors.php:4133
 msgid "Copying authors' data..."
 msgstr "Kinikopya ang data ng mga may-akda..."
+
+#: src/modules/author-boxes/author-boxes.php:711
+msgid "Could not duplicate the Author Box."
+msgstr "Hindi ma-nadoble ang Author Box."
 
 #: src/core/Classes/Author_Editor.php:789
 msgid ""
@@ -1607,7 +1618,7 @@ msgstr ""
 "gumagamit. Ang opsyong ito ay magaan ngunit maaaring magkaroon ng mga isyu "
 "sa pagkakatugma sa iba pang mga tema at plugin."
 
-#: src/modules/author-boxes/author-boxes.php:2478
+#: src/modules/author-boxes/author-boxes.php:2652
 #, php-format
 msgid ""
 "Create an empty php template file with your desired file slug in the %1s "
@@ -1622,8 +1633,8 @@ msgstr ""
 "/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
 "my-first-custom-author-template.php %7s ."
 
-#: src/modules/multiple-authors/multiple-authors.php:2876
-#: src/modules/multiple-authors/multiple-authors.php:2878
+#: src/modules/multiple-authors/multiple-authors.php:2912
+#: src/modules/multiple-authors/multiple-authors.php:2914
 msgid "Create Author Categories"
 msgstr "Lumikha ng Mga Kategorya ng May-Akda"
 
@@ -1631,21 +1642,21 @@ msgstr "Lumikha ng Mga Kategorya ng May-Akda"
 msgid "Create Author Profile"
 msgstr "Lumikha ng Profile ng May-Akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:2852
+#: src/modules/multiple-authors/multiple-authors.php:2888
 msgid "Create missing PublishPress Authors profiles"
 msgstr "Lumikha ng nawawalang mga profile ng PublishPress Authors"
 
-#: src/modules/multiple-authors/multiple-authors.php:2858
+#: src/modules/multiple-authors/multiple-authors.php:2894
 msgid "Create PublishPress Authors profiles"
 msgstr "Lumikha ng mga profile ng PublishPress Authors"
 
-#: src/modules/multiple-authors/multiple-authors.php:2850
+#: src/modules/multiple-authors/multiple-authors.php:2886
 msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr ""
 "Lumikha ng mga Profile ng PublishPress Authors para sa lahat ng mga "
 "may-akda ng post"
 
-#: src/modules/multiple-authors/multiple-authors.php:2856
+#: src/modules/multiple-authors/multiple-authors.php:2892
 msgid "Create PublishPress Authors Profiles for all users in a role"
 msgstr ""
 "Lumikha ng mga Profile ng PublishPress Authors para sa lahat ng mga "
@@ -1655,7 +1666,7 @@ msgstr ""
 msgid "Creating author term for the user %d"
 msgstr "Nagmumungkahi ng term ng may-akda para sa gumagamit %d"
 
-#: src/modules/multiple-authors/multiple-authors.php:4091
+#: src/modules/multiple-authors/multiple-authors.php:4131
 msgid "Creating missed post authors...."
 msgstr "Nagmumungkahi ng mga nawawalang may-akda ng post...."
 
@@ -1663,8 +1674,8 @@ msgstr "Nagmumungkahi ng mga nawawalang may-akda ng post...."
 msgid "Custom \"View All Posts\" Link"
 msgstr "Custom \"Tumingin ng Lahat ng Post\" Link"
 
-#: src/modules/author-boxes/author-boxes.php:1153
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1647, fuzzy
+#: src/modules/author-boxes/author-boxes.php:1323
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1646, fuzzy
 msgid "Custom CSS"
 msgstr "Custom CSS"
 
@@ -1698,12 +1709,12 @@ msgid "Custom image"
 msgstr "Custom na larawan"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:202
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1290
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1560
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1289
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1559
 msgid "Dashed"
 msgstr "May tuldok"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1323
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1322
 msgid "Date"
 msgstr "Petsa"
 
@@ -1715,7 +1726,7 @@ msgstr "I-deactivate ang Byline"
 msgid "Deactivate Bylines"
 msgstr "I-deactivate ang Bylines"
 
-#: src/modules/multiple-authors/multiple-authors.php:4097
+#: src/modules/multiple-authors/multiple-authors.php:4137
 msgid "Deactivate Co-Authors Plus"
 msgstr "I-deactivate ang Co-Authors Plus"
 
@@ -1731,7 +1742,7 @@ msgstr "Nagde-deactivate ng Byline..."
 msgid "Deactivating Bylines..."
 msgstr "Nagde-deactivate ng Bylines..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4095
+#: src/modules/multiple-authors/multiple-authors.php:4135
 msgid "Deactivating Co-uthors Plus..."
 msgstr "Nagde-deactivate ng Co-Authors Plus..."
 
@@ -1771,29 +1782,29 @@ msgstr "Debug"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1179
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1191
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1204
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1359
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1379
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1392
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1404
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1417, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1358
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1378
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1391
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1403
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1416, fuzzy
 msgid "Default"
 msgstr "Default"
 
 #: src/core/Classes/Post_Editor.php:515
-#: src/modules/author-boxes/author-boxes.php:195, fuzzy
+#: src/modules/author-boxes/author-boxes.php:198, fuzzy
 msgid "Default Author Box"
 msgstr "Default Author Box"
 
-#: src/modules/multiple-authors/multiple-authors.php:640
+#: src/modules/multiple-authors/multiple-authors.php:641
 msgid "Default author for new posts:"
 msgstr "Default na may-akda para sa mga bagong post:"
 
 #: src/core/Classes/Author_Editor.php:389
-#: src/modules/multiple-authors/multiple-authors.php:1110
+#: src/modules/multiple-authors/multiple-authors.php:1122
 msgid "Default Avatar"
 msgstr "Default na Avatar"
 
-#: src/modules/multiple-authors/multiple-authors.php:718
+#: src/modules/multiple-authors/multiple-authors.php:719
 msgid "Default Layout:"
 msgstr "Default na Layout:"
 
@@ -1805,28 +1816,28 @@ msgstr "Default na Layouts"
 msgid "Default Search"
 msgstr "Default na Paghahanap"
 
-#: src/modules/author-boxes/author-boxes.php:2391
-#: src/modules/author-boxes/author-boxes.php:2420
+#: src/modules/author-boxes/author-boxes.php:2565
+#: src/modules/author-boxes/author-boxes.php:2594
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:126
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:375
 msgid "Delete"
 msgstr "Tanggalin"
 
-#: src/modules/multiple-authors/multiple-authors.php:2903
+#: src/modules/multiple-authors/multiple-authors.php:2939
 msgid "Delete all authors mapped to users"
 msgstr "Tanggalin ang lahat ng may-akdang naka-map sa mga gumagamit"
 
-#: src/modules/multiple-authors/multiple-authors.php:2910
+#: src/modules/multiple-authors/multiple-authors.php:2946
 msgid "Delete all guest authors"
 msgstr "Tanggalin ang lahat ng mga guest author"
 
-#: src/modules/multiple-authors/multiple-authors.php:2901
+#: src/modules/multiple-authors/multiple-authors.php:2937
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr ""
 "Tanggalin ang Mga Ugnayan sa Pagitan ng Mga Profile ng May-akda at Mga "
 "Gumagamit"
 
-#: src/modules/multiple-authors/multiple-authors.php:2908
+#: src/modules/multiple-authors/multiple-authors.php:2944
 msgid "Delete Guest Authors"
 msgstr "Tanggalin ang Mga Guest Authors"
 
@@ -1835,7 +1846,7 @@ msgid "Delete Permanently"
 msgstr "Tanggalin Nang Permanente"
 
 #: src/core/Authors_Widget.php:187
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1338
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1337
 msgid "Descending"
 msgstr "Pababa"
 
@@ -1855,7 +1866,7 @@ msgstr "Mga Detalye"
 msgid "Disable Categories"
 msgstr "Huwag paganahin ang Mga Kategorya"
 
-#: src/modules/multiple-authors/multiple-authors.php:710
+#: src/modules/multiple-authors/multiple-authors.php:711
 msgid "Disable the \"Authors\" box when using \"Quick Edit\":"
 msgstr ""
 "Idiskonek ang kahon na \"Mga May-akda\" kapag gumagamit ng \"Mabilis na "
@@ -1867,7 +1878,7 @@ msgstr ""
 msgid "Disabled"
 msgstr "Naka-disable"
 
-#: src/modules/multiple-authors/multiple-authors.php:1253
+#: src/modules/multiple-authors/multiple-authors.php:1265
 #: src/modules/settings/settings.php:275
 #, php-format
 msgid ""
@@ -1878,8 +1889,8 @@ msgstr ""
 "isang na-load na file."
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:193
-#: src/modules/multiple-authors/multiple-authors.php:4555
-#: src/modules/multiple-authors/multiple-authors.php:4629
+#: src/modules/multiple-authors/multiple-authors.php:4595
+#: src/modules/multiple-authors/multiple-authors.php:4669
 msgid "Dismiss"
 msgstr "Itapon"
 
@@ -1901,8 +1912,8 @@ msgstr "I-display ang listahan ng mga may-akda."
 msgid "Display Biographical Info For"
 msgstr "I-display ang Impormasyon ng Talambuhay Para sa"
 
-#: src/modules/author-boxes/author-boxes.php:1121
-#: src/modules/multiple-authors/multiple-authors.php:1099
+#: src/modules/author-boxes/author-boxes.php:1291
+#: src/modules/multiple-authors/multiple-authors.php:1111
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:285
 msgid "Display Name"
 msgstr "I-display ang Pangalan"
@@ -1965,7 +1976,7 @@ msgstr "Timbang ng Pangalan ng Ipinapakita"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:700
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:829
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1230
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1448, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1447, fuzzy
 msgid "div"
 msgstr "div"
 
@@ -1981,7 +1992,7 @@ msgstr "Huwag ipakita ang profile na ito sa publiko"
 msgid "Documentation"
 msgstr "Dokumentasyon"
 
-#: src/modules/author-boxes/author-boxes.php:2485
+#: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"
 msgstr "pahina ng dokumentasyon"
 
@@ -1989,11 +2000,11 @@ msgstr "pahina ng dokumentasyon"
 msgid "dofollow"
 msgstr "dofollow"
 
-#: src/modules/multiple-authors/multiple-authors.php:4054
+#: src/modules/multiple-authors/multiple-authors.php:4094
 msgid "Done! %d authors were updated."
 msgstr "Tapos na! %d mga may-akda ang na-update."
 
-#: src/modules/multiple-authors/multiple-authors.php:4023
+#: src/modules/multiple-authors/multiple-authors.php:4063
 msgid "Done! %d posts were updated."
 msgstr "Tapos na! %d mga post ang na-update."
 
@@ -2015,11 +2026,11 @@ msgstr ""
 msgid "Done! Bylines is deactivated."
 msgstr "Tapos na! Na-deactivate ang Bylines."
 
-#: src/modules/multiple-authors/multiple-authors.php:4098
+#: src/modules/multiple-authors/multiple-authors.php:4138
 msgid "Done! Co-Authors Plus data was copied."
 msgstr "Tapos na! Nakopya ang data ng Co-Authors Plus."
 
-#: src/modules/multiple-authors/multiple-authors.php:4096
+#: src/modules/multiple-authors/multiple-authors.php:4136
 msgid "Done! Co-Authors Plus is deactivated."
 msgstr "Tapos na! Na-deactivate ang Co-Authors Plus."
 
@@ -2034,14 +2045,14 @@ msgid "Done! Molongui Authorship is deactivated."
 msgstr "Tapos na! Na-deactivate ang Molongui Authorship."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:201
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1289
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1559
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1288
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1558
 msgid "Dotted"
 msgstr "Tuldok"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:204
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1292
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1563
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1291
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1562
 msgid "Double"
 msgstr "Dobleng"
 
@@ -2049,6 +2060,10 @@ msgstr "Dobleng"
 #, php-format
 msgid "Drag-and-drop Authors to add them to the %s category"
 msgstr "I-drag at i-drop ang mga May-akda upang idagdag sila sa %s kategorya"
+
+#: src/modules/author-boxes/author-boxes.php:624
+msgid "Duplicate"
+msgstr "Nadoble"
 
 #: src/modules/author-list/author-list.php:932
 msgid "Dynamic Shortcode"
@@ -2059,7 +2074,7 @@ msgstr "Dinamiko na Shortcode"
 msgid "Edit"
 msgstr "I-edit"
 
-#: src/modules/author-boxes/author-boxes.php:416
+#: src/modules/author-boxes/author-boxes.php:419
 #: src/modules/author-custom-fields/author-custom-fields.php:174
 #, php-format
 msgid "Edit %1$s"
@@ -2121,7 +2136,7 @@ msgstr "Walang Laman na Espasyo"
 msgid "Enable Author Grouping"
 msgstr "Paganahin ang Pag-grupo ng mga May-akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:778
+#: src/modules/multiple-authors/multiple-authors.php:779
 msgid "Enable author pages:"
 msgstr "Paganahin ang mga pahina ng may-akda:"
 
@@ -2139,15 +2154,15 @@ msgstr "Paganahin ang Mga Kategorya"
 
 #: src/modules/author-categories/author-categories.php:683
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:81
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:523
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:531
 msgid "Enable Category"
 msgstr "Paganahin ang Kategorya"
 
-#: src/modules/multiple-authors/multiple-authors.php:1066
+#: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr "Paganahin ang Guest Author na Walang User Account"
 
-#: src/modules/multiple-authors/multiple-authors.php:1077
+#: src/modules/multiple-authors/multiple-authors.php:1089
 msgid "Enable Guest Author With User Account"
 msgstr "Paganahin ang Guest Author na May User Account"
 
@@ -2155,7 +2170,7 @@ msgstr "Paganahin ang Guest Author na May User Account"
 msgid "Enable Polylang Author Translation:"
 msgstr "Paganahin ang Pagsasalin ng May-akdang Polylang:"
 
-#: src/modules/multiple-authors/multiple-authors.php:591
+#: src/modules/multiple-authors/multiple-authors.php:592
 msgid "Enable PublishPress Authors for these post types:"
 msgstr "Paganahin ang PublishPress Authors para sa mga uri ng post na ito:"
 
@@ -2180,7 +2195,7 @@ msgstr ""
 "Post\". Iwanang blangko upang gamitin ang default na pahina ng mga post ng "
 "may-akda."
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1658
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1657
 msgid "Enter class name without dot(.)"
 msgstr "Maglagay ng pangalan ng klase nang walang tuldok (.)"
 
@@ -2194,7 +2209,7 @@ msgstr ""
 msgid "Enter the Author Category name when there are more than 1 author"
 msgstr "Maglagay ng pangalan ng Kategoryang May-akda kapag higit sa 1 ang may-akda"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1485
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1484
 msgid ""
 "Enter the text that should be added after authors. This field accepts basic "
 "HTML."
@@ -2210,7 +2225,7 @@ msgstr ""
 "Maglagay ng teksto na dapat idagdag matapos ang pamagat ng grupo. "
 "Tinatanggap ng larangang ito ang pangunahing HTML."
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1477
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1476
 msgid ""
 "Enter the text that should be added before authors. This field accepts "
 "basic HTML."
@@ -2242,16 +2257,28 @@ msgstr "Error sa pag-update ng profile ng may-akda."
 msgid "Error updating category data."
 msgstr "Error sa pag-update ng data ng kategorya."
 
-#: src/modules/multiple-authors/multiple-authors.php:3892
+#: src/modules/multiple-authors/multiple-authors.php:3932
 msgid "Error. Author terms could not be reseted."
 msgstr "Error. Hindi na-reset ang mga tuntunin ng may-akda."
 
 #: src/modules/byline-migration/byline-migration.php:146
 #: src/modules/bylines-migration/bylines-migration.php:148
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:135
-#: src/modules/multiple-authors/multiple-authors.php:4090, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:4130, fuzzy
 msgid "Error: "
 msgstr "Error: "
+
+#: src/modules/author-categories/author-categories.php:622
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
+#, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+"Halimbawa: kapag ang halagang ito ay nakatakdang reviewedBy, lahat ng "
+"gumagamit sa kategoryang ito ay idaragdag sa pag-aari ng post na "
+"reviewedBy. Maaari mong basahin ang higit pa %1$s sa gabay na ito.%2$s"
 
 #: src/modules/author-list/author-list.php:451
 msgid "Exclude Authors"
@@ -2261,12 +2288,12 @@ msgstr "I-exclude ang mga May-akda"
 msgid "Existing Author Boxes"
 msgstr "Mga Umiiral na Kahong May-akda"
 
-#: src/modules/author-boxes/author-boxes.php:1157
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1694
+#: src/modules/author-boxes/author-boxes.php:1327
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1693
 msgid "Export"
 msgstr "I-export"
 
-#: src/modules/author-boxes/author-boxes.php:2434
+#: src/modules/author-boxes/author-boxes.php:2608
 msgid "Export Editor Settings"
 msgstr "I-export ang Mga Setting ng Editor"
 
@@ -2274,15 +2301,15 @@ msgstr "I-export ang Mga Setting ng Editor"
 msgid "Facebook"
 msgstr "Facebook"
 
-#: src/modules/multiple-authors/multiple-authors.php:651
+#: src/modules/multiple-authors/multiple-authors.php:652
 msgid "Fallback user for Guest Authors:"
 msgstr "Fallback na gumagamit para sa mga Guest Author:"
 
-#: src/modules/multiple-authors/multiple-authors.php:901
+#: src/modules/multiple-authors/multiple-authors.php:913
 msgid "Featured image custom height:"
 msgstr "Pasadyang taas ng tampok na imahe:"
 
-#: src/modules/multiple-authors/multiple-authors.php:890
+#: src/modules/multiple-authors/multiple-authors.php:902
 msgid "Featured image custom width:"
 msgstr "Pasadyang lapad ng tampok na imahe:"
 
@@ -2364,14 +2391,14 @@ msgstr "Uri ng Patlang"
 msgid "Field Value"
 msgstr "Halaga ng Patlang"
 
-#: src/modules/author-boxes/author-boxes.php:429
+#: src/modules/author-boxes/author-boxes.php:432
 #: src/modules/author-custom-fields/author-custom-fields.php:187
 #, php-format
 msgid "Filter %2$s list"
 msgstr "I-filter ang listahan ng %2$s"
 
-#: src/modules/multiple-authors/multiple-authors.php:4022
-#: src/modules/multiple-authors/multiple-authors.php:4053
+#: src/modules/multiple-authors/multiple-authors.php:4062
+#: src/modules/multiple-authors/multiple-authors.php:4093
 msgid "Finishing the process..."
 msgstr "Tinatapos ang proseso..."
 
@@ -2381,11 +2408,11 @@ msgstr "Unang Awtor Lamang"
 
 #: src/core/Authors_Widget.php:192 src/core/Classes/Author_Editor.php:368
 #: src/modules/author-custom-fields/author-custom-fields.php:933
-#: src/modules/multiple-authors/multiple-authors.php:2159
+#: src/modules/multiple-authors/multiple-authors.php:2171
 msgid "First Name"
 msgstr "Unang Pangalan"
 
-#: src/modules/multiple-authors/multiple-authors.php:2157
+#: src/modules/multiple-authors/multiple-authors.php:2169
 msgid "First Name Last Name"
 msgstr "Unang Pangalan Apelyido"
 
@@ -2394,11 +2421,11 @@ msgstr "Unang Pangalan Apelyido"
 msgid "Flex"
 msgstr "Flex"
 
-#: src/modules/multiple-authors/multiple-authors.php:759
+#: src/modules/multiple-authors/multiple-authors.php:760
 msgid "Font Awesome icons:"
 msgstr "Mga icon ng Font Awesome:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1625
+#: src/modules/multiple-authors/multiple-authors.php:1637
 #, php-format
 msgid ""
 "For authors_index layout, you can group user by profile field by using %1$s "
@@ -2407,30 +2434,19 @@ msgstr ""
 "Para sa layout ng authors_index, maaari mong pagsamahin ang mga gumagamit "
 "ayon sa profile field sa pamamagitan ng paggamit ng %1$s."
 
-#: src/modules/author-categories/author-categories.php:622
-#, php-format
-msgid ""
-"For example, when this value is set to reviewedBy, all users under this "
-"category will be added to post reviewedBy property. You can read more %1$s "
-"in this guide.%2$s"
-msgstr ""
-"Halimbawa, kapag itinakda ang halagang ito sa reviewedBy, lahat ng "
-"gumagamit sa ilalim ng kategoryang ito ay idaragdag sa post reviewedBy "
-"property. Maaari mong basahin ang higit pa %1$s sa gabay na ito.%2$s"
-
 #: src/core/Classes/Author_Editor.php:313
 #: src/modules/author-list/author-list.php:316
 #: src/modules/author-pages/author-pages.php:117
-#: src/modules/multiple-authors/multiple-authors.php:3113
+#: src/modules/multiple-authors/multiple-authors.php:3153
 msgid "General"
 msgstr "Pangkalahatan"
 
-#: src/modules/author-boxes/author-boxes.php:2510
+#: src/modules/author-boxes/author-boxes.php:2684
 msgid "Generate Template"
 msgstr "Bumuo ng Template"
 
-#: src/modules/author-boxes/author-boxes.php:1165
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1731
+#: src/modules/author-boxes/author-boxes.php:1335
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1730
 msgid "Generate Theme Template"
 msgstr "Bumuo ng Template ng Tema"
 
@@ -2442,17 +2458,17 @@ msgstr "Pagsasama ng Generatepress"
 msgid "Genesis Integration"
 msgstr "Pagsasama ng Genesis"
 
-#: src/modules/multiple-authors/multiple-authors.php:1984, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:1996, fuzzy
 msgid "Grid"
 msgstr "Grid"
 
-#: src/modules/multiple-authors/multiple-authors.php:811
+#: src/modules/multiple-authors/multiple-authors.php:812
 msgid "Grid layout column:"
 msgstr "kolum ng layout ng Grid:"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:205
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1293
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1564, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1292
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1563, fuzzy
 msgid "Groove"
 msgstr "Groove"
 
@@ -2460,7 +2476,7 @@ msgstr "Groove"
 msgid "Group By"
 msgstr "Grupuhin Ayon sa"
 
-#: src/modules/multiple-authors/multiple-authors.php:5028
+#: src/modules/multiple-authors/multiple-authors.php:5068
 msgid "Guest Author cannot login on the site."
 msgstr "Hindi makalogin ang Guest Author sa site."
 
@@ -2488,75 +2504,75 @@ msgstr "Mga Guest Author"
 msgid "Guest authors without user accounts is not enabled."
 msgstr "Hindi pinagana ang mga guest author na walang user account."
 
-#: src/modules/multiple-authors/multiple-authors.php:2012
-#: src/modules/multiple-authors/multiple-authors.php:2044
+#: src/modules/multiple-authors/multiple-authors.php:2024
+#: src/modules/multiple-authors/multiple-authors.php:2056
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:152
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:408
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:558
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:703
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:831
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1224
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1442, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1441, fuzzy
 msgid "H1"
 msgstr "H1"
 
-#: src/modules/multiple-authors/multiple-authors.php:2013
-#: src/modules/multiple-authors/multiple-authors.php:2045
+#: src/modules/multiple-authors/multiple-authors.php:2025
+#: src/modules/multiple-authors/multiple-authors.php:2057
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:153
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:409
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:559
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:704
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:832
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1225
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1443, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1442, fuzzy
 msgid "H2"
 msgstr "H2"
 
-#: src/modules/multiple-authors/multiple-authors.php:2014
-#: src/modules/multiple-authors/multiple-authors.php:2046
+#: src/modules/multiple-authors/multiple-authors.php:2026
+#: src/modules/multiple-authors/multiple-authors.php:2058
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:154
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:410
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:560
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:705
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:833
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1226
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1444, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1443, fuzzy
 msgid "H3"
 msgstr "H3"
 
-#: src/modules/multiple-authors/multiple-authors.php:2015
-#: src/modules/multiple-authors/multiple-authors.php:2047
+#: src/modules/multiple-authors/multiple-authors.php:2027
+#: src/modules/multiple-authors/multiple-authors.php:2059
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:155
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:411
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:561
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:706
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:834
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1227
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1445, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1444, fuzzy
 msgid "H4"
 msgstr "H4"
 
-#: src/modules/multiple-authors/multiple-authors.php:2016
-#: src/modules/multiple-authors/multiple-authors.php:2048
+#: src/modules/multiple-authors/multiple-authors.php:2028
+#: src/modules/multiple-authors/multiple-authors.php:2060
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:156
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:412
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:562
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:707
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:835
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1228
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1446, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1445, fuzzy
 msgid "H5"
 msgstr "H5"
 
-#: src/modules/multiple-authors/multiple-authors.php:2017
-#: src/modules/multiple-authors/multiple-authors.php:2049
+#: src/modules/multiple-authors/multiple-authors.php:2029
+#: src/modules/multiple-authors/multiple-authors.php:2061
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:157
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:413
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:563
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:708
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:836
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1229
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1447, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1446, fuzzy
 msgid "H6"
 msgstr "H6"
 
@@ -2577,7 +2593,7 @@ msgstr "Itago ang Biograpiya para sa user sa mga Kategorya ng May-akda"
 msgid "Hide Title"
 msgstr "Itago ang Titulo"
 
-#: src/modules/author-boxes/author-boxes.php:2474, fuzzy
+#: src/modules/author-boxes/author-boxes.php:2648, fuzzy
 msgid "How to generate and use a theme template file"
 msgstr "Paano gumawa at gumamit ng template file ng tema"
 
@@ -2589,11 +2605,11 @@ msgstr "https://publishpress.com"
 msgid "https://wordpress.org/plugins/publishpress-authors/"
 msgstr "https://wordpress.org/plugins/publishpress-authors/"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1326, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1325, fuzzy
 msgid "ID"
 msgstr "ID"
 
-#: src/modules/multiple-authors/multiple-authors.php:2851
+#: src/modules/multiple-authors/multiple-authors.php:2887
 msgid ""
 "If a WordPress user is the author of a post, but does not have a "
 "PublishPress Authors profile, this will automatically create a profile for "
@@ -2603,7 +2619,7 @@ msgstr ""
 "profile sa PublishPress Authors, awtomatikong gagawa ito ng profile para sa "
 "kanila."
 
-#: src/modules/multiple-authors/multiple-authors.php:1944
+#: src/modules/multiple-authors/multiple-authors.php:1956
 msgid ""
 "If enabled, PublishPress Authors will replace the default WordPress author "
 "pages."
@@ -2611,7 +2627,7 @@ msgstr ""
 "Kung naka-enable, papalitan ng PublishPress Authors ang mga default na "
 "pahina ng may-akda ng WordPress."
 
-#: src/modules/multiple-authors/multiple-authors.php:1851
+#: src/modules/multiple-authors/multiple-authors.php:1863
 msgid ""
 "If the Author is mapped to a WordPress user, this will display the authors' "
 "\"Display name\" and their \"Username\". The default is to show only the "
@@ -2624,7 +2640,7 @@ msgstr ""
 "kapaki-pakinabang kung mayroon kang maraming may-akda na may mga katulad na "
 "pangalan."
 
-#: src/modules/multiple-authors/multiple-authors.php:1448
+#: src/modules/multiple-authors/multiple-authors.php:1460
 #, php-format
 msgid ""
 "If you are having problems showing PublishPress Authors on author profile "
@@ -2637,7 +2653,7 @@ msgstr ""
 "ibaba. Ang argumento %s ay pinipilit ang plugin na kunin ang May-akda mula "
 "sa pahina ng profile at hindi mula sa iba pang mga post sa parehong screen."
 
-#: src/modules/multiple-authors/multiple-authors.php:1615
+#: src/modules/multiple-authors/multiple-authors.php:1627
 #, php-format
 msgid ""
 "If you are using the authors_recent layout, you can define the number of "
@@ -2662,7 +2678,7 @@ msgstr ""
 "Kung kailangan mo ng tulong o may bagong kahilingan para sa tampok, ipaalam "
 "sa amin."
 
-#: src/modules/multiple-authors/multiple-authors.php:2755
+#: src/modules/multiple-authors/multiple-authors.php:2791
 msgid ""
 "If you only have Guest Authors selected for a post, this user may be used "
 "as a fallback. WordPress sometimes requires a WordPress user to be assigned "
@@ -2673,16 +2689,16 @@ msgstr ""
 "WordPress na may nakatalagang WordPress user sa bawat post. Ang user na ito "
 "ay hindi makikita sa harapan ng iyong site."
 
-#: src/modules/author-boxes/author-boxes.php:1161
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1713
+#: src/modules/author-boxes/author-boxes.php:1331
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1712
 msgid "Import"
 msgstr "Mag-import"
 
-#: src/modules/author-boxes/author-boxes.php:2465
+#: src/modules/author-boxes/author-boxes.php:2639
 msgid "Import Data"
 msgstr "Mag-import ng Data"
 
-#: src/modules/author-boxes/author-boxes.php:2454
+#: src/modules/author-boxes/author-boxes.php:2628
 msgid "Import Editor Settings"
 msgstr "Mag-import ng Mga Setting ng Editor"
 
@@ -2696,7 +2712,7 @@ msgstr "Sa harap ng Avatar"
 msgid "Inline"
 msgstr "Inline"
 
-#: src/modules/multiple-authors/multiple-authors.php:1145, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:1157, fuzzy
 msgid "Inline avatar legacy layout Author Box:"
 msgstr "Inline avatar legacy layout Author Box:"
 
@@ -2704,7 +2720,7 @@ msgstr "Inline avatar legacy layout Author Box:"
 msgid "Inline Grouping"
 msgstr "Inline Grouping"
 
-#: src/modules/multiple-authors/multiple-authors.php:1137, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:1149, fuzzy
 msgid "Inline legacy layout Author Box:"
 msgstr "Inline legacy layout Author Box:"
 
@@ -2713,8 +2729,8 @@ msgid "Inline with Avatars"
 msgstr "Inline with Avatars"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:207
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1295
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1566, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1294
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1565, fuzzy
 msgid "Inset"
 msgstr "Inset"
 
@@ -2728,11 +2744,16 @@ msgstr ""
 "I-install ang plugin na ito upang ipakita ang nilalaman ng iyong mga "
 "May-akda."
 
-#: src/modules/multiple-authors/multiple-authors.php:3118
+#: src/modules/multiple-authors/multiple-authors.php:3158
 msgid "Integration"
 msgstr "Integrasyon"
 
-#: src/modules/author-boxes/author-boxes.php:2464
+#: src/modules/author-boxes/author-boxes.php:657
+#: src/modules/author-boxes/author-boxes.php:662
+msgid "Invalid Author Box."
+msgstr "Hindi wasto ang Author Box."
+
+#: src/modules/author-boxes/author-boxes.php:2638
 msgid "Invalid data"
 msgstr "Di-wastong data"
 
@@ -2744,7 +2765,7 @@ msgstr "Di-wastong anyo"
 msgid "Invalid form data."
 msgstr "Di-wastong data ng anyo."
 
-#: src/modules/multiple-authors/multiple-authors.php:3715
+#: src/modules/multiple-authors/multiple-authors.php:3755
 msgid "Invalid nonce"
 msgstr "Di-wastong nonce"
 
@@ -2752,7 +2773,7 @@ msgstr "Di-wastong nonce"
 msgid "is required"
 msgstr "ay kinakailangan"
 
-#: src/modules/multiple-authors/multiple-authors.php:4549
+#: src/modules/multiple-authors/multiple-authors.php:4589
 msgid "It looks like you have Co-Authors Plus installed."
 msgstr "Mukhang mayroon kang naka-install na Co-Authors Plus."
 
@@ -2765,7 +2786,7 @@ msgstr "Mukhang mayroon kang naka-install na Molongui Authorship."
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:504
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1006
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1181
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1394, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1393, fuzzy
 msgid "Italic"
 msgstr "Italic"
 
@@ -2778,7 +2799,7 @@ msgstr "Pamagat ng Trabaho"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:531
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1037
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1208
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1421
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1420
 msgid "Justify"
 msgstr "I-justify"
 
@@ -2792,11 +2813,11 @@ msgstr "Huling May-akda Lamang"
 
 #: src/core/Authors_Widget.php:193 src/core/Classes/Author_Editor.php:373
 #: src/modules/author-custom-fields/author-custom-fields.php:941
-#: src/modules/multiple-authors/multiple-authors.php:2160
+#: src/modules/multiple-authors/multiple-authors.php:2172
 msgid "Last Name"
 msgstr "Huling Pangalan"
 
-#: src/modules/multiple-authors/multiple-authors.php:2158
+#: src/modules/multiple-authors/multiple-authors.php:2170
 msgid "Last Name First Name"
 msgstr "Huling Pangalan Unang Pangalan"
 
@@ -2811,11 +2832,11 @@ msgstr "Layout"
 msgid "Layout Columns"
 msgstr "Mga Kolum ng Layout"
 
-#: src/modules/author-boxes/author-boxes.php:1060
+#: src/modules/author-boxes/author-boxes.php:1230
 msgid "Layout Slug"
 msgstr "Slug ng Layout"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1656
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1655
 msgid "Layout Wrapper Class Name"
 msgstr "Pangalan ng Wrapper Class ng Layout"
 
@@ -2824,7 +2845,7 @@ msgstr "Pangalan ng Wrapper Class ng Layout"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:528
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1034
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1205
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1418
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1417
 msgid "Left"
 msgstr "Kaliwa"
 
@@ -2837,7 +2858,7 @@ msgstr "Mga Hangganan bawat pahina"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:517
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1021
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1194
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1407
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1406
 msgid "Line Through"
 msgstr "Linya sa Gitna"
 
@@ -2853,6 +2874,10 @@ msgstr "link"
 msgid "Link Avatar"
 msgstr "Link Avatar"
 
+#: src/modules/multiple-authors/multiple-authors.php:891
+msgid "Link featured image to post:"
+msgstr "I-link ang tampok na imahe sa post:"
+
 #: src/modules/author-custom-fields/author-custom-fields.php:462, fuzzy
 msgid "Link Rel"
 msgstr "Link Rel"
@@ -2861,7 +2886,7 @@ msgstr "Link Rel"
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: src/modules/multiple-authors/multiple-authors.php:1983
+#: src/modules/multiple-authors/multiple-authors.php:1995
 msgid "List"
 msgstr "Listahan"
 
@@ -2878,15 +2903,15 @@ msgstr "Listahan ng mga May-akda na Inline (Mga Kategorya)"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:491
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:991
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1168
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1381
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1380
 msgid "Lowercase"
 msgstr "Maliit na Titik"
 
-#: src/modules/multiple-authors/multiple-authors.php:3119
+#: src/modules/multiple-authors/multiple-authors.php:3159
 msgid "Maintenance"
 msgstr "Pangangalaga"
 
-#: src/modules/multiple-authors/multiple-authors.php:3903
+#: src/modules/multiple-authors/multiple-authors.php:3943
 msgid "Maintenance completed successfully."
 msgstr "Matagumpay na natapos ang pagpapanatili."
 
@@ -2918,7 +2943,7 @@ msgstr "Nagmigrate ng data..."
 msgid "Mine"
 msgstr "Akin"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1324
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1323
 msgid "Modified date"
 msgstr "Petsa ng pagbabago"
 
@@ -2943,13 +2968,13 @@ msgstr "Hanay ng Pangalan"
 msgid "Need PublishPress Authors Support?"
 msgstr "Kailangan ng Suporta para sa PublishPress Authors?"
 
-#: src/modules/author-boxes/author-boxes.php:417
+#: src/modules/author-boxes/author-boxes.php:420
 #: src/modules/author-custom-fields/author-custom-fields.php:175
 #, php-format
 msgid "New %1$s"
 msgstr "Bago %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:414
+#: src/modules/author-boxes/author-boxes.php:417
 #: src/modules/author-custom-fields/author-custom-fields.php:172
 #, php-format
 msgid "New %1s"
@@ -2963,7 +2988,7 @@ msgstr "Bago May-akda"
 msgid "New author added."
 msgstr "Bago ang may-akda ay nadagdag."
 
-#: src/modules/author-boxes/author-boxes.php:2855
+#: src/modules/author-boxes/author-boxes.php:3029
 msgid "New Author Categories Box"
 msgstr "Bagong Kahon ng Kategorya ng May-akda"
 
@@ -2971,8 +2996,8 @@ msgstr "Bagong Kahon ng Kategorya ng May-akda"
 msgid "New Author Profile"
 msgstr "Bagong Profile ng May-akda"
 
-#: src/templates/parts/author-pages-grid.php:171
-#: src/templates/parts/author-pages-list.php:164
+#: src/templates/parts/author-pages-grid.php:179
+#: src/templates/parts/author-pages-list.php:172
 msgid "Next"
 msgstr "Susunod"
 
@@ -2981,13 +3006,13 @@ msgstr "Susunod"
 msgid "No"
 msgstr "Hindi"
 
-#: src/modules/author-boxes/author-boxes.php:421
+#: src/modules/author-boxes/author-boxes.php:424
 #: src/modules/author-custom-fields/author-custom-fields.php:179
 #, php-format
 msgid "No %2$s found"
 msgstr "Walang %2$s na natagpuan"
 
-#: src/modules/author-boxes/author-boxes.php:422
+#: src/modules/author-boxes/author-boxes.php:425
 #: src/modules/author-custom-fields/author-custom-fields.php:180
 #, php-format
 msgid "No %2$s found in Trash"
@@ -3029,7 +3054,7 @@ msgstr ""
 msgid "No posts without author terms were found"
 msgstr "Walang mga post na walang term ng may-akda na natagpuan"
 
-#: src/modules/author-boxes/author-boxes.php:2036
+#: src/modules/author-boxes/author-boxes.php:2210
 msgid "No Recent Posts by this Author"
 msgstr "Walang mga Kamakailang Post mula sa May-akdang ito"
 
@@ -3044,8 +3069,8 @@ msgstr "nofollow"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:200
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:278
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:800
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1288
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1558
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1287
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1557
 msgid "None"
 msgstr "Wala"
 
@@ -3070,10 +3095,10 @@ msgstr "Wala"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1170
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1180
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1195
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1360
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1383
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1393
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1408, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1359
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1382
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1392
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1407, fuzzy
 msgid "Normal"
 msgstr "Normal"
 
@@ -3085,7 +3110,7 @@ msgstr "Ngayon ay sinisiyasat o ina-update ang kabuuang %d na mga may-akda"
 msgid "Now inspecting or updating %d total posts"
 msgstr "Ngayon ay sinisiyasat o ina-update ang kabuuang %d na mga post"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1327
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1326
 msgid "Number of comments"
 msgstr "Bilang ng mga komento"
 
@@ -3099,7 +3124,7 @@ msgstr "Bilang ng mga item bawat pahina"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:505
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1007
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1182
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1395
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1394
 msgid "Oblique"
 msgstr "Oblikwa"
 
@@ -3124,13 +3149,13 @@ msgstr "Kaayusan"
 msgid "Order by"
 msgstr "Ayusin ayon sa"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1319
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1318
 msgid "Order Recent Posts By"
 msgstr "Ayusin ang mga Kamakailang Post Ayon sa"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:208
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1296
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1567
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1295
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1566
 msgid "Outset"
 msgstr "Nagsimula"
 
@@ -3139,7 +3164,7 @@ msgstr "Nagsimula"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:516
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1020
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1193
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1406, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1405, fuzzy
 msgid "Overline"
 msgstr "Overline"
 
@@ -3148,12 +3173,11 @@ msgstr "Overline"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:566
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:702
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:830
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1232
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1450, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1449, fuzzy
 msgid "p"
 msgstr "p"
 
-#: src/modules/multiple-authors/multiple-authors.php:161
+#: src/modules/multiple-authors/multiple-authors.php:162
 msgid "Pages"
 msgstr "Mga Pahina"
 
@@ -3165,11 +3189,11 @@ msgstr "Magulang na May-akda"
 msgid "Parent Author:"
 msgstr "Magulang na May-akda:"
 
-#: src/modules/author-boxes/author-boxes.php:2455
+#: src/modules/author-boxes/author-boxes.php:2629
 msgid "Paste the editor data from the \"Export\" tab on another site."
 msgstr "I-paste ang data ng editor mula sa tab na \"I-export\" sa ibang site."
 
-#: src/modules/multiple-authors/multiple-authors.php:2916
+#: src/modules/multiple-authors/multiple-authors.php:2952
 msgid ""
 "Please be careful clicking these buttons. Before clicking, we recommend "
 "taking a site backup in case anything goes wrong."
@@ -3178,7 +3202,7 @@ msgstr ""
 "inirerekomenda naming kumuha ng backup ng site sakaling may mangyaring "
 "masama."
 
-#: src/modules/multiple-authors/multiple-authors.php:4550
+#: src/modules/multiple-authors/multiple-authors.php:4590
 msgid "Please click here and read this guide!"
 msgstr "Mangyaring mag-click dito at basahin ang gabay na ito!"
 
@@ -3220,7 +3244,7 @@ msgstr "Mangyaring ilagay ang buong URL ng iyong profile sa X."
 msgid "Please enter the full URL to your YouTube channel."
 msgstr "Mangyaring ilagay ang buong URL ng iyong channel sa YouTube."
 
-#: src/modules/multiple-authors/multiple-authors.php:1949
+#: src/modules/multiple-authors/multiple-authors.php:1961
 msgid "Please note this feature will not work for all themes."
 msgstr ""
 "Mangyaring tandaan na ang tampok na ito ay hindi gagana para sa lahat ng "
@@ -3230,13 +3254,13 @@ msgstr ""
 #: src/modules/byline-migration/byline-migration.php:148
 #: src/modules/bylines-migration/bylines-migration.php:150
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:137
-#: src/modules/multiple-authors/multiple-authors.php:4024
-#: src/modules/multiple-authors/multiple-authors.php:4055
-#: src/modules/multiple-authors/multiple-authors.php:4092
+#: src/modules/multiple-authors/multiple-authors.php:4064
+#: src/modules/multiple-authors/multiple-authors.php:4095
+#: src/modules/multiple-authors/multiple-authors.php:4132
 msgid "Please, wait..."
 msgstr "Mangyaring, maghintay..."
 
-#: src/modules/multiple-authors/multiple-authors.php:1346
+#: src/modules/multiple-authors/multiple-authors.php:1358
 msgid "Plural"
 msgstr "Maramihan"
 
@@ -3264,7 +3288,7 @@ msgstr "Polylang Pagsasama"
 msgid "Popular Authors"
 msgstr "Mga Sikat na May-akda"
 
-#: src/modules/author-boxes/author-boxes.php:2363
+#: src/modules/author-boxes/author-boxes.php:2537
 msgid "Position"
 msgstr "Posisyon"
 
@@ -3280,27 +3304,27 @@ msgstr "Bilang ng Post"
 msgid "Post does not exist"
 msgstr "Walang umiiral na post"
 
-#: src/templates/parts/author-pages-grid.php:177
-#: src/templates/parts/author-pages-list.php:170
+#: src/templates/parts/author-pages-grid.php:185
+#: src/templates/parts/author-pages-list.php:178
 msgid "Post not found for the author"
 msgstr "Walang nahanap na post para sa may-akda"
 
-#: src/modules/author-boxes/author-boxes.php:1643
+#: src/modules/author-boxes/author-boxes.php:1817
 msgid "Post preview"
 msgstr "Preview ng Post"
 
 #: src/modules/author-categories/author-categories.php:634
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:79
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:478
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:486
 msgid "Post Types"
 msgstr "Mga Uri ng Post"
 
-#: src/modules/multiple-authors/multiple-authors.php:599
+#: src/modules/multiple-authors/multiple-authors.php:600
 msgid "Post types to display on the author's profile page:"
 msgstr "Mga uri ng post na ipapakita sa pahina ng profile ng may-akda:"
 
 #: src/core/Plugin.php:787 src/modules/author-pages/author-pages.php:121
-#: src/modules/multiple-authors/multiple-authors.php:160
+#: src/modules/multiple-authors/multiple-authors.php:161
 msgid "Posts"
 msgstr "Mga Post"
 
@@ -3315,8 +3339,8 @@ msgstr "Mga Post ni %1$s"
 msgid "Posts by %s"
 msgstr "Mga Post ni %s"
 
-#: src/templates/parts/author-pages-grid.php:170
-#: src/templates/parts/author-pages-list.php:163
+#: src/templates/parts/author-pages-grid.php:178
+#: src/templates/parts/author-pages-list.php:171
 msgid "Prev"
 msgstr "Nakaraan"
 
@@ -3325,13 +3349,13 @@ msgstr "Nakaraan"
 msgid "Preview"
 msgstr "Bilang Pagsusuri"
 
-#: src/modules/author-boxes/author-boxes.php:2231
-#: src/modules/author-boxes/author-boxes.php:2312
-#: src/modules/author-boxes/author-boxes.php:2672
+#: src/modules/author-boxes/author-boxes.php:2405
+#: src/modules/author-boxes/author-boxes.php:2486
+#: src/modules/author-boxes/author-boxes.php:2846
 msgid "Pro feature"
 msgstr "Pro na tampok"
 
-#: src/templates/parts/author-pages-list.php:124
+#: src/templates/parts/author-pages-list.php:132
 msgid "Published date"
 msgstr "Petsa ng Pag-publish"
 
@@ -3359,13 +3383,17 @@ msgstr ""
 "Ang PublishPress Authors ay nagbibigay-daan sa iyo upang magdagdag ng "
 "maraming may-akda at mga panauhing may-akda sa mga post ng WordPress"
 
-#: src/modules/multiple-authors/multiple-authors.php:4622
+#: src/modules/author-boxes/author-boxes.php:3092, fuzzy
+msgid "PublishPress Authors Box"
+msgstr "PublishPress Authors Box"
+
+#: src/modules/multiple-authors/multiple-authors.php:4662
 msgid "PublishPress Authors needs a database update for Permissions integration."
 msgstr ""
 "Ang PublishPress Authors ay nangangailangan ng pag-update ng database para "
 "sa integrasyon ng Permissions."
 
-#: src/modules/author-boxes/author-boxes.php:2863
+#: src/modules/author-boxes/author-boxes.php:3037
 msgid ""
 "PublishPress Authors Pro allows you to unlock the full potential of Author "
 "Categories."
@@ -3407,8 +3435,8 @@ msgstr "Mabilis na i-edit &#8220;%s&#8221; inline"
 msgid "Quick&nbsp;Edit"
 msgstr "Mabilis&nbsp;I-edit"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1328
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1562, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1327
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1561, fuzzy
 msgid "Random"
 msgstr "Random"
 
@@ -3420,71 +3448,71 @@ msgstr "Rank Math Seo Pagsasama"
 msgid "Read more."
 msgstr "Magbasa nang higit pa."
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1284, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1283, fuzzy
 msgid "Recent Post Title Border Bottom Style"
 msgstr "Recent Post Title Border Bottom Style"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1307, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1306, fuzzy
 msgid "Recent Post Title Border Color"
 msgstr "Recent Post Title Border Color"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1301, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1300, fuzzy
 msgid "Recent Post Title Border Width"
 msgstr "Recent Post Title Border Width"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1278, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1277, fuzzy
 msgid "Recent Post Title Color"
 msgstr "Recent Post Title Color"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1256, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1255, fuzzy
 msgid "Recent Post Types"
 msgstr "Recent Post Types"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1413, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1412, fuzzy
 msgid "Recent Posts Alignment"
 msgstr "Recent Posts Alignment"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1426, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1425, fuzzy
 msgid "Recent Posts Color"
 msgstr "Recent Posts Color"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1400, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1399, fuzzy
 msgid "Recent Posts Decoration"
 msgstr "Recent Posts Decoration"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1438, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1437, fuzzy
 msgid "Recent Posts HTML Tag"
 msgstr "Recent Posts HTML Tag"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1432, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1431, fuzzy
 msgid "Recent Posts Icon Color"
 msgstr "Recent Posts Icon Color"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1313, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1312, fuzzy
 msgid "Recent Posts Limit"
 msgstr "Recent Posts Limit"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1349, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1348, fuzzy
 msgid "Recent Posts Line Height (px)"
 msgstr "Recent Posts Line Height (px)"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1333, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1332, fuzzy
 msgid "Recent Posts Order"
 msgstr "Recent Posts Order"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1343, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1342, fuzzy
 msgid "Recent Posts Size"
 msgstr "Recent Posts Size"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1388, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1387, fuzzy
 msgid "Recent Posts Style"
 msgstr "Recent Posts Style"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1375, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1374, fuzzy
 msgid "Recent Posts Transform"
 msgstr "Recent Posts Transform"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1355
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1354
 msgid "Recent Posts Weight"
 msgstr "Bigat ng mga Kamakailang Post"
 
@@ -3506,13 +3534,13 @@ msgstr "Naka-rehistrong Gumagamit"
 msgid "Registered User is required."
 msgstr "Kinakailangan ang Naka-rehistrong Gumagamit."
 
-#: src/modules/author-boxes/author-boxes.php:427
+#: src/modules/author-boxes/author-boxes.php:430
 #: src/modules/author-custom-fields/author-custom-fields.php:185
 #, php-format
 msgid "Remove %1$s Image"
 msgstr "Tanggalin ang %1$s na Larawan"
 
-#: src/modules/author-boxes/author-boxes.php:2617
+#: src/modules/author-boxes/author-boxes.php:2791
 #, php-format
 msgid "Remove %1s"
 msgstr "Tanggalin ang %1s"
@@ -3521,21 +3549,21 @@ msgstr "Tanggalin ang %1s"
 msgid "Remove Display Name Link"
 msgstr "Tanggalin ang Link ng Display Name"
 
-#: src/modules/multiple-authors/multiple-authors.php:662
+#: src/modules/multiple-authors/multiple-authors.php:663
 msgid "Remove single author map restriction:"
 msgstr "Tanggalin ang limitasyon ng mapa ng isang may-akda:"
 
 #: src/core/Classes/Author_Editor.php:514
 #: src/core/Classes/Author_Editor.php:563
-#: src/modules/multiple-authors/multiple-authors.php:2197
+#: src/modules/multiple-authors/multiple-authors.php:2209
 msgid "Remove this image"
 msgstr "Tanggalin ang larawang ito"
 
-#: src/modules/author-boxes/author-boxes.php:2566
+#: src/modules/author-boxes/author-boxes.php:2740
 msgid "Reorder Fields"
 msgstr "I-reorder ang mga Patlang"
 
-#: src/modules/author-boxes/author-boxes.php:2574
+#: src/modules/author-boxes/author-boxes.php:2748
 msgid ""
 "Reorder the fields by dragging them to the correct position and saving your "
 "changes."
@@ -3587,8 +3615,8 @@ msgid "Reviews"
 msgstr "Mga Pagsusuri"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:206
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1294
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1565, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1293
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1564, fuzzy
 msgid "Ridge"
 msgstr "Ridge"
 
@@ -3597,7 +3625,7 @@ msgstr "Ridge"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:530
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1036
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1207
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1420
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1419
 msgid "Right"
 msgstr "Kanan"
 
@@ -3606,7 +3634,7 @@ msgstr "Kanan"
 msgid "Roles"
 msgstr "Mga Papel"
 
-#: src/modules/multiple-authors/multiple-authors.php:607
+#: src/modules/multiple-authors/multiple-authors.php:608
 msgid "Roles available for Author Profiles:"
 msgstr "Mga Papel na magagamit para sa mga Profile ng May-akda:"
 
@@ -3615,11 +3643,11 @@ msgstr "Mga Papel na magagamit para sa mga Profile ng May-akda:"
 msgid "Save Changes"
 msgstr "I-save ang mga Pagbabago"
 
-#: src/modules/author-boxes/author-boxes.php:2592
+#: src/modules/author-boxes/author-boxes.php:2766
 msgid "Save for All Author Boxes"
 msgstr "I-save para sa Lahat ng Kahon ng May-akda"
 
-#: src/modules/author-boxes/author-boxes.php:2588
+#: src/modules/author-boxes/author-boxes.php:2762
 msgid "Save for Current Author Box"
 msgstr "I-save para sa Kasalukuyang Kahon ng May-akda"
 
@@ -3633,12 +3661,12 @@ msgstr "Katangian ng Schema"
 msgid "Search"
 msgstr "Maghanap"
 
-#: src/modules/author-boxes/author-boxes.php:2644
+#: src/modules/author-boxes/author-boxes.php:2818
 #, php-format
 msgid "Search %1s Icon"
 msgstr "Maghanap ng %1s Icon"
 
-#: src/modules/author-boxes/author-boxes.php:420
+#: src/modules/author-boxes/author-boxes.php:423
 #: src/modules/author-custom-fields/author-custom-fields.php:178
 #, php-format
 msgid "Search %2$s"
@@ -3660,12 +3688,12 @@ msgstr "Maghanap ng mga May-akda"
 msgid "Search Box"
 msgstr "Kahon ng Paghahanap"
 
-#: src/modules/multiple-authors/multiple-authors.php:2742
+#: src/modules/multiple-authors/multiple-authors.php:2778
 msgid "Search for a fallback author"
 msgstr "Maghanap para sa isang fallback na may-akda"
 
 #: src/core/Plugin.php:1625 src/core/Classes/Post_Editor.php:375
-#: src/modules/multiple-authors/multiple-authors.php:2706
+#: src/modules/multiple-authors/multiple-authors.php:2742
 msgid "Search for an author"
 msgstr "Maghanap para sa isang may-akda"
 
@@ -3695,7 +3723,7 @@ msgstr "Error sa seguridad. Mangyaring i-reload ang pahinang ito at subukang mul
 msgid "Security error. Kindly reload this page and try again."
 msgstr "Error sa seguridad. Mangyaring i-reload ang pahinang ito at subukang muli."
 
-#: src/modules/author-boxes/author-boxes.php:2615
+#: src/modules/author-boxes/author-boxes.php:2789
 #, php-format
 msgid "Select %1s"
 msgstr "Piliin ang %1s"
@@ -3704,7 +3732,7 @@ msgstr "Piliin ang %1s"
 msgid "Select a user"
 msgstr "Pumili ng isang user"
 
-#: src/modules/author-boxes/author-boxes.php:2919
+#: src/modules/author-boxes/author-boxes.php:3093
 msgid "Select an author box"
 msgstr "Pumili ng isang author box"
 
@@ -3741,24 +3769,24 @@ msgstr "Pumili ng Kategorya ng May-akda"
 
 #: src/core/Classes/Author_Editor.php:510
 #: src/core/Classes/Author_Editor.php:559
-#: src/modules/multiple-authors/multiple-authors.php:2193
+#: src/modules/multiple-authors/multiple-authors.php:2205
 msgid "Select image"
 msgstr "Pumili ng imahe"
 
-#: src/modules/multiple-authors/multiple-authors.php:2285
-#: src/modules/multiple-authors/multiple-authors.php:2322
-#: src/modules/multiple-authors/multiple-authors.php:2359
-#: src/modules/multiple-authors/multiple-authors.php:2396
-#: src/modules/multiple-authors/multiple-authors.php:2433
+#: src/modules/multiple-authors/multiple-authors.php:2297
+#: src/modules/multiple-authors/multiple-authors.php:2334
+#: src/modules/multiple-authors/multiple-authors.php:2371
+#: src/modules/multiple-authors/multiple-authors.php:2408
+#: src/modules/multiple-authors/multiple-authors.php:2445
 msgid "Select option"
 msgstr "Pumili ng opsyon"
 
 #: src/modules/author-categories/author-categories.php:645
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:486
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:494
 msgid "Select Post Type..."
 msgstr "Pumili ng Uri ng Post..."
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1259
 msgid ""
 "Select post types to include in recent posts. Leave empty to show all post "
 "types."
@@ -3766,21 +3794,21 @@ msgstr ""
 "Pumili ng mga uri ng post upang isama sa mga kamakailang post. Iwanang "
 "walang laman upang ipakita ang lahat ng uri ng post."
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1261
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
 msgid "Select post types..."
 msgstr "Pumili ng mga uri ng post..."
 
-#: src/modules/author-boxes/author-boxes.php:1652
+#: src/modules/author-boxes/author-boxes.php:1826
 msgid "Select Preview Post"
 msgstr "Pumili ng Preview Post"
 
-#: src/modules/multiple-authors/multiple-authors.php:1790
+#: src/modules/multiple-authors/multiple-authors.php:1802
 msgid "Select roles"
 msgstr "Pumili ng mga papel"
 
 #: src/modules/author-list/author-list.php:1159
 #: src/modules/author-list/author-list.php:1186
-#: src/modules/multiple-authors/multiple-authors.php:1819
+#: src/modules/multiple-authors/multiple-authors.php:1831
 msgid "Select some options"
 msgstr "Pumili ng ilang mga opsyon"
 
@@ -3817,19 +3845,19 @@ msgstr ""
 msgid "Separate authors with commas"
 msgstr "Paghiwalayin ang mga may-akda gamit ang mga kuwit"
 
-#: src/modules/author-boxes/author-boxes.php:426
+#: src/modules/author-boxes/author-boxes.php:429
 #: src/modules/author-custom-fields/author-custom-fields.php:184
 #, php-format
 msgid "Set %1$s Image"
 msgstr "Itakda ang %1$s Larawan"
 
-#: src/modules/multiple-authors/multiple-authors.php:398
+#: src/modules/multiple-authors/multiple-authors.php:399
 #: src/modules/settings/settings.php:105
 msgid "Settings"
 msgstr "Mga Setting"
 
-#: src/modules/author-boxes/author-boxes.php:2464
-#: src/modules/author-boxes/author-boxes.php:2469
+#: src/modules/author-boxes/author-boxes.php:2638
+#: src/modules/author-boxes/author-boxes.php:2643
 msgid "Settings Imported Successfully!"
 msgstr "Matagumpay na Na-import ang mga Setting!"
 
@@ -3837,22 +3865,22 @@ msgstr "Matagumpay na Na-import ang mga Setting!"
 msgid "Settings updated successfully."
 msgstr "Matagumpay na na-update ang mga setting."
 
-#: src/modules/author-boxes/author-boxes.php:200
-#: src/modules/author-boxes/author-boxes.php:1076
-#: src/modules/author-boxes/author-boxes.php:2362
-#: src/modules/author-boxes/author-boxes.php:2373
+#: src/modules/author-boxes/author-boxes.php:203
+#: src/modules/author-boxes/author-boxes.php:1246
+#: src/modules/author-boxes/author-boxes.php:2536
+#: src/modules/author-boxes/author-boxes.php:2547
 #: src/modules/author-list/author-list.php:926
 #: src/modules/author-list/classes/AuthorListTable.php:152, fuzzy
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: src/modules/author-boxes/author-boxes.php:1244
+#: src/modules/author-boxes/author-boxes.php:1414
 msgid "Shortcode documentation."
 msgstr "Dokumentasyon ng Shortcode."
 
-#: src/modules/author-boxes/author-boxes.php:1141
-#: src/modules/multiple-authors/multiple-authors.php:3117
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1676
+#: src/modules/author-boxes/author-boxes.php:1311
+#: src/modules/multiple-authors/multiple-authors.php:3157
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1675
 msgid "Shortcodes"
 msgstr "Mga Shortcode"
 
@@ -3860,13 +3888,13 @@ msgstr "Mga Shortcode"
 msgid "Show \"View all posts\" link"
 msgstr "Ipakita ang \"Tingnan ang lahat ng post\" na link"
 
-#: src/modules/multiple-authors/multiple-authors.php:1897
+#: src/modules/multiple-authors/multiple-authors.php:1909
 msgid "Show a profile checkbox allowing Authors to be excluded from Author Boxes."
 msgstr ""
 "Ipakita ang isang checkbox na profile na nagpapahintulot sa mga May-akda na "
 "maalis mula sa Author Boxes."
 
-#: src/modules/multiple-authors/multiple-authors.php:686
+#: src/modules/multiple-authors/multiple-authors.php:687
 msgid "Show above the content:"
 msgstr "Ipakita sa itaas ng nilalaman:"
 
@@ -3878,11 +3906,11 @@ msgstr "Ipakita Matapos"
 msgid "Show after an individual author"
 msgstr "Ipakita pagkatapos ng isang indibidwal na may-akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:822
+#: src/modules/multiple-authors/multiple-authors.php:823
 msgid "Show author bio:"
 msgstr "Ipakita ang bio ng may-akda:"
 
-#: src/modules/multiple-authors/multiple-authors.php:702
+#: src/modules/multiple-authors/multiple-authors.php:703
 msgid "Show Author Box selection:"
 msgstr "Ipakita ang pagpili ng Author Box:"
 
@@ -3891,7 +3919,7 @@ msgstr "Ipakita ang pagpili ng Author Box:"
 msgid "Show Author Categories"
 msgstr "Ipakita ang mga Kategorya ng May-akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:841
+#: src/modules/multiple-authors/multiple-authors.php:842
 msgid "Show author page title:"
 msgstr "Ipakita ang pamagat ng pahina ng may-akda:"
 
@@ -3899,7 +3927,7 @@ msgstr "Ipakita ang pamagat ng pahina ng may-akda:"
 msgid "Show Authors"
 msgstr "Ipakita ang mga May-akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:923
+#: src/modules/multiple-authors/multiple-authors.php:935
 msgid "Show authors:"
 msgstr "Ipakita ang mga may-akda:"
 
@@ -3915,7 +3943,7 @@ msgstr "Ipakita bago ang indibidwal na may-akda"
 msgid "Show before author group"
 msgstr "Ipakita bago ang grupo ng may-akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:694
+#: src/modules/multiple-authors/multiple-authors.php:695
 msgid "Show below the content:"
 msgstr "Ipakita sa ilalim ng nilalaman:"
 
@@ -3927,11 +3955,11 @@ msgstr "Ipakita ang Impormasyon sa Talambuhay"
 msgid "Show Box Title"
 msgstr "Ipakita ang Pamagat ng Kahon"
 
-#: src/modules/multiple-authors/multiple-authors.php:956
+#: src/modules/multiple-authors/multiple-authors.php:968
 msgid "Show category:"
 msgstr "Ipakita ang kategorya:"
 
-#: src/modules/multiple-authors/multiple-authors.php:945
+#: src/modules/multiple-authors/multiple-authors.php:957
 msgid "Show comment counts:"
 msgstr "Ipakita ang bilang ng mga komento:"
 
@@ -3939,19 +3967,19 @@ msgstr "Ipakita ang bilang ng mga komento:"
 msgid "Show Display Name"
 msgstr "Ipakita ang Pangalan sa Display"
 
-#: src/modules/multiple-authors/multiple-authors.php:743
+#: src/modules/multiple-authors/multiple-authors.php:744
 msgid "Show email link:"
 msgstr "Ipakita ang link ng email:"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1272
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1271
 msgid "Show Even if No Recent Post"
 msgstr "Ipakita Kahit Walang Kamakailang Post"
 
-#: src/modules/multiple-authors/multiple-authors.php:912
+#: src/modules/multiple-authors/multiple-authors.php:924
 msgid "Show excerpt:"
 msgstr "Ipakita ang buod:"
 
-#: src/modules/multiple-authors/multiple-authors.php:879
+#: src/modules/multiple-authors/multiple-authors.php:880
 msgid "Show featured image:"
 msgstr "Ipakita ang tampok na larawan:"
 
@@ -3959,31 +3987,31 @@ msgstr "Ipakita ang tampok na larawan:"
 msgid "Show in REST API"
 msgstr "Ipakita sa REST API"
 
-#: src/modules/multiple-authors/multiple-authors.php:934
+#: src/modules/multiple-authors/multiple-authors.php:946
 msgid "Show post date:"
 msgstr "Ipakita ang petsa ng post:"
 
-#: src/modules/multiple-authors/multiple-authors.php:978
+#: src/modules/multiple-authors/multiple-authors.php:990
 msgid "Show read more link:"
 msgstr "Ipakita ang link na \"basahin pa\":"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1249
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1248
 msgid "Show Recent Posts"
 msgstr "Ipakita ang Mga Kamakailang Post"
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1266
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1265
 msgid "Show Recent Posts Title"
 msgstr "Ipakita ang Pamagat ng Mga Kamakailang Post"
 
-#: src/modules/multiple-authors/multiple-authors.php:751
+#: src/modules/multiple-authors/multiple-authors.php:752
 msgid "Show site link:"
 msgstr "Ipakita ang link ng site:"
 
-#: src/modules/multiple-authors/multiple-authors.php:967
+#: src/modules/multiple-authors/multiple-authors.php:979
 msgid "Show tags:"
 msgstr "Ipakita ang mga tag:"
 
-#: src/modules/multiple-authors/multiple-authors.php:629
+#: src/modules/multiple-authors/multiple-authors.php:630
 msgid "Show username in the search field:"
 msgstr "Ipakita ang pangalan ng gumagamit sa search field:"
 
@@ -3995,7 +4023,7 @@ msgstr "Ipakita ang iyong Mga Awtor gamit ang PublishPress Blocks"
 msgid "Simple List"
 msgstr "S simpleng Listahan"
 
-#: src/modules/multiple-authors/multiple-authors.php:1153
+#: src/modules/multiple-authors/multiple-authors.php:1165
 msgid "Simple list legacy layout Author Box:"
 msgstr "Simpleng listahan na legacy layout ng Author Box:"
 
@@ -4007,7 +4035,7 @@ msgstr "Simpleng Pangalan ng Mga Awtor na Block (Mga Kategorya)"
 msgid "Simple Name Authors Inline (Categories)"
 msgstr "Simpleng Pangalan ng Mga Awtor na Inline (Mga Kategorya)"
 
-#: src/modules/multiple-authors/multiple-authors.php:1339
+#: src/modules/multiple-authors/multiple-authors.php:1351
 msgid "Single"
 msgstr "Isang"
 
@@ -4042,8 +4070,8 @@ msgid "Social Profile?"
 msgstr "Social Profile?"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:203
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1291
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1561, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1290
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1560, fuzzy
 msgid "Solid"
 msgstr "Solid"
 
@@ -4066,7 +4094,7 @@ msgstr ""
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:701
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:827
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1231
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1449, fuzzy
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1448, fuzzy
 msgid "span"
 msgstr "span"
 
@@ -4079,25 +4107,25 @@ msgid "Status"
 msgstr "Katayuan"
 
 #: src/core/Classes/Author_Editor.php:890
-#: src/modules/multiple-authors/multiple-authors.php:4020
+#: src/modules/multiple-authors/multiple-authors.php:4060
 msgid "Sync author and user fields"
 msgstr "I-synchronize ang mga patlang ng may-akda at gumagamit"
 
-#: src/modules/multiple-authors/multiple-authors.php:4051
+#: src/modules/multiple-authors/multiple-authors.php:4091
 msgid "Sync author and user URLs"
 msgstr "I-synchronize ang mga URL ng may-akda at gumagamit"
 
-#: src/modules/multiple-authors/multiple-authors.php:2862
+#: src/modules/multiple-authors/multiple-authors.php:2898
 msgid "Synchronize PublishPress Authors Fields and user profile fields"
 msgstr ""
 "I-synchronize ang mga Patlang ng PublishPress Authors at mga patlang ng "
 "profile ng gumagamit"
 
-#: src/modules/multiple-authors/multiple-authors.php:2869
+#: src/modules/multiple-authors/multiple-authors.php:2905
 msgid "Synchronize the author and user URLs"
 msgstr "I-synchronize ang mga URL ng may-akda at gumagamit"
 
-#: src/modules/author-boxes/author-boxes.php:2524
+#: src/modules/author-boxes/author-boxes.php:2698
 msgid "Template generated successfuly!"
 msgstr "Ang template ay matagumpay na nalikha!"
 
@@ -4105,7 +4133,7 @@ msgstr "Ang template ay matagumpay na nalikha!"
 msgid "Text"
 msgstr "Teksto"
 
-#: src/modules/multiple-authors/multiple-authors.php:1486
+#: src/modules/multiple-authors/multiple-authors.php:1498
 #, php-format
 msgid ""
 "The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s "
@@ -4133,7 +4161,7 @@ msgstr ""
 "Ito ay lahat ng maliit na titik at naglalaman lamang ng mga titik, numero, "
 "at gitling."
 
-#: src/modules/author-boxes/author-boxes.php:768
+#: src/modules/author-boxes/author-boxes.php:938
 msgid "Theme"
 msgstr "Tema"
 
@@ -4141,7 +4169,7 @@ msgstr "Tema"
 msgid "There are no PublishPress modules registered"
 msgstr "Walang nakarehistrong mga module ng PublishPress"
 
-#: src/modules/multiple-authors/multiple-authors.php:1458
+#: src/modules/multiple-authors/multiple-authors.php:1470
 #, php-format
 msgid ""
 "There is one final option to mention. This is mostly useful if you're using "
@@ -4157,7 +4185,7 @@ msgstr ""
 "sa pahina ng mga may-akda upang ipakita ang profile ng kasalukuyang "
 "may-akda. Kailangan mo lamang idagdag ang parameter %s."
 
-#: src/modules/multiple-authors/multiple-authors.php:2909
+#: src/modules/multiple-authors/multiple-authors.php:2945
 msgid ""
 "This action can reset the PublishPress Authors data before using other "
 "maintenance options. Guest authors are author profiles that are not mapped "
@@ -4168,7 +4196,7 @@ msgstr ""
 "ay mga profile ng may-akda na hindi naka-map sa isang WordPress user "
 "account. Ang aksyon na ito ay magbubura ng lahat ng guest author."
 
-#: src/modules/multiple-authors/multiple-authors.php:2902
+#: src/modules/multiple-authors/multiple-authors.php:2938
 msgid ""
 "This action can reset the PublishPress Authors data before using other "
 "maintenance options. It will delete all author profiles that are mapped to "
@@ -4182,7 +4210,7 @@ msgstr ""
 "anumang mga link sa pagitan ng mga post at mga profile ng may-akda ay "
 "mawawala."
 
-#: src/modules/multiple-authors/multiple-authors.php:2891
+#: src/modules/multiple-authors/multiple-authors.php:2927
 msgid ""
 "This action will copy the authors from the plugin Co-Authors Plus allowing "
 "you to migrate to PublishPress Authors without losing any data. This action "
@@ -4204,7 +4232,7 @@ msgstr ""
 "nang hindi nawawalan ng anumang datos kasama ang relasyon ng may-akda ng "
 "post. Ang aksyon na ito ay maaaring isagawa ng maraming beses."
 
-#: src/modules/multiple-authors/multiple-authors.php:2206
+#: src/modules/multiple-authors/multiple-authors.php:2218
 msgid ""
 "This avatar will be used as default avatar instead of gravatar where no "
 "custom avatar is added to profile."
@@ -4251,11 +4279,11 @@ msgstr ""
 "Ito ay isang mabilis na preview ng Listahan ng May-akda na ito. Subukan sa "
 "mga frontend na pahina upang makita kung ano ang hitsura nito sa iyong tema."
 
-#: src/modules/multiple-authors/multiple-authors.php:2297
-#: src/modules/multiple-authors/multiple-authors.php:2334
-#: src/modules/multiple-authors/multiple-authors.php:2371
-#: src/modules/multiple-authors/multiple-authors.php:2408
-#: src/modules/multiple-authors/multiple-authors.php:2445
+#: src/modules/multiple-authors/multiple-authors.php:2309
+#: src/modules/multiple-authors/multiple-authors.php:2346
+#: src/modules/multiple-authors/multiple-authors.php:2383
+#: src/modules/multiple-authors/multiple-authors.php:2420
+#: src/modules/multiple-authors/multiple-authors.php:2457
 #, php-format
 msgid "This is useful if you use legacy shortcode %s"
 msgstr "Ito ay kapaki-pakinabang kung gumagamit ka ng legacy shortcode %s"
@@ -4292,13 +4320,13 @@ msgstr ""
 msgid "This plugin can be deleted."
 msgstr "Ang plugin na ito ay maaaring tanggalin."
 
-#: src/modules/multiple-authors/multiple-authors.php:2719
+#: src/modules/multiple-authors/multiple-authors.php:2755
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr ""
 "Maaaring hindi paganahin ang setting na ito para sa mga gumagamit na hindi "
 "makapag-edit ng mga post ng iba."
 
-#: src/modules/multiple-authors/multiple-authors.php:2537
+#: src/modules/multiple-authors/multiple-authors.php:2573
 msgid ""
 "This will allows you map a WordPress user to more than one author. Don't "
 "use this feature unless requested to do so by the PublishPress team. This "
@@ -4309,7 +4337,7 @@ msgstr ""
 "hiniling ng koponan ng PublishPress. Mas mahusay ang plugin na ito kapag "
 "ang mga may-akda at gumagamit ay nakapareha nang one-to-one."
 
-#: src/modules/multiple-authors/multiple-authors.php:2877
+#: src/modules/multiple-authors/multiple-authors.php:2913
 msgid ""
 "This will create author categories table if missing and add default "
 "categories."
@@ -4317,7 +4345,7 @@ msgstr ""
 "Ito ay lilikha ng talahanayan ng mga kategorya ng may-akda kung nawawala at "
 "magdadagdag ng mga default na kategorya."
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1469
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1468
 msgid ""
 "This will display author in an inline format side by side instead of block "
 "format."
@@ -4325,63 +4353,63 @@ msgstr ""
 "Ito ay magpapakita ng may-akda sa isang inline format na magkatabi sa halip "
 "na block format."
 
-#: src/modules/multiple-authors/multiple-authors.php:2489
+#: src/modules/multiple-authors/multiple-authors.php:2525
 msgid "This will display author page title."
 msgstr "Ito ay magpapakita ng pamagat ng pahina ng may-akda."
 
-#: src/modules/multiple-authors/multiple-authors.php:2228
+#: src/modules/multiple-authors/multiple-authors.php:2240
 msgid "This will display the author bio."
 msgstr "Ito ay magpapakita ng bio ng may-akda."
 
-#: src/modules/multiple-authors/multiple-authors.php:1293
+#: src/modules/multiple-authors/multiple-authors.php:1305
 msgid "This will display the authors box at the end of the content."
 msgstr "Ito ay magpapakita ng kahon ng mga may-akda sa dulo ng nilalaman."
 
-#: src/modules/multiple-authors/multiple-authors.php:1272
+#: src/modules/multiple-authors/multiple-authors.php:1284
 msgid "This will display the authors box at the top of the content."
 msgstr "Ito ay magpapakita ng kahon ng mga may-akda sa itaas ng nilalaman."
 
-#: src/modules/multiple-authors/multiple-authors.php:2773
+#: src/modules/multiple-authors/multiple-authors.php:2809
 msgid "This will display the authors email in the author box."
 msgstr "Ito ay magpapakita ng email ng may-akda sa kahon ng may-akda."
 
-#: src/modules/multiple-authors/multiple-authors.php:2793
+#: src/modules/multiple-authors/multiple-authors.php:2829
 msgid "This will display the authors site in the author box."
 msgstr "Ito ay magpapakita ng site ng may-akda sa kahon ng may-akda."
 
-#: src/modules/multiple-authors/multiple-authors.php:2561
+#: src/modules/multiple-authors/multiple-authors.php:2597
 msgid "This will display the authors."
 msgstr "Ito ay magpapakita ng mga may-akda."
 
-#: src/modules/multiple-authors/multiple-authors.php:2633
+#: src/modules/multiple-authors/multiple-authors.php:2669
 msgid "This will display the categories."
 msgstr "Ito ay magpapakita ng mga kategorya."
 
-#: src/modules/multiple-authors/multiple-authors.php:2609
+#: src/modules/multiple-authors/multiple-authors.php:2645
 msgid "This will display the comment count."
 msgstr "Ito ay magpapakita ng bilang ng mga komento."
 
-#: src/modules/multiple-authors/multiple-authors.php:2513
+#: src/modules/multiple-authors/multiple-authors.php:2549
 msgid "This will display the excerpt."
 msgstr "Ito ay magpapakita ng buod."
 
-#: src/modules/multiple-authors/multiple-authors.php:2465
+#: src/modules/multiple-authors/multiple-authors.php:2477
 msgid "This will display the featured image."
 msgstr "Ito ay magpapakita ng tampok na larawan."
 
-#: src/modules/multiple-authors/multiple-authors.php:2585
+#: src/modules/multiple-authors/multiple-authors.php:2621
 msgid "This will display the published date."
 msgstr "Ito ay magpapakita ng petsa ng pagkakalathala."
 
-#: src/modules/multiple-authors/multiple-authors.php:2681
+#: src/modules/multiple-authors/multiple-authors.php:2717
 msgid "This will display the read more link."
 msgstr "Ito ay magpapakita ng link na \"magbasa pa\"."
 
-#: src/modules/multiple-authors/multiple-authors.php:2657
+#: src/modules/multiple-authors/multiple-authors.php:2693
 msgid "This will display the tags."
 msgstr "Ito ay magpapakita ng mga tag."
 
-#: src/modules/multiple-authors/multiple-authors.php:2857
+#: src/modules/multiple-authors/multiple-authors.php:2893
 msgid ""
 "This will find all the users in a role and create author profiles for them. "
 "You can choose the roles using the \"Automatically create author profiles\" "
@@ -4392,17 +4420,21 @@ msgstr ""
 "tungkulin gamit ang setting na \"Awtomatikong lumikha ng mga profile ng "
 "may-akda\"."
 
-#: src/modules/multiple-authors/multiple-authors.php:2813
+#: src/modules/multiple-authors/multiple-authors.php:2849
 msgid "This will load Font Awesome icons for use in Author Boxes."
 msgstr ""
 "Ito ay maglo-load ng mga icon ng Font Awesome para gamitin sa mga Author "
 "Boxes."
 
-#: src/modules/multiple-authors/multiple-authors.php:2831
+#: src/modules/multiple-authors/multiple-authors.php:2501
+msgid "This will make the featured image clickable and link to the post."
+msgstr "Gagawin nitong maaaring i-click ang tampok na imahe at i-link sa post."
+
+#: src/modules/multiple-authors/multiple-authors.php:2867
 msgid "This will remove the Authors Box in \"Quick Edit\"."
 msgstr "Ito ay mag-aalis ng Authors Box sa \"Mabilis na I-edit\"."
 
-#: src/modules/multiple-authors/multiple-authors.php:2863
+#: src/modules/multiple-authors/multiple-authors.php:2899
 msgid ""
 "This will update all the author profiles in PublishPress Authors to match "
 "the default WordPress fields for each user."
@@ -4411,7 +4443,7 @@ msgstr ""
 "Authors upang tumugma sa mga default na patlang ng WordPress para sa bawat "
 "gumagamit."
 
-#: src/modules/multiple-authors/multiple-authors.php:2870
+#: src/modules/multiple-authors/multiple-authors.php:2906
 msgid ""
 "This will update all the Author URLs in PublishPress Authors to match the "
 "default WordPress URLs for each user."
@@ -4428,28 +4460,28 @@ msgid "TikTok"
 msgstr "TikTok"
 
 #: src/core/Authors_Widget.php:130 src/modules/author-list/author-list.php:384
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1325
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1324
 #: src/modules/author-list/classes/AuthorListTable.php:150
 msgid "Title"
 msgstr "Pamagat"
 
-#: src/modules/multiple-authors/multiple-authors.php:726
+#: src/modules/multiple-authors/multiple-authors.php:727
 msgid "Title for the author box:"
 msgstr "Pamagat para sa kahon ng may-akda:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1659
+#: src/modules/multiple-authors/multiple-authors.php:1671
 #, php-format
 msgid "To display a search box for authors, use %1$s ."
 msgstr "Upang ipakita ang isang search box para sa mga may-akda, gamitin ang %1$s ."
 
-#: src/modules/multiple-authors/multiple-authors.php:1648
+#: src/modules/multiple-authors/multiple-authors.php:1660
 #, php-format
 msgid "To further customize the order of results, use %1$s or %2$s ."
 msgstr ""
 "Upang higit pang i-customize ang pagkakasunud-sunod ng mga resulta, gamitin "
 "ang %1$s o %2$s ."
 
-#: src/modules/multiple-authors/multiple-authors.php:1635
+#: src/modules/multiple-authors/multiple-authors.php:1647
 #, php-format
 msgid ""
 "To order the results based on post count, use %1$s . To order the results "
@@ -4493,11 +4525,11 @@ msgstr "Ultimate_Post Integration"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:515
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1019
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1192
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1405
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1404
 msgid "Underline"
 msgstr "Salungguhit"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:531
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:539
 msgid "Update"
 msgstr "I-update"
 
@@ -4513,29 +4545,29 @@ msgstr "I-update ang bilang ng post"
 msgid "Updated %d authors"
 msgstr "Na-update %d na mga may-akda"
 
-#: src/modules/multiple-authors/multiple-authors.php:4057
+#: src/modules/multiple-authors/multiple-authors.php:4097
 msgid "Updated %d of %d authors..."
 msgstr "Na-update %d sa %d na mga may-akda..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4026
+#: src/modules/multiple-authors/multiple-authors.php:4066
 msgid "Updated %d of %d posts..."
 msgstr "Na-update %d sa %d na mga post..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4025
+#: src/modules/multiple-authors/multiple-authors.php:4065
 msgid "Updating author field on posts..."
 msgstr "Nag-uupdate ng field ng may-akda sa mga post..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4056
+#: src/modules/multiple-authors/multiple-authors.php:4096
 msgid "Updating authors slug..."
 msgstr "Nag-uupdate ng slug ng mga may-akda..."
 
-#: includes.php:63 src/modules/author-boxes/author-boxes.php:2868
+#: includes.php:63 src/modules/author-boxes/author-boxes.php:3042
 #: src/modules/author-categories/author-categories.php:672
 #: src/modules/author-custom-fields/author-custom-fields.php:995
 #: src/modules/author-custom-fields/author-custom-fields.php:1048
 #: src/modules/author-list/author-list.php:1260
 #: src/modules/author-list/author-list.php:1298
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:513
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:521
 msgid "Upgrade to Pro"
 msgstr "Mag-upgrade sa Pro"
 
@@ -4544,11 +4576,11 @@ msgstr "Mag-upgrade sa Pro"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:490
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:990
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1167
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1380
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1379
 msgid "Uppercase"
 msgstr "Malalaking titik"
 
-#: src/modules/author-boxes/author-boxes.php:428
+#: src/modules/author-boxes/author-boxes.php:431
 #: src/modules/author-custom-fields/author-custom-fields.php:186
 #, php-format
 msgid "Use as %1$s Image"
@@ -4576,18 +4608,18 @@ msgstr "Mga Gumagamit at May-akda"
 msgid "View"
 msgstr "Tingnan"
 
-#: src/modules/author-boxes/author-boxes.php:419
+#: src/modules/author-boxes/author-boxes.php:422
 #: src/modules/author-custom-fields/author-custom-fields.php:177
 #, php-format
 msgid "View %1$s"
 msgstr "Tingnan %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:1129
+#: src/modules/author-boxes/author-boxes.php:1299
 msgid "View All Posts"
 msgstr "Tingnan ang Lahat ng Mga Post"
 
-#: src/modules/author-boxes/author-boxes.php:616
-#: src/modules/author-boxes/author-boxes.php:654
+#: src/modules/author-boxes/author-boxes.php:786
+#: src/modules/author-boxes/author-boxes.php:824
 #: src/modules/default-layouts/default-layouts.php:107
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:100
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:260
@@ -4658,7 +4690,7 @@ msgstr "Tingnan ang May-akda"
 msgid "View Knowledge Base"
 msgstr "Tingnan ang Kaalaman na Batayan"
 
-#: src/modules/multiple-authors/multiple-authors.php:1962
+#: src/modules/multiple-authors/multiple-authors.php:1974
 msgid "View sample Author Page"
 msgstr "Tingnan ang sample na Pahina ng May-akda"
 
@@ -4676,7 +4708,7 @@ msgstr ""
 "Sa PublishPress Authors Pro, maaari kang magdagdag ng mga bagong larangan "
 "para sa mga social network at iba pa."
 
-#: src/modules/multiple-authors/multiple-authors.php:1397
+#: src/modules/multiple-authors/multiple-authors.php:1409
 msgid ""
 "With this shortcode you can display the author box in any part of the "
 "content. "
@@ -4684,7 +4716,7 @@ msgstr ""
 "Sa shortcode na ito maaari mong ipakita ang kahon ng may-akda sa anumang "
 "bahagi ng nilalaman. "
 
-#: src/modules/multiple-authors/multiple-authors.php:1478
+#: src/modules/multiple-authors/multiple-authors.php:1490
 msgid ""
 "With this shortcode you can display the author names or any profile field "
 "in any part of the content."
@@ -4692,7 +4724,7 @@ msgstr ""
 "Sa shortcode na ito maaari mong ipakita ang mga pangalan ng may-akda o "
 "anumang larangan ng profile sa anumang bahagi ng nilalaman."
 
-#: src/modules/multiple-authors/multiple-authors.php:1547
+#: src/modules/multiple-authors/multiple-authors.php:1559
 msgid ""
 "With this shortcode, you can show all the authors together in a single "
 "display."
@@ -4724,7 +4756,15 @@ msgstr "Oo, ito ay isang Social Profile"
 msgid "Yoast SEO Integration"
 msgstr "Yoast SEO Integrasyon"
 
-#: src/modules/multiple-authors/multiple-authors.php:1525
+#: src/modules/author-boxes/author-boxes.php:672
+msgid "You are not allowed to create Author Boxes."
+msgstr "Hindi ka pinapayagang lumikha ng Author Boxes."
+
+#: src/modules/author-boxes/author-boxes.php:666
+msgid "You are not allowed to duplicate this Author Box."
+msgstr "Hindi ka pinapayagang i-duplicate ang Author Box na ito."
+
+#: src/modules/multiple-authors/multiple-authors.php:1537
 #, php-format
 msgid ""
 "You can also decide to return an array list of authors by using "
@@ -4736,7 +4776,7 @@ msgstr ""
 "ng lahat ng data ng mga may-akdang object bilang isang array. Maaari mong "
 "tingnan ang buong detalye at sample na paggamit %2$s sa gabay na ito%3$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1416
+#: src/modules/multiple-authors/multiple-authors.php:1428
 #, php-format
 msgid ""
 "You can also decide whether or not to show the main title, using %1$s or "
@@ -4745,7 +4785,7 @@ msgstr ""
 "Maaari mo ring magpasya kung ipapakita ang pangunahing pamagat o hindi, "
 "gamit ang %1$s o %2$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1669
+#: src/modules/multiple-authors/multiple-authors.php:1681
 #, php-format
 msgid ""
 "You can also show a dropdown menu that allows users to search on specific "
@@ -4757,13 +4797,13 @@ msgstr ""
 "idagdag ang mga larangan sa dropdown gamit ang %1$s. Nangangailangan ito na "
 "aktibo ang search box."
 
-#: src/modules/multiple-authors/multiple-authors.php:1503
+#: src/modules/multiple-authors/multiple-authors.php:1515
 msgid "You can also specify the separator to be used for mulitple authors data."
 msgstr ""
 "Maaari mo ring tukuyin ang separator na gagamitin para sa maraming data ng "
 "may-akda."
 
-#: src/modules/multiple-authors/multiple-authors.php:1580
+#: src/modules/multiple-authors/multiple-authors.php:1592
 #, php-format
 msgid ""
 "You can choose the number of authors per page using %1$s . %2$s Pagination "
@@ -4772,13 +4812,13 @@ msgstr ""
 "Maaari mong piliin ang bilang ng mga may-akda bawat pahina gamit ang %1$s. "
 "%2$s Ang Pagination ay awtomatikong idaragdag kung kinakailangan."
 
-#: src/modules/author-boxes/author-boxes.php:2865
+#: src/modules/author-boxes/author-boxes.php:3039
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr ""
 "Maaari kang lumikha ng mga Kahon ng May-akda kung saan ang mga May-akda ay "
 "pinagsama-sama ayon sa kanilang mga kategorya."
 
-#: src/modules/multiple-authors/multiple-authors.php:1570
+#: src/modules/multiple-authors/multiple-authors.php:1582
 #, php-format
 msgid ""
 "You can define the number of layout columns by using %1$s to show authors "
@@ -4787,7 +4827,7 @@ msgstr ""
 "Maaari mong tukuyin ang bilang ng mga layout column sa pamamagitan ng "
 "paggamit ng %1$s upang ipakita ang mga may-akda sa 2 column."
 
-#: src/modules/multiple-authors/multiple-authors.php:1679
+#: src/modules/multiple-authors/multiple-authors.php:1691
 #, php-format
 msgid ""
 "You can limit the author list to users with a published post within a "
@@ -4800,7 +4840,7 @@ msgstr ""
 "nakalipas, 1 buwan na ang nakalipas, 6 na buwan na ang nakalipas, 1 taon na "
 "ang nakalipas atbp."
 
-#: src/modules/multiple-authors/multiple-authors.php:1591
+#: src/modules/multiple-authors/multiple-authors.php:1603
 #, php-format
 msgid ""
 "You can limit the result to only authors who are assigned to posts by using "
@@ -4812,7 +4852,7 @@ msgstr ""
 "gamitin ang %3$s upang ipakita ang lahat ng may-akda, kasama na ang mga "
 "walang anumang post."
 
-#: src/modules/multiple-authors/multiple-authors.php:1603
+#: src/modules/multiple-authors/multiple-authors.php:1615
 #, php-format
 msgid ""
 "You can limit the result to only guest authors by using %1$s . %2$s "
@@ -4822,7 +4862,7 @@ msgstr ""
 "pamamagitan ng paggamit ng %1$s . %2$s Bilang alternatibo, ipapakita ng "
 "%3$s ang mga may-akda lamang na may WordPress account."
 
-#: src/modules/multiple-authors/multiple-authors.php:1467
+#: src/modules/multiple-authors/multiple-authors.php:1479
 msgid ""
 "You can load the authors belonging to a specific author categories by "
 "providing the category slug or slugs separated by comma for more than one "
@@ -4832,7 +4872,7 @@ msgstr ""
 "ng may-akda sa pamamagitan ng pagbibigay ng category slug o slugs na "
 "pinaghihiwalay ng kuwit para sa higit sa isang kategorya."
 
-#: src/modules/multiple-authors/multiple-authors.php:1440
+#: src/modules/multiple-authors/multiple-authors.php:1452
 msgid ""
 "You can load the authors for a specific author by providing the author term "
 "id for both guest and user author. For example, this shortcode will load "
@@ -4843,8 +4883,8 @@ msgstr ""
 "author. Halimbawa, ang shortcode na ito ay maglo-load ng may-akda na may "
 "term id na 32"
 
-#: src/modules/multiple-authors/multiple-authors.php:1426
-#: src/modules/multiple-authors/multiple-authors.php:1510
+#: src/modules/multiple-authors/multiple-authors.php:1438
+#: src/modules/multiple-authors/multiple-authors.php:1522
 msgid ""
 "You can load the authors for a specific post, even if you are not in that "
 "post currently. For example, this shortcode will load the authors for the "
@@ -4854,7 +4894,7 @@ msgstr ""
 "hindi ka nasa post na iyon sa kasalukuyan. Halimbawa, ang shortcode na ito "
 "ay maglo-load ng mga may-akda para sa post na may ID na 32."
 
-#: src/modules/multiple-authors/multiple-authors.php:1433
+#: src/modules/multiple-authors/multiple-authors.php:1445
 msgid ""
 "You can load the authors for a specific user by providing the user id. For "
 "example, this shortcode will load the author with user id of 32"
@@ -4863,7 +4903,7 @@ msgstr ""
 "pamamagitan ng pagbibigay ng user id. Halimbawa, ang shortcode na ito ay "
 "maglo-load ng may-akda na may user id na 32"
 
-#: src/modules/multiple-authors/multiple-authors.php:1517
+#: src/modules/multiple-authors/multiple-authors.php:1529
 msgid ""
 "You can retrieve a specific author by providing the author's term ID. For "
 "example, this shortcode will load the author with the term ID of 102."
@@ -4872,7 +4912,7 @@ msgstr ""
 "ng term ID ng may-akda. Halimbawa, ang shortcode na ito ay maglo-load ng "
 "may-akda na may term ID na 102."
 
-#: src/modules/multiple-authors/multiple-authors.php:1536
+#: src/modules/multiple-authors/multiple-authors.php:1548
 msgid ""
 "You can retrieve authors belonging to a specific Author Category by "
 "providing the category slug or slugs. Separate multiple slugs with a comma."
@@ -4881,7 +4921,7 @@ msgstr ""
 "ng May-akda sa pamamagitan ng pagbibigay ng category slug o slugs. "
 "Paghiwalayin ang maraming slugs gamit ang kuwit."
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1493
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1492
 msgid ""
 "You can specify a separator such as ',' to separate authors. This field "
 "accepts basic HTML."
@@ -4889,7 +4929,7 @@ msgstr ""
 "Maaari mong tukuyin ang isang separator tulad ng ',' upang paghiwalayin ang "
 "mga may-akda. Tinatanggap ng patlang na ito ang pangunahing HTML."
 
-#: src/modules/multiple-authors/multiple-authors.php:1405
+#: src/modules/multiple-authors/multiple-authors.php:1417
 #, php-format
 msgid ""
 "You can specify layout by using author boxes layout slug. You can see full "
@@ -4899,7 +4939,7 @@ msgstr ""
 "layout slug. Makikita mo ang buong detalye ng bawat opsyon ng layout %1$s "
 "sa gabay na ito %2$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1555
+#: src/modules/multiple-authors/multiple-authors.php:1567
 #, php-format
 msgid ""
 "You can specify layout by using author boxes layout slug. You can see full "
@@ -4911,20 +4951,20 @@ msgstr ""
 "sa gabay na ito %2$s. %3$s %4$s Ang shortcode na ito ay nagbibigay din ng "
 "dalawang custom na layout: %5$s %6$s."
 
-#: src/modules/author-boxes/author-boxes.php:2430
+#: src/modules/author-boxes/author-boxes.php:2604
 #, php-format
 msgid "You can use basic HTML in this field. For example: Read Time %1s."
 msgstr ""
 "Maaari mong gamitin ang pangunahing HTML sa patlang na ito. Halimbawa: Read "
 "Time %1s."
 
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1657
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1656
 msgid "You can use multiple class names. Leave a space between each class."
 msgstr ""
 "Maaari mong gamitin ang maraming pangalan ng klase. Iwanan ang isang "
 "espasyo sa pagitan ng bawat klase."
 
-#: src/modules/author-boxes/author-boxes.php:2435
+#: src/modules/author-boxes/author-boxes.php:2609
 msgid ""
 "You can use this data to export your author box design and import it to a "
 "new site."
@@ -4984,7 +5024,7 @@ msgstr ""
 msgid "YouTube"
 msgstr "YouTube"
 
-#: src/modules/author-boxes/author-boxes.php:408
+#: src/modules/author-boxes/author-boxes.php:411
 #, fuzzy, php-format
 msgctxt "Author Box post type name"
 msgid "%2$s"
@@ -5002,13 +5042,13 @@ msgctxt "Custom Field post type name"
 msgid "%2$s"
 msgstr "%2$s"
 
-#: src/modules/author-boxes/author-boxes.php:424
+#: src/modules/author-boxes/author-boxes.php:427
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
 msgid "%2$s"
 msgstr "%2$s"
 
-#: src/modules/author-boxes/author-boxes.php:409
+#: src/modules/author-boxes/author-boxes.php:412
 #, fuzzy, php-format
 msgctxt "singular author box post type name"
 msgid "%1$s"

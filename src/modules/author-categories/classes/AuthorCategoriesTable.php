@@ -474,7 +474,7 @@ class AuthorCategoriesTable extends \WP_List_Table
                                         <span class="input-text-wrap"><input type="text" name="schema_property" class="schema_property" value=""/></span>
                                         <p class="description"><?php printf(
                                             esc_html__(
-                                                'For example, when this value is set to reviewedBy, all users under this category will be added to post reviewedBy property. You can read more %1$s in this guide.%2$s',
+                                                'Example: when this value is set to reviewedBy, all users in this category will be added to post\'s reviewedBy property. You can read more %1$s in this guide.%2$s',
                                                 'publishpress-authors'
                                             ),
                                             '<a target="_blank" href="https://publishpress.com/knowledge-base/author-categories-schema/">',
