@@ -465,8 +465,8 @@ class MA_Author_List extends Module
         // add options fields
         if (!$pro_active) {
             $fields['limit_per_page_promo'] = [
-                'label'             => esc_html__('Authors Per Page', 'publishpress-authors-pro'),
-                'description'       => esc_html__('You can set the number of authors to show per page.', 'publishpress-authors-pro'),
+                'label'             => esc_html__('Authors Per Page', 'publishpress-authors'),
+                'description'       => esc_html__('You can set the number of authors to show per page.', 'publishpress-authors'),
                 'type'              => 'number',
                 'min'               => 1,
                 'max'               => 9999,
@@ -476,8 +476,8 @@ class MA_Author_List extends Module
                 'promo'             => true,
             ];
             $fields['show_empty_promo']   = [
-                'label'             => esc_html__('Show Empty', 'publishpress-authors-pro'),
-                'description'       => esc_html__('Enable this option to show all authors, including those without any posts. Disable this option to show only authors who are assigned to posts.', 'publishpress-authors-pro'),
+                'label'             => esc_html__('Show Empty', 'publishpress-authors'),
+                'description'       => esc_html__('Enable this option to show all authors, including those without any posts. Disable this option to show only authors who are assigned to posts.', 'publishpress-authors'),
                 'type'              => 'checkbox',
                 'sanitize'          => 'absint',
                 'field_visibility'  => [],
@@ -491,14 +491,14 @@ class MA_Author_List extends Module
                 'tab'               => 'options',
             ];
             $fields['orderby_promo']   = [
-                'label'             => esc_html__('Order By', 'publishpress-authors-pro'),
+                'label'             => esc_html__('Order By', 'publishpress-authors'),
                 'description'       => '',
                 'type'              => 'select',
                 'options'           => [
-                    'name'          => esc_html__('Name', 'publishpress-authors-pro'),
-                    'count'         => esc_html__('Post Counts', 'publishpress-authors-pro'),
-                    'first_name'    => esc_html__('First Name', 'publishpress-authors-pro'),
-                    'last_name'     => esc_html__('Last Name', 'publishpress-authors-pro')
+                    'name'          => esc_html__('Name', 'publishpress-authors'),
+                    'count'         => esc_html__('Post Counts', 'publishpress-authors'),
+                    'first_name'    => esc_html__('First Name', 'publishpress-authors'),
+                    'last_name'     => esc_html__('Last Name', 'publishpress-authors')
                 ],
                 'sanitize'          => 'sanitize_text_field',
                 'field_visibility'  => [],
@@ -506,12 +506,12 @@ class MA_Author_List extends Module
                 'promo'             => true,
             ];
             $fields['order_promo']   = [
-                'label'             => esc_html__('Order', 'publishpress-authors-pro'),
+                'label'             => esc_html__('Order', 'publishpress-authors'),
                 'description'       => '',
                 'type'              => 'select',
                 'options'           => [
-                    'asc'   => esc_html__('Ascending', 'publishpress-authors-pro'),
-                    'desc'  => esc_html__('Descending', 'publishpress-authors-pro')
+                    'asc'   => esc_html__('Ascending', 'publishpress-authors'),
+                    'desc'  => esc_html__('Descending', 'publishpress-authors')
                 ],
                 'sanitize'          => 'sanitize_text_field',
                 'field_visibility'  => [],
@@ -519,8 +519,8 @@ class MA_Author_List extends Module
                 'promo'             => true,
             ];
             $fields['last_article_date_promo']   = [
-                'label'             => esc_html__('Last Article Date', 'publishpress-authors-pro'),
-                'description'       => esc_html__('You can limit the author list to users with a published post within a specific time. This option accepts date values such as 1 week ago, 1 month ago, 6 months ago, 1 year ago etc.', 'publishpress-authors-pro'),
+                'label'             => esc_html__('Last Article Date', 'publishpress-authors'),
+                'description'       => esc_html__('You can limit the author list to users with a published post within a specific time. This option accepts date values such as 1 week ago, 1 month ago, 6 months ago, 1 year ago etc.', 'publishpress-authors'),
                 'type'              => 'text',
                 'sanitize'          => 'sanitize_text_field',
                 'field_visibility'  => [],
@@ -532,7 +532,7 @@ class MA_Author_List extends Module
         // add search fields
         if (!$pro_active) {
             $fields['search_box_promo']   = [
-                'label'             => esc_html__('Show Search Box', 'publishpress-authors-pro'),
+                'label'             => esc_html__('Show Search Box', 'publishpress-authors'),
                 'description'       => '',
                 'type'              => 'checkbox',
                 'sanitize'          => 'absint',
@@ -547,8 +547,8 @@ class MA_Author_List extends Module
                 'tab'               => 'search',
             ];
             $fields['search_field_promo']   = [
-                'label'             => esc_html__('Search Field Dropdown', 'publishpress-authors-pro'),
-                'description'       => esc_html__('You can also show a dropdown menu that allows users to search on specific author fields.', 'publishpress-authors-pro'),
+                'label'             => esc_html__('Search Field Dropdown', 'publishpress-authors'),
+                'description'       => esc_html__('You can also show a dropdown menu that allows users to search on specific author fields.', 'publishpress-authors'),
                 'type'              => 'select',
                 'multiple'          => true,
                 'options'           => [],
