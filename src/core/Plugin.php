@@ -102,6 +102,8 @@ class Plugin
         // Author box to the content
         add_filter('the_content', [$this, 'filter_the_content']);
 
+        add_filter('all_plugins', [$this, 'filter_plugins_list_name']);
+
         /**
          * @deprecated Since 3.13.2. Use publishpress_authors_box instead.
          */
@@ -1704,6 +1706,23 @@ class Plugin
         if (in_array($screen->post_type, $supported_post_types)) {
             add_filter('views_' . $screen->id, [$this, 'filter_views']);
         }
+    }
+
+    public function filter_plugins_list_name($all_plugins)
+    {
+        global $pagenow;
+
+        if (!is_admin() || 'plugins.php' !== $pagenow) {
+            return $all_plugins;
+        }
+
+        $plugin_file = plugin_basename(PP_AUTHORS_FILE);
+
+        if (isset($all_plugins[$plugin_file]['Name'])) {
+            $all_plugins[$plugin_file]['Name'] = 'PublishPress Authors Free';
+        }
+
+        return $all_plugins;
     }
 
     /**
