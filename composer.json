@@ -31,14 +31,13 @@
       "phpstan/extension-installer": true
     }
   },
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "require": {
     "php": ">=7.2.5"
   },
   "require-dev": {
-    "publishpress/dev-workspace": "^1.0",
-    "squizlabs/php_codesniffer": "^3.8",
-    "sebastian/phpcpd": "^6.0"
+    "publishpress/dev-workspace": "^1.0"
   },
   "scripts": {
     "check:phpcs": "vendor/bin/phpcs --standard=PSR12 ./src/ publishpress-authors.php --colors",
