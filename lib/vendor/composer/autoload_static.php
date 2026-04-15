@@ -15,11 +15,11 @@ class ComposerStaticInitPPAuthors
     );
 
     public static $prefixLengthsPsr4 = array (
-        'P' => 
+        'P' =>
         array (
             'PPAuthors\\YoastSEO\\' => 19,
         ),
-        'M' => 
+        'M' =>
         array (
             'MultipleAuthors\\' => 16,
             'MultipleAuthorList\\' => 19,
@@ -29,23 +29,23 @@ class ComposerStaticInitPPAuthors
     );
 
     public static $prefixDirsPsr4 = array (
-        'PPAuthors\\YoastSEO\\' => 
+        'PPAuthors\\YoastSEO\\' =>
         array (
             0 => __DIR__ . '/../..' . '/../src/modules/yoast-seo-integration/src',
         ),
-        'MultipleAuthors\\' => 
+        'MultipleAuthors\\' =>
         array (
             0 => __DIR__ . '/../..' . '/../src/core',
         ),
-        'MultipleAuthorList\\' => 
+        'MultipleAuthorList\\' =>
         array (
             0 => __DIR__ . '/../..' . '/../src/modules/author-list/classes',
         ),
-        'MultipleAuthorCategories\\' => 
+        'MultipleAuthorCategories\\' =>
         array (
             0 => __DIR__ . '/../..' . '/../src/modules/author-categories/classes',
         ),
-        'MultipleAuthorBoxes\\' => 
+        'MultipleAuthorBoxes\\' =>
         array (
             0 => __DIR__ . '/../..' . '/../src/modules/author-boxes/classes',
         ),
