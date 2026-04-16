@@ -3,6 +3,7 @@
 .env.example export-ignore
 .env.testing.linux.dist export-ignore
 .env.testing.mac.dist export-ignore
+.env export-ignore
 .gitattributes export-ignore
 .github export-ignore
 .gitignore export-ignore
