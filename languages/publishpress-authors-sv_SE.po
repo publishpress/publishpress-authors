@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2021-11-04 15:04-0300\n"
-"PO-Revision-Date: 2026-04-15 02:36+0000\n"
+"PO-Revision-Date: 2026-04-16 12:07+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -34,15 +34,6 @@ msgstr "http://wordpress.org/extend/plugins/publishpress-authors/"
 #: src/modules/multiple-authors/multiple-authors.php:75
 #: src/modules/multiple-authors/multiple-authors.php:79
 #. Description of the plugin
-msgid ""
-"PublishPress Authors allows you to add multiple authors and guest authors "
-"to WordPress posts"
-msgstr ""
-"PublishPress Författare gör det möjligt att lägga till flera författare och "
-"gästförfattare till WordPress-inlägg"
-
-#: publishpress-authors.php:11, fuzzy
-#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
@@ -53,21 +44,6 @@ msgstr "https://publishpress.com"
 
 #: includes.php:39
 #, php-format
-msgid ""
-"You're using PublishPress Authors Free. The Pro version has more features "
-"and support. %sUpgrade to Pro%s"
-msgstr ""
-"Du använder PublishPress Författare Gratis. Pro-versionen har fler "
-"funktioner och support. %sUppgradera till Pro%s"
-
-#: includes.php:63
-#: src/modules/author-boxes/author-boxes.php:3042
-#: src/modules/author-categories/author-categories.php:672
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:521
-#: src/modules/author-custom-fields/author-custom-fields.php:995
-#: src/modules/author-custom-fields/author-custom-fields.php:1048
-#: src/modules/author-list/author-list.php:1260
-#: src/modules/author-list/author-list.php:1298
 msgid "Upgrade to Pro"
 msgstr "Uppgradera till Pro"
 
@@ -247,25 +223,6 @@ msgstr ""
 "administratörskonto."
 
 #: src/core/Classes/Admin_Ajax.php:359
-msgid ""
-"You do not have permission to edit this author profile because it is linked "
-"to a user account you do not have permission to edit."
-msgstr ""
-"Du har inte behörighet att redigera denna författarprofil eftersom den är "
-"kopplad till ett användarkonto som du inte har behörighet att redigera."
-
-#: src/core/Classes/Admin_Ajax.php:374
-#: src/core/Classes/Author_Editor.php:1008
-msgid ""
-"Sorry, this WordPress user is already mapped to another Author. By default, "
-"each user can only be connected to one Author profile."
-msgstr ""
-"Tyvärr, denna WordPress-användare är redan kopplad till en annan "
-"författare. Som standard kan varje användare endast kopplas till en "
-"författarprofil."
-
-#: src/core/Classes/Admin_Ajax.php:386
-#: src/core/Classes/Author_Editor.php:1100
 msgid "Registered User is required."
 msgstr "Registrerad användare krävs."
 
@@ -282,15 +239,6 @@ msgid "Author name is required"
 msgstr "Författarnamn krävs"
 
 #: src/core/Classes/Authors_Iterator.php:55
-msgid ""
-"No post ID provided for Authors_Iterator constructor. Are you not in a loop "
-"or is $post not set?"
-msgstr ""
-"Ingen inläggs-ID angiven för Authors_Iterator-konstruktorn. Är du inte i en "
-"loop eller är $post inte inställd?"
-
-#: src/core/Classes/Author_Editor.php:47
-#: src/core/Plugin.php:1618
 msgid "Display name publicly as"
 msgstr "Visa namn offentligt som"
 
@@ -379,14 +327,6 @@ msgstr "Standardavatar"
 
 #: src/core/Classes/Author_Editor.php:391
 #, php-format
-msgid ""
-"(Uses the %1s Email field %2s to find the Gravatar account if default "
-"avatar is not uploaded in Authors Settings)"
-msgstr ""
-"(Använder %1s E-postfält %2s för att hitta Gravatar-kontot om "
-"standardavatare inte har laddats upp i författarinställningarna)"
-
-#: src/core/Classes/Author_Editor.php:399
 msgid "Custom image"
 msgstr "Anpassad bild"
 
@@ -401,14 +341,6 @@ msgid "Author Category"
 msgstr "Författarkategori"
 
 #: src/core/Classes/Author_Editor.php:411
-msgid ""
-"Select the default Category for this Author. This will be used when the "
-"Author is added to new posts."
-msgstr ""
-"Välj standardkategori för denna författare. Detta kommer att användas när "
-"författaren läggs till i nya inlägg."
-
-#: src/core/Classes/Author_Editor.php:418
 msgid "Do not show this profile publicly"
 msgstr "Visa inte denna profil offentligt"
 
@@ -429,34 +361,6 @@ msgid "Select a user"
 msgstr "Välj en användare"
 
 #: src/core/Classes/Author_Editor.php:783
-msgid ""
-"Create an author profile for a current user account. You can select users "
-"who are allowed to edit posts. This user will be able to update their "
-"profile."
-msgstr ""
-"Skapa en författarprofil för ett nuvarande användarkonto. Du kan välja "
-"användare som har rätt att redigera inlägg. Denna användare kommer att "
-"kunna uppdatera sin profil."
-
-#: src/core/Classes/Author_Editor.php:789
-msgid ""
-"Create an author profile and a linked user account. This account will be in "
-"the \"Guest Author\" role and will not be able to login to the WordPress "
-"dashboard or update their profile."
-msgstr ""
-"Skapa en författarprofil och ett kopplat användarkonto. Detta konto kommer "
-"att ha rollen \"Gästförfattare\" och kommer inte att kunna logga in på "
-"WordPress-instrumentpanelen eller uppdatera sin profil."
-
-#: src/core/Classes/Author_Editor.php:796
-msgid ""
-"Create an author profile with no linked user account. This option is "
-"lightweight but may have compatibility issues with other themes and plugins."
-msgstr ""
-"Skapa en författarprofil utan kopplat användarkonto. Detta alternativ är "
-"lättviktigt men kan ha kompatibilitetsproblem med andra teman och tillägg."
-
-#: src/core/Classes/Author_Editor.php:815
 msgid "Author Email"
 msgstr "Författarens e-post"
 
@@ -575,17 +479,6 @@ msgid "Search for an author"
 msgstr "Sök efter en författare"
 
 #: src/core/Classes/Post_Editor.php:466
-msgid ""
-"This option is showing because you do not have a WordPress user selected as "
-"an author. For some tasks, it can be helpful to have a user selected here. "
-"This user will not be visible on the front of your site."
-msgstr ""
-"Detta alternativ visas eftersom du inte har en WordPress-användare vald som "
-"författare. För vissa uppgifter kan det vara användbart att ha en användare "
-"vald här. Denna användare kommer inte att synas på framsidan av din "
-"webbplats."
-
-#: src/core/Classes/Post_Editor.php:474
 msgid "Search for an user"
 msgstr "Sök efter en användare"
 
@@ -729,23 +622,6 @@ msgid "Edit My Author Profile"
 msgstr "Redigera min författarprofil"
 
 #: src/core/Plugin.php:532
-msgid ""
-"This name is used in several default displays and some search engine "
-"integrations."
-msgstr ""
-"Detta namn används i flera standardvisningar och vissa "
-"sökmotorintegrationer."
-
-#: src/core/Plugin.php:537
-msgid ""
-"This forms part of the URL for the author’s profile page. If you choose a "
-"Mapped User, this URL is taken from the user’s account and can not be "
-"changed."
-msgstr ""
-"Detta är en del av URL:en för författarens profilsida. Om du väljer en "
-"Mapped User tas denna URL från användarens konto och kan inte ändras."
-
-#: src/core/Plugin.php:573
 msgid "Search Authors"
 msgstr "Sök författare"
 
@@ -845,30 +721,6 @@ msgstr ""
 "position"
 
 #: src/core/Plugin.php:1628
-msgid ""
-"Click on an author to change them. Drag to change their order. Click on "
-"<strong>Remove</strong> to remove them."
-msgstr ""
-"Klicka på en författare för att ändra dem. Dra för att ändra deras ordning. "
-"Klicka på <strong>Ta bort</strong> för att ta bort dem."
-
-#: src/core/Plugin.php:1632
-msgid ""
-"Are you sure you want to delete the authors profiles mapped to users? This "
-"action can't be undone."
-msgstr ""
-"Är du säker på att du vill ta bort författarprofilerna kopplade till "
-"användarna? Denna åtgärd kan inte ångras."
-
-#: src/core/Plugin.php:1636
-msgid ""
-"Are you sure you want to delete the guest authors profiles? This action "
-"can't be undone."
-msgstr ""
-"Är du säker på att du vill ta bort gästförfattarprofilerna? Denna åtgärd "
-"kan inte ångras."
-
-#: src/core/Plugin.php:1640
 msgid "Are you sure you want to create author profiles for the missed post authors?"
 msgstr ""
 "Är du säker på att du vill skapa författarprofiler för de missade "
@@ -1354,15 +1206,6 @@ msgid "Export Editor Settings"
 msgstr "Exportera redigerarinställningar"
 
 #: src/modules/author-boxes/author-boxes.php:2609
-msgid ""
-"You can use this data to export your author box design and import it to a "
-"new site."
-msgstr ""
-"Du kan använda dessa data för att exportera din författares boxdesign och "
-"importera den till en ny webbplats."
-
-#: src/modules/author-boxes/author-boxes.php:2619
-#: src/modules/author-boxes/author-boxes.php:2690
 msgid "Copy to Clipboard"
 msgstr "Kopiera till urklipp"
 
@@ -1397,41 +1240,10 @@ msgid "How to generate and use a theme template file"
 msgstr "Hur man genererar och använder en temamallfil"
 
 #: src/modules/author-boxes/author-boxes.php:2651
-msgid ""
-"Click the \"Generate Template\" button under the text area. Wait for the "
-"code to be generated."
-msgstr ""
-"Klicka på \"Generera mall\"-knappen under textområdet. Vänta på att koden "
-"ska genereras."
-
-#: src/modules/author-boxes/author-boxes.php:2652
-#, php-format
-msgid ""
-"Create an empty php template file with your desired file slug in the %1s "
-"/publishpress-authors/author-boxes/ %2s folder of your theme. %3s For "
-"example, the file can be located here: %4s "
-"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
-"my-first-custom-author-template.php %7s ."
-msgstr ""
-"Skapa en tom php-mallfil med din önskade filslug i %1s "
-"/publishpress-authors/author-boxes/ %2s mappen för ditt tema. %3s Till "
-"exempel kan filen ligga här: %4s "
-"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
-"my-first-custom-author-template.php %7s ."
-
-#: src/modules/author-boxes/author-boxes.php:2653
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "Kopiera den genererade koden och klistra in den i den ny skapade filen."
 
 #: src/modules/author-boxes/author-boxes.php:2654
-msgid ""
-"Congratulations. Your can now choose your template inside the PublishPress "
-"Authors Settings."
-msgstr ""
-"Grattis. Du kan nu välja din mall i inställningarna för PublishPress "
-"Authors."
-
-#: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"
 msgstr "dokumentationssida"
 
@@ -1448,14 +1260,6 @@ msgid "Reorder Fields"
 msgstr "Sortera om fält"
 
 #: src/modules/author-boxes/author-boxes.php:2748
-msgid ""
-"Reorder the fields by dragging them to the correct position and saving your "
-"changes."
-msgstr ""
-"Sortera om fälten genom att dra dem till rätt position och spara dina "
-"ändringar."
-
-#: src/modules/author-boxes/author-boxes.php:2762
 msgid "Save for Current Author Box"
 msgstr "Spara för aktuell författarbox"
 
@@ -1488,14 +1292,6 @@ msgid "New Author Categories Box"
 msgstr "Ny författarkategoribox"
 
 #: src/modules/author-boxes/author-boxes.php:3037
-msgid ""
-"PublishPress Authors Pro allows you to unlock the full potential of Author "
-"Categories."
-msgstr ""
-"PublishPress Authors Pro gör att du kan låsa upp den fulla potentialen av "
-"författarkategorier."
-
-#: src/modules/author-boxes/author-boxes.php:3039
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr "Du kan skapa författarboxar där författare grupperas i sina kategorier."
 
@@ -1528,14 +1324,6 @@ msgstr "Du har inte behörighet att utföra denna åtgärd"
 
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:67
 #, php-format
-msgid ""
-"Field Order updated. %1sClick here%2s to reload this page to see new order "
-"changes."
-msgstr ""
-"Fältordningen uppdaterad. %1sKlicka här%2s för att ladda om denna sida för "
-"att se nya förändringar i ordningen."
-
-#: src/modules/author-boxes/classes/AuthorBoxesDefault.php:28
 msgid "Boxed"
 msgstr "Boxad"
 
@@ -2192,14 +1980,6 @@ msgid "Custom \"View All Posts\" Link"
 msgstr "Anpassad \"Visa Alla Inlägg\" Länk"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:449
-msgid ""
-"Enter a custom URL for the \"View All Posts\" link. Leave empty to use the "
-"default author posts page."
-msgstr ""
-"Ange en anpassad URL för \"Visa Alla Inlägg\" länken. Lämna tomt för att "
-"använda standard sidan för författares inlägg."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:453
 msgid "View All Posts Link Size"
 msgstr "Storlek på Visa Alla Inlägg Länk"
 
@@ -2256,14 +2036,6 @@ msgid "Author Category Layout"
 msgstr "Layout för författarkategorier"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:607
-msgid ""
-"Selecting an option here will overwrite author boxes settings to match "
-"selected layout."
-msgstr ""
-"Att välja ett alternativ här kommer att överskrida inställningarna för "
-"författarbuxar för att matcha vald layout."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:612
 msgid "Built-in Layout"
 msgstr "Inbyggd layout"
 
@@ -2358,26 +2130,10 @@ msgid "Author Category Group Title Prefix"
 msgstr "Prefix för författarkategori grupp titel"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:714
-msgid ""
-"Enter the text that should be added before group title. This field accepts "
-"basic HTML."
-msgstr ""
-"Ange texten som ska läggas till före grupp titel. Detta fält accepterar "
-"grundläggande HTML."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:721
 msgid "Author Category Group Title Suffix"
 msgstr "Suffix för författarkategori grupp titel"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:722
-msgid ""
-"Enter the text that should be added after group title. This field accepts "
-"basic HTML."
-msgstr ""
-"Ange texten som ska läggas till efter grupp titel. Detta fält accepterar "
-"grundläggande HTML."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:729
 msgid "Author Category Group Font Size"
 msgstr "Författarkategori Gruppteckenstorlek"
 
@@ -2420,16 +2176,6 @@ msgid "%1s HTML Tag"
 msgstr "%1s HTML-tag"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:821
-msgid ""
-"'span' will display as an inline element and 'div' will display as a block "
-"element. To make this display into a link, select 'link' and enter the "
-"first part of the URL into the 'Prefix' field."
-msgstr ""
-"'span' kommer att visas som ett inline-element och 'div' kommer att visas "
-"som ett blockelement. För att göra detta till en länk, välj 'link' och ange "
-"den första delen av URL:en i fältet 'Prefix'."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:828
 msgid "link"
 msgstr "länk"
 
@@ -2439,15 +2185,6 @@ msgid "%1s Value Prefix"
 msgstr "%1s värde prefix"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
-msgid ""
-"This is useful when linking to an email, URL, or phone number. For example, "
-"'mailto:', 'https://' or 'tel:' can be added as the prefix."
-msgstr ""
-"Detta är användbart när du länkar till en e-post, URL eller telefonnummer. "
-"Till exempel kan 'mailto:', 'https://' eller 'tel:' läggas till som prefix."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:851
-#, php-format
 msgid "%1s Display"
 msgstr "%1s visning"
 
@@ -2649,14 +2386,6 @@ msgid "Recent Post Types"
 msgstr "Senaste inläggs typer"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1259
-msgid ""
-"Select post types to include in recent posts. Leave empty to show all post "
-"types."
-msgstr ""
-"Välj inläggstyper att inkludera i senaste inlägg. Lämna tomt för att visa "
-"alla inläggstyper."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
 msgid "Select post types..."
 msgstr "Välj inläggstyper..."
 
@@ -2762,50 +2491,18 @@ msgid "Author inline display"
 msgstr "Inline-visning av författare"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1468
-msgid ""
-"This will display author in an inline format side by side instead of block "
-"format."
-msgstr ""
-"Detta kommer att visa författaren i ett inline-format sida vid sida "
-"istället för blockformat."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1475
 msgid "Author Row Prefix"
 msgstr "Prefix för författarrad"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1476
-msgid ""
-"Enter the text that should be added before authors. This field accepts "
-"basic HTML."
-msgstr ""
-"Ange den text som ska läggas till före författarna. Det här fältet "
-"accepterar grundläggande HTML."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1483
 msgid "Author Row Suffix"
 msgstr "Suffix för författarrad"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1484
-msgid ""
-"Enter the text that should be added after authors. This field accepts basic "
-"HTML."
-msgstr ""
-"Ange den text som ska läggas till efter författarna. Det här fältet "
-"accepterar grundläggande HTML."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1491
 msgid "Author Separator"
 msgstr "Separator för författare"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1492
-msgid ""
-"You can specify a separator such as ',' to separate authors. This field "
-"accepts basic HTML."
-msgstr ""
-"Du kan specificera en separator som ',' för att separera författare. Det "
-"här fältet accepterar grundläggande HTML."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1499
 msgid "Author Box Margin Top"
 msgstr "Översta marginal för författarbox"
 
@@ -2988,18 +2685,6 @@ msgstr "Schemaegenskap"
 #: src/modules/author-categories/author-categories.php:622
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
 #, php-format
-msgid ""
-"Example: when this value is set to reviewedBy, all users in this category "
-"will be added to post's reviewedBy property. You can read more %1$s in this "
-"guide.%2$s"
-msgstr ""
-"Exempel: när detta värde är inställt på reviewedBy, kommer alla användare i "
-"denna kategori att läggas till i inläggets reviewedBy-egenskap. Du kan läsa "
-"mer %1$s i denna guide.%2$s"
-
-#: src/modules/author-categories/author-categories.php:634
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:79
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:486
 msgid "Post Types"
 msgstr "Inläggstyper"
 
@@ -3009,16 +2694,6 @@ msgid "Select Post Type..."
 msgstr "Välj inläggstyp..."
 
 #: src/modules/author-categories/author-categories.php:678
-msgid ""
-"Select which post types this category applies to. Leave empty for all post "
-"types."
-msgstr ""
-"Välj vilka inläggstyper denna kategori gäller för. Lämna tomt för alla "
-"inläggstyper."
-
-#: src/modules/author-categories/author-categories.php:683
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:81
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:531
 msgid "Enable Category"
 msgstr "Aktivera kategori"
 
@@ -3171,15 +2846,6 @@ msgid "Field Slug"
 msgstr "Fältslug"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:387
-msgid ""
-"The slug is used in code to reference this author field. It is all "
-"lowercase and contains only letters, numbers, and hyphens."
-msgstr ""
-"Sluggen används i koden för att referera till detta författares fält. Den "
-"är helt i små bokstäver och innehåller endast bokstäver, siffror och "
-"bindestreck."
-
-#: src/modules/author-custom-fields/author-custom-fields.php:396
 msgid "Field Type"
 msgstr "Fälttyp"
 
@@ -3188,24 +2854,6 @@ msgid "Social Profile?"
 msgstr "Social profil?"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:409
-msgid ""
-"This feature will add the SameAs property to this link so that search "
-"engines realize that the social profile is connected to this author."
-msgstr ""
-"Denna funktion kommer att lägga till SameAs-egenskapen till denna länk så "
-"att sökmotorer inser att den sociala profilen är kopplad till denna "
-"författare."
-
-#: src/modules/author-custom-fields/author-custom-fields.php:422
-#, php-format
-msgid ""
-"Add a Schema.org property to this field. Examples include alumniOf, "
-"worksFor, and birthPlace. %1$sClick here for documentation.%2$s"
-msgstr ""
-"Lägg till en Schema.org-egenskap till detta fält. Exempel inkluderar "
-"alumniOf, worksFor och birthPlace. %1$sKlicka här för dokumentation.%2$s"
-
-#: src/modules/author-custom-fields/author-custom-fields.php:434
 msgid "Show in REST API"
 msgstr "Visa i REST API"
 
@@ -3241,14 +2889,6 @@ msgid "Description"
 msgstr "Beskrivning"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:482
-msgid ""
-"This description appears under the fields and helps users understand their "
-"choice."
-msgstr ""
-"Denna beskrivning visas under fälten och hjälper användare att förstå sitt "
-"val."
-
-#: src/modules/author-custom-fields/author-custom-fields.php:801, fuzzy
 msgid "Status"
 msgstr "Status"
 
@@ -3262,14 +2902,6 @@ msgstr "Jobbtitel"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:992
 #: src/modules/author-custom-fields/author-custom-fields.php:1047
-msgid ""
-"With PublishPress Authors Pro, you can add new fields for social networks "
-"and more."
-msgstr ""
-"Med PublishPress Authors Pro kan du lägga till nya fält för sociala nätverk "
-"och mer."
-
-#: src/modules/author-custom-fields/author-custom-fields.php:1111
 msgid "Field Order updated."
 msgstr "Fältordning uppdaterad."
 
@@ -3418,15 +3050,6 @@ msgid "Show Authors"
 msgstr "Visa författare"
 
 #: src/modules/author-list/author-list.php:438
-msgid ""
-"Select an option to limit the results to selected user roles, author types, "
-"specific authors or author Categories."
-msgstr ""
-"Välj ett alternativ för att begränsa resultaten till valda användarroll, "
-"författartyper, specifika författare eller författarkategorier."
-
-#: src/modules/author-list/author-list.php:441
-#: src/modules/author-list/author-list.php:455
 msgid "Roles"
 msgstr "Roller"
 
@@ -3435,14 +3058,6 @@ msgid "Exclude Authors"
 msgstr "Exkludera författare"
 
 #: src/modules/author-list/author-list.php:452
-msgid ""
-"Select an option to exclude selected user roles, author types, specific "
-"authors or author Categories from Author list."
-msgstr ""
-"Välj ett alternativ för att exkludera valda användarroll, författartyper, "
-"specifika författare eller författarkategorier från författarlistan."
-
-#: src/modules/author-list/author-list.php:468
 msgid "Authors Per Page"
 msgstr "Författare per sida"
 
@@ -3455,28 +3070,10 @@ msgid "Show Empty"
 msgstr "Visa tomt"
 
 #: src/modules/author-list/author-list.php:480
-msgid ""
-"Enable this option to show all authors, including those without any posts. "
-"Disable this option to show only authors who are assigned to posts."
-msgstr ""
-"Aktivera det här alternativet för att visa alla författare, inklusive de "
-"utan några inlägg. Inaktivera det här alternativet för att endast visa "
-"författare som är tilldelade inlägg."
-
-#: src/modules/author-list/author-list.php:488
 msgid "Configure Author List Options"
 msgstr "Konfigurera alternativ för författarlistan"
 
 #: src/modules/author-list/author-list.php:489
-msgid ""
-"Authors Pro allows you to add extra features to the Authors List. These "
-"features include pagination, choose the order of authors, and much more."
-msgstr ""
-"Authors Pro låter dig lägga till extra funktioner till författarlistan. "
-"Dessa funktioner inkluderar paginering, välja ordning på författarna, och "
-"mycket mer."
-
-#: src/modules/author-list/author-list.php:494
 msgid "Order By"
 msgstr "Ordna efter"
 
@@ -3485,16 +3082,6 @@ msgid "Last Article Date"
 msgstr "Datum för senaste artikel"
 
 #: src/modules/author-list/author-list.php:523
-msgid ""
-"You can limit the author list to users with a published post within a "
-"specific time. This option accepts date values such as 1 week ago, 1 month "
-"ago, 6 months ago, 1 year ago etc."
-msgstr ""
-"Du kan begränsa författarlistan till användare med ett publicerat inlägg "
-"inom en specifik tid. Det här alternativet accepterar datumvärden som 1 "
-"vecka sedan, 1 månad sedan, 6 månader sedan, 1 år sedan osv."
-
-#: src/modules/author-list/author-list.php:535
 msgid "Show Search Box"
 msgstr "Visa sökfält"
 
@@ -3503,27 +3090,10 @@ msgid "Add Search Box to Author Lists"
 msgstr "Lägg till sökfält till författarlistor"
 
 #: src/modules/author-list/author-list.php:545
-msgid ""
-"Author Pro allows you to add a search box to the Authors List. You can also "
-"show a dropdown menu that allows users to search on specific author fields."
-msgstr ""
-"Author Pro låter dig lägga till ett sökfält till författarlistan. Du kan "
-"också visa en rullgardinsmeny som gör det möjligt för användare att söka på "
-"specifika författarfält."
-
-#: src/modules/author-list/author-list.php:550
 msgid "Search Field Dropdown"
 msgstr "Rullgardinsmeny för sökfält"
 
 #: src/modules/author-list/author-list.php:551
-msgid ""
-"You can also show a dropdown menu that allows users to search on specific "
-"author fields."
-msgstr ""
-"Du kan också visa en rullgardinsmeny som gör det möjligt för användare att "
-"söka på specifika författarfält."
-
-#: src/modules/author-list/author-list.php:600
 msgid "Author Recent List"
 msgstr "Författare Senaste Lista"
 
@@ -3568,14 +3138,6 @@ msgid "Select Author Category"
 msgstr "Välj Författarkategori"
 
 #: src/modules/author-list/author-list.php:1282
-msgid ""
-"This is a quick preview of this Author List. Test on frontend pages to see "
-"exactly how it looks with your theme."
-msgstr ""
-"Detta är en snabb förhandsgranskning av denna Författarlista. Testa på "
-"frontend-sidor för att se exakt hur det ser ut med ditt tema."
-
-#: src/modules/author-list/author-list.php:1380
 msgid "Invalid form"
 msgstr "Ogiltig formulär"
 
@@ -3807,14 +3369,6 @@ msgid "Showcase your Authors with PublishPress Blocks"
 msgstr "Visa upp dina författare med PublishPress Blocks"
 
 #: src/modules/modules-settings/modules-settings.php:318
-msgid ""
-"PublishPress Blocks is a free plugin with full support for PublishPress "
-"Authors."
-msgstr ""
-"PublishPress Blocks är ett gratis plugin med full support för PublishPress "
-"Författare."
-
-#: src/modules/modules-settings/modules-settings.php:319
 msgid "Install this plugin to showcase content by your Authors."
 msgstr "Installera detta plugin för att visa innehåll av dina författare."
 
@@ -3825,14 +3379,6 @@ msgstr ""
 "layouter."
 
 #: src/modules/modules-settings/modules-settings.php:321
-msgid ""
-"PublishPress Blocks has over 20 extra Gutenberg blocks including "
-"accordions, galleries, tables, and more."
-msgstr ""
-"PublishPress Blocks har över 20 extra Gutenberg-block, inklusive "
-"ackordioner, gallerier, tabeller och mer."
-
-#: src/modules/modules-settings/modules-settings.php:324
 msgid "Click here to install PublishPress Blocks"
 msgstr "Klicka här för att installera PublishPress Blocks"
 
@@ -3871,17 +3417,6 @@ msgid "Copy Molongui Authorship Data"
 msgstr "Kopiera Molongui Authorship-data"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:153
-msgid ""
-"This action will copy the authors from the plugin Molongui Authorship "
-"allowing you to migrate to PublishPress Authors without losing any data "
-"including post author relation. This action can be run multiple times."
-msgstr ""
-"Denna åtgärd kommer att kopiera författarna från pluginet Molongui "
-"Authorship så att du kan migrera till PublishPress Författare utan att "
-"förlora någon data, inklusive inläggsförfattarrelation. Denna åtgärd kan "
-"köras flera gånger."
-
-#: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:187
 msgid "It looks like you have Molongui Authorship installed."
 msgstr "Det verkar som om du har Molongui Authorship installerat."
 
@@ -4104,14 +3639,6 @@ msgstr "Enkel lista gammal layout Författarbox:"
 #: src/modules/multiple-authors/multiple-authors.php:1265
 #: src/modules/settings/settings.php:275
 #, php-format
-msgid ""
-"Disabled because add_post_type_support('%1$s', '%2$s') is included in a "
-"loaded file."
-msgstr ""
-"Inaktiverad eftersom add_post_type_support('%1$s', '%2$s') ingår i en "
-"inläst fil."
-
-#: src/modules/multiple-authors/multiple-authors.php:1284
 msgid "This will display the authors box at the top of the content."
 msgstr "Detta kommer att visa författarboxen högst upp i innehållet."
 
@@ -4136,244 +3663,16 @@ msgid "Authors Box"
 msgstr "Författarbox"
 
 #: src/modules/multiple-authors/multiple-authors.php:1409
-msgid ""
-"With this shortcode you can display the author box in any part of the "
-"content. "
-msgstr ""
-"Med denna kortkod kan du visa författarboxen i vilken del av innehållet som "
-"helst. "
-
-#: src/modules/multiple-authors/multiple-authors.php:1417
-#, php-format
-msgid ""
-"You can specify layout by using author boxes layout slug. You can see full "
-"details of each layout option %1$s in this guide %2$s."
-msgstr ""
-"Du kan specificera layout genom att använda författarboxarnas layoutslug. "
-"Du kan se fullständiga detaljer om varje layoutalternativ %1$s i denna "
-"guide %2$s."
-
-#: src/modules/multiple-authors/multiple-authors.php:1428
-#, php-format
-msgid ""
-"You can also decide whether or not to show the main title, using %1$s or "
-"%2$s ."
-msgstr ""
-"Du kan också besluta om du vill visa huvudtiteln eller inte, med hjälp av "
-"%1$s eller %2$s ."
-
-#: src/modules/multiple-authors/multiple-authors.php:1438
-#: src/modules/multiple-authors/multiple-authors.php:1522
-msgid ""
-"You can load the authors for a specific post, even if you are not in that "
-"post currently. For example, this shortcode will load the authors for the "
-"post with the ID of 32."
-msgstr ""
-"Du kan ladda författarna för ett specifikt inlägg, även om du inte är i det "
-"inlägget för tillfället. Till exempel, denna kortkod kommer att ladda "
-"författarna för inlägget med ID 32."
-
-#: src/modules/multiple-authors/multiple-authors.php:1445
-msgid ""
-"You can load the authors for a specific user by providing the user id. For "
-"example, this shortcode will load the author with user id of 32"
-msgstr ""
-"Du kan ladda författarna för en specifik användare genom att ange "
-"användarens id. Till exempel kommer denna kortkod att ladda författaren med "
-"användar-id 32"
-
-#: src/modules/multiple-authors/multiple-authors.php:1452
-msgid ""
-"You can load the authors for a specific author by providing the author term "
-"id for both guest and user author. For example, this shortcode will load "
-"the author with term id of 32"
-msgstr ""
-"Du kan ladda författarna för en specifik författare genom att ange "
-"författarens term-id för både gäst- och användarförfattare. Till exempel "
-"kommer denna kortkod att ladda författaren med term-id 32"
-
-#: src/modules/multiple-authors/multiple-authors.php:1460
-#, php-format
-msgid ""
-"If you are having problems showing PublishPress Authors on author profile "
-"pages, you can use this shortcode below. The argument %s forces the plugin "
-"to retrieve the Author from the profile page and not any other posts on the "
-"same screen."
-msgstr ""
-"Om du har problem med att visa PublishPress Authors på "
-"författarprofilsidor, kan du använda denna kortkod nedan. Argumentet %s "
-"tvingar pluginet att hämta författaren från profilsidan och inte några "
-"andra inlägg på samma skärm."
-
-#: src/modules/multiple-authors/multiple-authors.php:1470
-#, php-format
-msgid ""
-"There is one final option to mention. This is mostly useful if you're using "
-"a theme or page builder to customize the Author profile pages you find at "
-"URLs such as /author/username/. You can use the following shortcode on the "
-"authors page to display the profile of the current author. You just need to "
-"add the parameter %s."
-msgstr ""
-"Det finns ett sista alternativ att nämna. Detta är mest användbart om du "
-"använder ett tema eller en sidbyggare för att anpassa författarprofilsidor "
-"som du hittar på URL:er som /author/username/. Du kan använda följande "
-"kortkod på författarsidan för att visa profilen för den aktuella "
-"författaren. Du behöver bara lägga till parametern %s."
-
-#: src/modules/multiple-authors/multiple-authors.php:1479
-msgid ""
-"You can load the authors belonging to a specific author categories by "
-"providing the category slug or slugs separated by comma for more than one "
-"category."
-msgstr ""
-"Du kan ladda författarna som tillhör specifika författarkategorier genom "
-"att ange kategorins slug eller slugs separerade med kommatecken för mer än "
-"en kategori."
-
-#: src/modules/multiple-authors/multiple-authors.php:1489
 msgid "Authors Data"
 msgstr "Författardata"
 
 #: src/modules/multiple-authors/multiple-authors.php:1490
-msgid ""
-"With this shortcode you can display the author names or any profile field "
-"in any part of the content."
-msgstr ""
-"Med denna kortkod kan du visa författarnas namn eller något profilfält i "
-"vilken del av innehållet som helst."
-
-#: src/modules/multiple-authors/multiple-authors.php:1498
-#, php-format
-msgid ""
-"The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s "
-"%4$s %5$s %6$s %7$s. You can see full details and parameters %8$s in this "
-"guide %9$s."
-msgstr ""
-"Författardata kortkoden accepterar fältparametrar som: %1$s %2$s %3$s %4$s "
-"%5$s %6$s %7$s. Du kan se fullständiga detaljer och parametrar %8$s i denna "
-"guide %9$s."
-
-#: src/modules/multiple-authors/multiple-authors.php:1515
 msgid "You can also specify the separator to be used for mulitple authors data."
 msgstr ""
 "Du kan också specificera separatorn som ska användas för flera "
 "författardata."
 
 #: src/modules/multiple-authors/multiple-authors.php:1529
-msgid ""
-"You can retrieve a specific author by providing the author's term ID. For "
-"example, this shortcode will load the author with the term ID of 102."
-msgstr ""
-"Du kan hämta en specifik författare genom att ange författarens term-ID. "
-"Till exempel kommer denna kortkod att ladda författaren med term-ID 102."
-
-#: src/modules/multiple-authors/multiple-authors.php:1537
-#, php-format
-msgid ""
-"You can also decide to return an array list of authors by using "
-"user_objects=\"true\" which will return all the authors object data as an "
-"array. You can check full details and sample usage %2$s in this guide%3$s."
-msgstr ""
-"Du kan också besluta att returnera en arraylista av författare genom att "
-"använda user_objects=\"true\" vilket kommer att returnera all författardata "
-"som ett objekt i en array. Du kan kontrollera fullständiga detaljer och "
-"exempelanvändning %2$s i denna guide%3$s."
-
-#: src/modules/multiple-authors/multiple-authors.php:1548
-msgid ""
-"You can retrieve authors belonging to a specific Author Category by "
-"providing the category slug or slugs. Separate multiple slugs with a comma."
-msgstr ""
-"Du kan hämta författare som tillhör en specifik författarkategori genom att "
-"ange kategorins slug eller slugs. Separera flera slugs med ett kommatecken."
-
-#: src/modules/multiple-authors/multiple-authors.php:1559
-msgid ""
-"With this shortcode, you can show all the authors together in a single "
-"display."
-msgstr "Med denna kortkod kan du visa alla författare tillsammans i en enda vy."
-
-#: src/modules/multiple-authors/multiple-authors.php:1567
-#, php-format
-msgid ""
-"You can specify layout by using author boxes layout slug. You can see full "
-"details of each layout option %1$s in this guide %2$s. %3$s %4$s This "
-"shortcode also provides two custom layouts: %5$s %6$s."
-msgstr ""
-"Du kan specificera layout genom att använda författarboxlayoutens slug. Du "
-"kan se fullständiga detaljer för varje layoutalternativ %1$s i denna guide "
-"%2$s. %3$s %4$s Denna kortkod ger också två anpassade layouter: %5$s %6$s."
-
-#: src/modules/multiple-authors/multiple-authors.php:1582
-#, php-format
-msgid ""
-"You can define the number of layout columns by using %1$s to show authors "
-"in 2 column."
-msgstr ""
-"Du kan definiera antalet layoutkolumner genom att använda %1$s för att visa "
-"författarna i 2 kolumner."
-
-#: src/modules/multiple-authors/multiple-authors.php:1592
-#, php-format
-msgid ""
-"You can choose the number of authors per page using %1$s . %2$s Pagination "
-"will be automatically added if required."
-msgstr ""
-"Du kan välja antalet författare per sida med %1$s . %2$s Sidorna kommer "
-"automatiskt att läggas till om det behövs."
-
-#: src/modules/multiple-authors/multiple-authors.php:1603
-#, php-format
-msgid ""
-"You can limit the result to only authors who are assigned to posts by using "
-"%1$s . %2$s Alternatively, use %3$s to show all authors, including those "
-"without any posts."
-msgstr ""
-"Du kan begränsa resultatet till endast författare som är tilldelade inlägg "
-"genom att använda %1$s . %2$s Alternativt, använd %3$s för att visa alla "
-"författare, inklusive de utan några inlägg."
-
-#: src/modules/multiple-authors/multiple-authors.php:1615
-#, php-format
-msgid ""
-"You can limit the result to only guest authors by using %1$s . %2$s "
-"Alternatively, %3$s will show only authors with a WordPress account."
-msgstr ""
-"Du kan begränsa resultatet till endast gästförfattare genom att använda "
-"%1$s . %2$s Alternativt kommer %3$s endast att visa författare med ett "
-"WordPress-konto."
-
-#: src/modules/multiple-authors/multiple-authors.php:1627
-#, php-format
-msgid ""
-"If you are using the authors_recent layout, you can define the number of "
-"columns by using %1$s ."
-msgstr ""
-"Om du använder layouten authors_recent kan du definiera antalet kolumner "
-"genom att använda %1$s ."
-
-#: src/modules/multiple-authors/multiple-authors.php:1637
-#, php-format
-msgid ""
-"For authors_index layout, you can group user by profile field by using %1$s "
-"."
-msgstr ""
-"För layouten authors_index kan du gruppera användare efter profilfält genom "
-"att använda %1$s ."
-
-#: src/modules/multiple-authors/multiple-authors.php:1647
-#, php-format
-msgid ""
-"To order the results based on post count, use %1$s . To order the results "
-"by name, use %2$s . Alternatively, you can order by profile fields like "
-"%3$s, %4$s etc"
-msgstr ""
-"För att ordna resultaten baserat på inläggsantal, använd %1$s . För att "
-"ordna resultaten efter namn, använd %2$s . Alternativt kan du sortera efter "
-"profilfält som %3$s, %4$s osv."
-
-#: src/modules/multiple-authors/multiple-authors.php:1660
-#, php-format
 msgid "To further customize the order of results, use %1$s or %2$s ."
 msgstr ""
 "För att ytterligare anpassa ordningen av resultaten, använd %1$s eller %2$s "
@@ -4386,27 +3685,6 @@ msgstr "För att visa en sökruta för författare, använd %1$s ."
 
 #: src/modules/multiple-authors/multiple-authors.php:1681
 #, php-format
-msgid ""
-"You can also show a dropdown menu that allows users to search on specific "
-"author fields. You can add fields to the dropdown using %1$s . This "
-"requires the search box to be active."
-msgstr ""
-"Du kan också visa en rullgardinsmeny som tillåter användare att söka på "
-"specifika författarfält. Du kan lägga till fält i rullgardinsmenyn med %1$s "
-". Detta kräver att sökrutan är aktiv."
-
-#: src/modules/multiple-authors/multiple-authors.php:1691
-#, php-format
-msgid ""
-"You can limit the author list to users with a published post within a "
-"specific period using %1$s . This accept english date value like 1 week "
-"ago, 1 month ago, 6 months ago, 1 year ago etc."
-msgstr ""
-"Du kan begränsa författarlistan till användare med ett publicerat inlägg "
-"inom en specifik period med %1$s . Detta accepterar engelska datumvärden "
-"som 1 vecka sedan, 1 månad sedan, 6 månader sedan, 1 år sedan osv."
-
-#: src/modules/multiple-authors/multiple-authors.php:1738
 msgid "Copied!"
 msgstr "Kopierad!"
 
@@ -4420,40 +3698,6 @@ msgid "Select roles"
 msgstr "Välj roller"
 
 #: src/modules/multiple-authors/multiple-authors.php:1813
-msgid ""
-"Choose which WordPress user roles can be selected using the \"Registered "
-"Author With User Account\" option for author profiles."
-msgstr ""
-"Välj vilka WordPress-användarroll som kan väljas med alternativet "
-"\"Registrerad författare med användarkonto\" för författarprofiler."
-
-#: src/modules/multiple-authors/multiple-authors.php:1842
-msgid ""
-"Author profiles can be mapped to WordPress user accounts. This option "
-"allows you to automatically create author profiles when users are created "
-"in these roles. You can also do this for existing users by clicking the "
-"\"Create PublishPress Authors Profiles for all users in a role\" button in "
-"the Maintenance tab."
-msgstr ""
-"Författarprofiler kan kopplas till WordPress-användarkonton. Detta "
-"alternativ gör att du automatiskt kan skapa författarprofiler när användare "
-"skapas i dessa roller. Du kan också göra detta för befintliga användare "
-"genom att klicka på knappen \"Skapa PublishPress författarprofiler för alla "
-"användare i en roll\" i fliken Underhåll."
-
-#: src/modules/multiple-authors/multiple-authors.php:1863
-msgid ""
-"If the Author is mapped to a WordPress user, this will display the authors' "
-"\"Display name\" and their \"Username\". The default is to show only the "
-"\"Display name\". Showing the \"Username\" is useful if you have several "
-"authors with similar names."
-msgstr ""
-"Om författaren är kopplad till ett WordPress-användarkonto, kommer detta "
-"att visa författarens \"Visningsnamn\" och deras \"Användarnamn\". "
-"Standardinställningen är att endast visa \"Visningsnamn\". Att visa "
-"\"Användarnamn\" är användbart om du har flera författare med liknande namn."
-
-#: src/modules/multiple-authors/multiple-authors.php:1886
 msgid "Allow authors to be created without a real user account."
 msgstr "Tillåt författare att skapas utan ett riktigt användarkonto."
 
@@ -4468,14 +3712,6 @@ msgid "Allow authors to be created without a connected user account."
 msgstr "Tillåt författare att skapas utan ett anslutet användarkonto."
 
 #: src/modules/multiple-authors/multiple-authors.php:1956
-msgid ""
-"If enabled, PublishPress Authors will replace the default WordPress author "
-"pages."
-msgstr ""
-"Om aktiverat, kommer PublishPress Authors att ersätta de vanliga "
-"WordPress-författarsidorna."
-
-#: src/modules/multiple-authors/multiple-authors.php:1961
 msgid "Please note this feature will not work for all themes."
 msgstr "Observera att den här funktionen kanske inte fungerar för alla teman."
 
@@ -4509,14 +3745,6 @@ msgid "Last Name First Name"
 msgstr "Efternamn Förnamn"
 
 #: src/modules/multiple-authors/multiple-authors.php:2218
-msgid ""
-"This avatar will be used as default avatar instead of gravatar where no "
-"custom avatar is added to profile."
-msgstr ""
-"Denna avatar kommer att användas som standardavatar istället för gravatar "
-"där ingen anpassad avatar har lagts till profilen."
-
-#: src/modules/multiple-authors/multiple-authors.php:2240
 msgid "This will display the author bio."
 msgstr "Detta kommer att visa författarens bio."
 
@@ -4554,17 +3782,6 @@ msgid "This will display the excerpt."
 msgstr "Detta kommer att visa utdraget."
 
 #: src/modules/multiple-authors/multiple-authors.php:2573
-msgid ""
-"This will allows you map a WordPress user to more than one author. Don't "
-"use this feature unless requested to do so by the PublishPress team. This "
-"plugin works better when authors and users are paired one-to-one."
-msgstr ""
-"Detta tillåter dig att koppla en WordPress-användare till mer än en "
-"författare. Använd inte denna funktion om det inte begärs av "
-"PublishPress-teamet. Denna plugin fungerar bättre när författare och "
-"användare paras en-till-en."
-
-#: src/modules/multiple-authors/multiple-authors.php:2597
 msgid "This will display the authors."
 msgstr "Detta kommer att visa författarna."
 
@@ -4599,17 +3816,6 @@ msgid "Search for a fallback author"
 msgstr "Sök efter en reservförfattare"
 
 #: src/modules/multiple-authors/multiple-authors.php:2791
-msgid ""
-"If you only have Guest Authors selected for a post, this user may be used "
-"as a fallback. WordPress sometimes requires a WordPress user to be assigned "
-"to each post. This user will not be visible on the front of your site."
-msgstr ""
-"Om du bara har Gästförfattare valda för ett inlägg, kan denna användare "
-"användas som en fallback. WordPress kräver ibland att en "
-"WordPress-användare är tilldelad till varje inlägg. Denna användare kommer "
-"inte att vara synlig på framsidan av din webbplats."
-
-#: src/modules/multiple-authors/multiple-authors.php:2809
 msgid "This will display the authors email in the author box."
 msgstr "Detta kommer att visa författarens e-postadress i författarboxen."
 
@@ -4630,19 +3836,6 @@ msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr "Skapa PublishPress Författarprofiler för alla inläggsförfattare"
 
 #: src/modules/multiple-authors/multiple-authors.php:2887
-msgid ""
-"If a WordPress user is the author of a post, but does not have a "
-"PublishPress Authors profile, this will automatically create a profile for "
-"them."
-msgstr ""
-"Om en WordPress-användare är författare till ett inlägg, men inte har en "
-"PublishPress Författarprofil, kommer detta automatiskt att skapa en profil "
-"för dem."
-
-#: src/modules/multiple-authors/multiple-authors.php:2887
-#: src/modules/multiple-authors/multiple-authors.php:2893
-#: src/modules/multiple-authors/multiple-authors.php:2899
-#: src/modules/multiple-authors/multiple-authors.php:2906
 msgid "Click here for documentation"
 msgstr "Klicka här för dokumentation"
 
@@ -4655,16 +3848,6 @@ msgid "Create PublishPress Authors Profiles for all users in a role"
 msgstr "Skapa PublishPress Författarprofiler för alla användare i en roll"
 
 #: src/modules/multiple-authors/multiple-authors.php:2893
-msgid ""
-"This will find all the users in a role and create author profiles for them. "
-"You can choose the roles using the \"Automatically create author profiles\" "
-"setting."
-msgstr ""
-"Detta kommer att hitta alla användare i en roll och skapa författarprofiler "
-"för dem. Du kan välja roller med inställningen \"Automatiskt skapa "
-"författarprofiler\"."
-
-#: src/modules/multiple-authors/multiple-authors.php:2894
 msgid "Create PublishPress Authors profiles"
 msgstr "Skapa PublishPress Författarprofiler"
 
@@ -4673,70 +3856,22 @@ msgid "Synchronize PublishPress Authors Fields and user profile fields"
 msgstr "Synchronisera PublishPress Författarfält och användarprofilsfält"
 
 #: src/modules/multiple-authors/multiple-authors.php:2899
-msgid ""
-"This will update all the author profiles in PublishPress Authors to match "
-"the default WordPress fields for each user."
-msgstr ""
-"Detta kommer att uppdatera alla författarprofiler i PublishPress Författare "
-"för att matcha de standard WordPress-fälten för varje användare."
-
-#: src/modules/multiple-authors/multiple-authors.php:2905
 msgid "Synchronize the author and user URLs"
 msgstr "Synchronisera författar- och användar-URL:er"
 
 #: src/modules/multiple-authors/multiple-authors.php:2906
-msgid ""
-"This will update all the Author URLs in PublishPress Authors to match the "
-"default WordPress URLs for each user."
-msgstr ""
-"Detta kommer att uppdatera alla Författar-URL:er i PublishPress Författare "
-"för att matcha de standard WordPress-URL:erna för varje användare."
-
-#: src/modules/multiple-authors/multiple-authors.php:2912
-#: src/modules/multiple-authors/multiple-authors.php:2914
 msgid "Create Author Categories"
 msgstr "Skapa Författarkategorier"
 
 #: src/modules/multiple-authors/multiple-authors.php:2913
-msgid ""
-"This will create author categories table if missing and add default "
-"categories."
-msgstr ""
-"Detta kommer att skapa en tabell för författarkategorier om den saknas och "
-"lägga till standardkategorier."
-
-#: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "Copy Co-Authors Plus Data"
 msgstr "Kopiera Co-Authors Plus-data"
 
 #: src/modules/multiple-authors/multiple-authors.php:2927
-msgid ""
-"This action will copy the authors from the plugin Co-Authors Plus allowing "
-"you to migrate to PublishPress Authors without losing any data. This action "
-"can be run multiple times."
-msgstr ""
-"Denna åtgärd kommer att kopiera författarna från pluginet Co-Authors Plus "
-"och låta dig migrera till PublishPress Författare utan att förlora någon "
-"data. Denna åtgärd kan köras flera gånger."
-
-#: src/modules/multiple-authors/multiple-authors.php:2937
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr "Ta bort kopplingar mellan författarprofiler och användare"
 
 #: src/modules/multiple-authors/multiple-authors.php:2938
-msgid ""
-"This action can reset the PublishPress Authors data before using other "
-"maintenance options. It will delete all author profiles that are mapped to "
-"a WordPress user account. This will not delete the WordPress user accounts, "
-"but any links between the posts and author profiles will be lost."
-msgstr ""
-"Denna åtgärd kan återställa PublishPress Authors-data innan andra "
-"underhållsalternativ används. Det kommer att ta bort alla författarprofiler "
-"som är kopplade till ett WordPress-användarkonto. Detta kommer inte att ta "
-"bort WordPress-användarkontona, men alla länkar mellan inläggen och "
-"författarprofilerna kommer att gå förlorade."
-
-#: src/modules/multiple-authors/multiple-authors.php:2939
 msgid "Delete all authors mapped to users"
 msgstr "Ta bort alla författare kopplade till användare"
 
@@ -4746,31 +3881,10 @@ msgid "Delete Guest Authors"
 msgstr "Alla gästförfattare"
 
 #: src/modules/multiple-authors/multiple-authors.php:2945
-msgid ""
-"This action can reset the PublishPress Authors data before using other "
-"maintenance options. Guest authors are author profiles that are not mapped "
-"to a WordPress user account. This action will delete all guest authors."
-msgstr ""
-"Denna åtgärd kan återställa PublishPress Authors-data innan andra "
-"underhållsalternativ används. Gästförfattare är författarprofiler som inte "
-"är kopplade till ett WordPress-användarkonto. Denna åtgärd kommer att ta "
-"bort alla gästförfattare."
-
-#: src/modules/multiple-authors/multiple-authors.php:2946
-#, fuzzy
 msgid "Delete all guest authors"
 msgstr "Alla gästförfattare"
 
 #: src/modules/multiple-authors/multiple-authors.php:2952
-msgid ""
-"Please be careful clicking these buttons. Before clicking, we recommend "
-"taking a site backup in case anything goes wrong."
-msgstr ""
-"Var vänlig och var försiktig när du klickar på dessa knappar. Innan du "
-"klickar rekommenderar vi att du tar en säkerhetskopia av webbplatsen ifall "
-"något går fel."
-
-#: src/modules/multiple-authors/multiple-authors.php:3155
 msgid "Author Profiles"
 msgstr "Författarprofiler"
 
@@ -5054,46 +4168,9 @@ msgstr "Kontakta"
 
 #: src/core/Plugin.php:563
 msgctxt "taxonomy general name"
-msgid "Authors"
-msgstr "Författare"
-
-#: src/core/Plugin.php:568
-msgctxt "taxonomy singular name"
-msgid "Author"
-msgstr "Författare"
-
-#: src/modules/author-boxes/author-boxes.php:411
-#, fuzzy, php-format
-msgctxt "Author Box post type name"
-msgid "%2$s"
-msgstr "%2$s"
-
-#: src/modules/author-boxes/author-boxes.php:412
-#, fuzzy, php-format
-msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
 #: src/modules/author-boxes/author-boxes.php:427
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
-msgid "%2$s"
-msgstr "%2$s"
-
-#: src/modules/author-custom-fields/author-custom-fields.php:166
-#, fuzzy, php-format
-msgctxt "Custom Field post type name"
-msgid "%2$s"
-msgstr "%2$s"
-
-#: src/modules/author-custom-fields/author-custom-fields.php:167
-#, fuzzy, php-format
-msgctxt "singular custom field post type name"
-msgid "%1$s"
-msgstr "%1$s"
-
-#: src/modules/author-custom-fields/author-custom-fields.php:182
-#, fuzzy, php-format
-msgctxt "custom field post type menu name"
-msgid "%2$s"
-msgstr "%2$s"

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-15T01:06:13+00:00\n"
-"PO-Revision-Date: 2026-04-15 02:50+0000\n"
+"PO-Revision-Date: 2026-04-16 12:07+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "Language: tr_TR\n"
@@ -32,6 +32,15 @@ msgstr "https://wordpress.org/plugins/publishpress-authors/"
 #: src/modules/multiple-authors/multiple-authors.php:75
 #: src/modules/multiple-authors/multiple-authors.php:79
 #. Description of the plugin
+msgid ""
+"PublishPress Authors allows you to add multiple authors and guest authors "
+"to WordPress posts"
+msgstr ""
+"PublishPress Yazarlar, WordPress yazılarına birden fazla yazar ve konuk "
+"yazar eklemenizi sağlar"
+
+#: publishpress-authors.php:11
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
@@ -42,6 +51,21 @@ msgstr "https://publishpress.com"
 
 #: includes.php:39
 #, php-format
+msgid ""
+"You're using PublishPress Authors Free. The Pro version has more features "
+"and support. %sUpgrade to Pro%s"
+msgstr ""
+"PublishPress Yazarlar Ücretsiz sürümünü kullanıyorsunuz. Pro versiyon daha "
+"fazla özellik ve destek sunar. %sPro'ya yükselt%s"
+
+#: includes.php:63
+#: src/modules/author-boxes/author-boxes.php:3042
+#: src/modules/author-categories/author-categories.php:672
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:521
+#: src/modules/author-custom-fields/author-custom-fields.php:995
+#: src/modules/author-custom-fields/author-custom-fields.php:1048
+#: src/modules/author-list/author-list.php:1260
+#: src/modules/author-list/author-list.php:1298
 msgid "Upgrade to Pro"
 msgstr "Pro’ya geç"
 
@@ -217,6 +241,25 @@ msgid "You cannot edit an author profile linked to an administrator account."
 msgstr "Bir yönetici hesabına bağlı bir yazar profilini düzenleyemezsiniz."
 
 #: src/core/Classes/Admin_Ajax.php:359
+msgid ""
+"You do not have permission to edit this author profile because it is linked "
+"to a user account you do not have permission to edit."
+msgstr ""
+"Bu yazar profilini düzenleme izniniz yok çünkü bu, düzenleme iznine sahip "
+"olmadığınız bir kullanıcı hesabına bağlıdır."
+
+#: src/core/Classes/Admin_Ajax.php:374
+#: src/core/Classes/Author_Editor.php:1008
+msgid ""
+"Sorry, this WordPress user is already mapped to another Author. By default, "
+"each user can only be connected to one Author profile."
+msgstr ""
+"Üzgünüm, bu WordPress kullanıcısı zaten başka bir Yazar ile "
+"eşleştirilmiştir. Varsayılan olarak, her kullanıcı yalnızca bir Yazar "
+"profili ile bağlantılı olabilir."
+
+#: src/core/Classes/Admin_Ajax.php:386
+#: src/core/Classes/Author_Editor.php:1100
 msgid "Registered User is required."
 msgstr "Kayıtlı Kullanıcı gereklidir."
 
@@ -233,6 +276,15 @@ msgid "Author name is required"
 msgstr "Yazar adı gereklidir"
 
 #: src/core/Classes/Authors_Iterator.php:55
+msgid ""
+"No post ID provided for Authors_Iterator constructor. Are you not in a loop "
+"or is $post not set?"
+msgstr ""
+"Yazar_İteratör yapıcısı için hiçbir yazı kimliği sağlanmadı. Bir döngüde "
+"misiniz yoksa $post ayarlanmamış mı?"
+
+#: src/core/Classes/Author_Editor.php:47
+#: src/core/Plugin.php:1618
 msgid "Display name publicly as"
 msgstr "Herkese açık olarak görüntüleme adı"
 
@@ -320,6 +372,14 @@ msgstr "Varsayılan Avatar"
 
 #: src/core/Classes/Author_Editor.php:391
 #, php-format
+msgid ""
+"(Uses the %1s Email field %2s to find the Gravatar account if default "
+"avatar is not uploaded in Authors Settings)"
+msgstr ""
+"(Varsayılan avatar Yazar Ayarları'na yüklenmemişse Gravatar hesabını bulmak "
+"için %1s E-posta alanını %2s kullanır)"
+
+#: src/core/Classes/Author_Editor.php:399
 msgid "Custom image"
 msgstr "Özel resim"
 
@@ -334,6 +394,14 @@ msgid "Author Category"
 msgstr "Yazar Kategorisi"
 
 #: src/core/Classes/Author_Editor.php:411
+msgid ""
+"Select the default Category for this Author. This will be used when the "
+"Author is added to new posts."
+msgstr ""
+"Bu Yazar için varsayılan Kategoriyi seçin. Bu, Yazar yeni yazılara "
+"eklendiğinde kullanılacaktır."
+
+#: src/core/Classes/Author_Editor.php:418
 msgid "Do not show this profile publicly"
 msgstr "Bu profili herkese açık olarak gösterme"
 
@@ -354,6 +422,35 @@ msgid "Select a user"
 msgstr "Bir kullanıcı seç"
 
 #: src/core/Classes/Author_Editor.php:783
+msgid ""
+"Create an author profile for a current user account. You can select users "
+"who are allowed to edit posts. This user will be able to update their "
+"profile."
+msgstr ""
+"Mevcut bir kullanıcı hesabı için bir yazar profili oluşturun. Yazıları "
+"düzenleyebilecek kullanıcıları seçebilirsiniz. Bu kullanıcı profillerini "
+"güncelleyebilecektir."
+
+#: src/core/Classes/Author_Editor.php:789
+msgid ""
+"Create an author profile and a linked user account. This account will be in "
+"the \"Guest Author\" role and will not be able to login to the WordPress "
+"dashboard or update their profile."
+msgstr ""
+"Bir yazar profili ve bağlantılı bir kullanıcı hesabı oluşturun. Bu hesap "
+"\"Konuk Yazar\" rolünde olacak ve WordPress dashboard'una giriş yapamayacak "
+"veya profillerini güncelleyemeyecektir."
+
+#: src/core/Classes/Author_Editor.php:796
+msgid ""
+"Create an author profile with no linked user account. This option is "
+"lightweight but may have compatibility issues with other themes and plugins."
+msgstr ""
+"Bağlantılı bir kullanıcı hesabı olmadan bir yazar profili oluşturun. Bu "
+"seçenek hafif ama diğer temalar ve eklentilerle uyumluluk sorunları "
+"yaşayabilir."
+
+#: src/core/Classes/Author_Editor.php:815
 msgid "Author Email"
 msgstr "Yazar E-postası"
 
@@ -470,6 +567,16 @@ msgid "Search for an author"
 msgstr "Bir yazar arayın"
 
 #: src/core/Classes/Post_Editor.php:466
+msgid ""
+"This option is showing because you do not have a WordPress user selected as "
+"an author. For some tasks, it can be helpful to have a user selected here. "
+"This user will not be visible on the front of your site."
+msgstr ""
+"Bu seçenek, yazar olarak seçilmiş bir WordPress kullanıcınız olmadığı için "
+"gösteriliyor. Bazı görevler için burada bir kullanıcı seçmek faydalı "
+"olabilir. Bu kullanıcı sitenizin ön yüzünde görünmeyecek."
+
+#: src/core/Classes/Post_Editor.php:474
 msgid "Search for an user"
 msgstr "Bir kullanıcı arayın"
 
@@ -613,6 +720,24 @@ msgid "Edit My Author Profile"
 msgstr "Yazar Profilimi Düzenle"
 
 #: src/core/Plugin.php:532
+msgid ""
+"This name is used in several default displays and some search engine "
+"integrations."
+msgstr ""
+"Bu isim, birkaç varsayılan görüntüde ve bazı arama motoru "
+"entegrasyonlarında kullanılmaktadır."
+
+#: src/core/Plugin.php:537
+msgid ""
+"This forms part of the URL for the author’s profile page. If you choose a "
+"Mapped User, this URL is taken from the user’s account and can not be "
+"changed."
+msgstr ""
+"Bu, yazarın profil sayfasının URL'sinin bir parçasını oluşturur. Eğer "
+"Eşleştirilmiş Kullanıcı seçerseniz, bu URL kullanıcının hesabından alınır "
+"ve değiştirilemez."
+
+#: src/core/Plugin.php:573
 msgid "Search Authors"
 msgstr "Yazarları Ara"
 
@@ -712,6 +837,30 @@ msgstr ""
 "sürükleyin"
 
 #: src/core/Plugin.php:1628
+msgid ""
+"Click on an author to change them. Drag to change their order. Click on "
+"<strong>Remove</strong> to remove them."
+msgstr ""
+"Onları değiştirmek için bir yazara tıklayın. Sıralarını değiştirmek için "
+"sürükleyin. Onları kaldırmak için <strong>Kaldır</strong> butonuna tıklayın."
+
+#: src/core/Plugin.php:1632
+msgid ""
+"Are you sure you want to delete the authors profiles mapped to users? This "
+"action can't be undone."
+msgstr ""
+"Kullanıcılara eşleştirilmiş yazar profillerini silmek istediğinizden emin "
+"misiniz? Bu işlem geri alınamaz."
+
+#: src/core/Plugin.php:1636
+msgid ""
+"Are you sure you want to delete the guest authors profiles? This action "
+"can't be undone."
+msgstr ""
+"Konuk yazar profillerini silmek istediğinizden emin misiniz? Bu işlem geri "
+"alınamaz."
+
+#: src/core/Plugin.php:1640
 msgid "Are you sure you want to create author profiles for the missed post authors?"
 msgstr ""
 "Kaçırılan gönderi yazarları için yazar profilleri oluşturmak istediğinize "
@@ -1195,6 +1344,15 @@ msgid "Export Editor Settings"
 msgstr "Editör Ayarlarını Dışa Aktar"
 
 #: src/modules/author-boxes/author-boxes.php:2609
+msgid ""
+"You can use this data to export your author box design and import it to a "
+"new site."
+msgstr ""
+"Bu veriyi, yazar kutusu tasarımınızı dışa aktarmak ve yeni bir siteye "
+"aktarmak için kullanabilirsiniz."
+
+#: src/modules/author-boxes/author-boxes.php:2619
+#: src/modules/author-boxes/author-boxes.php:2690
 msgid "Copy to Clipboard"
 msgstr "Pano'ya Kopyala"
 
@@ -1229,10 +1387,41 @@ msgid "How to generate and use a theme template file"
 msgstr "Bir tema şablon dosyası nasıl oluşturulur ve kullanılır"
 
 #: src/modules/author-boxes/author-boxes.php:2651
+msgid ""
+"Click the \"Generate Template\" button under the text area. Wait for the "
+"code to be generated."
+msgstr ""
+"Kodun oluşturulmasını bekleyin ve metin alanının altındaki \"Şablon "
+"Oluştur\" butonuna tıklayın."
+
+#: src/modules/author-boxes/author-boxes.php:2652
+#, php-format
+msgid ""
+"Create an empty php template file with your desired file slug in the %1s "
+"/publishpress-authors/author-boxes/ %2s folder of your theme. %3s For "
+"example, the file can be located here: %4s "
+"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
+"my-first-custom-author-template.php %7s ."
+msgstr ""
+"Temanızın %1s /publishpress-authors/author-boxes/ %2s klasöründe "
+"istediğiniz dosya slug'ı ile boş bir php şablon dosyası oluşturun. %3s "
+"Örneğin, dosya burada bulunabilir: %4s "
+"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
+"my-first-custom-author-template.php %7s ."
+
+#: src/modules/author-boxes/author-boxes.php:2653
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "Oluşturulan kodu kopyalayın ve yeni oluşturulan dosyanın içine yapıştırın."
 
 #: src/modules/author-boxes/author-boxes.php:2654
+msgid ""
+"Congratulations. Your can now choose your template inside the PublishPress "
+"Authors Settings."
+msgstr ""
+"Tebrikler. Artık PublishPress Yazarlar Ayarları içinde şablonunuzu "
+"seçebilirsiniz."
+
+#: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"
 msgstr "belgelendirme sayfası"
 
@@ -1249,6 +1438,14 @@ msgid "Reorder Fields"
 msgstr "Alanları Yeniden Sırala"
 
 #: src/modules/author-boxes/author-boxes.php:2748
+msgid ""
+"Reorder the fields by dragging them to the correct position and saving your "
+"changes."
+msgstr ""
+"Alanları doğru pozisyona sürükleyerek ve değişikliklerinizi kaydederek "
+"yeniden sıralayın."
+
+#: src/modules/author-boxes/author-boxes.php:2762
 msgid "Save for Current Author Box"
 msgstr "Mevcut Yazar Kutusu için Kaydet"
 
@@ -1281,6 +1478,14 @@ msgid "New Author Categories Box"
 msgstr "Yeni Yazar Kategorileri Kutusu"
 
 #: src/modules/author-boxes/author-boxes.php:3037
+msgid ""
+"PublishPress Authors Pro allows you to unlock the full potential of Author "
+"Categories."
+msgstr ""
+"PublishPress Yazarlar Pro, Yazar Kategorilerinin tam potansiyelini açmanıza "
+"olanak tanır."
+
+#: src/modules/author-boxes/author-boxes.php:3039
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr ""
 "Yazarların kendi kategorilerine gruplandığı Yazar Kutuları "
@@ -1315,6 +1520,14 @@ msgstr "Bu işlemi gerçekleştirmek için izniniz yok"
 
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:67
 #, php-format
+msgid ""
+"Field Order updated. %1sClick here%2s to reload this page to see new order "
+"changes."
+msgstr ""
+"Alan Sırası güncellendi. %1$sBu sayfayı yeniden yüklemek için buraya "
+"tıklayın%2$s yeni sıra değişikliklerini görmek için."
+
+#: src/modules/author-boxes/classes/AuthorBoxesDefault.php:28
 msgid "Boxed"
 msgstr "Kutu İçinde"
 
@@ -1971,6 +2184,14 @@ msgid "Custom \"View All Posts\" Link"
 msgstr "Özel “Tüm Gönderileri Gör” Bağlantısı"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:449
+msgid ""
+"Enter a custom URL for the \"View All Posts\" link. Leave empty to use the "
+"default author posts page."
+msgstr ""
+"“Tüm Gönderileri Gör” bağlantısı için özel bir URL girin. Varsayılan yazar "
+"gönderi sayfasını kullanmak için boş bırakın."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:453
 msgid "View All Posts Link Size"
 msgstr "Tüm Yazıları Görüntüle Bağlantı Boyutu"
 
@@ -2029,6 +2250,14 @@ msgid "Author Category Layout"
 msgstr "Yazar Kategorisi Düzeni"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:607
+msgid ""
+"Selecting an option here will overwrite author boxes settings to match "
+"selected layout."
+msgstr ""
+"Burada bir seçenek seçmek, yazar kutuları ayarlarını seçilen düzenle "
+"eşleştirecek şekilde geçersiz kılacaktır."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:612
 msgid "Built-in Layout"
 msgstr "Yerleşik Düzen"
 
@@ -2123,10 +2352,26 @@ msgid "Author Category Group Title Prefix"
 msgstr "Yazar Kategori Grup Başlık Ön Eki"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:714
+msgid ""
+"Enter the text that should be added before group title. This field accepts "
+"basic HTML."
+msgstr ""
+"Grup başlığından önce eklenmesi gereken metni girin. Bu alan temel HTML'yi "
+"kabul eder."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:721
 msgid "Author Category Group Title Suffix"
 msgstr "Yazar Kategori Grubu Başlık Sonek"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:722
+msgid ""
+"Enter the text that should be added after group title. This field accepts "
+"basic HTML."
+msgstr ""
+"Grup başlığından sonra eklenmesi gereken metni girin. Bu alan temel HTML'yi "
+"kabul eder."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:729
 msgid "Author Category Group Font Size"
 msgstr "Yazar Kategori Grubu Yazı Boyutu"
 
@@ -2169,6 +2414,16 @@ msgid "%1s HTML Tag"
 msgstr "%1s HTML Etiketi"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:821
+msgid ""
+"'span' will display as an inline element and 'div' will display as a block "
+"element. To make this display into a link, select 'link' and enter the "
+"first part of the URL into the 'Prefix' field."
+msgstr ""
+"'span' satır içi bir eleman olarak görüntülenecek ve 'div' blok elemanı "
+"olarak görüntülenecektir. Bunun bir bağlantı olarak görüntülenmesi için "
+"'bağlantı' seçin ve URL'nin ilk kısmını 'Önek' alanına girin."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:828
 msgid "link"
 msgstr "bağlantı"
 
@@ -2178,6 +2433,15 @@ msgid "%1s Value Prefix"
 msgstr "%1s Değer Ön Eki"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
+msgid ""
+"This is useful when linking to an email, URL, or phone number. For example, "
+"'mailto:', 'https://' or 'tel:' can be added as the prefix."
+msgstr ""
+"Bu, bir e-posta, URL veya telefon numarasına bağlanırken yararlıdır. "
+"Örneğin, 'mailto:', 'https://' veya 'tel:' önek olarak eklenebilir."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:851
+#, php-format
 msgid "%1s Display"
 msgstr "%1s Görüntüle"
 
@@ -2379,6 +2643,14 @@ msgid "Recent Post Types"
 msgstr "Son Gönderi Türleri"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1259
+msgid ""
+"Select post types to include in recent posts. Leave empty to show all post "
+"types."
+msgstr ""
+"Son gönderilerde dahil edilecek gönderi türlerini seçin. Tüm gönderi "
+"türlerini göstermek için boş bırakın."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
 msgid "Select post types..."
 msgstr "Gönderi türlerini seçin..."
 
@@ -2484,18 +2756,50 @@ msgid "Author inline display"
 msgstr "Yazar çevrimiçi görüntüleme"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1468
+msgid ""
+"This will display author in an inline format side by side instead of block "
+"format."
+msgstr ""
+"Bu, yazarları blok formatı yerine yan yana satır içi formatında "
+"görüntüleyecektir."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1475
 msgid "Author Row Prefix"
 msgstr "Yazar Satırı Ön Eki"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1476
+msgid ""
+"Enter the text that should be added before authors. This field accepts "
+"basic HTML."
+msgstr ""
+"Yazarların önüne eklenmesi gereken metni girin. Bu alan temel HTML'yi kabul "
+"eder."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1483
 msgid "Author Row Suffix"
 msgstr "Yazar Satırı Son Eki"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1484
+msgid ""
+"Enter the text that should be added after authors. This field accepts basic "
+"HTML."
+msgstr ""
+"Yazarların arkasına eklenmesi gereken metni girin. Bu alan temel HTML'yi "
+"kabul eder."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1491
 msgid "Author Separator"
 msgstr "Yazar Ayırıcı"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1492
+msgid ""
+"You can specify a separator such as ',' to separate authors. This field "
+"accepts basic HTML."
+msgstr ""
+"Yazarları ayırmak için ',' gibi bir ayırıcı belirtebilirsiniz. Bu alan "
+"temel HTML'yi kabul eder."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1499
 msgid "Author Box Margin Top"
 msgstr "Yazar Kutusu Üst Kenar Boşluğu"
 
@@ -2680,6 +2984,18 @@ msgstr "Şema Özelliği"
 #: src/modules/author-categories/author-categories.php:622
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
 #, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+"Örnek: bu değer reviewedBy olarak ayarlandığında, bu kategorideki tüm "
+"kullanıcılar gönderinin reviewedBy özelliğine eklenecektir. Daha fazlasını "
+"%1$sbu kılavuzda okuyabilirsiniz.%2$s"
+
+#: src/modules/author-categories/author-categories.php:634
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:79
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:486
 msgid "Post Types"
 msgstr "Gönderi Türleri"
 
@@ -2689,6 +3005,16 @@ msgid "Select Post Type..."
 msgstr "Gönderi Türü Seçin..."
 
 #: src/modules/author-categories/author-categories.php:678
+msgid ""
+"Select which post types this category applies to. Leave empty for all post "
+"types."
+msgstr ""
+"Bu kategorinin hangi gönderi türlerine uygulanacağını seçin. Tüm gönderi "
+"türleri için boş bırakın."
+
+#: src/modules/author-categories/author-categories.php:683
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:81
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:531
 msgid "Enable Category"
 msgstr "Kategoriyi Etkinleştir"
 
@@ -2841,6 +3167,14 @@ msgid "Field Slug"
 msgstr "Alan Slug'ı"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:387
+msgid ""
+"The slug is used in code to reference this author field. It is all "
+"lowercase and contains only letters, numbers, and hyphens."
+msgstr ""
+"Slug, bu yazar alanını referans almak için kodda kullanılır. Tüm harfler "
+"küçük harf olmalı ve yalnızca harfler, sayılar ve tireler içermelidir."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:396
 msgid "Field Type"
 msgstr "Alan Türü"
 
@@ -2849,6 +3183,23 @@ msgid "Social Profile?"
 msgstr "Sosyal Profil?"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:409
+msgid ""
+"This feature will add the SameAs property to this link so that search "
+"engines realize that the social profile is connected to this author."
+msgstr ""
+"Bu özellik, arama motorlarının sosyal profilin bu yazarla bağlantılı "
+"olduğunu fark etmesi için bu bağlantıya SameAs özelliğini ekleyecektir."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:422
+#, php-format
+msgid ""
+"Add a Schema.org property to this field. Examples include alumniOf, "
+"worksFor, and birthPlace. %1$sClick here for documentation.%2$s"
+msgstr ""
+"Bu alana bir Schema.org özelliği ekleyin. Örnekler arasında alumniOf, "
+"worksFor ve birthPlace bulunur. %1$sDokümantasyon için buraya tıklayın.%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:434
 msgid "Show in REST API"
 msgstr "REST API'de Göster"
 
@@ -2882,6 +3233,14 @@ msgid "Description"
 msgstr "Açıklama"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:482
+msgid ""
+"This description appears under the fields and helps users understand their "
+"choice."
+msgstr ""
+"Bu açıklama alanların altında görünür ve kullanıcıların seçimlerini "
+"anlamalarına yardımcı olur."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:801
 msgid "Status"
 msgstr "Durum"
 
@@ -2895,6 +3254,14 @@ msgstr "İş Unvanı"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:992
 #: src/modules/author-custom-fields/author-custom-fields.php:1047
+msgid ""
+"With PublishPress Authors Pro, you can add new fields for social networks "
+"and more."
+msgstr ""
+"PublishPress Authors Pro ile sosyal ağlar ve daha fazlası için yeni alanlar "
+"ekleyebilirsiniz."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:1111
 msgid "Field Order updated."
 msgstr "Alan Sırası güncellendi."
 
@@ -3043,6 +3410,15 @@ msgid "Show Authors"
 msgstr "Yazarları Göster"
 
 #: src/modules/author-list/author-list.php:438
+msgid ""
+"Select an option to limit the results to selected user roles, author types, "
+"specific authors or author Categories."
+msgstr ""
+"Sonuçları seçilen kullanıcı rolleri, yazar türleri, belirli yazarlar veya "
+"yazar kategorileri ile sınırlamak için bir seçenek seçin."
+
+#: src/modules/author-list/author-list.php:441
+#: src/modules/author-list/author-list.php:455
 msgid "Roles"
 msgstr "Roller"
 
@@ -3051,6 +3427,14 @@ msgid "Exclude Authors"
 msgstr "Yazarları Hariç Tut"
 
 #: src/modules/author-list/author-list.php:452
+msgid ""
+"Select an option to exclude selected user roles, author types, specific "
+"authors or author Categories from Author list."
+msgstr ""
+"Seçilen kullanıcı rolleri, yazar türleri, belirli yazarlar veya yazar "
+"kategorilerini Yazar listesinden hariç tutmak için bir seçenek seçin."
+
+#: src/modules/author-list/author-list.php:468
 msgid "Authors Per Page"
 msgstr "Sayfa Başına Yazar Sayısı"
 
@@ -3063,10 +3447,27 @@ msgid "Show Empty"
 msgstr "Boş Göster"
 
 #: src/modules/author-list/author-list.php:480
+msgid ""
+"Enable this option to show all authors, including those without any posts. "
+"Disable this option to show only authors who are assigned to posts."
+msgstr ""
+"Hiçbir gönderisi olmayan yazarlar da dahil olmak üzere tüm yazarları "
+"göstermek için bu seçeneği etkinleştirin. Yalnızca gönderilere atanmış "
+"yazarları göstermek için bu seçeneği devre dışı bırakın."
+
+#: src/modules/author-list/author-list.php:488
 msgid "Configure Author List Options"
 msgstr "Yazar Listesi Seçeneklerini Yapılandır"
 
 #: src/modules/author-list/author-list.php:489
+msgid ""
+"Authors Pro allows you to add extra features to the Authors List. These "
+"features include pagination, choose the order of authors, and much more."
+msgstr ""
+"Authors Pro, Yazar Listesine ekstra özellikler eklemenizi sağlar. Bu "
+"özellikler sayfalama, yazarların sırasını seçme ve daha fazlasını içerir."
+
+#: src/modules/author-list/author-list.php:494
 msgid "Order By"
 msgstr "Sırala"
 
@@ -3075,6 +3476,16 @@ msgid "Last Article Date"
 msgstr "Son Makale Tarihi"
 
 #: src/modules/author-list/author-list.php:523
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific time. This option accepts date values such as 1 week ago, 1 month "
+"ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"Yazar listesini belirli bir zaman diliminde yayınlanmış bir gönderisi olan "
+"kullanıcılarla sınırlayabilirsiniz. Bu seçenek, 1 hafta önce, 1 ay önce, 6 "
+"ay önce, 1 yıl önce gibi tarih değerlerini kabul eder."
+
+#: src/modules/author-list/author-list.php:535
 msgid "Show Search Box"
 msgstr "Arama Kutusunu Göster"
 
@@ -3083,10 +3494,27 @@ msgid "Add Search Box to Author Lists"
 msgstr "Yazar Listelerine Arama Kutusu Ekle"
 
 #: src/modules/author-list/author-list.php:545
+msgid ""
+"Author Pro allows you to add a search box to the Authors List. You can also "
+"show a dropdown menu that allows users to search on specific author fields."
+msgstr ""
+"Author Pro, Yazar Listesine bir arama kutusu eklemenizi sağlar. Ayrıca, "
+"kullanıcıların belirli yazar alanlarında arama yapmasına olanak tanıyan bir "
+"açılır menü de gösterebilirsiniz."
+
+#: src/modules/author-list/author-list.php:550
 msgid "Search Field Dropdown"
 msgstr "Arama Alanı Açılır Menüsü"
 
 #: src/modules/author-list/author-list.php:551
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields."
+msgstr ""
+"Ayrıca, kullanıcıların belirli yazar alanlarında arama yapmasına olanak "
+"tanıyan bir açılır menü de gösterebilirsiniz."
+
+#: src/modules/author-list/author-list.php:600
 msgid "Author Recent List"
 msgstr "Son Yazar Listesi"
 
@@ -3131,6 +3559,14 @@ msgid "Select Author Category"
 msgstr "Yazar Kategorisini Seçin"
 
 #: src/modules/author-list/author-list.php:1282
+msgid ""
+"This is a quick preview of this Author List. Test on frontend pages to see "
+"exactly how it looks with your theme."
+msgstr ""
+"Bu, bu Yazar Listesinin hızlı bir önizlemesidir. Temanızla nasıl "
+"göründüğünü tam olarak görmek için ön uç sayfalarında test edin."
+
+#: src/modules/author-list/author-list.php:1380
 msgid "Invalid form"
 msgstr "Geçersiz form"
 
@@ -3361,6 +3797,14 @@ msgid "Showcase your Authors with PublishPress Blocks"
 msgstr "Yazarlarınızı PublishPress Blocks ile sergileyin"
 
 #: src/modules/modules-settings/modules-settings.php:318
+msgid ""
+"PublishPress Blocks is a free plugin with full support for PublishPress "
+"Authors."
+msgstr ""
+"PublishPress Blocks, PublishPress Authors için tam destek ile ücretsiz bir "
+"eklentidir."
+
+#: src/modules/modules-settings/modules-settings.php:319
 msgid "Install this plugin to showcase content by your Authors."
 msgstr "Yazarlarınızın içeriğini sergilemek için bu eklentiyi yükleyin."
 
@@ -3371,6 +3815,14 @@ msgstr ""
 "bloğunu kullanın."
 
 #: src/modules/modules-settings/modules-settings.php:321
+msgid ""
+"PublishPress Blocks has over 20 extra Gutenberg blocks including "
+"accordions, galleries, tables, and more."
+msgstr ""
+"PublishPress Blocks, akordeonlar, galeriler, tablolar ve daha fazlası dahil "
+"20'den fazla ekstra Gutenberg bloğu içerir."
+
+#: src/modules/modules-settings/modules-settings.php:324
 msgid "Click here to install PublishPress Blocks"
 msgstr "PublishPress Blocks'ı yüklemek için buraya tıklayın"
 
@@ -3411,6 +3863,16 @@ msgid "Copy Molongui Authorship Data"
 msgstr "Molongui Yazarlık Verilerini Kopyala"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:153
+msgid ""
+"This action will copy the authors from the plugin Molongui Authorship "
+"allowing you to migrate to PublishPress Authors without losing any data "
+"including post author relation. This action can be run multiple times."
+msgstr ""
+"Bu işlem, veri kaybı olmadan PublishPress Authors'a geçiş yapmanıza olanak "
+"tanıyarak Molongui Authorship eklentisinden yazarları kopyalayacaktır. Bu "
+"işlem birden fazla kez çalıştırılabilir."
+
+#: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:187
 msgid "It looks like you have Molongui Authorship installed."
 msgstr "Molongui Yazarlığı'nın kurulu olduğu görünüyor."
 
@@ -3633,6 +4095,14 @@ msgstr "Basit liste klasik düzen Yazar Kutusu:"
 #: src/modules/multiple-authors/multiple-authors.php:1265
 #: src/modules/settings/settings.php:275
 #, php-format
+msgid ""
+"Disabled because add_post_type_support('%1$s', '%2$s') is included in a "
+"loaded file."
+msgstr ""
+"Eklentinin yüklü bir dosyada '%1$s', '%2$s' için add_post_type_support() "
+"dahil olduğu için devre dışı bırakıldı."
+
+#: src/modules/multiple-authors/multiple-authors.php:1284
 msgid "This will display the authors box at the top of the content."
 msgstr "Bu, içeriğin üst kısmında yazarlar kutusunu gösterecektir."
 
@@ -3659,14 +4129,242 @@ msgid "Authors Box"
 msgstr "Yazarlar Kutusu"
 
 #: src/modules/multiple-authors/multiple-authors.php:1409
+msgid ""
+"With this shortcode you can display the author box in any part of the "
+"content. "
+msgstr ""
+"Bu shortcode ile yazar kutusunu içeriğin herhangi bir yerinde "
+"görüntüleyebilirsiniz. "
+
+#: src/modules/multiple-authors/multiple-authors.php:1417
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s."
+msgstr ""
+"Yazar kutuları düzenini kullanarak düzen belirtebilirsiniz. Her düzen "
+"seçeneğinin ayrıntılarını %1$s bu kılavuzda görebilirsiniz %2$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1428
+#, php-format
+msgid ""
+"You can also decide whether or not to show the main title, using %1$s or "
+"%2$s ."
+msgstr ""
+"Ayrıca ana başlığı gösterip göstermeyeceğinizi %1$s veya %2$s kullanarak "
+"karar verebilirsiniz."
+
+#: src/modules/multiple-authors/multiple-authors.php:1438
+#: src/modules/multiple-authors/multiple-authors.php:1522
+msgid ""
+"You can load the authors for a specific post, even if you are not in that "
+"post currently. For example, this shortcode will load the authors for the "
+"post with the ID of 32."
+msgstr ""
+"O anda o gönderide olmasanız bile belirli bir gönderi için yazarları "
+"yükleyebilirsiniz. Örneğin, bu shortcode, 32 kimlik numarasına sahip "
+"gönderinin yazarlarını yükleyecektir."
+
+#: src/modules/multiple-authors/multiple-authors.php:1445
+msgid ""
+"You can load the authors for a specific user by providing the user id. For "
+"example, this shortcode will load the author with user id of 32"
+msgstr ""
+"Kullanıcı kimliğini sağlayarak belirli bir kullanıcı için yazarları "
+"yükleyebilirsiniz. Örneğin, bu shortcode, 32 kullanıcı kimliğine sahip "
+"yazarı yükleyecektir."
+
+#: src/modules/multiple-authors/multiple-authors.php:1452
+msgid ""
+"You can load the authors for a specific author by providing the author term "
+"id for both guest and user author. For example, this shortcode will load "
+"the author with term id of 32"
+msgstr ""
+"Misafir ve kullanıcı yazarı için yazar terim kimliğini sağlayarak belirli "
+"bir yazar için yazarları yükleyebilirsiniz. Örneğin, bu shortcode, 32 terim "
+"kimliğine sahip yazarı yükleyecektir."
+
+#: src/modules/multiple-authors/multiple-authors.php:1460
+#, php-format
+msgid ""
+"If you are having problems showing PublishPress Authors on author profile "
+"pages, you can use this shortcode below. The argument %s forces the plugin "
+"to retrieve the Author from the profile page and not any other posts on the "
+"same screen."
+msgstr ""
+"Yazar profil sayfalarında PublishPress Authors'ı göstermekte sorun "
+"yaşıyorsanız, aşağıdaki shortcode'u kullanabilirsiniz. %s argümanı "
+"eklentiyi profil sayfasından Yazar'ı almak için zorlar ve aynı ekrandaki "
+"diğer gönderileri değil."
+
+#: src/modules/multiple-authors/multiple-authors.php:1470
+#, php-format
+msgid ""
+"There is one final option to mention. This is mostly useful if you're using "
+"a theme or page builder to customize the Author profile pages you find at "
+"URLs such as /author/username/. You can use the following shortcode on the "
+"authors page to display the profile of the current author. You just need to "
+"add the parameter %s."
+msgstr ""
+"Son bahsedilecek bir son seçenek var. Bu, genelde /author/kullanıcıadı/ "
+"gibi URL'lerde bulduğunuz Yazar profil sayfalarını özelleştirmek için bir "
+"tema veya sayfa oluşturucu kullanıyorsanız yararlıdır. Mevcut yazarın "
+"profilini göstermek için yazarlar sayfasında aşağıdaki shortcode'u "
+"kullanabilirsiniz. Tek yapmanız gereken %s parametresini eklemektir."
+
+#: src/modules/multiple-authors/multiple-authors.php:1479
+msgid ""
+"You can load the authors belonging to a specific author categories by "
+"providing the category slug or slugs separated by comma for more than one "
+"category."
+msgstr ""
+"Belirli bir yazar kategorisine ait yazarları, birden fazla kategori için "
+"virgülle ayrılmış kategori slug'ını vererek yükleyebilirsiniz."
+
+#: src/modules/multiple-authors/multiple-authors.php:1489
 msgid "Authors Data"
 msgstr "Yazarlar Verisi"
 
 #: src/modules/multiple-authors/multiple-authors.php:1490
+msgid ""
+"With this shortcode you can display the author names or any profile field "
+"in any part of the content."
+msgstr ""
+"Bu shortcode ile içerikte herhangi bir bölümde yazar adlarını veya herhangi "
+"bir profil alanını görüntüleyebilirsiniz."
+
+#: src/modules/multiple-authors/multiple-authors.php:1498
+#, php-format
+msgid ""
+"The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s "
+"%4$s %5$s %6$s %7$s. You can see full details and parameters %8$s in this "
+"guide %9$s."
+msgstr ""
+"Yazar verileri shortcode'u, %1$s %2$s %3$s %4$s %5$s %6$s %7$s gibi alan "
+"parametrelerini kabul eder. Tam ayrıntıları ve parametreleri bu kılavuzda "
+"%8$s görebilirsiniz %9$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1515
 msgid "You can also specify the separator to be used for mulitple authors data."
 msgstr "Birden fazla yazar verisi için kullanılacak ayırıcıyı da belirtebilirsiniz."
 
 #: src/modules/multiple-authors/multiple-authors.php:1529
+msgid ""
+"You can retrieve a specific author by providing the author's term ID. For "
+"example, this shortcode will load the author with the term ID of 102."
+msgstr ""
+"Yazarın terim kimliğini vererek belirli bir yazarı alabilirsiniz. Örneğin, "
+"bu shortcode 102 terim kimliğine sahip olan yazarı yükleyecektir."
+
+#: src/modules/multiple-authors/multiple-authors.php:1537
+#, php-format
+msgid ""
+"You can also decide to return an array list of authors by using "
+"user_objects=\"true\" which will return all the authors object data as an "
+"array. You can check full details and sample usage %2$s in this guide%3$s."
+msgstr ""
+"Ayrıca, tüm yazar nesne verilerini bir dizi olarak döndürecek şekilde "
+"user_objects=\"true\" kullanarak yazarların bir dizi listesini döndürmeyi "
+"de tercih edebilirsiniz. Tam ayrıntıları ve örnek kullanımı bu kılavuzda "
+"%2$s kontrol edebilirsiniz %3$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1548
+msgid ""
+"You can retrieve authors belonging to a specific Author Category by "
+"providing the category slug or slugs. Separate multiple slugs with a comma."
+msgstr ""
+"Bir kategori slug'ı veya slug'ları vererek belirli bir Yazar Kategorisine "
+"ait yazarları alabilirsiniz. Birden fazla slug'ı virgülle ayırın."
+
+#: src/modules/multiple-authors/multiple-authors.php:1559
+msgid ""
+"With this shortcode, you can show all the authors together in a single "
+"display."
+msgstr ""
+"Bu shortcode ile tüm yazarları tek bir görüntülemede birlikte "
+"gösterebilirsiniz."
+
+#: src/modules/multiple-authors/multiple-authors.php:1567
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s. %3$s %4$s This "
+"shortcode also provides two custom layouts: %5$s %6$s."
+msgstr ""
+"Yazar kutuları düzen slug'ını kullanarak düzeni belirtebilirsiniz. Her "
+"düzen seçeneğinin tam ayrıntılarını bu kılavuzda %1$s görebilirsiniz %2$s. "
+"%3$s %4$s Bu shortcode ayrıca iki özel düzen sağlar: %5$s %6$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1582
+#, php-format
+msgid ""
+"You can define the number of layout columns by using %1$s to show authors "
+"in 2 column."
+msgstr ""
+"Yazarları 2 sütun halinde göstermek için %1$s kullanarak düzen sütunlarının "
+"sayısını belirleyebilirsiniz."
+
+#: src/modules/multiple-authors/multiple-authors.php:1592
+#, php-format
+msgid ""
+"You can choose the number of authors per page using %1$s . %2$s Pagination "
+"will be automatically added if required."
+msgstr ""
+"Sayfa başına yazar sayısını belirlemek için %1$s kullanabilirsiniz. %2$s "
+"Gerektiğinde sayfalama otomatik olarak eklenir."
+
+#: src/modules/multiple-authors/multiple-authors.php:1603
+#, php-format
+msgid ""
+"You can limit the result to only authors who are assigned to posts by using "
+"%1$s . %2$s Alternatively, use %3$s to show all authors, including those "
+"without any posts."
+msgstr ""
+"Sonucu yalnızca yazılara atanmış yazarlara sınırlamak için %1$s "
+"kullanabilirsiniz. %2$s Alternatif olarak, %3$s kullanarak herhangi bir "
+"yazısı olmayan tüm yazarları gösterebilirsiniz."
+
+#: src/modules/multiple-authors/multiple-authors.php:1615
+#, php-format
+msgid ""
+"You can limit the result to only guest authors by using %1$s . %2$s "
+"Alternatively, %3$s will show only authors with a WordPress account."
+msgstr ""
+"Sonucu yalnızca misafir yazarlara sınırlamak için %1$s kullanabilirsiniz. "
+"%2$s Alternatif olarak, %3$s yalnızca bir WordPress hesabına sahip "
+"yazarları gösterecektir."
+
+#: src/modules/multiple-authors/multiple-authors.php:1627
+#, php-format
+msgid ""
+"If you are using the authors_recent layout, you can define the number of "
+"columns by using %1$s ."
+msgstr ""
+"Eğer authors_recent düzenini kullanıyorsanız, %1$s kullanarak sütun "
+"sayısını belirleyebilirsiniz."
+
+#: src/modules/multiple-authors/multiple-authors.php:1637
+#, php-format
+msgid ""
+"For authors_index layout, you can group user by profile field by using %1$s "
+"."
+msgstr ""
+"authors_index düzeni için, kullanıcıları profil alanına göre "
+"gruplayabilirsiniz %1$s kullanarak."
+
+#: src/modules/multiple-authors/multiple-authors.php:1647
+#, php-format
+msgid ""
+"To order the results based on post count, use %1$s . To order the results "
+"by name, use %2$s . Alternatively, you can order by profile fields like "
+"%3$s, %4$s etc"
+msgstr ""
+"Sonuçları yazı sayısına göre sıralamak için %1$s kullanın. Sonuçları isme "
+"göre sıralamak için %2$s kullanın. Alternatif olarak, %3$s, %4$s gibi "
+"profil alanlarına göre sıralayabilirsiniz."
+
+#: src/modules/multiple-authors/multiple-authors.php:1660
+#, php-format
 msgid "To further customize the order of results, use %1$s or %2$s ."
 msgstr "Sonuçların sıralamasını daha da özelleştirmek için %1$s veya %2$s kullanın."
 
@@ -3677,6 +4375,27 @@ msgstr "Yazarlar için bir arama kutusu göstermek için %1$s kullanın."
 
 #: src/modules/multiple-authors/multiple-authors.php:1681
 #, php-format
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields. You can add fields to the dropdown using %1$s . This "
+"requires the search box to be active."
+msgstr ""
+"Kullanıcıların belirli yazar alanlarında arama yapmalarına olanak tanıyan "
+"bir açılır menü de gösterebilirsiniz. Açılır menüye alan eklemek için %1$s "
+"kullanabilirsiniz. Bu, arama kutusunun aktif olmasını gerektirir."
+
+#: src/modules/multiple-authors/multiple-authors.php:1691
+#, php-format
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific period using %1$s . This accept english date value like 1 week "
+"ago, 1 month ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"Belirli bir süre içinde yayımlanmış bir yazıya sahip kullanıcılarla yazar "
+"listesini sınırlamak için %1$s kullanabilirsiniz. Bu, 1 hafta önce, 1 ay "
+"önce, 6 ay önce, 1 yıl önce gibi İngilizce tarih değerlerini kabul eder."
+
+#: src/modules/multiple-authors/multiple-authors.php:1738
 msgid "Copied!"
 msgstr "Kopyalandı!"
 
@@ -3690,6 +4409,40 @@ msgid "Select roles"
 msgstr "Rolleri Seçin"
 
 #: src/modules/multiple-authors/multiple-authors.php:1813
+msgid ""
+"Choose which WordPress user roles can be selected using the \"Registered "
+"Author With User Account\" option for author profiles."
+msgstr ""
+"Yazar profilleri için \"Kullanıcı Hesabı Olan Kayıtlı Yazar\" seçeneğini "
+"kullanarak hangi WordPress kullanıcı rollerinin seçilebileceğini belirleyin."
+
+#: src/modules/multiple-authors/multiple-authors.php:1842
+msgid ""
+"Author profiles can be mapped to WordPress user accounts. This option "
+"allows you to automatically create author profiles when users are created "
+"in these roles. You can also do this for existing users by clicking the "
+"\"Create PublishPress Authors Profiles for all users in a role\" button in "
+"the Maintenance tab."
+msgstr ""
+"Yazar profilleri WordPress kullanıcı hesaplarına eşlenebilir. Bu seçenek, "
+"bu rollerde kullanıcılar oluşturulduğunda otomatik olarak yazar profilleri "
+"oluşturmanıza olanak tanır. Ayrıca, Bakım sekmesindeki \"Tüm kullanıcılara "
+"bir rol için PublishPress Yazar Profilleri Oluştur\" butonuna tıklayarak "
+"mevcut kullanıcılar için de bunu yapabilirsiniz."
+
+#: src/modules/multiple-authors/multiple-authors.php:1863
+msgid ""
+"If the Author is mapped to a WordPress user, this will display the authors' "
+"\"Display name\" and their \"Username\". The default is to show only the "
+"\"Display name\". Showing the \"Username\" is useful if you have several "
+"authors with similar names."
+msgstr ""
+"Eğer Yazar bir WordPress kullanıcısına eşlenmişse, bu yazarların \"Görünen "
+"adı\" ve \"Kullanıcı adı\" gösterilecektir. Varsayılan olarak sadece "
+"\"Görünen adı\" gösterilir. Eğer benzer isimlere sahip birden fazla "
+"yazarınız varsa, \"Kullanıcı adı\"nı göstermek faydalıdır."
+
+#: src/modules/multiple-authors/multiple-authors.php:1886
 msgid "Allow authors to be created without a real user account."
 msgstr "Yazarların gerçek bir kullanıcı hesabı olmadan oluşturulmasına izin ver."
 
@@ -3704,6 +4457,14 @@ msgid "Allow authors to be created without a connected user account."
 msgstr "Yazarların bağlı bir kullanıcı hesabı olmadan oluşturulmasına izin ver."
 
 #: src/modules/multiple-authors/multiple-authors.php:1956
+msgid ""
+"If enabled, PublishPress Authors will replace the default WordPress author "
+"pages."
+msgstr ""
+"Eğer etkinleştirilirse, PublishPress Yazarlar varsayılan WordPress yazar "
+"sayfalarını değiştirecektir."
+
+#: src/modules/multiple-authors/multiple-authors.php:1961
 msgid "Please note this feature will not work for all themes."
 msgstr "Lütfen bu özelliğin tüm temalarda çalışmayacağını unutmayın."
 
@@ -3737,6 +4498,14 @@ msgid "Last Name First Name"
 msgstr "Soyad Ad"
 
 #: src/modules/multiple-authors/multiple-authors.php:2218
+msgid ""
+"This avatar will be used as default avatar instead of gravatar where no "
+"custom avatar is added to profile."
+msgstr ""
+"Bu avatar, profilinize özel bir avatar eklenmediğinde varsayılan avatar "
+"olarak kullanılacaktır."
+
+#: src/modules/multiple-authors/multiple-authors.php:2240
 msgid "This will display the author bio."
 msgstr "Bu, yazar biyografisini gösterecektir."
 
@@ -3776,6 +4545,16 @@ msgid "This will display the excerpt."
 msgstr "Bu, alıntıyı görüntüleyecektir."
 
 #: src/modules/multiple-authors/multiple-authors.php:2573
+msgid ""
+"This will allows you map a WordPress user to more than one author. Don't "
+"use this feature unless requested to do so by the PublishPress team. This "
+"plugin works better when authors and users are paired one-to-one."
+msgstr ""
+"Bu, bir WordPress kullanıcısını birden fazla yazara eşlemenizi sağlar. "
+"PublishPress ekibi tarafından istenmedikçe bu özelliği kullanmayın. Bu "
+"eklenti, yazarlar ve kullanıcılar birer bir eşleştiğinde daha iyi çalışır."
+
+#: src/modules/multiple-authors/multiple-authors.php:2597
 msgid "This will display the authors."
 msgstr "Bu, yazarları görüntüleyecektir."
 
@@ -3810,6 +4589,17 @@ msgid "Search for a fallback author"
 msgstr "Yedek yazar arayın"
 
 #: src/modules/multiple-authors/multiple-authors.php:2791
+msgid ""
+"If you only have Guest Authors selected for a post, this user may be used "
+"as a fallback. WordPress sometimes requires a WordPress user to be assigned "
+"to each post. This user will not be visible on the front of your site."
+msgstr ""
+"Eğer bir yazı için yalnızca Misafir Yazarlar seçildi ise, bu kullanıcı "
+"yedek olarak kullanılabilir. WordPress bazen her yazıya atanmış bir "
+"WordPress kullanıcısı gerektirir. Bu kullanıcı sitenizin ön yüzünde "
+"görünmeyecektir."
+
+#: src/modules/multiple-authors/multiple-authors.php:2809
 msgid "This will display the authors email in the author box."
 msgstr "Bu, yazar kutusunda yazarın e-posta adresini görüntüleyecektir."
 
@@ -3832,6 +4622,19 @@ msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr "Tüm gönderi yazarları için PublishPress Yazar Profilleri oluşturun"
 
 #: src/modules/multiple-authors/multiple-authors.php:2887
+msgid ""
+"If a WordPress user is the author of a post, but does not have a "
+"PublishPress Authors profile, this will automatically create a profile for "
+"them."
+msgstr ""
+"Eğer bir WordPress kullanıcısı bir yazının yazarı ise, ancak PublishPress "
+"Yazarlar profili yoksa, bu otomatik olarak onlar için bir profil "
+"oluşturacaktır."
+
+#: src/modules/multiple-authors/multiple-authors.php:2887
+#: src/modules/multiple-authors/multiple-authors.php:2893
+#: src/modules/multiple-authors/multiple-authors.php:2899
+#: src/modules/multiple-authors/multiple-authors.php:2906
 msgid "Click here for documentation"
 msgstr "Dokümantasyon için buraya tıklayın"
 
@@ -3844,6 +4647,16 @@ msgid "Create PublishPress Authors Profiles for all users in a role"
 msgstr "Tüm kullanıcılar için PublishPress Yazar Profilleri Oluştur"
 
 #: src/modules/multiple-authors/multiple-authors.php:2893
+msgid ""
+"This will find all the users in a role and create author profiles for them. "
+"You can choose the roles using the \"Automatically create author profiles\" "
+"setting."
+msgstr ""
+"Bu, bir rol içindeki tüm kullanıcıları bulacak ve onlar için yazar "
+"profilleri oluşturacaktır. \"Yazar profillerini otomatik olarak oluştur\" "
+"ayarını kullanarak rolleri seçebilirsiniz."
+
+#: src/modules/multiple-authors/multiple-authors.php:2894
 msgid "Create PublishPress Authors profiles"
 msgstr "PublishPress Yazar Profilleri Oluştur"
 
@@ -3852,22 +4665,70 @@ msgid "Synchronize PublishPress Authors Fields and user profile fields"
 msgstr "PublishPress Yazar Alanlarını ve kullanıcı profil alanlarını Senkronize Et"
 
 #: src/modules/multiple-authors/multiple-authors.php:2899
+msgid ""
+"This will update all the author profiles in PublishPress Authors to match "
+"the default WordPress fields for each user."
+msgstr ""
+"Bu, PublishPress Yazarlar'daki tüm yazar profillerini, her kullanıcı için "
+"varsayılan WordPress alanlarıyla eşleştirecek şekilde güncelleyecektir."
+
+#: src/modules/multiple-authors/multiple-authors.php:2905
 msgid "Synchronize the author and user URLs"
 msgstr "Yazar ve kullanıcı URL'lerini Senkronize Et"
 
 #: src/modules/multiple-authors/multiple-authors.php:2906
+msgid ""
+"This will update all the Author URLs in PublishPress Authors to match the "
+"default WordPress URLs for each user."
+msgstr ""
+"Bu, PublishPress Yazarlar'daki tüm Yazar URL'lerini, her kullanıcı için "
+"varsayılan WordPress URL'leriyle eşleştirecek şekilde güncelleyecektir."
+
+#: src/modules/multiple-authors/multiple-authors.php:2912
+#: src/modules/multiple-authors/multiple-authors.php:2914
 msgid "Create Author Categories"
 msgstr "Yazar Kategorileri Oluştur"
 
 #: src/modules/multiple-authors/multiple-authors.php:2913
+msgid ""
+"This will create author categories table if missing and add default "
+"categories."
+msgstr ""
+"Bu, eksikse yazar kategorileri tablosu oluşturacak ve varsayılan "
+"kategorileri ekleyecektir."
+
+#: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "Copy Co-Authors Plus Data"
 msgstr "Co-Authors Plus Verilerini Kopyala"
 
 #: src/modules/multiple-authors/multiple-authors.php:2927
+msgid ""
+"This action will copy the authors from the plugin Co-Authors Plus allowing "
+"you to migrate to PublishPress Authors without losing any data. This action "
+"can be run multiple times."
+msgstr ""
+"Bu işlem, verileri kaybetmeden PublishPress Yazarlar'a geçiş yapmanıza "
+"olanak tanıyarak, eklenti Co-Authors Plus'tan yazarları kopyalayacaktır. Bu "
+"işlem birden fazla kez çalıştırılabilir."
+
+#: src/modules/multiple-authors/multiple-authors.php:2937
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr "Yazar Profilleri ile Kullanıcılar Arasındaki Bağlantıları Sil"
 
 #: src/modules/multiple-authors/multiple-authors.php:2938
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. It will delete all author profiles that are mapped to "
+"a WordPress user account. This will not delete the WordPress user accounts, "
+"but any links between the posts and author profiles will be lost."
+msgstr ""
+"Bu işlem, diğer bakım seçeneklerini kullanmadan önce PublishPress Yazarlar "
+"verilerini sıfırlayabilir. Bir WordPress kullanıcı hesabına eşlenmiş tüm "
+"yazar profillerini silecektir. Bu, WordPress kullanıcı hesaplarını "
+"silmeyecek, ancak yazılar ile yazar profilleri arasındaki bağlantılar "
+"kaybolacaktır."
+
+#: src/modules/multiple-authors/multiple-authors.php:2939
 msgid "Delete all authors mapped to users"
 msgstr "Kullanıcılara eşlenmiş tüm yazarları sil"
 
@@ -3876,10 +4737,29 @@ msgid "Delete Guest Authors"
 msgstr "Misafir Yazarları Sil"
 
 #: src/modules/multiple-authors/multiple-authors.php:2945
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. Guest authors are author profiles that are not mapped "
+"to a WordPress user account. This action will delete all guest authors."
+msgstr ""
+"Bu işlem, diğer bakım seçeneklerini kullanmadan önce PublishPress Yazarlar "
+"verilerini sıfırlayabilir. Misafir yazarlar, bir WordPress kullanıcı "
+"hesabına eşlenmemiş yazar profilleridir. Bu işlem tüm misafir yazarları "
+"silecektir."
+
+#: src/modules/multiple-authors/multiple-authors.php:2946
 msgid "Delete all guest authors"
 msgstr "Tüm misafir yazarları sil"
 
 #: src/modules/multiple-authors/multiple-authors.php:2952
+msgid ""
+"Please be careful clicking these buttons. Before clicking, we recommend "
+"taking a site backup in case anything goes wrong."
+msgstr ""
+"Lütfen bu butonlara tıklarken dikkatli olun. Tıklamadan önce, herhangi bir "
+"sorun çıkması durumunda bir yedek almanızı öneririz."
+
+#: src/modules/multiple-authors/multiple-authors.php:3155
 msgid "Author Profiles"
 msgstr "Yazar Profilleri"
 
@@ -4165,9 +5045,46 @@ msgstr "İletişim"
 
 #: src/core/Plugin.php:563
 msgctxt "taxonomy general name"
+msgid "Authors"
+msgstr "Yazarlar"
+
+#: src/core/Plugin.php:568
+msgctxt "taxonomy singular name"
+msgid "Author"
+msgstr "Yazar"
+
+#: src/modules/author-boxes/author-boxes.php:411
+#, fuzzy, php-format
+msgctxt "Author Box post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-boxes/author-boxes.php:412
+#, fuzzy, php-format
+msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
 #: src/modules/author-boxes/author-boxes.php:427
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:166
+#, fuzzy, php-format
+msgctxt "Custom Field post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:167
+#, fuzzy, php-format
+msgctxt "singular custom field post type name"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:182
+#, fuzzy, php-format
+msgctxt "custom field post type menu name"
+msgid "%2$s"
+msgstr "%2$s"

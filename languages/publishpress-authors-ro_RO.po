@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-15T01:06:13+00:00\n"
-"PO-Revision-Date: 2026-04-15 02:29+0000\n"
+"PO-Revision-Date: 2026-04-16 12:07+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
@@ -977,6 +977,7 @@ msgid "%1$s %2$s updated."
 msgid_plural "%1$s %3$s updated."
 msgstr[0] "%1$s %2$s actualizat."
 msgstr[1] "%1$s %3$s actualizat."
+msgstr[2] ""
 
 #: src/modules/author-boxes/author-boxes.php:525
 #, php-format
@@ -984,6 +985,7 @@ msgid "%1$s %2$s not updated, somebody is editing it."
 msgid_plural "%1$s %3$s not updated, somebody is editing them."
 msgstr[0] "%1$s %2$s nu a fost actualizat, cineva o editează."
 msgstr[1] "%1$s %3$s nu a fost actualizat, cineva le editează."
+msgstr[2] ""
 
 #: src/modules/author-boxes/author-boxes.php:536
 #, php-format
@@ -991,6 +993,7 @@ msgid "%1$s %2$s permanently deleted."
 msgid_plural "%1$s %3$s permanently deleted."
 msgstr[0] "%1$s %2$s șters permanent."
 msgstr[1] "%1$s %3$s șterse permanent."
+msgstr[2] ""
 
 #: src/modules/author-boxes/author-boxes.php:547
 #, php-format
@@ -998,6 +1001,7 @@ msgid "%1$s %2$s moved to the Trash."
 msgid_plural "%1$s %3$s moved to the Trash."
 msgstr[0] "%1$s %2$s mutat în Coșul de gunoi."
 msgstr[1] "%1$s %3$s mutat în Coșul de gunoi."
+msgstr[2] ""
 
 #: src/modules/author-boxes/author-boxes.php:558
 #, php-format
@@ -1005,6 +1009,7 @@ msgid "%1$s %2$s restored from the Trash."
 msgid_plural "%1$s %3$s restored from the Trash."
 msgstr[0] "%1$s %2$s restaurat din Coșul de gunoi."
 msgstr[1] "%1$s %3$s restaurat din Coșul de gunoi."
+msgstr[2] ""
 
 #: src/modules/author-boxes/author-boxes.php:624
 msgid "Duplicate"

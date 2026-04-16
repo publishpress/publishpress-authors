@@ -10,9 +10,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-15T01:06:13+00:00\n"
-"PO-Revision-Date: 2026-04-15 01:55+0000\n"
+"PO-Revision-Date: 2026-04-16 12:06+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
+"% 10 == 0) ? 2 : 3)));\n"
+"% 10 == 0) ? 2: 3)));\n"
 "Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 ? 0 : (n == 2 ? 1 : ((n > 10 && n % 10 == 0) ? 2 : 3)));\n"
 
@@ -32,13 +34,6 @@ msgstr "https://wordpress.org/plugins/publishpress-authors/"
 #: src/modules/multiple-authors/multiple-authors.php:75
 #: src/modules/multiple-authors/multiple-authors.php:79
 #. Description of the plugin
-msgid ""
-"PublishPress Authors allows you to add multiple authors and guest authors "
-"to WordPress posts"
-msgstr "פבלישפרס מחברים מאפשר לך להוסיף מספר מחברים ואורחים לפוסטים של וורדפרס"
-
-#: publishpress-authors.php:11
-#. Author of the plugin
 msgid "PublishPress"
 msgstr "פבלישפרס"
 
@@ -49,21 +44,6 @@ msgstr "https://publishpress.com"
 
 #: includes.php:39
 #, php-format
-msgid ""
-"You're using PublishPress Authors Free. The Pro version has more features "
-"and support. %sUpgrade to Pro%s"
-msgstr ""
-"אתה משתמש בגרסה החינמית של פבלישפרס מחברים. הגרסה המקצועית כוללת יותר "
-"תכונות ותמיכה. %sשדרג לגרסה מקצועית%s"
-
-#: includes.php:63
-#: src/modules/author-boxes/author-boxes.php:3042
-#: src/modules/author-categories/author-categories.php:672
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:521
-#: src/modules/author-custom-fields/author-custom-fields.php:995
-#: src/modules/author-custom-fields/author-custom-fields.php:1048
-#: src/modules/author-list/author-list.php:1260
-#: src/modules/author-list/author-list.php:1298
 msgid "Upgrade to Pro"
 msgstr "שדרג לגרסה מקצועית"
 
@@ -239,24 +219,6 @@ msgid "You cannot edit an author profile linked to an administrator account."
 msgstr "אינך יכול לערוך פרופיל מחבר המקושר לחשבון מנהל."
 
 #: src/core/Classes/Admin_Ajax.php:359
-msgid ""
-"You do not have permission to edit this author profile because it is linked "
-"to a user account you do not have permission to edit."
-msgstr ""
-"אין לך הרשאה לערוך פרופיל מחבר זה מכיוון שהוא מקושר לחשבון משתמש שאינך רשאי "
-"לערוך."
-
-#: src/core/Classes/Admin_Ajax.php:374
-#: src/core/Classes/Author_Editor.php:1008
-msgid ""
-"Sorry, this WordPress user is already mapped to another Author. By default, "
-"each user can only be connected to one Author profile."
-msgstr ""
-"סליחה, משתמש ה-WordPress הזה כבר משויך למחבר אחר. כברירת מחדל, כל משתמש "
-"יכול להיות מחובר רק לפרופיל מחבר אחד."
-
-#: src/core/Classes/Admin_Ajax.php:386
-#: src/core/Classes/Author_Editor.php:1100
 msgid "Registered User is required."
 msgstr "נדרש משתמש רשום."
 
@@ -273,15 +235,6 @@ msgid "Author name is required"
 msgstr "שם מחבר נדרש"
 
 #: src/core/Classes/Authors_Iterator.php:55
-msgid ""
-"No post ID provided for Authors_Iterator constructor. Are you not in a loop "
-"or is $post not set?"
-msgstr ""
-"לא סופק מזהה פוסט עבור בונה Authors_Iterator. האם אתה לא בלולאה או ש-$post "
-"לא מוגדר?"
-
-#: src/core/Classes/Author_Editor.php:47
-#: src/core/Plugin.php:1618
 msgid "Display name publicly as"
 msgstr "הצג שם ציבורי כ"
 
@@ -369,14 +322,6 @@ msgstr "תמונה ברירת מחדל"
 
 #: src/core/Classes/Author_Editor.php:391
 #, php-format
-msgid ""
-"(Uses the %1s Email field %2s to find the Gravatar account if default "
-"avatar is not uploaded in Authors Settings)"
-msgstr ""
-"(משתמש בשדה הדוא\"ל %1s %2s כדי למצוא את חשבון גרוואטר אם תמונת ברירת המחדל "
-"לא הועלתה בהגדרות מחברים)"
-
-#: src/core/Classes/Author_Editor.php:399
 msgid "Custom image"
 msgstr "תמונה מותאמת אישית"
 
@@ -391,14 +336,6 @@ msgid "Author Category"
 msgstr "קטגוריית מחבר"
 
 #: src/core/Classes/Author_Editor.php:411
-msgid ""
-"Select the default Category for this Author. This will be used when the "
-"Author is added to new posts."
-msgstr ""
-"בחר את הקטגוריה ברירת המחדל עבור מחבר זה. זה ישמש כאשר המחבר יתוסף לפוסטים "
-"חדשים."
-
-#: src/core/Classes/Author_Editor.php:418
 msgid "Do not show this profile publicly"
 msgstr "אל תציג פרופיל זה בפומבי"
 
@@ -419,32 +356,6 @@ msgid "Select a user"
 msgstr "בחר משתמש"
 
 #: src/core/Classes/Author_Editor.php:783
-msgid ""
-"Create an author profile for a current user account. You can select users "
-"who are allowed to edit posts. This user will be able to update their "
-"profile."
-msgstr ""
-"צור פרופיל מחבר עבור חשבון משתמש קיים. תוכל לבחור משתמשים המורשים לערוך "
-"פוסטים. משתמש זה יוכל לעדכן את הפרופיל שלו."
-
-#: src/core/Classes/Author_Editor.php:789
-msgid ""
-"Create an author profile and a linked user account. This account will be in "
-"the \"Guest Author\" role and will not be able to login to the WordPress "
-"dashboard or update their profile."
-msgstr ""
-"צור פרופיל מחבר וחשבונות משתמש מקושרים. חשבון זה יהיה בתפקיד \"מחבר אורח\" "
-"ולא יוכל להיכנס ללוח הבקרה של וורדפרס או לעדכן את הפרופיל שלו."
-
-#: src/core/Classes/Author_Editor.php:796
-msgid ""
-"Create an author profile with no linked user account. This option is "
-"lightweight but may have compatibility issues with other themes and plugins."
-msgstr ""
-"צור פרופיל מחבר ללא חשבון משתמש מקושר. אפשרות זו קלה אך עשויה להיתקל בבעיות "
-"תאימות עם תבניות ותוספים אחרים."
-
-#: src/core/Classes/Author_Editor.php:815
 msgid "Author Email"
 msgstr "דוא\"ל מחבר"
 
@@ -561,16 +472,6 @@ msgid "Search for an author"
 msgstr "חפש מחבר"
 
 #: src/core/Classes/Post_Editor.php:466
-msgid ""
-"This option is showing because you do not have a WordPress user selected as "
-"an author. For some tasks, it can be helpful to have a user selected here. "
-"This user will not be visible on the front of your site."
-msgstr ""
-"אפשרות זו מוצגת משום שאין לך משתמש WordPress שנבחר כמחבר. עבור חלק "
-"מהמשימות, יכול להיות מועיל לבחור משתמש כאן. משתמש זה לא יהיה גלוי בחזית "
-"האתר שלך."
-
-#: src/core/Classes/Post_Editor.php:474
 msgid "Search for an user"
 msgstr "חפש משתמש"
 
@@ -714,21 +615,6 @@ msgid "Edit My Author Profile"
 msgstr "ערוך את פרופיל המחבר שלי"
 
 #: src/core/Plugin.php:532
-msgid ""
-"This name is used in several default displays and some search engine "
-"integrations."
-msgstr "שמה של זה משמש בכמה תצוגות ברירת מחדל ובכמה אינטגרציות של מנועי חיפוש."
-
-#: src/core/Plugin.php:537
-msgid ""
-"This forms part of the URL for the author’s profile page. If you choose a "
-"Mapped User, this URL is taken from the user’s account and can not be "
-"changed."
-msgstr ""
-"זהו חלק מה-URL של דף פרופיל המחבר. אם תבחר משתמש ממופה, ה-URL הזה נלקח "
-"מחשבון המשתמש ולא ניתן לשנותו."
-
-#: src/core/Plugin.php:573
 msgid "Search Authors"
 msgstr "חיפוש מחברים"
 
@@ -826,30 +712,6 @@ msgid "Click to change this author, or drag to change their position"
 msgstr "לחץ כדי לשנות את המחבר הזה, או גרור כדי לשנות את המיקום שלו"
 
 #: src/core/Plugin.php:1628
-msgid ""
-"Click on an author to change them. Drag to change their order. Click on "
-"<strong>Remove</strong> to remove them."
-msgstr ""
-"לחץ על מחבר כדי לשנות אותו. גרור כדי לשנות את הסדר שלהם. לחץ על "
-"<strong>הסר</strong> כדי להסיר אותם."
-
-#: src/core/Plugin.php:1632
-msgid ""
-"Are you sure you want to delete the authors profiles mapped to users? This "
-"action can't be undone."
-msgstr ""
-"האם אתה בטוח שאתה רוצה למחוק את פרופילי המחברים המקושרים למשתמשים? פעולה זו "
-"לא ניתנת לביטול."
-
-#: src/core/Plugin.php:1636
-msgid ""
-"Are you sure you want to delete the guest authors profiles? This action "
-"can't be undone."
-msgstr ""
-"האם אתה בטוח שאתה רוצה למחוק את פרופילי המחברים האורחים? פעולה זו לא ניתנת "
-"לביטול."
-
-#: src/core/Plugin.php:1640
 msgid "Are you sure you want to create author profiles for the missed post authors?"
 msgstr "האם אתה בטוח שאתה רוצה ליצור פרופילי מחברים עבור מחברי הפוסטים שהוחמצו?"
 
@@ -1339,15 +1201,6 @@ msgid "Export Editor Settings"
 msgstr "ייצוא הגדרות עורך"
 
 #: src/modules/author-boxes/author-boxes.php:2609
-msgid ""
-"You can use this data to export your author box design and import it to a "
-"new site."
-msgstr ""
-"אתה יכול להשתמש בנתונים אלה כדי לייצא את עיצוב תיבת המחבר שלך ולייבא אותו "
-"לאתר חדש."
-
-#: src/modules/author-boxes/author-boxes.php:2619
-#: src/modules/author-boxes/author-boxes.php:2690
 msgid "Copy to Clipboard"
 msgstr "העתק ללוח"
 
@@ -1382,39 +1235,10 @@ msgid "How to generate and use a theme template file"
 msgstr "איך לייצר ולהשתמש בקובץ תבנית נושא"
 
 #: src/modules/author-boxes/author-boxes.php:2651
-msgid ""
-"Click the \"Generate Template\" button under the text area. Wait for the "
-"code to be generated."
-msgstr "לחץ על כפתור \"צור תבנית\" מתחת לאזור הטקסט. חכה שהקוד ית生成."
-
-#: src/modules/author-boxes/author-boxes.php:2652
-#, php-format
-msgid ""
-"Create an empty php template file with your desired file slug in the %1s "
-"/publishpress-authors/author-boxes/ %2s folder of your theme. %3s For "
-"example, the file can be located here: %4s "
-"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
-"my-first-custom-author-template.php %7s ."
-msgstr ""
-"צור קובץ תבנית php ריק עם השם הרצוי בקובץ %1s "
-"/publishpress-authors/author-boxes/ %2s בתבנית שלך. %3s לדוגמה, הקובץ יכול "
-"להיות ממוקם כאן: %4s "
-"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
-"my-first-custom-author-template.php %7s ."
-
-#: src/modules/author-boxes/author-boxes.php:2653
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "העתק את הקוד שנוצר והדבק אותו בתוך הקובץ שנוצר זה עתה."
 
 #: src/modules/author-boxes/author-boxes.php:2654
-msgid ""
-"Congratulations. Your can now choose your template inside the PublishPress "
-"Authors Settings."
-msgstr ""
-"מזל טוב. עכשיו אתה יכול לבחור את התבנית שלך בתוך הגדרות PublishPress "
-"Authors."
-
-#: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"
 msgstr "דף תיעוד"
 
@@ -1431,12 +1255,6 @@ msgid "Reorder Fields"
 msgstr "סדר מחדש שדות"
 
 #: src/modules/author-boxes/author-boxes.php:2748
-msgid ""
-"Reorder the fields by dragging them to the correct position and saving your "
-"changes."
-msgstr "סדר מחדש את השדות על ידי גרירתם למקום הנכון ושמירת השינויים שלך."
-
-#: src/modules/author-boxes/author-boxes.php:2762
 msgid "Save for Current Author Box"
 msgstr "שמור עבור תיבת מחבר נוכחית"
 
@@ -1469,14 +1287,6 @@ msgid "New Author Categories Box"
 msgstr "תיבת קטגוריות מחברים חדשה"
 
 #: src/modules/author-boxes/author-boxes.php:3037
-msgid ""
-"PublishPress Authors Pro allows you to unlock the full potential of Author "
-"Categories."
-msgstr ""
-"PublishPress Authors Pro מאפשר לך לשחרר את הפוטנציאל המלא של קטגוריות "
-"מחברים."
-
-#: src/modules/author-boxes/author-boxes.php:3039
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr "אתה יכול ליצור תיבות מחברים שבהן המחברים מקובצים לקטגוריות שלהם."
 
@@ -1509,14 +1319,6 @@ msgstr "אין לך הרשאה לבצע פעולה זו"
 
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:67
 #, php-format
-msgid ""
-"Field Order updated. %1sClick here%2s to reload this page to see new order "
-"changes."
-msgstr ""
-"שדה ההזמנה עודכן. %1sלחץ כאן%2s כדי לרענן את העמוד הזה ולראות שינויים "
-"בהזמנה החדשה."
-
-#: src/modules/author-boxes/classes/AuthorBoxesDefault.php:28
 msgid "Boxed"
 msgstr "ממוסגר"
 
@@ -2173,14 +1975,6 @@ msgid "Custom \"View All Posts\" Link"
 msgstr "קישור מותאם אישית \"צפה בכל הפוסטים\""
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:449
-msgid ""
-"Enter a custom URL for the \"View All Posts\" link. Leave empty to use the "
-"default author posts page."
-msgstr ""
-"הזן URL מותאם אישית עבור הקישור \"ראה את כל הפוסטים\". השאר ריק כדי להשתמש "
-"בדף הפוסטים של המחבר ברירת מחדל."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:453
 msgid "View All Posts Link Size"
 msgstr "גודל קישור ראה את כל הפוסטים"
 
@@ -2237,12 +2031,6 @@ msgid "Author Category Layout"
 msgstr "פריסת קטגוריית מחבר"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:607
-msgid ""
-"Selecting an option here will overwrite author boxes settings to match "
-"selected layout."
-msgstr "בחירה באופציה כאן תדרוס את הגדרות תיבות המחבר כדי להתאים לפריסה שנבחרה."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:612
 msgid "Built-in Layout"
 msgstr "פריסה מובנית"
 
@@ -2337,22 +2125,10 @@ msgid "Author Category Group Title Prefix"
 msgstr "קידומת כותרת קבוצת קטגוריית מחבר"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:714
-msgid ""
-"Enter the text that should be added before group title. This field accepts "
-"basic HTML."
-msgstr "הזן את הטקסט שצריך להוסיף לפני כותרת הקבוצה. שדה זה מקבל HTML בסיסי."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:721
 msgid "Author Category Group Title Suffix"
 msgstr "סיומת כותרת קבוצת קטגוריית מחבר"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:722
-msgid ""
-"Enter the text that should be added after group title. This field accepts "
-"basic HTML."
-msgstr "הזן את הטקסט שיש להוסיף אחרי כותרת הקבוצה. שדה זה מקבל HTML בסיסי."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:729
 msgid "Author Category Group Font Size"
 msgstr "גודל גופן קבוצת קטגוריית מחבר"
 
@@ -2395,15 +2171,6 @@ msgid "%1s HTML Tag"
 msgstr "%1s תג HTML"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:821
-msgid ""
-"'span' will display as an inline element and 'div' will display as a block "
-"element. To make this display into a link, select 'link' and enter the "
-"first part of the URL into the 'Prefix' field."
-msgstr ""
-"'span' תוצג כאלמנט inline ו-'div' תוצג כאלמנט block. כדי להפוך זאת לקישור, "
-"בחר 'link' והזן את החלק הראשון של ה-URL בשדה 'Prefix'."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:828
 msgid "link"
 msgstr "קישור"
 
@@ -2413,15 +2180,6 @@ msgid "%1s Value Prefix"
 msgstr "%1s ערך קידומת"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
-msgid ""
-"This is useful when linking to an email, URL, or phone number. For example, "
-"'mailto:', 'https://' or 'tel:' can be added as the prefix."
-msgstr ""
-"זה מועיל כאשר מקשרים לדוא\"ל, URL, או מספר טלפון. לדוגמה, 'mailto:', "
-"'https://' או 'tel:' יכולים להתווסף כקידומת."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:851
-#, php-format
 msgid "%1s Display"
 msgstr "%1s הצגה"
 
@@ -2623,14 +2381,6 @@ msgid "Recent Post Types"
 msgstr "סוגי פוסטים אחרונים"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1259
-msgid ""
-"Select post types to include in recent posts. Leave empty to show all post "
-"types."
-msgstr ""
-"בחר סוגי פוסטים לכלול בפוסטים האחרונים. השאר ריק כדי להציג את כל סוגי "
-"הפוסטים."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
 msgid "Select post types..."
 msgstr "בחר סוגי פוסטים..."
 
@@ -2736,42 +2486,18 @@ msgid "Author inline display"
 msgstr "תצוגה משולבת של מחבר"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1468
-msgid ""
-"This will display author in an inline format side by side instead of block "
-"format."
-msgstr "זה יציג את המחבר בפורמט משולב לצד לצד במקום בפורמט חסום."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1475
 msgid "Author Row Prefix"
 msgstr "קידומת שורת מחבר"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1476
-msgid ""
-"Enter the text that should be added before authors. This field accepts "
-"basic HTML."
-msgstr "הזן את הטקסט שיתווסף לפני המחברים. שדה זה מקבל HTML בסיסי."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1483
 msgid "Author Row Suffix"
 msgstr "סופית שורת מחבר"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1484
-msgid ""
-"Enter the text that should be added after authors. This field accepts basic "
-"HTML."
-msgstr "הזן את הטקסט שיתווסף אחרי המחברים. שדה זה מקבל HTML בסיסי."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1491
 msgid "Author Separator"
 msgstr " separator מחבר"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1492
-msgid ""
-"You can specify a separator such as ',' to separate authors. This field "
-"accepts basic HTML."
-msgstr "תוכל לציין מפריד כמו ',' כדי להפריד בין המחברים. שדה זה מקבל HTML בסיסי."
-
-#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1499
 msgid "Author Box Margin Top"
 msgstr "מרווח עליון של תיבת מחבר"
 
@@ -2954,17 +2680,6 @@ msgstr "מאפיין סכמתה"
 #: src/modules/author-categories/author-categories.php:622
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
 #, php-format
-msgid ""
-"Example: when this value is set to reviewedBy, all users in this category "
-"will be added to post's reviewedBy property. You can read more %1$s in this "
-"guide.%2$s"
-msgstr ""
-"דוגמה: כאשר ערך זה מוגדר ל-reviewedBy, כל המשתמשים בקטגוריה זו יתווספו "
-"למאפיין reviewedBy של הפוסט. תוכל לקרוא עוד %1$s במדריך הזה.%2$s"
-
-#: src/modules/author-categories/author-categories.php:634
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:79
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:486
 msgid "Post Types"
 msgstr "סוגי פוסטים"
 
@@ -2974,14 +2689,6 @@ msgid "Select Post Type..."
 msgstr "בחר סוג פוסט..."
 
 #: src/modules/author-categories/author-categories.php:678
-msgid ""
-"Select which post types this category applies to. Leave empty for all post "
-"types."
-msgstr "בחר אילו סוגי פוסטים מתאימים לקטגוריה הזו. השאר ריק עבור כל סוגי הפוסטים."
-
-#: src/modules/author-categories/author-categories.php:683
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:81
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:531
 msgid "Enable Category"
 msgstr "אפשר קטגוריה"
 
@@ -3134,14 +2841,6 @@ msgid "Field Slug"
 msgstr "סלאג שדה"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:387
-msgid ""
-"The slug is used in code to reference this author field. It is all "
-"lowercase and contains only letters, numbers, and hyphens."
-msgstr ""
-"הסלאג משמש בקוד כדי להפנות לשדה מחבר זה. הוא כולו באותיות קטנות ומכיל רק "
-"אותיות, מספרים ומקפים."
-
-#: src/modules/author-custom-fields/author-custom-fields.php:396
 msgid "Field Type"
 msgstr "סוג שדה"
 
@@ -3150,23 +2849,6 @@ msgid "Social Profile?"
 msgstr "פרופיל חברתי?"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:409
-msgid ""
-"This feature will add the SameAs property to this link so that search "
-"engines realize that the social profile is connected to this author."
-msgstr ""
-"תכונה זו תוסיף את המאפיין SameAs לקישור הזה כך שמנועי חיפוש יבינו שהפרופיל "
-"החברתי מחובר למחבר זה."
-
-#: src/modules/author-custom-fields/author-custom-fields.php:422
-#, php-format
-msgid ""
-"Add a Schema.org property to this field. Examples include alumniOf, "
-"worksFor, and birthPlace. %1$sClick here for documentation.%2$s"
-msgstr ""
-"הוסף מאפיין של Schema.org לשדה זה. דוגמאות כוללות alumniOf, worksFor, "
-"ו-birthPlace. %1$sלחץ כאן לתיעוד.%2$s"
-
-#: src/modules/author-custom-fields/author-custom-fields.php:434
 msgid "Show in REST API"
 msgstr "הצג ב-REST API"
 
@@ -3200,12 +2882,6 @@ msgid "Description"
 msgstr "תיאור"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:482
-msgid ""
-"This description appears under the fields and helps users understand their "
-"choice."
-msgstr "תיאור זה מופיע מתחת לשדות ועוזר למשתמשים להבין את הבחירה שלהם."
-
-#: src/modules/author-custom-fields/author-custom-fields.php:801
 msgid "Status"
 msgstr "סטטוס"
 
@@ -3219,12 +2895,6 @@ msgstr "תפקיד"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:992
 #: src/modules/author-custom-fields/author-custom-fields.php:1047
-msgid ""
-"With PublishPress Authors Pro, you can add new fields for social networks "
-"and more."
-msgstr "עם PublishPress Authors Pro, תוכל להוסיף שדות חדשים לרשתות חברתיות ועוד."
-
-#: src/modules/author-custom-fields/author-custom-fields.php:1111
 msgid "Field Order updated."
 msgstr "סדר השדות עודכן."
 
@@ -3373,15 +3043,6 @@ msgid "Show Authors"
 msgstr "הצג מחברים"
 
 #: src/modules/author-list/author-list.php:438
-msgid ""
-"Select an option to limit the results to selected user roles, author types, "
-"specific authors or author Categories."
-msgstr ""
-"בחר אפשרות כדי להגביל את התוצאות לתפקידי משתמשים נבחרים, סוגי מחברים, "
-"מחברים ספציפיים או קטגוריות מחברים."
-
-#: src/modules/author-list/author-list.php:441
-#: src/modules/author-list/author-list.php:455
 msgid "Roles"
 msgstr "תפקידים"
 
@@ -3390,14 +3051,6 @@ msgid "Exclude Authors"
 msgstr "לשלול מחברים"
 
 #: src/modules/author-list/author-list.php:452
-msgid ""
-"Select an option to exclude selected user roles, author types, specific "
-"authors or author Categories from Author list."
-msgstr ""
-"בחר אפשרות כדי לשלול תפקידי משתמשים נבחרים, סוגי מחברים, מחברים ספציפיים או "
-"קטגוריות מחברים מרשימת המחברים."
-
-#: src/modules/author-list/author-list.php:468
 msgid "Authors Per Page"
 msgstr "מחברים לעמוד"
 
@@ -3410,26 +3063,10 @@ msgid "Show Empty"
 msgstr "הצג ריק"
 
 #: src/modules/author-list/author-list.php:480
-msgid ""
-"Enable this option to show all authors, including those without any posts. "
-"Disable this option to show only authors who are assigned to posts."
-msgstr ""
-"אפשר אפשרות זו כדי להציג את כל המחברים, כולל אלה שאין להם פוסטים. השבת "
-"אפשרות זו כדי להציג רק מחברים שהוקצו לפוסטים."
-
-#: src/modules/author-list/author-list.php:488
 msgid "Configure Author List Options"
 msgstr "הגדר אפשרויות רשימת מחברים"
 
 #: src/modules/author-list/author-list.php:489
-msgid ""
-"Authors Pro allows you to add extra features to the Authors List. These "
-"features include pagination, choose the order of authors, and much more."
-msgstr ""
-"Authors Pro מאפשר לך להוסיף תכונות נוספות לרשימת המחברים. תכונות אלו כוללות "
-"פיצול לעמודים, לבחור את סדר המחברים, ועוד הרבה יותר."
-
-#: src/modules/author-list/author-list.php:494
 msgid "Order By"
 msgstr "סדר לפי"
 
@@ -3438,16 +3075,6 @@ msgid "Last Article Date"
 msgstr "תאריך המאמר האחרון"
 
 #: src/modules/author-list/author-list.php:523
-msgid ""
-"You can limit the author list to users with a published post within a "
-"specific time. This option accepts date values such as 1 week ago, 1 month "
-"ago, 6 months ago, 1 year ago etc."
-msgstr ""
-"אתה יכול להגביל את רשימת המחברים למשתמשים עם פוסט שפורסם בתוך זמן ספציפי. "
-"אפשרות זו מקבלת ערכי תאריך כמו לפני שבוע, לפני חודש, לפני 6 חודשים, לפני "
-"שנה וכו'."
-
-#: src/modules/author-list/author-list.php:535
 msgid "Show Search Box"
 msgstr "הצג תיבת חיפוש"
 
@@ -3456,24 +3083,10 @@ msgid "Add Search Box to Author Lists"
 msgstr "הוסף תיבת חיפוש לרשימות המחברים"
 
 #: src/modules/author-list/author-list.php:545
-msgid ""
-"Author Pro allows you to add a search box to the Authors List. You can also "
-"show a dropdown menu that allows users to search on specific author fields."
-msgstr ""
-"Author Pro מאפשר לך להוסיף תיבת חיפוש לרשימת המחברים. אתה יכול גם להראות "
-"תפריט נפתח המאפשר למשתמשים לחפש בשדות ספציפיים של מחברים."
-
-#: src/modules/author-list/author-list.php:550
 msgid "Search Field Dropdown"
 msgstr "תפריט נפתח לשדה חיפוש"
 
 #: src/modules/author-list/author-list.php:551
-msgid ""
-"You can also show a dropdown menu that allows users to search on specific "
-"author fields."
-msgstr "אתה יכול גם להראות תפריט נפתח המאפשר למשתמשים לחפש בשדות ספציפיים של מחברים."
-
-#: src/modules/author-list/author-list.php:600
 msgid "Author Recent List"
 msgstr "רשימת מחברים האחרונים"
 
@@ -3518,14 +3131,6 @@ msgid "Select Author Category"
 msgstr "בחר קטגוריית מחברים"
 
 #: src/modules/author-list/author-list.php:1282
-msgid ""
-"This is a quick preview of this Author List. Test on frontend pages to see "
-"exactly how it looks with your theme."
-msgstr ""
-"זו תצוגה מקדימה מהירה של רשימת המחברים הזו. בדוק בעמודי הקצה כדי לראות "
-"בדיוק איך זה נראה עם הנושא שלך."
-
-#: src/modules/author-list/author-list.php:1380
 msgid "Invalid form"
 msgstr "טופס לא חוקי"
 
@@ -3760,12 +3365,6 @@ msgid "Showcase your Authors with PublishPress Blocks"
 msgstr "הצג את המחברים שלך עם PublishPress Blocks"
 
 #: src/modules/modules-settings/modules-settings.php:318
-msgid ""
-"PublishPress Blocks is a free plugin with full support for PublishPress "
-"Authors."
-msgstr "PublishPress Blocks הוא תוסף חינמי עם תמיכה מלאה במחברים של PublishPress."
-
-#: src/modules/modules-settings/modules-settings.php:319
 msgid "Install this plugin to showcase content by your Authors."
 msgstr "התקן את התוסף הזה כדי להציג תוכן של המחברים שלך."
 
@@ -3774,14 +3373,6 @@ msgid "Use the Content Display block to show your posts in many beautiful layout
 msgstr "השתמש בחסימת הצגת תוכן כדי להציג את הפוסטים שלך בהרבה עיצובים יפים."
 
 #: src/modules/modules-settings/modules-settings.php:321
-msgid ""
-"PublishPress Blocks has over 20 extra Gutenberg blocks including "
-"accordions, galleries, tables, and more."
-msgstr ""
-"PublishPress Blocks כולל מעל 20 חסימות גוטנברג נוספות כולל אקורדיונים, "
-"גלריות, טבלאות ועוד."
-
-#: src/modules/modules-settings/modules-settings.php:324
 msgid "Click here to install PublishPress Blocks"
 msgstr "לחץ כאן כדי להתקין את PublishPress Blocks"
 
@@ -3820,16 +3411,6 @@ msgid "Copy Molongui Authorship Data"
 msgstr "העתק נתוני מחבר מולונגוי"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:153
-msgid ""
-"This action will copy the authors from the plugin Molongui Authorship "
-"allowing you to migrate to PublishPress Authors without losing any data "
-"including post author relation. This action can be run multiple times."
-msgstr ""
-"פעולה זו תעתיק את המחברים מהתוסף מולונגוי מחבר, ותאפשר לך לעבור למחברים של "
-"PublishPress מבלי לאבד נתונים, כולל הקשר בין מחבר לפוסט. ניתן להריץ פעולה "
-"זו מספר פעמים."
-
-#: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:187
 msgid "It looks like you have Molongui Authorship installed."
 msgstr "נראה שיש לך את מולונגוי מחבר מותקן."
 
@@ -4052,12 +3633,6 @@ msgstr "קופסת מחבר בעיצוב ישן ברשימה פשוטה:"
 #: src/modules/multiple-authors/multiple-authors.php:1265
 #: src/modules/settings/settings.php:275
 #, php-format
-msgid ""
-"Disabled because add_post_type_support('%1$s', '%2$s') is included in a "
-"loaded file."
-msgstr "הושבת בגלל add_post_type_support('%1$s', '%2$s') כלול בקובץ שהוטען."
-
-#: src/modules/multiple-authors/multiple-authors.php:1284
 msgid "This will display the authors box at the top of the content."
 msgstr "זה יציג את תיבת המחברים בחלק העליון של התוכן."
 
@@ -4082,229 +3657,14 @@ msgid "Authors Box"
 msgstr "תיבת מחברים"
 
 #: src/modules/multiple-authors/multiple-authors.php:1409
-msgid ""
-"With this shortcode you can display the author box in any part of the "
-"content. "
-msgstr "עם קוד הקצר הזה אתה יכול להציג את תיבת המחברים בכל חלק של התוכן. "
-
-#: src/modules/multiple-authors/multiple-authors.php:1417
-#, php-format
-msgid ""
-"You can specify layout by using author boxes layout slug. You can see full "
-"details of each layout option %1$s in this guide %2$s."
-msgstr ""
-"אתה יכול לציין תבנית על ידי שימוש ב-slug של תבנית תיבות המחברים. אתה יכול "
-"לראות את כל הפרטים של כל אפשרות תבנית %1$s במדריך הזה %2$s."
-
-#: src/modules/multiple-authors/multiple-authors.php:1428
-#, php-format
-msgid ""
-"You can also decide whether or not to show the main title, using %1$s or "
-"%2$s ."
-msgstr "אתה יכול גם להחליט אם להציג את הכותרת הראשית או לא, באמצעות %1$s או %2$s ."
-
-#: src/modules/multiple-authors/multiple-authors.php:1438
-#: src/modules/multiple-authors/multiple-authors.php:1522
-msgid ""
-"You can load the authors for a specific post, even if you are not in that "
-"post currently. For example, this shortcode will load the authors for the "
-"post with the ID of 32."
-msgstr ""
-"אתה יכול לטעון את המחברים לפוסט ספציפי, גם אם אתה לא בפוסט הזה כרגע. "
-"לדוגמה, קוד הקצר הזה יטען את המחברים לפוסט עם מזהה 32."
-
-#: src/modules/multiple-authors/multiple-authors.php:1445
-msgid ""
-"You can load the authors for a specific user by providing the user id. For "
-"example, this shortcode will load the author with user id of 32"
-msgstr ""
-"אתה יכול לטעון את המחברים עבור משתמש ספציפי על ידי מתן מזהה המשתמש. לדוגמה, "
-"קוד הקצר הזה יטען את המחבר עם מזהה המשתמש 32."
-
-#: src/modules/multiple-authors/multiple-authors.php:1452
-msgid ""
-"You can load the authors for a specific author by providing the author term "
-"id for both guest and user author. For example, this shortcode will load "
-"the author with term id of 32"
-msgstr ""
-"אתה יכול לטעון את המחברים עבור מחבר ספציפי על ידי מתן מזהה המונח של המחבר "
-"עבור מחבר אורח ומחבר משתמש. לדוגמה, קוד הקצר הזה יטען את המחבר עם מזהה "
-"המונח 32."
-
-#: src/modules/multiple-authors/multiple-authors.php:1460
-#, php-format
-msgid ""
-"If you are having problems showing PublishPress Authors on author profile "
-"pages, you can use this shortcode below. The argument %s forces the plugin "
-"to retrieve the Author from the profile page and not any other posts on the "
-"same screen."
-msgstr ""
-"אם יש לך בעיות בהצגת מחברי PublishPress בדפי פרופיל המחבר, אתה יכול להשתמש "
-"בקוד הקצר למטה. הפרמטר %s מכריח את התוסף לשחזר את המחבר מדף הפרופיל ולא "
-"מפוסטים אחרים באותו מסך."
-
-#: src/modules/multiple-authors/multiple-authors.php:1470
-#, php-format
-msgid ""
-"There is one final option to mention. This is mostly useful if you're using "
-"a theme or page builder to customize the Author profile pages you find at "
-"URLs such as /author/username/. You can use the following shortcode on the "
-"authors page to display the profile of the current author. You just need to "
-"add the parameter %s."
-msgstr ""
-"יש אפשרות סופית אחת להזכיר. זה בעיקר שימושי אם אתה משתמש בתבנית או בבונה "
-"עמודים כדי להתאים אישית את דפי פרופיל המחבר שאתה מוצא בכתובות כמו "
-"/author/username/. אתה יכול להשתמש בקוד הקצר הבא בדף המחברים כדי להציג את "
-"הפרופיל של המחבר הנוכחי. אתה רק צריך להוסיף את הפרמטר %s."
-
-#: src/modules/multiple-authors/multiple-authors.php:1479
-msgid ""
-"You can load the authors belonging to a specific author categories by "
-"providing the category slug or slugs separated by comma for more than one "
-"category."
-msgstr ""
-"אתה יכול לטעון את המחברים השייכים לקטגוריות מחברים ספציפיות על ידי מתן "
-"ה-slugs של הקטגוריות או ה-slugs מופרדים בפסיק עבור יותר מקטגוריה אחת."
-
-#: src/modules/multiple-authors/multiple-authors.php:1489
 msgid "Authors Data"
 msgstr "נתוני מחברים"
 
 #: src/modules/multiple-authors/multiple-authors.php:1490
-msgid ""
-"With this shortcode you can display the author names or any profile field "
-"in any part of the content."
-msgstr ""
-"עם קוד הקצר הזה אתה יכול להציג את שמות המחברים או כל שדה פרופיל בכל חלק של "
-"התוכן."
-
-#: src/modules/multiple-authors/multiple-authors.php:1498
-#, php-format
-msgid ""
-"The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s "
-"%4$s %5$s %6$s %7$s. You can see full details and parameters %8$s in this "
-"guide %9$s."
-msgstr ""
-"קוד הקצר של נתוני המחברים מקבל פרמטר שדה כמו: %1$s %2$s %3$s %4$s %5$s %6$s "
-"%7$s. אתה יכול לראות את כל הפרטים והפרמטרים %8$s במדריך הזה %9$s."
-
-#: src/modules/multiple-authors/multiple-authors.php:1515
 msgid "You can also specify the separator to be used for mulitple authors data."
 msgstr "אתה יכול גם לציין את המפריד שישמש לנתוני מחברים מרובים."
 
 #: src/modules/multiple-authors/multiple-authors.php:1529
-msgid ""
-"You can retrieve a specific author by providing the author's term ID. For "
-"example, this shortcode will load the author with the term ID of 102."
-msgstr ""
-"אתה יכול לשחזר מחבר ספציפי על ידי מתן מזהה המונח של המחבר. לדוגמה, קוד קצר "
-"זה יטען את המחבר עם מזהה המונח 102."
-
-#: src/modules/multiple-authors/multiple-authors.php:1537
-#, php-format
-msgid ""
-"You can also decide to return an array list of authors by using "
-"user_objects=\"true\" which will return all the authors object data as an "
-"array. You can check full details and sample usage %2$s in this guide%3$s."
-msgstr ""
-"אתה יכול גם להחליט להחזיר רשימת מערך של מחברים על ידי שימוש "
-"ב-user_objects=\"true\" אשר יחזיר את כל נתוני אובייקט המחברים כמערך. אתה "
-"יכול לבדוק פרטים מלאים ודוגמת שימוש %2$s במדריך הזה%3$s."
-
-#: src/modules/multiple-authors/multiple-authors.php:1548
-msgid ""
-"You can retrieve authors belonging to a specific Author Category by "
-"providing the category slug or slugs. Separate multiple slugs with a comma."
-msgstr ""
-"אתה יכול לשחזר מחברים השייכים לקטגוריית מחבר ספציפית על ידי מתן סלוג "
-"הקטגוריה או סלוגים. הפרד בין מספר סלוגים באמצעות פסיק."
-
-#: src/modules/multiple-authors/multiple-authors.php:1559
-msgid ""
-"With this shortcode, you can show all the authors together in a single "
-"display."
-msgstr "עם קוד קצר זה, אתה יכול להציג את כל המחברים יחד בתצוגה אחת."
-
-#: src/modules/multiple-authors/multiple-authors.php:1567
-#, php-format
-msgid ""
-"You can specify layout by using author boxes layout slug. You can see full "
-"details of each layout option %1$s in this guide %2$s. %3$s %4$s This "
-"shortcode also provides two custom layouts: %5$s %6$s."
-msgstr ""
-"אתה יכול לציין פריסה על ידי שימוש בסלוג של פריסת תיבות המחבר. אתה יכול "
-"לראות פרטים מלאים של כל אפשרות פריסה %1$s במדריך הזה %2$s. %3$s %4$s קוד "
-"קצר זה גם מספק שתי פריסות מותאמות אישית: %5$s %6$s."
-
-#: src/modules/multiple-authors/multiple-authors.php:1582
-#, php-format
-msgid ""
-"You can define the number of layout columns by using %1$s to show authors "
-"in 2 column."
-msgstr ""
-"אתה יכול להגדיר את מספר עמודות הפריסה על ידי שימוש ב-%1$s כדי להציג מחברים "
-"ב-2 עמודות."
-
-#: src/modules/multiple-authors/multiple-authors.php:1592
-#, php-format
-msgid ""
-"You can choose the number of authors per page using %1$s . %2$s Pagination "
-"will be automatically added if required."
-msgstr ""
-"אתה יכול לבחור את מספר המחברים בכל עמוד על ידי שימוש ב-%1$s . %2$s עמודים "
-"יתווספו אוטומטית אם נדרש."
-
-#: src/modules/multiple-authors/multiple-authors.php:1603
-#, php-format
-msgid ""
-"You can limit the result to only authors who are assigned to posts by using "
-"%1$s . %2$s Alternatively, use %3$s to show all authors, including those "
-"without any posts."
-msgstr ""
-"אתה יכול להגביל את התוצאה רק למחברים המוקצים לפוסטים על ידי שימוש ב-%1$s . "
-"%2$s לחלופין, השתמש ב-%3$s כדי להציג את כל המחברים, כולל אלה שאין להם "
-"פוסטים."
-
-#: src/modules/multiple-authors/multiple-authors.php:1615
-#, php-format
-msgid ""
-"You can limit the result to only guest authors by using %1$s . %2$s "
-"Alternatively, %3$s will show only authors with a WordPress account."
-msgstr ""
-"אתה יכול להגביל את התוצאה רק למחברים אורחים על ידי שימוש ב-%1$s . %2$s "
-"לחלופין, %3$s יציג רק מחברים עם חשבון WordPress."
-
-#: src/modules/multiple-authors/multiple-authors.php:1627
-#, php-format
-msgid ""
-"If you are using the authors_recent layout, you can define the number of "
-"columns by using %1$s ."
-msgstr ""
-"אם אתה משתמש בפריסת authors_recent, אתה יכול להגדיר את מספר העמודות על ידי "
-"שימוש ב-%1$s ."
-
-#: src/modules/multiple-authors/multiple-authors.php:1637
-#, php-format
-msgid ""
-"For authors_index layout, you can group user by profile field by using %1$s "
-"."
-msgstr ""
-"לפריסת authors_index, אתה יכול לקבץ משתמשים לפי שדה פרופיל על ידי שימוש "
-"ב-%1$s ."
-
-#: src/modules/multiple-authors/multiple-authors.php:1647
-#, php-format
-msgid ""
-"To order the results based on post count, use %1$s . To order the results "
-"by name, use %2$s . Alternatively, you can order by profile fields like "
-"%3$s, %4$s etc"
-msgstr ""
-"כדי לסדר את התוצאות לפי מספר הפוסטים, השתמש ב-%1$s . כדי לסדר את התוצאות "
-"לפי שם, השתמש ב-%2$s . לחלופין, אתה יכול לסדר לפי שדות פרופיל כמו %3$s, "
-"%4$s וכו'"
-
-#: src/modules/multiple-authors/multiple-authors.php:1660
-#, php-format
 msgid "To further customize the order of results, use %1$s or %2$s ."
 msgstr "כדי להתאים אישית עוד יותר את סדר התוצאות, השתמש ב-%1$s או %2$s ."
 
@@ -4315,27 +3675,6 @@ msgstr "כדי להציג תיבת חיפוש עבור מחברים, השתמש 
 
 #: src/modules/multiple-authors/multiple-authors.php:1681
 #, php-format
-msgid ""
-"You can also show a dropdown menu that allows users to search on specific "
-"author fields. You can add fields to the dropdown using %1$s . This "
-"requires the search box to be active."
-msgstr ""
-"אתה יכול גם להציג תפריט נפתח המאפשר למשתמשים לחפש בשדות מחבר ספציפיים. אתה "
-"יכול להוסיף שדות לתפריט הנפתח באמצעות %1$s . זה דורש שהקופסה לחיפוש תהיה "
-"פעילה."
-
-#: src/modules/multiple-authors/multiple-authors.php:1691
-#, php-format
-msgid ""
-"You can limit the author list to users with a published post within a "
-"specific period using %1$s . This accept english date value like 1 week "
-"ago, 1 month ago, 6 months ago, 1 year ago etc."
-msgstr ""
-"אתה יכול להגביל את רשימת המחברים למשתמשים עם פוסט שפורסם בתוך תקופה ספציפית "
-"על ידי שימוש ב-%1$s . זה מקבל ערך תאריך באנגלית כמו 1 שבוע לפני, 1 חודש "
-"לפני, 6 חודשים לפני, 1 שנה לפני וכו'."
-
-#: src/modules/multiple-authors/multiple-authors.php:1738
 msgid "Copied!"
 msgstr "הועתק!"
 
@@ -4349,38 +3688,6 @@ msgid "Select roles"
 msgstr "בחר תפקידים"
 
 #: src/modules/multiple-authors/multiple-authors.php:1813
-msgid ""
-"Choose which WordPress user roles can be selected using the \"Registered "
-"Author With User Account\" option for author profiles."
-msgstr ""
-"בחר אילו תפקידי משתמש ב-WordPress ניתן לבחור באמצעות האפשרות \"מחבר רשום עם "
-"חשבון משתמש\" עבור פרופילי מחבר."
-
-#: src/modules/multiple-authors/multiple-authors.php:1842
-msgid ""
-"Author profiles can be mapped to WordPress user accounts. This option "
-"allows you to automatically create author profiles when users are created "
-"in these roles. You can also do this for existing users by clicking the "
-"\"Create PublishPress Authors Profiles for all users in a role\" button in "
-"the Maintenance tab."
-msgstr ""
-"פרופילי מחברים יכולים להיות ממופים לחשבונות משתמשים של WordPress. אפשרות זו "
-"מאפשרת לך ליצור אוטומטית פרופילי מחברים כאשר משתמשים נוצרים בתפקידים אלה. "
-"אתה יכול גם לעשות זאת עבור משתמשים קיימים על ידי לחיצה על כפתור \"צור "
-"פרופילי מחברים עבור כל המשתמשים בתפקיד\" בלשונית תחזוקה."
-
-#: src/modules/multiple-authors/multiple-authors.php:1863
-msgid ""
-"If the Author is mapped to a WordPress user, this will display the authors' "
-"\"Display name\" and their \"Username\". The default is to show only the "
-"\"Display name\". Showing the \"Username\" is useful if you have several "
-"authors with similar names."
-msgstr ""
-"אם המחבר ממופה למשתמש WordPress, זה יציג את \"שם התצוגה\" של המחברים ואת "
-"\"שם המשתמש\" שלהם. ברירת המחדל היא להציג רק את \"שם התצוגה\". הצגת \"שם "
-"המשתמש\" היא שימושית אם יש לך מספר מחברים עם שמות דומים."
-
-#: src/modules/multiple-authors/multiple-authors.php:1886
 msgid "Allow authors to be created without a real user account."
 msgstr "אפשר ליצור מחברים ללא חשבון משתמש אמיתי."
 
@@ -4393,12 +3700,6 @@ msgid "Allow authors to be created without a connected user account."
 msgstr "אפשר ליצור מחברים ללא חשבון משתמש מחובר."
 
 #: src/modules/multiple-authors/multiple-authors.php:1956
-msgid ""
-"If enabled, PublishPress Authors will replace the default WordPress author "
-"pages."
-msgstr "אם אפשר, מחברי PublishPress יחליפו את דפי המחבר ברירת המחדל של WordPress."
-
-#: src/modules/multiple-authors/multiple-authors.php:1961
 msgid "Please note this feature will not work for all themes."
 msgstr "אנא שים לב שהפיצ'ר הזה לא יעבוד עבור כל התבניות."
 
@@ -4432,14 +3733,6 @@ msgid "Last Name First Name"
 msgstr "שם משפחה שם פרטי"
 
 #: src/modules/multiple-authors/multiple-authors.php:2218
-msgid ""
-"This avatar will be used as default avatar instead of gravatar where no "
-"custom avatar is added to profile."
-msgstr ""
-"האוואטר הזה ישמש כאוואטר ברירת מחדל במקום gravatar כאשר לא נוסף אוואטר "
-"מותאם אישית לפרופיל."
-
-#: src/modules/multiple-authors/multiple-authors.php:2240
 msgid "This will display the author bio."
 msgstr "זה יציג את הביוגרפיה של המחבר."
 
@@ -4477,16 +3770,6 @@ msgid "This will display the excerpt."
 msgstr "זה יציג את התקציר."
 
 #: src/modules/multiple-authors/multiple-authors.php:2573
-msgid ""
-"This will allows you map a WordPress user to more than one author. Don't "
-"use this feature unless requested to do so by the PublishPress team. This "
-"plugin works better when authors and users are paired one-to-one."
-msgstr ""
-"זה יאפשר לך למפות משתמש WordPress ליותר מאשר מחבר אחד. אל תשתמש בתכונה זו "
-"אלא אם כן צוות PublishPress ביקש ממך לעשות זאת. התוסף הזה עובד טוב יותר "
-"כאשר מחברים ומשתמשים משויכים אחד לאחד."
-
-#: src/modules/multiple-authors/multiple-authors.php:2597
 msgid "This will display the authors."
 msgstr "זה יציג את המחברים."
 
@@ -4519,16 +3802,6 @@ msgid "Search for a fallback author"
 msgstr "חפש מחבר חלופי"
 
 #: src/modules/multiple-authors/multiple-authors.php:2791
-msgid ""
-"If you only have Guest Authors selected for a post, this user may be used "
-"as a fallback. WordPress sometimes requires a WordPress user to be assigned "
-"to each post. This user will not be visible on the front of your site."
-msgstr ""
-"אם יש לך רק מחברים אורחים שנבחרו לפוסט, משתמש זה עשוי לשמש כמחבר חלופי. "
-"WordPress לעיתים דורש שמשתמש WordPress יהיה משויך לכל פוסט. משתמש זה לא "
-"יהיה גלוי בחזית האתר שלך."
-
-#: src/modules/multiple-authors/multiple-authors.php:2809
 msgid "This will display the authors email in the author box."
 msgstr "זה יציג את המייל של המחבר בתיבת המחבר."
 
@@ -4549,18 +3822,6 @@ msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr "צור פרופילי מחברים של PublishPress עבור כל מחברי הפוסטים"
 
 #: src/modules/multiple-authors/multiple-authors.php:2887
-msgid ""
-"If a WordPress user is the author of a post, but does not have a "
-"PublishPress Authors profile, this will automatically create a profile for "
-"them."
-msgstr ""
-"אם משתמש WordPress הוא מחבר של פוסט, אך אין לו פרופיל של PublishPress "
-"Authors, זה ייצור אוטומטית פרופיל עבורם."
-
-#: src/modules/multiple-authors/multiple-authors.php:2887
-#: src/modules/multiple-authors/multiple-authors.php:2893
-#: src/modules/multiple-authors/multiple-authors.php:2899
-#: src/modules/multiple-authors/multiple-authors.php:2906
 msgid "Click here for documentation"
 msgstr "לחץ כאן לתיעוד"
 
@@ -4573,15 +3834,6 @@ msgid "Create PublishPress Authors Profiles for all users in a role"
 msgstr "צור פרופילי מחברים של PublishPress עבור כל המשתמשים בתפקיד"
 
 #: src/modules/multiple-authors/multiple-authors.php:2893
-msgid ""
-"This will find all the users in a role and create author profiles for them. "
-"You can choose the roles using the \"Automatically create author profiles\" "
-"setting."
-msgstr ""
-"זה ימצא את כל המשתמשים בתפקיד ויצור פרופילי מחברים עבורם. אתה יכול לבחור את "
-"התפקידים באמצעות ההגדרה \"צור פרופילי מחברים אוטומטית\"."
-
-#: src/modules/multiple-authors/multiple-authors.php:2894
 msgid "Create PublishPress Authors profiles"
 msgstr "צור פרופילים של מחברים ב-PublishPress"
 
@@ -4590,66 +3842,22 @@ msgid "Synchronize PublishPress Authors Fields and user profile fields"
 msgstr "סנכרן את שדות מחברים של PublishPress ושדות פרופיל המשתמש"
 
 #: src/modules/multiple-authors/multiple-authors.php:2899
-msgid ""
-"This will update all the author profiles in PublishPress Authors to match "
-"the default WordPress fields for each user."
-msgstr ""
-"זה יעדכן את כל פרופילי המחברים ב-PublishPress כך שיתאימו לשדות ברירת המחדל "
-"של WordPress עבור כל משתמש."
-
-#: src/modules/multiple-authors/multiple-authors.php:2905
 msgid "Synchronize the author and user URLs"
 msgstr "סנכרן את כתובות ה-URL של המחבר והמשתמש"
 
 #: src/modules/multiple-authors/multiple-authors.php:2906
-msgid ""
-"This will update all the Author URLs in PublishPress Authors to match the "
-"default WordPress URLs for each user."
-msgstr ""
-"זה יעדכן את כל כתובות ה-URL של המחברים ב-PublishPress כך שיתאימו לכתובות "
-"ה-URL ברירת המחדל של WordPress עבור כל משתמש."
-
-#: src/modules/multiple-authors/multiple-authors.php:2912
-#: src/modules/multiple-authors/multiple-authors.php:2914
 msgid "Create Author Categories"
 msgstr "צור קטגוריות מחברים"
 
 #: src/modules/multiple-authors/multiple-authors.php:2913
-msgid ""
-"This will create author categories table if missing and add default "
-"categories."
-msgstr "זה ייצור טבלה של קטגוריות מחברים אם היא חסרה ויוסיף קטגוריות ברירת מחדל."
-
-#: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "Copy Co-Authors Plus Data"
 msgstr "העתק נתוני Co-Authors Plus"
 
 #: src/modules/multiple-authors/multiple-authors.php:2927
-msgid ""
-"This action will copy the authors from the plugin Co-Authors Plus allowing "
-"you to migrate to PublishPress Authors without losing any data. This action "
-"can be run multiple times."
-msgstr ""
-"פעולה זו תעתיק את המחברים מהתוסף Co-Authors Plus ותאפשר לך לעבור "
-"ל-PublishPress Authors מבלי לאבד נתונים. פעולה זו יכולה להתבצע מספר פעמים."
-
-#: src/modules/multiple-authors/multiple-authors.php:2937
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr "מחק חיבורים בין פרופילי מחברים למשתמשים"
 
 #: src/modules/multiple-authors/multiple-authors.php:2938
-msgid ""
-"This action can reset the PublishPress Authors data before using other "
-"maintenance options. It will delete all author profiles that are mapped to "
-"a WordPress user account. This will not delete the WordPress user accounts, "
-"but any links between the posts and author profiles will be lost."
-msgstr ""
-"פעולה זו יכולה לאפס את נתוני PublishPress Authors לפני השימוש באפשרויות "
-"תחזוקה אחרות. היא תמחק את כל פרופילי המחברים שממופים לחשבון משתמש "
-"ב-WordPress. זה לא ימחק את חשבונות המשתמשים ב-WordPress, אך כל הקישורים בין "
-"הפוסטים לפרופילי המחברים יאבדו."
-
-#: src/modules/multiple-authors/multiple-authors.php:2939
 msgid "Delete all authors mapped to users"
 msgstr "מחק את כל המחברים הממופים למשתמשים"
 
@@ -4658,28 +3866,10 @@ msgid "Delete Guest Authors"
 msgstr "מחק מחברים אורחים"
 
 #: src/modules/multiple-authors/multiple-authors.php:2945
-msgid ""
-"This action can reset the PublishPress Authors data before using other "
-"maintenance options. Guest authors are author profiles that are not mapped "
-"to a WordPress user account. This action will delete all guest authors."
-msgstr ""
-"פעולה זו יכולה לאפס את נתוני PublishPress Authors לפני השימוש באפשרויות "
-"תחזוקה אחרות. מחברים אורחים הם פרופילי מחברים שאינם ממופים לחשבון משתמש "
-"ב-WordPress. פעולה זו תמחק את כל המחברים האורחים."
-
-#: src/modules/multiple-authors/multiple-authors.php:2946
 msgid "Delete all guest authors"
 msgstr "מחק את כל המחברים האורחים"
 
 #: src/modules/multiple-authors/multiple-authors.php:2952
-msgid ""
-"Please be careful clicking these buttons. Before clicking, we recommend "
-"taking a site backup in case anything goes wrong."
-msgstr ""
-"אנא היזהר בלחיצה על כפתורים אלו. לפני הלחיצה, אנו ממליצים לגבות את האתר "
-"במקרה שמשהו משתבש."
-
-#: src/modules/multiple-authors/multiple-authors.php:3155
 msgid "Author Profiles"
 msgstr "פרופילי מחברים"
 
@@ -4961,46 +4151,9 @@ msgstr "צור קשר"
 
 #: src/core/Plugin.php:563
 msgctxt "taxonomy general name"
-msgid "Authors"
-msgstr "מחברים"
-
-#: src/core/Plugin.php:568
-msgctxt "taxonomy singular name"
-msgid "Author"
-msgstr "מחבר"
-
-#: src/modules/author-boxes/author-boxes.php:411
-#, fuzzy, php-format
-msgctxt "Author Box post type name"
-msgid "%2$s"
-msgstr "%2$s"
-
-#: src/modules/author-boxes/author-boxes.php:412
-#, fuzzy, php-format
-msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
 #: src/modules/author-boxes/author-boxes.php:427
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
-msgid "%2$s"
-msgstr "%2$s"
-
-#: src/modules/author-custom-fields/author-custom-fields.php:166
-#, fuzzy, php-format
-msgctxt "Custom Field post type name"
-msgid "%2$s"
-msgstr "%2$s"
-
-#: src/modules/author-custom-fields/author-custom-fields.php:167
-#, fuzzy, php-format
-msgctxt "singular custom field post type name"
-msgid "%1$s"
-msgstr "%1$s"
-
-#: src/modules/author-custom-fields/author-custom-fields.php:182
-#, fuzzy, php-format
-msgctxt "custom field post type menu name"
-msgid "%2$s"
-msgstr "%2$s"
