@@ -2655,7 +2655,7 @@ class MA_Author_Boxes extends Module
                         </ul>
                         <p><?php
                             printf(
-                                esc_html__('You can read more information on the %s.'),
+                                esc_html__('You can read more information on the %s.', 'publishpress-authors'),
                                 '<a href="https://publishpress.com/knowledge-base/author-boxes-theme-templates/" target="_blank">' . esc_html__(
                                     'documentation page',
                                     'publishpress-authors'
