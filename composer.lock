@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "972ba62d8adead446beaef81ba8675ea",
+    "content-hash": "1de6f587d22012bf9ba588d8fcfc6996",
     "packages": [],
     "packages-dev": [
         {
@@ -63,16 +63,16 @@
         },
         {
             "name": "behat/behat",
-            "version": "v3.30.0",
+            "version": "v3.31.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Behat.git",
-                "reference": "be4af8c803a1ed589409a8a2eed01f9fb858e11d"
+                "reference": "7fbdcda54ed653f032dd4fe1da5b2bb1546b24d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Behat/zipball/be4af8c803a1ed589409a8a2eed01f9fb858e11d",
-                "reference": "be4af8c803a1ed589409a8a2eed01f9fb858e11d",
+                "url": "https://api.github.com/repos/Behat/Behat/zipball/7fbdcda54ed653f032dd4fe1da5b2bb1546b24d6",
+                "reference": "7fbdcda54ed653f032dd4fe1da5b2bb1546b24d6",
                 "shasum": ""
             },
             "require": {
@@ -93,9 +93,9 @@
             "require-dev": {
                 "opis/json-schema": "^2.5",
                 "php-cs-fixer/shim": "^3.89",
-                "phpstan/phpstan": "2.1.18",
+                "phpstan/phpstan": "2.1.46",
                 "phpunit/phpunit": "^9.6",
-                "rector/rector": "2.1.7",
+                "rector/rector": "2.3.9",
                 "sebastian/diff": "^4.0",
                 "symfony/filesystem": "^5.4 || ^6.4 || ^7.0",
                 "symfony/polyfill-php84": "^1.31",
@@ -147,7 +147,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Behat/Behat/issues",
-                "source": "https://github.com/Behat/Behat/tree/v3.30.0"
+                "source": "https://github.com/Behat/Behat/tree/v3.31.0"
             },
             "funding": [
                 {
@@ -163,7 +163,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-26T17:26:12+00:00"
+            "time": "2026-04-19T21:04:32+00:00"
         },
         {
             "name": "behat/gherkin",
@@ -1122,53 +1122,6 @@
                 "source": "https://github.com/Codeception/module-rest/tree/3.4.3"
             },
             "time": "2025-12-22T14:13:56+00:00"
-        },
-        {
-            "name": "codeception/module-sequence",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Codeception/module-sequence.git",
-                "reference": "9738e2eb06035a0975171a0aa3fce00d284b4dfb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-sequence/zipball/9738e2eb06035a0975171a0aa3fce00d284b4dfb",
-                "reference": "9738e2eb06035a0975171a0aa3fce00d284b4dfb",
-                "shasum": ""
-            },
-            "require": {
-                "codeception/codeception": "^5.0",
-                "php": "^8.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/Codeception/Util/sq.php"
-                ],
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Michael Bodnarchuk"
-                }
-            ],
-            "description": "Sequence module for Codeception",
-            "homepage": "https://codeception.com/",
-            "keywords": [
-                "codeception"
-            ],
-            "support": {
-                "issues": "https://github.com/Codeception/module-sequence/issues",
-                "source": "https://github.com/Codeception/module-sequence/tree/3.0.0"
-            },
-            "time": "2022-05-31T05:45:36+00:00"
         },
         {
             "name": "codeception/module-webdriver",
@@ -5987,16 +5940,16 @@
         },
         {
             "name": "publishpress/dev-workspace",
-            "version": "1.1.7",
+            "version": "1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/dev-workspace.git",
-                "reference": "27603e4e7025d7d158ef1b12cc9bd985f28508a5"
+                "reference": "7ec54605446279d139af526a8bfc019b01fada66"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/dev-workspace/zipball/27603e4e7025d7d158ef1b12cc9bd985f28508a5",
-                "reference": "27603e4e7025d7d158ef1b12cc9bd985f28508a5",
+                "url": "https://api.github.com/repos/publishpress/dev-workspace/zipball/7ec54605446279d139af526a8bfc019b01fada66",
+                "reference": "7ec54605446279d139af526a8bfc019b01fada66",
                 "shasum": ""
             },
             "require": {
@@ -6008,7 +5961,6 @@
                 "codeception/module-filesystem": "^3",
                 "codeception/module-phpbrowser": "^3",
                 "codeception/module-rest": "^3",
-                "codeception/module-sequence": "^3",
                 "codeception/module-webdriver": "^3",
                 "codeception/util-universalframework": "^1",
                 "composer-plugin-api": "^2.0",
@@ -6053,9 +6005,9 @@
             "description": "Shared Composer scripts for PublishPress plugins",
             "support": {
                 "issues": "https://github.com/publishpress/dev-workspace/issues",
-                "source": "https://github.com/publishpress/dev-workspace/tree/1.1.7"
+                "source": "https://github.com/publishpress/dev-workspace/tree/1.1.8"
             },
-            "time": "2026-04-15T13:42:56+00:00"
+            "time": "2026-04-17T19:00:24+00:00"
         },
         {
             "name": "publishpress/publishpress-phpcs-standards",
@@ -13395,12 +13347,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/wp-cli/wp-cli.git",
-                "reference": "53134e3c93c9f0a8f2276f1a3f9c688ee5f3e45d"
+                "reference": "abcfe295c630e44ef7805371464b687225b57a42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/53134e3c93c9f0a8f2276f1a3f9c688ee5f3e45d",
-                "reference": "53134e3c93c9f0a8f2276f1a3f9c688ee5f3e45d",
+                "url": "https://api.github.com/repos/wp-cli/wp-cli/zipball/abcfe295c630e44ef7805371464b687225b57a42",
+                "reference": "abcfe295c630e44ef7805371464b687225b57a42",
                 "shasum": ""
             },
             "require": {
@@ -13471,7 +13423,7 @@
                 "issues": "https://github.com/wp-cli/wp-cli/issues",
                 "source": "https://github.com/wp-cli/wp-cli"
             },
-            "time": "2026-04-15T08:17:00+00:00"
+            "time": "2026-04-17T07:15:32+00:00"
         },
         {
             "name": "wp-cli/wp-cli-bundle",
