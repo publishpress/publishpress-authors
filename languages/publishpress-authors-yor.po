@@ -9,10 +9,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-26 12:05+0000\n"
-"PO-Revision-Date: 2026-04-15 02:56+0000\n"
+"POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
+"PO-Revision-Date: 2026-04-20 12:08+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
+"Language: yor\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: publishpress-authors.php\n"
@@ -29,7 +30,6 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-4: vendor\n"
 "X-Poedit-SearchPathExcluded-5: *.min.js\n"
 "X-Poedit-SearchPathExcluded-6: src/assets/lib\n"
-"Language: yor\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: publishpress-authors.php:5
@@ -52,10 +52,10 @@ msgid ""
 "PublishPress Authors allows you to add multiple authors and guest authors "
 "to WordPress posts"
 msgstr ""
-"PublishPress Awọn Onkọwe gba ọ laaye lati fi ọpọlọpọ awọn onkọwe ati awọn "
-"onkọwe alejo kun si awọn ifiweranṣẹ WordPress"
+"PublishPress Authors n jẹ ki o fi awọn onkọwe pupọ ati awọn onkọwe alejo "
+"kun si awọn ifiweranṣẹ WordPress"
 
-#: publishpress-authors.php:11, fuzzy
+#: publishpress-authors.php:11
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -71,8 +71,8 @@ msgid ""
 "You're using PublishPress Authors Free. The Pro version has more features "
 "and support. %sUpgrade to Pro%s"
 msgstr ""
-"Iwọ nlo PublishPress Authors Free. Ẹya Pro ni awọn ẹya diẹ sii ati "
-"atilẹyin. %sṢe igbesoke si Pro%s"
+"Iwọ n lo PublishPress Authors Free. Ẹya Pro ni awọn ẹya diẹ sii ati "
+"atilẹyin. %sGbe si Pro%s"
 
 #: includes.php:63
 #: src/modules/author-boxes/author-boxes.php:3042
@@ -261,8 +261,8 @@ msgid ""
 "You do not have permission to edit this author profile because it is linked "
 "to a user account you do not have permission to edit."
 msgstr ""
-"O ko ni aṣẹ lati ṣatunkọ profaili onkọwe yii nitori pe o ni asopọ si iroyin "
-"olumulo ti o ko ni aṣẹ lati ṣatunkọ."
+"Iwọ ko ni igbanilaaye lati ṣatunkọ profaili onkọwe yii nitori pe o ni asopọ "
+"si iroyin olumulo ti o ko ni igbanilaaye lati ṣatunkọ."
 
 #: src/core/Classes/Admin_Ajax.php:374
 #: src/core/Classes/Author_Editor.php:1008
@@ -270,8 +270,8 @@ msgid ""
 "Sorry, this WordPress user is already mapped to another Author. By default, "
 "each user can only be connected to one Author profile."
 msgstr ""
-"E ma binu, olumulo WordPress yii ti wa ni asopọ si onkọwe miiran tẹlẹ. Ni "
-"aiyipada, olumulo kọọkan le ni asopọ si profaili onkọwe kan ṣoṣo."
+"E ma binu, olumulo WordPress yii ti wa ni iṣapeye si onkọwe miiran tẹlẹ. Ni "
+"aiyipada, olumulo kọọkan le so pọ si profaili onkọwe kan ṣoṣo."
 
 #: src/core/Classes/Admin_Ajax.php:386
 #: src/core/Classes/Author_Editor.php:1100
@@ -295,8 +295,8 @@ msgid ""
 "No post ID provided for Authors_Iterator constructor. Are you not in a loop "
 "or is $post not set?"
 msgstr ""
-"Ko si ID ifiweranṣẹ ti a pese fun onkọwe_Iterator constructor. Ṣe o ko wa "
-"ninu iyipo tabi $post ko ṣeto?"
+"Ko si ID ifiweranṣẹ ti a pese fun onkọwe_Iterator ti kọnṣọ. Ṣe o ko wa ninu "
+"iyipo tabi $post ko ṣeto?"
 
 #: src/core/Classes/Author_Editor.php:47
 #: src/core/Plugin.php:1618
@@ -391,8 +391,8 @@ msgid ""
 "(Uses the %1s Email field %2s to find the Gravatar account if default "
 "avatar is not uploaded in Authors Settings)"
 msgstr ""
-"(Nlo aaye %1s Email %2s lati wa akọọlẹ Gravatar ti a ko ba gbe avatar "
-"aiyipada silẹ ni Eto Awọn Onkọwe)"
+"(Nlo aaye %1s Email %2s lati wa iroyin Gravatar ti a ko ba gbe avatar "
+"aiyipada silẹ ni Awọn eto Onkọwe)"
 
 #: src/core/Classes/Author_Editor.php:399
 msgid "Custom image"
@@ -414,7 +414,7 @@ msgid ""
 "Author is added to new posts."
 msgstr ""
 "Yan Ẹka aiyipada fun Onkọwe yii. Eyi yoo ṣee lo nigbati a ba fi Onkọwe kun "
-"awọn ifiweranṣẹ tuntun."
+"si awọn ifiweranṣẹ tuntun."
 
 #: src/core/Classes/Author_Editor.php:418
 msgid "Do not show this profile publicly"
@@ -443,8 +443,8 @@ msgid ""
 "profile."
 msgstr ""
 "Ṣẹda profaili onkọwe fun iroyin olumulo lọwọlọwọ. O le yan awọn olumulo ti "
-"a gba laaye lati ṣe atunṣe awọn ifiweranṣẹ. Olumulo yii yoo ni anfani lati "
-"mu profaili wọn pọ si."
+"a fun ni igbanilaaye lati ṣatunkọ awọn ifiweranṣẹ. Olumulo yii yoo ni "
+"anfani lati ṣe imudojuiwọn profaili wọn."
 
 #: src/core/Classes/Author_Editor.php:789
 msgid ""
@@ -452,16 +452,16 @@ msgid ""
 "the \"Guest Author\" role and will not be able to login to the WordPress "
 "dashboard or update their profile."
 msgstr ""
-"Ṣẹda profaili onkọwe kan ati iroyin olumulo ti o ni asopọ. Iroyin yii yoo "
-"wa ninu ipa \"Onkọwe Alejo\" ati pe ko ni anfani lati wọle si dasibodu "
-"WordPress tabi mu profaili wọn pọ si."
+"Ṣẹda profaili onkọwe ati iroyin olumulo ti a so pọ. Iroyin yii yoo wa ni "
+"ipa “Onkọwe Alejo” ati pe ko le wọle si dashboard WordPress tabi ṣe "
+"imudojuiwọn profaili wọn."
 
 #: src/core/Classes/Author_Editor.php:796
 msgid ""
 "Create an author profile with no linked user account. This option is "
 "lightweight but may have compatibility issues with other themes and plugins."
 msgstr ""
-"Ṣẹda profaili onkọwe laisi iroyin olumulo ti o ni asopọ. Yiyan yii jẹ imọra "
+"Ṣẹda profaili onkọwe pẹlu iroyin olumulo ti a ko so pọ. Yiyan yii jẹ ina "
 "ṣugbọn o le ni awọn iṣoro ibamu pẹlu awọn akọle ati awọn afikun miiran."
 
 #: src/core/Classes/Author_Editor.php:815
@@ -586,9 +586,9 @@ msgid ""
 "an author. For some tasks, it can be helpful to have a user selected here. "
 "This user will not be visible on the front of your site."
 msgstr ""
-"Yiyan yii n ṣafihan nitori ko ni Olumulo WordPress ti a yan gẹgẹ bi onkọwe. "
-"Fun diẹ ninu awọn iṣẹ, o le wulo lati ni olumulo ti a yan nibi. Olumulo yii "
-"ko ni han ni iwaju aaye rẹ."
+"Yiyan yii n fihan nitori ko si olumulo WordPress ti a yan gẹgẹbi onkọwe. "
+"Fun diẹ ninu awọn iṣẹ, o le jẹ iranlọwọ lati ni olumulo ti a yan nibi. "
+"Olumulo yii ko ni han ni iwaju aaye rẹ."
 
 #: src/core/Classes/Post_Editor.php:474
 msgid "Search for an user"
@@ -738,7 +738,7 @@ msgid ""
 "This name is used in several default displays and some search engine "
 "integrations."
 msgstr ""
-"Orukọ yii ni a lo ni ọpọlọpọ awọn ifihan aiyipada ati diẹ ninu awọn iṣọpọ "
+"Orukọ yii ni a lo ninu ọpọlọpọ awọn ifihan aiyipada ati diẹ ninu awọn isopọ "
 "ẹrọ wiwa."
 
 #: src/core/Plugin.php:537
@@ -747,8 +747,8 @@ msgid ""
 "Mapped User, this URL is taken from the user’s account and can not be "
 "changed."
 msgstr ""
-"Eyi jẹ apakan ti URL fun oju-iwe profaili onkọwe. Ti o ba yan Olumulo "
-"Mapped, URL yii ni a mu lati akọọlẹ olumulo ati pe ko le yipada."
+"Eyi jẹ apakan ti URL fun oju-iwe profaili onkọwe. Ti o ba yan Olumulo ti a "
+"ṣe iṣapeye, URL yii ni a mu lati iroyin olumulo ati pe ko le yipada."
 
 #: src/core/Plugin.php:573
 msgid "Search Authors"
@@ -852,22 +852,22 @@ msgid ""
 "Click on an author to change them. Drag to change their order. Click on "
 "<strong>Remove</strong> to remove them."
 msgstr ""
-"Tẹ lori onkọwe lati yi wọn pada. Fa lati yi ipo wọn pada. Tẹ lori "
-"<strong>Yọ</strong> lati yọ wọn."
+"Tẹ lori onkọwe kan lati yi wọn pada. Fa lati yi aṣẹ wọn pada. Tẹ lori "
+"<strong>Yọkuro</strong> lati yọ wọn kuro."
 
 #: src/core/Plugin.php:1632
 msgid ""
 "Are you sure you want to delete the authors profiles mapped to users? This "
 "action can't be undone."
 msgstr ""
-"Ṣe o da ọ loju pe o fẹ pa awọn profaili onkọwe ti a so mọ awọn olumulo? Iṣẹ "
+"Ṣe o daju pe o fẹ pa awọn profaili onkọwe ti a so pọ si awọn olumulo? Iṣe "
 "yii ko le yipada."
 
 #: src/core/Plugin.php:1636
 msgid ""
 "Are you sure you want to delete the guest authors profiles? This action "
 "can't be undone."
-msgstr "Ṣe o da ọ loju pe o fẹ pa awọn profaili onkọwe alejo? Iṣẹ yii ko le yipada."
+msgstr "Ṣe o daju pe o fẹ pa awọn profaili onkọwe alejo? Iṣe yii ko le yipada."
 
 #: src/core/Plugin.php:1640
 msgid "Are you sure you want to create author profiles for the missed post authors?"
@@ -1352,8 +1352,8 @@ msgid ""
 "You can use this data to export your author box design and import it to a "
 "new site."
 msgstr ""
-"O le lo data yii lati gbe apẹrẹ apoti onkọwe rẹ jade ki o si gbe e si aaye "
-"tuntun."
+"O le lo data yii lati gbe apẹẹrẹ apoti onkọwe rẹ jade ki o si gbe e wọle si "
+"aaye tuntun."
 
 #: src/modules/author-boxes/author-boxes.php:2619
 #: src/modules/author-boxes/author-boxes.php:2690
@@ -1394,9 +1394,7 @@ msgstr "Báwo ni láti ṣe àtúnṣe àti lo fáìlì àpẹẹrẹ àkóónú
 msgid ""
 "Click the \"Generate Template\" button under the text area. Wait for the "
 "code to be generated."
-msgstr ""
-"Tẹ bọtini \"Ṣe agbekalẹ awoṣe\" ti o wa ni isalẹ agbegbe ọrọ. Duro de koodu "
-"lati jẹ agbekalẹ."
+msgstr "Tẹ bọtini “Ṣẹda Àpẹẹrẹ” ni isalẹ agbegbe ọrọ. Duro de koodu naa lati ṣelọpọ."
 
 #: src/modules/author-boxes/author-boxes.php:2652
 #, php-format
@@ -1407,9 +1405,9 @@ msgid ""
 "/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
 "my-first-custom-author-template.php %7s ."
 msgstr ""
-"Ṣẹda faili awoṣe php ofo pẹlu slug faili ti o fẹ ninu %1s "
+"Ṣẹda faili àpẹẹrẹ php ofo pẹlu slug faili ti o fẹ ninu %1s "
 "/publishpress-authors/author-boxes/ %2s folda ti akọle rẹ. %3s Fun apẹẹrẹ, "
-"faili le wa nibi: %4s "
+"faili naa le wa nibi: %4s "
 "/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
 "my-first-custom-author-template.php %7s ."
 
@@ -1421,7 +1419,12 @@ msgstr "Daakọ koodu ti a ṣe ati lẹẹmọ sinu faili tuntun ti a ṣẹda.
 msgid ""
 "Congratulations. Your can now choose your template inside the PublishPress "
 "Authors Settings."
-msgstr "Ikini. O le bayi yan awoṣe rẹ ninu Awọn eto Onkọwe PublishPress."
+msgstr "E ku oriire. O le bayi yan àpẹẹrẹ rẹ laarin Awọn Eto PublishPress Authors."
+
+#: src/modules/author-boxes/author-boxes.php:2658
+#, php-format
+msgid "You can read more information on the %s."
+msgstr "O le ka alaye diẹ sii lori %s."
 
 #: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"
@@ -1444,7 +1447,7 @@ msgid ""
 "Reorder the fields by dragging them to the correct position and saving your "
 "changes."
 msgstr ""
-"Tun ṣeto awọn aaye nipa gbigbe wọn si ipo to tọ ki o si fipamọ awọn ayipada "
+"Tunṣe awọn aaye nipasẹ gbigbe wọn si ipo to tọ ki o si fipamọ awọn ayipada "
 "rẹ."
 
 #: src/modules/author-boxes/author-boxes.php:2762
@@ -1484,7 +1487,7 @@ msgid ""
 "PublishPress Authors Pro allows you to unlock the full potential of Author "
 "Categories."
 msgstr ""
-"PublishPress Awọn Onkọwe Pro gba ọ laaye lati ṣii agbara kikun ti Awọn Ẹka "
+"PublishPress Authors Pro gba ọ laaye lati ṣii agbara kikun ti Awọn ẹka "
 "Onkọwe."
 
 #: src/modules/author-boxes/author-boxes.php:3039
@@ -1526,8 +1529,8 @@ msgid ""
 "Field Order updated. %1sClick here%2s to reload this page to see new order "
 "changes."
 msgstr ""
-"Ilana aṣẹ ti ni imudojuiwọn. %1sTẹ nibi%2s lati tun oju-iwe yii ṣe lati wo "
-"awọn ayipada aṣẹ tuntun."
+"Aṣẹ aaye ti ni imudojuiwọn. %1sTẹ nibi%2s lati tunṣe oju-iwe yii lati wo "
+"awọn ayipada titun aṣẹ."
 
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:28
 msgid "Boxed"
@@ -2190,8 +2193,8 @@ msgid ""
 "Enter a custom URL for the \"View All Posts\" link. Leave empty to use the "
 "default author posts page."
 msgstr ""
-"Tẹ URL aṣa kan fun ọna asopọ \"Wo Gbogbo Awọn Ifiweranṣẹ\". Fi silẹ ofo "
-"lati lo oju-iwe awọn ifiweranṣẹ onkọwe aiyipada."
+"Tẹ URL aṣa fun ọna asopọ \"Wo Gbogbo Awọn Posts\". Fi silẹ silẹ lati lo "
+"oju-iwe awọn ifiweranṣẹ onkọwe aiyipada."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:453
 msgid "View All Posts Link Size"
@@ -2254,8 +2257,8 @@ msgid ""
 "Selecting an option here will overwrite author boxes settings to match "
 "selected layout."
 msgstr ""
-"Yiyan aṣayan kan nibi yoo kọ awọn eto apoti onkọwe silẹ lati ba apẹrẹ ti a "
-"yan mu."
+"Yiyan aṣayan kan nibi yoo kọ awọn eto apoti onkọwe lati ba irisi ti a yan "
+"mu."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:612
 msgid "Built-in Layout"
@@ -2355,7 +2358,7 @@ msgstr "Ibi akọle Ẹgbẹ Ẹka Onkọwe"
 msgid ""
 "Enter the text that should be added before group title. This field accepts "
 "basic HTML."
-msgstr "Tẹ ọrọ ti o yẹ ki o wa ni afikun ṣaaju akọle ẹgbẹ. Ibi yii gba HTML ipilẹ."
+msgstr "Tẹ ọrọ ti o yẹ ki o jẹ afikun ṣaaju akọle ẹgbẹ. Aaye yii gba HTML ipilẹ."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:721
 msgid "Author Category Group Title Suffix"
@@ -2365,7 +2368,7 @@ msgstr "Ipari akọle Ẹgbẹ Ẹka Onkọwe"
 msgid ""
 "Enter the text that should be added after group title. This field accepts "
 "basic HTML."
-msgstr "Tẹ ọrọ ti o yẹ ki o wa ni afikun lẹyin akọle ẹgbẹ. Ibi yii gba HTML ipilẹ."
+msgstr "Tẹ ọrọ ti o yẹ ki o jẹ afikun lẹhin akọle ẹgbẹ. Aaye yii gba HTML ipilẹ."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:729
 msgid "Author Category Group Font Size"
@@ -2415,9 +2418,9 @@ msgid ""
 "element. To make this display into a link, select 'link' and enter the "
 "first part of the URL into the 'Prefix' field."
 msgstr ""
-"'span' yoo han gẹgẹ bi eroja inline ati 'div' yoo han gẹgẹ bi eroja "
-"bulọọki. Lati ṣe eyi han gẹgẹ bi ọna asopọ, yan 'link' ki o si tẹ apakan "
-"akọkọ ti URL sinu aaye 'Prefix'."
+"'span' yoo han gẹgẹbi eroja inline ati 'div' yoo han gẹgẹ bi eroja bulọọki. "
+"Lati jẹ ki eyi han gẹgẹbi ọna asopọ, yan 'link' ki o si tẹ apakan akọkọ ti "
+"URL sinu aaye 'Prefix'."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:828
 msgid "link"
@@ -2433,8 +2436,8 @@ msgid ""
 "This is useful when linking to an email, URL, or phone number. For example, "
 "'mailto:', 'https://' or 'tel:' can be added as the prefix."
 msgstr ""
-"Eyi wulo nigbati o ba so pọ si imeeli, URL, tabi nọmba foonu. Fun apẹẹrẹ, "
-"'mailto:', 'https://' tabi 'tel:' le ṣee fi kun gẹgẹ bi akọle."
+"Eyi wulo nigbati o ba nwọle si imeeli, URL, tabi nọmba foonu. Fun apẹẹrẹ, "
+"'mailto:', 'https://' tabi 'tel:' le ṣee fi kun gẹgẹbi prefix."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:851
 #, php-format
@@ -2643,8 +2646,8 @@ msgid ""
 "Select post types to include in recent posts. Leave empty to show all post "
 "types."
 msgstr ""
-"Yan awọn iru ifiweranṣẹ lati fi kun ninu awọn ifiweranṣẹ tuntun. Fi silẹ "
-"laisi nkan lati fihan gbogbo awọn iru ifiweranṣẹ."
+"Yan awọn iru ifiweranṣẹ lati ni ninu awọn ifiweranṣẹ tuntun. Fi silẹ silẹ "
+"lati fi gbogbo awọn iru ifiweranṣẹ han."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
 msgid "Select post types..."
@@ -2755,7 +2758,7 @@ msgstr "Ifihan inline onkọwe"
 msgid ""
 "This will display author in an inline format side by side instead of block "
 "format."
-msgstr "Eyi yoo ṣe afihan onkọwe ni ọna inline lẹgbẹẹ dipo ọna bulọọki."
+msgstr "Eyi yoo fi onkọwe han ni ọna inline lẹgbẹẹ dipo ọna bulọọki."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1475
 msgid "Author Row Prefix"
@@ -2765,7 +2768,7 @@ msgstr "Ipele Prefix ti Onkọwe"
 msgid ""
 "Enter the text that should be added before authors. This field accepts "
 "basic HTML."
-msgstr "Tẹ ọrọ ti o yẹ ki o wa ni afikun ṣaaju awọn onkọwe. Ibi yii gba HTML ipilẹ."
+msgstr "Tẹ ọrọ ti o yẹ ki o jẹ afikun ṣaaju awọn onkọwe. Aaye yii gba HTML ipilẹ."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1483
 msgid "Author Row Suffix"
@@ -2775,7 +2778,7 @@ msgstr "Ipele Suffix ti Onkọwe"
 msgid ""
 "Enter the text that should be added after authors. This field accepts basic "
 "HTML."
-msgstr "Tẹ ọrọ ti o yẹ ki o wa ni afikun lẹyin awọn onkọwe. Ibi yii gba HTML ipilẹ."
+msgstr "Tẹ ọrọ ti o yẹ ki o jẹ afikun lẹhin awọn onkọwe. Aaye yii gba HTML ipilẹ."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1491
 msgid "Author Separator"
@@ -2786,7 +2789,7 @@ msgid ""
 "You can specify a separator such as ',' to separate authors. This field "
 "accepts basic HTML."
 msgstr ""
-"O le ṣe afihan eya kan gẹgẹ bi ',' lati ya awọn onkọwe. Ọrọ yii gba HTML "
+"O le ṣe alaye separator bii ',' lati ya awọn onkọwe. Aaye yii gba HTML "
 "ipilẹ."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1499
@@ -2977,9 +2980,9 @@ msgid ""
 "will be added to post's reviewedBy property. You can read more %1$s in this "
 "guide.%2$s"
 msgstr ""
-"Apeere: nigbati iye yii ba ti ṣeto si reviewedBy, gbogbo awọn olumulo ninu "
-"ẹka yii yoo wa ni afikun si ohun-ini reviewedBy ti ifiweranṣẹ. O le ka "
-"siwaju %1$s ninu itọsọna yii.%2$s"
+"Apẹẹrẹ: nigbati iye yii ba ṣeto si reviewedBy, gbogbo awọn olumulo ni ẹka "
+"yii yoo jẹ afikun si ohun-ini reviewedBy ti ifiweranṣẹ. O le ka diẹ sii "
+"%1$s ninu itọsọna yii.%2$s"
 
 #: src/modules/author-categories/author-categories.php:634
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:79
@@ -2997,7 +3000,7 @@ msgid ""
 "Select which post types this category applies to. Leave empty for all post "
 "types."
 msgstr ""
-"Yan iru awọn ifiweranṣẹ wo ni ẹka yii yẹ. Fi silẹ fun gbogbo iru awọn "
+"Yan iru awọn ifiweranṣẹ ti ẹka yii lo. Fi silẹ silẹ fun gbogbo awọn iru "
 "ifiweranṣẹ."
 
 #: src/modules/author-categories/author-categories.php:683
@@ -3159,7 +3162,7 @@ msgid ""
 "The slug is used in code to reference this author field. It is all "
 "lowercase and contains only letters, numbers, and hyphens."
 msgstr ""
-"Slag ni a lo ninu koodu lati tọka si aaye onkọwe yii. O jẹ gbogbo lẹta "
+"Slug ni a lo ninu koodu lati tọka si aaye onkọwe yii. O wa ni gbogbo lẹta "
 "kekere ati pe o ni awọn lẹta, awọn nọmba, ati awọn hyphens nikan."
 
 #: src/modules/author-custom-fields/author-custom-fields.php:396
@@ -3175,8 +3178,8 @@ msgid ""
 "This feature will add the SameAs property to this link so that search "
 "engines realize that the social profile is connected to this author."
 msgstr ""
-"Iṣẹ-ṣiṣe yii yoo fi ohun-ini SameAs kun ọna ọna yii ki awọn ẹrọ wiwa le mọ "
-"pe profaili awujọ ni asopọ si onkọwe yii."
+"Iṣẹ yii yoo fi ohun-ini SameAs kun si ọna asopọ yii ki awọn ẹrọ wiwa le mọ "
+"pe profaili awujọ jẹ asopọ si onkọwe yii."
 
 #: src/modules/author-custom-fields/author-custom-fields.php:422
 #, php-format
@@ -3184,8 +3187,8 @@ msgid ""
 "Add a Schema.org property to this field. Examples include alumniOf, "
 "worksFor, and birthPlace. %1$sClick here for documentation.%2$s"
 msgstr ""
-"Fi ohun-ini Schema.org kun si aaye yii. Apẹẹrẹ ni alumniOf, worksFor, ati "
-"birthPlace. %1$sTẹ nibi fun iwe aṣẹ.%2$s"
+"Fi ohun-ini Schema.org kun si aaye yii. Awọn apẹẹrẹ pẹlu alumniOf, "
+"worksFor, ati birthPlace. %1$sTẹ nibi fun iwe afọwọkọ.%2$s"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:434
 msgid "Show in REST API"
@@ -3225,8 +3228,8 @@ msgid ""
 "This description appears under the fields and helps users understand their "
 "choice."
 msgstr ""
-"Apejuwe yi han ni isalẹ awọn aaye ati iranlọwọ awọn olumulo lati loye yiyan "
-"wọn."
+"Apejuwe yii han ni isalẹ awọn aaye ati pe o ṣe iranlọwọ fun awọn olumulo "
+"lati ni oye yiyan wọn."
 
 #: src/modules/author-custom-fields/author-custom-fields.php:801
 msgid "Status"
@@ -3247,7 +3250,7 @@ msgid ""
 "and more."
 msgstr ""
 "Pẹlu PublishPress Authors Pro, o le fi awọn aaye tuntun kun fun awọn "
-"nẹtiwọọki awujọ ati bẹbẹ lọ."
+"nẹtiwọọki awujọ ati diẹ sii."
 
 #: src/modules/author-custom-fields/author-custom-fields.php:1111
 msgid "Field Order updated."
@@ -3402,8 +3405,8 @@ msgid ""
 "Select an option to limit the results to selected user roles, author types, "
 "specific authors or author Categories."
 msgstr ""
-"Yan aṣayan kan lati dín awọn abajade si awọn ipa olumulo ti a yan, awọn iru "
-"onkọwe, awọn onkọwe pato tabi Awọn ẹka onkọwe."
+"Yan aṣayan kan lati fi opin si awọn abajade si awọn ipa olumulo ti a yan, "
+"awọn oriṣi onkọwe, awọn onkọwe pato tabi awọn ẹka onkọwe."
 
 #: src/modules/author-list/author-list.php:441
 #: src/modules/author-list/author-list.php:455
@@ -3419,8 +3422,8 @@ msgid ""
 "Select an option to exclude selected user roles, author types, specific "
 "authors or author Categories from Author list."
 msgstr ""
-"Yan aṣayan kan lati yọ awọn ipa olumulo ti a yan, awọn iru onkọwe, awọn "
-"onkọwe pato tabi Awọn ẹka onkọwe kuro ninu atokọ Onkọwe."
+"Yan aṣayan kan lati yọ awọn ipa olumulo ti a yan, awọn oriṣi onkọwe, awọn "
+"onkọwe pato tabi awọn ẹka onkọwe kuro ninu atokọ Onkọwe."
 
 #: src/modules/author-list/author-list.php:468
 msgid "Authors Per Page"
@@ -3439,9 +3442,9 @@ msgid ""
 "Enable this option to show all authors, including those without any posts. "
 "Disable this option to show only authors who are assigned to posts."
 msgstr ""
-"Mu aṣayan yii ṣiṣẹ lati fi han gbogbo awọn onkọwe, pẹlu awọn ti ko ni awọn "
-"ifiweranṣẹ. Pa aṣayan yii mọ lati fi han nikan awọn onkọwe ti a ti yan si "
-"awọn ifiweranṣẹ."
+"Mu aṣayan yii ṣiṣẹ lati fi gbogbo awọn onkọwe han, pẹlu awọn ti ko ni awọn "
+"ifiweranṣẹ. Pa aṣayan yii mọ lati fi awọn onkọwe ti a yan si awọn "
+"ifiweranṣẹ nikan han."
 
 #: src/modules/author-list/author-list.php:488
 msgid "Configure Author List Options"
@@ -3452,8 +3455,8 @@ msgid ""
 "Authors Pro allows you to add extra features to the Authors List. These "
 "features include pagination, choose the order of authors, and much more."
 msgstr ""
-"Awọn Onkọwe Pro n jẹ ki o ṣafikun awọn ẹya afikun si Akojọ Awọn Onkọwe. "
-"Awọn ẹya wọnyi pẹlu pagination, yan aṣẹ awọn onkọwe, ati pupọ diẹ sii."
+"Authors Pro gba ọ laaye lati fi awọn ẹya afikun kun si Atokọ awọn Onkọwe. "
+"Awọn ẹya wọnyi pẹlu pagination, yan ilana awọn onkọwe, ati diẹ sii."
 
 #: src/modules/author-list/author-list.php:494
 msgid "Order By"
@@ -3469,9 +3472,9 @@ msgid ""
 "specific time. This option accepts date values such as 1 week ago, 1 month "
 "ago, 6 months ago, 1 year ago etc."
 msgstr ""
-"O le ni ihamọ atokọ onkọwe si awọn olumulo ti o ni ifiweranṣẹ ti a tẹjade "
-"laarin akoko kan pato. Aṣayan yii gba awọn iye ọjọ gẹgẹbi 1 ọsẹ sẹyin, 1 "
-"osu sẹyin, 6 osu sẹyin, 1 ọdun sẹyin ati bẹbẹ lọ."
+"O le fi atokọ onkọwe si awọn olumulo ti o ni ifiweranṣẹ ti a tẹjade laarin "
+"akoko kan. Aṣayan yii gba awọn iye ọjọ gẹgẹ bi 1 ọsẹ sẹyin, 1 oṣu sẹyin, 6 "
+"oṣu sẹyin, 1 ọdun sẹyin ati bẹbẹ lọ."
 
 #: src/modules/author-list/author-list.php:535
 msgid "Show Search Box"
@@ -3486,9 +3489,9 @@ msgid ""
 "Author Pro allows you to add a search box to the Authors List. You can also "
 "show a dropdown menu that allows users to search on specific author fields."
 msgstr ""
-"Onkọwe Pro n gba ọ laaye lati fi apoti àwárí kun Akojọ Onkọwe. O tun le "
-"ṣafihan akojọ aṣayan ti o gba awọn olumulo laaye lati wa lori awọn aaye "
-"onkọwe kan pato."
+"Author Pro gba ọ laaye lati fi apoti wiwa kun si Atokọ awọn Onkọwe. O tun "
+"le fi akojọ aṣayan ti o mu ki awọn olumulo wa lori awọn aaye onkọwe pato "
+"han."
 
 #: src/modules/author-list/author-list.php:550
 msgid "Search Field Dropdown"
@@ -3499,8 +3502,8 @@ msgid ""
 "You can also show a dropdown menu that allows users to search on specific "
 "author fields."
 msgstr ""
-"O tun le fi han akojọ aṣayan dropdown ti o fun laaye awọn olumulo lati wa "
-"lori awọn aaye onkọwe pato."
+"O tun le fi akojọ aṣayan ti o mu ki awọn olumulo wa lori awọn aaye onkọwe "
+"pato han."
 
 #: src/modules/author-list/author-list.php:600
 msgid "Author Recent List"
@@ -3551,8 +3554,8 @@ msgid ""
 "This is a quick preview of this Author List. Test on frontend pages to see "
 "exactly how it looks with your theme."
 msgstr ""
-"Eyi jẹ iṣafihan iyara ti Atokọ Onkọwe yii. Ṣe idanwo lori awọn oju-iwe "
-"iwaju lati rii daju bi o ṣe n wo pẹlu akori rẹ."
+"Eyi jẹ iworan iyara ti Atokọ Onkọwe yii. Danwo lori awọn oju-iwe iwaju lati "
+"rii pato bi o ṣe n wo pẹlu akori rẹ."
 
 #: src/modules/author-list/author-list.php:1380
 msgid "Invalid form"
@@ -3787,8 +3790,8 @@ msgid ""
 "PublishPress Blocks is a free plugin with full support for PublishPress "
 "Authors."
 msgstr ""
-"PublishPress Blocks jẹ afikun ọfẹ pẹlu atilẹyin kikun fun PublishPress Awọn "
-"Onkọwe."
+"PublishPress Blocks jẹ afikun ọfẹ pẹlu atilẹyin kikun fun PublishPress "
+"Authors."
 
 #: src/modules/modules-settings/modules-settings.php:319
 msgid "Install this plugin to showcase content by your Authors."
@@ -3806,7 +3809,7 @@ msgid ""
 "accordions, galleries, tables, and more."
 msgstr ""
 "PublishPress Blocks ni ju 20 awọn bulọọki Gutenberg afikun pẹlu awọn "
-"accordion, awọn ile-iṣere, awọn tabili, ati diẹ sii."
+"akordeon, awọn ile-iṣọ, awọn tabili, ati diẹ sii."
 
 #: src/modules/modules-settings/modules-settings.php:324
 msgid "Click here to install PublishPress Blocks"
@@ -3852,9 +3855,9 @@ msgid ""
 "allowing you to migrate to PublishPress Authors without losing any data "
 "including post author relation. This action can be run multiple times."
 msgstr ""
-"Igbese yii yoo daakọ awọn onkọwe lati afikun Molongui Authorship ti o fun ọ "
-"laaye lati ṣe gbigbe si awọn Onkọwe PublishPress laisi padanu eyikeyi data "
-"pẹlu ibasepọ onkọwe ifiweranṣẹ. Igbese yii le ṣee ṣe ni ọpọlọpọ igba."
+"Iṣe yii yoo da awọn onkọwe pada lati afikun Molongui Authorship ti o fun "
+"laaye lati gö PublishPress Authors laisi padanu eyikeyi data pẹlu ibatan "
+"onkọwe ifiweranṣẹ. Iṣe yii le ṣee ṣe ni ọpọlọpọ awọn igba."
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:187
 msgid "It looks like you have Molongui Authorship installed."
@@ -4116,7 +4119,7 @@ msgstr "Apoti Awọn Onkọwe"
 msgid ""
 "With this shortcode you can display the author box in any part of the "
 "content. "
-msgstr "Pẹlu shortcode yii o le fihan apoti onkọwe ni eyikeyi apakan ti akoonu."
+msgstr "Pẹlu shortcode yii o le fi apoti onkọwe han ni eyikeyi apakan ti akoonu."
 
 #: src/modules/multiple-authors/multiple-authors.php:1417
 #, php-format
@@ -4124,7 +4127,7 @@ msgid ""
 "You can specify layout by using author boxes layout slug. You can see full "
 "details of each layout option %1$s in this guide %2$s."
 msgstr ""
-"O le ṣe afihan apẹrẹ nipa lilo slug eya apoti onkọwe. O le wo awọn alaye "
+"O le ṣalaye apẹrẹ nipa lilo slug apẹrẹ apoti onkọwe. O le rii awọn alaye "
 "kikun ti gbogbo aṣayan apẹrẹ %1$s ninu itọsọna yii %2$s."
 
 #: src/modules/multiple-authors/multiple-authors.php:1428
@@ -4132,7 +4135,7 @@ msgstr ""
 msgid ""
 "You can also decide whether or not to show the main title, using %1$s or "
 "%2$s ."
-msgstr "O tun le pinnu boya lati fihan akọle akọkọ, nipa lilo %1$s tabi %2$s ."
+msgstr "O tun le pinnu boya lati fi akọle pataki han, lilo %1$s tabi %2$s."
 
 #: src/modules/multiple-authors/multiple-authors.php:1438
 #: src/modules/multiple-authors/multiple-authors.php:1522
@@ -4141,17 +4144,17 @@ msgid ""
 "post currently. For example, this shortcode will load the authors for the "
 "post with the ID of 32."
 msgstr ""
-"O le gbe awọn onkọwe fun ifiweranṣẹ pato, paapaa ti o ko ba wa ninu "
-"ifiweranṣẹ yẹn lọwọlọwọ. Fun apẹẹrẹ, shortcode yii yoo gbe awọn onkọwe fun "
-"ifiweranṣẹ pẹlu ID ti 32."
+"O le gbe awọn onkọwe fun ifiweranṣẹ kan, paapaa ti o ko ba wa ninu "
+"ifiweranṣẹ yẹn ni akoko yii. Fun apẹẹrẹ, shortcode yii yoo gbe awọn onkọwe "
+"fun ifiweranṣẹ pẹlu ID ti 32."
 
 #: src/modules/multiple-authors/multiple-authors.php:1445
 msgid ""
 "You can load the authors for a specific user by providing the user id. For "
 "example, this shortcode will load the author with user id of 32"
 msgstr ""
-"O le gbe awọn onkọwe fun olumulo pato nipa fifunni ni id olumulo. Fun "
-"apẹẹrẹ, shortcode yii yoo gbe onkọwe pẹlu id olumulo ti 32"
+"O le gbe awọn onkọwe fun olumulo kan pato nipa fifun ID olumulo. Fun "
+"apẹẹrẹ, shortcode yii yoo gbe onkọwe pẹlu ID olumulo ti 32"
 
 #: src/modules/multiple-authors/multiple-authors.php:1452
 msgid ""
@@ -4159,9 +4162,9 @@ msgid ""
 "id for both guest and user author. For example, this shortcode will load "
 "the author with term id of 32"
 msgstr ""
-"O le gbe awọn onkọwe fun onkọwe pato nipa fifunni ni id ọrọ onkọwe fun "
-"mejeeji onkọwe alejo ati onkọwe olumulo. Fun apẹẹrẹ, shortcode yii yoo gbe "
-"onkọwe pẹlu id ọrọ ti 32"
+"O le gbe awọn onkọwe fun onkọwe kan pato nipa fifun ID ọrọ onkọwe fun "
+"mejeeji alejo ati onkọwe olumulo. Fun apẹẹrẹ, shortcode yii yoo gbe onkọwe "
+"pẹlu ID ọrọ ti 32"
 
 #: src/modules/multiple-authors/multiple-authors.php:1460
 #, php-format
@@ -4171,9 +4174,10 @@ msgid ""
 "to retrieve the Author from the profile page and not any other posts on the "
 "same screen."
 msgstr ""
-"Tí o bá ní àwọn iṣoro ní fífi PublishPress Authors hàn lórí àwọn ojúewé "
-"profaili onkọwe, o lè lo shortcode yìí ní isalẹ. Àwọn àdéhùn %s ń jẹ́ kí "
-"pplugin gba Onkọwe láti ojúewé profaili ki í ṣe àwọn àkọsílẹ̀ míì lórí ibè."
+"Ti o ba ni iṣoro lati fi han awọn Onkọwe PublishPress lori awọn oju-iwe "
+"profaili onkọwe, o le lo shortcode yii ni isalẹ. Iṣeduro %s n ṣiṣẹ plugin "
+"naa lati gba Onkọwe lati oju-iwe profaili ati kii ṣe eyikeyi awọn "
+"ifiweranṣẹ miiran lori iboju kanna."
 
 #: src/modules/multiple-authors/multiple-authors.php:1470
 #, php-format
@@ -4184,11 +4188,11 @@ msgid ""
 "authors page to display the profile of the current author. You just need to "
 "add the parameter %s."
 msgstr ""
-"Iṣeeṣe ikẹhin kan wa lati mẹnuba. Eyi jẹ lilo julọ ti o ba nlo akori tabi "
-"oludasilẹ oju-iwe lati ṣe akanṣe awọn oju-iwe profaili Onkọwe ti o rii ni "
-"awọn URL bii /author/username/. O le lo koodu atẹle lori oju-iwe awọn "
-"onkọwe lati ṣafihan profaili onkọwe lọwọlọwọ. O kan nilo lati fi paramita "
-"%s kun."
+"Iṣeduro ikẹhin kan wa lati mẹnuba. Eyi jẹ pupọ wulo ti o ba nlo akori tabi "
+"oluṣeto oju-iwe lati ṣe akanṣe awọn oju-iwe profaili Onkọwe ti o rii ni "
+"awọn URL bi /author/username/. O le lo shortcode atẹle lori oju-iwe awọn "
+"onkọwe lati fi han profaili onkọwe lọwọlọwọ. O kan nilo lati fi kun "
+"paramita %s."
 
 #: src/modules/multiple-authors/multiple-authors.php:1479
 msgid ""
@@ -4196,9 +4200,8 @@ msgid ""
 "providing the category slug or slugs separated by comma for more than one "
 "category."
 msgstr ""
-"O le gbe awọn onkọwe ti o ni ibatan si awọn ẹka onkọwe pato nipa fifunni ni "
-"slug ẹka tabi awọn slugs ti a ya sọtọ nipasẹ koma fun diẹ ẹ sii ju ẹka kan "
-"lọ."
+"O le gbe awọn onkọwe ti o jẹ ti awọn ẹka onkọwe pato nipa fifi slug ẹka "
+"tabi awọn slugs ti a ya sọtọ nipa koma fun diẹ ẹ sii ju ẹka kan lọ."
 
 #: src/modules/multiple-authors/multiple-authors.php:1489
 msgid "Authors Data"
@@ -4209,7 +4212,7 @@ msgid ""
 "With this shortcode you can display the author names or any profile field "
 "in any part of the content."
 msgstr ""
-"Pẹlu shortcode yii o le fihan awọn orukọ onkọwe tabi eyikeyi aaye profaili "
+"Pẹlu shortcode yii o le fi han awọn orukọ onkọwe tabi eyikeyi aaye profaili "
 "ni eyikeyi apakan ti akoonu."
 
 #: src/modules/multiple-authors/multiple-authors.php:1498
@@ -4219,9 +4222,9 @@ msgid ""
 "%4$s %5$s %6$s %7$s. You can see full details and parameters %8$s in this "
 "guide %9$s."
 msgstr ""
-"Koodu data awọn onkọwe gba paramita aaye bi: %1$s %2$s %3$s %4$s %5$s %6$s "
-"%7$s. O le rii awọn alaye kikun ati awọn paramita %8$s ninu itọsọna yii "
-"%9$s."
+"Shortcode data awọn onkọwe gba paramita aaye gẹgẹbi: %1$s %2$s %3$s %4$s "
+"%5$s %6$s %7$s. O le wo awọn alaye kikun ati awọn paramita %8$s ninu "
+"itọsọna yii %9$s."
 
 #: src/modules/multiple-authors/multiple-authors.php:1515
 msgid "You can also specify the separator to be used for mulitple authors data."
@@ -4232,8 +4235,8 @@ msgid ""
 "You can retrieve a specific author by providing the author's term ID. For "
 "example, this shortcode will load the author with the term ID of 102."
 msgstr ""
-"O le gba onkọwe pato nipa fifunni ni ID ọrọ onkọwe. Fun apẹẹrẹ, shortcode "
-"yii yoo gbe onkọwe pẹlu ID ọrọ ti 102."
+"O le gba onkọwe pato nipa fifi ID ọrọ onkọwe naa. Fun apẹẹrẹ, shortcode yii "
+"yoo gbe onkọwe pẹlu ID ọrọ ti 102."
 
 #: src/modules/multiple-authors/multiple-authors.php:1537
 #, php-format
@@ -4242,23 +4245,24 @@ msgid ""
 "user_objects=\"true\" which will return all the authors object data as an "
 "array. You can check full details and sample usage %2$s in this guide%3$s."
 msgstr ""
-"O tun le pinnu lati da akojọ ti awọn onkọwe pada nipa lilo "
-"user_objects=\"true\" eyiti yoo da gbogbo awọn nkan onkọwe pada gẹgẹbi "
-"akojọ. O le ṣayẹwo alaye kikun ati lilo àpẹẹrẹ %2$s ni itọsọna yii%3$s."
+"O tun le pinnu lati da pada atokọ awọn onkọwe nipa lilo "
+"user_objects=\"true\" eyiti yoo da gbogbo awọn data onkọwe pada gẹgẹ bi "
+"atokọ. O le ṣayẹwo awọn alaye kikun ati awọn apẹẹrẹ lilo %2$s ninu itọsọna "
+"yii%3$s."
 
 #: src/modules/multiple-authors/multiple-authors.php:1548
 msgid ""
 "You can retrieve authors belonging to a specific Author Category by "
 "providing the category slug or slugs. Separate multiple slugs with a comma."
 msgstr ""
-"O le gba awọn onkọwe ti o ni ibatan si Ẹka Onkọwe pato nipa fifunni ni slug "
-"ẹka tabi awọn slugs. Ya sọtọ ọpọlọpọ awọn slugs pẹlu koma."
+"O le gba awọn onkọwe ti o jẹ ti ẹka Onkọwe pato nipa fifi slug ẹka tabi "
+"awọn slugs. Ya sọtọ awọn slugs mẹta pẹlu koma."
 
 #: src/modules/multiple-authors/multiple-authors.php:1559
 msgid ""
 "With this shortcode, you can show all the authors together in a single "
 "display."
-msgstr "Pẹlu shortcode yii, o le fihan gbogbo awọn onkọwe papọ ni ifihan kan ṣoṣo."
+msgstr "Pẹlu shortcode yii, o le fi han gbogbo awọn onkọwe papo ni ifihan kan."
 
 #: src/modules/multiple-authors/multiple-authors.php:1567
 #, php-format
@@ -4267,9 +4271,9 @@ msgid ""
 "details of each layout option %1$s in this guide %2$s. %3$s %4$s This "
 "shortcode also provides two custom layouts: %5$s %6$s."
 msgstr ""
-"O le ṣe afihan apẹrẹ nipa lilo slug eya apoti onkọwe. O le wo awọn alaye "
-"kikun ti gbogbo aṣayan apẹrẹ %1$s ninu itọsọna yii %2$s. %3$s %4$s "
-"Shortcode yii tun n pese awọn apẹrẹ aṣa meji: %5$s %6$s."
+"O le tọka iṣeto nipa lilo slug iṣeto awọn apo onkọwe. O le wo awọn alaye "
+"kikun ti gbogbo aṣayan iṣeto %1$s ninu itọsọna yii %2$s. %3$s %4$s "
+"Shortcode yii tun n pese awọn iṣeto adani meji: %5$s %6$s."
 
 #: src/modules/multiple-authors/multiple-authors.php:1582
 #, php-format
@@ -4277,8 +4281,8 @@ msgid ""
 "You can define the number of layout columns by using %1$s to show authors "
 "in 2 column."
 msgstr ""
-"O le ṣalaye nọmba awọn ọwọn apẹrẹ nipa lilo %1$s lati fihan awọn onkọwe ni "
-"ọwọn 2."
+"O le ṣe alaye nọmba awọn ọwọn iṣeto nipa lilo %1$s lati fi han awọn onkọwe "
+"ni awọn ọwọn 2."
 
 #: src/modules/multiple-authors/multiple-authors.php:1592
 #, php-format
@@ -4286,8 +4290,8 @@ msgid ""
 "You can choose the number of authors per page using %1$s . %2$s Pagination "
 "will be automatically added if required."
 msgstr ""
-"O le yan nọmba awọn onkọwe fun oju-iwe nipa lilo %1$s . %2$s Ipinpin yoo ti "
-"wa ni afikun laifọwọyi ti o ba nilo."
+"O le yan nọmba awọn onkọwe fun oju-iwe kan nipa lilo %1$s. %2$s Iṣakojọpọ "
+"yoo jẹ afikun laifọwọyi ti o ba nilo."
 
 #: src/modules/multiple-authors/multiple-authors.php:1603
 #, php-format
@@ -4296,8 +4300,8 @@ msgid ""
 "%1$s . %2$s Alternatively, use %3$s to show all authors, including those "
 "without any posts."
 msgstr ""
-"O le dènà abajade si awọn onkọwe nikan ti a yàn si awọn ifiweranṣẹ nipa "
-"lilo %1$s . %2$s Ni omiiran, lo %3$s lati fi gbogbo awọn onkọwe han, pẹlu "
+"O le ni idiwọ abajade si awọn onkọwe nikan ti a yan si awọn ifiweranṣẹ nipa "
+"lilo %1$s. %2$s Ni omiiran, lo %3$s lati fi han gbogbo awọn onkọwe, pẹlu "
 "awọn ti ko ni awọn ifiweranṣẹ."
 
 #: src/modules/multiple-authors/multiple-authors.php:1615
@@ -4306,8 +4310,8 @@ msgid ""
 "You can limit the result to only guest authors by using %1$s . %2$s "
 "Alternatively, %3$s will show only authors with a WordPress account."
 msgstr ""
-"O le dènà abajade si awọn onkọwe alejo nikan nipa lilo %1$s . %2$s Ni "
-"omiiran, %3$s yoo fi awọn onkọwe nikan ti o ni akọọlẹ WordPress han."
+"O le ni idiwọ abajade si awọn onkọwe alejo nikan nipa lilo %1$s. %2$s Ni "
+"omiiran, %3$s yoo fi han awọn onkọwe nikan pẹlu akọọlẹ WordPress kan."
 
 #: src/modules/multiple-authors/multiple-authors.php:1627
 #, php-format
@@ -4315,8 +4319,8 @@ msgid ""
 "If you are using the authors_recent layout, you can define the number of "
 "columns by using %1$s ."
 msgstr ""
-"Tí o bá n lo àtẹ̀jáde authors_recent, o lè ṣàkóso ìwọn àwọn kólọ́mù nípa "
-"lílo %1$s."
+"Ti o ba nlo iṣeto authors_recent, o le ṣe alaye nọmba awọn ọwọn nipa lilo "
+"%1$s."
 
 #: src/modules/multiple-authors/multiple-authors.php:1637
 #, php-format
@@ -4324,7 +4328,7 @@ msgid ""
 "For authors_index layout, you can group user by profile field by using %1$s "
 "."
 msgstr ""
-"Fun akopọ authors_index, o le darapọ awọn olumulo nipasẹ aaye profaili nipa "
+"Fun iṣeto authors_index, o le kó awọn olumulo pọ nipasẹ aaye profaili nipa "
 "lilo %1$s."
 
 #: src/modules/multiple-authors/multiple-authors.php:1647
@@ -4334,9 +4338,9 @@ msgid ""
 "by name, use %2$s . Alternatively, you can order by profile fields like "
 "%3$s, %4$s etc"
 msgstr ""
-"Lati paṣẹ awọn esi da lori iye ifiweranṣẹ, lo %1$s . Lati paṣẹ awọn esi "
-"nipasẹ orukọ, lo %2$s . Ni ilodi si, o le paṣẹ nipasẹ awọn aaye profaili "
-"bii %3$s, %4$s ati bẹbẹ lọ"
+"Lati paṣẹ awọn abajade da lori nọmba awọn ifiweranṣẹ, lo %1$s. Lati paṣẹ "
+"awọn abajade nipasẹ orukọ, lo %2$s. Ni omiiran, o le paṣẹ nipasẹ awọn aaye "
+"profaili bii %3$s, %4$s ati bẹbẹ lọ."
 
 #: src/modules/multiple-authors/multiple-authors.php:1660
 #, php-format
@@ -4355,9 +4359,9 @@ msgid ""
 "author fields. You can add fields to the dropdown using %1$s . This "
 "requires the search box to be active."
 msgstr ""
-"O tun le fihan akojọ aṣayan aṣayan ti o fun awọn olumulo laaye lati wa lori "
-"awọn aaye onkọwe pato. O le fi awọn aaye kun akojọ aṣayan nipa lilo %1$s . "
-"Eyi nilo ki apoti wiwa wa ni iṣe."
+"O tun le fi han akojọ aṣayan isalẹ ti o fun awọn olumulo laaye lati wa lori "
+"awọn aaye onkọwe pato. O le fi awọn aaye kun si akojọ aṣayan isalẹ nipa "
+"lilo %1$s. Eyi nilo ki apoti wiwa jẹ iṣẹ."
 
 #: src/modules/multiple-authors/multiple-authors.php:1691
 #, php-format
@@ -4366,9 +4370,9 @@ msgid ""
 "specific period using %1$s . This accept english date value like 1 week "
 "ago, 1 month ago, 6 months ago, 1 year ago etc."
 msgstr ""
-"O le dènà atokọ onkọwe si awọn olumulo ti o ni ifiweranṣẹ ti a tẹjade "
-"laarin akoko kan pato nipa lilo %1$s . Eyi gba iye ọjọ English bi 1 ọsẹ "
-"sẹyin, 1 oṣù sẹyin, 6 oṣù sẹyin, 1 ọdún sẹyin ati bẹbẹ lọ."
+"O le ni idiwọ atokọ onkọwe si awọn olumulo pẹlu ifiweranṣẹ ti a tẹjade "
+"laarin akoko pato nipa lilo %1$s. Eyi gba iye ọjọ Gẹẹsi gẹgẹbi 1 ọsẹ sẹyin, "
+"1 oṣu sẹyin, 6 oṣu sẹyin, 1 ọdun sẹyin ati bẹbẹ lọ."
 
 #: src/modules/multiple-authors/multiple-authors.php:1738
 msgid "Copied!"
@@ -4388,8 +4392,8 @@ msgid ""
 "Choose which WordPress user roles can be selected using the \"Registered "
 "Author With User Account\" option for author profiles."
 msgstr ""
-"Yan awọn ipa olumulo WordPress wo ni a le yan nipa lilo aṣayan \"Onkọwe Ti "
-"a Forukọsilẹ Pẹlu Iwe iroyin olumulo\" fun awọn profaili onkọwe."
+"Yan iru awọn ipa olumulo WordPress wo ni a le yan nipa lilo aṣayan \"Onkọwe "
+"Ti a Forukọsilẹ Pẹlu Iṣẹ olumulo\" fun awọn profaili onkọwe."
 
 #: src/modules/multiple-authors/multiple-authors.php:1842
 msgid ""
@@ -4399,11 +4403,11 @@ msgid ""
 "\"Create PublishPress Authors Profiles for all users in a role\" button in "
 "the Maintenance tab."
 msgstr ""
-"Awọn profaili onkọwe le ṣe afiwe si awọn iroyin olumulo WordPress. Ẹrọ "
-"aṣayan yii ngbanilaaye fun ọ lati ṣẹda awọn profaili onkọwe laifọwọyi "
-"nigbati awọn olumulo ba ṣẹda ni awọn ipa wọnyi. O tun le ṣe eyi fun awọn "
-"olumulo to wa tẹlẹ nipa titẹ bọtini \"Ṣẹda Awọn profaili Onkọwe "
-"PublishPress fun gbogbo awọn olumulo ni ipa\" ni taabu Itọju."
+"Awọn profaili onkọwe le jẹ asopọ si awọn iroyin olumulo WordPress. Eto yii "
+"n jẹ ki o ṣẹda awọn profaili onkọwe laifọwọyi nigbati awọn olumulo ba ṣẹda "
+"ni awọn ipa wọnyi. O tun le ṣe eyi fun awọn olumulo ti o wa tẹlẹ nipa titẹ "
+"bọtini \"Ṣẹda Awọn Profaili Onkọwe PublishPress fun gbogbo awọn olumulo ni "
+"ipa\" ninu taabu Itọju."
 
 #: src/modules/multiple-authors/multiple-authors.php:1863
 msgid ""
@@ -4412,10 +4416,10 @@ msgid ""
 "\"Display name\". Showing the \"Username\" is useful if you have several "
 "authors with similar names."
 msgstr ""
-"Tí Onkọwe bá jẹ́ ẹni tí a ti ṣe ìkànsí sí olumulo WordPress, èyí yóò fi hàn "
-"\"Orukọ ifihan\" àwọn onkọwe àti \"Orukọ olumulo\" wọn. Àkọ́kọ́ ni láti fi "
-"hàn \"Orukọ ifihan\" nikan. Fífi \"Orukọ olumulo\" hàn jẹ́ wúlò tí o bá ní "
-"àwọn onkọwe lọ́pọ̀ pẹ̀lú orukọ tó jọra."
+"Ti a ba sopọ onkọwe si olumulo WordPress, eyi yoo fi hàn \"Orukọ Ifihan\" "
+"ti awọn onkọwe ati \"Orukọ olumulo\" wọn. Aiyipada ni lati fi hàn nikan "
+"\"Orukọ Ifihan\". Ifihan \"Orukọ olumulo\" jẹ wulo ti o ba ni ọpọlọpọ awọn "
+"onkọwe pẹlu awọn orukọ ti o jọra."
 
 #: src/modules/multiple-authors/multiple-authors.php:1886
 msgid "Allow authors to be created without a real user account."
@@ -4436,8 +4440,8 @@ msgid ""
 "If enabled, PublishPress Authors will replace the default WordPress author "
 "pages."
 msgstr ""
-"Tí a bá ṣe é, PublishPress Authors yóò rọ́pò àwọn ojúewé onkọwe aiyé "
-"WordPress."
+"Ti a ba mu ṣiṣẹ, Awọn Onkọwe PublishPress yoo rọpo awọn oju-iwe onkọwe "
+"aiyipada WordPress."
 
 #: src/modules/multiple-authors/multiple-authors.php:1961
 msgid "Please note this feature will not work for all themes."
@@ -4477,8 +4481,8 @@ msgid ""
 "This avatar will be used as default avatar instead of gravatar where no "
 "custom avatar is added to profile."
 msgstr ""
-"Aworan yii yoo lo gẹgẹbi aworan aiyipada dipo gravatar nibiti ko si aworan "
-"aṣa ti a fi kun si profaili."
+"Avatar yii yoo lo gẹgẹbi avatar aiyipada dipo gravatar nibiti avatar aṣa ko "
+"ba ṣafikun si profaili."
 
 #: src/modules/multiple-authors/multiple-authors.php:2240
 msgid "This will display the author bio."
@@ -4523,10 +4527,9 @@ msgid ""
 "use this feature unless requested to do so by the PublishPress team. This "
 "plugin works better when authors and users are paired one-to-one."
 msgstr ""
-"Eyi yoo jẹ ki o ṣe afiwe Olumulo WordPress si ju onkọwe kan lọ. Ma ṣe lo "
-"iṣẹ-ṣiṣe yii ayafi ti a beere lati ṣe bẹ nipasẹ ẹgbẹ PublishPress. Ẹrọ "
-"afikun yii n ṣiṣẹ dara julọ nigbati awọn onkọwe ati awọn olumulo ba ni "
-"apapọ ọkan-si-ọkan."
+"Eyi yoo jẹ ki o sopọ olumulo WordPress si ju onkọwe kan lọ. Maṣe lo ẹya yii "
+"ayafi ti a beere lọwọ rẹ lati ṣe bẹ nipasẹ ẹgbẹ PublishPress. Ẹya yii ṣiṣẹ "
+"dara julọ nigbati awọn onkọwe ati awọn olumulo ba ni ibamu ọkan-si-ọkan."
 
 #: src/modules/multiple-authors/multiple-authors.php:2597
 msgid "This will display the authors."
@@ -4568,10 +4571,9 @@ msgid ""
 "as a fallback. WordPress sometimes requires a WordPress user to be assigned "
 "to each post. This user will not be visible on the front of your site."
 msgstr ""
-"Tí o bá ní Onkọwe Alejo nikan ti a yàn fún àkọsílẹ̀ kan, olumulo yìí lè jẹ́ "
-"àfiyèsí gẹ́gẹ́ bí àtúnṣe. WordPress lẹ́ẹ̀kan ṣoṣo ní ìbéèrè pé kí a fi "
-"olumulo WordPress kan sílẹ̀ fún àkọsílẹ̀ kọọkan. Olumulo yìí kò ní hàn lórí "
-"iwájú ojú-òpó rẹ."
+"Ti o ba ni awọn Onkọwe Alejo nikan ti a yan fun ifiweranṣẹ, olumulo yii le "
+"ṣee lo gẹgẹbi fallback. WordPress nigbagbogbo nilo ki a fi olumulo "
+"WordPress si iroyin kọọkan. Olumulo yii ko ni han lori iwaju aaye rẹ."
 
 #: src/modules/multiple-authors/multiple-authors.php:2809
 msgid "This will display the authors email in the author box."
@@ -4599,8 +4601,8 @@ msgid ""
 "PublishPress Authors profile, this will automatically create a profile for "
 "them."
 msgstr ""
-"Tí olumulo WordPress bá jẹ́ onkọwe àkọsílẹ̀ kan, ṣùgbọ́n kò ní profaili "
-"Onkọwe PublishPress, èyí yóò dá profaili kan sílẹ̀ fún wọn laifọwọyi."
+"Ti olumulo WordPress ba jẹ onkọwe ti ifiweranṣẹ kan, ṣugbọn ko ni profaili "
+"Onkọwe PublishPress, eyi yoo ṣẹda profaili fun wọn laifọwọyi."
 
 #: src/modules/multiple-authors/multiple-authors.php:2887
 #: src/modules/multiple-authors/multiple-authors.php:2893
@@ -4623,7 +4625,7 @@ msgid ""
 "You can choose the roles using the \"Automatically create author profiles\" "
 "setting."
 msgstr ""
-"Yi yoo wa gbogbo awọn olumulo ninu ipa kan ki o ṣẹda awọn profaili onkọwe "
+"Eyi yoo wa gbogbo awọn olumulo ni ipa kan ki o ṣẹda awọn profaili onkọwe "
 "fun wọn. O le yan awọn ipa nipa lilo eto \"Ṣẹda awọn profaili onkọwe "
 "laifọwọyi\"."
 
@@ -4640,8 +4642,8 @@ msgid ""
 "This will update all the author profiles in PublishPress Authors to match "
 "the default WordPress fields for each user."
 msgstr ""
-"Yi yoo mu gbogbo awọn profaili onkọwe ni PublishPress Authors pọ si lati ba "
-"awọn aaye WordPress aiyipada mu fun ọkọọkan olumulo."
+"Eyi yoo ṣe imudojuiwọn gbogbo awọn profaili onkọwe ni Awọn Onkọwe "
+"PublishPress lati ba awọn aaye aiyipada WordPress mu fun olumulo kọọkan."
 
 #: src/modules/multiple-authors/multiple-authors.php:2905
 msgid "Synchronize the author and user URLs"
@@ -4652,8 +4654,8 @@ msgid ""
 "This will update all the Author URLs in PublishPress Authors to match the "
 "default WordPress URLs for each user."
 msgstr ""
-"Yi yoo mu gbogbo awọn URL Onkọwe ni PublishPress Authors pọ si lati ba awọn "
-"URL WordPress aiyipada mu fun ọkọọkan olumulo."
+"Eyi yoo ṣe imudojuiwọn gbogbo awọn URL Onkọwe ni Awọn Onkọwe PublishPress "
+"lati ba awọn URL aiyipada WordPress mu fun olumulo kọọkan."
 
 #: src/modules/multiple-authors/multiple-authors.php:2912
 #: src/modules/multiple-authors/multiple-authors.php:2914
@@ -4665,8 +4667,8 @@ msgid ""
 "This will create author categories table if missing and add default "
 "categories."
 msgstr ""
-"Eyi yoo ṣẹda tabili awọn ẹka onkọwe ti o ba padanu ati fi awọn ẹka aiyipada "
-"kun."
+"Eyi yoo ṣẹda tabili awọn ẹka onkọwe ti o ba ṣofo ki o si fi awọn ẹka "
+"aiyipada kun."
 
 #: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "Copy Co-Authors Plus Data"
@@ -4678,9 +4680,9 @@ msgid ""
 "you to migrate to PublishPress Authors without losing any data. This action "
 "can be run multiple times."
 msgstr ""
-"Igbese yii yoo daakọ awọn onkọwe lati afikun Co-Authors Plus ti o fun ọ "
-"laaye lati ṣe gbigbe si awọn Onkọwe PublishPress laisi padanu eyikeyi data. "
-"Igbese yii le ṣee ṣe ni ọpọlọpọ igba."
+"Igbese yii yoo daakọ awọn onkọwe lati plugin Co-Authors Plus ti o fun ọ "
+"laaye lati kọja si Awọn Onkọwe PublishPress laisi padanu eyikeyi data. "
+"Igbese yii le ṣee ṣe ni igba pupọ."
 
 #: src/modules/multiple-authors/multiple-authors.php:2937
 msgid "Delete Connections Between Author Profiles and Users"
@@ -4693,9 +4695,9 @@ msgid ""
 "a WordPress user account. This will not delete the WordPress user accounts, "
 "but any links between the posts and author profiles will be lost."
 msgstr ""
-"Igbese yii le tunṣe data awọn onkọwe PublishPress ṣaaju ki o to lo awọn "
-"aṣayan itọju miiran. Yoo pa gbogbo awọn profaili onkọwe ti a ti ni itumọ si "
-"akọọlẹ olumulo WordPress. Eyi ko ni pa awọn akọọlẹ olumulo WordPress, "
+"Igbese yii le tun ṣe data Awọn Onkọwe PublishPress ṣaaju ki o to lo awọn "
+"aṣayan itọju miiran. Yoo pa gbogbo awọn profaili onkọwe ti a ti sopọ mọ "
+"iroyin olumulo WordPress. Eyi kii yoo pa awọn iroyin olumulo WordPress, "
 "ṣugbọn eyikeyi awọn ọna asopọ laarin awọn ifiweranṣẹ ati awọn profaili "
 "onkọwe yoo sọnu."
 
@@ -4713,9 +4715,9 @@ msgid ""
 "maintenance options. Guest authors are author profiles that are not mapped "
 "to a WordPress user account. This action will delete all guest authors."
 msgstr ""
-"Igbese yii le tunṣe data awọn onkọwe PublishPress ṣaaju ki o to lo awọn "
+"Igbese yii le tun ṣe data Awọn Onkọwe PublishPress ṣaaju ki o to lo awọn "
 "aṣayan itọju miiran. Awọn onkọwe alejo ni awọn profaili onkọwe ti ko ni "
-"itumọ si akọọlẹ olumulo WordPress. Igbese yii yoo pa gbogbo awọn onkọwe "
+"asopọ si iroyin olumulo WordPress. Igbese yii yoo pa gbogbo awọn onkọwe "
 "alejo."
 
 #: src/modules/multiple-authors/multiple-authors.php:2946
@@ -4727,8 +4729,8 @@ msgid ""
 "Please be careful clicking these buttons. Before clicking, we recommend "
 "taking a site backup in case anything goes wrong."
 msgstr ""
-"Jọwọ ṣọra nigbati o ba tẹ awọn bọtini wọnyi. Ṣaaju ki o to tẹ, a daba pe ki "
-"o mu afẹyinti aaye kan ni ọran ti ohunkohun ba ṣẹlẹ."
+"Jọwọ ṣọra nigbati o ba n tẹ awọn bọtini wọnyi. Ṣaaju ki o to tẹ, a ṣe "
+"iṣeduro lati mu afẹyinti aaye kan ni ọran ti ohunkohun ba ṣẹlẹ."
 
 #: src/modules/multiple-authors/multiple-authors.php:3155
 msgid "Author Profiles"

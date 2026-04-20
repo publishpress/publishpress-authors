@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2021-11-04 15:04-0300\n"
-"PO-Revision-Date: 2026-04-15 01:32+0000\n"
+"PO-Revision-Date: 2026-04-20 12:08+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -55,7 +55,7 @@ msgstr ""
 "PublishPress Authors ermöglicht es Ihnen, mehreren Autoren und Gastautoren "
 "zu WordPress-Beiträgen hinzuzufügen"
 
-#: publishpress-authors.php:11, fuzzy
+#: publishpress-authors.php:11
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -1031,7 +1031,7 @@ msgstr "Kästen der Autor Kategorie"
 #: src/modules/author-boxes/author-boxes.php:2536
 #: src/modules/author-boxes/author-boxes.php:2547
 #: src/modules/author-list/author-list.php:926
-#: src/modules/author-list/classes/AuthorListTable.php:152, fuzzy
+#: src/modules/author-list/classes/AuthorListTable.php:152
 msgid "Shortcode"
 msgstr "Shortcode"
 
@@ -1463,6 +1463,11 @@ msgid ""
 msgstr ""
 "Herzlichen Glückwunsch. Sie können jetzt Ihre Vorlage in den Einstellungen "
 "für PublishPress-Autoren auswählen."
+
+#: src/modules/author-boxes/author-boxes.php:2658
+#, php-format
+msgid "You can read more information on the %s."
+msgstr "Sie können weitere Informationen zu %s lesen."
 
 #: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"

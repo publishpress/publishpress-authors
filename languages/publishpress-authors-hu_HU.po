@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-15T01:06:13+00:00\n"
-"PO-Revision-Date: 2026-04-15 02:03+0000\n"
+"POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
+"PO-Revision-Date: 2026-04-20 12:08+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -32,6 +32,15 @@ msgstr "https://wordpress.org/plugins/publishpress-authors/"
 #: src/modules/multiple-authors/multiple-authors.php:75
 #: src/modules/multiple-authors/multiple-authors.php:79
 #. Description of the plugin
+msgid ""
+"PublishPress Authors allows you to add multiple authors and guest authors "
+"to WordPress posts"
+msgstr ""
+"A PublishPress Authors lehetővé teszi, hogy több szerzőt és vendégszerzőt "
+"adj hozzá a WordPress bejegyzésekhez"
+
+#: publishpress-authors.php:11
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
@@ -42,6 +51,21 @@ msgstr "https://publishpress.com"
 
 #: includes.php:39
 #, php-format
+msgid ""
+"You're using PublishPress Authors Free. The Pro version has more features "
+"and support. %sUpgrade to Pro%s"
+msgstr ""
+"A PublishPress Authors Free-t használod. A Pro verzió több funkciót és "
+"támogatást kínál. %sFrissítés Pro-ra%s"
+
+#: includes.php:63
+#: src/modules/author-boxes/author-boxes.php:3042
+#: src/modules/author-categories/author-categories.php:672
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:521
+#: src/modules/author-custom-fields/author-custom-fields.php:995
+#: src/modules/author-custom-fields/author-custom-fields.php:1048
+#: src/modules/author-list/author-list.php:1260
+#: src/modules/author-list/author-list.php:1298
 msgid "Upgrade to Pro"
 msgstr "Frissítés Próra"
 
@@ -219,6 +243,26 @@ msgstr ""
 "kapcsolva."
 
 #: src/core/Classes/Admin_Ajax.php:359
+msgid ""
+"You do not have permission to edit this author profile because it is linked "
+"to a user account you do not have permission to edit."
+msgstr ""
+"Nincs engedélyed ennek a szerzői profilnak a szerkesztésére, mert az egy "
+"olyan felhasználói fiókhoz van kapcsolva, amelynek a szerkesztésére nincs "
+"engedélyed."
+
+#: src/core/Classes/Admin_Ajax.php:374
+#: src/core/Classes/Author_Editor.php:1008
+msgid ""
+"Sorry, this WordPress user is already mapped to another Author. By default, "
+"each user can only be connected to one Author profile."
+msgstr ""
+"Sajnálom, ez a WordPress felhasználó már egy másik szerzőhöz van "
+"hozzárendelve. Alapértelmezés szerint minden felhasználó csak egy szerzői "
+"profillal kapcsolható össze."
+
+#: src/core/Classes/Admin_Ajax.php:386
+#: src/core/Classes/Author_Editor.php:1100
 msgid "Registered User is required."
 msgstr "Regisztrált felhasználó szükséges."
 
@@ -235,6 +279,15 @@ msgid "Author name is required"
 msgstr "Az szerző neve kötelező"
 
 #: src/core/Classes/Authors_Iterator.php:55
+msgid ""
+"No post ID provided for Authors_Iterator constructor. Are you not in a loop "
+"or is $post not set?"
+msgstr ""
+"Nincs megadva bejegyzés ID az Authors_Iterator konstruktorhoz. Nem vagy "
+"ciklusban, vagy a $post nincs beállítva?"
+
+#: src/core/Classes/Author_Editor.php:47
+#: src/core/Plugin.php:1618
 msgid "Display name publicly as"
 msgstr "Nyilvános megjelenítési név mint"
 
@@ -322,6 +375,14 @@ msgstr "Alapértelmezett avatar"
 
 #: src/core/Classes/Author_Editor.php:391
 #, php-format
+msgid ""
+"(Uses the %1s Email field %2s to find the Gravatar account if default "
+"avatar is not uploaded in Authors Settings)"
+msgstr ""
+"(A %1s Email mezőt %2s használja a Gravatar fiók megtalálásához, ha az "
+"alapértelmezett avatar nincs feltöltve az Authors beállításokban)"
+
+#: src/core/Classes/Author_Editor.php:399
 msgid "Custom image"
 msgstr "Egyedi kép"
 
@@ -336,6 +397,14 @@ msgid "Author Category"
 msgstr "Szerző kategória"
 
 #: src/core/Classes/Author_Editor.php:411
+msgid ""
+"Select the default Category for this Author. This will be used when the "
+"Author is added to new posts."
+msgstr ""
+"Válaszd ki ennek a szerzőnek az alapértelmezett kategóriáját. Ezt fogják "
+"használni, amikor a szerzőt új bejegyzésekhez adják hozzá."
+
+#: src/core/Classes/Author_Editor.php:418
 msgid "Do not show this profile publicly"
 msgstr "Ne jelenítse meg ezt a profilt nyilvánosan"
 
@@ -356,6 +425,35 @@ msgid "Select a user"
 msgstr "Felhasználó kiválasztása"
 
 #: src/core/Classes/Author_Editor.php:783
+msgid ""
+"Create an author profile for a current user account. You can select users "
+"who are allowed to edit posts. This user will be able to update their "
+"profile."
+msgstr ""
+"Hozz létre egy szerzői profilt egy aktuális felhasználói fióknak. Olyan "
+"felhasználókat választhatsz, akik jogosultak a bejegyzések szerkesztésére. "
+"Ez a felhasználó frissítheti a profilját."
+
+#: src/core/Classes/Author_Editor.php:789
+msgid ""
+"Create an author profile and a linked user account. This account will be in "
+"the \"Guest Author\" role and will not be able to login to the WordPress "
+"dashboard or update their profile."
+msgstr ""
+"Hozz létre egy szerzői profilt és egy kapcsolt felhasználói fiókot. Ez a "
+"fiók a \"Vendég Szerző\" szerepben lesz, és nem tud majd bejelentkezni a "
+"WordPress irányítópultba vagy frissíteni a profilját."
+
+#: src/core/Classes/Author_Editor.php:796
+msgid ""
+"Create an author profile with no linked user account. This option is "
+"lightweight but may have compatibility issues with other themes and plugins."
+msgstr ""
+"Hozz létre egy szerzői profilt kapcsolt felhasználói fiók nélkül. Ez az "
+"opció könnyű, de előfordulhat, hogy kompatibilitási problémái vannak más "
+"témákkal és bővítményekkel."
+
+#: src/core/Classes/Author_Editor.php:815
 msgid "Author Email"
 msgstr "Szerző e-mail"
 
@@ -472,6 +570,16 @@ msgid "Search for an author"
 msgstr "Keresés egy szerzőre"
 
 #: src/core/Classes/Post_Editor.php:466
+msgid ""
+"This option is showing because you do not have a WordPress user selected as "
+"an author. For some tasks, it can be helpful to have a user selected here. "
+"This user will not be visible on the front of your site."
+msgstr ""
+"Ez az opció azért látható, mert nem választottál WordPress felhasználót "
+"szerzőként. Bizonyos feladatokhoz hasznos lehet, ha itt egy felhasználót "
+"választasz. Ez a felhasználó nem lesz látható az oldalad elülső részén."
+
+#: src/core/Classes/Post_Editor.php:474
 msgid "Search for an user"
 msgstr "Keresés egy felhasználóra"
 
@@ -615,6 +723,23 @@ msgid "Edit My Author Profile"
 msgstr "Szerzői Profilom szerkesztése"
 
 #: src/core/Plugin.php:532
+msgid ""
+"This name is used in several default displays and some search engine "
+"integrations."
+msgstr ""
+"Ez a név több alapértelmezett megjelenítésben és néhány "
+"keresőmotor-integrációban használatos."
+
+#: src/core/Plugin.php:537
+msgid ""
+"This forms part of the URL for the author’s profile page. If you choose a "
+"Mapped User, this URL is taken from the user’s account and can not be "
+"changed."
+msgstr ""
+"Ez része a szerző profiloldalának URL-jének. Ha egy Mapped User-t "
+"választasz, ez az URL a felhasználói fiókból származik, és nem módosítható."
+
+#: src/core/Plugin.php:573
 msgid "Search Authors"
 msgstr "Szerzők keresése"
 
@@ -716,6 +841,31 @@ msgstr ""
 "pozíciójának megváltoztatásához"
 
 #: src/core/Plugin.php:1628
+msgid ""
+"Click on an author to change them. Drag to change their order. Click on "
+"<strong>Remove</strong> to remove them."
+msgstr ""
+"Kattints egy szerzőre a megváltoztatásához. Húzd, hogy megváltoztasd a "
+"sorrendjét. Kattints a <strong>Eltávolítás</strong> gombra a "
+"eltávolításához."
+
+#: src/core/Plugin.php:1632
+msgid ""
+"Are you sure you want to delete the authors profiles mapped to users? This "
+"action can't be undone."
+msgstr ""
+"Biztosan törölni szeretnéd a felhasználókhoz hozzárendelt szerzői "
+"profilokat? Ez a művelet nem vonható vissza."
+
+#: src/core/Plugin.php:1636
+msgid ""
+"Are you sure you want to delete the guest authors profiles? This action "
+"can't be undone."
+msgstr ""
+"Biztosan törölni szeretnéd a vendégszerzők profiljait? Ez a művelet nem "
+"vonható vissza."
+
+#: src/core/Plugin.php:1640
 msgid "Are you sure you want to create author profiles for the missed post authors?"
 msgstr ""
 "Biztosan szeretne szerzői profilokat létrehozni a hiányzó bejegyzés szerzők "
@@ -1201,6 +1351,15 @@ msgid "Export Editor Settings"
 msgstr "Szerkesztő beállítások exportálása"
 
 #: src/modules/author-boxes/author-boxes.php:2609
+msgid ""
+"You can use this data to export your author box design and import it to a "
+"new site."
+msgstr ""
+"Ezt az adatot felhasználhatod a szerzői dobozod tervezetének exportálására "
+"és egy új oldalra való importálására."
+
+#: src/modules/author-boxes/author-boxes.php:2619
+#: src/modules/author-boxes/author-boxes.php:2690
 msgid "Copy to Clipboard"
 msgstr "Másolás a vágólapra"
 
@@ -1235,10 +1394,46 @@ msgid "How to generate and use a theme template file"
 msgstr "Hogyan generálj és használj egy téma sablonfájlt"
 
 #: src/modules/author-boxes/author-boxes.php:2651
+msgid ""
+"Click the \"Generate Template\" button under the text area. Wait for the "
+"code to be generated."
+msgstr ""
+"Kattints a \"Sablon generálása\" gombra a szövegdoboz alatt. Várj, amíg a "
+"kód generálódik."
+
+#: src/modules/author-boxes/author-boxes.php:2652
+#, php-format
+msgid ""
+"Create an empty php template file with your desired file slug in the %1s "
+"/publishpress-authors/author-boxes/ %2s folder of your theme. %3s For "
+"example, the file can be located here: %4s "
+"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
+"my-first-custom-author-template.php %7s ."
+msgstr ""
+"Hozz létre egy üres php sablonfájlt a kívánt fájlnevével a %1s "
+"/publishpress-authors/author-boxes/ %2s mappában a témádban. %3s Például, a "
+"fájl itt található: %4s "
+"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
+"my-first-custom-author-template.php %7s ."
+
+#: src/modules/author-boxes/author-boxes.php:2653
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "Másolja a létrehozott kódot, és illessze be az újonnan létrehozott fájlba."
 
 #: src/modules/author-boxes/author-boxes.php:2654
+msgid ""
+"Congratulations. Your can now choose your template inside the PublishPress "
+"Authors Settings."
+msgstr ""
+"Gratulálok. Most már választhatod a sablonodat a PublishPress Authors "
+"beállításain belül."
+
+#: src/modules/author-boxes/author-boxes.php:2658
+#, php-format
+msgid "You can read more information on the %s."
+msgstr "További információt olvashat a %s."
+
+#: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"
 msgstr "dokumentációs oldal"
 
@@ -1255,6 +1450,14 @@ msgid "Reorder Fields"
 msgstr "Mezők újrarendelése"
 
 #: src/modules/author-boxes/author-boxes.php:2748
+msgid ""
+"Reorder the fields by dragging them to the correct position and saving your "
+"changes."
+msgstr ""
+"A mezőket áthelyezheti a megfelelő pozícióba, majd mentheti a "
+"változtatásokat."
+
+#: src/modules/author-boxes/author-boxes.php:2762
 msgid "Save for Current Author Box"
 msgstr "Mentés a Jelenlegi Szerződobozhoz"
 
@@ -1287,6 +1490,14 @@ msgid "New Author Categories Box"
 msgstr "Új Szerzőkategória Doboz"
 
 #: src/modules/author-boxes/author-boxes.php:3037
+msgid ""
+"PublishPress Authors Pro allows you to unlock the full potential of Author "
+"Categories."
+msgstr ""
+"A PublishPress Authors Pro lehetővé teszi az Szerzői Kategóriák teljes "
+"potenciáljának kiaknázását."
+
+#: src/modules/author-boxes/author-boxes.php:3039
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr ""
 "Szerződobozokat hozhat létre, ahol a szerzők a kategóriáikba vannak "
@@ -1321,6 +1532,14 @@ msgstr "Nincs engedélyed ennek a műveletnek a végrehajtására"
 
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:67
 #, php-format
+msgid ""
+"Field Order updated. %1sClick here%2s to reload this page to see new order "
+"changes."
+msgstr ""
+"A mezők sorrendje frissítve. %1$sKattintson ide%2$s az oldal újratöltéséhez "
+"az új sorrend megtekintéséhez."
+
+#: src/modules/author-boxes/classes/AuthorBoxesDefault.php:28
 msgid "Boxed"
 msgstr "Dobozos"
 
@@ -1977,6 +2196,14 @@ msgid "Custom \"View All Posts\" Link"
 msgstr "Egyedi „Összes Bejegyzés” link"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:449
+msgid ""
+"Enter a custom URL for the \"View All Posts\" link. Leave empty to use the "
+"default author posts page."
+msgstr ""
+"Adjon meg egy egyedi URL-t a \"Összes bejegyzés megtekintése\" linkhez. "
+"Hagyja üresen az alapértelmezett szerzői bejegyzések oldal használatához."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:453
 msgid "View All Posts Link Size"
 msgstr "Összes bejegyzés megtekintése link mérete"
 
@@ -2033,6 +2260,14 @@ msgid "Author Category Layout"
 msgstr "Szerzői kategória elrendezése"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:607
+msgid ""
+"Selecting an option here will overwrite author boxes settings to match "
+"selected layout."
+msgstr ""
+"Egy lehetőség kiválasztása itt felülírja a szerzői dobozok beállításait, "
+"hogy megfeleljen a kiválasztott elrendezésnek."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:612
 msgid "Built-in Layout"
 msgstr "Beépített elrendezés"
 
@@ -2127,10 +2362,26 @@ msgid "Author Category Group Title Prefix"
 msgstr "Szerzői kategória csoport cím prefix"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:714
+msgid ""
+"Enter the text that should be added before group title. This field accepts "
+"basic HTML."
+msgstr ""
+"Adja meg a szöveget, amelyet a csoport címéhez szeretne hozzáadni. Ez a "
+"mező alap HTML-t fogad el."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:721
 msgid "Author Category Group Title Suffix"
 msgstr "Szerző Kategória Csoport Cím Utótag"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:722
+msgid ""
+"Enter the text that should be added after group title. This field accepts "
+"basic HTML."
+msgstr ""
+"Adja meg a szöveget, amelyet a csoport címe után szeretne hozzáadni. Ez a "
+"mező alap HTML-t fogad el."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:729
 msgid "Author Category Group Font Size"
 msgstr "Szerző Kategória Csoport Betűméret"
 
@@ -2173,6 +2424,16 @@ msgid "%1s HTML Tag"
 msgstr "%1s HTML Tag"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:821
+msgid ""
+"'span' will display as an inline element and 'div' will display as a block "
+"element. To make this display into a link, select 'link' and enter the "
+"first part of the URL into the 'Prefix' field."
+msgstr ""
+"'span' inline elemként, míg a 'div' blokk elemként jelenik meg. Ha ezt "
+"linkként szeretné megjeleníteni, válassza a 'link' lehetőséget, és adja meg "
+"az URL első részét a 'Prefix' mezőbe."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:828, fuzzy
 msgid "link"
 msgstr "link"
 
@@ -2182,6 +2443,15 @@ msgid "%1s Value Prefix"
 msgstr "%1s Érték Előtag"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
+msgid ""
+"This is useful when linking to an email, URL, or phone number. For example, "
+"'mailto:', 'https://' or 'tel:' can be added as the prefix."
+msgstr ""
+"Ez hasznos, amikor e-mailre, URL-re vagy telefonszámra hivatkozik. Például "
+"a 'mailto:', 'https://' vagy 'tel:' prefixként adható hozzá."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:851
+#, php-format
 msgid "%1s Display"
 msgstr "%1s Megjelenítés"
 
@@ -2385,6 +2655,15 @@ msgid "Recent Post Types"
 msgstr "Legutóbbi bejegyzés típusok"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1259
+msgid ""
+"Select post types to include in recent posts. Leave empty to show all post "
+"types."
+msgstr ""
+"Válassza ki azokat a bejegyzéstípusokat, amelyeket a legújabb bejegyzések "
+"között szeretne megjeleníteni. Hagyja üresen, hogy minden bejegyzéstípust "
+"megjelenítsen."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
 msgid "Select post types..."
 msgstr "Bejegyzés típusok kiválasztása..."
 
@@ -2490,18 +2769,50 @@ msgid "Author inline display"
 msgstr "Szerző inline megjelenítése"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1468
+msgid ""
+"This will display author in an inline format side by side instead of block "
+"format."
+msgstr ""
+"Ez a szerzőt inline formátumban, egymás mellett fogja megjeleníteni a blokk "
+"formátum helyett."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1475
 msgid "Author Row Prefix"
 msgstr "Szerzői sor előtag"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1476
+msgid ""
+"Enter the text that should be added before authors. This field accepts "
+"basic HTML."
+msgstr ""
+"Adja meg a szöveget, amelyet a szerzők előtt szeretne hozzáadni. Ez a mező "
+"alap HTML-t fogad el."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1483
 msgid "Author Row Suffix"
 msgstr "Szerzői sor utótag"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1484
+msgid ""
+"Enter the text that should be added after authors. This field accepts basic "
+"HTML."
+msgstr ""
+"Adja meg a szöveget, amelyet a szerzők után szeretne hozzáadni. Ez a mező "
+"alap HTML-t fogad el."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1491
 msgid "Author Separator"
 msgstr "Szerző elválasztó"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1492
+msgid ""
+"You can specify a separator such as ',' to separate authors. This field "
+"accepts basic HTML."
+msgstr ""
+"Megadhat egy elválasztót, például ',' a szerzők elválasztásához. Ez a mező "
+"alap HTML-t fogad el."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1499
 msgid "Author Box Margin Top"
 msgstr "Szerzői doboz felső margó"
 
@@ -2684,6 +2995,18 @@ msgstr "Sématulajdonság"
 #: src/modules/author-categories/author-categories.php:622
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
 #, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+"Példa: amikor ez az érték reviewedBy-ra van állítva, az ebben a "
+"kategóriában lévő összes felhasználó hozzáadódik a bejegyzés reviewedBy "
+"tulajdonságához. További információt olvashat %1$s ebben az útmutatóban.%2$s"
+
+#: src/modules/author-categories/author-categories.php:634
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:79
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:486
 msgid "Post Types"
 msgstr "Bejegyzés típusok"
 
@@ -2693,6 +3016,16 @@ msgid "Select Post Type..."
 msgstr "Válassza ki a bejegyzés típust..."
 
 #: src/modules/author-categories/author-categories.php:678
+msgid ""
+"Select which post types this category applies to. Leave empty for all post "
+"types."
+msgstr ""
+"Válassza ki, hogy mely bejegyzéstípusokra vonatkozik ez a kategória. Hagyja "
+"üresen minden bejegyzéstípushoz."
+
+#: src/modules/author-categories/author-categories.php:683
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:81
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:531
 msgid "Enable Category"
 msgstr "Kategória engedélyezése"
 
@@ -2845,6 +3178,14 @@ msgid "Field Slug"
 msgstr "Mező slug"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:387
+msgid ""
+"The slug is used in code to reference this author field. It is all "
+"lowercase and contains only letters, numbers, and hyphens."
+msgstr ""
+"A slug a kódban használatos, hogy hivatkozzon erre a szerzői mezőre. Mindig "
+"kisbetűs és csak betűket, számokat és kötőjeleket tartalmaz."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:396
 msgid "Field Type"
 msgstr "Mező típusa"
 
@@ -2853,6 +3194,24 @@ msgid "Social Profile?"
 msgstr "Közösségi profil?"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:409
+msgid ""
+"This feature will add the SameAs property to this link so that search "
+"engines realize that the social profile is connected to this author."
+msgstr ""
+"Ez a funkció hozzáadja a SameAs tulajdonságot ehhez a linkhez, így a "
+"keresőmotorok észreveszik, hogy a közösségi profil kapcsolódik ehhez a "
+"szerzőhöz."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:422
+#, php-format
+msgid ""
+"Add a Schema.org property to this field. Examples include alumniOf, "
+"worksFor, and birthPlace. %1$sClick here for documentation.%2$s"
+msgstr ""
+"Adjon hozzá egy Schema.org tulajdonságot ehhez a mezőhöz. Példák: alumniOf, "
+"worksFor és birthPlace. %1$sKattintson ide a dokumentációhoz.%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:434
 msgid "Show in REST API"
 msgstr "Megjelenítés a REST API-ban"
 
@@ -2886,6 +3245,14 @@ msgid "Description"
 msgstr "Leírás"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:482
+msgid ""
+"This description appears under the fields and helps users understand their "
+"choice."
+msgstr ""
+"Ez a leírás a mezők alatt jelenik meg, és segít a felhasználóknak megérteni "
+"a választásukat."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:801
 msgid "Status"
 msgstr "Állapot"
 
@@ -2899,6 +3266,14 @@ msgstr "Munkakör"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:992
 #: src/modules/author-custom-fields/author-custom-fields.php:1047
+msgid ""
+"With PublishPress Authors Pro, you can add new fields for social networks "
+"and more."
+msgstr ""
+"A PublishPress Authors Pro segítségével új mezőket adhat hozzá a közösségi "
+"hálózatokhoz és még sok máshoz."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:1111
 msgid "Field Order updated."
 msgstr "A mezőrend frissítve."
 
@@ -3047,6 +3422,16 @@ msgid "Show Authors"
 msgstr "Szerzők megjelenítése"
 
 #: src/modules/author-list/author-list.php:438
+msgid ""
+"Select an option to limit the results to selected user roles, author types, "
+"specific authors or author Categories."
+msgstr ""
+"Válasszon egy lehetőséget, hogy korlátozza az eredményeket a kiválasztott "
+"felhasználói szerepkörökre, szerzőtípusokra, konkrét szerzőkre vagy szerzői "
+"kategóriákra."
+
+#: src/modules/author-list/author-list.php:441
+#: src/modules/author-list/author-list.php:455
 msgid "Roles"
 msgstr "Szerepkörök"
 
@@ -3055,6 +3440,15 @@ msgid "Exclude Authors"
 msgstr "Szerzők kizárása"
 
 #: src/modules/author-list/author-list.php:452
+msgid ""
+"Select an option to exclude selected user roles, author types, specific "
+"authors or author Categories from Author list."
+msgstr ""
+"Válasszon egy lehetőséget, hogy kizárja a kiválasztott felhasználói "
+"szerepköröket, szerzőtípusokat, konkrét szerzőket vagy szerzői kategóriákat "
+"a Szerző lista."
+
+#: src/modules/author-list/author-list.php:468
 msgid "Authors Per Page"
 msgstr "Szerzők száma oldalonként"
 
@@ -3067,10 +3461,29 @@ msgid "Show Empty"
 msgstr "Üres megjelenítése"
 
 #: src/modules/author-list/author-list.php:480
+msgid ""
+"Enable this option to show all authors, including those without any posts. "
+"Disable this option to show only authors who are assigned to posts."
+msgstr ""
+"Engedélyezze ezt a lehetőséget, hogy minden szerzőt megjelenítsen, "
+"beleértve azokat is, akiknek nincsenek bejegyzései. Tiltsa le ezt a "
+"lehetőséget, hogy csak azokat a szerzőket mutassa, akik bejegyzésekhez "
+"vannak rendelve."
+
+#: src/modules/author-list/author-list.php:488
 msgid "Configure Author List Options"
 msgstr "Szerzőlista beállítások konfigurálása"
 
 #: src/modules/author-list/author-list.php:489
+msgid ""
+"Authors Pro allows you to add extra features to the Authors List. These "
+"features include pagination, choose the order of authors, and much more."
+msgstr ""
+"A Authors Pro lehetővé teszi, hogy extra funkciókat adjon hozzá a Szerzők "
+"listájához. Ezek a funkciók tartalmazzák az oldalszámozást, a szerzők "
+"sorrendjének megválasztását és sok mást."
+
+#: src/modules/author-list/author-list.php:494
 msgid "Order By"
 msgstr "Rendezés"
 
@@ -3079,6 +3492,16 @@ msgid "Last Article Date"
 msgstr "Utolsó cikk dátuma"
 
 #: src/modules/author-list/author-list.php:523
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific time. This option accepts date values such as 1 week ago, 1 month "
+"ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"Korlátozhatja a szerzők listáját azokra a felhasználókra, akiknek van "
+"közzétett bejegyzésük egy adott időn belül. Ez a lehetőség dátumértékeket "
+"fogad el, mint például 1 hete, 1 hónapja, 6 hónapja, 1 éve stb."
+
+#: src/modules/author-list/author-list.php:535
 msgid "Show Search Box"
 msgstr "Keresődoboz megjelenítése"
 
@@ -3087,10 +3510,27 @@ msgid "Add Search Box to Author Lists"
 msgstr "Keresődoboz hozzáadása a szerzőlistákhoz"
 
 #: src/modules/author-list/author-list.php:545
+msgid ""
+"Author Pro allows you to add a search box to the Authors List. You can also "
+"show a dropdown menu that allows users to search on specific author fields."
+msgstr ""
+"A Author Pro lehetővé teszi, hogy keresőmezőt adjon hozzá a Szerzők "
+"listájához. Megjeleníthet egy legördülő menüt is, amely lehetővé teszi a "
+"felhasználók számára, hogy konkrét szerzői mezőkben keressenek."
+
+#: src/modules/author-list/author-list.php:550
 msgid "Search Field Dropdown"
 msgstr "Keresőmező legördülő menü"
 
 #: src/modules/author-list/author-list.php:551
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields."
+msgstr ""
+"Megjeleníthet egy legördülő menüt is, amely lehetővé teszi a felhasználók "
+"számára, hogy konkrét szerzői mezőkben keressenek."
+
+#: src/modules/author-list/author-list.php:600
 msgid "Author Recent List"
 msgstr "Legutóbbi szerzők listája"
 
@@ -3135,6 +3575,14 @@ msgid "Select Author Category"
 msgstr "Szerzőkategória kiválasztása"
 
 #: src/modules/author-list/author-list.php:1282
+msgid ""
+"This is a quick preview of this Author List. Test on frontend pages to see "
+"exactly how it looks with your theme."
+msgstr ""
+"Ez egy gyors előnézete ennek a Szerzők listájának. Tesztelje a frontend "
+"oldalakon, hogy pontosan hogyan néz ki a témájával."
+
+#: src/modules/author-list/author-list.php:1380
 msgid "Invalid form"
 msgstr "Érvénytelen űrlap"
 
@@ -3365,6 +3813,14 @@ msgid "Showcase your Authors with PublishPress Blocks"
 msgstr "Mutassa be szerzőit a PublishPress Blokkok segítségével"
 
 #: src/modules/modules-settings/modules-settings.php:318
+msgid ""
+"PublishPress Blocks is a free plugin with full support for PublishPress "
+"Authors."
+msgstr ""
+"A PublishPress Blocks egy ingyenes bővítmény, amely teljes támogatást nyújt "
+"a PublishPress Authors számára."
+
+#: src/modules/modules-settings/modules-settings.php:319
 msgid "Install this plugin to showcase content by your Authors."
 msgstr "Telepítse ezt a bővítményt, hogy bemutassa a tartalmat a szerzői által."
 
@@ -3375,6 +3831,14 @@ msgstr ""
 "mutassa be bejegyzéseit."
 
 #: src/modules/modules-settings/modules-settings.php:321
+msgid ""
+"PublishPress Blocks has over 20 extra Gutenberg blocks including "
+"accordions, galleries, tables, and more."
+msgstr ""
+"A PublishPress Blocks több mint 20 extra Gutenberg blokkot tartalmaz, "
+"beleértve az akordeonokat, galériákat, táblázatokat és még sok mást."
+
+#: src/modules/modules-settings/modules-settings.php:324
 msgid "Click here to install PublishPress Blocks"
 msgstr "Kattintson ide a PublishPress Blokkok telepítéséhez"
 
@@ -3415,6 +3879,17 @@ msgid "Copy Molongui Authorship Data"
 msgstr "Molongui Authorship adatok másolása"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:153
+msgid ""
+"This action will copy the authors from the plugin Molongui Authorship "
+"allowing you to migrate to PublishPress Authors without losing any data "
+"including post author relation. This action can be run multiple times."
+msgstr ""
+"Ez a művelet másolja a szerzőket a Molongui Authorship bővítményből, "
+"lehetővé téve a PublishPress Authors-ra való migrálást anélkül, hogy "
+"bármilyen adatot, köztük a bejegyzés-szerző kapcsolatot elveszítene. Ez a "
+"művelet többször is végrehajtható."
+
+#: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:187
 msgid "It looks like you have Molongui Authorship installed."
 msgstr "Úgy tűnik, hogy a Molongui Authorship telepítve van."
 
@@ -3637,6 +4112,14 @@ msgstr "Egyszerű lista örökölt elrendezés Szerzői doboz:"
 #: src/modules/multiple-authors/multiple-authors.php:1265
 #: src/modules/settings/settings.php:275
 #, php-format
+msgid ""
+"Disabled because add_post_type_support('%1$s', '%2$s') is included in a "
+"loaded file."
+msgstr ""
+"Letiltva, mert add_post_type_support('%1$s', '%2$s') szerepel egy betöltött "
+"fájlban."
+
+#: src/modules/multiple-authors/multiple-authors.php:1284
 msgid "This will display the authors box at the top of the content."
 msgstr "Ez megjeleníti a szerzők dobozát a tartalom tetején."
 
@@ -3663,16 +4146,250 @@ msgid "Authors Box"
 msgstr "Szerzői doboz"
 
 #: src/modules/multiple-authors/multiple-authors.php:1409
+msgid ""
+"With this shortcode you can display the author box in any part of the "
+"content. "
+msgstr ""
+"Ezzel a shortcode-dal bármely részén megjelenítheti a szerzői dobozt a "
+"tartalomnak."
+
+#: src/modules/multiple-authors/multiple-authors.php:1417
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s."
+msgstr ""
+"A szerzői dobozok elrendezésének slug-ját használva megadhatja az "
+"elrendezést. A teljes részleteket minden elrendezési lehetőségről %1$s "
+"megtalálja ebben az útmutatóban %2$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1428
+#, php-format
+msgid ""
+"You can also decide whether or not to show the main title, using %1$s or "
+"%2$s ."
+msgstr ""
+"Dönthet arról is, hogy megjelenítse-e a főcímet, az %1$s vagy %2$s "
+"használatával."
+
+#: src/modules/multiple-authors/multiple-authors.php:1438
+#: src/modules/multiple-authors/multiple-authors.php:1522
+msgid ""
+"You can load the authors for a specific post, even if you are not in that "
+"post currently. For example, this shortcode will load the authors for the "
+"post with the ID of 32."
+msgstr ""
+"Betöltheti a szerzőket egy adott bejegyzéshez, még akkor is, ha jelenleg "
+"nem abban a bejegyzésben van. Például, ez a shortcode betölti a 32-es "
+"azonosítójú bejegyzés szerzőit."
+
+#: src/modules/multiple-authors/multiple-authors.php:1445
+msgid ""
+"You can load the authors for a specific user by providing the user id. For "
+"example, this shortcode will load the author with user id of 32"
+msgstr ""
+"Betöltheti a szerzőket egy adott felhasználóhoz, ha megadja a felhasználói "
+"azonosítót. Például, ez a shortcode betölti a 32-es felhasználói "
+"azonosítójú szerzőt."
+
+#: src/modules/multiple-authors/multiple-authors.php:1452
+msgid ""
+"You can load the authors for a specific author by providing the author term "
+"id for both guest and user author. For example, this shortcode will load "
+"the author with term id of 32"
+msgstr ""
+"Betöltheti a szerzőket egy adott szerzőhöz, ha megadja a szerzői kifejezés "
+"azonosítóját mind a vendég, mind a felhasználó szerzőhöz. Például, ez a "
+"shortcode betölti a 32-es kifejezés azonosítójú szerzőt."
+
+#: src/modules/multiple-authors/multiple-authors.php:1460
+#, php-format
+msgid ""
+"If you are having problems showing PublishPress Authors on author profile "
+"pages, you can use this shortcode below. The argument %s forces the plugin "
+"to retrieve the Author from the profile page and not any other posts on the "
+"same screen."
+msgstr ""
+"Ha problémái vannak a PublishPress szerzők megjelenítésével a szerzői "
+"profil oldalakon, használhatja az alábbi shortcode-ot. A %s argumentum arra "
+"kényszeríti a bővítményt, hogy a szerzőt a profil oldalról kérje le, és ne "
+"más bejegyzéseket az ugyanazon a képernyőn."
+
+#: src/modules/multiple-authors/multiple-authors.php:1470
+#, php-format
+msgid ""
+"There is one final option to mention. This is mostly useful if you're using "
+"a theme or page builder to customize the Author profile pages you find at "
+"URLs such as /author/username/. You can use the following shortcode on the "
+"authors page to display the profile of the current author. You just need to "
+"add the parameter %s."
+msgstr ""
+"Van egy utolsó lehetőség, amit meg kell említeni. Ez leginkább akkor "
+"hasznos, ha témát vagy oldalépítőt használ a szerzői profil oldalak "
+"testreszabásához, amelyeket olyan URL-eken talál, mint például "
+"/author/username/. Az alábbi shortcode-ot használhatja a szerzők oldalán a "
+"jelenlegi szerző profiljának megjelenítéséhez. Csak annyit kell tennie, "
+"hogy hozzáadja a %s paramétert."
+
+#: src/modules/multiple-authors/multiple-authors.php:1479
+msgid ""
+"You can load the authors belonging to a specific author categories by "
+"providing the category slug or slugs separated by comma for more than one "
+"category."
+msgstr ""
+"A konkrét szerzői kategóriákhoz tartozó szerzőket betöltheti a kategória "
+"slug vagy slugs megadásával, amelyeket vesszővel kell elválasztani több "
+"kategória esetén."
+
+#: src/modules/multiple-authors/multiple-authors.php:1489
 msgid "Authors Data"
 msgstr "Szerzők adatai"
 
 #: src/modules/multiple-authors/multiple-authors.php:1490
+msgid ""
+"With this shortcode you can display the author names or any profile field "
+"in any part of the content."
+msgstr ""
+"Ezzel a shortcode-dal megjelenítheti a szerzők neveit vagy bármely "
+"profilmezőt a tartalom bármely részén."
+
+#: src/modules/multiple-authors/multiple-authors.php:1498
+#, php-format
+msgid ""
+"The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s "
+"%4$s %5$s %6$s %7$s. You can see full details and parameters %8$s in this "
+"guide %9$s."
+msgstr ""
+"A szerzők adatait tartalmazó shortcode elfogad mező paramétereket, mint "
+"például: %1$s %2$s %3$s %4$s %5$s %6$s %7$s. A teljes részleteket és "
+"paramétereket %8$s ebben a útmutatóban %9$s láthatja."
+
+#: src/modules/multiple-authors/multiple-authors.php:1515
 msgid "You can also specify the separator to be used for mulitple authors data."
 msgstr ""
 "Azt is megadhatja, hogy milyen elválasztót használjon a több szerzői adat "
 "esetén."
 
 #: src/modules/multiple-authors/multiple-authors.php:1529
+msgid ""
+"You can retrieve a specific author by providing the author's term ID. For "
+"example, this shortcode will load the author with the term ID of 102."
+msgstr ""
+"Egy konkrét szerzőt is lekérhet a szerző kifejezés azonosítójának "
+"megadásával. Például ez a shortcode betölti a 102 azonosítójú szerzőt."
+
+#: src/modules/multiple-authors/multiple-authors.php:1537
+#, php-format
+msgid ""
+"You can also decide to return an array list of authors by using "
+"user_objects=\"true\" which will return all the authors object data as an "
+"array. You can check full details and sample usage %2$s in this guide%3$s."
+msgstr ""
+"Dönthet úgy is, hogy visszaad egy szerzők tömb listát a "
+"user_objects=\"true\" használatával, amely visszaadja az összes szerző "
+"objektum adatát tömbként. A teljes részleteket és mintahasználatot %2$s "
+"ebben a útmutatóban %3$s ellenőrizheti."
+
+#: src/modules/multiple-authors/multiple-authors.php:1548
+msgid ""
+"You can retrieve authors belonging to a specific Author Category by "
+"providing the category slug or slugs. Separate multiple slugs with a comma."
+msgstr ""
+"Lekérheti azokat a szerzőket, akik egy adott Szerzői Kategóriához "
+"tartoznak, a kategória slug vagy slugs megadásával. A több slugot vesszővel "
+"válassza el."
+
+#: src/modules/multiple-authors/multiple-authors.php:1559
+msgid ""
+"With this shortcode, you can show all the authors together in a single "
+"display."
+msgstr ""
+"Ezzel a shortcode-dal az összes szerzőt együtt, egyetlen megjelenítésben "
+"mutathatja be."
+
+#: src/modules/multiple-authors/multiple-authors.php:1567
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s. %3$s %4$s This "
+"shortcode also provides two custom layouts: %5$s %6$s."
+msgstr ""
+"A szerzői dobozok elrendezés slug használatával meghatározhatja az "
+"elrendezést. A teljes részleteket az egyes elrendezési lehetőségekről %1$s "
+"ebben a útmutatóban %2$s láthatja. %3$s %4$s Ez a shortcode két egyedi "
+"elrendezést is biztosít: %5$s %6$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1582
+#, php-format
+msgid ""
+"You can define the number of layout columns by using %1$s to show authors "
+"in 2 column."
+msgstr ""
+"Az elrendezési oszlopok számát a %1$s használatával határozhatja meg, hogy "
+"a szerzőket 2 oszlopban mutassa be."
+
+#: src/modules/multiple-authors/multiple-authors.php:1592
+#, php-format
+msgid ""
+"You can choose the number of authors per page using %1$s . %2$s Pagination "
+"will be automatically added if required."
+msgstr ""
+"A %1$s használatával választhatja meg a szerzők számát oldalanként. %2$s A "
+"lapozás automatikusan hozzáadódik, ha szükséges."
+
+#: src/modules/multiple-authors/multiple-authors.php:1603
+#, php-format
+msgid ""
+"You can limit the result to only authors who are assigned to posts by using "
+"%1$s . %2$s Alternatively, use %3$s to show all authors, including those "
+"without any posts."
+msgstr ""
+"A %1$s használatával korlátozhatja az eredményt csak azokra a szerzőkre, "
+"akik bejegyzésekhez vannak rendelve. %2$s Alternatívaként a %3$s "
+"használatával megjelenítheti az összes szerzőt, beleértve azokat is, "
+"akiknek nincsenek bejegyzéseik."
+
+#: src/modules/multiple-authors/multiple-authors.php:1615
+#, php-format
+msgid ""
+"You can limit the result to only guest authors by using %1$s . %2$s "
+"Alternatively, %3$s will show only authors with a WordPress account."
+msgstr ""
+"A %1$s használatával korlátozhatja az eredményt csak a vendégszerzőkre. "
+"%2$s Alternatívaként a %3$s csak azokat a szerzőket fogja megjeleníteni, "
+"akiknek WordPress fiókjuk van."
+
+#: src/modules/multiple-authors/multiple-authors.php:1627
+#, php-format
+msgid ""
+"If you are using the authors_recent layout, you can define the number of "
+"columns by using %1$s ."
+msgstr ""
+"Ha az authors_recent elrendezést használja, a %1$s használatával "
+"meghatározhatja az oszlopok számát."
+
+#: src/modules/multiple-authors/multiple-authors.php:1637
+#, php-format
+msgid ""
+"For authors_index layout, you can group user by profile field by using %1$s "
+"."
+msgstr ""
+"Az authors_index elrendezéshez a %1$s használatával csoportosíthatja a "
+"felhasználókat profilmező alapján."
+
+#: src/modules/multiple-authors/multiple-authors.php:1647
+#, php-format
+msgid ""
+"To order the results based on post count, use %1$s . To order the results "
+"by name, use %2$s . Alternatively, you can order by profile fields like "
+"%3$s, %4$s etc"
+msgstr ""
+"Az eredmények rendezéséhez a bejegyzések száma alapján használja a %1$s-t. "
+"Az eredmények név szerinti rendezéséhez használja a %2$s-t. Alternatívaként "
+"rendezheti a profilmezők szerint, mint például %3$s, %4$s stb."
+
+#: src/modules/multiple-authors/multiple-authors.php:1660
+#, php-format
 msgid "To further customize the order of results, use %1$s or %2$s ."
 msgstr ""
 "Az eredmények sorrendjének további testreszabásához használja a %1$s-t vagy "
@@ -3685,6 +4402,29 @@ msgstr "A szerzők keresőmezőjének megjelenítéséhez használja a %1$s-t."
 
 #: src/modules/multiple-authors/multiple-authors.php:1681
 #, php-format
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields. You can add fields to the dropdown using %1$s . This "
+"requires the search box to be active."
+msgstr ""
+"Egy legördülő menüt is megjeleníthet, amely lehetővé teszi a felhasználók "
+"számára, hogy konkrét szerzői mezőkön keressenek. A mezőket a legördülő "
+"menühöz a %1$s használatával adhatja hozzá. Ehhez aktív keresőmező "
+"szükséges."
+
+#: src/modules/multiple-authors/multiple-authors.php:1691
+#, php-format
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific period using %1$s . This accept english date value like 1 week "
+"ago, 1 month ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"Korlátozhatja a szerzők listáját azok számára, akik egy adott időszakon "
+"belül közzétett bejegyzéssel rendelkeznek a %1$s használatával. Ez angol "
+"dátumértékeket fogad el, mint például 1 hét, 1 hónap, 6 hónap, 1 év stb. "
+"előtt."
+
+#: src/modules/multiple-authors/multiple-authors.php:1738
 msgid "Copied!"
 msgstr "Másolt!"
 
@@ -3698,6 +4438,42 @@ msgid "Select roles"
 msgstr "Szerepkörök kiválasztása"
 
 #: src/modules/multiple-authors/multiple-authors.php:1813
+msgid ""
+"Choose which WordPress user roles can be selected using the \"Registered "
+"Author With User Account\" option for author profiles."
+msgstr ""
+"Válassza ki, hogy mely WordPress felhasználói szerepkörök választhatók a "
+"\"Regisztrált Szerző Felhasználói Fiókkal\" opcióval a szerzői profilokhoz."
+
+#: src/modules/multiple-authors/multiple-authors.php:1842
+msgid ""
+"Author profiles can be mapped to WordPress user accounts. This option "
+"allows you to automatically create author profiles when users are created "
+"in these roles. You can also do this for existing users by clicking the "
+"\"Create PublishPress Authors Profiles for all users in a role\" button in "
+"the Maintenance tab."
+msgstr ""
+"Az szerzői profilok a WordPress felhasználói fiókokhoz rendelhetők. Ez a "
+"lehetőség lehetővé teszi, hogy automatikusan létrehozzon szerzői "
+"profilokat, amikor a felhasználók ezeken a szerepeken létrejönnek. Ezt "
+"meglévő felhasználók esetén is megteheti, ha rákattint a \"PublishPress "
+"Szerzői Profilok létrehozása minden felhasználó számára egy szerepben\" "
+"gombra a Karbantartás fülön."
+
+#: src/modules/multiple-authors/multiple-authors.php:1863
+msgid ""
+"If the Author is mapped to a WordPress user, this will display the authors' "
+"\"Display name\" and their \"Username\". The default is to show only the "
+"\"Display name\". Showing the \"Username\" is useful if you have several "
+"authors with similar names."
+msgstr ""
+"Ha a szerző egy WordPress felhasználóhoz van rendelve, akkor ez megjeleníti "
+"a szerzők \"Megjelenített nevét\" és \"Felhasználónevét\". Az "
+"alapértelmezett beállítás az, hogy csak a \"Megjelenített név\" látható. A "
+"\"Felhasználónév\" megjelenítése hasznos, ha több szerzőnek hasonló neve "
+"van."
+
+#: src/modules/multiple-authors/multiple-authors.php:1886
 msgid "Allow authors to be created without a real user account."
 msgstr "Engedélyezze a szerzők létrehozását valós felhasználói fiók nélkül."
 
@@ -3712,6 +4488,14 @@ msgid "Allow authors to be created without a connected user account."
 msgstr "Engedélyezze a szerzők létrehozását összekapcsolt felhasználói fiók nélkül."
 
 #: src/modules/multiple-authors/multiple-authors.php:1956
+msgid ""
+"If enabled, PublishPress Authors will replace the default WordPress author "
+"pages."
+msgstr ""
+"Ha engedélyezve van, a PublishPress Szerzők felváltják az alapértelmezett "
+"WordPress szerzői oldalakat."
+
+#: src/modules/multiple-authors/multiple-authors.php:1961
 msgid "Please note this feature will not work for all themes."
 msgstr "Kérjük, vegye figyelembe, hogy ez a funkció nem minden téma esetén működik."
 
@@ -3745,6 +4529,14 @@ msgid "Last Name First Name"
 msgstr "Vezetéknév Keresztnév"
 
 #: src/modules/multiple-authors/multiple-authors.php:2218
+msgid ""
+"This avatar will be used as default avatar instead of gravatar where no "
+"custom avatar is added to profile."
+msgstr ""
+"Ez az avatar az alapértelmezett avatarként lesz használva a gravatar "
+"helyett, ahol nincs egyéni avatar hozzáadva a profilhoz."
+
+#: src/modules/multiple-authors/multiple-authors.php:2240
 msgid "This will display the author bio."
 msgstr "Ez megjeleníti a szerző életrajzát."
 
@@ -3782,6 +4574,17 @@ msgid "This will display the excerpt."
 msgstr "Ez megjeleníti a kivonatot."
 
 #: src/modules/multiple-authors/multiple-authors.php:2573
+msgid ""
+"This will allows you map a WordPress user to more than one author. Don't "
+"use this feature unless requested to do so by the PublishPress team. This "
+"plugin works better when authors and users are paired one-to-one."
+msgstr ""
+"Ez lehetővé teszi, hogy egy WordPress felhasználót több mint egy szerzőhöz "
+"rendelje. Ne használja ezt a funkciót, hacsak a PublishPress csapata nem "
+"kérte, hogy tegye. Ez a bővítmény jobban működik, ha a szerzők és a "
+"felhasználók egy az egyben párosítva vannak."
+
+#: src/modules/multiple-authors/multiple-authors.php:2597
 msgid "This will display the authors."
 msgstr "Ez megjeleníti a szerzőket."
 
@@ -3816,6 +4619,17 @@ msgid "Search for a fallback author"
 msgstr "Keresés egy tartalék szerző után"
 
 #: src/modules/multiple-authors/multiple-authors.php:2791
+msgid ""
+"If you only have Guest Authors selected for a post, this user may be used "
+"as a fallback. WordPress sometimes requires a WordPress user to be assigned "
+"to each post. This user will not be visible on the front of your site."
+msgstr ""
+"Ha csak Vendég Szerzők vannak kiválasztva egy bejegyzéshez, ezt a "
+"felhasználót tartalék megoldásként lehet használni. A WordPress néha "
+"megköveteli, hogy minden bejegyzéshez hozzárendeljenek egy WordPress "
+"felhasználót. Ez a felhasználó nem lesz látható a webhelye elején."
+
+#: src/modules/multiple-authors/multiple-authors.php:2809
 msgid "This will display the authors email in the author box."
 msgstr "Ez megjeleníti a szerző e-mail címét a szerzői dobozban."
 
@@ -3836,6 +4650,18 @@ msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr "Készíts PublishPress Szerzői Profilokat minden bejegyzés szerzőjének"
 
 #: src/modules/multiple-authors/multiple-authors.php:2887
+msgid ""
+"If a WordPress user is the author of a post, but does not have a "
+"PublishPress Authors profile, this will automatically create a profile for "
+"them."
+msgstr ""
+"Ha egy WordPress felhasználó a bejegyzés szerzője, de nincs PublishPress "
+"Szerzői profilja, ez automatikusan létrehoz egy profilt számukra."
+
+#: src/modules/multiple-authors/multiple-authors.php:2887
+#: src/modules/multiple-authors/multiple-authors.php:2893
+#: src/modules/multiple-authors/multiple-authors.php:2899
+#: src/modules/multiple-authors/multiple-authors.php:2906
 msgid "Click here for documentation"
 msgstr "Kattints ide a dokumentációért"
 
@@ -3850,6 +4676,16 @@ msgstr ""
 "szerepkörben"
 
 #: src/modules/multiple-authors/multiple-authors.php:2893
+msgid ""
+"This will find all the users in a role and create author profiles for them. "
+"You can choose the roles using the \"Automatically create author profiles\" "
+"setting."
+msgstr ""
+"Ez megtalálja az összes felhasználót egy szerepben, és létrehozza számukra "
+"a szerzői profilokat. A szerepeket a \"Szerzői profilok automatikus "
+"létrehozása\" beállítással választhatja ki."
+
+#: src/modules/multiple-authors/multiple-authors.php:2894
 msgid "Create PublishPress Authors profiles"
 msgstr "Készítsen PublishPress Szerzői profilokat"
 
@@ -3858,22 +4694,71 @@ msgid "Synchronize PublishPress Authors Fields and user profile fields"
 msgstr "Szinkronizálja a PublishPress Szerzők mezőit és a felhasználói profil mezőit"
 
 #: src/modules/multiple-authors/multiple-authors.php:2899
+msgid ""
+"This will update all the author profiles in PublishPress Authors to match "
+"the default WordPress fields for each user."
+msgstr ""
+"Ez frissíti az összes PublishPress Szerzői profilt, hogy megfeleljen a "
+"WordPress alapértelmezett mezőinek minden felhasználó számára."
+
+#: src/modules/multiple-authors/multiple-authors.php:2905
 msgid "Synchronize the author and user URLs"
 msgstr "Szinkronizálja a szerzői és a felhasználói URL-eket"
 
 #: src/modules/multiple-authors/multiple-authors.php:2906
+msgid ""
+"This will update all the Author URLs in PublishPress Authors to match the "
+"default WordPress URLs for each user."
+msgstr ""
+"Ez frissíti az összes Szerzői URL-t a PublishPress Szerzőkben, hogy "
+"megfeleljen a WordPress alapértelmezett URL-jeinek minden felhasználó "
+"számára."
+
+#: src/modules/multiple-authors/multiple-authors.php:2912
+#: src/modules/multiple-authors/multiple-authors.php:2914
 msgid "Create Author Categories"
 msgstr "Szerzői kategóriák létrehozása"
 
 #: src/modules/multiple-authors/multiple-authors.php:2913
+msgid ""
+"This will create author categories table if missing and add default "
+"categories."
+msgstr ""
+"Ez létrehozza a szerzői kategóriák táblázatát, ha hiányzik, és hozzáadja az "
+"alapértelmezett kategóriákat."
+
+#: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "Copy Co-Authors Plus Data"
 msgstr "Másolja a Co-Authors Plus adatokat"
 
 #: src/modules/multiple-authors/multiple-authors.php:2927
+msgid ""
+"This action will copy the authors from the plugin Co-Authors Plus allowing "
+"you to migrate to PublishPress Authors without losing any data. This action "
+"can be run multiple times."
+msgstr ""
+"Ez a művelet lemásolja a szerzőket a Co-Authors Plus bővítményből, lehetővé "
+"téve a PublishPress Szerzők közé való migrálást anélkül, hogy bármilyen "
+"adatot elveszítene. Ez a művelet többször is végrehajtható."
+
+#: src/modules/multiple-authors/multiple-authors.php:2937
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr "Törölje a kapcsolatokat a szerzői profilok és a felhasználók között"
 
 #: src/modules/multiple-authors/multiple-authors.php:2938
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. It will delete all author profiles that are mapped to "
+"a WordPress user account. This will not delete the WordPress user accounts, "
+"but any links between the posts and author profiles will be lost."
+msgstr ""
+"Ez a művelet visszaállíthatja a PublishPress Szerzők adatait más "
+"karbantartási lehetőségek használata előtt. Ez törli az összes szerzői "
+"profilt, amely WordPress felhasználói fiókhoz van rendelve. Ez nem törli a "
+"WordPress felhasználói fiókokat, de a bejegyzések és a szerzői profilok "
+"közötti összes kapcsolat megszűnik."
+
+#: src/modules/multiple-authors/multiple-authors.php:2939
 msgid "Delete all authors mapped to users"
 msgstr "Törölje az összes szerzőt, amely felhasználókhoz van hozzárendelve"
 
@@ -3882,10 +4767,30 @@ msgid "Delete Guest Authors"
 msgstr "Törölje a vendégszerzőket"
 
 #: src/modules/multiple-authors/multiple-authors.php:2945
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. Guest authors are author profiles that are not mapped "
+"to a WordPress user account. This action will delete all guest authors."
+msgstr ""
+"Ez a művelet visszaállíthatja a PublishPress Szerzők adatait más "
+"karbantartási lehetőségek használata előtt. A vendég szerzők olyan szerzői "
+"profilok, amelyek nincsenek WordPress felhasználói fiókhoz rendelve. Ez a "
+"művelet törli az összes vendég szerzőt."
+
+#: src/modules/multiple-authors/multiple-authors.php:2946
 msgid "Delete all guest authors"
 msgstr "Törölje az összes vendégszerzőt"
 
 #: src/modules/multiple-authors/multiple-authors.php:2952
+msgid ""
+"Please be careful clicking these buttons. Before clicking, we recommend "
+"taking a site backup in case anything goes wrong."
+msgstr ""
+"Kérjük, legyen óvatos ezeknek a gomboknak a megnyomásakor. A kattintás "
+"előtt javasoljuk, hogy készítsen biztonsági mentést az oldalról, ha valami "
+"rosszul sülne el."
+
+#: src/modules/multiple-authors/multiple-authors.php:3155
 msgid "Author Profiles"
 msgstr "Szerzői profilok"
 
@@ -4171,9 +5076,46 @@ msgstr "Kapcsolat"
 
 #: src/core/Plugin.php:563
 msgctxt "taxonomy general name"
+msgid "Authors"
+msgstr "Szerzők"
+
+#: src/core/Plugin.php:568
+msgctxt "taxonomy singular name"
+msgid "Author"
+msgstr "Szerző"
+
+#: src/modules/author-boxes/author-boxes.php:411
+#, fuzzy, php-format
+msgctxt "Author Box post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-boxes/author-boxes.php:412
+#, fuzzy, php-format
+msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
 #: src/modules/author-boxes/author-boxes.php:427
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:166
+#, fuzzy, php-format
+msgctxt "Custom Field post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:167
+#, fuzzy, php-format
+msgctxt "singular custom field post type name"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:182
+#, fuzzy, php-format
+msgctxt "custom field post type menu name"
+msgid "%2$s"
+msgstr "%2$s"

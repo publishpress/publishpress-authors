@@ -31,6 +31,25 @@ class AuthorCategoriesTable extends \WP_List_Table
         ]);
     }
 
+    /**
+     * Add a stable CSS class regardless of translated plural labels.
+     *
+     * WP_List_Table uses the translated plural to build a class, which varies by locale.
+     * We append `authorcategories` so admin CSS selectors remain consistent.
+     *
+     * @return array
+     */
+    protected function get_table_classes()
+    {
+        $classes = parent::get_table_classes();
+
+        if (!in_array('authorcategories', $classes, true)) {
+            $classes[] = 'authorcategories';
+        }
+
+        return $classes;
+    }
+
     public function author_categories_data($count = false)
     {
 
@@ -355,9 +374,16 @@ class AuthorCategoriesTable extends \WP_List_Table
             $post_types_data = isset($item['post_types']) ? maybe_unserialize($item['post_types']) : [];
             $post_types_json = json_encode($post_types_data);
             $actions['inline hide-if-no-js'] = sprintf(
-                '<button type="button" class="button-link editinline" aria-label="%s" aria-expanded="false" data-category_id="' . $item['id'] . '" data-category_name="' . $item['category_name'] . '" data-plural_name="' . $item['plural_name'] . '" data-schema_property="' . $schema_property . '" data-slug="' . $item['slug'] . '" data-category_status="' . $item['category_status'] . '"  data-post_types=\'' . esc_attr($post_types_json) . '\'>%s</button>',
+                '<button type="button" class="button-link editinline" aria-label="%s" aria-expanded="false" data-category_id="%s" data-category_name="%s" data-plural_name="%s" data-schema_property="%s" data-slug="%s" data-category_status="%s" data-post_types=\'%s\'>%s</button>',
                 /* translators: %s: Taxonomy term name. */
                 esc_attr(sprintf(esc_html__('Quick edit &#8220;%s&#8221; inline', 'publishpress-authors'), $item['category_name'])),
+                esc_attr($item['id']),
+                esc_attr($item['category_name']),
+                esc_attr($item['plural_name']),
+                esc_attr($schema_property),
+                esc_attr($item['slug']),
+                esc_attr($item['category_status']),
+                esc_attr($post_types_json),
                 esc_html__('Quick&nbsp;Edit', 'publishpress-authors')
             );
 

@@ -43,7 +43,7 @@ class AuthorListTable extends \WP_List_Table
         ]);
 
         // Get the current view.
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (isset($_GET['view'])) {
             $this->list_view = sanitize_key($_GET['view']);
         }
@@ -109,7 +109,7 @@ class AuthorListTable extends \WP_List_Table
                 $author_list_grouped_data = [];
             }
             $legacyPlugin = Factory::getLegacyPlugin();
-            
+
             $author_list_data = $legacyPlugin->modules->author_list->options->author_list_data;
 
             if (!empty($author_list_data)) {
@@ -403,7 +403,7 @@ class AuthorListTable extends \WP_List_Table
             add_query_arg(
                 [
                     'page'              => 'ppma-author-list',
-                    'author_list_data'  => $item['ID'],
+                    'author_list_edit'  => $item['ID'],
                 ],
                 admin_url('admin.php')
             ),

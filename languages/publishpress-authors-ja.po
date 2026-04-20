@@ -9,10 +9,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-26 12:05+0000\n"
-"PO-Revision-Date: 2026-04-15 02:04+0000\n"
+"POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
+"PO-Revision-Date: 2026-04-20 12:08+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
+"Language: ja\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: publishpress-authors.php\n"
@@ -29,7 +30,6 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-4: vendor\n"
 "X-Poedit-SearchPathExcluded-5: *.min.js\n"
 "X-Poedit-SearchPathExcluded-6: src/assets/lib\n"
-"Language: ja\n"
 
 #: publishpress-authors.php:5
 #: src/core/Plugin.php:724
@@ -50,9 +50,9 @@ msgstr "https://wordpress.org/plugins/publishpress-authors/"
 msgid ""
 "PublishPress Authors allows you to add multiple authors and guest authors "
 "to WordPress posts"
-msgstr "PublishPress Authorsを使用すると、WordPress投稿に複数の著者とゲスト著者を追加できます"
+msgstr "PublishPress Authorsは、WordPressの投稿に複数の著者やゲスト著者を追加することを可能にします"
 
-#: publishpress-authors.php:11, fuzzy
+#: publishpress-authors.php:11
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -68,7 +68,7 @@ msgid ""
 "You're using PublishPress Authors Free. The Pro version has more features "
 "and support. %sUpgrade to Pro%s"
 msgstr ""
-"あなたはPublishPress Authors Freeを使用しています。Proバージョンはより多くの機能とサポートがあります。 "
+"あなたはPublishPress Authors Freeを使用しています。Proバージョンには、より多くの機能とサポートがあります。 "
 "%sProにアップグレード%s"
 
 #: includes.php:63
@@ -257,7 +257,7 @@ msgstr "管理者アカウントにリンクされた著者プロフィールを
 msgid ""
 "You do not have permission to edit this author profile because it is linked "
 "to a user account you do not have permission to edit."
-msgstr "この著者プロフィールを編集する権限がありません。なぜなら、それは編集権限を持たないユーザーアカウントにリンクされているからです。"
+msgstr "この著者プロファイルを編集する権限がありません。このプロファイルは、編集する権限がないユーザーアカウントにリンクされています。"
 
 #: src/core/Classes/Admin_Ajax.php:374
 #: src/core/Classes/Author_Editor.php:1008
@@ -289,7 +289,7 @@ msgstr "著者名は必須です"
 msgid ""
 "No post ID provided for Authors_Iterator constructor. Are you not in a loop "
 "or is $post not set?"
-msgstr "Authors_Iteratorコンストラクタに提供された投稿IDがありません。ループにいないのですか、それとも$postが設定されていませんか？"
+msgstr "Authors_Iteratorコンストラクタに投稿IDが提供されていません。ループに入っていないか、$postが設定されていませんか？"
 
 #: src/core/Classes/Author_Editor.php:47
 #: src/core/Plugin.php:1618
@@ -384,8 +384,8 @@ msgid ""
 "(Uses the %1s Email field %2s to find the Gravatar account if default "
 "avatar is not uploaded in Authors Settings)"
 msgstr ""
-"(デフォルトのアバターが著者設定にアップロードされていない場合、%1s Email フィールド %2s を使用して Gravatar "
-"アカウントを見つけます)"
+"(デフォルトのアバターがAuthors "
+"Settingsにアップロードされていない場合、%1sメールフィールド%2sを使用してGravatarアカウントを見つけます)"
 
 #: src/core/Classes/Author_Editor.php:399
 msgid "Custom image"
@@ -405,7 +405,7 @@ msgstr "著者カテゴリ"
 msgid ""
 "Select the default Category for this Author. This will be used when the "
 "Author is added to new posts."
-msgstr "この著者のデフォルトカテゴリを選択してください。これは著者が新しい投稿に追加されるときに使用されます。"
+msgstr "この著者のデフォルトのカテゴリーを選択してください。これは、著者が新しい投稿に追加されるときに使用されます。"
 
 #: src/core/Classes/Author_Editor.php:418
 msgid "Do not show this profile publicly"
@@ -432,7 +432,9 @@ msgid ""
 "Create an author profile for a current user account. You can select users "
 "who are allowed to edit posts. This user will be able to update their "
 "profile."
-msgstr "現在のユーザーアカウントの著者プロフィールを作成します。投稿を編集できるユーザーを選択できます。このユーザーはプロフィールを更新できます。"
+msgstr ""
+"現在のユーザーアカウントの著者プロファイルを作成します。投稿を編集できるユーザーを選択できます。このユーザーは、自分のプロファイルを更新できるようになり"
+"ます。"
 
 #: src/core/Classes/Author_Editor.php:789
 msgid ""
@@ -440,16 +442,16 @@ msgid ""
 "the \"Guest Author\" role and will not be able to login to the WordPress "
 "dashboard or update their profile."
 msgstr ""
-"著者プロフィールとリンクされたユーザーアカウントを作成します。このアカウントは「ゲスト著者」ロールになり、WordPressダッシュボードにログインした"
-"り、プロフィールを更新したりすることはできません。"
+"著者プロファイルとリンクされたユーザーアカウントを作成します。このアカウントは「ゲスト著者」役割にあり、WordPressダッシュボードにログインしたり"
+"、自分のプロファイルを更新したりすることはできません。"
 
 #: src/core/Classes/Author_Editor.php:796
 msgid ""
 "Create an author profile with no linked user account. This option is "
 "lightweight but may have compatibility issues with other themes and plugins."
 msgstr ""
-"リンクされたユーザーアカウントなしで著者プロフィールを作成します。このオプションは軽量ですが、他のテーマやプラグインとの互換性の問題が発生する可能性があ"
-"ります。"
+"リンクされたユーザーアカウントなしで著者プロファイルを作成します。このオプションは軽量ですが、他のテーマやプラグインとの互換性に問題がある場合があります"
+"。"
 
 #: src/core/Classes/Author_Editor.php:815
 msgid "Author Email"
@@ -573,8 +575,8 @@ msgid ""
 "an author. For some tasks, it can be helpful to have a user selected here. "
 "This user will not be visible on the front of your site."
 msgstr ""
-"このオプションは、著者として選択されたWordPressユーザーがいないため表示されています。いくつかのタスクでは、ここでユーザーを選択することが役立ち"
-"ます。このユーザーは、サイトの前面には表示されません。"
+"このオプションは、著者として選択されたWordPressユーザーがいないため表示されています。一部のタスクでは、ここでユーザーが選択されていると便利です"
+"。このユーザーは、サイトの前面には表示されません。"
 
 #: src/core/Classes/Post_Editor.php:474
 msgid "Search for an user"
@@ -730,9 +732,7 @@ msgid ""
 "This forms part of the URL for the author’s profile page. If you choose a "
 "Mapped User, this URL is taken from the user’s account and can not be "
 "changed."
-msgstr ""
-"これは著者のプロフィールページのURLの一部です。マッピングされたユーザーを選択した場合、このURLはユーザーのアカウントから取得され、変更することはで"
-"きません。"
+msgstr "これは著者のプロファイルページのURLの一部です。マッピングされたユーザーを選択した場合、このURLはユーザーのアカウントから取得され、変更できません。"
 
 #: src/core/Plugin.php:573
 msgid "Search Authors"
@@ -835,19 +835,21 @@ msgstr "この著者を変更するにはクリック、または位置を変更
 msgid ""
 "Click on an author to change them. Drag to change their order. Click on "
 "<strong>Remove</strong> to remove them."
-msgstr "著者をクリックして変更します。ドラッグして順序を変更します。<strong>削除</strong>をクリックして削除します。"
+msgstr ""
+"著者を変更するには、著者をクリックしてください。順序を変更するにはドラッグします。<strong>削除</"
+"strong>をクリックして、著者を削除します。"
 
 #: src/core/Plugin.php:1632
 msgid ""
 "Are you sure you want to delete the authors profiles mapped to users? This "
 "action can't be undone."
-msgstr "ユーザーにマッピングされた著者プロフィールを削除してもよろしいですか？この操作は元に戻せません。"
+msgstr "ユーザーにマッピングされた著者プロファイルを削除してもよろしいですか？この操作は元に戻せません。"
 
 #: src/core/Plugin.php:1636
 msgid ""
 "Are you sure you want to delete the guest authors profiles? This action "
 "can't be undone."
-msgstr "ゲスト著者のプロフィールを削除してもよろしいですか？この操作は元に戻せません。"
+msgstr "ゲスト著者のプロファイルを削除してもよろしいですか？この操作は元に戻せません。"
 
 #: src/core/Plugin.php:1640
 msgid "Are you sure you want to create author profiles for the missed post authors?"
@@ -1327,7 +1329,7 @@ msgstr "エディター設定をエクスポート"
 msgid ""
 "You can use this data to export your author box design and import it to a "
 "new site."
-msgstr "このデータを使用して、著者ボックスデザインをエクスポートし、新しいサイトにインポートできます。"
+msgstr "このデータを使用して、著者ボックスのデザインをエクスポートし、新しいサイトにインポートできます。"
 
 #: src/modules/author-boxes/author-boxes.php:2619
 #: src/modules/author-boxes/author-boxes.php:2690
@@ -1368,7 +1370,7 @@ msgstr "テーマテンプレートファイルを生成して使用する方法
 msgid ""
 "Click the \"Generate Template\" button under the text area. Wait for the "
 "code to be generated."
-msgstr "テキストエリアの下にある「テンプレートを生成」ボタンをクリックします。コードが生成されるのを待ちます。"
+msgstr "テキストエリアの下にある「テンプレートを生成」ボタンをクリックしてください。コードが生成されるまで待ちます。"
 
 #: src/modules/author-boxes/author-boxes.php:2652
 #, php-format
@@ -1379,10 +1381,10 @@ msgid ""
 "/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
 "my-first-custom-author-template.php %7s ."
 msgstr ""
-"希望のファイルスラッグを持つ空のphpテンプレートファイルを、テーマの%1s/publishpress-authors/author-boxes/%2"
-"sフォルダーに作成してください。%3s 例えば、ファイルはここに配置できます: "
-"%4s/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-"
-"boxes/my-first-custom-author-template.php %7s。"
+"テーマの%1s/publishpress-authors/author-boxes/%2"
+"sフォルダに、希望のファイルスラグを持つ空のphpテンプレートファイルを作成します。%3s "
+"例えば、ファイルは次の場所に配置できます：%4s/wp-content/themes/%5syour-theme-name%6s/"
+"publishpress-authors/author-boxes/my-first-custom-author-template.php%7s。"
 
 #: src/modules/author-boxes/author-boxes.php:2653
 msgid "Copy the generated code and paste it inside the newly created file."
@@ -1392,7 +1394,12 @@ msgstr "生成されたコードをコピーし、新しく作成されたファ
 msgid ""
 "Congratulations. Your can now choose your template inside the PublishPress "
 "Authors Settings."
-msgstr "おめでとうございます。PublishPress著者設定内でテンプレートを選択できるようになりました。"
+msgstr "おめでとうございます。PublishPress Authors Settings内でテンプレートを選択できるようになりました。"
+
+#: src/modules/author-boxes/author-boxes.php:2658
+#, php-format
+msgid "You can read more information on the %s."
+msgstr "詳細情報は%sでご覧いただけます。"
 
 #: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"
@@ -1414,7 +1421,7 @@ msgstr "フィールドの順序を変更"
 msgid ""
 "Reorder the fields by dragging them to the correct position and saving your "
 "changes."
-msgstr "フィールドをドラッグして正しい位置に移動し、変更を保存してください。"
+msgstr "フィールドをドラッグして正しい位置に移動し、変更を保存することで順序を変更します。"
 
 #: src/modules/author-boxes/author-boxes.php:2762
 msgid "Save for Current Author Box"
@@ -1452,7 +1459,7 @@ msgstr "新しい著者カテゴリボックス"
 msgid ""
 "PublishPress Authors Pro allows you to unlock the full potential of Author "
 "Categories."
-msgstr "PublishPress Authors Proを使用すると、著者カテゴリの完全な機能を解除できます。"
+msgstr "PublishPress Authors Proを使用すると、著者カテゴリーの可能性を最大限に引き出すことができます。"
 
 #: src/modules/author-boxes/author-boxes.php:3039
 msgid "You can create Author Boxes where Authors are grouped into their categories."
@@ -1490,7 +1497,7 @@ msgstr "このアクションを実行する権限がありません"
 msgid ""
 "Field Order updated. %1sClick here%2s to reload this page to see new order "
 "changes."
-msgstr "フィールドの順序が更新されました。%1sここをクリック%2sしてこのページを再読み込みし、新しい順序の変更を確認してください。"
+msgstr "フィールドの順序が更新されました。%1$sこちらをクリック%2$sして、このページを再読み込みし、新しい順序の変更を確認してください。"
 
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:28
 msgid "Boxed"
@@ -2152,7 +2159,7 @@ msgstr "カスタム \"すべての投稿を表示\" リンク"
 msgid ""
 "Enter a custom URL for the \"View All Posts\" link. Leave empty to use the "
 "default author posts page."
-msgstr "\"すべての投稿を見る\"リンクのカスタムURLを入力してください。デフォルトの著者投稿ページを使用するには空白のままにしてください。"
+msgstr "「すべての投稿を表示」リンクのカスタムURLを入力してください。デフォルトの著者投稿ページを使用するには空のままにしてください。"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:453
 msgid "View All Posts Link Size"
@@ -2214,7 +2221,7 @@ msgstr "著者カテゴリのレイアウト"
 msgid ""
 "Selecting an option here will overwrite author boxes settings to match "
 "selected layout."
-msgstr "ここでオプションを選択すると、選択したレイアウトに合わせて著者ボックスの設定が上書きされます。"
+msgstr "ここでオプションを選択すると、著者ボックスの設定が選択したレイアウトに合わせて上書きされます。"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:612
 msgid "Built-in Layout"
@@ -2314,7 +2321,7 @@ msgstr "著者カテゴリグループのタイトル接頭辞"
 msgid ""
 "Enter the text that should be added before group title. This field accepts "
 "basic HTML."
-msgstr "グループタイトルの前に追加されるテキストを入力してください。このフィールドは基本的なHTMLを受け入れます。"
+msgstr "グループタイトルの前に追加するテキストを入力してください。このフィールドは基本的なHTMLを受け付けます。"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:721
 msgid "Author Category Group Title Suffix"
@@ -2324,7 +2331,7 @@ msgstr "著者カテゴリグループのタイトル接尾辞"
 msgid ""
 "Enter the text that should be added after group title. This field accepts "
 "basic HTML."
-msgstr "グループタイトルの後に追加されるテキストを入力してください。このフィールドは基本的なHTMLを受け入れます。"
+msgstr "グループタイトルの後に追加するテキストを入力してください。このフィールドは基本的なHTMLを受け付けます。"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:729
 msgid "Author Category Group Font Size"
@@ -2374,8 +2381,8 @@ msgid ""
 "element. To make this display into a link, select 'link' and enter the "
 "first part of the URL into the 'Prefix' field."
 msgstr ""
-"'span' はインライン要素として表示され、'div' はブロック要素として表示されます。この表示をリンクにするには、'link' を選択し、URL "
-"の最初の部分を 'Prefix' フィールドに入力してください。"
+"’span’はインライン要素として表示され、’div’はブロック要素として表示されます。これをリンクとして表示するには、’link’を選択し、’Pref"
+"ix’フィールドにURLの最初の部分を入力してください。"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:828
 msgid "link"
@@ -2391,8 +2398,8 @@ msgid ""
 "This is useful when linking to an email, URL, or phone number. For example, "
 "'mailto:', 'https://' or 'tel:' can be added as the prefix."
 msgstr ""
-"これは、メール、URL、または電話番号にリンクする際に便利です。例えば、'mailto:'、'https://'、または'tel:'"
-"をプレフィックスとして追加できます。"
+"これは、メール、URL、または電話番号へのリンクを作成する際に便利です。例えば、’mailto:’、’https://’、または’ "
+"tel:’をプレフィックスとして追加できます。"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:851
 #, php-format
@@ -2600,7 +2607,7 @@ msgstr "最近の投稿タイプ"
 msgid ""
 "Select post types to include in recent posts. Leave empty to show all post "
 "types."
-msgstr "最近の投稿に含める投稿タイプを選択してください。すべての投稿タイプを表示するには空白のままにしてください。"
+msgstr "最近の投稿に含める投稿タイプを選択してください。すべての投稿タイプを表示するには空のままにしてください。"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
 msgid "Select post types..."
@@ -2711,7 +2718,7 @@ msgstr "著者のインライン表示"
 msgid ""
 "This will display author in an inline format side by side instead of block "
 "format."
-msgstr "これにより、著者がブロック形式ではなく、横並びのインライン形式で表示されます。"
+msgstr "これにより、著者がブロック形式ではなくインライン形式で横に表示されます。"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1475
 msgid "Author Row Prefix"
@@ -2721,7 +2728,7 @@ msgstr "著者の行接頭辞"
 msgid ""
 "Enter the text that should be added before authors. This field accepts "
 "basic HTML."
-msgstr "著者の前に追加されるテキストを入力してください。このフィールドは基本的なHTMLを受け入れます。"
+msgstr "著者の前に追加するテキストを入力してください。このフィールドは基本的なHTMLを受け付けます。"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1483
 msgid "Author Row Suffix"
@@ -2731,7 +2738,7 @@ msgstr "著者の行接尾辞"
 msgid ""
 "Enter the text that should be added after authors. This field accepts basic "
 "HTML."
-msgstr "著者の後に追加されるテキストを入力してください。このフィールドは基本的なHTMLを受け入れます。"
+msgstr "著者の後に追加するテキストを入力してください。このフィールドは基本的なHTMLを受け付けます。"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1491
 msgid "Author Separator"
@@ -2741,7 +2748,7 @@ msgstr "著者の区切り"
 msgid ""
 "You can specify a separator such as ',' to separate authors. This field "
 "accepts basic HTML."
-msgstr "著者を区切るために、',' のような区切り文字を指定できます。このフィールドは基本的な HTML を受け入れます。"
+msgstr "著者を区切るための区切り文字（例えば、’,’）を指定できます。このフィールドは基本的なHTMLを受け付けます。"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1499
 msgid "Author Box Margin Top"
@@ -2931,8 +2938,8 @@ msgid ""
 "will be added to post's reviewedBy property. You can read more %1$s in this "
 "guide.%2$s"
 msgstr ""
-"例: この値が reviewedBy に設定されると、このカテゴリのすべてのユーザーが投稿の reviewedBy "
-"プロパティに追加されます。詳細はこのガイドで %1$s 読むことができます。%2$s"
+"例：この値がreviewedByに設定されている場合、このカテゴリーのすべてのユーザーが投稿のreviewedByプロパティに追加されます。このガイドで"
+"詳しい情報を%1$sお読みいただけます。%2$s"
 
 #: src/modules/author-categories/author-categories.php:634
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:79
@@ -2949,7 +2956,7 @@ msgstr "投稿タイプを選択..."
 msgid ""
 "Select which post types this category applies to. Leave empty for all post "
 "types."
-msgstr "このカテゴリが適用される投稿タイプを選択します。すべての投稿タイプを対象とするには空白のままにしてください。"
+msgstr "このカテゴリーが適用される投稿タイプを選択してください。すべての投稿タイプには空のままにしてください。"
 
 #: src/modules/author-categories/author-categories.php:683
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:81
@@ -3109,7 +3116,7 @@ msgstr "フィールドスラッグ"
 msgid ""
 "The slug is used in code to reference this author field. It is all "
 "lowercase and contains only letters, numbers, and hyphens."
-msgstr "スラッグは、この著者フィールドを参照するためにコード内で使用されます。すべて小文字で、文字、数字、ハイフンのみを含みます。"
+msgstr "スラッグは、コード内でこの著者フィールドを参照するために使用されます。すべて小文字で、文字、数字、ハイフンのみを含みます。"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:396
 msgid "Field Type"
@@ -3123,7 +3130,7 @@ msgstr "ソーシャルプロファイル？"
 msgid ""
 "This feature will add the SameAs property to this link so that search "
 "engines realize that the social profile is connected to this author."
-msgstr "この機能は、このリンクにSameAsプロパティを追加し、検索エンジンがこのソーシャルプロフィールがこの著者に関連していることを認識できるようにします。"
+msgstr "この機能は、このリンクにSameAsプロパティを追加し、検索エンジンがこの著者に関連するソーシャルプロファイルであることを認識するのを助けます。"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:422
 #, php-format
@@ -3131,8 +3138,8 @@ msgid ""
 "Add a Schema.org property to this field. Examples include alumniOf, "
 "worksFor, and birthPlace. %1$sClick here for documentation.%2$s"
 msgstr ""
-"このフィールドにSchema.orgプロパティを追加します。例にはalumniOf、worksFor、およびbirthPlaceが含まれます。%1$"
-"sドキュメントはこちらをクリックしてください。%2$s"
+"このフィールドにSchema.orgプロパティを追加してください。例としては、alumniOf、worksFor、birthPlaceなどがあります。%"
+"1$sドキュメントはこちらをクリックしてください。%2$s"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:434
 msgid "Show in REST API"
@@ -3190,7 +3197,7 @@ msgstr "職務名"
 msgid ""
 "With PublishPress Authors Pro, you can add new fields for social networks "
 "and more."
-msgstr "PublishPress Authors Proを使用すると、ソーシャルネットワークなどの新しいフィールドを追加できます。"
+msgstr "PublishPress Authors Proを使用すると、ソーシャルネットワーク用の新しいフィールドなどを追加できます。"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:1111
 msgid "Field Order updated."
@@ -3344,7 +3351,7 @@ msgstr "著者を表示"
 msgid ""
 "Select an option to limit the results to selected user roles, author types, "
 "specific authors or author Categories."
-msgstr "選択したユーザーの役割、著者の種類、特定の著者、または著者カテゴリに結果を制限するオプションを選択してください。"
+msgstr "選択したユーザーロール、著者タイプ、特定の著者または著者カテゴリに結果を制限するオプションを選択してください。"
 
 #: src/modules/author-list/author-list.php:441
 #: src/modules/author-list/author-list.php:455
@@ -3359,7 +3366,7 @@ msgstr "著者を除外"
 msgid ""
 "Select an option to exclude selected user roles, author types, specific "
 "authors or author Categories from Author list."
-msgstr "選択したユーザーの役割、著者の種類、特定の著者、または著者カテゴリを除外するオプションを選択してください。"
+msgstr "著者リストから選択したユーザーロール、著者タイプ、特定の著者または著者カテゴリを除外するオプションを選択してください。"
 
 #: src/modules/author-list/author-list.php:468
 msgid "Authors Per Page"
@@ -3377,9 +3384,7 @@ msgstr "空を表示"
 msgid ""
 "Enable this option to show all authors, including those without any posts. "
 "Disable this option to show only authors who are assigned to posts."
-msgstr ""
-"このオプションを有効にすると、投稿がない著者も含めてすべての著者が表示されます。このオプションを無効にすると、投稿に割り当てられた著者のみが表示されます"
-"。"
+msgstr "このオプションを有効にすると、投稿がない著者を含むすべての著者が表示されます。このオプションを無効にすると、投稿に割り当てられた著者のみが表示されます。"
 
 #: src/modules/author-list/author-list.php:488
 msgid "Configure Author List Options"
@@ -3389,7 +3394,7 @@ msgstr "著者リストオプションの設定"
 msgid ""
 "Authors Pro allows you to add extra features to the Authors List. These "
 "features include pagination, choose the order of authors, and much more."
-msgstr "Authors Proでは、著者リストに追加機能を追加できます。これらの機能には、ページネーション、著者の順序を選択することなどが含まれます。"
+msgstr "Authors Proを使用すると、著者リストに追加機能を追加できます。これらの機能には、ページネーション、著者の順序を選択する機能などが含まれます。"
 
 #: src/modules/author-list/author-list.php:494
 msgid "Order By"
@@ -3404,9 +3409,7 @@ msgid ""
 "You can limit the author list to users with a published post within a "
 "specific time. This option accepts date values such as 1 week ago, 1 month "
 "ago, 6 months ago, 1 year ago etc."
-msgstr ""
-"著者リストを特定の期間内に公開された投稿を持つユーザーに制限できます。このオプションは、「1週間前」、「1ヶ月前」、「6ヶ月前」、「1"
-"年前」などの日付値を受け入れます。"
+msgstr "特定の期間内に公開された投稿を持つユーザーに著者リストを制限できます。このオプションは、1週間前、1ヶ月前、6ヶ月前、1年前などの日付値を受け入れます。"
 
 #: src/modules/author-list/author-list.php:535
 msgid "Show Search Box"
@@ -3482,7 +3485,7 @@ msgstr "著者カテゴリを選択"
 msgid ""
 "This is a quick preview of this Author List. Test on frontend pages to see "
 "exactly how it looks with your theme."
-msgstr "これはこの著者リストの簡易プレビューです。フロントエンドページでテストして、あなたのテーマでどのように見えるか正確に確認してください。"
+msgstr "これはこの著者リストのクイックプレビューです。テーマでどのように見えるかを正確に確認するためにフロントエンドページでテストしてください。"
 
 #: src/modules/author-list/author-list.php:1380
 msgid "Invalid form"
@@ -3716,7 +3719,7 @@ msgstr "PublishPressブロックで著者を紹介"
 msgid ""
 "PublishPress Blocks is a free plugin with full support for PublishPress "
 "Authors."
-msgstr "PublishPress Blocksは、PublishPress Authorsを完全にサポートする無料プラグインです。"
+msgstr "PublishPress Blocksは、PublishPress Authorsを完全にサポートする無料のプラグインです。"
 
 #: src/modules/modules-settings/modules-settings.php:319
 msgid "Install this plugin to showcase content by your Authors."
@@ -3776,9 +3779,8 @@ msgid ""
 "allowing you to migrate to PublishPress Authors without losing any data "
 "including post author relation. This action can be run multiple times."
 msgstr ""
-"このアクションは、プラグインMolongui "
-"Authorshipから著者をコピーし、投稿著者の関係を含むデータを失うことなくPublishPress著者に移行することを可能にします。このアクション"
-"は複数回実行できます。"
+"このアクションは、Molongui Authorshipプラグインから著者をコピーし、投稿著者の関係を含むデータを失うことなくPublishPress "
+"Authorsに移行できるようにします。このアクションは複数回実行できます。"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:187
 msgid "It looks like you have Molongui Authorship installed."
@@ -4006,7 +4008,7 @@ msgstr "シンプルリストレガシーレイアウト著者ボックス："
 msgid ""
 "Disabled because add_post_type_support('%1$s', '%2$s') is included in a "
 "loaded file."
-msgstr "読み込まれたファイルに add_post_type_support('%1$s', '%2$s') が含まれているため、無効になっています。"
+msgstr "add_post_type_support('%1$s', '%2$s')がロードされたファイルに含まれているため無効です。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1284
 msgid "This will display the authors box at the top of the content."
@@ -4036,21 +4038,21 @@ msgstr "著者ボックス"
 msgid ""
 "With this shortcode you can display the author box in any part of the "
 "content. "
-msgstr "このショートコードを使用すると、コンテンツの任意の部分に著者ボックスを表示できます。 "
+msgstr "このショートコードを使用すると、コンテンツの任意の部分に著者ボックスを表示できます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1417
 #, php-format
 msgid ""
 "You can specify layout by using author boxes layout slug. You can see full "
 "details of each layout option %1$s in this guide %2$s."
-msgstr "著者ボックスのレイアウトスラッグを使用してレイアウトを指定できます。各レイアウトオプションの詳細は、%1$s このガイド %2$s で確認できます。"
+msgstr "著者ボックスのレイアウトスラッグを使用してレイアウトを指定できます。このガイドの%1$sで各レイアウトオプションの詳細を確認できます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1428
 #, php-format
 msgid ""
 "You can also decide whether or not to show the main title, using %1$s or "
 "%2$s ."
-msgstr "主タイトルを表示するかどうかを%1$sまたは%2$sを使用して決定できます。"
+msgstr "%1$sまたは%2$sを使用して、メインタイトルを表示するかどうかを決定できます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1438
 #: src/modules/multiple-authors/multiple-authors.php:1522
@@ -4058,15 +4060,13 @@ msgid ""
 "You can load the authors for a specific post, even if you are not in that "
 "post currently. For example, this shortcode will load the authors for the "
 "post with the ID of 32."
-msgstr "現在その投稿にいなくても、特定の投稿の著者を読み込むことができます。例えば、このショートコードは、ID が 32 の投稿の著者を読み込みます。"
+msgstr "現在その投稿にいなくても、特定の投稿の著者を読み込むことができます。たとえば、このショートコードはIDが32の投稿の著者を読み込みます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1445
 msgid ""
 "You can load the authors for a specific user by providing the user id. For "
 "example, this shortcode will load the author with user id of 32"
-msgstr ""
-"ユーザー ID を提供することで、特定のユーザーの著者を読み込むことができます。例えば、このショートコードは、ユーザー ID が 32 "
-"の著者を読み込みます。"
+msgstr "ユーザーIDを提供することで、特定のユーザーの著者を読み込むことができます。たとえば、このショートコードはユーザーIDが32の著者を読み込みます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1452
 msgid ""
@@ -4074,8 +4074,8 @@ msgid ""
 "id for both guest and user author. For example, this shortcode will load "
 "the author with term id of 32"
 msgstr ""
-"ゲスト著者とユーザー著者の両方に対して、特定の著者のために著者ターム ID "
-"を提供することで著者を読み込むことができます。例えば、このショートコードは、ターム ID が 32 の著者を読み込みます。"
+"ゲストおよびユーザー著者の両方のために著者用語IDを提供することで、特定の著者の著者を読み込むことができます。たとえば、このショートコードは用語IDが3"
+"2の著者を読み込みます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1460
 #, php-format
@@ -4085,8 +4085,9 @@ msgid ""
 "to retrieve the Author from the profile page and not any other posts on the "
 "same screen."
 msgstr ""
-"著者プロフィールページにPublishPress Authorsを表示する際に問題がある場合は、以下のショートコードを使用できます。引数 %s "
-"は、プラグインがプロフィールページから著者を取得することを強制し、同じ画面上の他の投稿からではありません。"
+"もし、著者プロフィールページにPublishPress "
+"Authorsを表示する際に問題がある場合は、以下のショートコードを使用できます。引数%"
+"sは、プラグインがプロフィールページから著者を取得し、同じ画面上の他の投稿からではないことを強制します。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1470
 #, php-format
@@ -4097,16 +4098,16 @@ msgid ""
 "authors page to display the profile of the current author. You just need to "
 "add the parameter %s."
 msgstr ""
-"最後に言及するべきオプションがあります。これは、/author/username/ "
-"のようなURLで見つかる著者プロフィールページをカスタマイズするためにテーマやページビルダーを使用している場合に主に便利です。著者ページに現在の著者のプ"
-"ロフィールを表示するために、次のショートコードを使用できます。パラメータ %s を追加するだけです。"
+"最後にもう一つのオプションがあります。これは、/author/username/"
+"のようなURLで見つかる著者プロフィールページをカスタマイズするためにテーマやページビルダーを使用している場合に特に役立ちます。著者ページに現在の著者の"
+"プロフィールを表示するために、以下のショートコードを使用できます。パラメータ%sを追加する必要があります。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1479
 msgid ""
 "You can load the authors belonging to a specific author categories by "
 "providing the category slug or slugs separated by comma for more than one "
 "category."
-msgstr "特定の著者カテゴリーに属する著者を読み込むには、カンマで区切られたカテゴリーのスラッグを提供します。"
+msgstr "特定の著者カテゴリーに属する著者を、複数のカテゴリーの場合はカンマで区切ったカテゴリーのスラッグを提供することで読み込むことができます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1489
 msgid "Authors Data"
@@ -4116,7 +4117,7 @@ msgstr "著者データ"
 msgid ""
 "With this shortcode you can display the author names or any profile field "
 "in any part of the content."
-msgstr "このショートコードを使用すると、コンテンツの任意の部分に著者名または任意のプロフィールフィールドを表示できます。"
+msgstr "このショートコードを使用すると、コンテンツの任意の部分に著者名や任意のプロフィールフィールドを表示できます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1498
 #, php-format
@@ -4125,8 +4126,8 @@ msgid ""
 "%4$s %5$s %6$s %7$s. You can see full details and parameters %8$s in this "
 "guide %9$s."
 msgstr ""
-"著者データショートコードは、次のようなフィールドパラメータを受け入れます：%1$s %2$s %3$s %4$s %5$s %6$s "
-"%7$s。このガイド %9$s で、完全な詳細とパラメータ %8$s を確認できます。"
+"著者データのショートコードは、次のようなフィールドパラメータを受け入れます：%1$s %2$s %3$s %4$s %5$s %6$s "
+"%7$s。完全な詳細とパラメータについては、このガイド%9$sの%8$sを参照してください。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1515
 msgid "You can also specify the separator to be used for mulitple authors data."
@@ -4136,7 +4137,7 @@ msgstr "複数の著者データに使用するセパレーターを指定する
 msgid ""
 "You can retrieve a specific author by providing the author's term ID. For "
 "example, this shortcode will load the author with the term ID of 102."
-msgstr "著者のターム ID を提供することで、特定の著者を取得できます。例えば、このショートコードは、ターム ID が 102 の著者を読み込みます。"
+msgstr "著者のタームIDを提供することで特定の著者を取得できます。たとえば、このショートコードはタームIDが102の著者を読み込みます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1537
 #, php-format
@@ -4146,14 +4147,14 @@ msgid ""
 "array. You can check full details and sample usage %2$s in this guide%3$s."
 msgstr ""
 "user_objects=\"true\""
-"を使用することで、著者の配列リストを返すこともできます。これにより、すべての著者オブジェクトデータが配列として返されます。詳細とサンプル使用法はこのガイ"
-"ド%3$sで確認できます%2$s。"
+"を使用することで著者の配列リストを返すことも決定できます。これにより、すべての著者オブジェクトデータが配列として返されます。完全な詳細とサンプル使用法に"
+"ついては、このガイド%3$sの%2$sを参照してください。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1548
 msgid ""
 "You can retrieve authors belonging to a specific Author Category by "
 "providing the category slug or slugs. Separate multiple slugs with a comma."
-msgstr "カテゴリーのスラッグを提供することで、特定の著者カテゴリーに属する著者を取得できます。複数のスラッグはカンマで区切ってください。"
+msgstr "特定の著者カテゴリーに属する著者を取得するには、カテゴリーのスラッグまたはスラッグを提供します。複数のスラッグはカンマで区切ってください。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1559
 msgid ""
@@ -4168,22 +4169,22 @@ msgid ""
 "details of each layout option %1$s in this guide %2$s. %3$s %4$s This "
 "shortcode also provides two custom layouts: %5$s %6$s."
 msgstr ""
-"著者ボックスのレイアウトスラッグを使用してレイアウトを指定できます。各レイアウトオプションの詳細は、%1$s このガイド %2$s で確認できます。 "
-"%3$s %4$s このショートコードは、2つのカスタムレイアウトも提供します：%5$s %6$s。"
+"著者ボックスのレイアウトスラッグを使用することでレイアウトを指定できます。各レイアウトオプションの完全な詳細は、このガイド%2$sの%1$"
+"sを参照してください。%3$s %4$s このショートコードは、2つのカスタムレイアウトも提供します：%5$s %6$s。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1582
 #, php-format
 msgid ""
 "You can define the number of layout columns by using %1$s to show authors "
 "in 2 column."
-msgstr "%1$sを使用して、著者を2列で表示するためのレイアウト列の数を定義できます。"
+msgstr "%1$sを使用してレイアウトの列数を定義し、著者を2列で表示できます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1592
 #, php-format
 msgid ""
 "You can choose the number of authors per page using %1$s . %2$s Pagination "
 "will be automatically added if required."
-msgstr "ページごとの著者の数を%1$sを使用して選択できます。%2$s 必要に応じてページネーションが自動的に追加されます。"
+msgstr "%1$sを使用してページごとの著者の数を選択できます。%2$s 必要に応じてページネーションが自動的に追加されます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1603
 #, php-format
@@ -4192,31 +4193,29 @@ msgid ""
 "%1$s . %2$s Alternatively, use %3$s to show all authors, including those "
 "without any posts."
 msgstr ""
-"%1$s を使用することで、投稿に割り当てられた著者のみに結果を制限できます。 %2$s または、%3$s "
-"を使用して、投稿のない著者も含めてすべての著者を表示できます。"
+"%1$sを使用することで、投稿に割り当てられた著者のみに結果を制限できます。%2$s "
+"あるいは、%3$sを使用して、投稿がない著者も含めてすべての著者を表示できます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1615
 #, php-format
 msgid ""
 "You can limit the result to only guest authors by using %1$s . %2$s "
 "Alternatively, %3$s will show only authors with a WordPress account."
-msgstr ""
-"%1$s を使用することで、ゲスト著者のみに結果を制限できます。 %2$s もしくは、%3$s を使用すると、WordPress "
-"アカウントを持つ著者のみが表示されます。"
+msgstr "%1$sを使用することで、ゲスト著者のみに結果を制限できます。%2$s あるいは、%3$sはWordPressアカウントを持つ著者のみを表示します。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1627
 #, php-format
 msgid ""
 "If you are using the authors_recent layout, you can define the number of "
 "columns by using %1$s ."
-msgstr "authors_recentレイアウトを使用している場合は、%1$s を使用して列の数を定義できます。"
+msgstr "著者_recentレイアウトを使用している場合は、%1$sを使用して列数を定義できます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1637
 #, php-format
 msgid ""
 "For authors_index layout, you can group user by profile field by using %1$s "
 "."
-msgstr "%1$s を使用してプロファイルフィールドでユーザーをグループ化できます（authors_index レイアウト用）。"
+msgstr "authors_indexレイアウトでは、%1$sを使用してプロフィールフィールドでユーザーをグループ化できます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1647
 #, php-format
@@ -4225,8 +4224,8 @@ msgid ""
 "by name, use %2$s . Alternatively, you can order by profile fields like "
 "%3$s, %4$s etc"
 msgstr ""
-"投稿数に基づいて結果を並べ替えるには、%1$s を使用します。名前で結果を並べ替えるには、%2$s を使用します。あるいは、%3$s、%4$s "
-"などのプロフィールフィールドで並べ替えることもできます。"
+"投稿数に基づいて結果を並べ替えるには、%1$sを使用します。名前で結果を並べ替えるには、%2$sを使用します。あるいは、%3$s、%4$"
+"sなどのプロフィールフィールドで並べ替えることもできます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1660
 #, php-format
@@ -4245,8 +4244,8 @@ msgid ""
 "author fields. You can add fields to the dropdown using %1$s . This "
 "requires the search box to be active."
 msgstr ""
-"特定の著者フィールドを検索できるドロップダウンメニューを表示することもできます。%1$"
-"sを使用してドロップダウンにフィールドを追加できます。これには検索ボックスをアクティブにする必要があります。"
+"特定の著者フィールドで検索できるドロップダウンメニューを表示することもできます。ドロップダウンにフィールドを追加するには、%1$"
+"sを使用します。これには検索ボックスをアクティブにする必要があります。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1691
 #, php-format
@@ -4255,8 +4254,8 @@ msgid ""
 "specific period using %1$s . This accept english date value like 1 week "
 "ago, 1 month ago, 6 months ago, 1 year ago etc."
 msgstr ""
-"特定の期間内に公開された投稿を持つユーザーに著者リストを制限するには、%1$s "
-"を使用できます。これは、1週間前、1ヶ月前、6ヶ月前、1年前などの英語の日付値を受け入れます。"
+"特定の期間内に公開された投稿を持つユーザーに著者リストを制限するには、%1$sを使用します。これは、1週間前、1か月前、6か月前、1"
+"年前などの英語の日付値を受け入れます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1738
 msgid "Copied!"
@@ -4275,7 +4274,7 @@ msgstr "役割を選択"
 msgid ""
 "Choose which WordPress user roles can be selected using the \"Registered "
 "Author With User Account\" option for author profiles."
-msgstr "著者プロファイルの「ユーザーアカウントを持つ登録された著者」オプションを使用して選択できるWordPressユーザーロールを選択してください。"
+msgstr "著者プロフィールに対して「ユーザーアカウントを持つ登録著者」オプションを使用して、選択できるWordPressユーザーロールを選択してください。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1842
 msgid ""
@@ -4285,9 +4284,9 @@ msgid ""
 "\"Create PublishPress Authors Profiles for all users in a role\" button in "
 "the Maintenance tab."
 msgstr ""
-"著者プロファイルはWordPressユーザーアカウントにマッピングできます。このオプションを使用すると、これらの役割にユーザーが作成されるときに著者プロ"
-"ファイルを自動的に作成できます。また、メンテナンスタブの「役割のすべてのユーザーにPublishPress著者プロファイルを作成」ボタンをクリックするこ"
-"とで、既存のユーザーに対してもこれを行うことができます。"
+"著者プロフィールはWordPressユーザーアカウントにマッピングできます。このオプションを使用すると、これらの役割にユーザーが作成されるときに著者プロ"
+"フィールを自動的に作成できます。メンテナンスタブの「役割のすべてのユーザーのためにPublishPress著者プロフィールを作成する」ボタンをクリックす"
+"ることで、既存のユーザーにもこれを行うことができます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1863
 msgid ""
@@ -4296,7 +4295,7 @@ msgid ""
 "\"Display name\". Showing the \"Username\" is useful if you have several "
 "authors with similar names."
 msgstr ""
-"著者がWordPressユーザーにマッピングされている場合、著者の「表示名」と「ユーザー名」が表示されます。デフォルトでは「表示名」だけが表示されます。"
+"著者がWordPressユーザーにマッピングされている場合、著者の「表示名」と「ユーザー名」が表示されます。デフォルトでは「表示名」のみが表示されます。"
 "「ユーザー名」を表示することは、似た名前の著者が複数いる場合に便利です。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1886
@@ -4315,7 +4314,7 @@ msgstr "接続されたユーザーアカウントなしで作成される著者
 msgid ""
 "If enabled, PublishPress Authors will replace the default WordPress author "
 "pages."
-msgstr "有効にすると、PublishPress AuthorsはデフォルトのWordPress著者ページを置き換えます。"
+msgstr "有効にすると、PublishPress著者はデフォルトのWordPress著者ページを置き換えます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1961
 msgid "Please note this feature will not work for all themes."
@@ -4354,7 +4353,7 @@ msgstr "姓 名"
 msgid ""
 "This avatar will be used as default avatar instead of gravatar where no "
 "custom avatar is added to profile."
-msgstr "このアバターは、カスタムアバターがプロフィールに追加されていない場合のデフォルトアバターとして使用されます。"
+msgstr "このアバターは、プロフィールにカスタムアバターが追加されていない場合、デフォルトのアバターとして使用されます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:2240
 msgid "This will display the author bio."
@@ -4399,8 +4398,8 @@ msgid ""
 "use this feature unless requested to do so by the PublishPress team. This "
 "plugin works better when authors and users are paired one-to-one."
 msgstr ""
-"これにより、WordPressユーザーを複数の著者にマッピングできます。この機能はPublishPressチームからのリクエストがない限り使用しないでく"
-"ださい。このプラグインは、著者とユーザーが1対1でペアになっているときにより良く機能します。"
+"これにより、WordPressユーザーを複数の著者にマッピングできます。PublishPressチームから要求されない限り、この機能を使用しないでくださ"
+"い。このプラグインは、著者とユーザーが1対1でペアになっている場合に最適に機能します。"
 
 #: src/modules/multiple-authors/multiple-authors.php:2597
 msgid "This will display the authors."
@@ -4440,8 +4439,8 @@ msgid ""
 "as a fallback. WordPress sometimes requires a WordPress user to be assigned "
 "to each post. This user will not be visible on the front of your site."
 msgstr ""
-"投稿にゲスト著者のみが選択されている場合、このユーザーがフォールバックとして使用される可能性があります。WordPressは時々各投稿にWordPres"
-"sユーザーが割り当てられることを要求します。このユーザーはサイトの前面には表示されません。"
+"投稿にゲスト著者のみが選択されている場合、このユーザーはフォールバックとして使用されることがあります。WordPressは時々、各投稿にWordPres"
+"sユーザーが割り当てられることを要求します。このユーザーはサイトの表面には表示されません。"
 
 #: src/modules/multiple-authors/multiple-authors.php:2809
 msgid "This will display the authors email in the author box."
@@ -4469,8 +4468,8 @@ msgid ""
 "PublishPress Authors profile, this will automatically create a profile for "
 "them."
 msgstr ""
-"WordPressユーザーが投稿の著者であるが、PublishPress "
-"Authorsのプロフィールを持っていない場合、自動的にプロフィールが作成されます。"
+"WordPressユーザーが投稿の著者であるが、PublishPress著者プロフィールを持っていない場合、これにより自動的にプロフィールが作成されます"
+"。"
 
 #: src/modules/multiple-authors/multiple-authors.php:2887
 #: src/modules/multiple-authors/multiple-authors.php:2893
@@ -4492,9 +4491,7 @@ msgid ""
 "This will find all the users in a role and create author profiles for them. "
 "You can choose the roles using the \"Automatically create author profiles\" "
 "setting."
-msgstr ""
-"この操作は、役割に基づいてすべてのユーザーを見つけ、著者プロフィールを作成します。「著者プロフィールを自動的に作成する」設定を使用して役割を選択できます"
-"。"
+msgstr "これにより、役割にあるすべてのユーザーを見つけて、著者プロフィールを作成します。「著者プロフィールを自動的に作成する」設定を使用して役割を選択できます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:2894
 msgid "Create PublishPress Authors profiles"
@@ -4508,9 +4505,7 @@ msgstr "PublishPress著者フィールドとユーザープロフィールフィ
 msgid ""
 "This will update all the author profiles in PublishPress Authors to match "
 "the default WordPress fields for each user."
-msgstr ""
-"この操作は、PublishPress "
-"Authors内のすべての著者プロフィールを更新し、各ユーザーのデフォルトのWordPressフィールドに一致させます。"
+msgstr "これにより、PublishPress著者のすべての著者プロフィールが各ユーザーのデフォルトのWordPressフィールドに一致するように更新されます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:2905
 msgid "Synchronize the author and user URLs"
@@ -4520,7 +4515,7 @@ msgstr "著者とユーザーのURLを同期する"
 msgid ""
 "This will update all the Author URLs in PublishPress Authors to match the "
 "default WordPress URLs for each user."
-msgstr "この操作は、PublishPress Authors内のすべての著者URLを更新し、各ユーザーのデフォルトのWordPress URLに一致させます。"
+msgstr "これにより、PublishPress著者のすべての著者URLが各ユーザーのデフォルトのWordPress URLに一致するように更新されます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:2912
 #: src/modules/multiple-authors/multiple-authors.php:2914
@@ -4531,7 +4526,7 @@ msgstr "著者カテゴリを作成"
 msgid ""
 "This will create author categories table if missing and add default "
 "categories."
-msgstr "著者カテゴリーのテーブルが存在しない場合は作成し、デフォルトのカテゴリーを追加します。"
+msgstr "これにより、欠落している場合は著者カテゴリテーブルが作成され、デフォルトのカテゴリが追加されます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "Copy Co-Authors Plus Data"
@@ -4544,7 +4539,7 @@ msgid ""
 "can be run multiple times."
 msgstr ""
 "このアクションは、プラグインCo-Authors "
-"Plusから著者をコピーし、データを失うことなくPublishPress著者に移行することを可能にします。このアクションは複数回実行できます。"
+"Plusから著者をコピーし、データを失うことなくPublishPress著者に移行できるようにします。このアクションは複数回実行できます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:2937
 msgid "Delete Connections Between Author Profiles and Users"
@@ -4557,9 +4552,9 @@ msgid ""
 "a WordPress user account. This will not delete the WordPress user accounts, "
 "but any links between the posts and author profiles will be lost."
 msgstr ""
-"このアクションは、他のメンテナンスオプションを使用する前にPublishPress著者データをリセットすることができます。WordPressユーザーアカ"
-"ウントにマッピングされているすべての著者プロフィールを削除します。WordPressユーザーアカウントは削除されず、投稿と著者プロフィール間のリンクは失"
-"われます。"
+"このアクションは、他のメンテナンスオプションを使用する前にPublishPress著者データをリセットできます。WordPressユーザーアカウントにマ"
+"ッピングされているすべての著者プロフィールが削除されます。WordPressユーザーアカウントは削除されませんが、投稿と著者プロフィール間のリンクは失わ"
+"れます。"
 
 #: src/modules/multiple-authors/multiple-authors.php:2939
 msgid "Delete all authors mapped to users"
@@ -4575,8 +4570,8 @@ msgid ""
 "maintenance options. Guest authors are author profiles that are not mapped "
 "to a WordPress user account. This action will delete all guest authors."
 msgstr ""
-"このアクションは、他のメンテナンスオプションを使用する前にPublishPress著者データをリセットすることができます。ゲスト著者は、WordPres"
-"sユーザーアカウントにマッピングされていない著者プロフィールです。このアクションはすべてのゲスト著者を削除します。"
+"このアクションは、他のメンテナンスオプションを使用する前にPublishPress著者データをリセットできます。ゲスト著者はWordPressユーザーア"
+"カウントにマッピングされていない著者プロフィールです。このアクションはすべてのゲスト著者を削除します。"
 
 #: src/modules/multiple-authors/multiple-authors.php:2946
 msgid "Delete all guest authors"
@@ -4586,7 +4581,7 @@ msgstr "すべてのゲスト著者を削除"
 msgid ""
 "Please be careful clicking these buttons. Before clicking, we recommend "
 "taking a site backup in case anything goes wrong."
-msgstr "これらのボタンをクリックする際はご注意ください。クリックする前に、何か問題が発生した場合に備えてサイトのバックアップを取ることをお勧めします。"
+msgstr "これらのボタンをクリックする際は注意してください。クリックする前に、何かがうまくいかない場合に備えてサイトのバックアップを取ることをお勧めします。"
 
 #: src/modules/multiple-authors/multiple-authors.php:3155
 msgid "Author Profiles"

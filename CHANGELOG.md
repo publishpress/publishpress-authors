@@ -1,6 +1,12 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.14.0] - 20 April, 2026
+
+* Update: Add Free to the plugin name, #2285
+* Update: Add all 26 main languages to Weblate, #2300
+* Update: Update translation.
+
 [4.13.0] - 05 March, 2026
 
 * Update: Add a setting to allow Author Pages featured images link to blog post, #2235

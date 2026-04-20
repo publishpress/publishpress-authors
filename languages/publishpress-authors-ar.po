@@ -10,10 +10,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-15T01:06:13+00:00\n"
-"PO-Revision-Date: 2026-04-15 01:20+0000\n"
+"PO-Revision-Date: 2026-04-20 12:08+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
-"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+"% 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
+"% 100 >= 3 && n % 100 <= 10 ? 3: n % 100 >= 11 ? 4 : 5);\n"
+"&& n%100<=10 ? 3: n%100>=11 ? 4 : 5);\n"
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
 
@@ -33,6 +35,15 @@ msgstr "https://wordpress.org/plugins/publishpress-authors/"
 #: src/modules/multiple-authors/multiple-authors.php:75
 #: src/modules/multiple-authors/multiple-authors.php:79
 #. Description of the plugin
+msgid ""
+"PublishPress Authors allows you to add multiple authors and guest authors "
+"to WordPress posts"
+msgstr ""
+"يتيح لك PublishPress Authors إضافة مؤلفين متعددين ومؤلفي ضيوف إلى منشورات "
+"WordPress"
+
+#: publishpress-authors.php:11
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "نشر بريس"
 
@@ -43,6 +54,21 @@ msgstr "https://publishpress.com"
 
 #: includes.php:39
 #, php-format
+msgid ""
+"You're using PublishPress Authors Free. The Pro version has more features "
+"and support. %sUpgrade to Pro%s"
+msgstr ""
+"أنت تستخدم PublishPress Authors Free. تحتوي النسخة المحترفة على ميزات ودعم "
+"إضافي. %sترقية إلى النسخة المحترفة%s"
+
+#: includes.php:63
+#: src/modules/author-boxes/author-boxes.php:3042
+#: src/modules/author-categories/author-categories.php:672
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:521
+#: src/modules/author-custom-fields/author-custom-fields.php:995
+#: src/modules/author-custom-fields/author-custom-fields.php:1048
+#: src/modules/author-list/author-list.php:1260
+#: src/modules/author-list/author-list.php:1298
 msgid "Upgrade to Pro"
 msgstr "ترقية إلى النسخة الاحترافية"
 
@@ -218,6 +244,24 @@ msgid "You cannot edit an author profile linked to an administrator account."
 msgstr "لا يمكنك تعديل ملف تعريف المؤلف المرتبط بحساب مدير."
 
 #: src/core/Classes/Admin_Ajax.php:359
+msgid ""
+"You do not have permission to edit this author profile because it is linked "
+"to a user account you do not have permission to edit."
+msgstr ""
+"ليس لديك إذن لتحرير ملف تعريف هذا المؤلف لأنه مرتبط بحساب مستخدم ليس لديك "
+"إذن لتحريره."
+
+#: src/core/Classes/Admin_Ajax.php:374
+#: src/core/Classes/Author_Editor.php:1008
+msgid ""
+"Sorry, this WordPress user is already mapped to another Author. By default, "
+"each user can only be connected to one Author profile."
+msgstr ""
+"عذرًا، هذا المستخدم في WordPress مرتبط بالفعل بمؤلف آخر. بشكل افتراضي، يمكن "
+"ربط كل مستخدم بملف تعريف مؤلف واحد فقط."
+
+#: src/core/Classes/Admin_Ajax.php:386
+#: src/core/Classes/Author_Editor.php:1100
 msgid "Registered User is required."
 msgstr "يتطلب تسجيل مستخدم."
 
@@ -234,6 +278,15 @@ msgid "Author name is required"
 msgstr "اسم المؤلف مطلوب"
 
 #: src/core/Classes/Authors_Iterator.php:55
+msgid ""
+"No post ID provided for Authors_Iterator constructor. Are you not in a loop "
+"or is $post not set?"
+msgstr ""
+"لم يتم توفير معرّف منشور لمُنشئ Authors_Iterator. هل أنت خارج حلقة أم أن "
+"$post غير محدد؟"
+
+#: src/core/Classes/Author_Editor.php:47
+#: src/core/Plugin.php:1618
 msgid "Display name publicly as"
 msgstr "عرض الاسم علنًا كـ"
 
@@ -321,6 +374,14 @@ msgstr "الصورة الرمزية الافتراضية"
 
 #: src/core/Classes/Author_Editor.php:391
 #, php-format
+msgid ""
+"(Uses the %1s Email field %2s to find the Gravatar account if default "
+"avatar is not uploaded in Authors Settings)"
+msgstr ""
+"(يستخدم حقل البريد الإلكتروني %1s %2s للعثور على حساب Gravatar إذا لم يتم "
+"تحميل الصورة الافتراضية في إعدادات المؤلفين)"
+
+#: src/core/Classes/Author_Editor.php:399
 msgid "Custom image"
 msgstr "صورة مخصصة"
 
@@ -335,6 +396,14 @@ msgid "Author Category"
 msgstr "فئة المؤلف"
 
 #: src/core/Classes/Author_Editor.php:411
+msgid ""
+"Select the default Category for this Author. This will be used when the "
+"Author is added to new posts."
+msgstr ""
+"اختر الفئة الافتراضية لهذا المؤلف. سيتم استخدامها عند إضافة المؤلف إلى "
+"منشورات جديدة."
+
+#: src/core/Classes/Author_Editor.php:418
 msgid "Do not show this profile publicly"
 msgstr "لا تظهر هذا الملف الشخصي علنًا"
 
@@ -355,6 +424,33 @@ msgid "Select a user"
 msgstr "اختر مستخدمًا"
 
 #: src/core/Classes/Author_Editor.php:783
+msgid ""
+"Create an author profile for a current user account. You can select users "
+"who are allowed to edit posts. This user will be able to update their "
+"profile."
+msgstr ""
+"قم بإنشاء ملف تعريف مؤلف لحساب مستخدم حالي. يمكنك اختيار المستخدمين المسموح "
+"لهم بتحرير المنشورات. سيكون بإمكان هذا المستخدم تحديث ملفه الشخصي."
+
+#: src/core/Classes/Author_Editor.php:789
+msgid ""
+"Create an author profile and a linked user account. This account will be in "
+"the \"Guest Author\" role and will not be able to login to the WordPress "
+"dashboard or update their profile."
+msgstr ""
+"قم بإنشاء ملف تعريف مؤلف وحساب مستخدم مرتبط. سيكون هذا الحساب في دور \"مؤلف "
+"ضيف\" ولن يكون قادرًا على تسجيل الدخول إلى لوحة تحكم WordPress أو تحديث "
+"ملفه الشخصي."
+
+#: src/core/Classes/Author_Editor.php:796
+msgid ""
+"Create an author profile with no linked user account. This option is "
+"lightweight but may have compatibility issues with other themes and plugins."
+msgstr ""
+"قم بإنشاء ملف تعريف مؤلف بدون حساب مستخدم مرتبط. هذا الخيار خفيف الوزن "
+"ولكنه قد يواجه مشكلات توافق مع سمات وإضافات أخرى."
+
+#: src/core/Classes/Author_Editor.php:815
 msgid "Author Email"
 msgstr "البريد الإلكتروني للمؤلف"
 
@@ -471,6 +567,16 @@ msgid "Search for an author"
 msgstr "ابحث عن مؤلف"
 
 #: src/core/Classes/Post_Editor.php:466
+msgid ""
+"This option is showing because you do not have a WordPress user selected as "
+"an author. For some tasks, it can be helpful to have a user selected here. "
+"This user will not be visible on the front of your site."
+msgstr ""
+"يظهر هذا الخيار لأنك لم تقم باختيار مستخدم WordPress كمؤلف. لبعض المهام، "
+"يمكن أن يكون من المفيد اختيار مستخدم هنا. لن يكون هذا المستخدم مرئيًا في "
+"واجهة موقعك."
+
+#: src/core/Classes/Post_Editor.php:474
 msgid "Search for an user"
 msgstr "ابحث عن مستخدم"
 
@@ -614,6 +720,21 @@ msgid "Edit My Author Profile"
 msgstr "تحرير ملفي الشخصي كمؤلف"
 
 #: src/core/Plugin.php:532
+msgid ""
+"This name is used in several default displays and some search engine "
+"integrations."
+msgstr "يستخدم هذا الاسم في عدة عروض افتراضية وبعض تكاملات محركات البحث."
+
+#: src/core/Plugin.php:537
+msgid ""
+"This forms part of the URL for the author’s profile page. If you choose a "
+"Mapped User, this URL is taken from the user’s account and can not be "
+"changed."
+msgstr ""
+"تشكل هذه جزءًا من عنوان URL لصفحة ملف تعريف المؤلف. إذا اخترت مستخدمًا "
+"مخصصًا، يتم أخذ هذا URL من حساب المستخدم ولا يمكن تغييره."
+
+#: src/core/Plugin.php:573
 msgid "Search Authors"
 msgstr "البحث عن مؤلفين"
 
@@ -711,6 +832,30 @@ msgid "Click to change this author, or drag to change their position"
 msgstr "انقر لتغيير هذا المؤلف، أو اسحب لتغيير موقعه"
 
 #: src/core/Plugin.php:1628
+msgid ""
+"Click on an author to change them. Drag to change their order. Click on "
+"<strong>Remove</strong> to remove them."
+msgstr ""
+"انقر على مؤلف لتغييره. اسحب لتغيير ترتيبه. انقر على <strong>إزالة</strong> "
+"لإزالته."
+
+#: src/core/Plugin.php:1632
+msgid ""
+"Are you sure you want to delete the authors profiles mapped to users? This "
+"action can't be undone."
+msgstr ""
+"هل أنت متأكد أنك تريد حذف ملفات تعريف المؤلفين المرتبطة بالمستخدمين؟ لا "
+"يمكن التراجع عن هذا الإجراء."
+
+#: src/core/Plugin.php:1636
+msgid ""
+"Are you sure you want to delete the guest authors profiles? This action "
+"can't be undone."
+msgstr ""
+"هل أنت متأكد أنك تريد حذف ملفات تعريف مؤلفي الضيوف؟ لا يمكن التراجع عن هذا "
+"الإجراء."
+
+#: src/core/Plugin.php:1640
 msgid "Are you sure you want to create author profiles for the missed post authors?"
 msgstr "هل أنت متأكد أنك تريد إنشاء ملفات تعريف للمؤلفين المفقودين للمقالات؟"
 
@@ -1210,6 +1355,15 @@ msgid "Export Editor Settings"
 msgstr "تصدير إعدادات المحرر"
 
 #: src/modules/author-boxes/author-boxes.php:2609
+msgid ""
+"You can use this data to export your author box design and import it to a "
+"new site."
+msgstr ""
+"يمكنك استخدام هذه البيانات لتصدير تصميم صندوق المؤلف الخاص بك واستيراده إلى "
+"موقع جديد."
+
+#: src/modules/author-boxes/author-boxes.php:2619
+#: src/modules/author-boxes/author-boxes.php:2690
 msgid "Copy to Clipboard"
 msgstr "نسخ إلى الحافظة"
 
@@ -1244,10 +1398,42 @@ msgid "How to generate and use a theme template file"
 msgstr "كيفية إنشاء واستخدام ملف قالب السمة"
 
 #: src/modules/author-boxes/author-boxes.php:2651
+msgid ""
+"Click the \"Generate Template\" button under the text area. Wait for the "
+"code to be generated."
+msgstr "انقر على زر \"إنشاء نموذج\" أسفل منطقة النص. انتظر حتى يتم إنشاء الكود."
+
+#: src/modules/author-boxes/author-boxes.php:2652
+#, php-format
+msgid ""
+"Create an empty php template file with your desired file slug in the %1s "
+"/publishpress-authors/author-boxes/ %2s folder of your theme. %3s For "
+"example, the file can be located here: %4s "
+"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
+"my-first-custom-author-template.php %7s ."
+msgstr ""
+"قم بإنشاء ملف قالب php فارغ باسم الملف الذي تريده في مجلد %1s "
+"/publishpress-authors/author-boxes/ %2s الخاص بسمة WordPress الخاصة بك. %3s "
+"على سبيل المثال، يمكن أن يكون الملف موجودًا هنا: %4s "
+"/wp-content/themes/%5sاسم-ثيم-خاصتك%6s/publishpress-authors/author-boxes/my-"
+"first-custom-author-template.php %7s."
+
+#: src/modules/author-boxes/author-boxes.php:2653
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "انسخ الكود الذي تم إنشاؤه والصقه داخل الملف الذي تم إنشاؤه حديثًا."
 
 #: src/modules/author-boxes/author-boxes.php:2654
+msgid ""
+"Congratulations. Your can now choose your template inside the PublishPress "
+"Authors Settings."
+msgstr "مبروك. يمكنك الآن اختيار النموذج الخاص بك داخل إعدادات PublishPress Authors."
+
+#: src/modules/author-boxes/author-boxes.php:2658
+#, php-format
+msgid "You can read more information on the %s."
+msgstr "يمكنك قراءة مزيد من المعلومات على %s."
+
+#: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"
 msgstr "صفحة الوثائق"
 
@@ -1264,6 +1450,12 @@ msgid "Reorder Fields"
 msgstr "إعادة ترتيب الحقول"
 
 #: src/modules/author-boxes/author-boxes.php:2748
+msgid ""
+"Reorder the fields by dragging them to the correct position and saving your "
+"changes."
+msgstr "أعد ترتيب الحقول من خلال سحبها إلى الموضع الصحيح وحفظ التغييرات الخاصة بك."
+
+#: src/modules/author-boxes/author-boxes.php:2762
 msgid "Save for Current Author Box"
 msgstr "احفظ لصندوق المؤلف الحالي"
 
@@ -1296,6 +1488,12 @@ msgid "New Author Categories Box"
 msgstr "صندوق فئات المؤلفين الجديدة"
 
 #: src/modules/author-boxes/author-boxes.php:3037
+msgid ""
+"PublishPress Authors Pro allows you to unlock the full potential of Author "
+"Categories."
+msgstr "تتيح لك PublishPress Authors Pro فتح الإمكانيات الكاملة لفئات المؤلفين."
+
+#: src/modules/author-boxes/author-boxes.php:3039
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr "يمكنك إنشاء صناديق مؤلفين حيث يتم تجميع المؤلفين في فئاتهم."
 
@@ -1328,6 +1526,14 @@ msgstr "ليس لديك إذن لأداء هذا الإجراء"
 
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:67
 #, php-format
+msgid ""
+"Field Order updated. %1sClick here%2s to reload this page to see new order "
+"changes."
+msgstr ""
+"تم تحديث ترتيب الحقول. %1$sانقر هنا%2$s لإعادة تحميل هذه الصفحة لرؤية "
+"تغييرات الترتيب الجديدة."
+
+#: src/modules/author-boxes/classes/AuthorBoxesDefault.php:28
 msgid "Boxed"
 msgstr "مربع"
 
@@ -1984,6 +2190,14 @@ msgid "Custom \"View All Posts\" Link"
 msgstr "رابط مخصص \"عرض جميع المشاركات\""
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:449
+msgid ""
+"Enter a custom URL for the \"View All Posts\" link. Leave empty to use the "
+"default author posts page."
+msgstr ""
+"أدخل عنوان URL مخصص لرابط \"عرض جميع المشاركات\". اتركه فارغًا لاستخدام "
+"صفحة المشاركات الافتراضية للمؤلف."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:453
 msgid "View All Posts Link Size"
 msgstr "حجم ارتباط عرض جميع المنشورات"
 
@@ -2040,6 +2254,14 @@ msgid "Author Category Layout"
 msgstr "تخطيط فئة المؤلفين"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:607
+msgid ""
+"Selecting an option here will overwrite author boxes settings to match "
+"selected layout."
+msgstr ""
+"اختيار خيار هنا سيؤدي إلى الكتابة فوق إعدادات صناديق المؤلفين لتتناسب مع "
+"التخطيط المحدد."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:612
 msgid "Built-in Layout"
 msgstr "تخطيط مدمج"
 
@@ -2134,10 +2356,22 @@ msgid "Author Category Group Title Prefix"
 msgstr "بادئة عنوان مجموعة فئة المؤلف"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:714
+msgid ""
+"Enter the text that should be added before group title. This field accepts "
+"basic HTML."
+msgstr "أدخل النص الذي يجب إضافته قبل عنوان المجموعة. هذا الحقل يقبل HTML الأساسي."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:721
 msgid "Author Category Group Title Suffix"
 msgstr "عنوان مجموعة فئة المؤلف"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:722
+msgid ""
+"Enter the text that should be added after group title. This field accepts "
+"basic HTML."
+msgstr "أدخل النص الذي يجب إضافته بعد عنوان المجموعة. هذا الحقل يقبل HTML الأساسي."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:729
 msgid "Author Category Group Font Size"
 msgstr "حجم خط مجموعة فئة المؤلف"
 
@@ -2180,6 +2414,15 @@ msgid "%1s HTML Tag"
 msgstr "%1s علامة HTML"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:821
+msgid ""
+"'span' will display as an inline element and 'div' will display as a block "
+"element. To make this display into a link, select 'link' and enter the "
+"first part of the URL into the 'Prefix' field."
+msgstr ""
+"'span' سيعرض كعنصر مضمن و 'div' سيعرض كعنصر كتلة. لجعل هذا العرض رابطًا، "
+"اختر 'link' وأدخل الجزء الأول من عنوان URL في حقل 'Prefix'."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:828
 msgid "link"
 msgstr "رابط"
 
@@ -2189,6 +2432,15 @@ msgid "%1s Value Prefix"
 msgstr "%1s قيمة البادئة"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
+msgid ""
+"This is useful when linking to an email, URL, or phone number. For example, "
+"'mailto:', 'https://' or 'tel:' can be added as the prefix."
+msgstr ""
+"هذا مفيد عند الربط إلى بريد إلكتروني أو عنوان URL أو رقم هاتف. على سبيل "
+"المثال، يمكن إضافة 'mailto:' أو 'https://' أو 'tel:' كبادئة."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:851
+#, php-format
 msgid "%1s Display"
 msgstr "%1s العرض"
 
@@ -2390,6 +2642,14 @@ msgid "Recent Post Types"
 msgstr "أنواع المشاركات الأخيرة"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1259
+msgid ""
+"Select post types to include in recent posts. Leave empty to show all post "
+"types."
+msgstr ""
+"اختر أنواع المشاركات التي يجب تضمينها في المشاركات الحديثة. اتركها فارغة "
+"لإظهار جميع أنواع المشاركات."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
 msgid "Select post types..."
 msgstr "اختر أنواع المشاركات..."
 
@@ -2495,18 +2755,42 @@ msgid "Author inline display"
 msgstr "عرض المؤلف بشكل مت inline"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1468
+msgid ""
+"This will display author in an inline format side by side instead of block "
+"format."
+msgstr "سيعرض هذا المؤلف بتنسيق مضمن جنبًا إلى جنب بدلاً من تنسيق الكتلة."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1475
 msgid "Author Row Prefix"
 msgstr "بادئة صف المؤلف"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1476
+msgid ""
+"Enter the text that should be added before authors. This field accepts "
+"basic HTML."
+msgstr "أدخل النص الذي يجب إضافته قبل المؤلفين. هذا الحقل يقبل HTML الأساسي."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1483
 msgid "Author Row Suffix"
 msgstr "لاحقة صف المؤلف"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1484
+msgid ""
+"Enter the text that should be added after authors. This field accepts basic "
+"HTML."
+msgstr "أدخل النص الذي يجب إضافته بعد المؤلفين. هذا الحقل يقبل HTML الأساسي."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1491
 msgid "Author Separator"
 msgstr "فاصل المؤلف"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1492
+msgid ""
+"You can specify a separator such as ',' to separate authors. This field "
+"accepts basic HTML."
+msgstr "يمكنك تحديد فاصل مثل ',' لفصل المؤلفين. هذا الحقل يقبل HTML الأساسي."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1499
 msgid "Author Box Margin Top"
 msgstr "هامش صندوق المؤلف من الأعلى"
 
@@ -2689,6 +2973,18 @@ msgstr "خاصية المخطط"
 #: src/modules/author-categories/author-categories.php:622
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
 #, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+"مثال: عندما يتم تعيين هذه القيمة إلى reviewedBy، سيتم إضافة جميع المستخدمين "
+"في هذه الفئة إلى خاصية reviewedBy الخاصة بالمشاركة. يمكنك قراءة المزيد %1$s "
+"في هذا الدليل.%2$s"
+
+#: src/modules/author-categories/author-categories.php:634
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:79
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:486
 msgid "Post Types"
 msgstr "أنواع المنشورات"
 
@@ -2698,6 +2994,16 @@ msgid "Select Post Type..."
 msgstr "اختر نوع المنشور..."
 
 #: src/modules/author-categories/author-categories.php:678
+msgid ""
+"Select which post types this category applies to. Leave empty for all post "
+"types."
+msgstr ""
+"اختر أنواع المشاركات التي تنطبق عليها هذه الفئة. اتركها فارغة لجميع أنواع "
+"المشاركات."
+
+#: src/modules/author-categories/author-categories.php:683
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:81
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:531
 msgid "Enable Category"
 msgstr "تفعيل التصنيف"
 
@@ -2850,6 +3156,14 @@ msgid "Field Slug"
 msgstr "رابط الحقل"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:387
+msgid ""
+"The slug is used in code to reference this author field. It is all "
+"lowercase and contains only letters, numbers, and hyphens."
+msgstr ""
+"يتم استخدام الاسم المستعار في الكود للإشارة إلى حقل المؤلف هذا. إنه بالكامل "
+"بحروف صغيرة ويحتوي فقط على حروف وأرقام وشرطات."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:396
 msgid "Field Type"
 msgstr "نوع الحقل"
 
@@ -2858,6 +3172,23 @@ msgid "Social Profile?"
 msgstr "ملف التعريف الاجتماعي؟"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:409
+msgid ""
+"This feature will add the SameAs property to this link so that search "
+"engines realize that the social profile is connected to this author."
+msgstr ""
+"ستضيف هذه الميزة خاصية SameAs إلى هذا الرابط بحيث تدرك محركات البحث أن "
+"الملف الاجتماعي مرتبط بهذا المؤلف."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:422
+#, php-format
+msgid ""
+"Add a Schema.org property to this field. Examples include alumniOf, "
+"worksFor, and birthPlace. %1$sClick here for documentation.%2$s"
+msgstr ""
+"أضف خاصية Schema.org إلى هذا الحقل. تشمل الأمثلة alumniOf و worksFor و "
+"birthPlace. %1$sانقر هنا للحصول على الوثائق.%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:434
 msgid "Show in REST API"
 msgstr "عرض في واجهة برمجة التطبيقات REST"
 
@@ -2893,6 +3224,12 @@ msgid "Description"
 msgstr "الوصف"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:482
+msgid ""
+"This description appears under the fields and helps users understand their "
+"choice."
+msgstr "يظهر هذا الوصف تحت الحقول ويساعد المستخدمين على فهم اختيارهم."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:801
 msgid "Status"
 msgstr "الحالة"
 
@@ -2906,6 +3243,14 @@ msgstr "المسمى الوظيفي"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:992
 #: src/modules/author-custom-fields/author-custom-fields.php:1047
+msgid ""
+"With PublishPress Authors Pro, you can add new fields for social networks "
+"and more."
+msgstr ""
+"مع PublishPress Authors Pro، يمكنك إضافة حقول جديدة للشبكات الاجتماعية "
+"والمزيد."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:1111
 msgid "Field Order updated."
 msgstr "تم تحديث ترتيب الحقل."
 
@@ -3054,6 +3399,15 @@ msgid "Show Authors"
 msgstr "عرض المؤلفين"
 
 #: src/modules/author-list/author-list.php:438
+msgid ""
+"Select an option to limit the results to selected user roles, author types, "
+"specific authors or author Categories."
+msgstr ""
+"اختر خيارًا لتحديد النتائج للأدوار المحددة للمستخدمين، وأنواع المؤلفين، أو "
+"مؤلفين محددين أو فئات المؤلفين."
+
+#: src/modules/author-list/author-list.php:441
+#: src/modules/author-list/author-list.php:455
 msgid "Roles"
 msgstr "الأدوار"
 
@@ -3062,6 +3416,14 @@ msgid "Exclude Authors"
 msgstr "استبعاد المؤلفين"
 
 #: src/modules/author-list/author-list.php:452
+msgid ""
+"Select an option to exclude selected user roles, author types, specific "
+"authors or author Categories from Author list."
+msgstr ""
+"اختر خيارًا لاستبعاد الأدوار المحددة للمستخدمين، وأنواع المؤلفين، أو مؤلفين "
+"محددين أو فئات المؤلفين من قائمة المؤلفين."
+
+#: src/modules/author-list/author-list.php:468
 msgid "Authors Per Page"
 msgstr "المؤلفون في الصفحة"
 
@@ -3074,10 +3436,26 @@ msgid "Show Empty"
 msgstr "عرض فارغ"
 
 #: src/modules/author-list/author-list.php:480
+msgid ""
+"Enable this option to show all authors, including those without any posts. "
+"Disable this option to show only authors who are assigned to posts."
+msgstr ""
+"قم بتمكين هذا الخيار لعرض جميع المؤلفين، بما في ذلك الذين ليس لديهم أي "
+"منشورات. قم بتعطيل هذا الخيار لعرض المؤلفين المعينين فقط للمنشورات."
+
+#: src/modules/author-list/author-list.php:488
 msgid "Configure Author List Options"
 msgstr "تكوين خيارات قائمة المؤلفين"
 
 #: src/modules/author-list/author-list.php:489
+msgid ""
+"Authors Pro allows you to add extra features to the Authors List. These "
+"features include pagination, choose the order of authors, and much more."
+msgstr ""
+"يتيح لك Authors Pro إضافة ميزات إضافية إلى قائمة المؤلفين. تشمل هذه الميزات "
+"الترقيم، واختيار ترتيب المؤلفين، وأكثر من ذلك بكثير."
+
+#: src/modules/author-list/author-list.php:494
 msgid "Order By"
 msgstr "ترتيب حسب"
 
@@ -3086,6 +3464,16 @@ msgid "Last Article Date"
 msgstr "تاريخ آخر مقالة"
 
 #: src/modules/author-list/author-list.php:523
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific time. This option accepts date values such as 1 week ago, 1 month "
+"ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"يمكنك تقييد قائمة المؤلفين بالمستخدمين الذين لديهم منشور منشور خلال فترة "
+"زمنية محددة. هذا الخيار يقبل قيم التاريخ مثل منذ أسبوع، منذ شهر، منذ 6 "
+"أشهر، منذ سنة، إلخ."
+
+#: src/modules/author-list/author-list.php:535
 msgid "Show Search Box"
 msgstr "عرض مربع البحث"
 
@@ -3094,10 +3482,24 @@ msgid "Add Search Box to Author Lists"
 msgstr "إضافة مربع بحث إلى قوائم المؤلفين"
 
 #: src/modules/author-list/author-list.php:545
+msgid ""
+"Author Pro allows you to add a search box to the Authors List. You can also "
+"show a dropdown menu that allows users to search on specific author fields."
+msgstr ""
+"يتيح لك Author Pro إضافة مربع بحث إلى قائمة المؤلفين. يمكنك أيضًا عرض قائمة "
+"منسدلة تسمح للمستخدمين بالبحث في حقول المؤلف المحددة."
+
+#: src/modules/author-list/author-list.php:550
 msgid "Search Field Dropdown"
 msgstr "قائمة منسدلة لحقل البحث"
 
 #: src/modules/author-list/author-list.php:551
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields."
+msgstr "يمكنك أيضًا عرض قائمة منسدلة تسمح للمستخدمين بالبحث في حقول المؤلف المحددة."
+
+#: src/modules/author-list/author-list.php:600
 msgid "Author Recent List"
 msgstr "قائمة المؤلفين الحديثة"
 
@@ -3142,6 +3544,14 @@ msgid "Select Author Category"
 msgstr "اختر فئة المؤلف"
 
 #: src/modules/author-list/author-list.php:1282
+msgid ""
+"This is a quick preview of this Author List. Test on frontend pages to see "
+"exactly how it looks with your theme."
+msgstr ""
+"هذه نظرة سريعة على قائمة المؤلفين هذه. اختبرها على صفحات الواجهة الأمامية "
+"لترى بالضبط كيف تبدو مع قالبك."
+
+#: src/modules/author-list/author-list.php:1380
 msgid "Invalid form"
 msgstr "نموذج غير صالح"
 
@@ -3380,6 +3790,12 @@ msgid "Showcase your Authors with PublishPress Blocks"
 msgstr "عرض مؤلفيك باستخدام PublishPress Blocks"
 
 #: src/modules/modules-settings/modules-settings.php:318
+msgid ""
+"PublishPress Blocks is a free plugin with full support for PublishPress "
+"Authors."
+msgstr "PublishPress Blocks هو مكون إضافي مجاني مع دعم كامل لـ PublishPress Authors."
+
+#: src/modules/modules-settings/modules-settings.php:319
 msgid "Install this plugin to showcase content by your Authors."
 msgstr "قم بتثبيت هذا المكون الإضافي لعرض المحتوى بواسطة مؤلفيك."
 
@@ -3388,6 +3804,14 @@ msgid "Use the Content Display block to show your posts in many beautiful layout
 msgstr "استخدم كتلة عرض المحتوى لعرض مشاركاتك في العديد من التخطيطات الجميلة."
 
 #: src/modules/modules-settings/modules-settings.php:321
+msgid ""
+"PublishPress Blocks has over 20 extra Gutenberg blocks including "
+"accordions, galleries, tables, and more."
+msgstr ""
+"يحتوي PublishPress Blocks على أكثر من 20 كتلة إضافية من جوتنبرغ بما في ذلك "
+"الأقسام، والمعارض، والجداول، وأكثر من ذلك."
+
+#: src/modules/modules-settings/modules-settings.php:324
 msgid "Click here to install PublishPress Blocks"
 msgstr "انقر هنا لتثبيت PublishPress Blocks"
 
@@ -3426,6 +3850,16 @@ msgid "Copy Molongui Authorship Data"
 msgstr "نسخ بيانات ملكية مولونغوي"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:153
+msgid ""
+"This action will copy the authors from the plugin Molongui Authorship "
+"allowing you to migrate to PublishPress Authors without losing any data "
+"including post author relation. This action can be run multiple times."
+msgstr ""
+"ستقوم هذه العملية بنسخ المؤلفين من المكون الإضافي Molongui Authorship مما "
+"يسمح لك بالانتقال إلى PublishPress Authors دون فقدان أي بيانات بما في ذلك "
+"علاقة مؤلف المنشور. يمكن تنفيذ هذه العملية عدة مرات."
+
+#: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:187
 msgid "It looks like you have Molongui Authorship installed."
 msgstr "يبدو أن لديك ملكية مولونغوي مثبتة."
 
@@ -3648,6 +4082,12 @@ msgstr "صندوق كاتب بتصميم قديم في قائمة بسيطة:"
 #: src/modules/multiple-authors/multiple-authors.php:1265
 #: src/modules/settings/settings.php:275
 #, php-format
+msgid ""
+"Disabled because add_post_type_support('%1$s', '%2$s') is included in a "
+"loaded file."
+msgstr "تم التعطيل لأن add_post_type_support('%1$s', '%2$s') مضمن في ملف محمل."
+
+#: src/modules/multiple-authors/multiple-authors.php:1284
 msgid "This will display the authors box at the top of the content."
 msgstr "سيعرض هذا صندوق المؤلفين في أعلى المحتوى."
 
@@ -3672,14 +4112,228 @@ msgid "Authors Box"
 msgstr "صندوق المؤلفين"
 
 #: src/modules/multiple-authors/multiple-authors.php:1409
+msgid ""
+"With this shortcode you can display the author box in any part of the "
+"content. "
+msgstr "مع هذا الشورتكود يمكنك عرض مربع المؤلف في أي جزء من المحتوى."
+
+#: src/modules/multiple-authors/multiple-authors.php:1417
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s."
+msgstr ""
+"يمكنك تحديد التخطيط باستخدام شريحة تخطيط مربعات المؤلفين. يمكنك رؤية "
+"التفاصيل الكاملة لكل خيار تخطيط %1$s في هذا الدليل %2$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1428
+#, php-format
+msgid ""
+"You can also decide whether or not to show the main title, using %1$s or "
+"%2$s ."
+msgstr ""
+"يمكنك أيضًا تحديد ما إذا كنت تريد عرض العنوان الرئيسي أم لا، باستخدام %1$s "
+"أو %2$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1438
+#: src/modules/multiple-authors/multiple-authors.php:1522
+msgid ""
+"You can load the authors for a specific post, even if you are not in that "
+"post currently. For example, this shortcode will load the authors for the "
+"post with the ID of 32."
+msgstr ""
+"يمكنك تحميل المؤلفين لمنشور معين، حتى لو لم تكن في ذلك المنشور حاليًا. على "
+"سبيل المثال، سيقوم هذا الشورتكود بتحميل المؤلفين للمنشور الذي لديه معرف 32."
+
+#: src/modules/multiple-authors/multiple-authors.php:1445
+msgid ""
+"You can load the authors for a specific user by providing the user id. For "
+"example, this shortcode will load the author with user id of 32"
+msgstr ""
+"يمكنك تحميل المؤلفين لمستخدم معين عن طريق تقديم معرف المستخدم. على سبيل "
+"المثال، سيقوم هذا الشورتكود بتحميل المؤلف الذي لديه معرف المستخدم 32."
+
+#: src/modules/multiple-authors/multiple-authors.php:1452
+msgid ""
+"You can load the authors for a specific author by providing the author term "
+"id for both guest and user author. For example, this shortcode will load "
+"the author with term id of 32"
+msgstr ""
+"يمكنك تحميل المؤلفين لمؤلف معين عن طريق تقديم معرف مصطلح المؤلف لكل من "
+"المؤلف الضيف ومؤلف المستخدم. على سبيل المثال، سيقوم هذا الشورتكود بتحميل "
+"المؤلف الذي لديه معرف المصطلح 32."
+
+#: src/modules/multiple-authors/multiple-authors.php:1460
+#, php-format
+msgid ""
+"If you are having problems showing PublishPress Authors on author profile "
+"pages, you can use this shortcode below. The argument %s forces the plugin "
+"to retrieve the Author from the profile page and not any other posts on the "
+"same screen."
+msgstr ""
+"إذا كنت تواجه مشاكل في عرض مؤلفي PublishPress على صفحات ملفات المؤلفين، "
+"يمكنك استخدام كود الاختصار أدناه. الحجة %s تجبر الملحق على استرداد المؤلف "
+"من صفحة الملف الشخصي وليس من أي منشورات أخرى على نفس الشاشة."
+
+#: src/modules/multiple-authors/multiple-authors.php:1470
+#, php-format
+msgid ""
+"There is one final option to mention. This is mostly useful if you're using "
+"a theme or page builder to customize the Author profile pages you find at "
+"URLs such as /author/username/. You can use the following shortcode on the "
+"authors page to display the profile of the current author. You just need to "
+"add the parameter %s."
+msgstr ""
+"هناك خيار نهائي واحد يجب ذكره. يكون هذا مفيدًا بشكل أساسي إذا كنت تستخدم "
+"سمة أو منشئ صفحات لتخصيص صفحات ملفات المؤلفين التي تجدها في عناوين URL مثل "
+"/author/username/. يمكنك استخدام كود الاختصار التالي على صفحة المؤلفين لعرض "
+"ملف المؤلف الحالي. تحتاج فقط إلى إضافة المعامل %s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1479
+msgid ""
+"You can load the authors belonging to a specific author categories by "
+"providing the category slug or slugs separated by comma for more than one "
+"category."
+msgstr ""
+"يمكنك تحميل المؤلفين الذين ينتمون إلى فئات مؤلف معينة من خلال تقديم شريحة "
+"الفئة أو الشرائح مفصولة بفواصل لأكثر من فئة واحدة."
+
+#: src/modules/multiple-authors/multiple-authors.php:1489
 msgid "Authors Data"
 msgstr "بيانات المؤلفين"
 
 #: src/modules/multiple-authors/multiple-authors.php:1490
+msgid ""
+"With this shortcode you can display the author names or any profile field "
+"in any part of the content."
+msgstr ""
+"مع هذا كود الاختصار يمكنك عرض أسماء المؤلفين أو أي حقل ملف في أي جزء من "
+"المحتوى."
+
+#: src/modules/multiple-authors/multiple-authors.php:1498
+#, php-format
+msgid ""
+"The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s "
+"%4$s %5$s %6$s %7$s. You can see full details and parameters %8$s in this "
+"guide %9$s."
+msgstr ""
+"كود الاختصار لبيانات المؤلفين يقبل معامل الحقل مثل: %1$s %2$s %3$s %4$s "
+"%5$s %6$s %7$s. يمكنك رؤية التفاصيل الكاملة والمعاملات %8$s في هذا الدليل "
+"%9$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1515
 msgid "You can also specify the separator to be used for mulitple authors data."
 msgstr "يمكنك أيضًا تحديد الفاصل الذي سيتم استخدامه لبيانات المؤلفين المتعددة."
 
 #: src/modules/multiple-authors/multiple-authors.php:1529
+msgid ""
+"You can retrieve a specific author by providing the author's term ID. For "
+"example, this shortcode will load the author with the term ID of 102."
+msgstr ""
+"يمكنك استرداد مؤلف معين من خلال تقديم معرف مصطلح المؤلف. على سبيل المثال، "
+"سيقوم هذا كود الاختصار بتحميل المؤلف الذي يحمل معرف المصطلح 102."
+
+#: src/modules/multiple-authors/multiple-authors.php:1537
+#, php-format
+msgid ""
+"You can also decide to return an array list of authors by using "
+"user_objects=\"true\" which will return all the authors object data as an "
+"array. You can check full details and sample usage %2$s in this guide%3$s."
+msgstr ""
+"يمكنك أيضًا أن تقرر إرجاع قائمة مصفوفة من المؤلفين باستخدام "
+"user_objects=\"true\" والذي سيعيد جميع بيانات كائن المؤلفين كمصفوفة. يمكنك "
+"التحقق من التفاصيل الكاملة واستخدام نموذج %2$s في هذا الدليل%3$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1548
+msgid ""
+"You can retrieve authors belonging to a specific Author Category by "
+"providing the category slug or slugs. Separate multiple slugs with a comma."
+msgstr ""
+"يمكنك استرداد المؤلفين الذين ينتمون إلى فئة مؤلف معينة من خلال تقديم شريحة "
+"الفئة أو الشرائح. افصل بين الشرائح المتعددة بفاصلة."
+
+#: src/modules/multiple-authors/multiple-authors.php:1559
+msgid ""
+"With this shortcode, you can show all the authors together in a single "
+"display."
+msgstr "مع هذا كود الاختصار، يمكنك عرض جميع المؤلفين معًا في عرض واحد."
+
+#: src/modules/multiple-authors/multiple-authors.php:1567
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s. %3$s %4$s This "
+"shortcode also provides two custom layouts: %5$s %6$s."
+msgstr ""
+"يمكنك تحديد التخطيط باستخدام شريحة تخطيط صناديق المؤلف. يمكنك رؤية التفاصيل "
+"الكاملة لكل خيار تخطيط %1$s في هذا الدليل %2$s. %3$s %4$s يقدم هذا كود "
+"الاختصار أيضًا تخطيطين مخصصين: %5$s %6$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1582
+#, php-format
+msgid ""
+"You can define the number of layout columns by using %1$s to show authors "
+"in 2 column."
+msgstr "يمكنك تحديد عدد أعمدة التخطيط باستخدام %1$s لعرض المؤلفين في عمودين."
+
+#: src/modules/multiple-authors/multiple-authors.php:1592
+#, php-format
+msgid ""
+"You can choose the number of authors per page using %1$s . %2$s Pagination "
+"will be automatically added if required."
+msgstr ""
+"يمكنك اختيار عدد المؤلفين لكل صفحة باستخدام %1$s. %2$s سيتم إضافة تقسيم "
+"الصفحات تلقائيًا إذا لزم الأمر."
+
+#: src/modules/multiple-authors/multiple-authors.php:1603
+#, php-format
+msgid ""
+"You can limit the result to only authors who are assigned to posts by using "
+"%1$s . %2$s Alternatively, use %3$s to show all authors, including those "
+"without any posts."
+msgstr ""
+"يمكنك تحديد النتيجة لتكون فقط للمؤلفين الذين تم تعيينهم إلى منشورات "
+"باستخدام %1$s. %2$s بدلاً من ذلك، استخدم %3$s لعرض جميع المؤلفين، بما في "
+"ذلك أولئك الذين ليس لديهم أي منشورات."
+
+#: src/modules/multiple-authors/multiple-authors.php:1615
+#, php-format
+msgid ""
+"You can limit the result to only guest authors by using %1$s . %2$s "
+"Alternatively, %3$s will show only authors with a WordPress account."
+msgstr ""
+"يمكنك تحديد النتيجة لتكون فقط للمؤلفين الضيوف باستخدام %1$s. %2$s بدلاً من "
+"ذلك، سيظهر %3$s فقط المؤلفين الذين لديهم حساب WordPress."
+
+#: src/modules/multiple-authors/multiple-authors.php:1627
+#, php-format
+msgid ""
+"If you are using the authors_recent layout, you can define the number of "
+"columns by using %1$s ."
+msgstr "إذا كنت تستخدم تخطيط authors_recent، يمكنك تحديد عدد الأعمدة باستخدام %1$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1637
+#, php-format
+msgid ""
+"For authors_index layout, you can group user by profile field by using %1$s "
+"."
+msgstr ""
+"لتخطيط authors_index، يمكنك تجميع المستخدمين حسب حقل الملف الشخصي باستخدام "
+"%1$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1647
+#, php-format
+msgid ""
+"To order the results based on post count, use %1$s . To order the results "
+"by name, use %2$s . Alternatively, you can order by profile fields like "
+"%3$s, %4$s etc"
+msgstr ""
+"لترتيب النتائج بناءً على عدد المنشورات، استخدم %1$s. لترتيب النتائج حسب "
+"الاسم، استخدم %2$s. بدلاً من ذلك، يمكنك الترتيب حسب حقول الملف الشخصي مثل "
+"%3$s، %4$s إلخ."
+
+#: src/modules/multiple-authors/multiple-authors.php:1660
+#, php-format
 msgid "To further customize the order of results, use %1$s or %2$s ."
 msgstr "للمزيد من تخصيص ترتيب النتائج، استخدم %1$s أو %2$s."
 
@@ -3690,6 +4344,27 @@ msgstr "لعرض مربع بحث للمؤلفين، استخدم %1$s ."
 
 #: src/modules/multiple-authors/multiple-authors.php:1681
 #, php-format
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields. You can add fields to the dropdown using %1$s . This "
+"requires the search box to be active."
+msgstr ""
+"يمكنك أيضًا عرض قائمة منسدلة تسمح للمستخدمين بالبحث في حقول مؤلف معينة. "
+"يمكنك إضافة حقول إلى القائمة المنسدلة باستخدام %1$s. يتطلب هذا أن يكون مربع "
+"البحث نشطًا."
+
+#: src/modules/multiple-authors/multiple-authors.php:1691
+#, php-format
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific period using %1$s . This accept english date value like 1 week "
+"ago, 1 month ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"يمكنك تحديد قائمة المؤلفين للمستخدمين الذين لديهم منشور منشور خلال فترة "
+"معينة باستخدام %1$s. هذا يقبل قيمة تاريخ باللغة الإنجليزية مثل 1 أسبوع مضى، "
+"1 شهر مضى، 6 أشهر مضت، 1 سنة مضت إلخ."
+
+#: src/modules/multiple-authors/multiple-authors.php:1738
 msgid "Copied!"
 msgstr "تم النسخ!"
 
@@ -3703,6 +4378,39 @@ msgid "Select roles"
 msgstr "اختر الأدوار"
 
 #: src/modules/multiple-authors/multiple-authors.php:1813
+msgid ""
+"Choose which WordPress user roles can be selected using the \"Registered "
+"Author With User Account\" option for author profiles."
+msgstr ""
+"اختر أدوار مستخدمي WordPress التي يمكن تحديدها باستخدام خيار \"مؤلف مسجل مع "
+"حساب مستخدم\" لملفات المؤلفين."
+
+#: src/modules/multiple-authors/multiple-authors.php:1842
+msgid ""
+"Author profiles can be mapped to WordPress user accounts. This option "
+"allows you to automatically create author profiles when users are created "
+"in these roles. You can also do this for existing users by clicking the "
+"\"Create PublishPress Authors Profiles for all users in a role\" button in "
+"the Maintenance tab."
+msgstr ""
+"يمكن ربط ملفات تعريف المؤلفين بحسابات مستخدمي WordPress. تتيح لك هذه الخيار "
+"إنشاء ملفات تعريف للمؤلفين تلقائيًا عند إنشاء المستخدمين في هذه الأدوار. "
+"يمكنك أيضًا القيام بذلك للمستخدمين الحاليين عن طريق النقر على زر \"إنشاء "
+"ملفات تعريف مؤلفي PublishPress لجميع المستخدمين في الدور\" في علامة التبويب "
+"الصيانة."
+
+#: src/modules/multiple-authors/multiple-authors.php:1863
+msgid ""
+"If the Author is mapped to a WordPress user, this will display the authors' "
+"\"Display name\" and their \"Username\". The default is to show only the "
+"\"Display name\". Showing the \"Username\" is useful if you have several "
+"authors with similar names."
+msgstr ""
+"إذا كان المؤلف مرتبطًا بمستخدم WordPress، فسيتم عرض \"اسم العرض\" و\"اسم "
+"المستخدم\" للمؤلفين. الافتراضي هو عرض \"اسم العرض\" فقط. عرض \"اسم "
+"المستخدم\" مفيد إذا كان لديك عدة مؤلفين بأسماء مشابهة."
+
+#: src/modules/multiple-authors/multiple-authors.php:1886
 msgid "Allow authors to be created without a real user account."
 msgstr "السماح بإنشاء مؤلفين بدون حساب مستخدم حقيقي."
 
@@ -3715,6 +4423,14 @@ msgid "Allow authors to be created without a connected user account."
 msgstr "السماح بإنشاء مؤلفين بدون حساب مستخدم متصل."
 
 #: src/modules/multiple-authors/multiple-authors.php:1956
+msgid ""
+"If enabled, PublishPress Authors will replace the default WordPress author "
+"pages."
+msgstr ""
+"إذا تم تمكينه، سيحل مؤلفو PublishPress محل صفحات المؤلف الافتراضية في "
+"WordPress."
+
+#: src/modules/multiple-authors/multiple-authors.php:1961
 msgid "Please note this feature will not work for all themes."
 msgstr "يرجى ملاحظة أن هذه الميزة قد لا تعمل مع جميع الثيمات."
 
@@ -3748,6 +4464,14 @@ msgid "Last Name First Name"
 msgstr "الاسم الأخير الاسم الأول"
 
 #: src/modules/multiple-authors/multiple-authors.php:2218
+msgid ""
+"This avatar will be used as default avatar instead of gravatar where no "
+"custom avatar is added to profile."
+msgstr ""
+"سيتم استخدام هذه الصورة الرمزية كصورة رمزية افتراضية بدلاً من gravatar حيث "
+"لم يتم إضافة صورة رمزية مخصصة إلى الملف الشخصي."
+
+#: src/modules/multiple-authors/multiple-authors.php:2240
 msgid "This will display the author bio."
 msgstr "سيظهر هذا سيرة المؤلف."
 
@@ -3785,6 +4509,16 @@ msgid "This will display the excerpt."
 msgstr "سيعرض المقتطف."
 
 #: src/modules/multiple-authors/multiple-authors.php:2573
+msgid ""
+"This will allows you map a WordPress user to more than one author. Don't "
+"use this feature unless requested to do so by the PublishPress team. This "
+"plugin works better when authors and users are paired one-to-one."
+msgstr ""
+"سيسمح لك هذا بربط مستخدم WordPress بأكثر من مؤلف. لا تستخدم هذه الميزة ما "
+"لم يُطلب منك ذلك من قبل فريق PublishPress. يعمل هذا المكون الإضافي بشكل "
+"أفضل عندما يتم ربط المؤلفين والمستخدمين واحدًا لواحد."
+
+#: src/modules/multiple-authors/multiple-authors.php:2597
 msgid "This will display the authors."
 msgstr "سيعرض المؤلفين."
 
@@ -3817,6 +4551,16 @@ msgid "Search for a fallback author"
 msgstr "ابحث عن مؤلف بديل"
 
 #: src/modules/multiple-authors/multiple-authors.php:2791
+msgid ""
+"If you only have Guest Authors selected for a post, this user may be used "
+"as a fallback. WordPress sometimes requires a WordPress user to be assigned "
+"to each post. This user will not be visible on the front of your site."
+msgstr ""
+"إذا كان لديك مؤلفون ضيوف فقط محددون لمقال، يمكن استخدام هذا المستخدم كبديل. "
+"يحتاج WordPress أحيانًا إلى تعيين مستخدم WordPress لكل مقال. لن يكون هذا "
+"المستخدم مرئيًا في واجهة موقعك."
+
+#: src/modules/multiple-authors/multiple-authors.php:2809
 msgid "This will display the authors email in the author box."
 msgstr "سيعرض بريد المؤلف الإلكتروني في صندوق المؤلف."
 
@@ -3837,6 +4581,18 @@ msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr "إنشاء ملفات تعريف مؤلفي PublishPress لجميع مؤلفي المنشورات"
 
 #: src/modules/multiple-authors/multiple-authors.php:2887
+msgid ""
+"If a WordPress user is the author of a post, but does not have a "
+"PublishPress Authors profile, this will automatically create a profile for "
+"them."
+msgstr ""
+"إذا كان مستخدم WordPress هو مؤلف مقال، ولكنه ليس لديه ملف تعريف مؤلفي "
+"PublishPress، فسيتم إنشاء ملف تعريف لهم تلقائيًا."
+
+#: src/modules/multiple-authors/multiple-authors.php:2887
+#: src/modules/multiple-authors/multiple-authors.php:2893
+#: src/modules/multiple-authors/multiple-authors.php:2899
+#: src/modules/multiple-authors/multiple-authors.php:2906
 msgid "Click here for documentation"
 msgstr "انقر هنا للحصول على الوثائق"
 
@@ -3849,6 +4605,15 @@ msgid "Create PublishPress Authors Profiles for all users in a role"
 msgstr "إنشاء ملفات تعريف مؤلفي PublishPress لجميع المستخدمين في دور"
 
 #: src/modules/multiple-authors/multiple-authors.php:2893
+msgid ""
+"This will find all the users in a role and create author profiles for them. "
+"You can choose the roles using the \"Automatically create author profiles\" "
+"setting."
+msgstr ""
+"سيجد هذا جميع المستخدمين في دور ما ويقوم بإنشاء ملفات تعريف مؤلفين لهم. "
+"يمكنك اختيار الأدوار باستخدام إعداد \"إنشاء ملفات تعريف مؤلفين تلقائيًا\"."
+
+#: src/modules/multiple-authors/multiple-authors.php:2894
 msgid "Create PublishPress Authors profiles"
 msgstr "إنشاء ملفات تعريف مؤلفي PublishPress"
 
@@ -3857,22 +4622,69 @@ msgid "Synchronize PublishPress Authors Fields and user profile fields"
 msgstr "مزامنة حقول مؤلفي PublishPress وحقول ملفات تعريف المستخدمين"
 
 #: src/modules/multiple-authors/multiple-authors.php:2899
+msgid ""
+"This will update all the author profiles in PublishPress Authors to match "
+"the default WordPress fields for each user."
+msgstr ""
+"سيقوم هذا بتحديث جميع ملفات تعريف المؤلفين في PublishPress Authors لتتناسب "
+"مع الحقول الافتراضية في WordPress لكل مستخدم."
+
+#: src/modules/multiple-authors/multiple-authors.php:2905
 msgid "Synchronize the author and user URLs"
 msgstr "مزامنة عناوين URLs للمؤلفين والمستخدمين"
 
 #: src/modules/multiple-authors/multiple-authors.php:2906
+msgid ""
+"This will update all the Author URLs in PublishPress Authors to match the "
+"default WordPress URLs for each user."
+msgstr ""
+"سيقوم هذا بتحديث جميع عناوين URL للمؤلفين في PublishPress Authors لتتناسب "
+"مع عناوين URL الافتراضية في WordPress لكل مستخدم."
+
+#: src/modules/multiple-authors/multiple-authors.php:2912
+#: src/modules/multiple-authors/multiple-authors.php:2914
 msgid "Create Author Categories"
 msgstr "إنشاء فئات المؤلفين"
 
 #: src/modules/multiple-authors/multiple-authors.php:2913
+msgid ""
+"This will create author categories table if missing and add default "
+"categories."
+msgstr ""
+"سيقوم هذا بإنشاء جدول فئات المؤلفين إذا كان مفقودًا وإضافة الفئات "
+"الافتراضية."
+
+#: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "Copy Co-Authors Plus Data"
 msgstr "نسخ بيانات Co-Authors Plus"
 
 #: src/modules/multiple-authors/multiple-authors.php:2927
+msgid ""
+"This action will copy the authors from the plugin Co-Authors Plus allowing "
+"you to migrate to PublishPress Authors without losing any data. This action "
+"can be run multiple times."
+msgstr ""
+"ستقوم هذه العملية بنسخ المؤلفين من المكون الإضافي Co-Authors Plus مما يتيح "
+"لك الانتقال إلى PublishPress Authors دون فقدان أي بيانات. يمكن تنفيذ هذه "
+"العملية عدة مرات."
+
+#: src/modules/multiple-authors/multiple-authors.php:2937
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr "حذف الاتصالات بين ملفات تعريف المؤلفين والمستخدمين"
 
 #: src/modules/multiple-authors/multiple-authors.php:2938
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. It will delete all author profiles that are mapped to "
+"a WordPress user account. This will not delete the WordPress user accounts, "
+"but any links between the posts and author profiles will be lost."
+msgstr ""
+"يمكن أن تعيد هذه العملية تعيين بيانات PublishPress Authors قبل استخدام "
+"خيارات الصيانة الأخرى. ستقوم بحذف جميع ملفات تعريف المؤلفين المرتبطة بحساب "
+"مستخدم WordPress. لن تحذف حسابات مستخدم WordPress، ولكن أي روابط بين "
+"المقالات وملفات تعريف المؤلفين ستفقد."
+
+#: src/modules/multiple-authors/multiple-authors.php:2939
 msgid "Delete all authors mapped to users"
 msgstr "حذف جميع المؤلفين المرتبطين بالمستخدمين"
 
@@ -3881,10 +4693,28 @@ msgid "Delete Guest Authors"
 msgstr "حذف المؤلفين الضيوف"
 
 #: src/modules/multiple-authors/multiple-authors.php:2945
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. Guest authors are author profiles that are not mapped "
+"to a WordPress user account. This action will delete all guest authors."
+msgstr ""
+"يمكن أن تعيد هذه العملية تعيين بيانات PublishPress Authors قبل استخدام "
+"خيارات الصيانة الأخرى. المؤلفون الضيوف هم ملفات تعريف المؤلفين التي ليست "
+"مرتبطة بحساب مستخدم WordPress. ستقوم هذه العملية بحذف جميع المؤلفين الضيوف."
+
+#: src/modules/multiple-authors/multiple-authors.php:2946
 msgid "Delete all guest authors"
 msgstr "حذف جميع المؤلفين الضيوف"
 
 #: src/modules/multiple-authors/multiple-authors.php:2952
+msgid ""
+"Please be careful clicking these buttons. Before clicking, we recommend "
+"taking a site backup in case anything goes wrong."
+msgstr ""
+"يرجى توخي الحذر عند النقر على هذه الأزرار. قبل النقر، نوصي بأخذ نسخة "
+"احتياطية من الموقع في حالة حدوث أي خطأ."
+
+#: src/modules/multiple-authors/multiple-authors.php:3155
 msgid "Author Profiles"
 msgstr "ملفات تعريف المؤلفين"
 
@@ -4166,9 +4996,46 @@ msgstr "اتصل"
 
 #: src/core/Plugin.php:563
 msgctxt "taxonomy general name"
+msgid "Authors"
+msgstr "المؤلفون"
+
+#: src/core/Plugin.php:568
+msgctxt "taxonomy singular name"
+msgid "Author"
+msgstr "مؤلف"
+
+#: src/modules/author-boxes/author-boxes.php:411
+#, fuzzy, php-format
+msgctxt "Author Box post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-boxes/author-boxes.php:412
+#, fuzzy, php-format
+msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
 #: src/modules/author-boxes/author-boxes.php:427
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:166
+#, fuzzy, php-format
+msgctxt "Custom Field post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:167
+#, fuzzy, php-format
+msgctxt "singular custom field post type name"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:182
+#, fuzzy, php-format
+msgctxt "custom field post type menu name"
+msgid "%2$s"
+msgstr "%2$s"

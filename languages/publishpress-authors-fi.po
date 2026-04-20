@@ -9,11 +9,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-26 12:05+0000\n"
-"PO-Revision-Date: 2026-04-15 01:48+0000\n"
+"POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
+"PO-Revision-Date: 2026-04-20 12:08+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: fi\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: publishpress-authors.php\n"
@@ -30,7 +31,6 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-4: vendor\n"
 "X-Poedit-SearchPathExcluded-5: *.min.js\n"
 "X-Poedit-SearchPathExcluded-6: src/assets/lib\n"
-"Language: fi\n"
 
 #: publishpress-authors.php:5
 #: src/core/Plugin.php:724
@@ -52,10 +52,10 @@ msgid ""
 "PublishPress Authors allows you to add multiple authors and guest authors "
 "to WordPress posts"
 msgstr ""
-"PublishPress Authors mahdollistaa useiden kirjoittajien ja vieraiden "
-"kirjoittajien lisäämisen WordPress-julkaisuille"
+"PublishPress Authors antaa sinun lisätä useita kirjoittajia ja "
+"vieraskirjoittajia WordPress-viesteihin"
 
-#: publishpress-authors.php:11, fuzzy
+#: publishpress-authors.php:11
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -265,7 +265,7 @@ msgid ""
 "You do not have permission to edit this author profile because it is linked "
 "to a user account you do not have permission to edit."
 msgstr ""
-"Sinulla ei ole lupaa muokata tätä kirjoittajaprofiilia, koska se on "
+"Sinulla ei ole oikeuksia muokata tätä kirjoittajaprofiilia, koska se on "
 "liitetty käyttäjätiliin, jota et voi muokata."
 
 #: src/core/Classes/Admin_Ajax.php:374
@@ -274,9 +274,9 @@ msgid ""
 "Sorry, this WordPress user is already mapped to another Author. By default, "
 "each user can only be connected to one Author profile."
 msgstr ""
-"Anteeksi, tämä WordPress-käyttäjä on jo sidottu toiseen kirjoittajaan. "
-"Oletusarvoisesti kukin käyttäjä voi olla kytketty vain yhteen "
-"kirjoittajaprofiiliin."
+"Anteeksi, tämä WordPress-käyttäjä on jo liitetty toiseen kirjoittajaan. "
+"Oletuksena jokaiselle käyttäjälle voidaan liittää vain yksi "
+"kirjoittajaprofiili."
 
 #: src/core/Classes/Admin_Ajax.php:386
 #: src/core/Classes/Author_Editor.php:1100
@@ -300,8 +300,8 @@ msgid ""
 "No post ID provided for Authors_Iterator constructor. Are you not in a loop "
 "or is $post not set?"
 msgstr ""
-"Ei postin ID:tä annettu Authors_Iterator-konstruktorille. Etkö ole "
-"silmukassa vai onko $post määrittämättä?"
+"Kirjoittajat_Itterator-konstruktorille ei ole annettu viestitunnusta. Eikö "
+"olet silmukassa vai onko $post asetettu?"
 
 #: src/core/Classes/Author_Editor.php:47
 #: src/core/Plugin.php:1618
@@ -396,8 +396,8 @@ msgid ""
 "(Uses the %1s Email field %2s to find the Gravatar account if default "
 "avatar is not uploaded in Authors Settings)"
 msgstr ""
-"(Käyttää %1s Sähköposti kenttää %2s löytääkseen Gravatar-tilin, jos "
-"oletusavataria ei ole ladattu Kirjoittajien asetuksissa)"
+"(Käyttää %1s Sähköposti-kenttää %2s löytääkseen Gravatar-tilin, jos "
+"oletusavatar ei ole ladattu Kirjoittajien asetuksissa)"
 
 #: src/core/Classes/Author_Editor.php:399
 msgid "Custom image"
@@ -418,8 +418,8 @@ msgid ""
 "Select the default Category for this Author. This will be used when the "
 "Author is added to new posts."
 msgstr ""
-"Valitse oletusluokka tälle kirjoittajalle. Tätä käytetään, kun kirjoittaja "
-"lisätään uusiin viesteihin."
+"Valitse tämäntyyppiselle kirjoittajalle oletuskategoria. Tätä käytetään, "
+"kun kirjoittaja lisätään uusiin viesteihin."
 
 #: src/core/Classes/Author_Editor.php:418
 msgid "Do not show this profile publicly"
@@ -448,7 +448,7 @@ msgid ""
 "profile."
 msgstr ""
 "Luo kirjoittajaprofiili nykyiselle käyttäjätilille. Voit valita käyttäjiä, "
-"joilla on lupa muokata viestejä. Tämä käyttäjä voi päivittää profiiliaan."
+"joilla on oikeus muokata viestejä. Tämä käyttäjä voi päivittää profiiliaan."
 
 #: src/core/Classes/Author_Editor.php:789
 msgid ""
@@ -456,17 +456,17 @@ msgid ""
 "the \"Guest Author\" role and will not be able to login to the WordPress "
 "dashboard or update their profile."
 msgstr ""
-"Luo kirjoittajaprofiili ja linkitetty käyttäjätili. Tämä tili on \"Vieras "
-"kirjoittaja\" -roolissa eikä voi kirjautua WordPressin hallintapaneeliin "
-"tai päivittää profiiliaan."
+"Luo kirjoittajaprofiili ja siihen liittyvä käyttäjätili. Tällä tilillä on "
+"\"Vieraskirjoittaja\" -rooli, eikä se voi kirjautua WordPressin "
+"hallintapaneeliin tai päivittää profiiliaan."
 
 #: src/core/Classes/Author_Editor.php:796
 msgid ""
 "Create an author profile with no linked user account. This option is "
 "lightweight but may have compatibility issues with other themes and plugins."
 msgstr ""
-"Luo kirjoittajaprofiili ilman linkitettyä käyttäjätiliä. Tämä vaihtoehto on "
-"kevyt, mutta saattaa aiheuttaa yhteensopivuusongelmia muiden teemojen ja "
+"Luo kirjoittajaprofiili ilman liitettyä käyttäjätiliä. Tämä vaihtoehto on "
+"kevyt, mutta sillä voi olla yhteensopivuusongelmia muiden teemojen ja "
 "lisäosien kanssa."
 
 #: src/core/Classes/Author_Editor.php:815
@@ -591,9 +591,9 @@ msgid ""
 "an author. For some tasks, it can be helpful to have a user selected here. "
 "This user will not be visible on the front of your site."
 msgstr ""
-"Tämä vaihtoehto näkyy, koska sinulla ei ole WordPress-käyttäjää valittuna "
-"kirjoittajaksi. Joissakin tehtävissä voi olla hyödyllistä valita käyttäjä "
-"täältä. Tämä käyttäjä ei näy sivustosi etuosassa."
+"Tämä vaihtoehto näkyy, koska sinulla ei ole valittuna WordPress-käyttäjää "
+"kirjoittajana. Jotkin tehtävät voivat hyötyä, jos täällä on valittu "
+"käyttäjä. Tämä käyttäjä ei ole näkyvissä sivustosi etusivulla."
 
 #: src/core/Classes/Post_Editor.php:474
 msgid "Search for an user"
@@ -752,8 +752,9 @@ msgid ""
 "Mapped User, this URL is taken from the user’s account and can not be "
 "changed."
 msgstr ""
-"Tämä on osa URL-osoitetta kirjoittajan profiilisivulle. Jos valitset Mapped "
-"Userin, tämä URL-osoite otetaan käyttäjän tililtä eikä sitä voi muuttaa."
+"Tämä on osa URL-osoitetta kirjoittajan profiilisivulle. Jos valitset "
+"kartoitettua käyttäjää, tämä URL-osoite otetaan käyttäjän tililtä eikä sitä "
+"voi muuttaa."
 
 #: src/core/Plugin.php:573
 msgid "Search Authors"
@@ -861,15 +862,15 @@ msgid ""
 "Click on an author to change them. Drag to change their order. Click on "
 "<strong>Remove</strong> to remove them."
 msgstr ""
-"Napsauta kirjoittajaa muuttaaksesi häntä. Vedä vaihtaaksesi heidän "
-"järjestystään. Napsauta <strong>Poista</strong> poistaaksesi hänet."
+"Napsauta kirjoittajaa muuttaaksesi häntä. Vedä muuttaaksesi heidän "
+"järjestystään. Napsauta <strong>Poista</strong> poistaaksesi heidät."
 
 #: src/core/Plugin.php:1632
 msgid ""
 "Are you sure you want to delete the authors profiles mapped to users? This "
 "action can't be undone."
 msgstr ""
-"Oletko varma, että haluat poistaa käyttäjille määritetyt "
+"Oletko varma, että haluat poistaa käyttäjille liitetyt "
 "kirjoittajaprofiilit? Tätä toimintoa ei voi peruuttaa."
 
 #: src/core/Plugin.php:1636
@@ -877,7 +878,7 @@ msgid ""
 "Are you sure you want to delete the guest authors profiles? This action "
 "can't be undone."
 msgstr ""
-"Oletko varma, että haluat poistaa vieras kirjoittajien profiilit? Tätä "
+"Oletko varma, että haluat poistaa vieraskirjoittajien profiilit? Tätä "
 "toimintoa ei voi peruuttaa."
 
 #: src/core/Plugin.php:1640
@@ -1137,40 +1138,36 @@ msgstr "Kirjoittajan laatikko lähetetty."
 #, php-format
 msgid "%1$s %2$s updated."
 msgid_plural "%1$s %3$s updated."
-msgstr[0] "%1$s %2$s päivitetty.|%1$s %3$s päivitetty."
-msgstr[1] "%1$s %2$s päivitetty.|%1$s %3$s päivitetty."
+msgstr[0] "%1$s %2$s päivitetty."
+msgstr[1] "%1$s %3$s päivitetty."
 
 #: src/modules/author-boxes/author-boxes.php:525
 #, php-format
 msgid "%1$s %2$s not updated, somebody is editing it."
 msgid_plural "%1$s %3$s not updated, somebody is editing them."
-msgstr[0] ""
-"%1$s %2$s ei päivitetty, joku muokkaa sitä.|%1$s %3$s ei päivitetty, joku "
-"muokkaa niitä."
-msgstr[1] ""
-"%1$s %2$s ei päivitetty, joku muokkaa sitä.|%1$s %3$s ei päivitetty, joku "
-"muokkaa niitä."
+msgstr[0] "%1$s %2$s ei päivitetty, joku muokkaa sitä."
+msgstr[1] "%1$s %3$s ei päivitetty, joku muokkaa niitä."
 
 #: src/modules/author-boxes/author-boxes.php:536
 #, php-format
 msgid "%1$s %2$s permanently deleted."
 msgid_plural "%1$s %3$s permanently deleted."
-msgstr[0] "%1$s %2$s poistettu pysyvästi.|%1$s %3$s poistettu pysyvästi."
-msgstr[1] "%1$s %2$s poistettu pysyvästi.|%1$s %3$s poistettu pysyvästi."
+msgstr[0] "%1$s %2$s poistettu pysyvästi."
+msgstr[1] "%1$s %3$s poistettu pysyvästi."
 
 #: src/modules/author-boxes/author-boxes.php:547
 #, php-format
 msgid "%1$s %2$s moved to the Trash."
 msgid_plural "%1$s %3$s moved to the Trash."
-msgstr[0] "%1$s %2$s siirretty roskakoriin.|%1$s %3$s siirretty roskakoriin."
-msgstr[1] "%1$s %2$s siirretty roskakoriin.|%1$s %3$s siirretty roskakoriin."
+msgstr[0] "%1$s %2$s siirretty roskakoriin."
+msgstr[1] "%1$s %3$s siirretty roskakoriin."
 
 #: src/modules/author-boxes/author-boxes.php:558
 #, php-format
 msgid "%1$s %2$s restored from the Trash."
 msgid_plural "%1$s %3$s restored from the Trash."
-msgstr[0] "%1$s %2$s palautettu roskakorista.|%1$s %3$s palautettu roskakorista."
-msgstr[1] "%1$s %2$s palautettu roskakorista.|%1$s %3$s palautettu roskakorista."
+msgstr[0] "%1$s %2$s palautettu roskakorista."
+msgstr[1] "%1$s %3$s palautettu roskakorista."
 
 #: src/modules/author-boxes/author-boxes.php:624
 msgid "Duplicate"
@@ -1374,7 +1371,7 @@ msgid ""
 "You can use this data to export your author box design and import it to a "
 "new site."
 msgstr ""
-"Voit käyttää näitä tietoja viedäksesi kirjoittajalaatikkosi muotoilun ja "
+"Voit käyttää näitä tietoja viedäksesi kirjoittajalaatikon muotoilusi ja "
 "tuodaksesi sen uuteen sivustoon."
 
 #: src/modules/author-boxes/author-boxes.php:2619
@@ -1417,7 +1414,7 @@ msgid ""
 "Click the \"Generate Template\" button under the text area. Wait for the "
 "code to be generated."
 msgstr ""
-"Napsauta \"Luo malli\" -painiketta tekstialueen alla. Odota, että koodi "
+"Napsauta \"Generoi malli\" -painiketta tekstialueen alla. Odota, että koodi "
 "luodaan."
 
 #: src/modules/author-boxes/author-boxes.php:2652
@@ -1429,9 +1426,9 @@ msgid ""
 "/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
 "my-first-custom-author-template.php %7s ."
 msgstr ""
-"Luo tyhjät php-mallityötiedostot haluamallasi tiedoston slugilla %1s "
-"/publishpress-authors/author-boxes/ %2s -kansioon teemassasi. %3s "
-"Esimerkiksi, tiedosto voi sijaita täällä: %4s "
+"Luo tyhjät php-mallitiedosto haluamallasi tiedostopolulla %1s "
+"/publishpress-authors/author-boxes/ %2s teemasi kansioon. %3s Esimerkiksi "
+"tiedosto voi sijaita täällä: %4s "
 "/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
 "my-first-custom-author-template.php %7s ."
 
@@ -1443,7 +1440,12 @@ msgstr "Kopioi luotu koodi ja liitä se uuteen tiedostoon."
 msgid ""
 "Congratulations. Your can now choose your template inside the PublishPress "
 "Authors Settings."
-msgstr "Onnittelut. Voit nyt valita mallisi PublishPressin kirjoittaja-asetuksista."
+msgstr "Onnittelut. Nyt voit valita mallisi PublishPress Authors -asetuksista."
+
+#: src/modules/author-boxes/author-boxes.php:2658
+#, php-format
+msgid "You can read more information on the %s."
+msgstr "Voit lukea lisää tietoa %s:stä."
 
 #: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"
@@ -1465,9 +1467,7 @@ msgstr "Järjestä kentät uudelleen"
 msgid ""
 "Reorder the fields by dragging them to the correct position and saving your "
 "changes."
-msgstr ""
-"Järjestä kentät vetämällä niitä oikeaan paikkaan ja tallentamalla "
-"muutoksesi."
+msgstr "Järjestä kentät vetämällä ne oikeaan paikkaan ja tallentamalla muutoksesi."
 
 #: src/modules/author-boxes/author-boxes.php:2762
 msgid "Save for Current Author Box"
@@ -1506,8 +1506,8 @@ msgid ""
 "PublishPress Authors Pro allows you to unlock the full potential of Author "
 "Categories."
 msgstr ""
-"PublishPress Authors Pro antaa sinun avata Author Categoriesin täyden "
-"potentiaalin."
+"PublishPress Authors Pro mahdollistaa Author Categories -toiminnon täyden "
+"potentiaalin hyödyntämisen."
 
 #: src/modules/author-boxes/author-boxes.php:3039
 msgid "You can create Author Boxes where Authors are grouped into their categories."
@@ -1548,7 +1548,7 @@ msgid ""
 "Field Order updated. %1sClick here%2s to reload this page to see new order "
 "changes."
 msgstr ""
-"Kenttäjärjestys päivitetty. %1sKlikkaa täällä%2s ladataaksesi tämän sivun "
+"Kenttäjärjestys päivitetty. %1$sKlikkaa täällä%2$s ladataaksesi tämän sivun "
 "uudelleen nähdäksesi uudet järjestysmuutokset."
 
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:28
@@ -2212,8 +2212,8 @@ msgid ""
 "Enter a custom URL for the \"View All Posts\" link. Leave empty to use the "
 "default author posts page."
 msgstr ""
-"Syötä mukautettu URL-osoite \"Näytä kaikki julkaisut\" -linkille. Jätä "
-"tyhjäksi käyttääksesi oletuskirjoittajapostaussivua."
+"Syötä mukautettu URL-osoite \"Näytä kaikki viestit\" -linkille. Jätä "
+"tyhjäksi käytäksesi oletus kirjoittajan viestit -sivua."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:453
 msgid "View All Posts Link Size"
@@ -2278,7 +2278,7 @@ msgid ""
 "Selecting an option here will overwrite author boxes settings to match "
 "selected layout."
 msgstr ""
-"Valinnan tekeminen täällä korvää kirjoittaja-laatikkojen asetukset "
+"Valitseminen tässä vaihtoehto korvataan kirjoittajalaatikkojen asetukset "
 "vastaamaan valittua asettelua."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:612
@@ -2380,7 +2380,7 @@ msgid ""
 "Enter the text that should be added before group title. This field accepts "
 "basic HTML."
 msgstr ""
-"Syötä teksti, joka lisätään ryhmän otsikon ennen. Tämä kenttä hyväksyy "
+"Syötä teksti, joka lisätään ennen ryhmän otsikkoa. Tämä kenttä hyväksyy "
 "perus HTML:n."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:721
@@ -2443,9 +2443,9 @@ msgid ""
 "element. To make this display into a link, select 'link' and enter the "
 "first part of the URL into the 'Prefix' field."
 msgstr ""
-"'span' näkyy inline-elementtinä ja 'div' näkyy lohkoelementtinä. Jotta tämä "
-"näkyy linkkinä, valitse 'linkki' ja syötä URL-osoitteen ensimmäinen osa "
-"'Etuliite' kenttään."
+"'span' näkyy inline-elementtinä ja 'div' näkyy lohkona. Muuttaaksesi tämän "
+"linkiksi, valitse 'linkki' ja syötä URL-osoitteen ensimmäinen osa 'Esiaste' "
+"kenttään."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:828
 msgid "link"
@@ -2461,9 +2461,9 @@ msgid ""
 "This is useful when linking to an email, URL, or phone number. For example, "
 "'mailto:', 'https://' or 'tel:' can be added as the prefix."
 msgstr ""
-"Tämä on hyödyllistä linkittäessä sähköpostiin, URL-osoitteeseen tai "
+"Tämä on hyödyllistä, kun linkitetään sähköpostiin, URL-osoitteeseen tai "
 "puhelinnumeroon. Esimerkiksi 'mailto:', 'https://' tai 'tel:' voidaan "
-"lisätä etuliitteeksi."
+"lisätä esiasteeksi."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:851
 #, php-format
@@ -2672,8 +2672,8 @@ msgid ""
 "Select post types to include in recent posts. Leave empty to show all post "
 "types."
 msgstr ""
-"Valitse viestityypit, jotka sisällytetään viimeisimpiin viesteihin. Jätä "
-"tyhjäksi näyttääksesi kaikki viestityypit."
+"Valitse postityypit, jotka sisältyvät tuoreimpiin viesteihin. Jätä tyhjäksi "
+"näyttääksesi kaikki postityypit."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
 msgid "Select post types..."
@@ -2785,8 +2785,8 @@ msgid ""
 "This will display author in an inline format side by side instead of block "
 "format."
 msgstr ""
-"Tämä näyttää kirjoittajan rivimuodossa vierekkäin sen sijaan, että se olisi "
-"lohkomuodossa."
+"Tämä näyttää kirjoittajan inline-muodossa vierekkäin sen sijaan, että se "
+"olisi lohkossa."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1475
 msgid "Author Row Prefix"
@@ -2797,7 +2797,7 @@ msgid ""
 "Enter the text that should be added before authors. This field accepts "
 "basic HTML."
 msgstr ""
-"Syötä teksti, joka lisätään kirjoittajien ennen. Tämä kenttä hyväksyy perus "
+"Syötä teksti, joka lisätään kirjoittajien eteen. Tämä kenttä hyväksyy perus "
 "HTML:n."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1483
@@ -2821,7 +2821,7 @@ msgid ""
 "You can specify a separator such as ',' to separate authors. This field "
 "accepts basic HTML."
 msgstr ""
-"Voit määrittää erottimen, kuten ',' erottaaksesi kirjoittajat. Tämä kenttä "
+"Voit määrittää erottimen, kuten ',', erottaaksesi kirjoittajat. Tämä kenttä "
 "hyväksyy perus HTML:n."
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1499
@@ -3012,9 +3012,9 @@ msgid ""
 "will be added to post's reviewedBy property. You can read more %1$s in this "
 "guide.%2$s"
 msgstr ""
-"Esimerkki: kun tämä arvo on asetettu reviewedBy:ksi, kaikki tämän "
-"kategorian käyttäjät lisätään viestin reviewedBy-ominaisuuteen. Voit lukea "
-"lisää %1$s tästä oppaasta.%2$s"
+"Esimerkki: kun tämä arvo on asetettu reviewedBy, kaikki tämän kategorian "
+"käyttäjät lisätään viestin reviewedBy-ominaisuuteen. Voit lukea lisää %1$s "
+"tästä oppaasta.%2$s"
 
 #: src/modules/author-categories/author-categories.php:634
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:79
@@ -3032,8 +3032,8 @@ msgid ""
 "Select which post types this category applies to. Leave empty for all post "
 "types."
 msgstr ""
-"Valitse, mihin viestityyppeihin tämä kategoria liittyy. Jätä tyhjäksi "
-"kaikille viestityypeille."
+"Valitse, mihin postityyppeihin tämä kategoria liittyy. Jätä tyhjäksi "
+"kaikille postityypeille."
 
 #: src/modules/author-categories/author-categories.php:683
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:81
@@ -3195,8 +3195,7 @@ msgid ""
 "lowercase and contains only letters, numbers, and hyphens."
 msgstr ""
 "Slugia käytetään koodissa viittaamaan tähän kirjoittajakenttään. Se on "
-"kaikki pienellä kirjaimella ja sisältää vain kirjaimia, numeroita ja "
-"viivoja."
+"kokonaan pieniä kirjaimia ja sisältää vain kirjaimia, numeroita ja viivoja."
 
 #: src/modules/author-custom-fields/author-custom-fields.php:396
 msgid "Field Type"
@@ -3221,7 +3220,7 @@ msgid ""
 "worksFor, and birthPlace. %1$sClick here for documentation.%2$s"
 msgstr ""
 "Lisää Schema.org-ominaisuus tähän kenttään. Esimerkkejä ovat alumniOf, "
-"worksFor ja birthPlace. %1$sNapsauta tästä saadaksesi dokumentaation.%2$s"
+"worksFor ja birthPlace. %1$sKlikkaa täällä saadaksesi dokumentaatiota.%2$s"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:434
 msgid "Show in REST API"
@@ -3262,7 +3261,7 @@ msgid ""
 "choice."
 msgstr ""
 "Tämä kuvaus näkyy kenttien alla ja auttaa käyttäjiä ymmärtämään heidän "
-"valintaansa."
+"valintansa."
 
 #: src/modules/author-custom-fields/author-custom-fields.php:801
 msgid "Status"
@@ -3439,7 +3438,7 @@ msgid ""
 "specific authors or author Categories."
 msgstr ""
 "Valitse vaihtoehto rajoittaaksesi tuloksia valittuihin käyttäjärooleihin, "
-"kirjoittajatyyppiin, tiettyihin kirjoittajiin tai kirjoittajaluokkiin."
+"kirjoittajatyyppiin, tiettyihin kirjoittajiin tai kirjoittajakategorioihin."
 
 #: src/modules/author-list/author-list.php:441
 #: src/modules/author-list/author-list.php:455
@@ -3455,8 +3454,8 @@ msgid ""
 "Select an option to exclude selected user roles, author types, specific "
 "authors or author Categories from Author list."
 msgstr ""
-"Valitse vaihtoehto poistaaksesi valitut käyttäjäroolit, kirjoittajatyyppit, "
-"tietyt kirjoittajat tai kirjoittajaluokat kirjoittajalistasta."
+"Valitse vaihtoehto poistaaksesi valitut käyttäjäroolit, kirjoittajatyyppi, "
+"tietyt kirjoittajat tai kirjoittajakategoriat kirjoittajalistasta."
 
 #: src/modules/author-list/author-list.php:468
 msgid "Authors Per Page"
@@ -3476,8 +3475,8 @@ msgid ""
 "Disable this option to show only authors who are assigned to posts."
 msgstr ""
 "Ota tämä vaihtoehto käyttöön, jotta voit näyttää kaikki kirjoittajat, "
-"mukaan lukien ne, joilla ei ole julkaisuja. Poista tämä vaihtoehto "
-"käytöstä, jotta näytetään vain julkaisuun liittyvät kirjoittajat."
+"mukaan lukien ne, joilla ei ole postauksia. Poista tämä vaihtoehto "
+"käytöstä, jotta voit näyttää vain kirjoittajat, jotka on liitetty posteihin."
 
 #: src/modules/author-list/author-list.php:488
 msgid "Configure Author List Options"
@@ -3488,9 +3487,9 @@ msgid ""
 "Authors Pro allows you to add extra features to the Authors List. These "
 "features include pagination, choose the order of authors, and much more."
 msgstr ""
-"Tekijät Pro antaa sinun lisätä lisäominaisuuksia Tekijälistaan. Nämä "
-"ominaisuudet sisältävät sivutuksen, tekijöiden järjestyksen valinnan ja "
-"paljon muuta."
+"Authors Pro mahdollistaa lisäominaisuuksien lisäämisen kirjoittajalistaan. "
+"Nämä ominaisuudet sisältävät sivutuksen, kirjoittajien järjestyksen "
+"valitsemisen ja paljon muuta."
 
 #: src/modules/author-list/author-list.php:494
 msgid "Order By"
@@ -3507,7 +3506,7 @@ msgid ""
 "ago, 6 months ago, 1 year ago etc."
 msgstr ""
 "Voit rajoittaa kirjoittajalistaa käyttäjiin, joilla on julkaistu postaus "
-"tietyn ajan sisällä. Tämä vaihtoehto hyväksyy päivämääräarvoja, kuten 1 "
+"tietyllä aikavälillä. Tämä vaihtoehto hyväksyy päivämääräarvoja, kuten 1 "
 "viikko sitten, 1 kuukausi sitten, 6 kuukautta sitten, 1 vuosi sitten jne."
 
 #: src/modules/author-list/author-list.php:535
@@ -3523,9 +3522,9 @@ msgid ""
 "Author Pro allows you to add a search box to the Authors List. You can also "
 "show a dropdown menu that allows users to search on specific author fields."
 msgstr ""
-"Author Pro mahdollistaa hakukentän lisäämisen Kirjailijalistaan. Voit myös "
-"näyttää avattavan valikon, joka sallii käyttäjien etsiä tietyistä "
-"kirjailijakentistä."
+"Authors Pro mahdollistaa hakukentän lisäämisen kirjoittajalistaan. Voit "
+"myös näyttää avattavan valikon, joka sallii käyttäjien etsiä tietyistä "
+"kirjoittajakentistä."
 
 #: src/modules/author-list/author-list.php:550
 msgid "Search Field Dropdown"
@@ -3536,7 +3535,7 @@ msgid ""
 "You can also show a dropdown menu that allows users to search on specific "
 "author fields."
 msgstr ""
-"Voit myös näyttää pudotusvalikon, joka sallii käyttäjien etsiä tietyistä "
+"Voit myös näyttää avattavan valikon, joka sallii käyttäjien etsiä tietyistä "
 "kirjoittajakentistä."
 
 #: src/modules/author-list/author-list.php:600
@@ -3588,8 +3587,8 @@ msgid ""
 "This is a quick preview of this Author List. Test on frontend pages to see "
 "exactly how it looks with your theme."
 msgstr ""
-"Tämä on nopea esikatselu tästä Julkaisija-listasta. Testaa etusivun "
-"sivuilla nähdäksesi tarkalleen, miltä se näyttää teeman kanssa."
+"Tämä on nopea esikatselu tästä kirjoittajalistasta. Testaa etusivun "
+"sivuilla nähdäksesi tarkalleen miltä se näyttää teemasi kanssa."
 
 #: src/modules/author-list/author-list.php:1380
 msgid "Invalid form"
@@ -3893,10 +3892,10 @@ msgid ""
 "allowing you to migrate to PublishPress Authors without losing any data "
 "including post author relation. This action can be run multiple times."
 msgstr ""
-"Tämä toiminto kopioi kirjoittajat Molongui Authorship -lisäosasta, jolloin "
-"voit siirtyä PublishPress-kirjoittajiin menettämättä tietoja, mukaan lukien "
-"kirjoituksen kirjoittajayhteys. Tätä toimintoa voidaan suorittaa useita "
-"kertoja."
+"Tämä toiminto kopioi kirjoittajat Molongui Authorship -lisäosasta, mikä "
+"mahdollistaa siirtymisen PublishPress Authorsiin ilman, että hukkaat mitään "
+"tietoja, mukaan lukien postauksen kirjoittajasuhde. Tätä toimintoa voidaan "
+"suorittaa useita kertoja."
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:187
 msgid "It looks like you have Molongui Authorship installed."
@@ -4159,8 +4158,8 @@ msgid ""
 "With this shortcode you can display the author box in any part of the "
 "content. "
 msgstr ""
-"Tämän lyhytkoodin avulla voit näyttää kirjoittajan laatikon missä tahansa "
-"sisällön osassa. "
+"Tämän shortcode:n avulla voit näyttää kirjoittajalaatikon missä tahansa "
+"sisällön osassa."
 
 #: src/modules/multiple-authors/multiple-authors.php:1417
 #, php-format
@@ -4169,8 +4168,8 @@ msgid ""
 "details of each layout option %1$s in this guide %2$s."
 msgstr ""
 "Voit määrittää asettelun käyttämällä kirjoittajalaatikoiden asettelun "
-"slugia. Voit nähdä jokaisen asetteluvaihtoehdon täydelliset tiedot %1$s "
-"tässä oppaassa %2$s."
+"slugia. Voit nähdä kaikki asetteluvalintojen yksityiskohdat %1$s tässä "
+"oppaassa %2$s."
 
 #: src/modules/multiple-authors/multiple-authors.php:1428
 #, php-format
@@ -4186,17 +4185,17 @@ msgid ""
 "post currently. For example, this shortcode will load the authors for the "
 "post with the ID of 32."
 msgstr ""
-"Voit ladata kirjoittajat tietylle julkaisuun, vaikka et olisi tällä "
-"hetkellä siinä julkaisussa. Esimerkiksi tämä lyhytkoodi lataa kirjoittajat "
-"julkaisulle, jonka ID on 32."
+"Voit ladata kirjoittajat tietylle postaukselle, vaikka et olisi tällä "
+"hetkellä siinä postauksessa. Esimerkiksi tämä shortcode lataa kirjoittajat "
+"postaukselle, jonka ID on 32."
 
 #: src/modules/multiple-authors/multiple-authors.php:1445
 msgid ""
 "You can load the authors for a specific user by providing the user id. For "
 "example, this shortcode will load the author with user id of 32"
 msgstr ""
-"Voit ladata kirjoittajat tietylle käyttäjälle antamalla käyttäjätunnus. "
-"Esimerkiksi tämä lyhytkoodi lataa kirjoittajan, jonka käyttäjätunnus on 32"
+"Voit ladata kirjoittajat tietylle käyttäjälle antamalla käyttäjän id:n. "
+"Esimerkiksi tämä shortcode lataa kirjoittajan, jonka käyttäjän id on 32."
 
 #: src/modules/multiple-authors/multiple-authors.php:1452
 msgid ""
@@ -4205,8 +4204,8 @@ msgid ""
 "the author with term id of 32"
 msgstr ""
 "Voit ladata kirjoittajat tietylle kirjoittajalle antamalla kirjoittajan "
-"term ID sekä vieras- että käyttäjäkirjoittajalle. Esimerkiksi tämä "
-"lyhytkoodi lataa kirjoittajan, jonka term ID on 32"
+"term id:n sekä vieraalle että käyttäjäkirjoittajalle. Esimerkiksi tämä "
+"shortcode lataa kirjoittajan, jonka term id on 32."
 
 #: src/modules/multiple-authors/multiple-authors.php:1460
 #, php-format
@@ -4216,10 +4215,10 @@ msgid ""
 "to retrieve the Author from the profile page and not any other posts on the "
 "same screen."
 msgstr ""
-"Jos sinulla on ongelmia PublishPress Authorsin näyttämisessä "
-"kirjoittajaprofiilisivuilla, voit käyttää alla olevaa lyhyttä koodia. "
-"Argumentti %s pakottaa liitteen hakemaan kirjoittajan profiilisivulta eikä "
-"mistään muusta postauksesta samalla näytöllä."
+"Jos sinulla on ongelmia PublishPressin kirjoittajien näyttämisessä "
+"kirjoittajan profiilisivuille, voit käyttää alla olevaa shortcodea. "
+"Argumentti %s pakottaa lisäosan hakemaan kirjoittajan profiilisivulta eikä "
+"mistään muista julkaisuista samalla näytöllä."
 
 #: src/modules/multiple-authors/multiple-authors.php:1470
 #, php-format
@@ -4230,12 +4229,12 @@ msgid ""
 "authors page to display the profile of the current author. You just need to "
 "add the parameter %s."
 msgstr ""
-"On vielä yksi lopullinen vaihtoehto mainittavaksi. Tämä on enimmäkseen "
-"hyödyllistä, jos käytät teemaa tai sivurakentajaa mukauttaaksesi "
-"kirjoittajaprofiilisivuja, joita löydät URL-osoitteista kuten "
-"/author/username/. Voit käyttää seuraavaa lyhennyskoodia kirjoittajien "
-"sivulla näyttämään nykyisen kirjoittajan profiilin. Sinun tarvitsee vain "
-"lisätä parametri %s."
+"On vielä yksi viimeinen vaihtoehto mainittavana. Tämä on enimmäkseen "
+"hyödyllinen, jos käytät teemaa tai sivunrakentajaa mukauttaaksesi "
+"kirjoittajan profiilisivuja, joita löydät URL-osoitteista kuten "
+"/author/username/. Voit käyttää seuraavaa shortcodea kirjoittajien sivulla "
+"näyttämään nykyisen kirjoittajan profiilin. Sinun tarvitsee vain lisätä "
+"parametri %s."
 
 #: src/modules/multiple-authors/multiple-authors.php:1479
 msgid ""
@@ -4243,9 +4242,9 @@ msgid ""
 "providing the category slug or slugs separated by comma for more than one "
 "category."
 msgstr ""
-"Voit ladata kirjoittajat, jotka kuuluvat tiettyihin kirjoittajaluokkiin, "
-"antamalla luokan slug tai slugit, jotka on erotettu pilkulla useamman kuin "
-"yhden luokan osalta."
+"Voit ladata tiettyyn kirjoittajaluokkaan kuuluvia kirjoittajia antamalla "
+"luokan slugin tai slugit pilkulla erotettuna useamman kuin yhden luokan "
+"osalta."
 
 #: src/modules/multiple-authors/multiple-authors.php:1489
 msgid "Authors Data"
@@ -4256,8 +4255,8 @@ msgid ""
 "With this shortcode you can display the author names or any profile field "
 "in any part of the content."
 msgstr ""
-"Tämän lyhytkoodin avulla voit näyttää kirjoittajien nimet tai mitä tahansa "
-"profiilikenttää missä tahansa sisällön osassa."
+"Tämän shortcode avulla voit näyttää kirjoittajien nimet tai minkä tahansa "
+"profiilikentän missä tahansa sisällön osassa."
 
 #: src/modules/multiple-authors/multiple-authors.php:1498
 #, php-format
@@ -4266,7 +4265,7 @@ msgid ""
 "%4$s %5$s %6$s %7$s. You can see full details and parameters %8$s in this "
 "guide %9$s."
 msgstr ""
-"Kirjoittajien tietojen lyhennyskoodi hyväksyy kenttäparametreja kuten: %1$s "
+"Kirjoittajien tietojen shortcode hyväksyy kenttäparametreja kuten: %1$s "
 "%2$s %3$s %4$s %5$s %6$s %7$s. Voit nähdä täydelliset tiedot ja parametrit "
 "%8$s tässä oppaassa %9$s."
 
@@ -4281,8 +4280,8 @@ msgid ""
 "You can retrieve a specific author by providing the author's term ID. For "
 "example, this shortcode will load the author with the term ID of 102."
 msgstr ""
-"Voit palauttaa tietyn kirjoittajan antamalla kirjoittajan term ID. "
-"Esimerkiksi tämä lyhytkoodi lataa kirjoittajan, jonka term ID on 102."
+"Voit hakea tiettyä kirjoittajaa antamalla kirjoittajan term ID:n. "
+"Esimerkiksi tämä shortcode lataa kirjoittajan, jonka term ID on 102."
 
 #: src/modules/multiple-authors/multiple-authors.php:1537
 #, php-format
@@ -4291,8 +4290,8 @@ msgid ""
 "user_objects=\"true\" which will return all the authors object data as an "
 "array. You can check full details and sample usage %2$s in this guide%3$s."
 msgstr ""
-"Voit myös päättää palauttaa kirjoittajien taulukko käyttämällä "
-"user_objects=\"true\", joka palauttaa kaikkien kirjoittajien objektitietoja "
+"Voit myös päättää palauttaa kirjoittajien taulukon käyttämällä "
+"user_objects=\"true\", joka palauttaa kaikki kirjoittajatietojen objektit "
 "taulukkona. Voit tarkistaa täydelliset tiedot ja esimerkin käytöstä %2$s "
 "tässä oppaassa%3$s."
 
@@ -4301,14 +4300,16 @@ msgid ""
 "You can retrieve authors belonging to a specific Author Category by "
 "providing the category slug or slugs. Separate multiple slugs with a comma."
 msgstr ""
-"Voit palauttaa kirjoittajia, jotka kuuluvat tiettyyn kirjoittajaluokkaan, "
-"antamalla luokan slug tai slugit. Erottele useat slugit pilkulla."
+"Voit hakea kirjoittajia, jotka kuuluvat tiettyyn kirjoittajaluokkaan "
+"antamalla luokan slugin tai slugit. Erottele useat slugit pilkulla."
 
 #: src/modules/multiple-authors/multiple-authors.php:1559
 msgid ""
 "With this shortcode, you can show all the authors together in a single "
 "display."
-msgstr "Tämän lyhytkoodin avulla voit näyttää kaikki kirjoittajat yhdessä näytössä."
+msgstr ""
+"Tämän shortcode avulla voit näyttää kaikki kirjoittajat yhdessä ainoassa "
+"näkymässä."
 
 #: src/modules/multiple-authors/multiple-authors.php:1567
 #, php-format
@@ -4317,9 +4318,9 @@ msgid ""
 "details of each layout option %1$s in this guide %2$s. %3$s %4$s This "
 "shortcode also provides two custom layouts: %5$s %6$s."
 msgstr ""
-"Voit määrittää asettelun käyttämällä kirjoittajalaatikoiden asettelun "
-"slugia. Voit nähdä jokaisen asetteluvaihtoehdon täydelliset tiedot %1$s "
-"tässä oppaassa %2$s. %3$s %4$s Tämä lyhytkoodi tarjoaa myös kaksi "
+"Voit määrittää asettelun käyttämällä kirjoittajalaatikkojen asettelun "
+"slugia. Voit nähdä täydelliset tiedot jokaisesta asetteluvalinnasta %1$s "
+"tässä oppaassa %2$s. %3$s %4$s Tämä shortcode tarjoaa myös kaksi "
 "mukautettua asettelua: %5$s %6$s."
 
 #: src/modules/multiple-authors/multiple-authors.php:1582
@@ -4328,8 +4329,8 @@ msgid ""
 "You can define the number of layout columns by using %1$s to show authors "
 "in 2 column."
 msgstr ""
-"Voit määrittää asettelun sarakkeiden määrän käyttämällä %1$s, jotta "
-"kirjoittajat näkyvät 2 sarakkeessa."
+"Voit määrittää asettelun sarakkeiden määrän käyttämällä %1$s näyttääksesi "
+"kirjoittajat 2 sarakkeessa."
 
 #: src/modules/multiple-authors/multiple-authors.php:1592
 #, php-format
@@ -4337,8 +4338,8 @@ msgid ""
 "You can choose the number of authors per page using %1$s . %2$s Pagination "
 "will be automatically added if required."
 msgstr ""
-"Voit valita kirjoittajien lukumäärän sivua kohden käyttämällä %1$s. %2$s "
-"Sivujen väliin lisätään automaattisesti, jos tarpeen."
+"Voit valita kirjoittajien määrän per sivu käyttämällä %1$s. %2$s Sivutusta "
+"lisätään automaattisesti, jos se on tarpeen."
 
 #: src/modules/multiple-authors/multiple-authors.php:1603
 #, php-format
@@ -4347,8 +4348,8 @@ msgid ""
 "%1$s . %2$s Alternatively, use %3$s to show all authors, including those "
 "without any posts."
 msgstr ""
-"Voit rajoittaa tuloksia vain kirjoittajiin, jotka on liitetty julkaisuun "
-"käyttämällä %1$s. %2$s Vaihtoehtoisesti käytä %3$s näyttääksesi kaikki "
+"Voit rajoittaa tulosta vain kirjoittajiin, jotka on liitetty julkaisuun "
+"käyttämällä %1$s. %2$s Vaihtoehtoisesti, käytä %3$s näyttääksesi kaikki "
 "kirjoittajat, mukaan lukien ne, joilla ei ole julkaisuja."
 
 #: src/modules/multiple-authors/multiple-authors.php:1615
@@ -4357,8 +4358,8 @@ msgid ""
 "You can limit the result to only guest authors by using %1$s . %2$s "
 "Alternatively, %3$s will show only authors with a WordPress account."
 msgstr ""
-"Voit rajoittaa tuloksia vain vieraskirjoittajiin käyttämällä %1$s. %2$s "
-"Vaihtoehtoisesti %3$s näyttää vain kirjoittajat, joilla on WordPress-tili."
+"Voit rajoittaa tulosta vain vieraskirjoittajiin käyttämällä %1$s. %2$s "
+"Vaihtoehtoisesti, %3$s näyttää vain kirjoittajat, joilla on WordPress-tili."
 
 #: src/modules/multiple-authors/multiple-authors.php:1627
 #, php-format
@@ -4367,7 +4368,7 @@ msgid ""
 "columns by using %1$s ."
 msgstr ""
 "Jos käytät authors_recent-asettelua, voit määrittää sarakkeiden määrän "
-"käyttämällä %1$s ."
+"käyttämällä %1$s."
 
 #: src/modules/multiple-authors/multiple-authors.php:1637
 #, php-format
@@ -4375,8 +4376,8 @@ msgid ""
 "For authors_index layout, you can group user by profile field by using %1$s "
 "."
 msgstr ""
-"Authors_index-asettelussa voit ryhmitellä käyttäjiä profiilikentän mukaan "
-"käyttämällä %1$s ."
+"authors_index-asettelulle voit ryhmitellä käyttäjiä profiilikentän mukaan "
+"käyttämällä %1$s."
 
 #: src/modules/multiple-authors/multiple-authors.php:1647
 #, php-format
@@ -4385,9 +4386,9 @@ msgid ""
 "by name, use %2$s . Alternatively, you can order by profile fields like "
 "%3$s, %4$s etc"
 msgstr ""
-"Järjestääksesi tulokset julkaisut määrän mukaan, käytä %1$s . "
-"Järjestääksesi tulokset nimen mukaan, käytä %2$s . Vaihtoehtoisesti voit "
-"järjestää profiilikenttien mukaan, kuten %3$s, %4$s jne."
+"Tulosten järjestämiseksi julkaisutilien perusteella käytä %1$s. Tulosten "
+"järjestämiseksi nimen mukaan käytä %2$s. Vaihtoehtoisesti voit järjestää "
+"profiilikenttien mukaan, kuten %3$s, %4$s jne."
 
 #: src/modules/multiple-authors/multiple-authors.php:1660
 #, php-format
@@ -4406,9 +4407,9 @@ msgid ""
 "author fields. You can add fields to the dropdown using %1$s . This "
 "requires the search box to be active."
 msgstr ""
-"Voit myös näyttää pudotusvalikon, joka antaa käyttäjille mahdollisuuden "
-"etsiä tietyistä kirjoittajakentistä. Voit lisätä kenttiä pudotusvalikkoon "
-"käyttämällä %1$s. Tämä vaatii, että hakukenttä on aktiivinen."
+"Voit myös näyttää avattavan valikon, joka sallii käyttäjien etsiä tietyistä "
+"kirjoittajakentistä. Voit lisätä kenttiä avattavaan valikkoon käyttämällä "
+"%1$s. Tämä edellyttää, että hakukenttä on aktiivinen."
 
 #: src/modules/multiple-authors/multiple-authors.php:1691
 #, php-format
@@ -4418,8 +4419,8 @@ msgid ""
 "ago, 1 month ago, 6 months ago, 1 year ago etc."
 msgstr ""
 "Voit rajoittaa kirjoittajalistaa käyttäjiin, joilla on julkaistu julkaisu "
-"tietyn ajanjakson sisällä käyttämällä %1$s. Tämä hyväksyy englanninkielisen "
-"päivämääräarvon, kuten 1 viikko sitten, 1 kuukausi sitten, 6 kuukautta "
+"tietyllä ajanjaksolla käyttämällä %1$s. Tämä hyväksyy englanninkielisiä "
+"päivämääräarvoja, kuten 1 viikko sitten, 1 kuukausi sitten, 6 kuukautta "
 "sitten, 1 vuosi sitten jne."
 
 #: src/modules/multiple-authors/multiple-authors.php:1738
@@ -4440,8 +4441,9 @@ msgid ""
 "Choose which WordPress user roles can be selected using the \"Registered "
 "Author With User Account\" option for author profiles."
 msgstr ""
-"Valitse, mitkä WordPress-käyttäjäroolit voidaan valita \"Rekisteröitynyt "
-"kirjoittaja käyttäjätilillä\" -vaihtoehdon avulla kirjoittajaprofiileille."
+"Valitse, mitkä WordPress-käyttäjäroolit voidaan valita käyttämällä "
+"\"Rekisteröitynyt kirjoittaja käyttäjätilillä\" vaihtoehtoa "
+"kirjoittajaprofiileille."
 
 #: src/modules/multiple-authors/multiple-authors.php:1842
 msgid ""
@@ -4451,11 +4453,11 @@ msgid ""
 "\"Create PublishPress Authors Profiles for all users in a role\" button in "
 "the Maintenance tab."
 msgstr ""
-"Kirjoittajaprofiilit voidaan liittää WordPress-käyttäjätiliin. Tämä "
-"vaihtoehto mahdollistaa kirjoittajaprofiilien automaattisen luomisen, kun "
+"Kirjailijaprofiilit voidaan liittää WordPress-käyttäjätiliin. Tämä "
+"vaihtoehto mahdollistaa kirjailijaprofiilien automaattisen luomisen, kun "
 "käyttäjiä luodaan näissä rooleissa. Voit myös tehdä tämän olemassa oleville "
-"käyttäjille napsauttamalla \"Luo PublishPress-kirjoittajaprofiilit kaikille "
-"käyttäjille roolissa\" -painiketta Huolto-välilehdessä."
+"käyttäjille napsauttamalla \"Luo PublishPress-kirjailijaprofiilit kaikille "
+"käyttäjille roolissa\" -painiketta Huolto-välilehdellä."
 
 #: src/modules/multiple-authors/multiple-authors.php:1863
 msgid ""
@@ -4464,10 +4466,10 @@ msgid ""
 "\"Display name\". Showing the \"Username\" is useful if you have several "
 "authors with similar names."
 msgstr ""
-"Jos kirjoittaja on liitetty WordPress-käyttäjään, tämä näyttää "
-"kirjoittajien \"Näkyvän nimen\" ja heidän \"Käyttäjänimensä\". "
+"Jos kirjailija on liitetty WordPress-käyttäjään, tämä näyttää "
+"kirjailijoiden \"Näkyvän nimen\" ja heidän \"Käyttäjänimensä\". "
 "Oletusarvoisesti näytetään vain \"Näkyvä nimi\". \"Käyttäjänimen\" "
-"näyttäminen on hyödyllistä, jos sinulla on useita kirjoittajia, joilla on "
+"näyttäminen on hyödyllistä, jos sinulla on useita kirjailijoita, joilla on "
 "samanlaiset nimet."
 
 #: src/modules/multiple-authors/multiple-authors.php:1886
@@ -4489,8 +4491,8 @@ msgid ""
 "If enabled, PublishPress Authors will replace the default WordPress author "
 "pages."
 msgstr ""
-"Jos se on käytössä, PublishPress Authors korvataan oletusarvoiset "
-"WordPress-kirjoittajasivut."
+"Jos tämä on käytössä, PublishPress Authors korvataan oletusarvoiset "
+"WordPress-kirjailijasivut."
 
 #: src/modules/multiple-authors/multiple-authors.php:1961
 msgid "Please note this feature will not work for all themes."
@@ -4576,10 +4578,10 @@ msgid ""
 "use this feature unless requested to do so by the PublishPress team. This "
 "plugin works better when authors and users are paired one-to-one."
 msgstr ""
-"Tämä mahdollistaa WordPress-käyttäjän yhdistämisen useampaan kirjoittajaan. "
-"Älä käytä tätä ominaisuutta, ellei PublishPress-tiimi ole pyytänyt niin "
-"tekemään. Tämä lisäosa toimii paremmin, kun kirjoittajat ja käyttäjät on "
-"yhdistetty yksi-yhteen."
+"Tämä mahdollistaa WordPress-käyttäjän liittämisen useampaan kuin yhteen "
+"kirjailijaan. Älä käytä tätä ominaisuutta, ellei PublishPress-tiimi ole "
+"pyytänyt sitä. Tämä liitännäinen toimii paremmin, kun kirjailijat ja "
+"käyttäjät on pariutettu yksi-yhteen."
 
 #: src/modules/multiple-authors/multiple-authors.php:2597
 msgid "This will display the authors."
@@ -4621,9 +4623,9 @@ msgid ""
 "as a fallback. WordPress sometimes requires a WordPress user to be assigned "
 "to each post. This user will not be visible on the front of your site."
 msgstr ""
-"Jos sinulla on valittuna vain vieraskirjoittajat postaukselle, tätä "
-"käyttäjää voidaan käyttää varana. WordPress vaatii joskus, että jokaiselle "
-"postaukselle on määritettävä WordPress-käyttäjä. Tätä käyttäjää ei näytetä "
+"Jos olet valinnut vain vierailevat kirjailijat postaukselle, tätä käyttäjää "
+"voidaan käyttää varakäyttäjänä. WordPress vaatii joskus, että jokaiselle "
+"postaukselle on määritettävä WordPress-käyttäjä. Tämä käyttäjä ei näy "
 "sivustosi etuosassa."
 
 #: src/modules/multiple-authors/multiple-authors.php:2809
@@ -4652,8 +4654,8 @@ msgid ""
 "PublishPress Authors profile, this will automatically create a profile for "
 "them."
 msgstr ""
-"Jos WordPress-käyttäjä on postauksen kirjoittaja, mutta hänellä ei ole "
-"PublishPress Authors -profiilia, tämä luo automaattisesti profiilin hänelle."
+"Jos WordPress-käyttäjä on postauksen kirjoittaja, mutta ei omista "
+"PublishPress Authors -profiilia, tämä luo automaattisesti profiilin heille."
 
 #: src/modules/multiple-authors/multiple-authors.php:2887
 #: src/modules/multiple-authors/multiple-authors.php:2893
@@ -4676,9 +4678,9 @@ msgid ""
 "You can choose the roles using the \"Automatically create author profiles\" "
 "setting."
 msgstr ""
-"Tämä löytää kaikki käyttäjät roolissa ja luo heille kirjoittajaprofiilit. "
-"Voit valita roolit käyttämällä \"Luo kirjoittajaprofiilit automaattisesti\" "
-"-asetusta."
+"Tämä löytää kaikki käyttäjät roolissa ja luo heille kirjailijaprofiilit. "
+"Voit valita roolit \"Luo kirjailijaprofiilit automaattisesti\" -asetuksen "
+"avulla."
 
 #: src/modules/multiple-authors/multiple-authors.php:2894
 msgid "Create PublishPress Authors profiles"
@@ -4693,8 +4695,8 @@ msgid ""
 "This will update all the author profiles in PublishPress Authors to match "
 "the default WordPress fields for each user."
 msgstr ""
-"Tämä päivittää kaikki kirjoittajaprofiilit PublishPress Authors -lisäosassa "
-"vastaamaan kunkin käyttäjän oletus WordPress-kenttiä."
+"Tämä päivittää kaikki PublishPress Authors -kirjailijaprofiilit vastaamaan "
+"WordPressin oletuskenttiä jokaiselle käyttäjälle."
 
 #: src/modules/multiple-authors/multiple-authors.php:2905
 msgid "Synchronize the author and user URLs"
@@ -4705,8 +4707,8 @@ msgid ""
 "This will update all the Author URLs in PublishPress Authors to match the "
 "default WordPress URLs for each user."
 msgstr ""
-"Tämä päivittää kaikki kirjoittajien URL-osoitteet PublishPress Authors "
-"-lisäosassa vastaamaan kunkin käyttäjän oletus WordPress URL-osoitteita."
+"Tämä päivittää kaikki PublishPress Authors -kirjailijoiden URL-osoitteet "
+"vastaamaan WordPressin oletus-URL-osoitteita jokaiselle käyttäjälle."
 
 #: src/modules/multiple-authors/multiple-authors.php:2912
 #: src/modules/multiple-authors/multiple-authors.php:2914
@@ -4718,7 +4720,7 @@ msgid ""
 "This will create author categories table if missing and add default "
 "categories."
 msgstr ""
-"Tämä luo kirjoittajakategorioiden taulukon, jos sitä ei ole, ja lisää "
+"Tämä luo kirjailijakategorian taulukon, jos se puuttuu, ja lisää "
 "oletuskategoriat."
 
 #: src/modules/multiple-authors/multiple-authors.php:2926
@@ -4731,9 +4733,9 @@ msgid ""
 "you to migrate to PublishPress Authors without losing any data. This action "
 "can be run multiple times."
 msgstr ""
-"Tämä toiminto kopioi kirjoittajat Co-Authors Plus -lisäosasta, jolloin voit "
-"siirtyä PublishPress-kirjoittajiin menettämättä tietoja. Tätä toimintoa "
-"voidaan suorittaa useita kertoja."
+"Tämä toiminto kopioi kirjailijat Co-Authors Plus -liitännäisestä, jolloin "
+"voit siirtää PublishPress Authors -liitännäiseen menettämättä tietoja. Tätä "
+"toimintoa voidaan suorittaa useita kertoja."
 
 #: src/modules/multiple-authors/multiple-authors.php:2937
 msgid "Delete Connections Between Author Profiles and Users"
@@ -4746,11 +4748,11 @@ msgid ""
 "a WordPress user account. This will not delete the WordPress user accounts, "
 "but any links between the posts and author profiles will be lost."
 msgstr ""
-"Tämä toiminto voi nollata PublishPress-kirjoittajien tiedot ennen muiden "
-"ylläpitovaihtoehtojen käyttämistä. Se poistaa kaikki kirjoittajaprofiilit, "
-"jotka on liitetty WordPress-käyttäjätiliin. Tämä ei poista "
-"WordPress-käyttäjätiliä, mutta kaikki linkit kirjoitusten ja "
-"kirjoittajaprofiilien välillä menetetään."
+"Tämä toiminto voi nollata PublishPress Authors -tiedot ennen muiden "
+"huolto-ominaisuuksien käyttöä. Se poistaa kaikki kirjailijaprofiilit, jotka "
+"on liitetty WordPress-käyttäjätiliin. Tämä ei poista "
+"WordPress-käyttäjätiliä, mutta kaikki linkit postausten ja "
+"kirjailijaprofiilien välillä menetetään."
 
 #: src/modules/multiple-authors/multiple-authors.php:2939
 msgid "Delete all authors mapped to users"
@@ -4766,10 +4768,10 @@ msgid ""
 "maintenance options. Guest authors are author profiles that are not mapped "
 "to a WordPress user account. This action will delete all guest authors."
 msgstr ""
-"Tämä toiminto voi nollata PublishPress-kirjoittajien tiedot ennen muiden "
-"ylläpitovaihtoehtojen käyttämistä. Vierailevat kirjoittajat ovat "
-"kirjoittajaprofiileja, joita ei ole liitetty WordPress-käyttäjätiliin. Tämä "
-"toiminto poistaa kaikki vierailijat kirjoittajat."
+"Tämä toiminto voi nollata PublishPress Authors -tiedot ennen muiden "
+"huolto-ominaisuuksien käyttöä. Vierailevat kirjailijat ovat "
+"kirjailijaprofiileja, joita ei ole liitetty WordPress-käyttäjätiliin. Tämä "
+"toiminto poistaa kaikki vierailevat kirjailijat."
 
 #: src/modules/multiple-authors/multiple-authors.php:2946
 msgid "Delete all guest authors"
@@ -4780,8 +4782,8 @@ msgid ""
 "Please be careful clicking these buttons. Before clicking, we recommend "
 "taking a site backup in case anything goes wrong."
 msgstr ""
-"Ole hyvä ja ole varovainen näitä painikkeita napsauttaessasi. Suosittelemme "
-"tekemään varmuuskopion sivustosta ennen napsauttamista, jos jokin menee "
+"Ole varovainen näitä painikkeita napsauttaessasi. Suosittelemme "
+"varmuuskopion ottamista sivustosta ennen napsauttamista, jos jokin menee "
 "pieleen."
 
 #: src/modules/multiple-authors/multiple-authors.php:3155
@@ -5069,12 +5071,12 @@ msgstr "Yhteystiedot"
 #: src/core/Plugin.php:563
 msgctxt "taxonomy general name"
 msgid "Authors"
-msgstr "Kirjoittajat"
+msgstr "Kirjailijat"
 
 #: src/core/Plugin.php:568
 msgctxt "taxonomy singular name"
 msgid "Author"
-msgstr "Kirjoittaja"
+msgstr "Kirjailija"
 
 #: src/modules/author-boxes/author-boxes.php:411
 #, fuzzy, php-format

@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-15T01:06:13+00:00\n"
-"PO-Revision-Date: 2026-04-15 02:43+0000\n"
+"POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
+"PO-Revision-Date: 2026-04-20 12:08+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "Language: th\n"
@@ -32,6 +32,15 @@ msgstr "https://wordpress.org/plugins/publishpress-authors/"
 #: src/modules/multiple-authors/multiple-authors.php:75
 #: src/modules/multiple-authors/multiple-authors.php:79
 #. Description of the plugin
+msgid ""
+"PublishPress Authors allows you to add multiple authors and guest authors "
+"to WordPress posts"
+msgstr ""
+"PublishPress Authors "
+"ช่วยให้คุณเพิ่มผู้เขียนหลายคนและผู้เขียนรับเชิญลงในโพสต์ของ WordPress"
+
+#: publishpress-authors.php:11
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
@@ -42,6 +51,21 @@ msgstr "https://publishpress.com"
 
 #: includes.php:39
 #, php-format
+msgid ""
+"You're using PublishPress Authors Free. The Pro version has more features "
+"and support. %sUpgrade to Pro%s"
+msgstr ""
+"คุณกำลังใช้ PublishPress Authors Free เวอร์ชัน Pro "
+"มีฟีเจอร์และการสนับสนุนเพิ่มเติม %sอัพเกรดเป็น Pro%s"
+
+#: includes.php:63
+#: src/modules/author-boxes/author-boxes.php:3042
+#: src/modules/author-categories/author-categories.php:672
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:521
+#: src/modules/author-custom-fields/author-custom-fields.php:995
+#: src/modules/author-custom-fields/author-custom-fields.php:1048
+#: src/modules/author-list/author-list.php:1260
+#: src/modules/author-list/author-list.php:1298
 msgid "Upgrade to Pro"
 msgstr "อัปเกรดเป็น Pro"
 
@@ -217,6 +241,24 @@ msgid "You cannot edit an author profile linked to an administrator account."
 msgstr "คุณไม่สามารถแก้ไขโปรไฟล์ผู้เขียนที่เชื่อมโยงกับบัญชีผู้ดูแลระบบได้."
 
 #: src/core/Classes/Admin_Ajax.php:359
+msgid ""
+"You do not have permission to edit this author profile because it is linked "
+"to a user account you do not have permission to edit."
+msgstr ""
+"คุณไม่มีสิทธิ์แก้ไขโปรไฟล์ผู้เขียนนี้เนื่องจากมันเชื่อมโยงกับบัญชีผู้ใช้ที่ค"
+"ุณไม่มีสิทธิ์แก้ไข"
+
+#: src/core/Classes/Admin_Ajax.php:374
+#: src/core/Classes/Author_Editor.php:1008
+msgid ""
+"Sorry, this WordPress user is already mapped to another Author. By default, "
+"each user can only be connected to one Author profile."
+msgstr ""
+"ขอโทษ, ผู้ใช้ WordPress นี้ถูกแมพไปยังผู้เขียนอีกคนหนึ่งแล้ว โดยค่าเริ่มต้น "
+"แต่ละผู้ใช้สามารถเชื่อมต่อได้เพียงโปรไฟล์ผู้เขียนเดียว"
+
+#: src/core/Classes/Admin_Ajax.php:386
+#: src/core/Classes/Author_Editor.php:1100
 msgid "Registered User is required."
 msgstr "จำเป็นต้องมีผู้ใช้ที่ลงทะเบียน."
 
@@ -233,6 +275,15 @@ msgid "Author name is required"
 msgstr "จำเป็นต้องมีชื่อผู้เขียน"
 
 #: src/core/Classes/Authors_Iterator.php:55
+msgid ""
+"No post ID provided for Authors_Iterator constructor. Are you not in a loop "
+"or is $post not set?"
+msgstr ""
+"ไม่มี ID โพสต์ที่ให้มาในตัวสร้าง Authors_Iterator คุณไม่ได้อยู่ในลูปหรือ "
+"$post ยังไม่ถูกตั้งค่า?"
+
+#: src/core/Classes/Author_Editor.php:47
+#: src/core/Plugin.php:1618
 msgid "Display name publicly as"
 msgstr "แสดงชื่อสาธารณะเป็น"
 
@@ -320,6 +371,14 @@ msgstr "อวตารเริ่มต้น"
 
 #: src/core/Classes/Author_Editor.php:391
 #, php-format
+msgid ""
+"(Uses the %1s Email field %2s to find the Gravatar account if default "
+"avatar is not uploaded in Authors Settings)"
+msgstr ""
+"(ใช้ฟิลด์ %1s อีเมล %2s เพื่อค้นหาบัญชี Gravatar "
+"ถ้าอวตารเริ่มต้นไม่ได้ถูกอัปโหลดในการตั้งค่าผู้เขียน)"
+
+#: src/core/Classes/Author_Editor.php:399
 msgid "Custom image"
 msgstr "ภาพแบบกำหนดเอง"
 
@@ -334,6 +393,14 @@ msgid "Author Category"
 msgstr "หมวดหมู่ผู้เขียน"
 
 #: src/core/Classes/Author_Editor.php:411
+msgid ""
+"Select the default Category for this Author. This will be used when the "
+"Author is added to new posts."
+msgstr ""
+"เลือกหมวดหมู่เริ่มต้นสำหรับผู้เขียนนี้ "
+"จะถูกใช้เมื่อผู้เขียนถูกเพิ่มลงในโพสต์ใหม่"
+
+#: src/core/Classes/Author_Editor.php:418
 msgid "Do not show this profile publicly"
 msgstr "ไม่แสดงโปรไฟล์นี้ต่อสาธารณะ"
 
@@ -354,6 +421,34 @@ msgid "Select a user"
 msgstr "เลือกผู้ใช้"
 
 #: src/core/Classes/Author_Editor.php:783
+msgid ""
+"Create an author profile for a current user account. You can select users "
+"who are allowed to edit posts. This user will be able to update their "
+"profile."
+msgstr ""
+"สร้างโปรไฟล์ผู้เขียนสำหรับบัญชีผู้ใช้ปัจจุบัน "
+"คุณสามารถเลือกผู้ใช้ที่ได้รับอนุญาตให้แก้ไขโพสต์ "
+"ผู้ใช้คนนี้จะสามารถอัปเดตโปรไฟล์ของตนได้"
+
+#: src/core/Classes/Author_Editor.php:789
+msgid ""
+"Create an author profile and a linked user account. This account will be in "
+"the \"Guest Author\" role and will not be able to login to the WordPress "
+"dashboard or update their profile."
+msgstr ""
+"สร้างโปรไฟล์ผู้เขียนและบัญชีผู้ใช้ที่เชื่อมโยง บัญชีนี้จะมีบทบาทเป็น "
+"\"ผู้เขียนรับเชิญ\" และจะไม่สามารถเข้าสู่ระบบแดชบอร์ด WordPress "
+"หรืออัปเดตโปรไฟล์ของตนได้"
+
+#: src/core/Classes/Author_Editor.php:796
+msgid ""
+"Create an author profile with no linked user account. This option is "
+"lightweight but may have compatibility issues with other themes and plugins."
+msgstr ""
+"สร้างโปรไฟล์ผู้เขียนโดยไม่มีบัญชีผู้ใช้ที่เชื่อมโยง "
+"ตัวเลือกนี้มีน้ำหนักเบาแต่สามารถมีปัญหาความเข้ากันได้กับธีมและปลั๊กอินอื่นๆ"
+
+#: src/core/Classes/Author_Editor.php:815
 msgid "Author Email"
 msgstr "อีเมลผู้เขียน"
 
@@ -470,6 +565,16 @@ msgid "Search for an author"
 msgstr "ค้นหาผู้เขียน"
 
 #: src/core/Classes/Post_Editor.php:466
+msgid ""
+"This option is showing because you do not have a WordPress user selected as "
+"an author. For some tasks, it can be helpful to have a user selected here. "
+"This user will not be visible on the front of your site."
+msgstr ""
+"ตัวเลือกนี้กำลังแสดงเนื่องจากคุณไม่มีผู้ใช้ WordPress ที่เลือกเป็นผู้เขียน "
+"สำหรับบางงาน การมีผู้ใช้ที่เลือกที่นี่สามารถเป็นประโยชน์ได้ "
+"ผู้ใช้คนนี้จะไม่สามารถมองเห็นได้ที่หน้าของเว็บไซต์ของคุณ"
+
+#: src/core/Classes/Post_Editor.php:474
 msgid "Search for an user"
 msgstr "ค้นหาผู้ใช้"
 
@@ -613,6 +718,22 @@ msgid "Edit My Author Profile"
 msgstr "แก้ไขโปรไฟล์ผู้แต่งของฉัน"
 
 #: src/core/Plugin.php:532
+msgid ""
+"This name is used in several default displays and some search engine "
+"integrations."
+msgstr "ชื่อนี้ถูกใช้ในหลายการแสดงผลเริ่มต้นและการรวมเครื่องมือค้นหา"
+
+#: src/core/Plugin.php:537
+msgid ""
+"This forms part of the URL for the author’s profile page. If you choose a "
+"Mapped User, this URL is taken from the user’s account and can not be "
+"changed."
+msgstr ""
+"นี่เป็นส่วนหนึ่งของ URL สำหรับหน้าโปรไฟล์ของผู้เขียน "
+"หากคุณเลือกผู้ใช้ที่ถูกแมพ URL "
+"นี้จะถูกนำมาจากบัญชีของผู้ใช้และไม่สามารถเปลี่ยนแปลงได้"
+
+#: src/core/Plugin.php:573
 msgid "Search Authors"
 msgstr "ค้นหาผู้แต่ง"
 
@@ -710,6 +831,30 @@ msgid "Click to change this author, or drag to change their position"
 msgstr "คลิกเพื่อเปลี่ยนผู้เขียนนี้ หรือลากเพื่อเปลี่ยนตำแหน่งของพวกเขา"
 
 #: src/core/Plugin.php:1628
+msgid ""
+"Click on an author to change them. Drag to change their order. Click on "
+"<strong>Remove</strong> to remove them."
+msgstr ""
+"คลิกที่ผู้เขียนเพื่อเปลี่ยนพวกเขา ลากเพื่อเปลี่ยนลำดับของพวกเขา คลิกที่ "
+"<strong>ลบ</strong> เพื่อลบพวกเขา"
+
+#: src/core/Plugin.php:1632
+msgid ""
+"Are you sure you want to delete the authors profiles mapped to users? This "
+"action can't be undone."
+msgstr ""
+"คุณแน่ใจหรือว่าต้องการลบโปรไฟล์ผู้เขียนที่แมพไปยังผู้ใช้? "
+"การกระทำนี้ไม่สามารถยกเลิกได้"
+
+#: src/core/Plugin.php:1636
+msgid ""
+"Are you sure you want to delete the guest authors profiles? This action "
+"can't be undone."
+msgstr ""
+"คุณแน่ใจหรือว่าต้องการลบโปรไฟล์ผู้เขียนรับเชิญ? "
+"การกระทำนี้ไม่สามารถยกเลิกได้"
+
+#: src/core/Plugin.php:1640
 msgid "Are you sure you want to create author profiles for the missed post authors?"
 msgstr "คุณแน่ใจหรือว่าต้องการสร้างโปรไฟล์ผู้เขียนสำหรับผู้เขียนโพสต์ที่พลาด?"
 
@@ -1184,6 +1329,15 @@ msgid "Export Editor Settings"
 msgstr "ส่งออกการตั้งค่าแก้ไข"
 
 #: src/modules/author-boxes/author-boxes.php:2609
+msgid ""
+"You can use this data to export your author box design and import it to a "
+"new site."
+msgstr ""
+"คุณสามารถใช้ข้อมูลนี้เพื่อส่งออกการออกแบบกล่องผู้เขียนของคุณและนำเข้ามายังเว"
+"็บไซต์ใหม่"
+
+#: src/modules/author-boxes/author-boxes.php:2619
+#: src/modules/author-boxes/author-boxes.php:2690
 msgid "Copy to Clipboard"
 msgstr "คัดลอกไปยังคลิปบอร์ด"
 
@@ -1218,10 +1372,44 @@ msgid "How to generate and use a theme template file"
 msgstr "วิธีสร้างและใช้ไฟล์แม่แบบธีม"
 
 #: src/modules/author-boxes/author-boxes.php:2651
+msgid ""
+"Click the \"Generate Template\" button under the text area. Wait for the "
+"code to be generated."
+msgstr "คลิกที่ปุ่ม \"สร้างเทมเพลต\" ที่อยู่ใต้พื้นที่ข้อความ รอให้โค้ดถูกสร้างขึ้น"
+
+#: src/modules/author-boxes/author-boxes.php:2652
+#, php-format
+msgid ""
+"Create an empty php template file with your desired file slug in the %1s "
+"/publishpress-authors/author-boxes/ %2s folder of your theme. %3s For "
+"example, the file can be located here: %4s "
+"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
+"my-first-custom-author-template.php %7s ."
+msgstr ""
+"สร้างไฟล์เทมเพลต php ว่างโดยมี slug ไฟล์ที่คุณต้องการในโฟลเดอร์ "
+"%1s/publishpress-authors/author-boxes/%2s ของธีมของคุณ %3s ตัวอย่างเช่น "
+"ไฟล์สามารถตั้งอยู่ที่นี่: "
+"%4s/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-"
+"boxes/my-first-custom-author-template.php %7s ."
+
+#: src/modules/author-boxes/author-boxes.php:2653
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "คัดลอกรหัสที่สร้างขึ้นและวางลงในไฟล์ที่สร้างขึ้นใหม่"
 
 #: src/modules/author-boxes/author-boxes.php:2654
+msgid ""
+"Congratulations. Your can now choose your template inside the PublishPress "
+"Authors Settings."
+msgstr ""
+"ขอแสดงความยินดี คุณสามารถเลือกเทมเพลตของคุณในการตั้งค่า PublishPress "
+"Authors ได้แล้ว"
+
+#: src/modules/author-boxes/author-boxes.php:2658
+#, php-format
+msgid "You can read more information on the %s."
+msgstr "คุณสามารถอ่านข้อมูลเพิ่มเติมเกี่ยวกับ %s ได้"
+
+#: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"
 msgstr "หน้าดูเอกสาร"
 
@@ -1238,6 +1426,12 @@ msgid "Reorder Fields"
 msgstr "เรียงลำดับฟิลด์ใหม่"
 
 #: src/modules/author-boxes/author-boxes.php:2748
+msgid ""
+"Reorder the fields by dragging them to the correct position and saving your "
+"changes."
+msgstr "เรียงลำดับฟิลด์โดยการลากไปยังตำแหน่งที่ถูกต้องและบันทึกการเปลี่ยนแปลงของคุณ."
+
+#: src/modules/author-boxes/author-boxes.php:2762
 msgid "Save for Current Author Box"
 msgstr "บันทึกสำหรับ Author Box ปัจจุบัน"
 
@@ -1270,6 +1464,14 @@ msgid "New Author Categories Box"
 msgstr "กล่องหมวดหมู่ผู้เขียนใหม่"
 
 #: src/modules/author-boxes/author-boxes.php:3037
+msgid ""
+"PublishPress Authors Pro allows you to unlock the full potential of Author "
+"Categories."
+msgstr ""
+"PublishPress Authors Pro "
+"ช่วยให้คุณสามารถปลดล็อกศักยภาพทั้งหมดของหมวดหมู่ผู้เขียน."
+
+#: src/modules/author-boxes/author-boxes.php:3039
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr "คุณสามารถสร้าง Author Boxes ที่ผู้เขียนถูกจัดกลุ่มเป็นหมวดหมู่ของพวกเขา"
 
@@ -1302,6 +1504,14 @@ msgstr "คุณไม่มีสิทธิ์ในการดำเนิ
 
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:67
 #, php-format
+msgid ""
+"Field Order updated. %1sClick here%2s to reload this page to see new order "
+"changes."
+msgstr ""
+"อัปเดตลำดับฟิลด์แล้ว. %1sคลิกที่นี่%2s "
+"เพื่อโหลดหน้าเว็บนี้ใหม่เพื่อดูการเปลี่ยนแปลงลำดับใหม่."
+
+#: src/modules/author-boxes/classes/AuthorBoxesDefault.php:28
 msgid "Boxed"
 msgstr "กล่อง"
 
@@ -1958,6 +2168,14 @@ msgid "Custom \"View All Posts\" Link"
 msgstr "ลิงก์ \"ดูโพสต์ทั้งหมด\" แบบกำหนดเอง"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:449
+msgid ""
+"Enter a custom URL for the \"View All Posts\" link. Leave empty to use the "
+"default author posts page."
+msgstr ""
+"ป้อน URL ที่กำหนดเองสำหรับลิงก์ \"ดูโพสต์ทั้งหมด\". "
+"ทิ้งว่างไว้เพื่อใช้หน้าผู้เขียนโพสต์เริ่มต้น."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:453
 msgid "View All Posts Link Size"
 msgstr "ขนาดลิงก์ดูโพสต์ทั้งหมด"
 
@@ -2014,6 +2232,14 @@ msgid "Author Category Layout"
 msgstr "รูปแบบหมวดหมู่ผู้แต่ง"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:607
+msgid ""
+"Selecting an option here will overwrite author boxes settings to match "
+"selected layout."
+msgstr ""
+"การเลือกตัวเลือกที่นี่จะเขียนทับการตั้งค่ากล่องผู้เขียนให้ตรงกับเค้าโครงที่เ"
+"ลือก."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:612
 msgid "Built-in Layout"
 msgstr "รูปแบบที่สร้างไว้ในตัว"
 
@@ -2108,10 +2334,22 @@ msgid "Author Category Group Title Prefix"
 msgstr "คำนำหน้าชื่อกลุ่มหมวดหมู่ผู้เขียน"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:714
+msgid ""
+"Enter the text that should be added before group title. This field accepts "
+"basic HTML."
+msgstr "ป้อนข้อความที่จะเพิ่มก่อนชื่อกลุ่ม. ฟิลด์นี้รองรับ HTML พื้นฐาน."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:721
 msgid "Author Category Group Title Suffix"
 msgstr "ชื่อกลุ่มหมวดหมู่ผู้เขียน"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:722
+msgid ""
+"Enter the text that should be added after group title. This field accepts "
+"basic HTML."
+msgstr "ป้อนข้อความที่จะเพิ่มหลังชื่อกลุ่ม. ฟิลด์นี้รองรับ HTML พื้นฐาน."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:729
 msgid "Author Category Group Font Size"
 msgstr "ขนาดฟอนต์กลุ่มหมวดหมู่ผู้เขียน"
 
@@ -2154,6 +2392,16 @@ msgid "%1s HTML Tag"
 msgstr "%1s แท็ก HTML"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:821
+msgid ""
+"'span' will display as an inline element and 'div' will display as a block "
+"element. To make this display into a link, select 'link' and enter the "
+"first part of the URL into the 'Prefix' field."
+msgstr ""
+"'span' จะแสดงเป็นองค์ประกอบในบรรทัดเดียวและ 'div' "
+"จะแสดงเป็นองค์ประกอบบล็อก. เพื่อทำให้แสดงเป็นลิงก์ เลือก 'link' "
+"และป้อนส่วนแรกของ URL ลงในฟิลด์ 'Prefix'."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:828
 msgid "link"
 msgstr "ลิงก์"
 
@@ -2163,6 +2411,15 @@ msgid "%1s Value Prefix"
 msgstr "%1s ค่าพรีฟิก"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
+msgid ""
+"This is useful when linking to an email, URL, or phone number. For example, "
+"'mailto:', 'https://' or 'tel:' can be added as the prefix."
+msgstr ""
+"ฟีเจอร์นี้มีประโยชน์เมื่อเชื่อมโยงไปยังอีเมล, URL, หรือหมายเลขโทรศัพท์. "
+"ตัวอย่างเช่น 'mailto:', 'https://' หรือ 'tel:' สามารถเพิ่มเป็นพรีฟิกได้."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:851
+#, php-format
 msgid "%1s Display"
 msgstr "%1s แสดง"
 
@@ -2364,6 +2621,14 @@ msgid "Recent Post Types"
 msgstr "ประเภทโพสต์ล่าสุด"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1259
+msgid ""
+"Select post types to include in recent posts. Leave empty to show all post "
+"types."
+msgstr ""
+"เลือกประเภทโพสต์ที่จะรวมอยู่ในโพสต์ล่าสุด. "
+"ทิ้งว่างไว้เพื่อแสดงประเภทโพสต์ทั้งหมด."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
 msgid "Select post types..."
 msgstr "เลือกประเภทโพสต์..."
 
@@ -2469,18 +2734,42 @@ msgid "Author inline display"
 msgstr "การแสดงผลผู้เขียนในบรรทัด"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1468
+msgid ""
+"This will display author in an inline format side by side instead of block "
+"format."
+msgstr "นี่จะแสดงผู้เขียนในรูปแบบในบรรทัดข้างๆ แทนที่จะเป็นรูปแบบบล็อก."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1475
 msgid "Author Row Prefix"
 msgstr "คำนำหน้าบรรทัดผู้เขียน"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1476
+msgid ""
+"Enter the text that should be added before authors. This field accepts "
+"basic HTML."
+msgstr "ป้อนข้อความที่จะเพิ่มก่อนผู้เขียน. ฟิลด์นี้รองรับ HTML พื้นฐาน."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1483
 msgid "Author Row Suffix"
 msgstr "คำหลังบรรทัดผู้เขียน"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1484
+msgid ""
+"Enter the text that should be added after authors. This field accepts basic "
+"HTML."
+msgstr "ป้อนข้อความที่จะเพิ่มหลังผู้เขียน. ฟิลด์นี้รองรับ HTML พื้นฐาน."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1491
 msgid "Author Separator"
 msgstr "ตัวแบ่งผู้เขียน"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1492
+msgid ""
+"You can specify a separator such as ',' to separate authors. This field "
+"accepts basic HTML."
+msgstr "คุณสามารถระบุตัวคั่นเช่น ',' เพื่อแยกผู้เขียน. ฟิลด์นี้รองรับ HTML พื้นฐาน."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1499
 msgid "Author Box Margin Top"
 msgstr "ระยะขอบด้านบนของกล่องผู้เขียน"
 
@@ -2663,6 +2952,18 @@ msgstr "คุณสมบัติของสคีมา"
 #: src/modules/author-categories/author-categories.php:622
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
 #, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+"ตัวอย่าง: เมื่อค่าตั้งไว้เป็น reviewedBy, "
+"ผู้ใช้ทั้งหมดในหมวดหมู่นี้จะถูกเพิ่มไปยังคุณสมบัติ reviewedBy ของโพสต์. "
+"คุณสามารถอ่านเพิ่มเติม %1$sในคู่มือนี้.%2$s"
+
+#: src/modules/author-categories/author-categories.php:634
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:79
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:486
 msgid "Post Types"
 msgstr "ประเภทโพสต์"
 
@@ -2672,6 +2973,14 @@ msgid "Select Post Type..."
 msgstr "เลือกประเภทโพสต์..."
 
 #: src/modules/author-categories/author-categories.php:678
+msgid ""
+"Select which post types this category applies to. Leave empty for all post "
+"types."
+msgstr "เลือกประเภทโพสต์ที่หมวดหมู่นี้ใช้. ทิ้งว่างไว้สำหรับประเภทโพสต์ทั้งหมด."
+
+#: src/modules/author-categories/author-categories.php:683
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:81
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:531
 msgid "Enable Category"
 msgstr "เปิดใช้งานหมวดหมู่"
 
@@ -2824,6 +3133,14 @@ msgid "Field Slug"
 msgstr "สลักฟิลด์"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:387
+msgid ""
+"The slug is used in code to reference this author field. It is all "
+"lowercase and contains only letters, numbers, and hyphens."
+msgstr ""
+"สลักจะถูกใช้ในโค้ดเพื่ออ้างอิงไปยังฟิลด์ผู้เขียนนี้. "
+"มันจะเป็นตัวพิมพ์เล็กทั้งหมดและประกอบด้วยแค่ตัวอักษร, ตัวเลข, และขีดกลาง."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:396
 msgid "Field Type"
 msgstr "ประเภทฟิลด์"
 
@@ -2832,6 +3149,23 @@ msgid "Social Profile?"
 msgstr "โปรไฟล์สังคมหรือไม่?"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:409
+msgid ""
+"This feature will add the SameAs property to this link so that search "
+"engines realize that the social profile is connected to this author."
+msgstr ""
+"ฟีเจอร์นี้จะเพิ่มคุณสมบัติ SameAs "
+"ไปยังลิงก์นี้เพื่อให้เครื่องมือค้นหารู้ว่าบัญชีสังคมเชื่อมโยงกับผู้เขียนนี้."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:422
+#, php-format
+msgid ""
+"Add a Schema.org property to this field. Examples include alumniOf, "
+"worksFor, and birthPlace. %1$sClick here for documentation.%2$s"
+msgstr ""
+"เพิ่มคุณสมบัติ Schema.org ลงในฟิลด์นี้. ตัวอย่าง ได้แก่ alumniOf, worksFor, "
+"และ birthPlace. %1$sคลิกที่นี่เพื่อดูเอกสาร.%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:434
 msgid "Show in REST API"
 msgstr "แสดงใน REST API"
 
@@ -2865,6 +3199,12 @@ msgid "Description"
 msgstr "คำอธิบาย"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:482
+msgid ""
+"This description appears under the fields and helps users understand their "
+"choice."
+msgstr "คำอธิบายนี้จะแสดงใต้ฟิลด์และช่วยให้ผู้ใช้เข้าใจการเลือกของพวกเขา."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:801
 msgid "Status"
 msgstr "สถานะ"
 
@@ -2878,6 +3218,14 @@ msgstr "ตำแหน่งงาน"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:992
 #: src/modules/author-custom-fields/author-custom-fields.php:1047
+msgid ""
+"With PublishPress Authors Pro, you can add new fields for social networks "
+"and more."
+msgstr ""
+"ด้วย PublishPress Authors Pro "
+"คุณสามารถเพิ่มฟิลด์ใหม่สำหรับเครือข่ายสังคมและอื่น ๆ"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:1111
 msgid "Field Order updated."
 msgstr "อัปเดตลำดับฟิลด์แล้ว"
 
@@ -3026,6 +3374,15 @@ msgid "Show Authors"
 msgstr "แสดงผู้เขียน"
 
 #: src/modules/author-list/author-list.php:438
+msgid ""
+"Select an option to limit the results to selected user roles, author types, "
+"specific authors or author Categories."
+msgstr ""
+"เลือกตัวเลือกเพื่อจำกัดผลลัพธ์ให้กับบทบาทผู้ใช้ที่เลือก ประเภทผู้เขียน "
+"ผู้เขียนเฉพาะ หรือหมวดหมู่ผู้เขียน"
+
+#: src/modules/author-list/author-list.php:441
+#: src/modules/author-list/author-list.php:455
 msgid "Roles"
 msgstr "บทบาท"
 
@@ -3034,6 +3391,14 @@ msgid "Exclude Authors"
 msgstr "ไม่รวมผู้เขียน"
 
 #: src/modules/author-list/author-list.php:452
+msgid ""
+"Select an option to exclude selected user roles, author types, specific "
+"authors or author Categories from Author list."
+msgstr ""
+"เลือกตัวเลือกเพื่อไม่รวมบทบาทผู้ใช้ที่เลือก ประเภทผู้เขียน ผู้เขียนเฉพาะ "
+"หรือหมวดหมู่ผู้เขียนจากรายชื่อผู้เขียน"
+
+#: src/modules/author-list/author-list.php:468
 msgid "Authors Per Page"
 msgstr "ผู้เขียนต่อหน้า"
 
@@ -3046,10 +3411,26 @@ msgid "Show Empty"
 msgstr "แสดงว่างเปล่า"
 
 #: src/modules/author-list/author-list.php:480
+msgid ""
+"Enable this option to show all authors, including those without any posts. "
+"Disable this option to show only authors who are assigned to posts."
+msgstr ""
+"เปิดใช้งานตัวเลือกนี้เพื่อแสดงผู้เขียนทั้งหมด รวมถึงผู้ที่ไม่มีโพสต์ใด ๆ "
+"ปิดใช้งานตัวเลือกนี้เพื่อแสดงเฉพาะผู้เขียนที่ได้รับมอบหมายให้โพสต์"
+
+#: src/modules/author-list/author-list.php:488
 msgid "Configure Author List Options"
 msgstr "กำหนดค่าตัวเลือกในรายชื่อผู้เขียน"
 
 #: src/modules/author-list/author-list.php:489
+msgid ""
+"Authors Pro allows you to add extra features to the Authors List. These "
+"features include pagination, choose the order of authors, and much more."
+msgstr ""
+"Authors Pro ช่วยให้คุณเพิ่มฟีเจอร์เพิ่มเติมในรายชื่อผู้เขียน "
+"ฟีเจอร์เหล่านี้รวมถึงการแบ่งหน้า เลือกลำดับของผู้เขียน และอื่น ๆ อีกมากมาย"
+
+#: src/modules/author-list/author-list.php:494
 msgid "Order By"
 msgstr "เรียงตาม"
 
@@ -3058,6 +3439,16 @@ msgid "Last Article Date"
 msgstr "วันที่บทความล่าสุด"
 
 #: src/modules/author-list/author-list.php:523
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific time. This option accepts date values such as 1 week ago, 1 month "
+"ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"คุณสามารถจำกัดรายชื่อผู้เขียนให้กับผู้ใช้ที่มีโพสต์ที่เผยแพร่ภายในเวลาที่กำห"
+"นด ตัวเลือกนี้ยอมรับค่าข้อมูลวันที่ เช่น 1 สัปดาห์ที่ผ่านมา 1 "
+"เดือนที่ผ่านมา 6 เดือนที่ผ่านมา 1 ปีที่ผ่านมา เป็นต้น"
+
+#: src/modules/author-list/author-list.php:535
 msgid "Show Search Box"
 msgstr "แสดงกล่องค้นหา"
 
@@ -3066,10 +3457,24 @@ msgid "Add Search Box to Author Lists"
 msgstr "เพิ่มกล่องค้นหาในรายชื่อผู้เขียน"
 
 #: src/modules/author-list/author-list.php:545
+msgid ""
+"Author Pro allows you to add a search box to the Authors List. You can also "
+"show a dropdown menu that allows users to search on specific author fields."
+msgstr ""
+"Author Pro ช่วยให้คุณเพิ่มกล่องค้นหาในรายชื่อผู้เขียน "
+"คุณยังสามารถแสดงเมนูแบบเลื่อนลงที่ช่วยให้ผู้ใช้ค้นหาฟิลด์ผู้เขียนเฉพาะได้"
+
+#: src/modules/author-list/author-list.php:550
 msgid "Search Field Dropdown"
 msgstr "เมนูแบบเลื่อนฟิลด์ค้นหา"
 
 #: src/modules/author-list/author-list.php:551
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields."
+msgstr "คุณยังสามารถแสดงเมนูแบบเลื่อนลงที่ช่วยให้ผู้ใช้ค้นหาฟิลด์ผู้เขียนเฉพาะได้"
+
+#: src/modules/author-list/author-list.php:600
 msgid "Author Recent List"
 msgstr "รายชื่อผู้เขียนล่าสุด"
 
@@ -3114,6 +3519,14 @@ msgid "Select Author Category"
 msgstr "เลือกหมวดหมู่ผู้เขียน"
 
 #: src/modules/author-list/author-list.php:1282
+msgid ""
+"This is a quick preview of this Author List. Test on frontend pages to see "
+"exactly how it looks with your theme."
+msgstr ""
+"นี่คือการแสดงตัวอย่างอย่างรวดเร็วของรายชื่อผู้เขียนนี้ "
+"ทดสอบในหน้าส่วนหน้าเพื่อดูว่ามันดูเป็นอย่างไรกับธีมของคุณ"
+
+#: src/modules/author-list/author-list.php:1380
 msgid "Invalid form"
 msgstr "แบบฟอร์มไม่ถูกต้อง"
 
@@ -3344,6 +3757,14 @@ msgid "Showcase your Authors with PublishPress Blocks"
 msgstr "แสดงผลงานของผู้เขียนด้วย PublishPress Blocks"
 
 #: src/modules/modules-settings/modules-settings.php:318
+msgid ""
+"PublishPress Blocks is a free plugin with full support for PublishPress "
+"Authors."
+msgstr ""
+"PublishPress Blocks เป็นปลั๊กอินฟรีที่มีการสนับสนุนเต็มรูปแบบสำหรับ "
+"PublishPress Authors"
+
+#: src/modules/modules-settings/modules-settings.php:319
 msgid "Install this plugin to showcase content by your Authors."
 msgstr "ติดตั้งปลั๊กอินนี้เพื่อแสดงเนื้อหาจากผู้เขียนของคุณ"
 
@@ -3352,6 +3773,14 @@ msgid "Use the Content Display block to show your posts in many beautiful layout
 msgstr "ใช้ Content Display block เพื่อแสดงโพสต์ของคุณในเลย์เอาท์ที่สวยงามหลายรูปแบบ"
 
 #: src/modules/modules-settings/modules-settings.php:321
+msgid ""
+"PublishPress Blocks has over 20 extra Gutenberg blocks including "
+"accordions, galleries, tables, and more."
+msgstr ""
+"PublishPress Blocks มีบล็อก Gutenberg เสริมมากกว่า 20 บล็อก รวมถึง "
+"accordion แกลเลอรี ตาราง และอื่น ๆ"
+
+#: src/modules/modules-settings/modules-settings.php:324
 msgid "Click here to install PublishPress Blocks"
 msgstr "คลิกที่นี่เพื่อติดตั้ง PublishPress Blocks"
 
@@ -3392,6 +3821,17 @@ msgid "Copy Molongui Authorship Data"
 msgstr "คัดลอกข้อมูล Molongui Authorship"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:153
+msgid ""
+"This action will copy the authors from the plugin Molongui Authorship "
+"allowing you to migrate to PublishPress Authors without losing any data "
+"including post author relation. This action can be run multiple times."
+msgstr ""
+"การกระทำนี้จะคัดลอกผู้เขียนจากปลั๊กอิน Molongui Authorship "
+"ช่วยให้คุณสามารถย้ายไปยัง PublishPress Authors โดยไม่สูญเสียข้อมูลใด ๆ "
+"รวมถึงความสัมพันธ์ระหว่างผู้เขียนโพสต์ "
+"การกระทำนี้สามารถดำเนินการได้หลายครั้ง"
+
+#: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:187
 msgid "It looks like you have Molongui Authorship installed."
 msgstr "ดูเหมือนว่าคุณได้ติดตั้ง Molongui Authorship."
 
@@ -3614,6 +4054,14 @@ msgstr "กล่องผู้เขียนในรูปแบบเลย
 #: src/modules/multiple-authors/multiple-authors.php:1265
 #: src/modules/settings/settings.php:275
 #, php-format
+msgid ""
+"Disabled because add_post_type_support('%1$s', '%2$s') is included in a "
+"loaded file."
+msgstr ""
+"ปิดใช้งานเนื่องจาก add_post_type_support(''%1$s', ''%2$s') "
+"ถูกรวมอยู่ในไฟล์ที่โหลด"
+
+#: src/modules/multiple-authors/multiple-authors.php:1284
 msgid "This will display the authors box at the top of the content."
 msgstr "สิ่งนี้จะแสดงกล่องผู้เขียนที่ด้านบนของเนื้อหา。"
 
@@ -3638,14 +4086,233 @@ msgid "Authors Box"
 msgstr "กล่องผู้เขียน"
 
 #: src/modules/multiple-authors/multiple-authors.php:1409
+msgid ""
+"With this shortcode you can display the author box in any part of the "
+"content. "
+msgstr "ด้วย shortcode นี้คุณสามารถแสดงกล่องผู้เขียนในส่วนใดส่วนหนึ่งของเนื้อหา"
+
+#: src/modules/multiple-authors/multiple-authors.php:1417
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s."
+msgstr ""
+"คุณสามารถระบุเลย์เอาท์โดยใช้ slug ของเลย์เอาท์กล่องผู้เขียน "
+"คุณสามารถดูรายละเอียดทั้งหมดของแต่ละตัวเลือกเลย์เอาท์ %1$s ในคู่มือนี้ %2$s"
+
+#: src/modules/multiple-authors/multiple-authors.php:1428
+#, php-format
+msgid ""
+"You can also decide whether or not to show the main title, using %1$s or "
+"%2$s ."
+msgstr "คุณยังสามารถตัดสินใจได้ว่าจะให้แสดงชื่อหลักหรือไม่ โดยใช้ %1$s หรือ %2$s"
+
+#: src/modules/multiple-authors/multiple-authors.php:1438
+#: src/modules/multiple-authors/multiple-authors.php:1522
+msgid ""
+"You can load the authors for a specific post, even if you are not in that "
+"post currently. For example, this shortcode will load the authors for the "
+"post with the ID of 32."
+msgstr ""
+"คุณสามารถโหลดผู้เขียนสำหรับโพสต์เฉพาะได้ "
+"แม้ว่าคุณจะไม่ได้อยู่ในโพสต์นั้นในขณะนี้ ตัวอย่างเช่น shortcode "
+"นี้จะโหลดผู้เขียนสำหรับโพสต์ที่มี ID คือ 32"
+
+#: src/modules/multiple-authors/multiple-authors.php:1445
+msgid ""
+"You can load the authors for a specific user by providing the user id. For "
+"example, this shortcode will load the author with user id of 32"
+msgstr ""
+"คุณสามารถโหลดผู้เขียนสำหรับผู้ใช้เฉพาะได้โดยการระบุ user id ตัวอย่างเช่น "
+"shortcode นี้จะโหลดผู้เขียนที่มี user id คือ 32"
+
+#: src/modules/multiple-authors/multiple-authors.php:1452
+msgid ""
+"You can load the authors for a specific author by providing the author term "
+"id for both guest and user author. For example, this shortcode will load "
+"the author with term id of 32"
+msgstr ""
+"คุณสามารถโหลดผู้เขียนสำหรับผู้เขียนเฉพาะได้โดยการระบุ author term id "
+"สำหรับผู้เขียนทั้งแขกและผู้ใช้ ตัวอย่างเช่น shortcode "
+"นี้จะโหลดผู้เขียนที่มี term id คือ 32"
+
+#: src/modules/multiple-authors/multiple-authors.php:1460
+#, php-format
+msgid ""
+"If you are having problems showing PublishPress Authors on author profile "
+"pages, you can use this shortcode below. The argument %s forces the plugin "
+"to retrieve the Author from the profile page and not any other posts on the "
+"same screen."
+msgstr ""
+"หากคุณมีปัญหาในการแสดง PublishPress Authors ในหน้าประวัติผู้เขียน "
+"คุณสามารถใช้ shortcode นี้ด้านล่าง อาร์กิวเมนต์ %s "
+"บังคับให้ปลั๊กอินดึงผู้เขียนจากหน้าประวัติและไม่ใช่โพสต์อื่น ๆ "
+"บนหน้าจอเดียวกัน"
+
+#: src/modules/multiple-authors/multiple-authors.php:1470
+#, php-format
+msgid ""
+"There is one final option to mention. This is mostly useful if you're using "
+"a theme or page builder to customize the Author profile pages you find at "
+"URLs such as /author/username/. You can use the following shortcode on the "
+"authors page to display the profile of the current author. You just need to "
+"add the parameter %s."
+msgstr ""
+"มีตัวเลือกสุดท้ายที่ต้องกล่าวถึง "
+"นี่จะมีประโยชน์โดยส่วนใหญ่หากคุณใช้ธีมหรือเครื่องมือสร้างหน้าเพื่อปรับแต่งหน"
+"้าโปรไฟล์ผู้เขียนที่คุณพบที่ URL เช่น /author/username/ คุณสามารถใช้ "
+"shortcode ต่อไปนี้ในหน้าผู้เขียนเพื่อแสดงโปรไฟล์ของผู้เขียนปัจจุบัน "
+"คุณเพียงแค่ต้องเพิ่มพารามิเตอร์ %s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1479
+msgid ""
+"You can load the authors belonging to a specific author categories by "
+"providing the category slug or slugs separated by comma for more than one "
+"category."
+msgstr ""
+"คุณสามารถโหลดผู้เขียนที่อยู่ในหมวดหมู่ผู้เขียนเฉพาะโดยการระบุ slug "
+"หมวดหมู่หรือ slug ที่แยกด้วยคอมมาในกรณีที่มีมากกว่าหนึ่งหมวดหมู่."
+
+#: src/modules/multiple-authors/multiple-authors.php:1489
 msgid "Authors Data"
 msgstr "ข้อมูลผู้เขียน"
 
 #: src/modules/multiple-authors/multiple-authors.php:1490
+msgid ""
+"With this shortcode you can display the author names or any profile field "
+"in any part of the content."
+msgstr ""
+"ด้วย shortcode นี้คุณสามารถแสดงชื่อผู้เขียนหรือฟิลด์โปรไฟล์ใด ๆ ในส่วนใด ๆ "
+"ของเนื้อหา."
+
+#: src/modules/multiple-authors/multiple-authors.php:1498
+#, php-format
+msgid ""
+"The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s "
+"%4$s %5$s %6$s %7$s. You can see full details and parameters %8$s in this "
+"guide %9$s."
+msgstr ""
+"shortcode ข้อมูลผู้เขียนยอมรับพารามิเตอร์ฟิลด์ เช่น: %1$s %2$s %3$s %4$s "
+"%5$s %6$s %7$s คุณสามารถดูรายละเอียดและพารามิเตอร์ทั้งหมด %8$s ในคู่มือนี้ "
+"%9$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1515
 msgid "You can also specify the separator to be used for mulitple authors data."
 msgstr "คุณยังสามารถกำหนดตัวคั่นที่ใช้สำหรับข้อมูลผู้เขียนหลายคนได้。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1529
+msgid ""
+"You can retrieve a specific author by providing the author's term ID. For "
+"example, this shortcode will load the author with the term ID of 102."
+msgstr ""
+"คุณสามารถเรียกคืนผู้เขียนเฉพาะโดยการระบุ ID เทอมของผู้เขียน ตัวอย่างเช่น "
+"shortcode นี้จะโหลดผู้เขียนที่มี ID เทอมเป็น 102."
+
+#: src/modules/multiple-authors/multiple-authors.php:1537
+#, php-format
+msgid ""
+"You can also decide to return an array list of authors by using "
+"user_objects=\"true\" which will return all the authors object data as an "
+"array. You can check full details and sample usage %2$s in this guide%3$s."
+msgstr ""
+"คุณยังสามารถตัดสินใจที่จะส่งคืนรายการอาร์เรย์ของผู้เขียนโดยการใช้ "
+"user_objects=\"true\" "
+"ซึ่งจะส่งคืนข้อมูลวัตถุของผู้เขียนทั้งหมดในรูปแบบอาร์เรย์ "
+"คุณสามารถตรวจสอบรายละเอียดทั้งหมดและตัวอย่างการใช้งาน %2$s ในคู่มือนี้ %3$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1548
+msgid ""
+"You can retrieve authors belonging to a specific Author Category by "
+"providing the category slug or slugs. Separate multiple slugs with a comma."
+msgstr ""
+"คุณสามารถเรียกคืนผู้เขียนที่อยู่ในหมวดหมู่ผู้เขียนเฉพาะโดยการระบุ slug "
+"หมวดหมู่หรือ slug ที่แยกด้วยคอมมา."
+
+#: src/modules/multiple-authors/multiple-authors.php:1559
+msgid ""
+"With this shortcode, you can show all the authors together in a single "
+"display."
+msgstr "ด้วย shortcode นี้คุณสามารถแสดงผู้เขียนทั้งหมดพร้อมกันในหน้าจอเดียว."
+
+#: src/modules/multiple-authors/multiple-authors.php:1567
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s. %3$s %4$s This "
+"shortcode also provides two custom layouts: %5$s %6$s."
+msgstr ""
+"คุณสามารถกำหนดรูปแบบโดยการใช้ slug รูปแบบกล่องผู้เขียน "
+"คุณสามารถดูรายละเอียดทั้งหมดของตัวเลือกการจัดรูปแบบแต่ละตัว %1$s "
+"ในคู่มือนี้ %2$s. %3$s %4$s shortcode นี้ยังมีรูปแบบที่กำหนดเองสองแบบ: %5$s "
+"%6$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1582
+#, php-format
+msgid ""
+"You can define the number of layout columns by using %1$s to show authors "
+"in 2 column."
+msgstr ""
+"คุณสามารถกำหนดจำนวนคอลัมน์รูปแบบโดยการใช้ %1$s เพื่อแสดงผู้เขียนใน 2 "
+"คอลัมน์."
+
+#: src/modules/multiple-authors/multiple-authors.php:1592
+#, php-format
+msgid ""
+"You can choose the number of authors per page using %1$s . %2$s Pagination "
+"will be automatically added if required."
+msgstr ""
+"คุณสามารถเลือกจำนวนผู้เขียนต่อหน้าโดยใช้ %1$s . %2$s การแบ่งหน้า "
+"(Pagination) จะถูกเพิ่มโดยอัตโนมัติหากจำเป็น."
+
+#: src/modules/multiple-authors/multiple-authors.php:1603
+#, php-format
+msgid ""
+"You can limit the result to only authors who are assigned to posts by using "
+"%1$s . %2$s Alternatively, use %3$s to show all authors, including those "
+"without any posts."
+msgstr ""
+"คุณสามารถจำกัดผลลัพธ์ให้แสดงเฉพาะผู้เขียนที่ได้รับมอบหมายให้กับโพสต์โดยการใช"
+"้ %1$s . %2$s อย่างไรก็ตามคุณสามารถใช้ %3$s "
+"เพื่อแสดงผู้เขียนทั้งหมดรวมถึงผู้ที่ไม่มีโพสต์ใด ๆ."
+
+#: src/modules/multiple-authors/multiple-authors.php:1615
+#, php-format
+msgid ""
+"You can limit the result to only guest authors by using %1$s . %2$s "
+"Alternatively, %3$s will show only authors with a WordPress account."
+msgstr ""
+"คุณสามารถจำกัดผลลัพธ์ให้แสดงเฉพาะผู้เขียนรับเชิญโดยการใช้ %1$s . %2$s "
+"ในทางเลือก %3$s จะแสดงเฉพาะผู้เขียนที่มีบัญชี WordPress."
+
+#: src/modules/multiple-authors/multiple-authors.php:1627
+#, php-format
+msgid ""
+"If you are using the authors_recent layout, you can define the number of "
+"columns by using %1$s ."
+msgstr "หากคุณใช้รูปแบบ authors_recent คุณสามารถกำหนดจำนวนคอลัมน์โดยใช้ %1$s ."
+
+#: src/modules/multiple-authors/multiple-authors.php:1637
+#, php-format
+msgid ""
+"For authors_index layout, you can group user by profile field by using %1$s "
+"."
+msgstr ""
+"สำหรับรูปแบบ authors_index คุณสามารถจัดกลุ่มผู้ใช้ตามฟิลด์โปรไฟล์โดยการใช้ "
+"%1$s ."
+
+#: src/modules/multiple-authors/multiple-authors.php:1647
+#, php-format
+msgid ""
+"To order the results based on post count, use %1$s . To order the results "
+"by name, use %2$s . Alternatively, you can order by profile fields like "
+"%3$s, %4$s etc"
+msgstr ""
+"เพื่อจัดเรียงผลลัพธ์ตามจำนวนโพสต์ให้ใช้ %1$s . "
+"เพื่อจัดเรียงผลลัพธ์ตามชื่อให้ใช้ %2$s . "
+"หรือคุณสามารถจัดเรียงตามฟิลด์โปรไฟล์เช่น %3$s, %4$s เป็นต้น"
+
+#: src/modules/multiple-authors/multiple-authors.php:1660
+#, php-format
 msgid "To further customize the order of results, use %1$s or %2$s ."
 msgstr "เพื่อปรับแต่งลำดับของผลลัพธ์เพิ่มเติม ให้ใช้ %1$s หรือ %2$s ."
 
@@ -3656,6 +4323,27 @@ msgstr "เพื่อแสดงกล่องค้นหาสำหรั
 
 #: src/modules/multiple-authors/multiple-authors.php:1681
 #, php-format
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields. You can add fields to the dropdown using %1$s . This "
+"requires the search box to be active."
+msgstr ""
+"คุณยังสามารถแสดงเมนูแบบเลื่อนลงที่อนุญาตให้ผู้ใช้ค้นหาฟิลด์ผู้เขียนเฉพาะ "
+"คุณสามารถเพิ่มฟิลด์ไปยังเมนูแบบเลื่อนลงโดยใช้ %1$s . "
+"สิ่งนี้ต้องการให้กล่องค้นหาทำงานอยู่."
+
+#: src/modules/multiple-authors/multiple-authors.php:1691
+#, php-format
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific period using %1$s . This accept english date value like 1 week "
+"ago, 1 month ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"คุณสามารถจำกัดรายการผู้เขียนให้แสดงเฉพาะผู้ใช้ที่มีโพสต์ที่เผยแพร่ภายในช่วงเ"
+"วลาที่เฉพาะโดยการใช้ %1$s . สิ่งนี้ยอมรับค่าฐานวันที่ภาษาอังกฤษเช่น 1 "
+"สัปดาห์ที่แล้ว, 1 เดือนที่แล้ว, 6 เดือนที่แล้ว, 1 ปีที่แล้ว เป็นต้น."
+
+#: src/modules/multiple-authors/multiple-authors.php:1738
 msgid "Copied!"
 msgstr "คัดลอกแล้ว!"
 
@@ -3669,6 +4357,39 @@ msgid "Select roles"
 msgstr "เลือกบทบาท"
 
 #: src/modules/multiple-authors/multiple-authors.php:1813
+msgid ""
+"Choose which WordPress user roles can be selected using the \"Registered "
+"Author With User Account\" option for author profiles."
+msgstr ""
+"เลือกบทบาทผู้ใช้ WordPress ที่สามารถเลือกได้โดยใช้ตัวเลือก \"Registered "
+"Author With User Account\" สำหรับโปรไฟล์ผู้เขียน."
+
+#: src/modules/multiple-authors/multiple-authors.php:1842
+msgid ""
+"Author profiles can be mapped to WordPress user accounts. This option "
+"allows you to automatically create author profiles when users are created "
+"in these roles. You can also do this for existing users by clicking the "
+"\"Create PublishPress Authors Profiles for all users in a role\" button in "
+"the Maintenance tab."
+msgstr ""
+"โปรไฟล์ผู้เขียนสามารถแมปกับบัญชีผู้ใช้ WordPress "
+"ตัวเลือกนี้อนุญาตให้คุณสร้างโปรไฟล์ผู้เขียนโดยอัตโนมัติเมื่อผู้ใช้ถูกสร้างใน"
+"บทบาทเหล่านี้ คุณยังสามารถทำเช่นนี้สำหรับผู้ใช้ที่มีอยู่โดยการคลิกปุ่ม "
+"\"Create PublishPress Authors Profiles for all users in a role\" "
+"ในแท็บการบำรุงรักษา."
+
+#: src/modules/multiple-authors/multiple-authors.php:1863
+msgid ""
+"If the Author is mapped to a WordPress user, this will display the authors' "
+"\"Display name\" and their \"Username\". The default is to show only the "
+"\"Display name\". Showing the \"Username\" is useful if you have several "
+"authors with similar names."
+msgstr ""
+"หากผู้เขียนถูกแมปไปยังผู้ใช้ WordPress จะมีการแสดง \"ชื่อแสดง\" และ "
+"\"ชื่อผู้ใช้\" ของผู้เขียน การตั้งค่าเริ่มต้นคือการแสดงเฉพาะ \"ชื่อแสดง\" "
+"การแสดง \"ชื่อผู้ใช้\" มีประโยชน์หากคุณมีผู้เขียนหลายคนที่มีชื่อคล้ายกัน."
+
+#: src/modules/multiple-authors/multiple-authors.php:1886
 msgid "Allow authors to be created without a real user account."
 msgstr "อนุญาตให้สร้างผู้เขียนโดยไม่มีบัญชีผู้ใช้จริง。"
 
@@ -3681,6 +4402,14 @@ msgid "Allow authors to be created without a connected user account."
 msgstr "อนุญาตให้สร้างผู้เขียนโดยไม่มีบัญชีผู้ใช้ที่เชื่อมต่อ。"
 
 #: src/modules/multiple-authors/multiple-authors.php:1956
+msgid ""
+"If enabled, PublishPress Authors will replace the default WordPress author "
+"pages."
+msgstr ""
+"หากเปิดใช้งาน PublishPress Authors จะทำการแทนที่หน้าผู้เขียนเริ่มต้นของ "
+"WordPress."
+
+#: src/modules/multiple-authors/multiple-authors.php:1961
 msgid "Please note this feature will not work for all themes."
 msgstr "โปรดทราบว่าฟีเจอร์นี้จะไม่ทำงานกับธีมทั้งหมด。"
 
@@ -3714,6 +4443,14 @@ msgid "Last Name First Name"
 msgstr "นามสกุล ชื่อ"
 
 #: src/modules/multiple-authors/multiple-authors.php:2218
+msgid ""
+"This avatar will be used as default avatar instead of gravatar where no "
+"custom avatar is added to profile."
+msgstr ""
+"อวตารนี้จะถูกใช้เป็นอวตารเริ่มต้นแทนที่ gravatar "
+"หากไม่มีอวตารที่กำหนดเองถูกเพิ่มในโปรไฟล์."
+
+#: src/modules/multiple-authors/multiple-authors.php:2240
 msgid "This will display the author bio."
 msgstr "จะแสดงชีวประวัติของผู้เขียน。"
 
@@ -3751,6 +4488,16 @@ msgid "This will display the excerpt."
 msgstr "นี่จะแสดงเนื้อหาส่วนย่อ."
 
 #: src/modules/multiple-authors/multiple-authors.php:2573
+msgid ""
+"This will allows you map a WordPress user to more than one author. Don't "
+"use this feature unless requested to do so by the PublishPress team. This "
+"plugin works better when authors and users are paired one-to-one."
+msgstr ""
+"สิ่งนี้จะช่วยให้คุณแมปผู้ใช้ WordPress ไปยังผู้เขียนมากกว่าหนึ่งคน "
+"อย่าใช้ฟีเจอร์นี้เว้นแต่จะมีการร้องขอจากทีม PublishPress "
+"ปลั๊กอินนี้ทำงานได้ดีกว่าเมื่อผู้เขียนและผู้ใช้ถูกจับคู่แบบหนึ่งต่อหนึ่ง."
+
+#: src/modules/multiple-authors/multiple-authors.php:2597
 msgid "This will display the authors."
 msgstr "นี่จะแสดงผู้เขียน."
 
@@ -3783,6 +4530,17 @@ msgid "Search for a fallback author"
 msgstr "ค้นหาผู้เขียนสำรอง"
 
 #: src/modules/multiple-authors/multiple-authors.php:2791
+msgid ""
+"If you only have Guest Authors selected for a post, this user may be used "
+"as a fallback. WordPress sometimes requires a WordPress user to be assigned "
+"to each post. This user will not be visible on the front of your site."
+msgstr ""
+"หากคุณมีผู้เขียนแขกที่เลือกสำหรับโพสต์เพียงคนเดียว "
+"ผู้ใช้คนนี้อาจถูกใช้เป็นตัวสำรอง WordPress บางครั้งต้องการให้มีผู้ใช้ "
+"WordPress ถูกกำหนดให้กับแต่ละโพสต์ "
+"ผู้ใช้คนนี้จะไม่สามารถมองเห็นได้ที่ด้านหน้าของเว็บไซต์ของคุณ."
+
+#: src/modules/multiple-authors/multiple-authors.php:2809
 msgid "This will display the authors email in the author box."
 msgstr "นี่จะแสดงอีเมลของผู้เขียนในกล่องผู้เขียน."
 
@@ -3803,6 +4561,18 @@ msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr "สร้างโปรไฟล์ผู้เขียน PublishPress สำหรับผู้เขียนโพสต์ทั้งหมด"
 
 #: src/modules/multiple-authors/multiple-authors.php:2887
+msgid ""
+"If a WordPress user is the author of a post, but does not have a "
+"PublishPress Authors profile, this will automatically create a profile for "
+"them."
+msgstr ""
+"หากผู้ใช้ WordPress เป็นผู้เขียนของโพสต์ แต่ไม่มีโปรไฟล์ PublishPress "
+"Authors ระบบจะสร้างโปรไฟล์ให้กับพวกเขาโดยอัตโนมัติ."
+
+#: src/modules/multiple-authors/multiple-authors.php:2887
+#: src/modules/multiple-authors/multiple-authors.php:2893
+#: src/modules/multiple-authors/multiple-authors.php:2899
+#: src/modules/multiple-authors/multiple-authors.php:2906
 msgid "Click here for documentation"
 msgstr "คลิกที่นี่เพื่อดูเอกสาร"
 
@@ -3815,6 +4585,15 @@ msgid "Create PublishPress Authors Profiles for all users in a role"
 msgstr "สร้างโปรไฟล์ผู้เขียน PublishPress สำหรับผู้ใช้ทั้งหมดในบทบาท"
 
 #: src/modules/multiple-authors/multiple-authors.php:2893
+msgid ""
+"This will find all the users in a role and create author profiles for them. "
+"You can choose the roles using the \"Automatically create author profiles\" "
+"setting."
+msgstr ""
+"สิ่งนี้จะค้นหาผู้ใช้ทั้งหมดในบทบาทและสร้างโปรไฟล์ผู้เขียนสำหรับพวกเขา "
+"คุณสามารถเลือกบทบาทโดยใช้การตั้งค่า \"สร้างโปรไฟล์ผู้เขียนโดยอัตโนมัติ\"."
+
+#: src/modules/multiple-authors/multiple-authors.php:2894
 msgid "Create PublishPress Authors profiles"
 msgstr "สร้างโปรไฟล์ผู้เขียน PublishPress"
 
@@ -3823,22 +4602,68 @@ msgid "Synchronize PublishPress Authors Fields and user profile fields"
 msgstr "ซิงโครไนซ์ฟิลด์ผู้เขียน PublishPress และฟิลด์โปรไฟล์ผู้ใช้"
 
 #: src/modules/multiple-authors/multiple-authors.php:2899
+msgid ""
+"This will update all the author profiles in PublishPress Authors to match "
+"the default WordPress fields for each user."
+msgstr ""
+"สิ่งนี้จะอัปเดตโปรไฟล์ผู้เขียนทั้งหมดใน PublishPress Authors "
+"ให้ตรงกับฟิลด์เริ่มต้นของ WordPress สำหรับแต่ละผู้ใช้."
+
+#: src/modules/multiple-authors/multiple-authors.php:2905
 msgid "Synchronize the author and user URLs"
 msgstr "ซิงโครไนซ์ URL ของผู้เขียนและผู้ใช้"
 
 #: src/modules/multiple-authors/multiple-authors.php:2906
+msgid ""
+"This will update all the Author URLs in PublishPress Authors to match the "
+"default WordPress URLs for each user."
+msgstr ""
+"สิ่งนี้จะอัปเดต URL ของผู้เขียนทั้งหมดใน PublishPress Authors ให้ตรงกับ URL "
+"เริ่มต้นของ WordPress สำหรับแต่ละผู้ใช้."
+
+#: src/modules/multiple-authors/multiple-authors.php:2912
+#: src/modules/multiple-authors/multiple-authors.php:2914
 msgid "Create Author Categories"
 msgstr "สร้างหมวดหมู่ผู้เขียน"
 
 #: src/modules/multiple-authors/multiple-authors.php:2913
+msgid ""
+"This will create author categories table if missing and add default "
+"categories."
+msgstr "สิ่งนี้จะสร้างตารางหมวดหมู่ผู้เขียนหากขาดหายไปและเพิ่มหมวดหมู่เริ่มต้น."
+
+#: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "Copy Co-Authors Plus Data"
 msgstr "คัดลอกข้อมูล Co-Authors Plus"
 
 #: src/modules/multiple-authors/multiple-authors.php:2927
+msgid ""
+"This action will copy the authors from the plugin Co-Authors Plus allowing "
+"you to migrate to PublishPress Authors without losing any data. This action "
+"can be run multiple times."
+msgstr ""
+"การกระทำนี้จะคัดลอกผู้เขียนจากปลั๊กอิน Co-Authors Plus ช่วยให้คุณย้ายไปยัง "
+"PublishPress Authors โดยไม่สูญเสียข้อมูลใดๆ "
+"การกระทำนี้สามารถทำซ้ำได้หลายครั้ง."
+
+#: src/modules/multiple-authors/multiple-authors.php:2937
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr "ลบการเชื่อมต่อระหว่างโปรไฟล์ผู้เขียนและผู้ใช้"
 
 #: src/modules/multiple-authors/multiple-authors.php:2938
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. It will delete all author profiles that are mapped to "
+"a WordPress user account. This will not delete the WordPress user accounts, "
+"but any links between the posts and author profiles will be lost."
+msgstr ""
+"การกระทำนี้สามารถรีเซ็ตข้อมูล PublishPress Authors "
+"ก่อนที่จะใช้ตัวเลือกการบำรุงรักษาอื่นๆ "
+"จะลบโปรไฟล์ผู้เขียนทั้งหมดที่แมปไปยังบัญชีผู้ใช้ WordPress "
+"การกระทำนี้จะไม่ลบบัญชีผู้ใช้ WordPress "
+"แต่จะทำให้ลิงก์ระหว่างโพสต์และโปรไฟล์ผู้เขียนหายไป."
+
+#: src/modules/multiple-authors/multiple-authors.php:2939
 msgid "Delete all authors mapped to users"
 msgstr "ลบผู้เขียนทั้งหมดที่แมปกับผู้ใช้"
 
@@ -3847,10 +4672,29 @@ msgid "Delete Guest Authors"
 msgstr "ลบผู้เขียนรับเชิญ"
 
 #: src/modules/multiple-authors/multiple-authors.php:2945
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. Guest authors are author profiles that are not mapped "
+"to a WordPress user account. This action will delete all guest authors."
+msgstr ""
+"การกระทำนี้สามารถรีเซ็ตข้อมูล PublishPress Authors "
+"ก่อนที่จะใช้ตัวเลือกการบำรุงรักษาอื่นๆ "
+"ผู้เขียนแขกคือโปรไฟล์ผู้เขียนที่ไม่ได้แมปไปยังบัญชีผู้ใช้ WordPress "
+"การกระทำนี้จะลบผู้เขียนแขกทั้งหมด."
+
+#: src/modules/multiple-authors/multiple-authors.php:2946
 msgid "Delete all guest authors"
 msgstr "ลบผู้เขียนรับเชิญทั้งหมด"
 
 #: src/modules/multiple-authors/multiple-authors.php:2952
+msgid ""
+"Please be careful clicking these buttons. Before clicking, we recommend "
+"taking a site backup in case anything goes wrong."
+msgstr ""
+"โปรดระมัดระวังเมื่อคลิกปุ่มเหล่านี้ "
+"ก่อนคลิกเราขอแนะนำให้ทำการสำรองข้อมูลเว็บไซต์ในกรณีที่มีบางอย่างผิดพลาด."
+
+#: src/modules/multiple-authors/multiple-authors.php:3155
 msgid "Author Profiles"
 msgstr "โปรไฟล์ผู้เขียน"
 
@@ -4132,9 +4976,46 @@ msgstr "ติดต่อ"
 
 #: src/core/Plugin.php:563
 msgctxt "taxonomy general name"
+msgid "Authors"
+msgstr "ผู้เขียน"
+
+#: src/core/Plugin.php:568
+msgctxt "taxonomy singular name"
+msgid "Author"
+msgstr "ผู้เขียน"
+
+#: src/modules/author-boxes/author-boxes.php:411
+#, fuzzy, php-format
+msgctxt "Author Box post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-boxes/author-boxes.php:412
+#, fuzzy, php-format
+msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
 #: src/modules/author-boxes/author-boxes.php:427
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:166
+#, fuzzy, php-format
+msgctxt "Custom Field post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:167
+#, fuzzy, php-format
+msgctxt "singular custom field post type name"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:182
+#, fuzzy, php-format
+msgctxt "custom field post type menu name"
+msgid "%2$s"
+msgstr "%2$s"

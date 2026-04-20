@@ -47,7 +47,7 @@
     "fix:phpcs": "vendor/bin/phpcbf ./src/ publishpress-authors.php --colors"
   },
   "extra": {
-    "plugin-name": "PublishPress Authors",
+    "plugin-name": "publishpress-authors",
     "plugin-slug": "publishpress-authors",
     "plugin-folder": "publishpress-authors",
     "version-constant": "PP_AUTHORS_VERSION",
