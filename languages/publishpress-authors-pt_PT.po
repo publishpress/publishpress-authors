@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-15T01:06:13+00:00\n"
-"PO-Revision-Date: 2026-04-16 12:07+0000\n"
+"PO-Revision-Date: 2026-04-20 09:51+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "Language: pt_PT\n"
@@ -32,6 +32,15 @@ msgstr "https://wordpress.org/plugins/publishpress-authors/"
 #: src/modules/multiple-authors/multiple-authors.php:75
 #: src/modules/multiple-authors/multiple-authors.php:79
 #. Description of the plugin
+msgid ""
+"PublishPress Authors allows you to add multiple authors and guest authors "
+"to WordPress posts"
+msgstr ""
+"PublishPress Authors permite adicionar múltiplos autores e autores "
+"convidados a posts do WordPress"
+
+#: publishpress-authors.php:11
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublicarPress"
 
@@ -42,6 +51,21 @@ msgstr "https://publishpress.com"
 
 #: includes.php:39
 #, php-format
+msgid ""
+"You're using PublishPress Authors Free. The Pro version has more features "
+"and support. %sUpgrade to Pro%s"
+msgstr ""
+"Você está a usar o PublishPress Authors Free. A versão Pro tem mais "
+"funcionalidades e suporte. %sFaça upgrade para Pro%s"
+
+#: includes.php:63
+#: src/modules/author-boxes/author-boxes.php:3042
+#: src/modules/author-categories/author-categories.php:672
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:521
+#: src/modules/author-custom-fields/author-custom-fields.php:995
+#: src/modules/author-custom-fields/author-custom-fields.php:1048
+#: src/modules/author-list/author-list.php:1260
+#: src/modules/author-list/author-list.php:1298
 msgid "Upgrade to Pro"
 msgstr "Atualizar para Pro"
 
@@ -219,6 +243,24 @@ msgid "You cannot edit an author profile linked to an administrator account."
 msgstr "Não pode editar um perfil de autor ligado a uma conta de administrador."
 
 #: src/core/Classes/Admin_Ajax.php:359
+msgid ""
+"You do not have permission to edit this author profile because it is linked "
+"to a user account you do not have permission to edit."
+msgstr ""
+"Você não tem permissão para editar este perfil de autor porque está ligado "
+"a uma conta de utilizador que você não tem permissão para editar."
+
+#: src/core/Classes/Admin_Ajax.php:374
+#: src/core/Classes/Author_Editor.php:1008
+msgid ""
+"Sorry, this WordPress user is already mapped to another Author. By default, "
+"each user can only be connected to one Author profile."
+msgstr ""
+"Desculpe, este utilizador do WordPress já está mapeado para outro Autor. "
+"Por padrão, cada utilizador pode estar ligado a apenas um perfil de Autor."
+
+#: src/core/Classes/Admin_Ajax.php:386
+#: src/core/Classes/Author_Editor.php:1100
 msgid "Registered User is required."
 msgstr "Utilizador Registado é obrigatório."
 
@@ -235,6 +277,15 @@ msgid "Author name is required"
 msgstr "O nome do autor é obrigatório"
 
 #: src/core/Classes/Authors_Iterator.php:55
+msgid ""
+"No post ID provided for Authors_Iterator constructor. Are you not in a loop "
+"or is $post not set?"
+msgstr ""
+"Nenhum ID de post fornecido para o construtor Authors_Iterator. Você não "
+"está em um loop ou $post não está definido?"
+
+#: src/core/Classes/Author_Editor.php:47
+#: src/core/Plugin.php:1618
 msgid "Display name publicly as"
 msgstr "Mostrar nome publicamente como"
 
@@ -322,6 +373,14 @@ msgstr "Avatar Padrão"
 
 #: src/core/Classes/Author_Editor.php:391
 #, php-format
+msgid ""
+"(Uses the %1s Email field %2s to find the Gravatar account if default "
+"avatar is not uploaded in Authors Settings)"
+msgstr ""
+"(Utiliza o campo %1s Email %2s para encontrar a conta Gravatar se o avatar "
+"padrão não estiver carregado nas Configurações de Autores)"
+
+#: src/core/Classes/Author_Editor.php:399
 msgid "Custom image"
 msgstr "Imagem personalizada"
 
@@ -336,6 +395,14 @@ msgid "Author Category"
 msgstr "Categoria do Autor"
 
 #: src/core/Classes/Author_Editor.php:411
+msgid ""
+"Select the default Category for this Author. This will be used when the "
+"Author is added to new posts."
+msgstr ""
+"Selecione a Categoria padrão para este Autor. Esta será utilizada quando o "
+"Autor for adicionado a novos posts."
+
+#: src/core/Classes/Author_Editor.php:418
 msgid "Do not show this profile publicly"
 msgstr "Não mostrar este perfil publicamente"
 
@@ -356,6 +423,34 @@ msgid "Select a user"
 msgstr "Selecionar um utilizador"
 
 #: src/core/Classes/Author_Editor.php:783
+msgid ""
+"Create an author profile for a current user account. You can select users "
+"who are allowed to edit posts. This user will be able to update their "
+"profile."
+msgstr ""
+"Crie um perfil de autor para uma conta de utilizador atual. Você pode "
+"selecionar utilizadores que têm permissão para editar posts. Este "
+"utilizador poderá atualizar o seu perfil."
+
+#: src/core/Classes/Author_Editor.php:789
+msgid ""
+"Create an author profile and a linked user account. This account will be in "
+"the \"Guest Author\" role and will not be able to login to the WordPress "
+"dashboard or update their profile."
+msgstr ""
+"Crie um perfil de autor e uma conta de utilizador ligada. Esta conta estará "
+"no papel de \"Autor Convidado\" e não poderá fazer login no dashboard do "
+"WordPress ou atualizar o seu perfil."
+
+#: src/core/Classes/Author_Editor.php:796
+msgid ""
+"Create an author profile with no linked user account. This option is "
+"lightweight but may have compatibility issues with other themes and plugins."
+msgstr ""
+"Crie um perfil de autor sem conta de utilizador ligada. Esta opção é leve, "
+"mas pode ter problemas de compatibilidade com outros temas e plugins."
+
+#: src/core/Classes/Author_Editor.php:815
 msgid "Author Email"
 msgstr "Email do Autor"
 
@@ -472,6 +567,17 @@ msgid "Search for an author"
 msgstr "Procurar um autor"
 
 #: src/core/Classes/Post_Editor.php:466
+msgid ""
+"This option is showing because you do not have a WordPress user selected as "
+"an author. For some tasks, it can be helpful to have a user selected here. "
+"This user will not be visible on the front of your site."
+msgstr ""
+"Esta opção está a ser exibida porque você não tem um utilizador do "
+"WordPress selecionado como autor. Para algumas tarefas, pode ser útil ter "
+"um utilizador selecionado aqui. Este utilizador não será visível na parte "
+"frontal do seu site."
+
+#: src/core/Classes/Post_Editor.php:474
 msgid "Search for an user"
 msgstr "Procurar um utilizador"
 
@@ -615,6 +721,24 @@ msgid "Edit My Author Profile"
 msgstr "Editar o Meu Perfil de Autor"
 
 #: src/core/Plugin.php:532
+msgid ""
+"This name is used in several default displays and some search engine "
+"integrations."
+msgstr ""
+"Este nome é utilizado em várias exibições padrão e algumas integrações de "
+"motores de busca."
+
+#: src/core/Plugin.php:537
+msgid ""
+"This forms part of the URL for the author’s profile page. If you choose a "
+"Mapped User, this URL is taken from the user’s account and can not be "
+"changed."
+msgstr ""
+"Isto faz parte da URL para a página de perfil do autor. Se você escolher um "
+"Utilizador Mapeado, esta URL é retirada da conta do utilizador e não pode "
+"ser alterada."
+
+#: src/core/Plugin.php:573
 msgid "Search Authors"
 msgstr "Procurar Autores"
 
@@ -712,6 +836,30 @@ msgid "Click to change this author, or drag to change their position"
 msgstr "Clique para alterar este autor, ou arraste para mudar a sua posição"
 
 #: src/core/Plugin.php:1628
+msgid ""
+"Click on an author to change them. Drag to change their order. Click on "
+"<strong>Remove</strong> to remove them."
+msgstr ""
+"Clique em um autor para alterá-lo. Arraste para mudar a sua ordem. Clique "
+"em <strong>Remover</strong> para removê-lo."
+
+#: src/core/Plugin.php:1632
+msgid ""
+"Are you sure you want to delete the authors profiles mapped to users? This "
+"action can't be undone."
+msgstr ""
+"Tem certeza de que deseja excluir os perfis de autores mapeados para "
+"utilizadores? Esta ação não pode ser desfeita."
+
+#: src/core/Plugin.php:1636
+msgid ""
+"Are you sure you want to delete the guest authors profiles? This action "
+"can't be undone."
+msgstr ""
+"Tem certeza de que deseja excluir os perfis de autores convidados? Esta "
+"ação não pode ser desfeita."
+
+#: src/core/Plugin.php:1640
 msgid "Are you sure you want to create author profiles for the missed post authors?"
 msgstr ""
 "Tem a certeza de que deseja criar perfis de autor para os autores das "
@@ -1199,6 +1347,15 @@ msgid "Export Editor Settings"
 msgstr "Exportar Definições do Editor"
 
 #: src/modules/author-boxes/author-boxes.php:2609
+msgid ""
+"You can use this data to export your author box design and import it to a "
+"new site."
+msgstr ""
+"Você pode usar estes dados para exportar o design da sua caixa de autor e "
+"importá-lo para um novo site."
+
+#: src/modules/author-boxes/author-boxes.php:2619
+#: src/modules/author-boxes/author-boxes.php:2690
 msgid "Copy to Clipboard"
 msgstr "Copiar para a Área de Transferência"
 
@@ -1233,10 +1390,46 @@ msgid "How to generate and use a theme template file"
 msgstr "Como gerar e usar um ficheiro modelo de tema"
 
 #: src/modules/author-boxes/author-boxes.php:2651
+msgid ""
+"Click the \"Generate Template\" button under the text area. Wait for the "
+"code to be generated."
+msgstr ""
+"Clique no botão \"Gerar Modelo\" debaixo da área de texto. Aguarde enquanto "
+"o código é gerado."
+
+#: src/modules/author-boxes/author-boxes.php:2652
+#, php-format
+msgid ""
+"Create an empty php template file with your desired file slug in the %1s "
+"/publishpress-authors/author-boxes/ %2s folder of your theme. %3s For "
+"example, the file can be located here: %4s "
+"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
+"my-first-custom-author-template.php %7s ."
+msgstr ""
+"Crie um arquivo de modelo php vazio com o slug desejado no diretório "
+"%1s/publishpress-authors/author-boxes/%2s do seu tema. %3s Por exemplo, o "
+"arquivo pode estar localizado aqui: "
+"%4s/wp-content/themes/%5sseu-nome-de-tema%6s/publishpress-authors/author-"
+"boxes/meu-primeiro-modelo-de-autor-personalizado.php %7s ."
+
+#: src/modules/author-boxes/author-boxes.php:2653
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "Copie o código gerado e cole-o dentro do ficheiro recém-criado."
 
 #: src/modules/author-boxes/author-boxes.php:2654
+msgid ""
+"Congratulations. Your can now choose your template inside the PublishPress "
+"Authors Settings."
+msgstr ""
+"Parabéns. Agora você pode escolher o seu modelo nas Configurações do "
+"PublishPress Authors."
+
+#: src/modules/author-boxes/author-boxes.php:2658
+#, php-format
+msgid "You can read more information on the %s."
+msgstr "Pode ler mais informações sobre o %s."
+
+#: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"
 msgstr "página de documentação"
 
@@ -1253,6 +1446,14 @@ msgid "Reorder Fields"
 msgstr "Reordenar Campos"
 
 #: src/modules/author-boxes/author-boxes.php:2748
+msgid ""
+"Reorder the fields by dragging them to the correct position and saving your "
+"changes."
+msgstr ""
+"Reordene os campos arrastando-os para a posição correta e salvando as suas "
+"alterações."
+
+#: src/modules/author-boxes/author-boxes.php:2762
 msgid "Save for Current Author Box"
 msgstr "Guardar para a Caixa de Autor Atual"
 
@@ -1285,6 +1486,14 @@ msgid "New Author Categories Box"
 msgstr "Nova Caixa de Categorias de Autor"
 
 #: src/modules/author-boxes/author-boxes.php:3037
+msgid ""
+"PublishPress Authors Pro allows you to unlock the full potential of Author "
+"Categories."
+msgstr ""
+"A PublishPress Authors Pro permite desbloquear todo o potencial das "
+"Categorias de Autor."
+
+#: src/modules/author-boxes/author-boxes.php:3039
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr ""
 "Pode criar Caixas de Autor onde os Autores são agrupados nas suas "
@@ -1319,6 +1528,14 @@ msgstr "Não tem permissão para realizar esta ação"
 
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:67
 #, php-format
+msgid ""
+"Field Order updated. %1sClick here%2s to reload this page to see new order "
+"changes."
+msgstr ""
+"Ordem dos campos atualizada. %1$sClique aqui%2$s para recarregar esta "
+"página e ver as novas alterações de ordem."
+
+#: src/modules/author-boxes/classes/AuthorBoxesDefault.php:28
 msgid "Boxed"
 msgstr "Caixa"
 
@@ -1975,6 +2192,14 @@ msgid "Custom \"View All Posts\" Link"
 msgstr "Link Personalizado \"Ver Todas as Publicações\""
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:449
+msgid ""
+"Enter a custom URL for the \"View All Posts\" link. Leave empty to use the "
+"default author posts page."
+msgstr ""
+"Insira uma URL personalizada para o link \"Ver Todos os Posts\". Deixe "
+"vazio para usar a página de posts do autor por defeito."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:453
 msgid "View All Posts Link Size"
 msgstr "Tamanho do Link Ver Todos os Posts"
 
@@ -2033,6 +2258,14 @@ msgid "Author Category Layout"
 msgstr "Layout da Categoria de Autor"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:607
+msgid ""
+"Selecting an option here will overwrite author boxes settings to match "
+"selected layout."
+msgstr ""
+"Selecionar uma opção aqui irá sobrescrever as configurações das caixas de "
+"autor para corresponder ao layout selecionado."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:612
 msgid "Built-in Layout"
 msgstr "Layout Integrado"
 
@@ -2127,10 +2360,26 @@ msgid "Author Category Group Title Prefix"
 msgstr "Prefixo do Título do Grupo de Categoria de Autor"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:714
+msgid ""
+"Enter the text that should be added before group title. This field accepts "
+"basic HTML."
+msgstr ""
+"Insira o texto que deverá ser adicionado antes do título do grupo. Este "
+"campo aceita HTML básico."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:721
 msgid "Author Category Group Title Suffix"
 msgstr "Sufixo do Título do Grupo de Categoria do Autor"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:722
+msgid ""
+"Enter the text that should be added after group title. This field accepts "
+"basic HTML."
+msgstr ""
+"Insira o texto que deverá ser adicionado após o título do grupo. Este campo "
+"aceita HTML básico."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:729
 msgid "Author Category Group Font Size"
 msgstr "Tamanho da Fonte do Grupo de Categoria do Autor"
 
@@ -2173,6 +2422,16 @@ msgid "%1s HTML Tag"
 msgstr "%1s Tag HTML"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:821
+msgid ""
+"'span' will display as an inline element and 'div' will display as a block "
+"element. To make this display into a link, select 'link' and enter the "
+"first part of the URL into the 'Prefix' field."
+msgstr ""
+"'span' será exibido como um elemento em linha e 'div' será exibido como um "
+"elemento de bloco. Para fazer com que isto seja exibido como um link, "
+"selecione 'link' e insira a primeira parte da URL no campo 'Prefixo'."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:828, fuzzy
 msgid "link"
 msgstr "link"
 
@@ -2182,6 +2441,15 @@ msgid "%1s Value Prefix"
 msgstr "%1s Prefixo do Valor"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
+msgid ""
+"This is useful when linking to an email, URL, or phone number. For example, "
+"'mailto:', 'https://' or 'tel:' can be added as the prefix."
+msgstr ""
+"Isto é útil ao ligar a um email, URL ou número de telefone. Por exemplo, "
+"'mailto:', 'https://' ou 'tel:' podem ser adicionados como prefixo."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:851
+#, php-format
 msgid "%1s Display"
 msgstr "%1s Exibição"
 
@@ -2383,6 +2651,14 @@ msgid "Recent Post Types"
 msgstr "Tipos de Publicações Recentes"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1259
+msgid ""
+"Select post types to include in recent posts. Leave empty to show all post "
+"types."
+msgstr ""
+"Selecione os tipos de postagens a incluir nas postagens recentes. Deixe "
+"vazio para mostrar todos os tipos de postagens."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
 msgid "Select post types..."
 msgstr "Selecionar tipos de publicações..."
 
@@ -2488,18 +2764,50 @@ msgid "Author inline display"
 msgstr "Exibição de autor em linha"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1468
+msgid ""
+"This will display author in an inline format side by side instead of block "
+"format."
+msgstr ""
+"Isto irá exibir o autor em um formato em linha lado a lado em vez de "
+"formato de bloco."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1475
 msgid "Author Row Prefix"
 msgstr "Prefixo da Linha do Autor"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1476
+msgid ""
+"Enter the text that should be added before authors. This field accepts "
+"basic HTML."
+msgstr ""
+"Insira o texto que deverá ser adicionado antes dos autores. Este campo "
+"aceita HTML básico."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1483
 msgid "Author Row Suffix"
 msgstr "Sufixo da Linha do Autor"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1484
+msgid ""
+"Enter the text that should be added after authors. This field accepts basic "
+"HTML."
+msgstr ""
+"Insira o texto que deverá ser adicionado após os autores. Este campo aceita "
+"HTML básico."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1491
 msgid "Author Separator"
 msgstr "Separador de Autor"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1492
+msgid ""
+"You can specify a separator such as ',' to separate authors. This field "
+"accepts basic HTML."
+msgstr ""
+"Pode especificar um separador, como ',', para separar os autores. Este "
+"campo aceita HTML básico."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1499
 msgid "Author Box Margin Top"
 msgstr "Margem Superior da Caixa do Autor"
 
@@ -2682,6 +2990,18 @@ msgstr "Propriedade do Esquema"
 #: src/modules/author-categories/author-categories.php:622
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
 #, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+"Exemplo: quando este valor é definido como reviewedBy, todos os "
+"utilizadores desta categoria serão adicionados à propriedade reviewedBy do "
+"post. Pode ler mais %1$s neste guia.%2$s"
+
+#: src/modules/author-categories/author-categories.php:634
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:79
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:486
 msgid "Post Types"
 msgstr "Tipos de Postagem"
 
@@ -2691,6 +3011,16 @@ msgid "Select Post Type..."
 msgstr "Selecionar Tipo de Postagem..."
 
 #: src/modules/author-categories/author-categories.php:678
+msgid ""
+"Select which post types this category applies to. Leave empty for all post "
+"types."
+msgstr ""
+"Selecione quais os tipos de postagens a que esta categoria se aplica. Deixe "
+"vazio para todos os tipos de postagens."
+
+#: src/modules/author-categories/author-categories.php:683
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:81
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:531
 msgid "Enable Category"
 msgstr "Ativar Categoria"
 
@@ -2843,6 +3173,14 @@ msgid "Field Slug"
 msgstr "Slug do Campo"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:387
+msgid ""
+"The slug is used in code to reference this author field. It is all "
+"lowercase and contains only letters, numbers, and hyphens."
+msgstr ""
+"O slug é usado no código para referenciar este campo de autor. É tudo em "
+"minúsculas e contém apenas letras, números e hífens."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:396
 msgid "Field Type"
 msgstr "Tipo de Campo"
 
@@ -2851,6 +3189,23 @@ msgid "Social Profile?"
 msgstr "Perfil Social?"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:409
+msgid ""
+"This feature will add the SameAs property to this link so that search "
+"engines realize that the social profile is connected to this author."
+msgstr ""
+"Esta funcionalidade irá adicionar a propriedade SameAs a este link para que "
+"os motores de busca percebam que o perfil social está ligado a este autor."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:422
+#, php-format
+msgid ""
+"Add a Schema.org property to this field. Examples include alumniOf, "
+"worksFor, and birthPlace. %1$sClick here for documentation.%2$s"
+msgstr ""
+"Adicione uma propriedade Schema.org a este campo. Exemplos incluem "
+"alumniOf, worksFor e birthPlace. %1$sClique aqui para a documentação.%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:434
 msgid "Show in REST API"
 msgstr "Mostrar na API REST"
 
@@ -2884,6 +3239,14 @@ msgid "Description"
 msgstr "Descrição"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:482
+msgid ""
+"This description appears under the fields and helps users understand their "
+"choice."
+msgstr ""
+"Esta descrição aparece sob os campos e ajuda os utilizadores a entender a "
+"sua escolha."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:801
 msgid "Status"
 msgstr "Estado"
 
@@ -2897,6 +3260,14 @@ msgstr "Título do Trabalho"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:992
 #: src/modules/author-custom-fields/author-custom-fields.php:1047
+msgid ""
+"With PublishPress Authors Pro, you can add new fields for social networks "
+"and more."
+msgstr ""
+"Com o PublishPress Authors Pro, pode adicionar novos campos para redes "
+"sociais e muito mais."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:1111
 msgid "Field Order updated."
 msgstr "Ordem do Campo atualizada."
 
@@ -3045,6 +3416,15 @@ msgid "Show Authors"
 msgstr "Mostrar Autores"
 
 #: src/modules/author-list/author-list.php:438
+msgid ""
+"Select an option to limit the results to selected user roles, author types, "
+"specific authors or author Categories."
+msgstr ""
+"Selecione uma opção para limitar os resultados a funções de utilizador "
+"selecionadas, tipos de autor, autores específicos ou categorias de autor."
+
+#: src/modules/author-list/author-list.php:441
+#: src/modules/author-list/author-list.php:455
 msgid "Roles"
 msgstr "Funções"
 
@@ -3053,6 +3433,14 @@ msgid "Exclude Authors"
 msgstr "Excluir Autores"
 
 #: src/modules/author-list/author-list.php:452
+msgid ""
+"Select an option to exclude selected user roles, author types, specific "
+"authors or author Categories from Author list."
+msgstr ""
+"Selecione uma opção para excluir funções de utilizador selecionadas, tipos "
+"de autor, autores específicos ou categorias de autor da lista de autores."
+
+#: src/modules/author-list/author-list.php:468
 msgid "Authors Per Page"
 msgstr "Autores Por Página"
 
@@ -3065,10 +3453,28 @@ msgid "Show Empty"
 msgstr "Mostrar Vazio"
 
 #: src/modules/author-list/author-list.php:480
+msgid ""
+"Enable this option to show all authors, including those without any posts. "
+"Disable this option to show only authors who are assigned to posts."
+msgstr ""
+"Ative esta opção para mostrar todos os autores, incluindo aqueles sem "
+"publicações. Desative esta opção para mostrar apenas autores que estão "
+"atribuídos a publicações."
+
+#: src/modules/author-list/author-list.php:488
 msgid "Configure Author List Options"
 msgstr "Configurar Opções da Lista de Autores"
 
 #: src/modules/author-list/author-list.php:489
+msgid ""
+"Authors Pro allows you to add extra features to the Authors List. These "
+"features include pagination, choose the order of authors, and much more."
+msgstr ""
+"O Authors Pro permite-lhe adicionar funcionalidades extras à Lista de "
+"Autores. Estas funcionalidades incluem paginação, escolher a ordem dos "
+"autores e muito mais."
+
+#: src/modules/author-list/author-list.php:494
 msgid "Order By"
 msgstr "Ordenar Por"
 
@@ -3077,6 +3483,16 @@ msgid "Last Article Date"
 msgstr "Data do Último Artigo"
 
 #: src/modules/author-list/author-list.php:523
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific time. This option accepts date values such as 1 week ago, 1 month "
+"ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"Pode limitar a lista de autores a utilizadores com uma publicação publicada "
+"dentro de um período específico. Esta opção aceita valores de data como 1 "
+"semana atrás, 1 mês atrás, 6 meses atrás, 1 ano atrás, etc."
+
+#: src/modules/author-list/author-list.php:535
 msgid "Show Search Box"
 msgstr "Mostrar Caixa de Pesquisa"
 
@@ -3085,10 +3501,27 @@ msgid "Add Search Box to Author Lists"
 msgstr "Adicionar Caixa de Pesquisa às Listas de Autores"
 
 #: src/modules/author-list/author-list.php:545
+msgid ""
+"Author Pro allows you to add a search box to the Authors List. You can also "
+"show a dropdown menu that allows users to search on specific author fields."
+msgstr ""
+"O Author Pro permite-lhe adicionar uma caixa de pesquisa à Lista de "
+"Autores. Também pode mostrar um menu dropdown que permite aos utilizadores "
+"pesquisar em campos específicos de autor."
+
+#: src/modules/author-list/author-list.php:550
 msgid "Search Field Dropdown"
 msgstr "Menu Suspenso do Campo de Pesquisa"
 
 #: src/modules/author-list/author-list.php:551
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields."
+msgstr ""
+"Também pode mostrar um menu dropdown que permite aos utilizadores pesquisar "
+"em campos específicos de autor."
+
+#: src/modules/author-list/author-list.php:600
 msgid "Author Recent List"
 msgstr "Lista Recente de Autores"
 
@@ -3133,6 +3566,14 @@ msgid "Select Author Category"
 msgstr "Selecionar Categoria de Autor"
 
 #: src/modules/author-list/author-list.php:1282
+msgid ""
+"This is a quick preview of this Author List. Test on frontend pages to see "
+"exactly how it looks with your theme."
+msgstr ""
+"Esta é uma pré-visualização rápida desta Lista de Autores. Teste nas "
+"páginas do frontend para ver exatamente como fica com o seu tema."
+
+#: src/modules/author-list/author-list.php:1380
 msgid "Invalid form"
 msgstr "Formulário inválido"
 
@@ -3367,6 +3808,14 @@ msgid "Showcase your Authors with PublishPress Blocks"
 msgstr "Destaque os seus Autores com os PublishPress Blocks"
 
 #: src/modules/modules-settings/modules-settings.php:318
+msgid ""
+"PublishPress Blocks is a free plugin with full support for PublishPress "
+"Authors."
+msgstr ""
+"O PublishPress Blocks é um plugin gratuito com suporte total para o "
+"PublishPress Authors."
+
+#: src/modules/modules-settings/modules-settings.php:319
 msgid "Install this plugin to showcase content by your Authors."
 msgstr "Instale este plugin para destacar o conteúdo dos seus Autores."
 
@@ -3377,6 +3826,14 @@ msgstr ""
 "muitos layouts bonitos."
 
 #: src/modules/modules-settings/modules-settings.php:321
+msgid ""
+"PublishPress Blocks has over 20 extra Gutenberg blocks including "
+"accordions, galleries, tables, and more."
+msgstr ""
+"O PublishPress Blocks tem mais de 20 blocos Gutenberg adicionais, incluindo "
+"acordeões, galerias, tabelas e muito mais."
+
+#: src/modules/modules-settings/modules-settings.php:324
 msgid "Click here to install PublishPress Blocks"
 msgstr "Clique aqui para instalar os PublishPress Blocks"
 
@@ -3417,6 +3874,17 @@ msgid "Copy Molongui Authorship Data"
 msgstr "Copiar Dados da Autoria Molongui"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:153
+msgid ""
+"This action will copy the authors from the plugin Molongui Authorship "
+"allowing you to migrate to PublishPress Authors without losing any data "
+"including post author relation. This action can be run multiple times."
+msgstr ""
+"Esta ação irá copiar os autores do plugin Molongui Authorship "
+"permitindo-lhe migrar para o PublishPress Authors sem perder dados, "
+"incluindo a relação de autor de publicação. Esta ação pode ser executada "
+"várias vezes."
+
+#: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:187
 msgid "It looks like you have Molongui Authorship installed."
 msgstr "Parece que tem a Autoria Molongui instalada."
 
@@ -3639,6 +4107,14 @@ msgstr "Caixa de Autor em layout legado em lista simples:"
 #: src/modules/multiple-authors/multiple-authors.php:1265
 #: src/modules/settings/settings.php:275
 #, php-format
+msgid ""
+"Disabled because add_post_type_support('%1$s', '%2$s') is included in a "
+"loaded file."
+msgstr ""
+"Desativado porque add_post_type_support('%1$s', '%2$s') está incluído em um "
+"arquivo carregado."
+
+#: src/modules/multiple-authors/multiple-authors.php:1284
 msgid "This will display the authors box at the top of the content."
 msgstr "Isto irá mostrar a caixa de autores no topo do conteúdo."
 
@@ -3665,16 +4141,245 @@ msgid "Authors Box"
 msgstr "Caixa de Autores"
 
 #: src/modules/multiple-authors/multiple-authors.php:1409
+msgid ""
+"With this shortcode you can display the author box in any part of the "
+"content. "
+msgstr ""
+"Com este shortcode, pode exibir a caixa de autor em qualquer parte do "
+"conteúdo. "
+
+#: src/modules/multiple-authors/multiple-authors.php:1417
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s."
+msgstr ""
+"Pode especificar o layout utilizando o slug do layout da caixa de autor. "
+"Pode ver todos os detalhes de cada opção de layout %1$s neste guia %2$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1428
+#, php-format
+msgid ""
+"You can also decide whether or not to show the main title, using %1$s or "
+"%2$s ."
+msgstr ""
+"Pode também decidir se deseja ou não mostrar o título principal, usando "
+"%1$s ou %2$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1438
+#: src/modules/multiple-authors/multiple-authors.php:1522
+msgid ""
+"You can load the authors for a specific post, even if you are not in that "
+"post currently. For example, this shortcode will load the authors for the "
+"post with the ID of 32."
+msgstr ""
+"Pode carregar os autores para uma publicação específica, mesmo que não "
+"esteja atualmente nessa publicação. Por exemplo, este shortcode irá "
+"carregar os autores para a publicação com o ID de 32."
+
+#: src/modules/multiple-authors/multiple-authors.php:1445
+msgid ""
+"You can load the authors for a specific user by providing the user id. For "
+"example, this shortcode will load the author with user id of 32"
+msgstr ""
+"Pode carregar os autores para um utilizador específico fornecendo o ID do "
+"utilizador. Por exemplo, este shortcode irá carregar o autor com o ID do "
+"utilizador 32."
+
+#: src/modules/multiple-authors/multiple-authors.php:1452
+msgid ""
+"You can load the authors for a specific author by providing the author term "
+"id for both guest and user author. For example, this shortcode will load "
+"the author with term id of 32"
+msgstr ""
+"Pode carregar os autores para um autor específico fornecendo o ID do termo "
+"do autor tanto para autor convidado como para autor utilizador. Por "
+"exemplo, este shortcode irá carregar o autor com o ID do termo 32."
+
+#: src/modules/multiple-authors/multiple-authors.php:1460
+#, php-format
+msgid ""
+"If you are having problems showing PublishPress Authors on author profile "
+"pages, you can use this shortcode below. The argument %s forces the plugin "
+"to retrieve the Author from the profile page and not any other posts on the "
+"same screen."
+msgstr ""
+"Se está a ter problemas em mostrar os autores do PublishPress nas páginas "
+"de perfil dos autores, pode usar este shortcode abaixo. O argumento %s "
+"obriga o plugin a recuperar o Autor da página de perfil e não de outros "
+"posts na mesma ecrã."
+
+#: src/modules/multiple-authors/multiple-authors.php:1470
+#, php-format
+msgid ""
+"There is one final option to mention. This is mostly useful if you're using "
+"a theme or page builder to customize the Author profile pages you find at "
+"URLs such as /author/username/. You can use the following shortcode on the "
+"authors page to display the profile of the current author. You just need to "
+"add the parameter %s."
+msgstr ""
+"Há uma opção final a mencionar. Isto é maioritariamente útil se estiver a "
+"usar um tema ou construtor de páginas para personalizar as páginas de "
+"perfil dos autores que encontra em URLs como /author/username/. Pode usar o "
+"seguinte shortcode na página dos autores para mostrar o perfil do autor "
+"atual. Só precisa de adicionar o parâmetro %s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1479
+msgid ""
+"You can load the authors belonging to a specific author categories by "
+"providing the category slug or slugs separated by comma for more than one "
+"category."
+msgstr ""
+"Pode carregar os autores pertencentes a uma categoria específica de autores "
+"fornecendo o slug da categoria ou slugs separados por vírgula para mais de "
+"uma categoria."
+
+#: src/modules/multiple-authors/multiple-authors.php:1489
 msgid "Authors Data"
 msgstr "Dados dos Autores"
 
 #: src/modules/multiple-authors/multiple-authors.php:1490
+msgid ""
+"With this shortcode you can display the author names or any profile field "
+"in any part of the content."
+msgstr ""
+"Com este shortcode pode mostrar os nomes dos autores ou qualquer campo de "
+"perfil em qualquer parte do conteúdo."
+
+#: src/modules/multiple-authors/multiple-authors.php:1498
+#, php-format
+msgid ""
+"The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s "
+"%4$s %5$s %6$s %7$s. You can see full details and parameters %8$s in this "
+"guide %9$s."
+msgstr ""
+"O shortcode de dados dos autores aceita parâmetros de campo como: %1$s %2$s "
+"%3$s %4$s %5$s %6$s %7$s. Pode ver todos os detalhes e parâmetros %8$s "
+"neste guia %9$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1515
 msgid "You can also specify the separator to be used for mulitple authors data."
 msgstr ""
 "Também pode especificar o separador a ser utilizado para os dados de "
 "múltiplos autores."
 
 #: src/modules/multiple-authors/multiple-authors.php:1529
+msgid ""
+"You can retrieve a specific author by providing the author's term ID. For "
+"example, this shortcode will load the author with the term ID of 102."
+msgstr ""
+"Pode recuperar um autor específico fornecendo o ID do termo do autor. Por "
+"exemplo, este shortcode irá carregar o autor com o ID do termo 102."
+
+#: src/modules/multiple-authors/multiple-authors.php:1537
+#, php-format
+msgid ""
+"You can also decide to return an array list of authors by using "
+"user_objects=\"true\" which will return all the authors object data as an "
+"array. You can check full details and sample usage %2$s in this guide%3$s."
+msgstr ""
+"Pode também decidir retornar uma lista de autores em array usando "
+"user_objects=\"true\" que irá retornar todos os dados dos objetos dos "
+"autores como um array. Pode verificar todos os detalhes e um exemplo de uso "
+"%2$s neste guia%3$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1548
+msgid ""
+"You can retrieve authors belonging to a specific Author Category by "
+"providing the category slug or slugs. Separate multiple slugs with a comma."
+msgstr ""
+"Pode recuperar autores pertencentes a uma Categoria de Autor específica "
+"fornecendo o slug da categoria ou slugs. Separe múltiplos slugs com uma "
+"vírgula."
+
+#: src/modules/multiple-authors/multiple-authors.php:1559
+msgid ""
+"With this shortcode, you can show all the authors together in a single "
+"display."
+msgstr ""
+"Com este shortcode, pode mostrar todos os autores juntos numa única "
+"exibição."
+
+#: src/modules/multiple-authors/multiple-authors.php:1567
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s. %3$s %4$s This "
+"shortcode also provides two custom layouts: %5$s %6$s."
+msgstr ""
+"Pode especificar o layout usando o slug do layout de caixas de autor. Pode "
+"ver todos os detalhes de cada opção de layout %1$s neste guia %2$s. %3$s "
+"%4$s Este shortcode também fornece dois layouts personalizados: %5$s %6$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1582
+#, php-format
+msgid ""
+"You can define the number of layout columns by using %1$s to show authors "
+"in 2 column."
+msgstr ""
+"Pode definir o número de colunas do layout usando %1$s para mostrar autores "
+"em 2 colunas."
+
+#: src/modules/multiple-authors/multiple-authors.php:1592
+#, php-format
+msgid ""
+"You can choose the number of authors per page using %1$s . %2$s Pagination "
+"will be automatically added if required."
+msgstr ""
+"Pode escolher o número de autores por página usando %1$s. %2$s A paginação "
+"será adicionada automaticamente se necessário."
+
+#: src/modules/multiple-authors/multiple-authors.php:1603
+#, php-format
+msgid ""
+"You can limit the result to only authors who are assigned to posts by using "
+"%1$s . %2$s Alternatively, use %3$s to show all authors, including those "
+"without any posts."
+msgstr ""
+"Pode limitar o resultado a apenas autores que estão atribuídos a posts "
+"usando %1$s. %2$s Alternativamente, use %3$s para mostrar todos os autores, "
+"incluindo aqueles sem quaisquer posts."
+
+#: src/modules/multiple-authors/multiple-authors.php:1615
+#, php-format
+msgid ""
+"You can limit the result to only guest authors by using %1$s . %2$s "
+"Alternatively, %3$s will show only authors with a WordPress account."
+msgstr ""
+"Pode limitar o resultado a apenas autores convidados usando %1$s. %2$s "
+"Alternativamente, %3$s mostrará apenas autores com uma conta WordPress."
+
+#: src/modules/multiple-authors/multiple-authors.php:1627
+#, php-format
+msgid ""
+"If you are using the authors_recent layout, you can define the number of "
+"columns by using %1$s ."
+msgstr ""
+"Se estiver a usar o layout authors_recent, pode definir o número de colunas "
+"usando %1$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1637
+#, php-format
+msgid ""
+"For authors_index layout, you can group user by profile field by using %1$s "
+"."
+msgstr ""
+"Para o layout authors_index, pode agrupar os utilizadores por campo de "
+"perfil usando %1$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1647
+#, php-format
+msgid ""
+"To order the results based on post count, use %1$s . To order the results "
+"by name, use %2$s . Alternatively, you can order by profile fields like "
+"%3$s, %4$s etc"
+msgstr ""
+"Para ordenar os resultados com base no número de posts, use %1$s. Para "
+"ordenar os resultados por nome, use %2$s. Alternativamente, pode ordenar "
+"por campos de perfil como %3$s, %4$s, etc."
+
+#: src/modules/multiple-authors/multiple-authors.php:1660
+#, php-format
 msgid "To further customize the order of results, use %1$s or %2$s ."
 msgstr "Para personalizar ainda mais a ordem dos resultados, use %1$s ou %2$s ."
 
@@ -3685,6 +4390,27 @@ msgstr "Para exibir uma caixa de pesquisa para autores, use %1$s ."
 
 #: src/modules/multiple-authors/multiple-authors.php:1681
 #, php-format
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields. You can add fields to the dropdown using %1$s . This "
+"requires the search box to be active."
+msgstr ""
+"Pode também mostrar um menu dropdown que permite aos utilizadores pesquisar "
+"em campos específicos dos autores. Pode adicionar campos ao dropdown usando "
+"%1$s. Isto requer que a caixa de pesquisa esteja ativa."
+
+#: src/modules/multiple-authors/multiple-authors.php:1691
+#, php-format
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific period using %1$s . This accept english date value like 1 week "
+"ago, 1 month ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"Pode limitar a lista de autores a utilizadores com um post publicado dentro "
+"de um período específico usando %1$s. Isto aceita valores de data em inglês "
+"como há 1 semana, há 1 mês, há 6 meses, há 1 ano, etc."
+
+#: src/modules/multiple-authors/multiple-authors.php:1738
 msgid "Copied!"
 msgstr "Copiado!"
 
@@ -3698,6 +4424,41 @@ msgid "Select roles"
 msgstr "Selecionar funções"
 
 #: src/modules/multiple-authors/multiple-authors.php:1813
+msgid ""
+"Choose which WordPress user roles can be selected using the \"Registered "
+"Author With User Account\" option for author profiles."
+msgstr ""
+"Escolha quais os papéis de utilizador do WordPress que podem ser "
+"selecionados usando a opção \"Autor Registrado com Conta de Utilizador\" "
+"para perfis de autor."
+
+#: src/modules/multiple-authors/multiple-authors.php:1842
+msgid ""
+"Author profiles can be mapped to WordPress user accounts. This option "
+"allows you to automatically create author profiles when users are created "
+"in these roles. You can also do this for existing users by clicking the "
+"\"Create PublishPress Authors Profiles for all users in a role\" button in "
+"the Maintenance tab."
+msgstr ""
+"Os perfis de autor podem ser mapeados para contas de utilizador do "
+"WordPress. Esta opção permite-lhe criar automaticamente perfis de autor "
+"quando os utilizadores são criados nestes papéis. Pode também fazer isto "
+"para utilizadores existentes clicando no botão \"Criar Perfis de Autores "
+"PublishPress para todos os utilizadores em um papel\" na aba de Manutenção."
+
+#: src/modules/multiple-authors/multiple-authors.php:1863
+msgid ""
+"If the Author is mapped to a WordPress user, this will display the authors' "
+"\"Display name\" and their \"Username\". The default is to show only the "
+"\"Display name\". Showing the \"Username\" is useful if you have several "
+"authors with similar names."
+msgstr ""
+"Se o Autor estiver mapeado para um utilizador do WordPress, isto irá "
+"mostrar o \"Nome de exibição\" dos autores e o seu \"Nome de utilizador\". "
+"O padrão é mostrar apenas o \"Nome de exibição\". Mostrar o \"Nome de "
+"utilizador\" é útil se tiver vários autores com nomes semelhantes."
+
+#: src/modules/multiple-authors/multiple-authors.php:1886
 msgid "Allow authors to be created without a real user account."
 msgstr "Permitir que autores sejam criados sem uma conta de utilizador real."
 
@@ -3712,6 +4473,14 @@ msgid "Allow authors to be created without a connected user account."
 msgstr "Permitir que autores sejam criados sem uma conta de utilizador conectada."
 
 #: src/modules/multiple-authors/multiple-authors.php:1956
+msgid ""
+"If enabled, PublishPress Authors will replace the default WordPress author "
+"pages."
+msgstr ""
+"Se ativado, o PublishPress Authors irá substituir as páginas de autor "
+"padrão do WordPress."
+
+#: src/modules/multiple-authors/multiple-authors.php:1961
 msgid "Please note this feature will not work for all themes."
 msgstr "Por favor, note que esta funcionalidade não funcionará para todos os temas."
 
@@ -3745,6 +4514,14 @@ msgid "Last Name First Name"
 msgstr "Último Nome Primeiro Nome"
 
 #: src/modules/multiple-authors/multiple-authors.php:2218
+msgid ""
+"This avatar will be used as default avatar instead of gravatar where no "
+"custom avatar is added to profile."
+msgstr ""
+"Este avatar será utilizado como avatar padrão em vez do gravatar onde "
+"nenhum avatar personalizado é adicionado ao perfil."
+
+#: src/modules/multiple-authors/multiple-authors.php:2240
 msgid "This will display the author bio."
 msgstr "Isto exibirá a biografia do autor."
 
@@ -3782,6 +4559,17 @@ msgid "This will display the excerpt."
 msgstr "Isto exibirá o excerto."
 
 #: src/modules/multiple-authors/multiple-authors.php:2573
+msgid ""
+"This will allows you map a WordPress user to more than one author. Don't "
+"use this feature unless requested to do so by the PublishPress team. This "
+"plugin works better when authors and users are paired one-to-one."
+msgstr ""
+"Isto permitirá mapear um utilizador do WordPress a mais de um autor. Não "
+"use esta funcionalidade a menos que solicitado a fazê-lo pela equipa "
+"PublishPress. Este plugin funciona melhor quando autores e utilizadores "
+"estão pareados um a um."
+
+#: src/modules/multiple-authors/multiple-authors.php:2597
 msgid "This will display the authors."
 msgstr "Isto exibirá os autores."
 
@@ -3816,6 +4604,17 @@ msgid "Search for a fallback author"
 msgstr "Pesquisar por um autor de fallback"
 
 #: src/modules/multiple-authors/multiple-authors.php:2791
+msgid ""
+"If you only have Guest Authors selected for a post, this user may be used "
+"as a fallback. WordPress sometimes requires a WordPress user to be assigned "
+"to each post. This user will not be visible on the front of your site."
+msgstr ""
+"Se apenas tiver Autores Convidados selecionados para uma postagem, este "
+"utilizador pode ser utilizado como uma alternativa. O WordPress às vezes "
+"requer que um utilizador do WordPress seja atribuído a cada postagem. Este "
+"utilizador não será visível na frente do seu site."
+
+#: src/modules/multiple-authors/multiple-authors.php:2809
 msgid "This will display the authors email in the author box."
 msgstr "Isto exibirá o email dos autores na caixa do autor."
 
@@ -3836,6 +4635,19 @@ msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr "Criar Perfis de Autores PublishPress para todos os autores de publicações"
 
 #: src/modules/multiple-authors/multiple-authors.php:2887
+msgid ""
+"If a WordPress user is the author of a post, but does not have a "
+"PublishPress Authors profile, this will automatically create a profile for "
+"them."
+msgstr ""
+"Se um utilizador do WordPress for o autor de uma postagem, mas não tiver um "
+"perfil PublishPress Authors, isto irá criar automaticamente um perfil para "
+"eles."
+
+#: src/modules/multiple-authors/multiple-authors.php:2887
+#: src/modules/multiple-authors/multiple-authors.php:2893
+#: src/modules/multiple-authors/multiple-authors.php:2899
+#: src/modules/multiple-authors/multiple-authors.php:2906
 msgid "Click here for documentation"
 msgstr "Clique aqui para a documentação"
 
@@ -3850,6 +4662,16 @@ msgstr ""
 "função"
 
 #: src/modules/multiple-authors/multiple-authors.php:2893
+msgid ""
+"This will find all the users in a role and create author profiles for them. "
+"You can choose the roles using the \"Automatically create author profiles\" "
+"setting."
+msgstr ""
+"Isto irá encontrar todos os utilizadores em um papel e criar perfis de "
+"autor para eles. Pode escolher os papéis utilizando a configuração \"Criar "
+"automaticamente perfis de autor\"."
+
+#: src/modules/multiple-authors/multiple-authors.php:2894
 msgid "Create PublishPress Authors profiles"
 msgstr "Criar perfis de Autores do PublishPress"
 
@@ -3860,22 +4682,70 @@ msgstr ""
 "utilizador"
 
 #: src/modules/multiple-authors/multiple-authors.php:2899
+msgid ""
+"This will update all the author profiles in PublishPress Authors to match "
+"the default WordPress fields for each user."
+msgstr ""
+"Isto irá atualizar todos os perfis de autor no PublishPress Authors para "
+"corresponder aos campos padrão do WordPress para cada utilizador."
+
+#: src/modules/multiple-authors/multiple-authors.php:2905
 msgid "Synchronize the author and user URLs"
 msgstr "Sincronizar os URLs dos autores e dos utilizadores"
 
 #: src/modules/multiple-authors/multiple-authors.php:2906
+msgid ""
+"This will update all the Author URLs in PublishPress Authors to match the "
+"default WordPress URLs for each user."
+msgstr ""
+"Isto irá atualizar todos os URLs de Autor no PublishPress Authors para "
+"corresponder aos URLs padrão do WordPress para cada utilizador."
+
+#: src/modules/multiple-authors/multiple-authors.php:2912
+#: src/modules/multiple-authors/multiple-authors.php:2914
 msgid "Create Author Categories"
 msgstr "Criar Categorias de Autores"
 
 #: src/modules/multiple-authors/multiple-authors.php:2913
+msgid ""
+"This will create author categories table if missing and add default "
+"categories."
+msgstr ""
+"Isto irá criar uma tabela de categorias de autor se estiver em falta e "
+"adicionar categorias padrão."
+
+#: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "Copy Co-Authors Plus Data"
 msgstr "Copiar Dados do Co-Authors Plus"
 
 #: src/modules/multiple-authors/multiple-authors.php:2927
+msgid ""
+"This action will copy the authors from the plugin Co-Authors Plus allowing "
+"you to migrate to PublishPress Authors without losing any data. This action "
+"can be run multiple times."
+msgstr ""
+"Esta ação irá copiar os autores do plugin Co-Authors Plus permitindo-lhe "
+"migrar para o PublishPress Authors sem perder dados. Esta ação pode ser "
+"executada várias vezes."
+
+#: src/modules/multiple-authors/multiple-authors.php:2937
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr "Eliminar Conexões Entre Perfis de Autor e Utilizadores"
 
 #: src/modules/multiple-authors/multiple-authors.php:2938
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. It will delete all author profiles that are mapped to "
+"a WordPress user account. This will not delete the WordPress user accounts, "
+"but any links between the posts and author profiles will be lost."
+msgstr ""
+"Esta ação pode redefinir os dados do PublishPress Authors antes de usar "
+"outras opções de manutenção. Irá excluir todos os perfis de autor que estão "
+"mapeados para uma conta de utilizador do WordPress. Isto não irá excluir as "
+"contas de utilizador do WordPress, mas quaisquer ligações entre as "
+"postagens e os perfis de autor serão perdidas."
+
+#: src/modules/multiple-authors/multiple-authors.php:2939
 msgid "Delete all authors mapped to users"
 msgstr "Eliminar todos os autores mapeados para utilizadores"
 
@@ -3884,10 +4754,29 @@ msgid "Delete Guest Authors"
 msgstr "Eliminar Autores Convidados"
 
 #: src/modules/multiple-authors/multiple-authors.php:2945
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. Guest authors are author profiles that are not mapped "
+"to a WordPress user account. This action will delete all guest authors."
+msgstr ""
+"Esta ação pode redefinir os dados do PublishPress Authors antes de usar "
+"outras opções de manutenção. Autores convidados são perfis de autor que não "
+"estão mapeados para uma conta de utilizador do WordPress. Esta ação irá "
+"excluir todos os autores convidados."
+
+#: src/modules/multiple-authors/multiple-authors.php:2946
 msgid "Delete all guest authors"
 msgstr "Eliminar todos os autores convidados"
 
 #: src/modules/multiple-authors/multiple-authors.php:2952
+msgid ""
+"Please be careful clicking these buttons. Before clicking, we recommend "
+"taking a site backup in case anything goes wrong."
+msgstr ""
+"Por favor, tenha cuidado ao clicar nestes botões. Antes de clicar, "
+"recomendamos fazer um backup do site caso algo corra mal."
+
+#: src/modules/multiple-authors/multiple-authors.php:3155
 msgid "Author Profiles"
 msgstr "Perfis de Autor"
 
@@ -4171,9 +5060,46 @@ msgstr "Contacto"
 
 #: src/core/Plugin.php:563
 msgctxt "taxonomy general name"
+msgid "Authors"
+msgstr "Autores"
+
+#: src/core/Plugin.php:568
+msgctxt "taxonomy singular name"
+msgid "Author"
+msgstr "Autor"
+
+#: src/modules/author-boxes/author-boxes.php:411
+#, fuzzy, php-format
+msgctxt "Author Box post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-boxes/author-boxes.php:412
+#, fuzzy, php-format
+msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
 #: src/modules/author-boxes/author-boxes.php:427
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:166
+#, fuzzy, php-format
+msgctxt "Custom Field post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:167
+#, fuzzy, php-format
+msgctxt "singular custom field post type name"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:182
+#, fuzzy, php-format
+msgctxt "custom field post type menu name"
+msgid "%2$s"
+msgstr "%2$s"

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-15T01:06:13+00:00\n"
-"PO-Revision-Date: 2026-04-16 12:07+0000\n"
+"PO-Revision-Date: 2026-04-20 09:58+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "Language: zh_CN\n"
@@ -1364,6 +1364,11 @@ msgid ""
 "Congratulations. Your can now choose your template inside the PublishPress "
 "Authors Settings."
 msgstr "恭喜。您现在可以在 PublishPress Authors 设置中选择您的模板。"
+
+#: src/modules/author-boxes/author-boxes.php:2658
+#, php-format
+msgid "You can read more information on the %s."
+msgstr "您可以在 %s 上阅读更多信息。"
 
 #: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"

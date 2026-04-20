@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-02-26 12:05+0000\n"
-"PO-Revision-Date: 2026-04-16 12:06+0000\n"
+"PO-Revision-Date: 2026-04-20 09:38+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
 "|| n % 10 == 6 || n % 10 == 9);\n"
@@ -50,6 +50,15 @@ msgstr "https://wordpress.org/plugins/publishpress-authors/"
 #: src/modules/multiple-authors/multiple-authors.php:75
 #: src/modules/multiple-authors/multiple-authors.php:79
 #. Description of the plugin
+msgid ""
+"PublishPress Authors allows you to add multiple authors and guest authors "
+"to WordPress posts"
+msgstr ""
+"Ang PublishPress Authors ay nagbibigay-daan sa iyo na magdagdag ng maraming "
+"may-akda at mga panauhing may-akda sa mga post ng WordPress"
+
+#: publishpress-authors.php:11
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
@@ -60,6 +69,21 @@ msgstr "https://publishpress.com"
 
 #: includes.php:39
 #, php-format
+msgid ""
+"You're using PublishPress Authors Free. The Pro version has more features "
+"and support. %sUpgrade to Pro%s"
+msgstr ""
+"Gumagamit ka ng PublishPress Authors Free. Ang Pro na bersyon ay may higit "
+"pang mga tampok at suporta. %sMag-upgrade sa Pro%s"
+
+#: includes.php:63
+#: src/modules/author-boxes/author-boxes.php:3042
+#: src/modules/author-categories/author-categories.php:672
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:521
+#: src/modules/author-custom-fields/author-custom-fields.php:995
+#: src/modules/author-custom-fields/author-custom-fields.php:1048
+#: src/modules/author-list/author-list.php:1260
+#: src/modules/author-list/author-list.php:1298
 msgid "Upgrade to Pro"
 msgstr "Mag-upgrade sa Pro"
 
@@ -241,6 +265,25 @@ msgstr ""
 "administrator account."
 
 #: src/core/Classes/Admin_Ajax.php:359
+msgid ""
+"You do not have permission to edit this author profile because it is linked "
+"to a user account you do not have permission to edit."
+msgstr ""
+"Wala kang pahintulot na i-edit ang profile ng may-akdang ito dahil ito ay "
+"naka-link sa isang user account na wala kang pahintulot na i-edit."
+
+#: src/core/Classes/Admin_Ajax.php:374
+#: src/core/Classes/Author_Editor.php:1008
+msgid ""
+"Sorry, this WordPress user is already mapped to another Author. By default, "
+"each user can only be connected to one Author profile."
+msgstr ""
+"Paumanhin, ang user na ito sa WordPress ay naka-map na sa ibang May-akda. "
+"Sa default, bawat user ay maaaring ikonekta lamang sa isang profile ng "
+"May-akda."
+
+#: src/core/Classes/Admin_Ajax.php:386
+#: src/core/Classes/Author_Editor.php:1100
 msgid "Registered User is required."
 msgstr "Kinakailangan ang Naka-rehistrong Gumagamit."
 
@@ -257,6 +300,15 @@ msgid "Author name is required"
 msgstr "Kailangan ang pangalan ng May-Akda"
 
 #: src/core/Classes/Authors_Iterator.php:55
+msgid ""
+"No post ID provided for Authors_Iterator constructor. Are you not in a loop "
+"or is $post not set?"
+msgstr ""
+"Walang post ID na ibinigay para sa Authors_Iterator constructor. Hindi ka "
+"ba nasa loop o naka-set ang $post?"
+
+#: src/core/Classes/Author_Editor.php:47
+#: src/core/Plugin.php:1618
 msgid "Display name publicly as"
 msgstr "I-display ang pangalan nang publiko bilang"
 
@@ -344,6 +396,14 @@ msgstr "Default na Avatar"
 
 #: src/core/Classes/Author_Editor.php:391
 #, php-format
+msgid ""
+"(Uses the %1s Email field %2s to find the Gravatar account if default "
+"avatar is not uploaded in Authors Settings)"
+msgstr ""
+"(Gumagamit ng %1s Email field %2s upang hanapin ang Gravatar account kung "
+"ang default na avatar ay hindi na-upload sa Mga Setting ng May-akda)"
+
+#: src/core/Classes/Author_Editor.php:399
 msgid "Custom image"
 msgstr "Custom na larawan"
 
@@ -358,6 +418,14 @@ msgid "Author Category"
 msgstr "Kategorya ng Author"
 
 #: src/core/Classes/Author_Editor.php:411
+msgid ""
+"Select the default Category for this Author. This will be used when the "
+"Author is added to new posts."
+msgstr ""
+"Pumili ng default na Kategorya para sa May-akdang ito. Ito ay gagamitin "
+"kapag ang May-akda ay idinadagdag sa mga bagong post."
+
+#: src/core/Classes/Author_Editor.php:418
 msgid "Do not show this profile publicly"
 msgstr "Huwag ipakita ang profile na ito sa publiko"
 
@@ -378,6 +446,36 @@ msgid "Select a user"
 msgstr "Pumili ng isang user"
 
 #: src/core/Classes/Author_Editor.php:783
+msgid ""
+"Create an author profile for a current user account. You can select users "
+"who are allowed to edit posts. This user will be able to update their "
+"profile."
+msgstr ""
+"Lumikha ng profile ng may-akda para sa kasalukuyang user account. Maaari "
+"mong piliin ang mga user na pinahihintulutang mag-edit ng mga post. Ang "
+"user na ito ay makakapag-update ng kanilang profile."
+
+#: src/core/Classes/Author_Editor.php:789
+msgid ""
+"Create an author profile and a linked user account. This account will be in "
+"the \"Guest Author\" role and will not be able to login to the WordPress "
+"dashboard or update their profile."
+msgstr ""
+"Lumikha ng profile ng may-akda at isang naka-link na user account. Ang "
+"account na ito ay magiging sa \"Guest Author\" na papel at hindi "
+"makakapag-login sa WordPress dashboard o makakapag-update ng kanilang "
+"profile."
+
+#: src/core/Classes/Author_Editor.php:796
+msgid ""
+"Create an author profile with no linked user account. This option is "
+"lightweight but may have compatibility issues with other themes and plugins."
+msgstr ""
+"Lumikha ng profile ng may-akda na walang naka-link na user account. Ang "
+"pagpipiliang ito ay magaan ngunit maaaring magkaroon ng mga isyu sa "
+"pagkakatugma sa iba pang mga tema at plugin."
+
+#: src/core/Classes/Author_Editor.php:815
 msgid "Author Email"
 msgstr "Email ng May-akda"
 
@@ -494,6 +592,17 @@ msgid "Search for an author"
 msgstr "Maghanap para sa isang may-akda"
 
 #: src/core/Classes/Post_Editor.php:466
+msgid ""
+"This option is showing because you do not have a WordPress user selected as "
+"an author. For some tasks, it can be helpful to have a user selected here. "
+"This user will not be visible on the front of your site."
+msgstr ""
+"Ipinapakita ang pagpipiliang ito dahil wala kang WordPress user na pinili "
+"bilang may-akda. Para sa ilang mga gawain, makakatulong na magkaroon ng "
+"user na pinili dito. Ang user na ito ay hindi makikita sa harapan ng iyong "
+"site."
+
+#: src/core/Classes/Post_Editor.php:474
 msgid "Search for an user"
 msgstr "Maghanap para sa isang user"
 
@@ -639,6 +748,24 @@ msgid "Edit My Author Profile"
 msgstr "I-edit ang Aking Profile ng May-akda"
 
 #: src/core/Plugin.php:532
+msgid ""
+"This name is used in several default displays and some search engine "
+"integrations."
+msgstr ""
+"Ang pangalang ito ay ginagamit sa ilang mga default na display at ilang mga "
+"integrasyon ng search engine."
+
+#: src/core/Plugin.php:537
+msgid ""
+"This forms part of the URL for the author’s profile page. If you choose a "
+"Mapped User, this URL is taken from the user’s account and can not be "
+"changed."
+msgstr ""
+"Bahagi ito ng URL para sa pahina ng profile ng may-akda. Kung pipiliin mo "
+"ang isang Mapped User, ang URL na ito ay kinukuha mula sa account ng user "
+"at hindi maaaring baguhin."
+
+#: src/core/Plugin.php:573
 msgid "Search Authors"
 msgstr "Maghanap ng mga May-akda"
 
@@ -740,6 +867,31 @@ msgstr ""
 "kanilang posisyon"
 
 #: src/core/Plugin.php:1628
+msgid ""
+"Click on an author to change them. Drag to change their order. Click on "
+"<strong>Remove</strong> to remove them."
+msgstr ""
+"I-click ang isang may-akda upang baguhin sila. I-drag upang baguhin ang "
+"kanilang pagkakasunud-sunod. I-click ang <strong>Alisin</strong> upang "
+"alisin sila."
+
+#: src/core/Plugin.php:1632
+msgid ""
+"Are you sure you want to delete the authors profiles mapped to users? This "
+"action can't be undone."
+msgstr ""
+"Sigurado ka bang nais mong tanggalin ang mga profile ng may-akdang naka-map "
+"sa mga user? Ang aksyong ito ay hindi maibabalik."
+
+#: src/core/Plugin.php:1636
+msgid ""
+"Are you sure you want to delete the guest authors profiles? This action "
+"can't be undone."
+msgstr ""
+"Sigurado ka bang nais mong tanggalin ang mga profile ng mga panauhing "
+"may-akda? Ang aksyong ito ay hindi maibabalik."
+
+#: src/core/Plugin.php:1640
 msgid "Are you sure you want to create author profiles for the missed post authors?"
 msgstr ""
 "Sigurado ka bang nais mong lumikha ng mga profile ng may-akda para sa mga "
@@ -1231,6 +1383,15 @@ msgid "Export Editor Settings"
 msgstr "I-export ang Mga Setting ng Editor"
 
 #: src/modules/author-boxes/author-boxes.php:2609
+msgid ""
+"You can use this data to export your author box design and import it to a "
+"new site."
+msgstr ""
+"Maaari mong gamitin ang data na ito upang i-export ang iyong disenyo ng "
+"author box at i-import ito sa isang bagong site."
+
+#: src/modules/author-boxes/author-boxes.php:2619
+#: src/modules/author-boxes/author-boxes.php:2690
 msgid "Copy to Clipboard"
 msgstr "Kopyahin sa Clipboard"
 
@@ -1265,10 +1426,46 @@ msgid "How to generate and use a theme template file"
 msgstr "Paano gumawa at gumamit ng template file ng tema"
 
 #: src/modules/author-boxes/author-boxes.php:2651
+msgid ""
+"Click the \"Generate Template\" button under the text area. Wait for the "
+"code to be generated."
+msgstr ""
+"I-click ang pindutang \"Generate Template\" sa ilalim ng text area. "
+"Maghintay para sa code na ma-generate."
+
+#: src/modules/author-boxes/author-boxes.php:2652
+#, php-format
+msgid ""
+"Create an empty php template file with your desired file slug in the %1s "
+"/publishpress-authors/author-boxes/ %2s folder of your theme. %3s For "
+"example, the file can be located here: %4s "
+"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
+"my-first-custom-author-template.php %7s ."
+msgstr ""
+"Lumikha ng isang walang laman na php template file na may nais na file slug "
+"sa %1s /publishpress-authors/author-boxes/ %2s folder ng iyong tema. %3s "
+"Halimbawa, ang file ay maaaring matatagpuan dito: %4s "
+"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
+"my-first-custom-author-template.php %7s ."
+
+#: src/modules/author-boxes/author-boxes.php:2653
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "Kopyahin ang nabuo na code at i-paste ito sa loob ng bagong nilikhang file."
 
 #: src/modules/author-boxes/author-boxes.php:2654
+msgid ""
+"Congratulations. Your can now choose your template inside the PublishPress "
+"Authors Settings."
+msgstr ""
+"Binabati kita. Maaari mo na ngayong piliin ang iyong template sa loob ng "
+"Mga Setting ng PublishPress Authors."
+
+#: src/modules/author-boxes/author-boxes.php:2658
+#, php-format
+msgid "You can read more information on the %s."
+msgstr "Maaari mong basahin ang higit pang impormasyon sa %s."
+
+#: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"
 msgstr "pahina ng dokumentasyon"
 
@@ -1285,6 +1482,14 @@ msgid "Reorder Fields"
 msgstr "I-reorder ang mga Patlang"
 
 #: src/modules/author-boxes/author-boxes.php:2748
+msgid ""
+"Reorder the fields by dragging them to the correct position and saving your "
+"changes."
+msgstr ""
+"I-reorder ang mga field sa pamamagitan ng pag-drag sa mga ito sa tamang "
+"posisyon at i-save ang iyong mga pagbabago."
+
+#: src/modules/author-boxes/author-boxes.php:2762
 msgid "Save for Current Author Box"
 msgstr "I-save para sa Kasalukuyang Kahon ng May-akda"
 
@@ -1317,6 +1522,14 @@ msgid "New Author Categories Box"
 msgstr "Bagong Kahon ng Kategorya ng May-akda"
 
 #: src/modules/author-boxes/author-boxes.php:3037
+msgid ""
+"PublishPress Authors Pro allows you to unlock the full potential of Author "
+"Categories."
+msgstr ""
+"Ang PublishPress Authors Pro ay nagbibigay-daan sa iyo upang i-unlock ang "
+"buong potensyal ng Author Categories."
+
+#: src/modules/author-boxes/author-boxes.php:3039
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr ""
 "Maaari kang lumikha ng mga Kahon ng May-akda kung saan ang mga May-akda ay "
@@ -1351,6 +1564,14 @@ msgstr "Wala kang pahintulot na isagawa ang aksyong ito"
 
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:67
 #, php-format
+msgid ""
+"Field Order updated. %1sClick here%2s to reload this page to see new order "
+"changes."
+msgstr ""
+"Na-update ang Field Order. %1sI-click dito%2s upang i-reload ang pahinang "
+"ito upang makita ang mga bagong pagbabago sa order."
+
+#: src/modules/author-boxes/classes/AuthorBoxesDefault.php:28
 msgid "Boxed"
 msgstr "Naka-kahon"
 
@@ -2007,6 +2228,14 @@ msgid "Custom \"View All Posts\" Link"
 msgstr "Custom \"Tumingin ng Lahat ng Post\" Link"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:449
+msgid ""
+"Enter a custom URL for the \"View All Posts\" link. Leave empty to use the "
+"default author posts page."
+msgstr ""
+"Mag-enter ng custom URL para sa link na \"Tingnan ang Lahat ng Mga Post\". "
+"Iwanang blangko upang gamitin ang default na pahina ng mga post ng may-akda."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:453
 msgid "View All Posts Link Size"
 msgstr "Sukat ng Link ng Tingnan ang Lahat ng Mga Post"
 
@@ -2065,6 +2294,14 @@ msgid "Author Category Layout"
 msgstr "Layout ng Kategorya ng May-akda"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:607
+msgid ""
+"Selecting an option here will overwrite author boxes settings to match "
+"selected layout."
+msgstr ""
+"Ang pagpili ng isang opsyon dito ay papalitan ang mga setting ng author "
+"boxes upang tumugma sa napiling layout."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:612
 msgid "Built-in Layout"
 msgstr "Built-in na Layout"
 
@@ -2159,10 +2396,26 @@ msgid "Author Category Group Title Prefix"
 msgstr "Prefix ng Pamagat ng Grupo ng Kategorya ng May-akda"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:714
+msgid ""
+"Enter the text that should be added before group title. This field accepts "
+"basic HTML."
+msgstr ""
+"Mag-enter ng teksto na dapat idagdag bago ang pamagat ng grupo. Tinatanggap "
+"ng field na ito ang basic HTML."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:721
 msgid "Author Category Group Title Suffix"
 msgstr "Suffix ng Pamagat ng Grupo ng Kategorya ng May-akda"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:722
+msgid ""
+"Enter the text that should be added after group title. This field accepts "
+"basic HTML."
+msgstr ""
+"Mag-enter ng teksto na dapat idagdag pagkatapos ng pamagat ng grupo. "
+"Tinatanggap ng field na ito ang basic HTML."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:729
 msgid "Author Category Group Font Size"
 msgstr "Sukat ng Font ng Grupo ng Kategorya ng May-akda"
 
@@ -2205,6 +2458,16 @@ msgid "%1s HTML Tag"
 msgstr "%1s HTML Tag"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:821
+msgid ""
+"'span' will display as an inline element and 'div' will display as a block "
+"element. To make this display into a link, select 'link' and enter the "
+"first part of the URL into the 'Prefix' field."
+msgstr ""
+"Ang 'span' ay ipapakita bilang isang inline element at ang 'div' ay "
+"ipapakita bilang isang block element. Upang gawing link ito, piliin ang "
+"'link' at i-enter ang unang bahagi ng URL sa 'Prefix' na field."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:828, fuzzy
 msgid "link"
 msgstr "link"
 
@@ -2214,6 +2477,16 @@ msgid "%1s Value Prefix"
 msgstr "%1s Prefix ng Halaga"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
+msgid ""
+"This is useful when linking to an email, URL, or phone number. For example, "
+"'mailto:', 'https://' or 'tel:' can be added as the prefix."
+msgstr ""
+"Ito ay kapaki-pakinabang kapag nagli-link sa isang email, URL, o numero ng "
+"telepono. Halimbawa, ang 'mailto:', 'https://' o 'tel:' ay maaaring idagdag "
+"bilang prefix."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:851
+#, php-format
 msgid "%1s Display"
 msgstr "%1s Ipakita"
 
@@ -2415,6 +2688,14 @@ msgid "Recent Post Types"
 msgstr "Recent Post Types"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1259
+msgid ""
+"Select post types to include in recent posts. Leave empty to show all post "
+"types."
+msgstr ""
+"Piliin ang mga uri ng post na isasama sa mga kamakailang post. Iwanang "
+"blangko upang ipakita ang lahat ng uri ng post."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
 msgid "Select post types..."
 msgstr "Pumili ng mga uri ng post..."
 
@@ -2520,18 +2801,50 @@ msgid "Author inline display"
 msgstr "Inline na pagpapakita ng may-akda"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1468
+msgid ""
+"This will display author in an inline format side by side instead of block "
+"format."
+msgstr ""
+"Ito ay magpapakita ng author sa isang inline format na magkatabi sa halip "
+"na block format."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1475
 msgid "Author Row Prefix"
 msgstr "Prefix ng Row ng May-akda"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1476
+msgid ""
+"Enter the text that should be added before authors. This field accepts "
+"basic HTML."
+msgstr ""
+"Mag-enter ng teksto na dapat idagdag bago ang mga may-akda. Tinatanggap ng "
+"field na ito ang basic HTML."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1483
 msgid "Author Row Suffix"
 msgstr "Suffix ng Row ng May-akda"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1484
+msgid ""
+"Enter the text that should be added after authors. This field accepts basic "
+"HTML."
+msgstr ""
+"Mag-enter ng teksto na dapat idagdag pagkatapos ng mga may-akda. "
+"Tinatanggap ng field na ito ang basic HTML."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1491
 msgid "Author Separator"
 msgstr "Separator ng May-akda"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1492
+msgid ""
+"You can specify a separator such as ',' to separate authors. This field "
+"accepts basic HTML."
+msgstr ""
+"Maaari kang mag-specify ng separator tulad ng ',' upang paghiwalayin ang "
+"mga may-akda. Tinatanggap ng field na ito ang basic HTML."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1499
 msgid "Author Box Margin Top"
 msgstr "Margin sa Itaas ng Kahon ng May-akda"
 
@@ -2718,6 +3031,18 @@ msgstr "Katangian ng Schema"
 #: src/modules/author-categories/author-categories.php:622
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
 #, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+"Halimbawa: kapag ang halagang ito ay nakatakdang reviewedBy, lahat ng mga "
+"user sa kategoryang ito ay idaragdag sa property na reviewedBy ng post. "
+"Maaari mong basahin ang higit pang %1$s sa gabay na ito.%2$s"
+
+#: src/modules/author-categories/author-categories.php:634
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:79
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:486
 msgid "Post Types"
 msgstr "Mga Uri ng Post"
 
@@ -2727,6 +3052,16 @@ msgid "Select Post Type..."
 msgstr "Pumili ng Uri ng Post..."
 
 #: src/modules/author-categories/author-categories.php:678
+msgid ""
+"Select which post types this category applies to. Leave empty for all post "
+"types."
+msgstr ""
+"Piliin kung aling mga uri ng post ang naaangkop sa kategoryang ito. Iwanang "
+"blangko para sa lahat ng uri ng post."
+
+#: src/modules/author-categories/author-categories.php:683
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:81
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:531
 msgid "Enable Category"
 msgstr "Paganahin ang Kategorya"
 
@@ -2879,6 +3214,15 @@ msgid "Field Slug"
 msgstr "Slug ng Patlang"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:387
+msgid ""
+"The slug is used in code to reference this author field. It is all "
+"lowercase and contains only letters, numbers, and hyphens."
+msgstr ""
+"Ang slug ay ginagamit sa code upang i-refer ang field ng may-akda na ito. "
+"Ito ay lahat ng lowercase at naglalaman lamang ng mga letra, numero, at "
+"hyphen."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:396
 msgid "Field Type"
 msgstr "Uri ng Patlang"
 
@@ -2887,6 +3231,25 @@ msgid "Social Profile?"
 msgstr "Social Profile?"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:409
+msgid ""
+"This feature will add the SameAs property to this link so that search "
+"engines realize that the social profile is connected to this author."
+msgstr ""
+"Ang feature na ito ay magdaragdag ng SameAs property sa link na ito upang "
+"malaman ng mga search engine na ang social profile ay konektado sa "
+"may-akdang ito."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:422
+#, php-format
+msgid ""
+"Add a Schema.org property to this field. Examples include alumniOf, "
+"worksFor, and birthPlace. %1$sClick here for documentation.%2$s"
+msgstr ""
+"Magdagdag ng Schema.org property sa field na ito. Kasama sa mga halimbawa "
+"ang alumniOf, worksFor, at birthPlace. %1$sI-click dito para sa "
+"dokumentasyon.%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:434
 msgid "Show in REST API"
 msgstr "Ipakita sa REST API"
 
@@ -2920,6 +3283,14 @@ msgid "Description"
 msgstr "Paglalarawan"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:482
+msgid ""
+"This description appears under the fields and helps users understand their "
+"choice."
+msgstr ""
+"Ang paglalarawan na ito ay lumalabas sa ilalim ng mga patlang at tumutulong "
+"sa mga gumagamit na maunawaan ang kanilang pinili."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:801
 msgid "Status"
 msgstr "Katayuan"
 
@@ -2933,6 +3304,14 @@ msgstr "Pamagat ng Trabaho"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:992
 #: src/modules/author-custom-fields/author-custom-fields.php:1047
+msgid ""
+"With PublishPress Authors Pro, you can add new fields for social networks "
+"and more."
+msgstr ""
+"Sa PublishPress Authors Pro, maaari kang magdagdag ng mga bagong patlang "
+"para sa mga social network at iba pa."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:1111
 msgid "Field Order updated."
 msgstr "Na-update ang Order ng Patlang."
 
@@ -3081,6 +3460,16 @@ msgid "Show Authors"
 msgstr "Ipakita ang mga May-akda"
 
 #: src/modules/author-list/author-list.php:438
+msgid ""
+"Select an option to limit the results to selected user roles, author types, "
+"specific authors or author Categories."
+msgstr ""
+"Pumili ng isang opsyon upang limitahan ang mga resulta sa napiling mga "
+"tungkulin ng gumagamit, mga uri ng may-akda, tiyak na mga may-akda o mga "
+"Kategorya ng may-akda."
+
+#: src/modules/author-list/author-list.php:441
+#: src/modules/author-list/author-list.php:455
 msgid "Roles"
 msgstr "Mga Papel"
 
@@ -3089,6 +3478,15 @@ msgid "Exclude Authors"
 msgstr "I-exclude ang mga May-akda"
 
 #: src/modules/author-list/author-list.php:452
+msgid ""
+"Select an option to exclude selected user roles, author types, specific "
+"authors or author Categories from Author list."
+msgstr ""
+"Pumili ng isang opsyon upang alisin ang mga napiling tungkulin ng "
+"gumagamit, mga uri ng may-akda, tiyak na mga may-akda o mga Kategorya ng "
+"may-akda mula sa listahan ng May-akda."
+
+#: src/modules/author-list/author-list.php:468
 msgid "Authors Per Page"
 msgstr "Mga Awtor Bawat Pahina"
 
@@ -3101,10 +3499,29 @@ msgid "Show Empty"
 msgstr "Ipakita ang Walang Nilalaman"
 
 #: src/modules/author-list/author-list.php:480
+msgid ""
+"Enable this option to show all authors, including those without any posts. "
+"Disable this option to show only authors who are assigned to posts."
+msgstr ""
+"I-enable ang opsyon na ito upang ipakita ang lahat ng mga may-akda, "
+"kabilang ang mga walang anumang mga post. I-disable ang opsyon na ito upang "
+"ipakita lamang ang mga may-akda na nakatalaga sa mga post."
+
+#: src/modules/author-list/author-list.php:488
 msgid "Configure Author List Options"
 msgstr "I-configure ang mga Opsyon sa Listahan ng May-akda"
 
 #: src/modules/author-list/author-list.php:489
+msgid ""
+"Authors Pro allows you to add extra features to the Authors List. These "
+"features include pagination, choose the order of authors, and much more."
+msgstr ""
+"Ang Authors Pro ay nagbibigay-daan sa iyo upang magdagdag ng mga "
+"karagdagang tampok sa Listahan ng mga May-akda. Kasama sa mga tampok na ito "
+"ang pagination, pumili ng pagkakasunud-sunod ng mga may-akda, at marami "
+"pang iba."
+
+#: src/modules/author-list/author-list.php:494
 msgid "Order By"
 msgstr "Ayusin Ayon Sa"
 
@@ -3113,6 +3530,17 @@ msgid "Last Article Date"
 msgstr "Petsa ng Huling Artikulo"
 
 #: src/modules/author-list/author-list.php:523
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific time. This option accepts date values such as 1 week ago, 1 month "
+"ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"Maaari mong limitahan ang listahan ng mga may-akda sa mga gumagamit na may "
+"na-publish na post sa loob ng tiyak na panahon. Tumatanggap ang opsyon na "
+"ito ng mga halaga ng petsa tulad ng 1 linggo na nakalipas, 1 buwan na "
+"nakalipas, 6 na buwan na nakalipas, 1 taon na nakalipas at iba pa."
+
+#: src/modules/author-list/author-list.php:535
 msgid "Show Search Box"
 msgstr "Ipakita ang Kahon ng Paghahanap"
 
@@ -3121,10 +3549,28 @@ msgid "Add Search Box to Author Lists"
 msgstr "Idagdag ang Search Box sa Mga Listahan ng May-akda"
 
 #: src/modules/author-list/author-list.php:545
+msgid ""
+"Author Pro allows you to add a search box to the Authors List. You can also "
+"show a dropdown menu that allows users to search on specific author fields."
+msgstr ""
+"Ang Author Pro ay nagbibigay-daan sa iyo upang magdagdag ng search box sa "
+"Listahan ng mga May-akda. Maaari mo ring ipakita ang isang dropdown na menu "
+"na nagpapahintulot sa mga gumagamit na maghanap sa mga tiyak na patlang ng "
+"may-akda."
+
+#: src/modules/author-list/author-list.php:550
 msgid "Search Field Dropdown"
 msgstr "Dropdown ng Paghahanap"
 
 #: src/modules/author-list/author-list.php:551
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields."
+msgstr ""
+"Maaari mo ring ipakita ang isang dropdown na menu na nagpapahintulot sa mga "
+"gumagamit na maghanap sa mga tiyak na patlang ng may-akda."
+
+#: src/modules/author-list/author-list.php:600
 msgid "Author Recent List"
 msgstr "Listahan ng Kamakailang May-akda"
 
@@ -3169,6 +3615,15 @@ msgid "Select Author Category"
 msgstr "Pumili ng Kategorya ng May-akda"
 
 #: src/modules/author-list/author-list.php:1282
+msgid ""
+"This is a quick preview of this Author List. Test on frontend pages to see "
+"exactly how it looks with your theme."
+msgstr ""
+"Ito ay isang mabilis na preview ng Listahan ng mga May-akda. Subukan sa mga "
+"frontend na pahina upang makita eksakto kung paano ito lumalabas sa iyong "
+"tema."
+
+#: src/modules/author-list/author-list.php:1380
 msgid "Invalid form"
 msgstr "Di-wastong anyo"
 
@@ -3401,6 +3856,14 @@ msgid "Showcase your Authors with PublishPress Blocks"
 msgstr "Ipakita ang iyong Mga Awtor gamit ang PublishPress Blocks"
 
 #: src/modules/modules-settings/modules-settings.php:318
+msgid ""
+"PublishPress Blocks is a free plugin with full support for PublishPress "
+"Authors."
+msgstr ""
+"Ang PublishPress Blocks ay isang libreng plugin na may buong suporta para "
+"sa PublishPress Authors."
+
+#: src/modules/modules-settings/modules-settings.php:319
 msgid "Install this plugin to showcase content by your Authors."
 msgstr ""
 "I-install ang plugin na ito upang ipakita ang nilalaman ng iyong mga "
@@ -3413,6 +3876,14 @@ msgstr ""
 "maraming magagandang layout."
 
 #: src/modules/modules-settings/modules-settings.php:321
+msgid ""
+"PublishPress Blocks has over 20 extra Gutenberg blocks including "
+"accordions, galleries, tables, and more."
+msgstr ""
+"Ang PublishPress Blocks ay mayroong mahigit sa 20 karagdagang Gutenberg "
+"blocks kabilang ang mga accordion, gallery, talahanayan, at iba pa."
+
+#: src/modules/modules-settings/modules-settings.php:324
 msgid "Click here to install PublishPress Blocks"
 msgstr "I-click dito upang i-install ang PublishPress Blocks"
 
@@ -3453,6 +3924,17 @@ msgid "Copy Molongui Authorship Data"
 msgstr "Kopyahin ang Data ng Molongui Authorship"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:153
+msgid ""
+"This action will copy the authors from the plugin Molongui Authorship "
+"allowing you to migrate to PublishPress Authors without losing any data "
+"including post author relation. This action can be run multiple times."
+msgstr ""
+"Ang aksyon na ito ay kokopya ng mga may-akda mula sa plugin na Molongui "
+"Authorship na nagpapahintulot sa iyo na lumipat sa PublishPress Authors "
+"nang hindi nawawala ang anumang data kasama ang kaugnayan ng may-akda sa "
+"post. Ang aksyon na ito ay maaaring patakbuhin ng maraming beses."
+
+#: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:187
 msgid "It looks like you have Molongui Authorship installed."
 msgstr "Mukhang mayroon kang naka-install na Molongui Authorship."
 
@@ -3677,6 +4159,14 @@ msgstr "Simpleng listahan na legacy layout ng Author Box:"
 #: src/modules/multiple-authors/multiple-authors.php:1265
 #: src/modules/settings/settings.php:275
 #, php-format
+msgid ""
+"Disabled because add_post_type_support('%1$s', '%2$s') is included in a "
+"loaded file."
+msgstr ""
+"Naka-disable dahil ang add_post_type_support('%1$s', '%2$s') ay kasama sa "
+"isang na-load na file."
+
+#: src/modules/multiple-authors/multiple-authors.php:1284
 msgid "This will display the authors box at the top of the content."
 msgstr "Ito ay magpapakita ng kahon ng mga may-akda sa itaas ng nilalaman."
 
@@ -3703,16 +4193,254 @@ msgid "Authors Box"
 msgstr "Kahon ng Mga May-akda"
 
 #: src/modules/multiple-authors/multiple-authors.php:1409
+msgid ""
+"With this shortcode you can display the author box in any part of the "
+"content. "
+msgstr ""
+"Sa shortcode na ito maaari mong ipakita ang author box sa anumang bahagi ng "
+"nilalaman."
+
+#: src/modules/multiple-authors/multiple-authors.php:1417
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s."
+msgstr ""
+"Maaari mong tukuyin ang layout sa pamamagitan ng paggamit ng slug ng layout "
+"ng author boxes. Makikita mo ang buong detalye ng bawat opsyon ng layout "
+"%1$s sa gabay na ito %2$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1428
+#, php-format
+msgid ""
+"You can also decide whether or not to show the main title, using %1$s or "
+"%2$s ."
+msgstr ""
+"Maaari mo ring magpasya kung ipapakita ang pangunahing pamagat o hindi, "
+"gamit ang %1$s o %2$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1438
+#: src/modules/multiple-authors/multiple-authors.php:1522
+msgid ""
+"You can load the authors for a specific post, even if you are not in that "
+"post currently. For example, this shortcode will load the authors for the "
+"post with the ID of 32."
+msgstr ""
+"Maaari mong i-load ang mga may-akda para sa isang tiyak na post, kahit na "
+"hindi ka kasalukuyang nasa post na iyon. Halimbawa, ang shortcode na ito ay "
+"maglo-load ng mga may-akda para sa post na may ID na 32."
+
+#: src/modules/multiple-authors/multiple-authors.php:1445
+msgid ""
+"You can load the authors for a specific user by providing the user id. For "
+"example, this shortcode will load the author with user id of 32"
+msgstr ""
+"Maaari mong i-load ang mga may-akda para sa isang tiyak na gumagamit sa "
+"pamamagitan ng pagbibigay ng user id. Halimbawa, ang shortcode na ito ay "
+"maglo-load ng may-akda na may user id na 32."
+
+#: src/modules/multiple-authors/multiple-authors.php:1452
+msgid ""
+"You can load the authors for a specific author by providing the author term "
+"id for both guest and user author. For example, this shortcode will load "
+"the author with term id of 32"
+msgstr ""
+"Maaari mong i-load ang mga may-akda para sa isang tiyak na may-akda sa "
+"pamamagitan ng pagbibigay ng author term id para sa parehong guest at user "
+"author. Halimbawa, ang shortcode na ito ay maglo-load ng may-akda na may "
+"term id na 32."
+
+#: src/modules/multiple-authors/multiple-authors.php:1460
+#, php-format
+msgid ""
+"If you are having problems showing PublishPress Authors on author profile "
+"pages, you can use this shortcode below. The argument %s forces the plugin "
+"to retrieve the Author from the profile page and not any other posts on the "
+"same screen."
+msgstr ""
+"Kung nagkakaroon ka ng problema sa pagpapakita ng PublishPress Authors sa "
+"mga pahina ng profile ng may-akda, maaari mong gamitin ang shortcode na ito "
+"sa ibaba. Ang argumentong %s ay pinipilit ang plugin na kunin ang May-akda "
+"mula sa pahina ng profile at hindi mula sa anumang iba pang mga post sa "
+"parehong screen."
+
+#: src/modules/multiple-authors/multiple-authors.php:1470
+#, php-format
+msgid ""
+"There is one final option to mention. This is mostly useful if you're using "
+"a theme or page builder to customize the Author profile pages you find at "
+"URLs such as /author/username/. You can use the following shortcode on the "
+"authors page to display the profile of the current author. You just need to "
+"add the parameter %s."
+msgstr ""
+"May isa pang huling opsyon na dapat banggitin. Ito ay kadalasang "
+"kapaki-pakinabang kung gumagamit ka ng tema o page builder upang "
+"i-customize ang mga pahina ng profile ng May-akda na matatagpuan sa mga URL "
+"tulad ng /author/username/. Maaari mong gamitin ang sumusunod na shortcode "
+"sa pahina ng mga may-akda upang ipakita ang profile ng kasalukuyang "
+"may-akda. Kailangan mo lamang idagdag ang parameter na %s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1479
+msgid ""
+"You can load the authors belonging to a specific author categories by "
+"providing the category slug or slugs separated by comma for more than one "
+"category."
+msgstr ""
+"Maaari mong i-load ang mga may-akda na kabilang sa mga tiyak na kategorya "
+"ng may-akda sa pamamagitan ng pagbibigay ng category slug o mga slugs na "
+"pinaghiwalay ng kuwit para sa higit sa isang kategorya."
+
+#: src/modules/multiple-authors/multiple-authors.php:1489
 msgid "Authors Data"
 msgstr "Data ng Mga May-akda"
 
 #: src/modules/multiple-authors/multiple-authors.php:1490
+msgid ""
+"With this shortcode you can display the author names or any profile field "
+"in any part of the content."
+msgstr ""
+"Sa shortcode na ito, maaari mong ipakita ang mga pangalan ng may-akda o "
+"anumang field ng profile sa anumang bahagi ng nilalaman."
+
+#: src/modules/multiple-authors/multiple-authors.php:1498
+#, php-format
+msgid ""
+"The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s "
+"%4$s %5$s %6$s %7$s. You can see full details and parameters %8$s in this "
+"guide %9$s."
+msgstr ""
+"Tumatanggap ang shortcode ng data ng mga may-akda ng field parameter tulad "
+"ng: %1$s %2$s %3$s %4$s %5$s %6$s %7$s. Makikita mo ang buong detalye at "
+"mga parameter %8$s sa gabay na ito %9$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1515
 msgid "You can also specify the separator to be used for mulitple authors data."
 msgstr ""
 "Maaari mo ring tukuyin ang separator na gagamitin para sa maraming data ng "
 "may-akda."
 
 #: src/modules/multiple-authors/multiple-authors.php:1529
+msgid ""
+"You can retrieve a specific author by providing the author's term ID. For "
+"example, this shortcode will load the author with the term ID of 102."
+msgstr ""
+"Maaari mong kunin ang isang tiyak na may-akda sa pamamagitan ng pagbibigay "
+"ng term ID ng may-akda. Halimbawa, ang shortcode na ito ay maglo-load ng "
+"may-akda na may term ID na 102."
+
+#: src/modules/multiple-authors/multiple-authors.php:1537
+#, php-format
+msgid ""
+"You can also decide to return an array list of authors by using "
+"user_objects=\"true\" which will return all the authors object data as an "
+"array. You can check full details and sample usage %2$s in this guide%3$s."
+msgstr ""
+"Maaari mo ring piliing ibalik ang isang array list ng mga may-akda sa "
+"pamamagitan ng paggamit ng user_objects=\"true\" na magbabalik ng lahat ng "
+"data ng object ng mga may-akda bilang isang array. Maaari mong suriin ang "
+"buong detalye at halimbawa ng paggamit %2$s sa gabay na ito %3$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1548
+msgid ""
+"You can retrieve authors belonging to a specific Author Category by "
+"providing the category slug or slugs. Separate multiple slugs with a comma."
+msgstr ""
+"Maaari mong kunin ang mga may-akda na kabilang sa isang tiyak na Kategorya "
+"ng May-akda sa pamamagitan ng pagbibigay ng category slug o mga slugs. "
+"Paghiwalayin ang maraming slugs gamit ang kuwit."
+
+#: src/modules/multiple-authors/multiple-authors.php:1559
+msgid ""
+"With this shortcode, you can show all the authors together in a single "
+"display."
+msgstr ""
+"Sa shortcode na ito, maaari mong ipakita ang lahat ng mga may-akda nang "
+"magkasama sa isang solong display."
+
+#: src/modules/multiple-authors/multiple-authors.php:1567
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s. %3$s %4$s This "
+"shortcode also provides two custom layouts: %5$s %6$s."
+msgstr ""
+"Maaari mong tukuyin ang layout sa pamamagitan ng paggamit ng author boxes "
+"layout slug. Makikita mo ang buong detalye ng bawat opsyon ng layout %1$s "
+"sa gabay na ito %2$s. %3$s %4$s Nagbibigay din ang shortcode na ito ng "
+"dalawang pasadyang layout: %5$s %6$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1582
+#, php-format
+msgid ""
+"You can define the number of layout columns by using %1$s to show authors "
+"in 2 column."
+msgstr ""
+"Maaari mong tukuyin ang bilang ng mga column ng layout sa pamamagitan ng "
+"paggamit ng %1$s upang ipakita ang mga may-akda sa 2 column."
+
+#: src/modules/multiple-authors/multiple-authors.php:1592
+#, php-format
+msgid ""
+"You can choose the number of authors per page using %1$s . %2$s Pagination "
+"will be automatically added if required."
+msgstr ""
+"Maaari mong piliin ang bilang ng mga may-akda bawat pahina gamit ang %1$s . "
+"%2$s Ang Pagination ay awtomatikong idaragdag kung kinakailangan."
+
+#: src/modules/multiple-authors/multiple-authors.php:1603
+#, php-format
+msgid ""
+"You can limit the result to only authors who are assigned to posts by using "
+"%1$s . %2$s Alternatively, use %3$s to show all authors, including those "
+"without any posts."
+msgstr ""
+"Maaari mong limitahan ang resulta sa mga may-akda lamang na nakatalaga sa "
+"mga post sa pamamagitan ng paggamit ng %1$s . %2$s Bilang alternatibo, "
+"gamitin ang %3$s upang ipakita ang lahat ng mga may-akda, kabilang ang mga "
+"wala pang anumang post."
+
+#: src/modules/multiple-authors/multiple-authors.php:1615
+#, php-format
+msgid ""
+"You can limit the result to only guest authors by using %1$s . %2$s "
+"Alternatively, %3$s will show only authors with a WordPress account."
+msgstr ""
+"Maaari mong limitahan ang resulta sa mga guest authors lamang sa "
+"pamamagitan ng paggamit ng %1$s . %2$s Bilang alternatibo, %3$s ay "
+"magpapakita lamang ng mga may-akda na may WordPress account."
+
+#: src/modules/multiple-authors/multiple-authors.php:1627
+#, php-format
+msgid ""
+"If you are using the authors_recent layout, you can define the number of "
+"columns by using %1$s ."
+msgstr ""
+"Kung gumagamit ka ng authors_recent layout, maaari mong tukuyin ang bilang "
+"ng mga column sa pamamagitan ng paggamit ng %1$s ."
+
+#: src/modules/multiple-authors/multiple-authors.php:1637
+#, php-format
+msgid ""
+"For authors_index layout, you can group user by profile field by using %1$s "
+"."
+msgstr ""
+"Para sa authors_index layout, maaari mong i-grupo ang mga user ayon sa "
+"field ng profile sa pamamagitan ng paggamit ng %1$s ."
+
+#: src/modules/multiple-authors/multiple-authors.php:1647
+#, php-format
+msgid ""
+"To order the results based on post count, use %1$s . To order the results "
+"by name, use %2$s . Alternatively, you can order by profile fields like "
+"%3$s, %4$s etc"
+msgstr ""
+"Upang ayusin ang mga resulta batay sa bilang ng post, gamitin ang %1$s . "
+"Upang ayusin ang mga resulta ayon sa pangalan, gamitin ang %2$s . Bilang "
+"alternatibo, maaari kang mag-order ayon sa mga field ng profile tulad ng "
+"%3$s, %4$s atbp."
+
+#: src/modules/multiple-authors/multiple-authors.php:1660
+#, php-format
 msgid "To further customize the order of results, use %1$s or %2$s ."
 msgstr ""
 "Upang higit pang i-customize ang pagkakasunud-sunod ng mga resulta, gamitin "
@@ -3725,6 +4453,29 @@ msgstr "Upang ipakita ang isang search box para sa mga may-akda, gamitin ang %1$
 
 #: src/modules/multiple-authors/multiple-authors.php:1681
 #, php-format
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields. You can add fields to the dropdown using %1$s . This "
+"requires the search box to be active."
+msgstr ""
+"Maaari mo ring ipakita ang isang dropdown menu na nagpapahintulot sa mga "
+"user na maghanap sa mga tiyak na field ng may-akda. Maaari kang magdagdag "
+"ng mga field sa dropdown gamit ang %1$s . Nangangailangan ito ng aktibong "
+"search box."
+
+#: src/modules/multiple-authors/multiple-authors.php:1691
+#, php-format
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific period using %1$s . This accept english date value like 1 week "
+"ago, 1 month ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"Maaari mong limitahan ang listahan ng may-akda sa mga user na may "
+"na-publish na post sa loob ng isang tiyak na panahon gamit ang %1$s . "
+"Tumatanggap ito ng English date value tulad ng 1 week ago, 1 month ago, 6 "
+"months ago, 1 year ago atbp."
+
+#: src/modules/multiple-authors/multiple-authors.php:1738
 msgid "Copied!"
 msgstr "Nakopya!"
 
@@ -3738,6 +4489,44 @@ msgid "Select roles"
 msgstr "Pumili ng mga papel"
 
 #: src/modules/multiple-authors/multiple-authors.php:1813
+msgid ""
+"Choose which WordPress user roles can be selected using the \"Registered "
+"Author With User Account\" option for author profiles."
+msgstr ""
+"Pumili kung aling mga user roles ng WordPress ang maaaring piliin gamit ang "
+"opsyong \"Registered Author With User Account\" para sa mga profile ng "
+"may-akda."
+
+#: src/modules/multiple-authors/multiple-authors.php:1842
+msgid ""
+"Author profiles can be mapped to WordPress user accounts. This option "
+"allows you to automatically create author profiles when users are created "
+"in these roles. You can also do this for existing users by clicking the "
+"\"Create PublishPress Authors Profiles for all users in a role\" button in "
+"the Maintenance tab."
+msgstr ""
+"Ang mga profile ng may-akda ay maaaring i-map sa mga account ng gumagamit "
+"ng WordPress. Ang pagpipiliang ito ay nagbibigay-daan sa iyo na "
+"awtomatikong lumikha ng mga profile ng may-akda kapag ang mga gumagamit ay "
+"nilikha sa mga tungkuling ito. Maaari mo ring gawin ito para sa mga umiiral "
+"na gumagamit sa pamamagitan ng pag-click sa \"Lumikha ng mga Profile ng "
+"May-akda ng PublishPress para sa lahat ng gumagamit sa isang tungkulin\" na "
+"button sa Maintenance tab."
+
+#: src/modules/multiple-authors/multiple-authors.php:1863
+msgid ""
+"If the Author is mapped to a WordPress user, this will display the authors' "
+"\"Display name\" and their \"Username\". The default is to show only the "
+"\"Display name\". Showing the \"Username\" is useful if you have several "
+"authors with similar names."
+msgstr ""
+"Kung ang May-akda ay naka-map sa isang gumagamit ng WordPress, ipapakita "
+"nito ang '\"Display name\" ng mga may-akda at ang kanilang \"Username\". "
+"Ang default ay ipakita lamang ang \"Display name\". Ang pagpapakita ng "
+"\"Username\" ay kapaki-pakinabang kung mayroon kang ilang may-akda na may "
+"katulad na mga pangalan."
+
+#: src/modules/multiple-authors/multiple-authors.php:1886
 msgid "Allow authors to be created without a real user account."
 msgstr "Payagan ang mga may-akda na malikha nang walang totoong user account."
 
@@ -3752,6 +4541,14 @@ msgid "Allow authors to be created without a connected user account."
 msgstr "Payagan ang mga may-akda na malikha nang walang nakakonektang user account."
 
 #: src/modules/multiple-authors/multiple-authors.php:1956
+msgid ""
+"If enabled, PublishPress Authors will replace the default WordPress author "
+"pages."
+msgstr ""
+"Kung pinagana, papalitan ng PublishPress Authors ang mga default na pahina "
+"ng may-akda ng WordPress."
+
+#: src/modules/multiple-authors/multiple-authors.php:1961
 msgid "Please note this feature will not work for all themes."
 msgstr ""
 "Mangyaring tandaan na ang tampok na ito ay hindi gagana para sa lahat ng "
@@ -3787,6 +4584,14 @@ msgid "Last Name First Name"
 msgstr "Huling Pangalan Unang Pangalan"
 
 #: src/modules/multiple-authors/multiple-authors.php:2218
+msgid ""
+"This avatar will be used as default avatar instead of gravatar where no "
+"custom avatar is added to profile."
+msgstr ""
+"Ang avatar na ito ay gagamitin bilang default na avatar sa halip na "
+"gravatar kung saan walang custom na avatar na idinagdag sa profile."
+
+#: src/modules/multiple-authors/multiple-authors.php:2240
 msgid "This will display the author bio."
 msgstr "Ito ay magpapakita ng bio ng may-akda."
 
@@ -3824,6 +4629,17 @@ msgid "This will display the excerpt."
 msgstr "Ito ay magpapakita ng buod."
 
 #: src/modules/multiple-authors/multiple-authors.php:2573
+msgid ""
+"This will allows you map a WordPress user to more than one author. Don't "
+"use this feature unless requested to do so by the PublishPress team. This "
+"plugin works better when authors and users are paired one-to-one."
+msgstr ""
+"Ito ay magbibigay-daan sa iyo na i-map ang isang gumagamit ng WordPress sa "
+"higit sa isang may-akda. Huwag gamitin ang tampok na ito maliban kung "
+"hiningi ng koponan ng PublishPress. Mas mahusay ang plugin na ito kapag ang "
+"mga may-akda at gumagamit ay naka-pair na one-to-one."
+
+#: src/modules/multiple-authors/multiple-authors.php:2597
 msgid "This will display the authors."
 msgstr "Ito ay magpapakita ng mga may-akda."
 
@@ -3858,6 +4674,17 @@ msgid "Search for a fallback author"
 msgstr "Maghanap para sa isang fallback na may-akda"
 
 #: src/modules/multiple-authors/multiple-authors.php:2791
+msgid ""
+"If you only have Guest Authors selected for a post, this user may be used "
+"as a fallback. WordPress sometimes requires a WordPress user to be assigned "
+"to each post. This user will not be visible on the front of your site."
+msgstr ""
+"Kung mayroon ka lamang na mga Guest Authors na napili para sa isang post, "
+"maaaring magamit ang gumagamit na ito bilang fallback. Minsan, "
+"kinakailangan ng WordPress na may nakatalagang gumagamit ng WordPress sa "
+"bawat post. Ang gumagamit na ito ay hindi makikita sa harap ng iyong site."
+
+#: src/modules/multiple-authors/multiple-authors.php:2809
 msgid "This will display the authors email in the author box."
 msgstr "Ito ay magpapakita ng email ng may-akda sa kahon ng may-akda."
 
@@ -3882,6 +4709,19 @@ msgstr ""
 "may-akda ng post"
 
 #: src/modules/multiple-authors/multiple-authors.php:2887
+msgid ""
+"If a WordPress user is the author of a post, but does not have a "
+"PublishPress Authors profile, this will automatically create a profile for "
+"them."
+msgstr ""
+"Kung ang isang gumagamit ng WordPress ay ang may-akda ng isang post, ngunit "
+"walang profile ng PublishPress Authors, awtomatikong lilikha ito ng isang "
+"profile para sa kanila."
+
+#: src/modules/multiple-authors/multiple-authors.php:2887
+#: src/modules/multiple-authors/multiple-authors.php:2893
+#: src/modules/multiple-authors/multiple-authors.php:2899
+#: src/modules/multiple-authors/multiple-authors.php:2906
 msgid "Click here for documentation"
 msgstr "I-click dito para sa dokumentasyon"
 
@@ -3896,6 +4736,17 @@ msgstr ""
 "gumagamit sa isang papel"
 
 #: src/modules/multiple-authors/multiple-authors.php:2893
+msgid ""
+"This will find all the users in a role and create author profiles for them. "
+"You can choose the roles using the \"Automatically create author profiles\" "
+"setting."
+msgstr ""
+"Ito ay hahanapin ang lahat ng mga gumagamit sa isang tungkulin at lilikha "
+"ng mga profile ng may-akda para sa kanila. Maaari mong piliin ang mga "
+"tungkulin gamit ang setting na \"Awtomatikong lumikha ng mga profile ng "
+"may-akda\"."
+
+#: src/modules/multiple-authors/multiple-authors.php:2894
 msgid "Create PublishPress Authors profiles"
 msgstr "Lumikha ng mga profile ng PublishPress Authors"
 
@@ -3906,24 +4757,75 @@ msgstr ""
 "profile ng gumagamit"
 
 #: src/modules/multiple-authors/multiple-authors.php:2899
+msgid ""
+"This will update all the author profiles in PublishPress Authors to match "
+"the default WordPress fields for each user."
+msgstr ""
+"Ito ay mag-uupdate sa lahat ng mga profile ng may-akda sa PublishPress "
+"Authors upang tumugma sa mga default na larangan ng WordPress para sa bawat "
+"gumagamit."
+
+#: src/modules/multiple-authors/multiple-authors.php:2905
 msgid "Synchronize the author and user URLs"
 msgstr "I-synchronize ang mga URL ng may-akda at gumagamit"
 
 #: src/modules/multiple-authors/multiple-authors.php:2906
+msgid ""
+"This will update all the Author URLs in PublishPress Authors to match the "
+"default WordPress URLs for each user."
+msgstr ""
+"Ito ay mag-uupdate sa lahat ng mga URL ng May-akda sa PublishPress Authors "
+"upang tumugma sa mga default na URL ng WordPress para sa bawat gumagamit."
+
+#: src/modules/multiple-authors/multiple-authors.php:2912
+#: src/modules/multiple-authors/multiple-authors.php:2914
 msgid "Create Author Categories"
 msgstr "Lumikha ng Mga Kategorya ng May-Akda"
 
 #: src/modules/multiple-authors/multiple-authors.php:2913
+msgid ""
+"This will create author categories table if missing and add default "
+"categories."
+msgstr ""
+"Ito ay lilikha ng talahanayan ng mga kategorya ng may-akda kung nawawala at "
+"magdadagdag ng mga default na kategorya."
+
+#: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "Copy Co-Authors Plus Data"
 msgstr "Kopyahin ang Data ng Co-Authors Plus"
 
 #: src/modules/multiple-authors/multiple-authors.php:2927
+msgid ""
+"This action will copy the authors from the plugin Co-Authors Plus allowing "
+"you to migrate to PublishPress Authors without losing any data. This action "
+"can be run multiple times."
+msgstr ""
+"Ang aksyong ito ay kokopya ng mga may-akda mula sa plugin na Co-Authors "
+"Plus na nagbibigay-daan sa iyo na lumipat sa PublishPress Authors nang "
+"hindi nawawala ang anumang data. Ang aksyong ito ay maaaring patakbuhin ng "
+"maraming beses."
+
+#: src/modules/multiple-authors/multiple-authors.php:2937
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr ""
 "Tanggalin ang Mga Ugnayan sa Pagitan ng Mga Profile ng May-akda at Mga "
 "Gumagamit"
 
 #: src/modules/multiple-authors/multiple-authors.php:2938
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. It will delete all author profiles that are mapped to "
+"a WordPress user account. This will not delete the WordPress user accounts, "
+"but any links between the posts and author profiles will be lost."
+msgstr ""
+"Ang aksyong ito ay maaaring i-reset ang data ng PublishPress Authors bago "
+"gamitin ang iba pang mga pagpipilian sa maintenance. Mababura nito ang "
+"lahat ng mga profile ng may-akda na naka-map sa isang account ng gumagamit "
+"ng WordPress. Hindi nito mabubura ang mga account ng gumagamit ng "
+"WordPress, ngunit anumang mga link sa pagitan ng mga post at mga profile ng "
+"may-akda ay mawawala."
+
+#: src/modules/multiple-authors/multiple-authors.php:2939
 msgid "Delete all authors mapped to users"
 msgstr "Tanggalin ang lahat ng may-akdang naka-map sa mga gumagamit"
 
@@ -3932,10 +4834,30 @@ msgid "Delete Guest Authors"
 msgstr "Tanggalin ang Mga Guest Authors"
 
 #: src/modules/multiple-authors/multiple-authors.php:2945
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. Guest authors are author profiles that are not mapped "
+"to a WordPress user account. This action will delete all guest authors."
+msgstr ""
+"Ang aksyong ito ay maaaring i-reset ang data ng PublishPress Authors bago "
+"gamitin ang iba pang mga pagpipilian sa maintenance. Ang mga guest authors "
+"ay mga profile ng may-akda na hindi naka-map sa isang account ng gumagamit "
+"ng WordPress. Ang aksyong ito ay mabubura ang lahat ng guest authors."
+
+#: src/modules/multiple-authors/multiple-authors.php:2946
 msgid "Delete all guest authors"
 msgstr "Tanggalin ang lahat ng mga guest author"
 
 #: src/modules/multiple-authors/multiple-authors.php:2952
+msgid ""
+"Please be careful clicking these buttons. Before clicking, we recommend "
+"taking a site backup in case anything goes wrong."
+msgstr ""
+"Mangyaring mag-ingat sa pag-click sa mga button na ito. Bago mag-click, "
+"inirerekumenda naming kumuha ng backup ng site sakaling may mangyaring "
+"masama."
+
+#: src/modules/multiple-authors/multiple-authors.php:3155
 msgid "Author Profiles"
 msgstr "Mga Profile ng May-Akda"
 
@@ -4219,9 +5141,46 @@ msgstr "Makipag-ugnayan"
 
 #: src/core/Plugin.php:563
 msgctxt "taxonomy general name"
+msgid "Authors"
+msgstr "Mga May-akda"
+
+#: src/core/Plugin.php:568
+msgctxt "taxonomy singular name"
+msgid "Author"
+msgstr "May-akda"
+
+#: src/modules/author-boxes/author-boxes.php:411
+#, fuzzy, php-format
+msgctxt "Author Box post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-boxes/author-boxes.php:412
+#, fuzzy, php-format
+msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
 #: src/modules/author-boxes/author-boxes.php:427
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:166
+#, fuzzy, php-format
+msgctxt "Custom Field post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:167
+#, fuzzy, php-format
+msgctxt "singular custom field post type name"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:182
+#, fuzzy, php-format
+msgctxt "custom field post type menu name"
+msgid "%2$s"
+msgstr "%2$s"

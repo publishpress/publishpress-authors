@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-15T01:06:13+00:00\n"
-"PO-Revision-Date: 2026-04-16 12:07+0000\n"
+"PO-Revision-Date: 2026-04-20 09:52+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
@@ -33,6 +33,15 @@ msgstr "https://wordpress.org/plugins/publishpress-authors/"
 #: src/modules/multiple-authors/multiple-authors.php:75
 #: src/modules/multiple-authors/multiple-authors.php:79
 #. Description of the plugin
+msgid ""
+"PublishPress Authors allows you to add multiple authors and guest authors "
+"to WordPress posts"
+msgstr ""
+"PublishPress Authors permite adăugarea mai multor autori și autori invitați "
+"la postările WordPress"
+
+#: publishpress-authors.php:11
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
@@ -43,6 +52,21 @@ msgstr "https://publishpress.com"
 
 #: includes.php:39
 #, php-format
+msgid ""
+"You're using PublishPress Authors Free. The Pro version has more features "
+"and support. %sUpgrade to Pro%s"
+msgstr ""
+"Folosești PublishPress Authors Free. Versiunea Pro are mai multe funcții și "
+"suport. %sUpgrade to Pro%s"
+
+#: includes.php:63
+#: src/modules/author-boxes/author-boxes.php:3042
+#: src/modules/author-categories/author-categories.php:672
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:521
+#: src/modules/author-custom-fields/author-custom-fields.php:995
+#: src/modules/author-custom-fields/author-custom-fields.php:1048
+#: src/modules/author-list/author-list.php:1260
+#: src/modules/author-list/author-list.php:1298
 msgid "Upgrade to Pro"
 msgstr "Îmbunătățiți la Pro"
 
@@ -222,6 +246,25 @@ msgid "You cannot edit an author profile linked to an administrator account."
 msgstr "Nu puteți edita un profil de autor legat de un cont de administrator."
 
 #: src/core/Classes/Admin_Ajax.php:359
+msgid ""
+"You do not have permission to edit this author profile because it is linked "
+"to a user account you do not have permission to edit."
+msgstr ""
+"Nu ai permisiunea de a edita acest profil de autor deoarece este legat de "
+"un cont de utilizator pe care nu ai permisiunea să-l editezi."
+
+#: src/core/Classes/Admin_Ajax.php:374
+#: src/core/Classes/Author_Editor.php:1008
+msgid ""
+"Sorry, this WordPress user is already mapped to another Author. By default, "
+"each user can only be connected to one Author profile."
+msgstr ""
+"Ne pare rău, acest utilizator WordPress este deja mapat la un alt Autor. În "
+"mod implicit, fiecare utilizator poate fi conectat doar la un profil de "
+"Autor."
+
+#: src/core/Classes/Admin_Ajax.php:386
+#: src/core/Classes/Author_Editor.php:1100
 msgid "Registered User is required."
 msgstr "Utilizator înregistrat este necesar."
 
@@ -238,6 +281,15 @@ msgid "Author name is required"
 msgstr "Numele autorului este necesar"
 
 #: src/core/Classes/Authors_Iterator.php:55
+msgid ""
+"No post ID provided for Authors_Iterator constructor. Are you not in a loop "
+"or is $post not set?"
+msgstr ""
+"Nu a fost furnizat un ID de postare pentru constructorul Authors_Iterator. "
+"Nu ești într-un ciclu sau $post nu este setat?"
+
+#: src/core/Classes/Author_Editor.php:47
+#: src/core/Plugin.php:1618
 msgid "Display name publicly as"
 msgstr "Afișați numele public ca"
 
@@ -325,6 +377,14 @@ msgstr "Avatar implicit"
 
 #: src/core/Classes/Author_Editor.php:391
 #, php-format
+msgid ""
+"(Uses the %1s Email field %2s to find the Gravatar account if default "
+"avatar is not uploaded in Authors Settings)"
+msgstr ""
+"(Folosește câmpul %1s Email %2s pentru a găsi contul Gravatar dacă avatarul "
+"implicit nu este încărcat în Setările Autorilor)"
+
+#: src/core/Classes/Author_Editor.php:399
 msgid "Custom image"
 msgstr "Imagine personalizată"
 
@@ -339,6 +399,14 @@ msgid "Author Category"
 msgstr "Categorie Autor"
 
 #: src/core/Classes/Author_Editor.php:411
+msgid ""
+"Select the default Category for this Author. This will be used when the "
+"Author is added to new posts."
+msgstr ""
+"Selectează Categoria implicită pentru acest Autor. Aceasta va fi folosită "
+"atunci când Autorul este adăugat la postări noi."
+
+#: src/core/Classes/Author_Editor.php:418
 msgid "Do not show this profile publicly"
 msgstr "Nu afișa acest profil public"
 
@@ -359,6 +427,35 @@ msgid "Select a user"
 msgstr "Selectați un utilizator"
 
 #: src/core/Classes/Author_Editor.php:783
+msgid ""
+"Create an author profile for a current user account. You can select users "
+"who are allowed to edit posts. This user will be able to update their "
+"profile."
+msgstr ""
+"Creează un profil de autor pentru un cont de utilizator curent. Poți "
+"selecta utilizatorii care au permisiunea de a edita postări. Acest "
+"utilizator va putea să-și actualizeze profilul."
+
+#: src/core/Classes/Author_Editor.php:789
+msgid ""
+"Create an author profile and a linked user account. This account will be in "
+"the \"Guest Author\" role and will not be able to login to the WordPress "
+"dashboard or update their profile."
+msgstr ""
+"Creează un profil de autor și un cont de utilizator legat. Acest cont va fi "
+"în rolul de \"Autor Invitat\" și nu va putea să se conecteze la "
+"dashboard-ul WordPress sau să-și actualizeze profilul."
+
+#: src/core/Classes/Author_Editor.php:796
+msgid ""
+"Create an author profile with no linked user account. This option is "
+"lightweight but may have compatibility issues with other themes and plugins."
+msgstr ""
+"Creează un profil de autor fără un cont de utilizator legat. Această "
+"opțiune este ușoară, dar poate avea probleme de compatibilitate cu alte "
+"teme și pluginuri."
+
+#: src/core/Classes/Author_Editor.php:815
 msgid "Author Email"
 msgstr "Email Autor"
 
@@ -477,6 +574,17 @@ msgid "Search for an author"
 msgstr "Căutați un autor"
 
 #: src/core/Classes/Post_Editor.php:466
+msgid ""
+"This option is showing because you do not have a WordPress user selected as "
+"an author. For some tasks, it can be helpful to have a user selected here. "
+"This user will not be visible on the front of your site."
+msgstr ""
+"Această opțiune este afișată deoarece nu ai un utilizator WordPress "
+"selectat ca autor. Pentru unele sarcini, poate fi util să ai un utilizator "
+"selectat aici. Acest utilizator nu va fi vizibil pe partea din față a "
+"site-ului tău."
+
+#: src/core/Classes/Post_Editor.php:474
 msgid "Search for an user"
 msgstr "Căutați un utilizator"
 
@@ -622,6 +730,24 @@ msgid "Edit My Author Profile"
 msgstr "Editează Profilul Meu de Autor"
 
 #: src/core/Plugin.php:532
+msgid ""
+"This name is used in several default displays and some search engine "
+"integrations."
+msgstr ""
+"Acest nume este folosit în mai multe afișări implicite și în unele "
+"integrări cu motoare de căutare."
+
+#: src/core/Plugin.php:537
+msgid ""
+"This forms part of the URL for the author’s profile page. If you choose a "
+"Mapped User, this URL is taken from the user’s account and can not be "
+"changed."
+msgstr ""
+"Aceasta face parte din URL-ul paginii de profil a autorului. Dacă alegi un "
+"Utilizator Mapat, acest URL este preluat din contul utilizatorului și nu "
+"poate fi schimbat."
+
+#: src/core/Plugin.php:573
 msgid "Search Authors"
 msgstr "Caută Autori"
 
@@ -719,6 +845,30 @@ msgid "Click to change this author, or drag to change their position"
 msgstr "Click pentru a schimba acest autor, sau trage pentru a schimba poziția lor"
 
 #: src/core/Plugin.php:1628
+msgid ""
+"Click on an author to change them. Drag to change their order. Click on "
+"<strong>Remove</strong> to remove them."
+msgstr ""
+"Fă clic pe un autor pentru a-l schimba. Trage pentru a schimba ordinea lor. "
+"Fă clic pe <strong>Elimină</strong> pentru a-i elimina."
+
+#: src/core/Plugin.php:1632
+msgid ""
+"Are you sure you want to delete the authors profiles mapped to users? This "
+"action can't be undone."
+msgstr ""
+"Ești sigur că vrei să ștergi profilurile autorilor mapate la utilizatori? "
+"Această acțiune nu poate fi anulată."
+
+#: src/core/Plugin.php:1636
+msgid ""
+"Are you sure you want to delete the guest authors profiles? This action "
+"can't be undone."
+msgstr ""
+"Ești sigur că vrei să ștergi profilurile autorilor invitați? Această "
+"acțiune nu poate fi anulată."
+
+#: src/core/Plugin.php:1640
 msgid "Are you sure you want to create author profiles for the missed post authors?"
 msgstr ""
 "Ești sigur că vrei să creezi profile de autori pentru autorii postărilor "
@@ -1209,6 +1359,15 @@ msgid "Export Editor Settings"
 msgstr "Exportați setările editorului"
 
 #: src/modules/author-boxes/author-boxes.php:2609
+msgid ""
+"You can use this data to export your author box design and import it to a "
+"new site."
+msgstr ""
+"Poți folosi aceste date pentru a exporta designul căsuței tale de autor și "
+"a-l importa pe un nou site."
+
+#: src/modules/author-boxes/author-boxes.php:2619
+#: src/modules/author-boxes/author-boxes.php:2690
 msgid "Copy to Clipboard"
 msgstr "Copiați în clipboard"
 
@@ -1243,10 +1402,44 @@ msgid "How to generate and use a theme template file"
 msgstr "Cum să generați și să folosiți un fișier șablon de temă"
 
 #: src/modules/author-boxes/author-boxes.php:2651
+msgid ""
+"Click the \"Generate Template\" button under the text area. Wait for the "
+"code to be generated."
+msgstr ""
+"Fă clic pe butonul \"Generare Șablon\" de sub zona de text. Așteaptă ca "
+"codul să fie generat."
+
+#: src/modules/author-boxes/author-boxes.php:2652
+#, php-format
+msgid ""
+"Create an empty php template file with your desired file slug in the %1s "
+"/publishpress-authors/author-boxes/ %2s folder of your theme. %3s For "
+"example, the file can be located here: %4s "
+"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
+"my-first-custom-author-template.php %7s ."
+msgstr ""
+"Creează un fișier șablon php gol cu slug-ul dorit în folderul %1s "
+"/publishpress-authors/author-boxes/ %2s al temei tale. %3s De exemplu, "
+"fișierul poate fi localizat aici: %4s "
+"/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
+"my-first-custom-author-template.php %7s ."
+
+#: src/modules/author-boxes/author-boxes.php:2653
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "Copiați codul generat și lipiți-l în fișierul nou creat."
 
 #: src/modules/author-boxes/author-boxes.php:2654
+msgid ""
+"Congratulations. Your can now choose your template inside the PublishPress "
+"Authors Settings."
+msgstr "Felicitări. Acum poți alege șablonul tău în Setările PublishPress Authors."
+
+#: src/modules/author-boxes/author-boxes.php:2658
+#, php-format
+msgid "You can read more information on the %s."
+msgstr "Puteți citi mai multe informații pe %s."
+
+#: src/modules/author-boxes/author-boxes.php:2659
 msgid "documentation page"
 msgstr "pagina de documentație"
 
@@ -1263,6 +1456,14 @@ msgid "Reorder Fields"
 msgstr "Reordonați Câmpurile"
 
 #: src/modules/author-boxes/author-boxes.php:2748
+msgid ""
+"Reorder the fields by dragging them to the correct position and saving your "
+"changes."
+msgstr ""
+"Reordonați câmpurile prin tragerea acestora în poziția corectă și salvarea "
+"modificărilor."
+
+#: src/modules/author-boxes/author-boxes.php:2762
 msgid "Save for Current Author Box"
 msgstr "Salvați pentru Caseta Autor Curent"
 
@@ -1295,6 +1496,14 @@ msgid "New Author Categories Box"
 msgstr "Caseta de Categorii Autori Nou"
 
 #: src/modules/author-boxes/author-boxes.php:3037
+msgid ""
+"PublishPress Authors Pro allows you to unlock the full potential of Author "
+"Categories."
+msgstr ""
+"PublishPress Authors Pro vă permite să deblocați întregul potențial al "
+"categoriilor de autori."
+
+#: src/modules/author-boxes/author-boxes.php:3039
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr ""
 "Puteți crea Casete de Autori în care Autorii sunt grupați în categoriile "
@@ -1329,6 +1538,14 @@ msgstr "Nu aveți permisiunea de a efectua această acțiune"
 
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:67
 #, php-format
+msgid ""
+"Field Order updated. %1sClick here%2s to reload this page to see new order "
+"changes."
+msgstr ""
+"Ordinea câmpurilor a fost actualizată. %1$sFaceți clic aici%2$s pentru a "
+"reîncărca această pagină pentru a vedea noile modificări ale ordinii."
+
+#: src/modules/author-boxes/classes/AuthorBoxesDefault.php:28
 msgid "Boxed"
 msgstr "Încadrat"
 
@@ -1985,6 +2202,14 @@ msgid "Custom \"View All Posts\" Link"
 msgstr "Link personalizat \"Vezi toate postările\""
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:449
+msgid ""
+"Enter a custom URL for the \"View All Posts\" link. Leave empty to use the "
+"default author posts page."
+msgstr ""
+"Introduceți un URL personalizat pentru linkul \"Vezi toate postările\". "
+"Lăsați gol pentru a folosi pagina implicită a postărilor autorului."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:453
 msgid "View All Posts Link Size"
 msgstr "Dimensiunea linkului Vezi toate postările"
 
@@ -2043,6 +2268,14 @@ msgid "Author Category Layout"
 msgstr "Aspectul categoriei autorului"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:607
+msgid ""
+"Selecting an option here will overwrite author boxes settings to match "
+"selected layout."
+msgstr ""
+"Selectarea unei opțiuni aici va suprascrie setările casetelor autorului "
+"pentru a se potrivi cu aspectul selectat."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:612
 msgid "Built-in Layout"
 msgstr "Aspect încorporat"
 
@@ -2137,10 +2370,26 @@ msgid "Author Category Group Title Prefix"
 msgstr "Prefix Titlu Grup Categorie Autor"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:714
+msgid ""
+"Enter the text that should be added before group title. This field accepts "
+"basic HTML."
+msgstr ""
+"Introduceți textul care ar trebui adăugat înainte de titlul grupului. Acest "
+"câmp acceptă HTML de bază."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:721
 msgid "Author Category Group Title Suffix"
 msgstr "Sufix Titlu Grup Categorie Autor"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:722
+msgid ""
+"Enter the text that should be added after group title. This field accepts "
+"basic HTML."
+msgstr ""
+"Introduceți textul care ar trebui adăugat după titlul grupului. Acest câmp "
+"acceptă HTML de bază."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:729
 msgid "Author Category Group Font Size"
 msgstr "Dimensiune Font Grup Categorie Autor"
 
@@ -2183,6 +2432,16 @@ msgid "%1s HTML Tag"
 msgstr "%1s Etichetă HTML"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:821
+msgid ""
+"'span' will display as an inline element and 'div' will display as a block "
+"element. To make this display into a link, select 'link' and enter the "
+"first part of the URL into the 'Prefix' field."
+msgstr ""
+"'span' va fi afișat ca un element inline, iar 'div' va fi afișat ca un "
+"element de bloc. Pentru a face această afisare un link, selectați 'link' și "
+"introduceți prima parte a URL-ului în câmpul 'Prefix'."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:828, fuzzy
 msgid "link"
 msgstr "link"
 
@@ -2192,6 +2451,16 @@ msgid "%1s Value Prefix"
 msgstr "%1s Prefix Valoare"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
+msgid ""
+"This is useful when linking to an email, URL, or phone number. For example, "
+"'mailto:', 'https://' or 'tel:' can be added as the prefix."
+msgstr ""
+"Acest lucru este util când faceți legătura cu un email, URL sau număr de "
+"telefon. De exemplu, 'mailto:', 'https://' sau 'tel:' pot fi adăugate ca "
+"prefix."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:851
+#, php-format
 msgid "%1s Display"
 msgstr "%1s Afișare"
 
@@ -2393,6 +2662,14 @@ msgid "Recent Post Types"
 msgstr "Tipuri de postări recente"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1259
+msgid ""
+"Select post types to include in recent posts. Leave empty to show all post "
+"types."
+msgstr ""
+"Selectați tipurile de postări care trebuie incluse în postările recente. "
+"Lăsați gol pentru a arăta toate tipurile de postări."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1260
 msgid "Select post types..."
 msgstr "Selectați tipuri de postări..."
 
@@ -2498,18 +2775,50 @@ msgid "Author inline display"
 msgstr "Afișare autor în linie"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1468
+msgid ""
+"This will display author in an inline format side by side instead of block "
+"format."
+msgstr ""
+"Acest lucru va afișa autorul într-un format inline, față în față, în loc de "
+"format de bloc."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1475
 msgid "Author Row Prefix"
 msgstr "Prefix pentru rândul autorului"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1476
+msgid ""
+"Enter the text that should be added before authors. This field accepts "
+"basic HTML."
+msgstr ""
+"Introduceți textul care ar trebui adăugat înainte de autori. Acest câmp "
+"acceptă HTML de bază."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1483
 msgid "Author Row Suffix"
 msgstr "Sufix pentru rândul autorului"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1484
+msgid ""
+"Enter the text that should be added after authors. This field accepts basic "
+"HTML."
+msgstr ""
+"Introduceți textul care ar trebui adăugat după autori. Acest câmp acceptă "
+"HTML de bază."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1491
 msgid "Author Separator"
 msgstr "Separator pentru autori"
 
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1492
+msgid ""
+"You can specify a separator such as ',' to separate authors. This field "
+"accepts basic HTML."
+msgstr ""
+"Puteți specifica un separator, cum ar fi ',' pentru a separa autorii. Acest "
+"câmp acceptă HTML de bază."
+
+#: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1499
 msgid "Author Box Margin Top"
 msgstr "Marginea de sus a căsuței autorului"
 
@@ -2694,6 +3003,18 @@ msgstr "Proprietate Schema"
 #: src/modules/author-categories/author-categories.php:622
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:476
 #, php-format
+msgid ""
+"Example: when this value is set to reviewedBy, all users in this category "
+"will be added to post's reviewedBy property. You can read more %1$s in this "
+"guide.%2$s"
+msgstr ""
+"Exemplu: când această valoare este setată la reviewedBy, toți utilizatorii "
+"din această categorie vor fi adăugați la proprietatea reviewedBy a "
+"postării. Puteți citi mai multe %1$s în acest ghid.%2$s"
+
+#: src/modules/author-categories/author-categories.php:634
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:79
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:486
 msgid "Post Types"
 msgstr "Tipuri de postări"
 
@@ -2703,6 +3024,16 @@ msgid "Select Post Type..."
 msgstr "Selectați tipul de postare..."
 
 #: src/modules/author-categories/author-categories.php:678
+msgid ""
+"Select which post types this category applies to. Leave empty for all post "
+"types."
+msgstr ""
+"Selectați la ce tipuri de postări se aplică această categorie. Lăsați gol "
+"pentru toate tipurile de postări."
+
+#: src/modules/author-categories/author-categories.php:683
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:81
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:531
 msgid "Enable Category"
 msgstr "Activați categoria"
 
@@ -2855,6 +3186,14 @@ msgid "Field Slug"
 msgstr "Slug-ul Câmpului"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:387
+msgid ""
+"The slug is used in code to reference this author field. It is all "
+"lowercase and contains only letters, numbers, and hyphens."
+msgstr ""
+"Slug-ul este folosit în cod pentru a face referire la acest câmp al "
+"autorului. Este tot cu litere mici și conține doar litere, cifre și cratime."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:396
 msgid "Field Type"
 msgstr "Tip de câmp"
 
@@ -2863,6 +3202,24 @@ msgid "Social Profile?"
 msgstr "Profil social?"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:409
+msgid ""
+"This feature will add the SameAs property to this link so that search "
+"engines realize that the social profile is connected to this author."
+msgstr ""
+"Această funcție va adăuga proprietatea SameAs acestui link, astfel încât "
+"motoarele de căutare să realizeze că profilul social este conectat la acest "
+"autor."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:422
+#, php-format
+msgid ""
+"Add a Schema.org property to this field. Examples include alumniOf, "
+"worksFor, and birthPlace. %1$sClick here for documentation.%2$s"
+msgstr ""
+"Adăugați o proprietate Schema.org acestui câmp. Exemple includ alumniOf, "
+"worksFor și birthPlace. %1$sFaceți clic aici pentru documentație.%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:434
 msgid "Show in REST API"
 msgstr "Afișați în REST API"
 
@@ -2896,6 +3253,14 @@ msgid "Description"
 msgstr "Descriere"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:482
+msgid ""
+"This description appears under the fields and helps users understand their "
+"choice."
+msgstr ""
+"Această descriere apare sub câmpuri și ajută utilizatorii să înțeleagă "
+"alegerea lor."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:801
 msgid "Status"
 msgstr "Stare"
 
@@ -2909,6 +3274,14 @@ msgstr "Titlu de muncă"
 
 #: src/modules/author-custom-fields/author-custom-fields.php:992
 #: src/modules/author-custom-fields/author-custom-fields.php:1047
+msgid ""
+"With PublishPress Authors Pro, you can add new fields for social networks "
+"and more."
+msgstr ""
+"Cu PublishPress Authors Pro, poți adăuga câmpuri noi pentru rețelele "
+"sociale și multe altele."
+
+#: src/modules/author-custom-fields/author-custom-fields.php:1111
 msgid "Field Order updated."
 msgstr "Ordinea câmpului a fost actualizată."
 
@@ -3059,6 +3432,15 @@ msgid "Show Authors"
 msgstr "Arată autori"
 
 #: src/modules/author-list/author-list.php:438
+msgid ""
+"Select an option to limit the results to selected user roles, author types, "
+"specific authors or author Categories."
+msgstr ""
+"Selectează o opțiune pentru a limita rezultatele la rolurile de utilizator "
+"selectate, tipurile de autori, autori specifici sau categorii de autori."
+
+#: src/modules/author-list/author-list.php:441
+#: src/modules/author-list/author-list.php:455
 msgid "Roles"
 msgstr "Roluri"
 
@@ -3067,6 +3449,15 @@ msgid "Exclude Authors"
 msgstr "Excluderea autorilor"
 
 #: src/modules/author-list/author-list.php:452
+msgid ""
+"Select an option to exclude selected user roles, author types, specific "
+"authors or author Categories from Author list."
+msgstr ""
+"Selectează o opțiune pentru a exclude rolurile de utilizator selectate, "
+"tipurile de autori, autori specifici sau categorii de autori din lista de "
+"autori."
+
+#: src/modules/author-list/author-list.php:468
 msgid "Authors Per Page"
 msgstr "Autori pe pagină"
 
@@ -3079,10 +3470,27 @@ msgid "Show Empty"
 msgstr "Arată gol"
 
 #: src/modules/author-list/author-list.php:480
+msgid ""
+"Enable this option to show all authors, including those without any posts. "
+"Disable this option to show only authors who are assigned to posts."
+msgstr ""
+"Activează această opțiune pentru a arăta toți autorii, inclusiv pe cei fără "
+"postări. Dezactivează această opțiune pentru a arăta doar autorii care sunt "
+"asignați postărilor."
+
+#: src/modules/author-list/author-list.php:488
 msgid "Configure Author List Options"
 msgstr "Configurează opțiunile listei de autori"
 
 #: src/modules/author-list/author-list.php:489
+msgid ""
+"Authors Pro allows you to add extra features to the Authors List. These "
+"features include pagination, choose the order of authors, and much more."
+msgstr ""
+"Authors Pro îți permite să adaugi funcții suplimentare la lista de autori. "
+"Aceste funcții includ paginarea, alegerea ordinii autorilor și multe altele."
+
+#: src/modules/author-list/author-list.php:494
 msgid "Order By"
 msgstr "Ordine după"
 
@@ -3091,6 +3499,16 @@ msgid "Last Article Date"
 msgstr "Data ultimului articol"
 
 #: src/modules/author-list/author-list.php:523
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific time. This option accepts date values such as 1 week ago, 1 month "
+"ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"Poți limita lista de autori la utilizatori cu o postare publicată într-o "
+"perioadă specifică. Această opțiune acceptă valori de dată precum acum 1 "
+"săptămână, acum 1 lună, acum 6 luni, acum 1 an etc."
+
+#: src/modules/author-list/author-list.php:535
 msgid "Show Search Box"
 msgstr "Afișează caseta de căutare"
 
@@ -3099,10 +3517,27 @@ msgid "Add Search Box to Author Lists"
 msgstr "Adaugă caseta de căutare la listele de autori"
 
 #: src/modules/author-list/author-list.php:545
+msgid ""
+"Author Pro allows you to add a search box to the Authors List. You can also "
+"show a dropdown menu that allows users to search on specific author fields."
+msgstr ""
+"Author Pro îți permite să adaugi un câmp de căutare la lista de autori. "
+"Poți, de asemenea, să arăți un meniu derulant care le permite "
+"utilizatorilor să caute pe câmpurile specifice ale autorilor."
+
+#: src/modules/author-list/author-list.php:550
 msgid "Search Field Dropdown"
 msgstr "Meniu derulant câmp de căutare"
 
 #: src/modules/author-list/author-list.php:551
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields."
+msgstr ""
+"Poți, de asemenea, să arăți un meniu derulant care le permite "
+"utilizatorilor să caute pe câmpurile specifice ale autorilor."
+
+#: src/modules/author-list/author-list.php:600
 msgid "Author Recent List"
 msgstr "Lista recentă de autori"
 
@@ -3147,6 +3582,14 @@ msgid "Select Author Category"
 msgstr "Selectează categoria autorului"
 
 #: src/modules/author-list/author-list.php:1282
+msgid ""
+"This is a quick preview of this Author List. Test on frontend pages to see "
+"exactly how it looks with your theme."
+msgstr ""
+"Aceasta este o previzualizare rapidă a acestei liste de autori. Testează pe "
+"paginile frontend pentru a vedea exact cum arată cu tema ta."
+
+#: src/modules/author-list/author-list.php:1380
 msgid "Invalid form"
 msgstr "Formular invalid"
 
@@ -3381,6 +3824,14 @@ msgid "Showcase your Authors with PublishPress Blocks"
 msgstr "Prezentați-vă autorii cu PublishPress Blocks"
 
 #: src/modules/modules-settings/modules-settings.php:318
+msgid ""
+"PublishPress Blocks is a free plugin with full support for PublishPress "
+"Authors."
+msgstr ""
+"PublishPress Blocks este un plugin gratuit cu suport complet pentru "
+"PublishPress Authors."
+
+#: src/modules/modules-settings/modules-settings.php:319
 msgid "Install this plugin to showcase content by your Authors."
 msgstr "Instalați acest plugin pentru a prezenta conținutul autorilor dumneavoastră."
 
@@ -3391,6 +3842,14 @@ msgstr ""
 "dumneavoastră în multe aranjamente frumoase."
 
 #: src/modules/modules-settings/modules-settings.php:321
+msgid ""
+"PublishPress Blocks has over 20 extra Gutenberg blocks including "
+"accordions, galleries, tables, and more."
+msgstr ""
+"PublishPress Blocks are peste 20 de blocuri Gutenberg suplimentare, "
+"inclusiv acordeoane, galerii, tabele și multe altele."
+
+#: src/modules/modules-settings/modules-settings.php:324
 msgid "Click here to install PublishPress Blocks"
 msgstr "Faceți clic aici pentru a instala PublishPress Blocks"
 
@@ -3431,6 +3890,17 @@ msgid "Copy Molongui Authorship Data"
 msgstr "Copiază datele Molongui Authorship"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:153
+msgid ""
+"This action will copy the authors from the plugin Molongui Authorship "
+"allowing you to migrate to PublishPress Authors without losing any data "
+"including post author relation. This action can be run multiple times."
+msgstr ""
+"Această acțiune va copia autorii din pluginul Molongui Authorship "
+"permițându-ți să migrezi la PublishPress Authors fără a pierde date, "
+"inclusiv relația autor-postare. Această acțiune poate fi efectuată de mai "
+"multe ori."
+
+#: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:187
 msgid "It looks like you have Molongui Authorship installed."
 msgstr "Se pare că ai instalat Molongui Authorship."
 
@@ -3653,6 +4123,14 @@ msgstr "Caseta Autorului cu aspect moștenit (listă simplă):"
 #: src/modules/multiple-authors/multiple-authors.php:1265
 #: src/modules/settings/settings.php:275
 #, php-format
+msgid ""
+"Disabled because add_post_type_support('%1$s', '%2$s') is included in a "
+"loaded file."
+msgstr ""
+"Dezactivat deoarece add_post_type_support('%1$s', '%2$s') este inclus "
+"într-un fișier încărcat."
+
+#: src/modules/multiple-authors/multiple-authors.php:1284
 msgid "This will display the authors box at the top of the content."
 msgstr "Aceasta va afișa caseta autorilor în partea de sus a conținutului."
 
@@ -3679,16 +4157,248 @@ msgid "Authors Box"
 msgstr "Caseta Autorilor"
 
 #: src/modules/multiple-authors/multiple-authors.php:1409
+msgid ""
+"With this shortcode you can display the author box in any part of the "
+"content. "
+msgstr ""
+"Cu acest shortcode poți afișa caseta autorului în orice parte a "
+"conținutului."
+
+#: src/modules/multiple-authors/multiple-authors.php:1417
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s."
+msgstr ""
+"Poți specifica layout-ul folosind slug-ul layout-ului casetelor autorilor. "
+"Poți vedea detalii complete despre fiecare opțiune de layout %1$s în acest "
+"ghid %2$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1428
+#, php-format
+msgid ""
+"You can also decide whether or not to show the main title, using %1$s or "
+"%2$s ."
+msgstr ""
+"De asemenea, poți decide dacă să arăți sau nu titlul principal, folosind "
+"%1$s sau %2$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1438
+#: src/modules/multiple-authors/multiple-authors.php:1522
+msgid ""
+"You can load the authors for a specific post, even if you are not in that "
+"post currently. For example, this shortcode will load the authors for the "
+"post with the ID of 32."
+msgstr ""
+"Poți încărca autorii pentru o postare specifică, chiar dacă nu ești în acea "
+"postare în prezent. De exemplu, acest shortcode va încărca autorii pentru "
+"postarea cu ID-ul 32."
+
+#: src/modules/multiple-authors/multiple-authors.php:1445
+msgid ""
+"You can load the authors for a specific user by providing the user id. For "
+"example, this shortcode will load the author with user id of 32"
+msgstr ""
+"Poți încărca autorii pentru un utilizator specific furnizând ID-ul "
+"utilizatorului. De exemplu, acest shortcode va încărca autorul cu ID-ul "
+"utilizatorului 32."
+
+#: src/modules/multiple-authors/multiple-authors.php:1452
+msgid ""
+"You can load the authors for a specific author by providing the author term "
+"id for both guest and user author. For example, this shortcode will load "
+"the author with term id of 32"
+msgstr ""
+"Poți încărca autorii pentru un autor specific furnizând ID-ul termenului "
+"autorului atât pentru autorii oaspeți, cât și pentru utilizatori. De "
+"exemplu, acest shortcode va încărca autorul cu ID-ul termenului 32."
+
+#: src/modules/multiple-authors/multiple-authors.php:1460
+#, php-format
+msgid ""
+"If you are having problems showing PublishPress Authors on author profile "
+"pages, you can use this shortcode below. The argument %s forces the plugin "
+"to retrieve the Author from the profile page and not any other posts on the "
+"same screen."
+msgstr ""
+"Dacă întâmpinați probleme în a afișa PublishPress Authors pe paginile de "
+"profil ale autorilor, puteți folosi acest shortcode de mai jos. Argumentul "
+"%s forțează pluginul să preia Autorul de pe pagina de profil și nu din alte "
+"postări de pe aceeași pagină."
+
+#: src/modules/multiple-authors/multiple-authors.php:1470
+#, php-format
+msgid ""
+"There is one final option to mention. This is mostly useful if you're using "
+"a theme or page builder to customize the Author profile pages you find at "
+"URLs such as /author/username/. You can use the following shortcode on the "
+"authors page to display the profile of the current author. You just need to "
+"add the parameter %s."
+msgstr ""
+"Există o ultimă opțiune de menționat. Aceasta este mai ales utilă dacă "
+"folosiți o temă sau un constructor de pagini pentru a personaliza paginile "
+"de profil ale Autorului pe care le găsiți la URL-uri precum "
+"/author/username/. Puteți folosi următorul shortcode pe pagina autorilor "
+"pentru a afișa profilul autorului curent. Trebuie doar să adăugați "
+"parametrul %s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1479
+msgid ""
+"You can load the authors belonging to a specific author categories by "
+"providing the category slug or slugs separated by comma for more than one "
+"category."
+msgstr ""
+"Puteți încărca autorii aparținând unor categorii specifice de autori "
+"furnizând slug-ul categoriei sau slugs-urile separate prin virgulă pentru "
+"mai mult de o categorie."
+
+#: src/modules/multiple-authors/multiple-authors.php:1489
 msgid "Authors Data"
 msgstr "Datele Autorilor"
 
 #: src/modules/multiple-authors/multiple-authors.php:1490
+msgid ""
+"With this shortcode you can display the author names or any profile field "
+"in any part of the content."
+msgstr ""
+"Cu acest shortcode puteți afișa numele autorilor sau orice câmp de profil "
+"în orice parte a conținutului."
+
+#: src/modules/multiple-authors/multiple-authors.php:1498
+#, php-format
+msgid ""
+"The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s "
+"%4$s %5$s %6$s %7$s. You can see full details and parameters %8$s in this "
+"guide %9$s."
+msgstr ""
+"Shortcode-ul datelor autorilor acceptă parametrii de câmp, cum ar fi: %1$s "
+"%2$s %3$s %4$s %5$s %6$s %7$s. Puteți vedea detalii complete și parametrii "
+"%8$s în acest ghid %9$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1515
 msgid "You can also specify the separator to be used for mulitple authors data."
 msgstr ""
 "De asemenea, poți specifica separatorul care va fi folosit pentru datele "
 "mai multor autori."
 
 #: src/modules/multiple-authors/multiple-authors.php:1529
+msgid ""
+"You can retrieve a specific author by providing the author's term ID. For "
+"example, this shortcode will load the author with the term ID of 102."
+msgstr ""
+"Puteți recupera un autor specific furnizând ID-ul termenului autorului. De "
+"exemplu, acest shortcode va încărca autorul cu ID-ul termenului 102."
+
+#: src/modules/multiple-authors/multiple-authors.php:1537
+#, php-format
+msgid ""
+"You can also decide to return an array list of authors by using "
+"user_objects=\"true\" which will return all the authors object data as an "
+"array. You can check full details and sample usage %2$s in this guide%3$s."
+msgstr ""
+"De asemenea, puteți decide să returnați o listă de autori folosind "
+"user_objects=\"true\", care va returna toate datele obiectului autorilor ca "
+"un array. Puteți verifica detalii complete și utilizarea exemplificată %2$s "
+"în acest ghid%3$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1548
+msgid ""
+"You can retrieve authors belonging to a specific Author Category by "
+"providing the category slug or slugs. Separate multiple slugs with a comma."
+msgstr ""
+"Puteți recupera autorii aparținând unei Categorii de Autor specifice "
+"furnizând slug-ul sau slugs-urile categoriei. Separati mai multe slugs cu o "
+"virgulă."
+
+#: src/modules/multiple-authors/multiple-authors.php:1559
+msgid ""
+"With this shortcode, you can show all the authors together in a single "
+"display."
+msgstr ""
+"Cu acest shortcode, puteți arăta toți autorii împreună într-o singură "
+"afișare."
+
+#: src/modules/multiple-authors/multiple-authors.php:1567
+#, php-format
+msgid ""
+"You can specify layout by using author boxes layout slug. You can see full "
+"details of each layout option %1$s in this guide %2$s. %3$s %4$s This "
+"shortcode also provides two custom layouts: %5$s %6$s."
+msgstr ""
+"Puteți specifica layout-ul folosind slug-ul layout-ului cutiilor autorilor. "
+"Puteți vedea detalii complete ale fiecărei opțiuni de layout %1$s în acest "
+"ghid %2$s. %3$s %4$s Acest shortcode oferă, de asemenea, două layout-uri "
+"personalizate: %5$s %6$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1582
+#, php-format
+msgid ""
+"You can define the number of layout columns by using %1$s to show authors "
+"in 2 column."
+msgstr ""
+"Puteți defini numărul de coloane ale layout-ului folosind %1$s pentru a "
+"arăta autorii în 2 coloane."
+
+#: src/modules/multiple-authors/multiple-authors.php:1592
+#, php-format
+msgid ""
+"You can choose the number of authors per page using %1$s . %2$s Pagination "
+"will be automatically added if required."
+msgstr ""
+"Puteți alege numărul de autori pe pagină folosind %1$s. %2$s Pagination va "
+"fi adăugată automat dacă este necesar."
+
+#: src/modules/multiple-authors/multiple-authors.php:1603
+#, php-format
+msgid ""
+"You can limit the result to only authors who are assigned to posts by using "
+"%1$s . %2$s Alternatively, use %3$s to show all authors, including those "
+"without any posts."
+msgstr ""
+"Puteți limita rezultatul doar la autorii care sunt asignați la postări "
+"folosind %1$s. %2$s Alternativ, folosiți %3$s pentru a arăta toți autorii, "
+"inclusiv pe cei fără postări."
+
+#: src/modules/multiple-authors/multiple-authors.php:1615
+#, php-format
+msgid ""
+"You can limit the result to only guest authors by using %1$s . %2$s "
+"Alternatively, %3$s will show only authors with a WordPress account."
+msgstr ""
+"Puteți limita rezultatul doar la autorii invitați folosind %1$s. %2$s "
+"Alternativ, %3$s va arăta doar autorii cu un cont WordPress."
+
+#: src/modules/multiple-authors/multiple-authors.php:1627
+#, php-format
+msgid ""
+"If you are using the authors_recent layout, you can define the number of "
+"columns by using %1$s ."
+msgstr ""
+"Dacă utilizați layout-ul authors_recent, puteți defini numărul de coloane "
+"folosind %1$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1637
+#, php-format
+msgid ""
+"For authors_index layout, you can group user by profile field by using %1$s "
+"."
+msgstr ""
+"Pentru layout-ul authors_index, puteți grupa utilizatorii după câmpul de "
+"profil folosind %1$s."
+
+#: src/modules/multiple-authors/multiple-authors.php:1647
+#, php-format
+msgid ""
+"To order the results based on post count, use %1$s . To order the results "
+"by name, use %2$s . Alternatively, you can order by profile fields like "
+"%3$s, %4$s etc"
+msgstr ""
+"Pentru a ordona rezultatele pe baza numărului de postări, folosiți %1$s. "
+"Pentru a ordona rezultatele după nume, folosiți %2$s. Alternativ, puteți "
+"ordona după câmpurile de profil precum %3$s, %4$s etc."
+
+#: src/modules/multiple-authors/multiple-authors.php:1660
+#, php-format
 msgid "To further customize the order of results, use %1$s or %2$s ."
 msgstr ""
 "Pentru a personaliza și mai mult ordinea rezultatelor, folosiți %1$s sau "
@@ -3701,6 +4411,28 @@ msgstr "Pentru a afișa un câmp de căutare pentru autori, folosiți %1$s ."
 
 #: src/modules/multiple-authors/multiple-authors.php:1681
 #, php-format
+msgid ""
+"You can also show a dropdown menu that allows users to search on specific "
+"author fields. You can add fields to the dropdown using %1$s . This "
+"requires the search box to be active."
+msgstr ""
+"De asemenea, puteți afișa un meniu derulant care permite utilizatorilor să "
+"caute pe câmpurile autorului specific. Puteți adăuga câmpuri în meniu "
+"folosind %1$s. Acest lucru necesită ca caseta de căutare să fie activă."
+
+#: src/modules/multiple-authors/multiple-authors.php:1691
+#, php-format
+msgid ""
+"You can limit the author list to users with a published post within a "
+"specific period using %1$s . This accept english date value like 1 week "
+"ago, 1 month ago, 6 months ago, 1 year ago etc."
+msgstr ""
+"Puteți limita lista autorilor la utilizatorii cu o postare publicată într-o "
+"perioadă specifică folosind %1$s. Acest lucru acceptă valori de dată în "
+"engleză precum 1 săptămână în urmă, 1 lună în urmă, 6 luni în urmă, 1 an în "
+"urmă etc."
+
+#: src/modules/multiple-authors/multiple-authors.php:1738
 msgid "Copied!"
 msgstr "Copiat!"
 
@@ -3714,6 +4446,42 @@ msgid "Select roles"
 msgstr "Selectați roluri"
 
 #: src/modules/multiple-authors/multiple-authors.php:1813
+msgid ""
+"Choose which WordPress user roles can be selected using the \"Registered "
+"Author With User Account\" option for author profiles."
+msgstr ""
+"Alegeți ce roluri de utilizator WordPress pot fi selectate folosind "
+"opțiunea \"Autor Înregistrat Cu Cont de Utilizator\" pentru profilurile "
+"autorilor."
+
+#: src/modules/multiple-authors/multiple-authors.php:1842
+msgid ""
+"Author profiles can be mapped to WordPress user accounts. This option "
+"allows you to automatically create author profiles when users are created "
+"in these roles. You can also do this for existing users by clicking the "
+"\"Create PublishPress Authors Profiles for all users in a role\" button in "
+"the Maintenance tab."
+msgstr ""
+"Profilurile autorilor pot fi mapate la conturile de utilizator WordPress. "
+"Această opțiune vă permite să creați automat profiluri de autor atunci când "
+"utilizatorii sunt creați în aceste roluri. De asemenea, puteți face acest "
+"lucru pentru utilizatorii existenți făcând clic pe butonul \"Creează "
+"profiluri de autori PublishPress pentru toți utilizatorii dintr-un rol\" "
+"din tab-ul de întreținere."
+
+#: src/modules/multiple-authors/multiple-authors.php:1863
+msgid ""
+"If the Author is mapped to a WordPress user, this will display the authors' "
+"\"Display name\" and their \"Username\". The default is to show only the "
+"\"Display name\". Showing the \"Username\" is useful if you have several "
+"authors with similar names."
+msgstr ""
+"Dacă autorul este mapat la un utilizator WordPress, acesta va afișa "
+"\"Numele de afișare\" al autorilor și \"Numele de utilizator\" al acestora. "
+"Implicit, se va afișa doar \"Numele de afișare\". Afișarea \"Numele de "
+"utilizator\" este utilă dacă aveți mai mulți autori cu nume similare."
+
+#: src/modules/multiple-authors/multiple-authors.php:1886
 msgid "Allow authors to be created without a real user account."
 msgstr "Permiteți crearea autorilor fără un cont de utilizator real."
 
@@ -3728,6 +4496,14 @@ msgid "Allow authors to be created without a connected user account."
 msgstr "Permiteți crearea autorilor fără un cont de utilizator conectat."
 
 #: src/modules/multiple-authors/multiple-authors.php:1956
+msgid ""
+"If enabled, PublishPress Authors will replace the default WordPress author "
+"pages."
+msgstr ""
+"Dacă este activat, PublishPress Authors va înlocui paginile de autori "
+"implicite WordPress."
+
+#: src/modules/multiple-authors/multiple-authors.php:1961
 msgid "Please note this feature will not work for all themes."
 msgstr ""
 "Vă rugăm să rețineți că această caracteristică nu va funcționa pentru toate "
@@ -3763,6 +4539,14 @@ msgid "Last Name First Name"
 msgstr "Nume Prenume"
 
 #: src/modules/multiple-authors/multiple-authors.php:2218
+msgid ""
+"This avatar will be used as default avatar instead of gravatar where no "
+"custom avatar is added to profile."
+msgstr ""
+"Acest avatar va fi folosit ca avatar implicit în loc de Gravatar unde nu "
+"este adăugat un avatar personalizat în profil."
+
+#: src/modules/multiple-authors/multiple-authors.php:2240
 msgid "This will display the author bio."
 msgstr "Aceasta va afișa biografia autorului."
 
@@ -3802,6 +4586,17 @@ msgid "This will display the excerpt."
 msgstr "Aceasta va afișa un extras."
 
 #: src/modules/multiple-authors/multiple-authors.php:2573
+msgid ""
+"This will allows you map a WordPress user to more than one author. Don't "
+"use this feature unless requested to do so by the PublishPress team. This "
+"plugin works better when authors and users are paired one-to-one."
+msgstr ""
+"Aceasta vă va permite să mapați un utilizator WordPress la mai mult de un "
+"autor. Nu utilizați această funcție decât dacă este solicitat de echipa "
+"PublishPress. Acest plugin funcționează mai bine când autorii și "
+"utilizatorii sunt asociați unul câte unul."
+
+#: src/modules/multiple-authors/multiple-authors.php:2597
 msgid "This will display the authors."
 msgstr "Aceasta va afișa autorii."
 
@@ -3836,6 +4631,17 @@ msgid "Search for a fallback author"
 msgstr "Căutați un autor de rezervă"
 
 #: src/modules/multiple-authors/multiple-authors.php:2791
+msgid ""
+"If you only have Guest Authors selected for a post, this user may be used "
+"as a fallback. WordPress sometimes requires a WordPress user to be assigned "
+"to each post. This user will not be visible on the front of your site."
+msgstr ""
+"Dacă aveți doar Autori Oaspeți selectați pentru o postare, acest utilizator "
+"poate fi folosit ca soluție de rezervă. WordPress necesită uneori ca un "
+"utilizator WordPress să fie asignat fiecărei postări. Acest utilizator nu "
+"va fi vizibil pe partea din față a site-ului dvs."
+
+#: src/modules/multiple-authors/multiple-authors.php:2809
 msgid "This will display the authors email in the author box."
 msgstr "Aceasta va afișa adresa de email a autorului în caseta autorului."
 
@@ -3858,6 +4664,18 @@ msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr "Creează profiluri PublishPress pentru toți autorii postărilor"
 
 #: src/modules/multiple-authors/multiple-authors.php:2887
+msgid ""
+"If a WordPress user is the author of a post, but does not have a "
+"PublishPress Authors profile, this will automatically create a profile for "
+"them."
+msgstr ""
+"Dacă un utilizator WordPress este autorul unei postări, dar nu are un "
+"profil PublishPress Authors, acesta va crea automat un profil pentru ei."
+
+#: src/modules/multiple-authors/multiple-authors.php:2887
+#: src/modules/multiple-authors/multiple-authors.php:2893
+#: src/modules/multiple-authors/multiple-authors.php:2899
+#: src/modules/multiple-authors/multiple-authors.php:2906
 msgid "Click here for documentation"
 msgstr "Faceți clic aici pentru documentație"
 
@@ -3872,6 +4690,16 @@ msgstr ""
 "rol"
 
 #: src/modules/multiple-authors/multiple-authors.php:2893
+msgid ""
+"This will find all the users in a role and create author profiles for them. "
+"You can choose the roles using the \"Automatically create author profiles\" "
+"setting."
+msgstr ""
+"Aceasta va găsi toți utilizatorii dintr-un rol și va crea profiluri de "
+"autori pentru ei. Puteți alege rolurile folosind setarea \"Creează automat "
+"profiluri de autori\"."
+
+#: src/modules/multiple-authors/multiple-authors.php:2894
 msgid "Create PublishPress Authors profiles"
 msgstr "Creează profiluri de Autori PublishPress"
 
@@ -3882,22 +4710,72 @@ msgstr ""
 "utilizatorului"
 
 #: src/modules/multiple-authors/multiple-authors.php:2899
+msgid ""
+"This will update all the author profiles in PublishPress Authors to match "
+"the default WordPress fields for each user."
+msgstr ""
+"Aceasta va actualiza toate profilurile de autori din PublishPress Authors "
+"pentru a se potrivi cu câmpurile implicite WordPress pentru fiecare "
+"utilizator."
+
+#: src/modules/multiple-authors/multiple-authors.php:2905
 msgid "Synchronize the author and user URLs"
 msgstr "Sincronizează URL-urile autorului și ale utilizatorului"
 
 #: src/modules/multiple-authors/multiple-authors.php:2906
+msgid ""
+"This will update all the Author URLs in PublishPress Authors to match the "
+"default WordPress URLs for each user."
+msgstr ""
+"Aceasta va actualiza toate URL-urile autorilor din PublishPress Authors "
+"pentru a se potrivi cu URL-urile implicite WordPress pentru fiecare "
+"utilizator."
+
+#: src/modules/multiple-authors/multiple-authors.php:2912
+#: src/modules/multiple-authors/multiple-authors.php:2914
 msgid "Create Author Categories"
 msgstr "Creează Categorii de Autori"
 
 #: src/modules/multiple-authors/multiple-authors.php:2913
+msgid ""
+"This will create author categories table if missing and add default "
+"categories."
+msgstr ""
+"Aceasta va crea un tabel de categorii de autori dacă lipsește și va adăuga "
+"categorii implicite."
+
+#: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "Copy Co-Authors Plus Data"
 msgstr "Copiază Datele Co-Authors Plus"
 
 #: src/modules/multiple-authors/multiple-authors.php:2927
+msgid ""
+"This action will copy the authors from the plugin Co-Authors Plus allowing "
+"you to migrate to PublishPress Authors without losing any data. This action "
+"can be run multiple times."
+msgstr ""
+"Această acțiune va copia autorii din pluginul Co-Authors Plus, "
+"permițându-vă să migrați la PublishPress Authors fără a pierde date. "
+"Această acțiune poate fi efectuată de mai multe ori."
+
+#: src/modules/multiple-authors/multiple-authors.php:2937
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr "Șterge Conexiunile Între Profilurile Autorilor și Utilizatori"
 
 #: src/modules/multiple-authors/multiple-authors.php:2938
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. It will delete all author profiles that are mapped to "
+"a WordPress user account. This will not delete the WordPress user accounts, "
+"but any links between the posts and author profiles will be lost."
+msgstr ""
+"Această acțiune poate reseta datele PublishPress Authors înainte de a "
+"utiliza alte opțiuni de întreținere. Va șterge toate profilurile de autori "
+"care sunt mapate la un cont de utilizator WordPress. Aceasta nu va șterge "
+"conturile de utilizator WordPress, dar orice legături între postări și "
+"profilurile de autori vor fi pierdute."
+
+#: src/modules/multiple-authors/multiple-authors.php:2939
 msgid "Delete all authors mapped to users"
 msgstr "Șterge toți autorii mapați la utilizatori"
 
@@ -3906,10 +4784,30 @@ msgid "Delete Guest Authors"
 msgstr "Șterge Autori Oaspeți"
 
 #: src/modules/multiple-authors/multiple-authors.php:2945
+msgid ""
+"This action can reset the PublishPress Authors data before using other "
+"maintenance options. Guest authors are author profiles that are not mapped "
+"to a WordPress user account. This action will delete all guest authors."
+msgstr ""
+"Această acțiune poate reseta datele PublishPress Authors înainte de a "
+"utiliza alte opțiuni de întreținere. Autorii oaspeți sunt profiluri de "
+"autori care nu sunt mapate la un cont de utilizator WordPress. Această "
+"acțiune va șterge toți autorii oaspeți."
+
+#: src/modules/multiple-authors/multiple-authors.php:2946
 msgid "Delete all guest authors"
 msgstr "Șterge toți autorii oaspeți"
 
 #: src/modules/multiple-authors/multiple-authors.php:2952
+msgid ""
+"Please be careful clicking these buttons. Before clicking, we recommend "
+"taking a site backup in case anything goes wrong."
+msgstr ""
+"Vă rugăm să fiți atenți când faceți clic pe aceste butoane. Înainte de a "
+"face clic, vă recomandăm să efectuați o copie de rezervă a site-ului în caz "
+"că ceva nu decurge conform planului."
+
+#: src/modules/multiple-authors/multiple-authors.php:3155
 msgid "Author Profiles"
 msgstr "Profiluri de Autori"
 
@@ -4193,9 +5091,46 @@ msgstr "Contact"
 
 #: src/core/Plugin.php:563
 msgctxt "taxonomy general name"
+msgid "Authors"
+msgstr "Autori"
+
+#: src/core/Plugin.php:568
+msgctxt "taxonomy singular name"
+msgid "Author"
+msgstr "Autor"
+
+#: src/modules/author-boxes/author-boxes.php:411
+#, fuzzy, php-format
+msgctxt "Author Box post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-boxes/author-boxes.php:412
+#, fuzzy, php-format
+msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
 #: src/modules/author-boxes/author-boxes.php:427
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:166
+#, fuzzy, php-format
+msgctxt "Custom Field post type name"
+msgid "%2$s"
+msgstr "%2$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:167
+#, fuzzy, php-format
+msgctxt "singular custom field post type name"
+msgid "%1$s"
+msgstr "%1$s"
+
+#: src/modules/author-custom-fields/author-custom-fields.php:182
+#, fuzzy, php-format
+msgctxt "custom field post type menu name"
+msgid "%2$s"
+msgstr "%2$s"
