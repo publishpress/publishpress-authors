@@ -4,6 +4,7 @@
 - .distignore
 - .env.testing.linux.dist
 - .env.testing.mac.dist
+- .env
 - .eslintrc.js
 - .git
 - .gitattributes
