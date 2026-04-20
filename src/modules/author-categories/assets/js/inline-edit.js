@@ -32,8 +32,9 @@ window.wp = window.wp || {};
 		init: function () {
 			var t = this, row = $('#inline-edit');
 
-			t.type = $('#the-list').attr('data-wp-lists').substr(5);
-			t.what = '#' + t.type + '-';
+			var listData = $('#the-list').attr('data-wp-lists') || '';
+			t.type = listData.indexOf('list:') === 0 ? listData.substr(5) : '';
+			t.what = t.type ? ('#' + t.type + '-') : '#';
 
 			$('#the-list').on('click', '.editinline', function () {
 				$(this).attr('aria-expanded', 'true');
@@ -99,7 +100,7 @@ window.wp = window.wp || {};
 		toggle: function (el) {
 			var t = this;
 
-			$(t.what + t.getId(el)).css('display') === 'none' ? t.revert() : t.edit(el);
+			$('#' + t.getId(el)).css('display') === 'none' ? t.revert() : t.edit(el);
 		},
 
 		/**
@@ -116,7 +117,7 @@ window.wp = window.wp || {};
 		 * @return {boolean} Always returns false.
 		 */
 		edit: function (id, element) {
-			var editRow, rowData, val,
+			var editRow,
 				t = this;
 			t.revert();
 
@@ -133,11 +134,19 @@ window.wp = window.wp || {};
 			var enabled_category = category_status > 0 ? true : false;
 			var postTypesData = authorCategoriesInlineEdit.proActive ? element.attr('data-post_types') : false;
 
-			editRow = $('#inline-edit').clone(true), rowData = $('#inline_' + id);
+			editRow = $('#inline-edit').clone(true);
 			$('td', editRow).attr('colspan', $('th:visible, td:visible', '.wp-list-table.widefat:first thead').length);
 
+			var $targetRow = $('#' + id);
+			if (!$targetRow.length && element && element.length) {
+				$targetRow = element.closest('tr');
+			}
 
-			$(t.what + id).hide().after(editRow).after('<tr class="hidden"></tr>');
+			if (!$targetRow.length) {
+				return false;
+			}
+
+			$targetRow.hide().after(editRow).after('<tr class="hidden"></tr>');
 
 			$(':input[name="singular_name"]', editRow).val(category_name);
 			$(':input[name="plural_name"]', editRow).val(plural_name);
@@ -225,17 +234,17 @@ window.wp = window.wp || {};
 
 					if (r) {
 						if (-1 !== r.indexOf('<tr')) {
-							$(inlineEditAuthorCategory.what + id).siblings('tr.hidden').addBack().remove();
+							$('#' + id).siblings('tr.hidden').addBack().remove();
 							new_id = $(r).attr('id');
 
 							$('#edit-' + id).before(r).remove();
 
 							if (new_id) {
-								option_value = new_id.replace(inlineEditAuthorCategory.type + '-', '');
+								option_value = String(new_id).split('-').pop();
 								row = $('#' + new_id);
 							} else {
 								option_value = id;
-								row = $(inlineEditAuthorCategory.what + id);
+								row = $('#' + id);
 							}
 
 							// Update the value in the Parent dropdown.
@@ -288,7 +297,7 @@ window.wp = window.wp || {};
 				id = id.substr(id.lastIndexOf('-') + 1);
 
 				// Show the taxonomy row and move focus back to the Quick Edit button.
-				$(this.what + id).show().find('.editinline')
+				$('#' + id).show().find('.editinline')
 					.attr('aria-expanded', 'false')
 					.trigger('focus');
 			}
