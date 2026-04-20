@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.14.0] - 16 April, 2026
+[4.14.0] - 20 April, 2026
 
 * Update: Add Free to the plugin name, #2285
 * Update: Add all 26 main languages to Weblate, #2300
