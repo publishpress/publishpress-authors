@@ -7,7 +7,7 @@ on:
     inputs:
       tmate_enabled:
         type: boolean
-        description: 'Enable "tmate" for debugging'
+        description: 'Enable "tmate" for debugging.'
         required: false
         default: false
 
@@ -22,7 +22,7 @@ jobs:
     needs: [code-check]
     runs-on: ubuntu-latest
     steps:
-      - name: Install linux packages
+      - name: Install Linux packages
         run: |
           sudo apt-get update
           sudo apt-get install -y iproute2 subversion
@@ -36,6 +36,11 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@master
+
+      - name: Configure git to trust the repository
+        run: |
+          git config --global --add safe.directory $GITHUB_WORKSPACE
+          git config --global --add safe.directory .
 
       - name: Create .env file
         run: |
