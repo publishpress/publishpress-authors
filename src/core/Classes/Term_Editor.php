@@ -61,8 +61,8 @@ class Term_Editor
 
             $content = sprintf(
                 '<a href="%s" target="_blank">%s</a>',
-                $author->link,
-                urldecode($author->slug)
+                esc_url($author->link),
+                esc_html(urldecode($author->slug))
             );
         }
 
