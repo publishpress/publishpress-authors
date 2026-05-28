@@ -146,7 +146,6 @@ class MA_Author_Boxes extends Module
         add_action('wp_footer', [$this, 'addAuthorBoxStyles']);
         add_action('enqueue_block_editor_assets', [$this, 'author_boxes_block_enqueue_assets']);
         add_action('wp_ajax_ppma_block_fetch_author_boxes', [$this, 'ppma_block_fetch_author_boxes']);
-        add_action('wp_ajax_nopriv_ppma_block_fetch_author_boxes', [$this, 'ppma_block_fetch_author_boxes']);
 
         add_action('wp_ajax_author_boxes_editor_get_preview', ['MultipleAuthorBoxes\AuthorBoxesAjax', 'handle_author_boxes_editor_get_preview']);
         add_action('wp_ajax_author_boxes_editor_get_template', ['MultipleAuthorBoxes\AuthorBoxesAjax', 'handle_author_boxes_editor_get_template']);
@@ -3134,6 +3133,15 @@ class MA_Author_Boxes extends Module
      * AJAX handler for fetching author boxes
      */
     public function ppma_block_fetch_author_boxes() {
+        if (!current_user_can('edit_posts') && !current_user_can('edit_pages')) {
+            wp_send_json_error(
+                [
+                    'message' => esc_html__('You do not have permission to perform this action', 'publishpress-authors'),
+                ],
+                403
+            );
+        }
+
         $author_boxes = $this->getAuthorBoxes(false);
 
         $boxes = [];
