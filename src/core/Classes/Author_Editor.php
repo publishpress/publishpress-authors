@@ -378,6 +378,7 @@ class Author_Editor
                 'label'       => esc_html__('Email', 'publishpress-authors'),
                 'type'        => 'email',
                 'tab'         => 'general',
+                'show_in_rest' => 'off',
             ],
             'avatar'      => [
                 'label'       => __('Avatar Source', 'publishpress-authors'),
