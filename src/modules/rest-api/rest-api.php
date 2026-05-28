@@ -219,7 +219,6 @@ if (!class_exists('MA_REST_API')) {
 
             $authors_fields = Author_Editor::get_fields(false);
             $authors_fields = apply_filters('multiple_authors_author_fields', $authors_fields, false);
-            $authors_fields = array_keys($authors_fields);
 
             $excluded_fields = ['user_id', 'avatar'];
             $excluded_fields = apply_filters('ppma_rest_api_authors_meta_excluded_fields', $excluded_fields);
@@ -246,12 +245,14 @@ if (!class_exists('MA_REST_API')) {
 
                 //add other fields
                 foreach ($authors_fields as $field_name => $field_config) {
-                    if (in_array($field_name, $excluded_fields)) {
+                    if (in_array($field_name, $excluded_fields, true)) {
                         continue;
                     }
-                    if (isset($field_config['show_in_rest']) && $field_config['show_in_rest'] === 'off') {
+
+                    if (!$this->isAuthorFieldVisibleInRest($field_name, $field_config)) {
                         continue;
                     }
+
                     $currentAuthorData[$field_name] = $author->$field_name;
                 }
 
