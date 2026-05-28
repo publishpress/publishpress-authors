@@ -394,15 +394,15 @@ class Authors_Widget extends WP_Widget
 
         // search options
         $filter_fields = false;
+        $allowed_search_field_options = [];
         if (isset($instance['search_field']) && !empty($instance['search_field'])) {
             $valid_fields = Author_Editor::get_fields(false);
             $valid_fields = apply_filters('multiple_authors_author_fields', $valid_fields, false);
 
-            $search_field_options = explode(',', $instance['search_field']);
-            $search_field_options = array_map('trim', $search_field_options);
+            $allowed_search_field_options = publishpress_authors_get_author_list_allowed_search_fields($instance);
             $filter_fields = [];
             $filter_fields[''] = esc_html__('Default Search', 'publishpress-authors');
-            foreach ($search_field_options as $search_field_option) {
+            foreach ($allowed_search_field_options as $search_field_option) {
                 if (isset($valid_fields[$search_field_option])) {
                     $filter_fields[$search_field_option] = $valid_fields[$search_field_option]['label'];
                 }
@@ -411,8 +411,20 @@ class Authors_Widget extends WP_Widget
         }
 
         $search_placeholder = esc_html__('Search Box', 'publishpress-authors');
-        $search_query       = isset($_GET['seach_query']) ? sanitize_text_field($_GET['seach_query']) : '';
-        $selected_option    = isset($_GET['search_field']) ? sanitize_text_field($_GET['search_field']) : '';
+        $search_query       = '';
+        $selected_option    = '';
+
+        if (isset($_GET['seach_query']) && is_scalar($_GET['seach_query'])) {
+            $search_query = sanitize_text_field(wp_unslash($_GET['seach_query']));
+        }
+
+        if (isset($_GET['search_field']) && is_scalar($_GET['search_field'])) {
+            $selected_option = sanitize_text_field(wp_unslash($_GET['search_field']));
+        }
+
+        if (!empty($selected_option) && !in_array($selected_option, $allowed_search_field_options, true)) {
+            $selected_option = '';
+        }
         $search_submit      = esc_html__('Search', 'publishpress-authors');
 
         // search box
