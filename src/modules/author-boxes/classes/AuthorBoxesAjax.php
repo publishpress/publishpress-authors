@@ -132,6 +132,12 @@ class AuthorBoxesAjax
                 'Security error. Kindly reload this page and try again',
                 'publishpress-authors'
             );
+        } elseif (!current_user_can(apply_filters('pp_multiple_authors_manage_layouts_cap', 'ppma_manage_layouts'))) {
+            $response['status']  = 'error';
+            $response['content'] = esc_html__(
+                'You do not have permission to perform this action',
+                'publishpress-authors'
+            );
         } else {
             $post_data = $_POST['editor_data'];// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
             $editor_data = [];
@@ -187,6 +193,12 @@ class AuthorBoxesAjax
             $response['status']  = 'error';
             $response['content'] = esc_html__(
                 'Security error. Kindly reload this page and try again',
+                'publishpress-authors'
+            );
+        } elseif (!current_user_can(apply_filters('pp_multiple_authors_manage_layouts_cap', 'ppma_manage_layouts'))) {
+            $response['status']  = 'error';
+            $response['content'] = esc_html__(
+                'You do not have permission to perform this action',
                 'publishpress-authors'
             );
         } else {
