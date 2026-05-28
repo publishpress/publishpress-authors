@@ -588,7 +588,7 @@ if (!class_exists('MA_REST_API')) {
                 }
 
                 $field_config = $available_fields[$field_name];
-                if (isset($field_config['show_in_rest']) && $field_config['show_in_rest'] === 'off') {
+                if (!$this->isAuthorFieldVisibleInRest($field_name, $field_config)) {
                     continue;
                 }
 
@@ -596,6 +596,20 @@ if (!class_exists('MA_REST_API')) {
             }
 
             return new WP_REST_Response($response_data, $status_code);
+        }
+
+        private function isAuthorFieldVisibleInRest($field_name, $field_config)
+        {
+            if (is_array($field_config) && !empty($field_config['show_in_rest'])) {
+                return $field_config['show_in_rest'] !== 'off';
+            }
+
+            return !in_array($field_name, $this->getDefaultHiddenRestFields(), true);
+        }
+
+        private function getDefaultHiddenRestFields()
+        {
+            return apply_filters('ppma_rest_api_default_hidden_author_fields', ['user_email']);
         }
 
         private function sanitizeFieldValue($value, $field_config)
