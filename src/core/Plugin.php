@@ -1673,6 +1673,7 @@ class Plugin
             'display_name_html'             => $author_display_name_html,
             'author_details'                => $author_details,
             'author_menu_link'              => esc_url(admin_url('edit-tags.php?taxonomy=author')),
+            'allow_author_multiple_categories' => Utils::isAuthorMultipleCategoriesEnabled() ? 'yes' : 'no',
         ];
 
         wp_localize_script(

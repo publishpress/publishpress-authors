@@ -208,8 +208,86 @@ class Utils
     public static function updatePostAuthorCategory($post_id, $authors, $post_author_categories) {
         global $wpdb;
 
-        if (!current_user_can(get_taxonomy('author')->cap->assign_terms) || empty(array_filter(array_values($post_author_categories)))) {
+        if (!current_user_can(get_taxonomy('author')->cap->assign_terms)) {
             return;
+        }
+
+        $table_name = $wpdb->prefix . 'ppma_author_relationships';
+        $authors    = array_values(array_unique(array_map('intval', $authors)));
+
+        if (empty($authors)) {
+            $wpdb->delete($table_name, ['post_id' => $post_id], ['%d']);
+            do_action('publishpress_authors_flush_cache_for_post', $post_id);
+            return;
+        }
+
+        if (empty(array_filter(array_values($post_author_categories)))) {
+            return;
+        }
+
+        $allow_multiple_categories = self::isAuthorMultipleCategoriesEnabled();
+        $post_author_categories    = array_filter($post_author_categories);
+        $author_category_map       = [];
+
+        foreach ($post_author_categories as $author_id => $category_ids) {
+            $author_id = (int) $author_id;
+
+            if (empty($author_id)) {
+                continue;
+            }
+
+            $category_ids = (array) $category_ids;
+            $category_ids = array_values(array_unique(array_filter(array_map('intval', $category_ids))));
+
+            if (empty($category_ids)) {
+                continue;
+            }
+
+            if (!$allow_multiple_categories) {
+                $category_ids = [reset($category_ids)];
+            }
+
+            $author_category_map[$author_id] = $category_ids;
+        }
+
+        if (empty($author_category_map)) {
+            return;
+        }
+
+        if (!$allow_multiple_categories) {
+            $existing_relations = $wpdb->get_results(
+                $wpdb->prepare(
+                    "SELECT category_id, author_term_id FROM {$table_name} WHERE post_id = %d ORDER BY id ASC",
+                    $post_id
+                ),
+                ARRAY_A
+            );
+
+            $existing_author_category_map = [];
+            foreach ($existing_relations as $existing_relation) {
+                $existing_author_id  = isset($existing_relation['author_term_id']) ? (int) $existing_relation['author_term_id'] : 0;
+                $existing_category_id = isset($existing_relation['category_id']) ? (int) $existing_relation['category_id'] : 0;
+
+                if (empty($existing_author_id) || empty($existing_category_id) || !in_array($existing_author_id, $authors, true)) {
+                    continue;
+                }
+
+                $existing_author_category_map[$existing_author_id][] = $existing_category_id;
+            }
+
+            foreach ($author_category_map as $author_id => $category_ids) {
+                $primary_category_id = (int) reset($category_ids);
+                $existing_category_ids = isset($existing_author_category_map[$author_id]) ? $existing_author_category_map[$author_id] : [];
+
+                if (!empty($existing_category_ids)) {
+                    array_shift($existing_category_ids);
+                }
+
+                $author_category_map[$author_id] = array_values(array_unique(array_filter(array_merge(
+                    [$primary_category_id],
+                    $existing_category_ids
+                ))));
+            }
         }
 
 
@@ -219,30 +297,33 @@ class Utils
         // Make 'id' the array index
         $all_author_categories = array_combine($all_author_category_ids, $all_author_categories);
 
-        $table_name = $wpdb->prefix . 'ppma_author_relationships';
-
         // Make sure there's no relationship for authors that could have been possibly removed
         $wpdb->delete($table_name, ['post_id' => $post_id], ['%d']);
 
         if (!empty($authors)) {
             foreach ($authors as $author) {
-                if (isset($post_author_categories[$author])) {
-                    $category_id = $post_author_categories[$author];
-                    $wpdb->insert(
-                        $table_name,
-                        [
-                            'category_id'       => $all_author_categories[$category_id]['id'],
-                            'category_slug'     => $all_author_categories[$category_id]['slug'],
-                            'post_id'           => $post_id,
-                            'author_term_id'    => $author,
-                        ],
-                        [
-                            '%d',
-                            '%s',
-                            '%d',
-                            '%d',
-                        ]
-                    );
+                if (isset($author_category_map[$author])) {
+                    foreach ($author_category_map[$author] as $category_id) {
+                        if (!isset($all_author_categories[$category_id])) {
+                            continue;
+                        }
+
+                        $wpdb->insert(
+                            $table_name,
+                            [
+                                'category_id'       => $all_author_categories[$category_id]['id'],
+                                'category_slug'     => $all_author_categories[$category_id]['slug'],
+                                'post_id'           => $post_id,
+                                'author_term_id'    => $author,
+                            ],
+                            [
+                                '%d',
+                                '%s',
+                                '%d',
+                                '%d',
+                            ]
+                        );
+                    }
                 }
             }
         }
@@ -1108,6 +1189,31 @@ class Utils
         }
 
         return false;
+    }
+
+    /**
+     * Check if the editor can assign the same author to multiple categories on one post.
+     *
+     * @return bool
+     */
+    public static function isAuthorMultipleCategoriesEnabled()
+    {
+        $legacyPlugin = Factory::getLegacyPlugin();
+
+        $enabled = isset($legacyPlugin->modules->multiple_authors->options->allow_author_multiple_categories)
+            && 'yes' === $legacyPlugin->modules->multiple_authors->options->allow_author_multiple_categories;
+
+        if (!$enabled) {
+            $options = get_option('multiple_authors_multiple_authors_options', []);
+
+            if (is_array($options) && isset($options['allow_author_multiple_categories'])) {
+                $enabled = 'yes' === $options['allow_author_multiple_categories'];
+            } elseif (is_object($options) && isset($options->allow_author_multiple_categories)) {
+                $enabled = 'yes' === $options->allow_author_multiple_categories;
+            }
+        }
+
+        return (bool) apply_filters('publishpress_authors_allow_author_multiple_categories', $enabled);
     }
 
     /**

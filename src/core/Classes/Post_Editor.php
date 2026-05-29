@@ -146,24 +146,31 @@ class Post_Editor
                     }
 
 
-                    $author_category  = get_ppma_author_relations(['post_id' => $post_id, 'author_term_id' => $author->term_id]);
-                    if (!empty($author_category) && isset($author_category[0]['category_id'])) {
-                        $category_id = $author_category[0]['category_id'];
+                    $author_category = get_ppma_author_relations(['post_id' => $post_id, 'author_term_id' => $author->term_id]);
+                    if (Utils::isAuthorMultipleCategoriesEnabled() && !empty($author_category)) {
+                        $category_ids = array_unique(array_filter(array_column($author_category, 'category_id')));
+                        if (empty($category_ids)) {
+                            $category_ids = [0];
+                        }
+                    } elseif (!empty($author_category) && isset($author_category[0]['category_id'])) {
+                        $category_ids = [$author_category[0]['category_id']];
                     } else {
-                        $category_id = 0;
+                        $category_ids = [0];
                     }
 
-                    $authors_str[] = sprintf(
-                        '<a href="%s" data-author-term-id="%d" data-author-slug="%s" data-author-display-name="%s" data-author-is-guest="%s" data-author-category-id="%s" class="%s">%s</a>',
-                        esc_url($url),
-                        esc_attr($author->term_id),
-                        esc_attr($author->slug),
-                        esc_attr($author->display_name),
-                        esc_attr($author->is_guest() ? 1 : 0),
-                        esc_attr($category_id),
-                        esc_attr(implode(' ', $classes)),
-                        esc_html($author->display_name)
-                    );
+                    foreach ($category_ids as $category_id) {
+                        $authors_str[] = sprintf(
+                            '<a href="%s" data-author-term-id="%d" data-author-slug="%s" data-author-display-name="%s" data-author-is-guest="%s" data-author-category-id="%s" class="%s">%s</a>',
+                            esc_url($url),
+                            esc_attr($author->term_id),
+                            esc_attr($author->slug),
+                            esc_attr($author->display_name),
+                            esc_attr($author->is_guest() ? 1 : 0),
+                            esc_attr($category_id),
+                            esc_attr(implode(' ', $classes)),
+                            esc_html($author->display_name)
+                        );
+                    }
                 }
             }
 
@@ -264,18 +271,36 @@ class Post_Editor
      */
     public static function group_category_authors($author_categories, $author_relations, $authors, $admin_preview = false) {
 
+        $allow_multiple_categories = Utils::isAuthorMultipleCategoriesEnabled();
+
         // group authors by category slug
         if (!$admin_preview) {
+            if (!$allow_multiple_categories) {
+                $seen_author_ids = [];
+                $author_relations = array_filter($author_relations, function ($item) use (&$seen_author_ids) {
+                    $author_term_id = isset($item['author_term_id']) ? (int) $item['author_term_id'] : 0;
+
+                    if (empty($author_term_id) || in_array($author_term_id, $seen_author_ids, true)) {
+                        return false;
+                    }
+
+                    $seen_author_ids[] = $author_term_id;
+                    return true;
+                });
+            }
+
             $grouped_authors = array_reduce($author_relations, function ($result, $item) {
                 $result[$item['category_slug']][] = $item;
                 return $result;
             }, []);
+            $related_author_ids = array_unique(array_map('intval', array_column($author_relations, 'author_term_id')));
 
             // List all authors attached to the post
             $remaining_authors = $authors;
         } else {
             $grouped_authors    = [];
             $remaining_authors  = [];
+            $related_author_ids = [];
         }
 
         $authors_data = [];
@@ -289,11 +314,14 @@ class Post_Editor
                         $term_id = is_object($author) ? $author->term_id : 0;
                         return in_array($term_id, $category_author_ids);
                     });
-                    // update remaining authors
-                    $remaining_authors = array_filter($remaining_authors, function ($author) use ($category_author_ids) {
-                        $term_id = is_object($author) ? $author->term_id : 0;
-                        return !in_array($term_id, $category_author_ids);
-                    });
+
+                    if (!$allow_multiple_categories) {
+                        // update remaining authors
+                        $remaining_authors = array_filter($remaining_authors, function ($author) use ($category_author_ids) {
+                            $term_id = is_object($author) ? $author->term_id : 0;
+                            return !in_array($term_id, $category_author_ids);
+                        });
+                    }
                 } else {
                     $selected_authors = [];
                 }
@@ -312,6 +340,13 @@ class Post_Editor
         }
 
         // Add remaining author to default or first category
+        if ($allow_multiple_categories && !$admin_preview) {
+            $remaining_authors = array_filter($remaining_authors, function ($author) use ($related_author_ids) {
+                $term_id = is_object($author) ? $author->term_id : 0;
+                return !in_array($term_id, $related_author_ids);
+            });
+        }
+
         if (!empty($remaining_authors)) {
             foreach ($remaining_authors as $remaining_author) {
                 $author_default_category = (int) $remaining_author->author_category;
@@ -382,7 +417,7 @@ class Post_Editor
                         'display_name' => '{{ data.display_name }}',
                         'term'         => '{{ data.id }}',
                         'is_guest'     => '{{ data.is_guest }}',
-                        'category_id'  => '{{ data.author_category }}',
+                        'category_id'  => '{{ data.category_id }}',
                     ]
                 );
                 ?>
@@ -590,10 +625,14 @@ class Post_Editor
         ];
 
         $args     = array_merge($defaults, $args);
+        $author_categories_name = Utils::isAuthorMultipleCategoriesEnabled()
+            ? 'author_categories[' . $args['term'] . '][]'
+            : 'author_categories[' . $args['term'] . ']';
         ob_start();
         ?>
         <li id="publishpress-authors-author-<?php
-        echo esc_attr($args['term']); ?>" data-term-id="<?php
+        echo esc_attr($args['term']); ?>-<?php
+        echo esc_attr($args['category_id']); ?>" data-term-id="<?php
         echo esc_attr($args['term']); ?>" data-is-guest="<?php
         echo esc_attr($args['is_guest']); ?>" class="ui-sortable-handle publishpress-authors-author">
             <span class="author-remove">
@@ -607,7 +646,7 @@ class Post_Editor
             endif; ?>
             <span class="display-name"><?php echo esc_html($args['display_name']); ?></span>
             <input type="hidden" name="authors[]" value="<?php echo esc_attr($args['term']); ?>" class="author_term">
-            <input type="hidden" name="author_categories[<?php echo esc_attr($args['term']); ?>]" class="author_categories" value="<?php echo esc_attr($args['category_id']); ?>">
+            <input type="hidden" name="<?php echo esc_attr($author_categories_name); ?>" class="author_categories" value="<?php echo esc_attr($args['category_id']); ?>">
         </li>
         <?php
         return ob_get_clean();

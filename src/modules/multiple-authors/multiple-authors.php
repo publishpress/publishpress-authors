@@ -129,6 +129,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'enable_font_awesome'            => 'yes',
                     'enable_guest_author_user'     => 'no',
                     'author_boxes_opt_out'         => 'no',
+                    'allow_author_multiple_categories' => 'no',
                     'enable_guest_author_acount'   => 'yes',
                     'show_editor_author_box_selection'   => 'yes',
                     'default_avatar'               => '',
@@ -1102,6 +1103,17 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'publishpress-authors'
                 ),
                 [$this, 'settings_author_boxes_opt_out'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_guest_authors'
+            );
+
+            add_settings_field(
+                'allow_author_multiple_categories',
+                __(
+                    'Allow authors in multiple categories:',
+                    'publishpress-authors'
+                ),
+                [$this, 'settings_allow_author_multiple_categories'],
                 $this->module->options_group_name,
                 $this->module->options_group_name . '_guest_authors'
             );
@@ -2580,6 +2592,29 @@ echo '<span class="ppma_settings_field_description">'
             echo '</label>';
         }
 
+        /**
+         * @param array $args
+         */
+        public function settings_allow_author_multiple_categories($args = [])
+        {
+            $id    = $this->module->options_group_name . '_allow_author_multiple_categories';
+            $value = isset($this->module->options->allow_author_multiple_categories) ? $this->module->options->allow_author_multiple_categories : '';
+
+            echo '<label for="' . esc_attr($id) . '">';
+
+            echo '<input type="checkbox" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[allow_author_multiple_categories]" value="yes" ' . ($value === 'yes' ? 'checked="checked"' : '') . '/>';
+
+            echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">'
+                . esc_html__(
+                    'Allow the same author to be assigned to more than one Author Category on a single post.',
+                    'publishpress-authors'
+                )
+                . '</span>';
+
+
+            echo '</label>';
+        }
+
 
         /**
          * @param array $args
@@ -3070,6 +3105,10 @@ echo '<span class="ppma_settings_field_description">'
 
             if (!isset($new_options['remove_single_user_map_restriction'])) {
                 $new_options['remove_single_user_map_restriction'] = 'no';
+            }
+
+            if (!isset($new_options['allow_author_multiple_categories'])) {
+                $new_options['allow_author_multiple_categories'] = 'no';
             }
 
             if (!isset($new_options['enable_guest_author_user'])) {

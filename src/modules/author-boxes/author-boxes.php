@@ -1751,6 +1751,9 @@ class MA_Author_Boxes extends Module
         // format author category support
         $author_categories = get_ppma_author_categories(['category_status' => 1]);
         $author_categories_data = ppma_get_grouped_post_authors($current_post_id, $authors, $author_categories);
+        $author_counts = array_reduce($author_categories_data, function ($total, $author_category_data) {
+            return $total + (isset($author_category_data['authors']) ? count($author_category_data['authors']) : 0);
+        }, 0);
 
         $author_categories_group_option = 'inline';
         $author_categories_title_option = '';
@@ -1902,7 +1905,7 @@ class MA_Author_Boxes extends Module
                                                         endif;
 
 
-                                                        $current_author_category = get_ppma_author_category($author, $author_categories_data);
+                                                        $current_author_category = get_ppma_author_category($author, $author_categories_data, $author_category_data);
 
                                                         //author fields item position
                                                         $name_row_extra = '';
