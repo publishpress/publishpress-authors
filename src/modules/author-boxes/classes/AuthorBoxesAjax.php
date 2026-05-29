@@ -248,11 +248,13 @@ class AuthorBoxesAjax
 global $ppma_template_authors, $ppma_template_authors_post, $post, $ppma_instance_id;
 
 $authors            = $ppma_template_authors;
-$author_counts      = count($authors);
 $global_author_index = 0;
 $post_id = isset($ppma_template_authors_post->ID) ? $ppma_template_authors_post->ID : $post->ID;
 //Group author by categories
 $author_categories_data = ppma_get_grouped_post_authors($post_id, $authors);
+$author_counts = array_reduce($author_categories_data, function ($total, $author_category_data) {
+    return $total + (isset($author_category_data['authors']) ? count($author_category_data['authors']) : 0);
+}, 0);
 
 if (!$ppma_instance_id) {
     $ppma_instance_id = 1;
@@ -371,7 +373,7 @@ $selected_post_types_string = "[$selected_post_types]";
 <?php else : ?>
                     </?php $author_recent_posts = []; ?>
 <?php endif; ?>
-                    </?php $current_author_category = get_ppma_author_category($author, $author_categories_data); ?>
+                    </?php $current_author_category = get_ppma_author_category($author, $author_categories_data, $author_category_data); ?>
 <?php
 $name_row_extra = '';
 $bio_row_extra  = '';

@@ -72,6 +72,61 @@ jQuery(document).ready(function ($) {
         };
     })();
 
+    var allowAuthorMultipleCategories = typeof MultipleAuthorsStrings !== 'undefined'
+        && MultipleAuthorsStrings.allow_author_multiple_categories === 'yes';
+
+    function authorExistsInCategory($authorsList, authorId, $excludeAuthorItem) {
+        var exists = false;
+        var authorIdValue = String(authorId);
+
+        $authorsList.find("li:not(.sortable-placeholder) input.author_term").each(function () {
+            var $authorItem = $(this).closest("li");
+
+            if ($excludeAuthorItem && $authorItem.is($excludeAuthorItem)) {
+                return;
+            }
+
+            if (String($(this).val()) === authorIdValue) {
+                exists = true;
+                return false;
+            }
+        });
+
+        return exists;
+    }
+
+    function getAvailableCategoryList($context, authorData) {
+        var $targetList = $context.find(".authors-list.authors-category-" + authorData.category_id).first();
+
+        if (!allowAuthorMultipleCategories) {
+            if (!$targetList.length) {
+                $targetList = $context.find(".authors-list:first");
+            }
+
+            if ($targetList.length && authorExistsInCategory($targetList, authorData.id)) {
+                return $();
+            }
+
+            return $targetList;
+        }
+
+        if ($targetList.length && !authorExistsInCategory($targetList, authorData.id)) {
+            return $targetList;
+        }
+
+        $targetList = $();
+        $context.find(".authors-list").each(function () {
+            var $authorsList = $(this);
+
+            if (!authorExistsInCategory($authorsList, authorData.id)) {
+                $targetList = $authorsList;
+                return false;
+            }
+        });
+
+        return $targetList;
+    }
+
     //==================================================================
     /**
      * Based on Bylines.
@@ -89,11 +144,13 @@ jQuery(document).ready(function ($) {
                     dataType: "json",
                     data: function (params) {
                         var ignored = [];
-                        selector
+                        authorsSearch
                             .closest("div")
                             .find(".authors-list input.author_term")
                             .each(function () {
-                                ignored.push($(this).val());
+                                if (!allowAuthorMultipleCategories) {
+                                    ignored.push($(this).val());
+                                }
                             });
                         return {
                             q: params.term,
@@ -104,15 +161,12 @@ jQuery(document).ready(function ($) {
             });
             authorsSearch.on("ppma_select2:select", function (e) {
                 var template = wp.template("authors-author-partial");
-                if ($('.authors-list.authors-category-' + e.params.data.category_id).length) {
-                    $('.authors-list.authors-category-' + e.params.data.category_id).append(
-                        window.htmlEnDeCode.htmlDecode(template(e.params.data))
-                    );
-                } else {
-                    $(".authors-list:first").append(
-                        window.htmlEnDeCode.htmlDecode(template(e.params.data))
-                    );
+                var $targetList = getAvailableCategoryList(authorsSearch.closest("div"), e.params.data);
+
+                if ($targetList.length) {
+                    $targetList.append(window.htmlEnDeCode.htmlDecode(template(e.params.data)));
                 }
+
                 authorsSearch.val(null).trigger("change");
                 handleUsersAuthorField();
                 handleAuthorCategory();
@@ -158,7 +212,11 @@ jQuery(document).ready(function ($) {
             $authorsCategoryId = $(this).attr('data-category_id');
             $(this).find('.author_categories').each(function () {
                 $authorsCategoryTerm = $(this).closest('li').find('.author_term').val();
-                $(this).attr('name', 'author_categories[' + $authorsCategoryTerm + ']');
+                if (allowAuthorMultipleCategories) {
+                    $(this).attr('name', 'author_categories[' + $authorsCategoryTerm + '][]');
+                } else {
+                    $(this).attr('name', 'author_categories[' + $authorsCategoryTerm + ']');
+                }
                 $(this).val($authorsCategoryId);
             });
         });
@@ -337,7 +395,8 @@ jQuery(document).ready(function ($) {
                             listItemTmpl({
                                 'display_name': $(this).data('author-display-name'),
                                 'id': $(this).data('author-term-id'),
-                                'is_guest': $(this).data('author-is-guest')
+                                'is_guest': $(this).data('author-is-guest'),
+                                'category_id': $(this).data('author-category-id')
                             })
                         )
                     );
@@ -412,7 +471,19 @@ jQuery(document).ready(function ($) {
         $bulk_row.find(".authors-list input.author_term").each(function () {
             selectedVal = parseInt($(this).val());
             selectedAuthors.push(selectedVal);
-            selectedAuthorCategories[selectedVal] = $(this).closest('ul').attr('data-category_id');
+            if (allowAuthorMultipleCategories) {
+                var selectedCategory = $(this).closest('ul').attr('data-category_id');
+
+                if (typeof selectedAuthorCategories[selectedVal] === 'undefined') {
+                    selectedAuthorCategories[selectedVal] = [];
+                }
+
+                if (selectedAuthorCategories[selectedVal].indexOf(selectedCategory) === -1) {
+                    selectedAuthorCategories[selectedVal].push(selectedCategory);
+                }
+            } else {
+                selectedAuthorCategories[selectedVal] = $(this).closest('ul').attr('data-category_id');
+            }
         });
 
         var selectedFallbackUser = $('#publishpress-authors-user-author-select').val();
@@ -443,6 +514,17 @@ jQuery(document).ready(function ($) {
                 handleAuthorCategory();
             },
             receive: function (event, ui) {
+                if (authorExistsInCategory($(this), ui.item.find('.author_term').val(), ui.item)) {
+                    if (ui.sender && ui.sender.length) {
+                        ui.sender.sortable('cancel');
+                    } else {
+                        $(this).sortable('cancel');
+                    }
+
+                    handleAuthorCategory();
+                    return;
+                }
+
                 $(this).find('.sortable-placeholder').hide();
             },
             remove: function (event, ui) {
