@@ -18,7 +18,7 @@ permissions:
 jobs:
   dependabot_triage:
     name: Auto-dismiss dev-only Dependabot alerts
-    uses: publishpress/github-workflows/.github/workflows/dependabot-triage.yml@31360a8f60aaaa5abf91d9ff57ad23dbf2efc1f0
+    uses: publishpress/github-workflows/.github/workflows/dependabot-triage.yml@v3
     with:
       dry_run: ${{ inputs.dry_run || false }}
     secrets: inherit
