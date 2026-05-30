@@ -4433,12 +4433,16 @@ msgstr ""
 msgid "Please click here and read this guide!"
 msgstr ""
 
-#: src/modules/multiple-authors/multiple-authors.php:4662
-msgid "PublishPress Authors needs a database update for Permissions integration."
+#: src/modules/multiple-authors/multiple-authors.php:4979
+msgid "PublishPress Authors could not complete the background database update for Permissions integration."
 msgstr ""
 
-#: src/modules/multiple-authors/multiple-authors.php:4663
-msgid "Click to run the update now"
+#: src/modules/multiple-authors/multiple-authors.php:4980
+msgid "PublishPress Authors is waiting to complete the background database update for Permissions integration."
+msgstr ""
+
+#: src/modules/multiple-authors/multiple-authors.php:4987
+msgid "Run the update manually"
 msgstr ""
 
 #: src/modules/multiple-authors/multiple-authors.php:5068
