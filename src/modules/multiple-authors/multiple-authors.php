@@ -4880,9 +4880,36 @@ echo '<span class="ppma_settings_field_description">'
             if (is_object($author) && !is_wp_error($author)) {
                 $user = get_user_by('id', $userId);
 
+                if (empty($user) || is_wp_error($user)) {
+                    return;
+                }
+
                 global $wpdb, $wp_rewrite;
 
-                $wpdb->update($wpdb->terms, ['slug' => $user->user_nicename], ['term_id' => $author->term_id]);
+                $wpdb->update(
+                    $wpdb->terms,
+                    [
+                        'name' => $user->display_name,
+                        'slug' => $user->user_nicename,
+                    ],
+                    ['term_id' => $author->term_id]
+                );
+
+                clean_term_cache($author->term_id, 'author');
+
+                $user_fields = [
+                    'first_name',
+                    'last_name',
+                    'user_email',
+                    'user_login',
+                    'user_url',
+                    'description',
+                ];
+
+                update_term_meta($author->term_id, 'user_id', $user->ID);
+                foreach ($user_fields as $field) {
+                    update_term_meta($author->term_id, $field, $user->$field);
+                }
 
                 /**
                  * Filter whether to flush rewrite rules on user profile update.
