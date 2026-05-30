@@ -2102,7 +2102,7 @@ class MA_Author_Boxes extends Module
                                                             if ($author_categories_title_option == 'after_individual' && !empty($author_category_data['title'])) :
                                                                 $display_name_markup .= '<' . $author_categories_title_html_tag . ' class="ppma-category-group-title">' . $author_categories_title_prefix . '' . $author_category_data['singular_title'] . '' . $author_categories_title_suffix . '</' . $author_categories_title_html_tag . '>';
                                                             endif;
-                                                            if (count($author_category_data['authors']) > 1 && $index !== count($author_category_data['authors']) - 1) {
+                                                            if ($global_author_index < $author_counts - 1) {
                                                                 $display_name_markup .= html_entity_decode($author_separator);
                                                             }
                                                             $display_name_markup .= '</'. esc_html($args['name_html_tag']['value']) .'>';
@@ -2215,7 +2215,7 @@ class MA_Author_Boxes extends Module
                                                                     </div>
                                                                 <?php endif; ?>
                                                             </<?php echo ($li_style ? 'div' : 'span'); ?>>
-                                                        <?php if (empty($args['name_show']['value']) && count($author_category_data['authors']) > 1 && $index !== count($author_category_data['authors']) - 1) {
+                                                        <?php if (empty($args['name_show']['value']) && $global_author_index < $author_counts - 1) {
                                                             echo html_entity_decode($author_separator); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                         } ?>
                                                     <?php endif; ?>

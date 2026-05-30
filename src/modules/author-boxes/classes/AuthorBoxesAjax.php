@@ -558,7 +558,7 @@ $display_name_markup = '';
     if ($author_categories_title_option == 'after_individual') :
         $display_name_markup .= str_repeat(" ", 32) . '</?php if (!empty($author_category_data["title"])) : ?>' . str_repeat(" ", 36) . '<' . $author_categories_title_html_tag . ' class="ppma-category-group-title">' . "\n" . str_repeat(" ", 40) . $author_categories_title_prefix . '</?php echo $author_category_data["singular_title"]; ?>' . $author_categories_title_suffix . "\n" . str_repeat(" ", 36) . '</' . $author_categories_title_html_tag . '>' . "\n" . str_repeat(" ", 32) . '</?php endif; ?>' . "\n";
     endif;
-    $display_name_markup .= '</?php if (count($author_category_data["authors"]) > 1 && $index !== count($author_category_data["authors"]) - 1) : ?>' . html_entity_decode($author_separator) . '</?php endif; ?>';
+    $display_name_markup .= '</?php if ($global_author_index < $author_counts - 1) : ?>' . html_entity_decode($author_separator) . '</?php endif; ?>';
     $display_name_markup .= "\n" . str_repeat(" ", 28) . '</'. esc_html($args['name_html_tag']['value']) .'>' . "\n";
 endif; ?>
 <?php if ($li_style) : ?>
@@ -665,7 +665,7 @@ endif ?>
 <?php endif; ?>
                         </<?php echo ($li_style ? 'div' : 'span'); ?>>
 <?php if (empty($args['name_show']['value'])) : ?>
-                        </?php if (count($author_category_data['authors']) > 1 && $index !== count($author_category_data['authors']) - 1); ?> <?php echo html_entity_decode($author_separator); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></?php endif; ?>
+                        </?php if ($global_author_index < $author_counts - 1) : ?> <?php echo html_entity_decode($author_separator); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></?php endif; ?>
 <?php endif; ?>
                     </?php endif; ?>
 <?php if ($li_style) : ?>
