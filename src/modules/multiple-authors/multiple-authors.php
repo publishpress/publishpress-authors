@@ -4112,6 +4112,7 @@ echo '<span class="ppma_settings_field_description">'
                 wp_localize_script('multiple-authors-settings', 'ppmaSettings', [
                     'tab' => !empty($_REQUEST['ppma_tab']) ? 'ppma-tab-' . sanitize_key($_REQUEST['ppma_tab']) : '',
                     'runScript' => !empty($_REQUEST['ppma_maint']) ? sanitize_key($_REQUEST['ppma_maint']) : '',
+                    'select2_i18n' => Utils::getSelect2I18n(),
                 ]);
 
                 wp_enqueue_script(

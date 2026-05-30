@@ -152,7 +152,8 @@ class MA_Author_List extends Module
 
         $localized_data = [
             'nonce' => wp_create_nonce('author-list-request-nonce'),
-            'isAuthorsProActive' => Utils::isAuthorsProActive()
+            'isAuthorsProActive' => Utils::isAuthorsProActive(),
+            'chosen_i18n' => Utils::getChosenI18n()
         ];
 
         wp_localize_script(

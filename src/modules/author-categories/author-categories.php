@@ -132,7 +132,8 @@ class MA_Author_Categories extends Module
             'author-categories-inline-edit',
             'authorCategoriesInlineEdit',
             [
-                'proActive' => $proActive
+                'proActive' => $proActive,
+                'select2_i18n' => Utils::getSelect2I18n()
             ]
         );
 
