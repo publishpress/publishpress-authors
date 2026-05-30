@@ -3859,6 +3859,10 @@ msgstr ""
 msgid "Show read more link:"
 msgstr ""
 
+#: src/modules/multiple-authors/multiple-authors.php:1003
+msgid "Hide empty posts message:"
+msgstr ""
+
 #: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr ""
@@ -4197,6 +4201,10 @@ msgstr ""
 
 #: src/modules/multiple-authors/multiple-authors.php:2717
 msgid "This will display the read more link."
+msgstr ""
+
+#: src/modules/multiple-authors/multiple-authors.php:2788
+msgid "This will hide the \"Post not found for the author\" text when an author has no posts."
 msgstr ""
 
 #: src/modules/multiple-authors/multiple-authors.php:2755
