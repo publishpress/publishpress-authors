@@ -94,7 +94,8 @@ if (is_array($ppma_custom_settings)) {
 <script>
     jQuery(function ($) {
         $(".chosen-select").chosen({
-            'width': '95%'
+            'width': '95%',
+            'no_results_text': '<?php echo esc_js(__('No results match', 'publishpress-authors')); ?>'
         });
     });
 </script>

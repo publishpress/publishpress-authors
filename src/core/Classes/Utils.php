@@ -1192,6 +1192,46 @@ class Utils
     }
 
     /**
+     * Get Select2 strings translated by WordPress.
+     *
+     * @return array
+     */
+    public static function getSelect2I18n()
+    {
+        return [
+            'error_loading'           => __('The results could not be loaded.', 'publishpress-authors'),
+            /* translators: %d: number of characters over the maximum. */
+            'input_too_long_single'   => __('Please delete %d character', 'publishpress-authors'),
+            /* translators: %d: number of characters over the maximum. */
+            'input_too_long_plural'   => __('Please delete %d characters', 'publishpress-authors'),
+            /* translators: %d: number of characters still required. */
+            'input_too_short_single'  => __('Please enter %d or more character', 'publishpress-authors'),
+            /* translators: %d: number of characters still required. */
+            'input_too_short_plural'  => __('Please enter %d or more characters', 'publishpress-authors'),
+            'loading_more'            => __('Loading more results...', 'publishpress-authors'),
+            /* translators: %d: maximum number of items that can be selected. */
+            'maximum_selected_single' => __('You can only select %d item', 'publishpress-authors'),
+            /* translators: %d: maximum number of items that can be selected. */
+            'maximum_selected_plural' => __('You can only select %d items', 'publishpress-authors'),
+            'no_results'              => __('No results found', 'publishpress-authors'),
+            'searching'               => __('Searching...', 'publishpress-authors'),
+            'remove_all_items'        => __('Remove all items', 'publishpress-authors'),
+        ];
+    }
+
+    /**
+     * Get Chosen strings translated by WordPress.
+     *
+     * @return array
+     */
+    public static function getChosenI18n()
+    {
+        return [
+            'no_results_text' => __('No results match', 'publishpress-authors'),
+        ];
+    }
+
+    /**
      * Check if the editor can assign the same author to multiple categories on one post.
      *
      * @return bool

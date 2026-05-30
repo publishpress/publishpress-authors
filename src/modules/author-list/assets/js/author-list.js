@@ -2,10 +2,12 @@
     'use strict';
 
     jQuery(document).ready(function ($) {
+        var chosenI18n = typeof authorList !== 'undefined' && authorList.chosen_i18n ? authorList.chosen_i18n : {};
 
         if ($(".chosen-select").length > 0) {
             $(".chosen-select").chosen({
-                'width': '99%'
+                'width': '99%',
+                'no_results_text': chosenI18n.no_results_text || 'No results match'
             });
         }
 

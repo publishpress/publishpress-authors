@@ -74,6 +74,63 @@ jQuery(document).ready(function ($) {
 
     var allowAuthorMultipleCategories = typeof MultipleAuthorsStrings !== 'undefined'
         && MultipleAuthorsStrings.allow_author_multiple_categories === 'yes';
+    var select2Language = getSelect2Language(
+        typeof MultipleAuthorsStrings !== 'undefined' ? MultipleAuthorsStrings.select2_i18n : {}
+    );
+
+    function getSelect2Language(strings) {
+        strings = strings || {};
+
+        function getString(key, fallback) {
+            return strings[key] || fallback;
+        }
+
+        function formatString(key, count, fallback) {
+            return getString(key, fallback).replace('%d', count);
+        }
+
+        return {
+            errorLoading: function () {
+                return getString('error_loading', 'The results could not be loaded.');
+            },
+            inputTooLong: function (args) {
+                var overChars = args.input.length - args.maximum;
+                var key = overChars === 1 ? 'input_too_long_single' : 'input_too_long_plural';
+                var fallback = overChars === 1 ? 'Please delete %d character' : 'Please delete %d characters';
+
+                return formatString(key, overChars, fallback);
+            },
+            inputTooShort: function (args) {
+                var remainingChars = args.minimum - args.input.length;
+                var key = remainingChars === 1 ? 'input_too_short_single' : 'input_too_short_plural';
+                var fallback = remainingChars === 1 ? 'Please enter %d or more character' : 'Please enter %d or more characters';
+
+                return formatString(key, remainingChars, fallback);
+            },
+            loadingMore: function () {
+                return getString('loading_more', 'Loading more results...');
+            },
+            maximumSelected: function (args) {
+                var key = args.maximum === 1 ? 'maximum_selected_single' : 'maximum_selected_plural';
+                var fallback = args.maximum === 1 ? 'You can only select %d item' : 'You can only select %d items';
+
+                return formatString(key, args.maximum, fallback);
+            },
+            noResults: function () {
+                return getString('no_results', 'No results found');
+            },
+            searching: function () {
+                return getString('searching', 'Searching...');
+            },
+            removeAllItems: function () {
+                return getString('remove_all_items', 'Remove all items');
+            }
+        };
+    }
+
+    function withSelect2Language(options) {
+        return $.extend(true, {}, {language: select2Language}, options);
+    }
 
     function authorExistsInCategory($authorsList, authorId, $excludeAuthorItem) {
         var exists = false;
@@ -133,7 +190,7 @@ jQuery(document).ready(function ($) {
      */
     function authorsSelect2(selector) {
         selector.each(function () {
-            var authorsSearch = $(this).ppma_select2({
+            var authorsSearch = $(this).ppma_select2(withSelect2Language({
                 placeholder: $(this).data("placeholder"),
                 allowClear: true,
                 ajax: {
@@ -158,7 +215,7 @@ jQuery(document).ready(function ($) {
                         };
                     }
                 }
-            });
+            }));
             authorsSearch.on("ppma_select2:select", function (e) {
                 var template = wp.template("authors-author-partial");
                 var $targetList = getAvailableCategoryList(authorsSearch.closest("div"), e.params.data);
@@ -224,7 +281,7 @@ jQuery(document).ready(function ($) {
 
     function authorsUserSelect2(selector) {
         selector.each(function () {
-            var authorsSearch = $(this).ppma_select2({
+            var authorsSearch = $(this).ppma_select2(withSelect2Language({
                 placeholder: $(this).data("placeholder"),
                 allowClear: true,
                 ajax: {
@@ -240,13 +297,13 @@ jQuery(document).ready(function ($) {
                         };
                     }
                 }
-            });
+            }));
         });
     }
 
     function authorsPostSearchSelect2(selector) {
         selector.each(function () {
-            var postsSearch = $(this).ppma_select2({
+            var postsSearch = $(this).ppma_select2(withSelect2Language({
                 placeholder: $(this).data("placeholder"),
                 allowClear: $(this).data("allow-clear"),
                 ajax: {
@@ -262,13 +319,13 @@ jQuery(document).ready(function ($) {
                         };
                     }
                 }
-            });
+            }));
         });
     }
 
     function authorsUserTermIdSelect2(selector) {
         selector.each(function () {
-            var authorsSearch = $(this).ppma_select2({
+            var authorsSearch = $(this).ppma_select2(withSelect2Language({
                 placeholder: $(this).data("placeholder"),
                 allowClear: true,
                 ajax: {
@@ -284,13 +341,13 @@ jQuery(document).ready(function ($) {
                         };
                     }
                 }
-            });
+            }));
         });
     }
 
     function authorsUserSlugSelect2(selector) {
         selector.each(function () {
-            var authorsSearch = $(this).ppma_select2({
+            var authorsSearch = $(this).ppma_select2(withSelect2Language({
                 placeholder: $(this).data("placeholder"),
                 allowClear: true,
                 ajax: {
@@ -306,7 +363,7 @@ jQuery(document).ready(function ($) {
                         };
                     }
                 }
-            });
+            }));
         });
     }
 
@@ -540,7 +597,7 @@ jQuery(document).ready(function ($) {
     }
 
     $(".authors-select2-user-select").each(function () {
-        $(this).ppma_select2({
+        $(this).ppma_select2(withSelect2Language({
             allowClear: true,
             placeholder: $(this).attr("placeholder"),
             ajax: {
@@ -555,13 +612,13 @@ jQuery(document).ready(function ($) {
                     };
                 }
             }
-        });
+        }));
     });
 
     $(".authors-select2-default-select").each(function () {
-        $(this).ppma_select2({
+        $(this).ppma_select2(withSelect2Language({
             placeholder: $(this).attr("placeholder")
-        });
+        }));
     });
 
     $(".author-image-field-wrapper").each(function () {
