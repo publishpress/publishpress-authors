@@ -308,6 +308,7 @@ class Author
             $term_id,
             'author',
             [
+                'name' => $user->display_name,
                 'slug' => $user->user_nicename,
             ]
         );
