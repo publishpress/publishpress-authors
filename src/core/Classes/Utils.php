@@ -330,12 +330,11 @@ class Utils
         do_action('publishpress_authors_flush_cache_for_post', $post_id);
     }
 
-    public static function detect_author_slug_mismatch()
+    public static function detect_author_slug_mismatch($limit = 0)
     {
         global $wpdb;
 
-        $results = $wpdb->get_results(
-            "SELECT t.term_id, u.user_nicename
+        $query = "SELECT t.term_id, u.user_nicename
                 FROM $wpdb->terms AS t
                 INNER JOIN $wpdb->term_taxonomy AS tt ON t.term_id = tt.term_id
                 INNER JOIN $wpdb->termmeta AS tm ON tm.term_id = tt.term_id
@@ -343,8 +342,16 @@ class Utils
                 WHERE
                     tt.taxonomy = 'author'
                     AND tm.meta_key = 'user_id'
-                    AND u.user_nicename != t.slug"
-        );
+                    AND u.user_nicename != t.slug
+                ORDER BY t.term_id ASC";
+
+        $limit = absint($limit);
+
+        if ($limit > 0) {
+            $query .= $wpdb->prepare(' LIMIT %d', $limit);
+        }
+
+        $results = $wpdb->get_results($query); // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
 
         return $results;
     }
