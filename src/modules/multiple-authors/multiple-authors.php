@@ -115,6 +115,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'show_author_post_category'    => 'yes',
                     'show_author_post_tags'        => 'yes',
                     'show_author_post_readmore'    => 'yes',
+                    'hide_author_pages_empty_posts_message' => 'no',
                     'show_author_page_title'       => 'yes',
                     'author_pages_title_header'    => 'h1',
                     'author_post_title_header'     => 'h2',
@@ -993,6 +994,17 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'publishpress-authors'
                 ),
                 [$this, 'settings_show_author_post_readmore'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_author_pages'
+            );
+
+            add_settings_field(
+                'hide_author_pages_empty_posts_message',
+                __(
+                    'Hide empty posts message:',
+                    'publishpress-authors'
+                ),
+                [$this, 'settings_hide_author_pages_empty_posts_message'],
                 $this->module->options_group_name,
                 $this->module->options_group_name . '_author_pages'
             );
@@ -2760,6 +2772,29 @@ echo '<span class="ppma_settings_field_description">'
         }
 
         /**
+         * @param array $args
+         */
+        public function settings_hide_author_pages_empty_posts_message($args = [])
+        {
+            $id    = $this->module->options_group_name . '_hide_author_pages_empty_posts_message';
+            $value = isset($this->module->options->hide_author_pages_empty_posts_message) ? $this->module->options->hide_author_pages_empty_posts_message : '';
+
+            echo '<label for="' . esc_attr($id) . '">';
+
+            echo '<input type="checkbox" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[hide_author_pages_empty_posts_message]" value="yes" ' . ($value === 'yes' ? 'checked="checked"' : '') . '/>';
+
+            echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">'
+                . esc_html__(
+                    'This will hide the "Post not found for the author" text when an author has no posts.',
+                    'publishpress-authors'
+                )
+                . '</span>';
+
+
+            echo '</label>';
+        }
+
+        /**
          * Default author for new posts
          *
          * @param array $args
@@ -3145,6 +3180,10 @@ echo '<span class="ppma_settings_field_description">'
 
             if (!isset($new_options['show_author_post_readmore'])) {
                 $new_options['show_author_post_readmore'] = 'no';
+            }
+
+            if (!isset($new_options['hide_author_pages_empty_posts_message'])) {
+                $new_options['hide_author_pages_empty_posts_message'] = 'no';
             }
 
             if (!isset($new_options['show_author_page_title'])) {

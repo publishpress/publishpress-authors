@@ -49,6 +49,7 @@ if (is_array($ppma_custom_settings)) {
                             case 'multiple_authors_multiple_authors_options_show_author_post_category':
                             case 'multiple_authors_multiple_authors_options_show_author_post_tags':
                             case 'multiple_authors_multiple_authors_options_show_author_post_readmore':
+                            case 'multiple_authors_multiple_authors_options_hide_author_pages_empty_posts_message':
                                 $tr_class = 'ppma-author-pages-tab-posts';
                                 break;
                         }
