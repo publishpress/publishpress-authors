@@ -10,6 +10,7 @@
  * @license   GPL-2.0+
  * @link      https://cmb2.io
  */
+#[AllowDynamicProperties] // phpcs:ignore PHPCompatibility.Attributes.NewAttributes -- Back-compat: allow dynamic props (PHP 8.2+) on this class + subclasses.
 class CMB2_Field_Display {
 
 	/**
@@ -154,7 +155,6 @@ class CMB2_Field_Display {
 				foreach ( $this->field->value as $val ) {
 					$this->value = $val;
 					echo '<li>', $this->_display(), '</li>';
-					;
 				}
 				echo '</ul>';
 			}
@@ -362,7 +362,7 @@ class CMB2_Display_Taxonomy_Radio extends CMB2_Field_Display {
 
 		if ( $term ) {
 			$link = get_edit_term_link( $term->term_id, $taxonomy );
-			echo '<a href="', esc_url( $link ), '">', esc_html( $term->name ), '</a>';
+			echo '<a href="', esc_url( $link ? $link : '' ), '">', esc_html( $term->name ), '</a>';
 		}
 	}
 }
@@ -395,7 +395,7 @@ class CMB2_Display_Taxonomy_Multicheck extends CMB2_Field_Display {
 			$links = array();
 			foreach ( $terms as $term ) {
 				$link = get_edit_term_link( $term->term_id, $taxonomy );
-				$links[] = '<a href="' . esc_url( $link ) . '">' . esc_html( $term->name ) . '</a>';
+				$links[] = '<a href="' . esc_url( $link ? $link : '' ) . '">' . esc_html( $term->name ) . '</a>';
 			}
 			// Then loop and output.
 			echo '<div class="cmb2-taxonomy-terms-', esc_attr( sanitize_html_class( $taxonomy ) ), '">';
@@ -482,6 +482,7 @@ class CMB2_Display_File_List extends CMB2_Display_File {
 	}
 }
 
+// phpcs:ignore PEAR.NamingConventions.ValidClassName.Invalid -- "oEmbed" is the correct brand casing; renaming this public class is a BC break.
 class CMB2_Display_oEmbed extends CMB2_Field_Display {
 	/**
 	 * Display oembed value.
