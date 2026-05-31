@@ -32,3 +32,6 @@
 - /vendor/symfony/polyfill-ctype/README.md
 - .env
 - .env.example
+- DOCKER_ENV
+- docker_tag
+- output.log

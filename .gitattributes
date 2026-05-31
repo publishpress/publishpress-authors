@@ -39,3 +39,9 @@ screenshot-*.png export-ignore
 tests export-ignore
 webpack.config.js export-ignore
 /assets_wp export-ignore
+dev-workspace-cache export-ignore
+.wordpress-org export-ignore
+.env export-ignore
+DOCKER_ENV export-ignore
+docker_tag export-ignore
+output.log export-ignore
