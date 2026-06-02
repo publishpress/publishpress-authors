@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-04-20 12:08+0000\n"
+"PO-Revision-Date: 2026-06-02 07:13+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -4077,6 +4077,10 @@ msgstr "Címkék megjelenítése:"
 msgid "Show read more link:"
 msgstr "Tovább olvasom link megjelenítése:"
 
+#: src/modules/multiple-authors/multiple-authors.php:1003
+msgid "Hide empty posts message:"
+msgstr "Üres bejegyzések üzenetének elrejtése:"
+
 #: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr "Vendégszerző engedélyezése felhasználói fiók nélkül"
@@ -4608,6 +4612,14 @@ msgstr "Ez megjeleníti a címkéket."
 msgid "This will display the read more link."
 msgstr "Ez megjeleníti a \"több\" linket."
 
+#: src/modules/multiple-authors/multiple-authors.php:2788
+msgid ""
+"This will hide the \"Post not found for the author\" text when an author "
+"has no posts."
+msgstr ""
+"Ez elrejti a \"Bejegyzés nem található a szerző számára\" szöveget, ha egy "
+"szerzőnek nincsenek bejegyzései."
+
 #: src/modules/multiple-authors/multiple-authors.php:2755
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr ""
@@ -4896,15 +4908,25 @@ msgstr "Úgy tűnik, hogy a Co-Authors Plus telepítve van."
 msgid "Please click here and read this guide!"
 msgstr "Kérlek, kattints ide és olvasd el ezt az útmutatót!"
 
-#: src/modules/multiple-authors/multiple-authors.php:4662
-msgid "PublishPress Authors needs a database update for Permissions integration."
+#: src/modules/multiple-authors/multiple-authors.php:4979
+msgid ""
+"PublishPress Authors could not complete the background database update for "
+"Permissions integration."
 msgstr ""
-"A PublishPress Authors adatbázis-frissítésre van szüksége a jogosultságok "
-"integrálásához."
+"A PublishPress Authors nem tudta befejezni a háttérbeli "
+"adatbázis-frissítést a Jogosultságok integrációjához."
 
-#: src/modules/multiple-authors/multiple-authors.php:4663
-msgid "Click to run the update now"
-msgstr "Kattints az update futtatásához most"
+#: src/modules/multiple-authors/multiple-authors.php:4980
+msgid ""
+"PublishPress Authors is waiting to complete the background database update "
+"for Permissions integration."
+msgstr ""
+"A PublishPress Authors várakozik a háttérbeli adatbázis-frissítés "
+"befejezésére a Jogosultságok integrációjához."
+
+#: src/modules/multiple-authors/multiple-authors.php:4987
+msgid "Run the update manually"
+msgstr "Futtassa a frissítést manuálisan"
 
 #: src/modules/multiple-authors/multiple-authors.php:5068
 msgid "Guest Author cannot login on the site."

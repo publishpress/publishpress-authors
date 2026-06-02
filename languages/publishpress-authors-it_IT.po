@@ -247,7 +247,7 @@ msgstr "Autorizzazione negata"
 
 #: includes/admin-load.php:666
 msgid "Settings updated successfully."
-msgstr "Impostazioni aggiornate correttamente."
+msgstr "Le impostazioni sono state aggiornate correttamente."
 
 #: includes/admin-load.php:762
 #: includes/features/frontend-features/frontend-features.php:39
@@ -510,7 +510,7 @@ msgstr "Menu navigazione (blocco)"
 
 #: includes/admin.php:209
 msgid "Block"
-msgstr "Blocco"
+msgstr "Blocca"
 
 #: includes/admin.php:216 includes/admin.php:848
 msgid "Nav Menus (Legacy)"
@@ -2891,18 +2891,15 @@ msgstr "Hai bisogno del supporto di PublishPress Capabilities?"
 
 #: includes/functions.php:820
 msgid "If you need help or have a new feature request, let us know."
-msgstr ""
-"Se hai bisogno di aiuto o hai una nuova richiesta di funzionalità, faccelo "
-"sapere."
+msgstr "Se hai bisogno di assistenza o vuoi fare una richiesta per una nuova caratteristica, faccelo sapere."
 
 #: includes/functions.php:823
 msgid "Request Support"
-msgstr "Richiesta di supporto"
+msgstr "Richiedi assistenza"
 
 #: includes/functions.php:832
 msgid "Detailed documentation is also available on the plugin website."
-msgstr ""
-"Una documentazione dettagliata e disponibile anche sul sito web del plugin."
+msgstr "Una documentazione dettagliata è disponibile anche sul sito web del plugin."
 
 #: includes/functions.php:834
 msgid "View Knowledge Base"

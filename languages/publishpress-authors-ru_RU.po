@@ -10,12 +10,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-04-20 12:08+0000\n"
+"PO-Revision-Date: 2026-06-02 07:14+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
 ">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
-"Language: ru_RU\n"
 ">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1: 2);\n"
+"Language: ru_RU\n"
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -4102,6 +4102,10 @@ msgstr "Показать теги:"
 msgid "Show read more link:"
 msgstr "Показать ссылку \"Читать далее\":"
 
+#: src/modules/multiple-authors/multiple-authors.php:1003
+msgid "Hide empty posts message:"
+msgstr "Скрыть сообщение об отсутствии пустых записей:"
+
 #: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr "Включить гостевого автора без учетной записи пользователя"
@@ -4624,6 +4628,14 @@ msgstr "Это будет отображать теги."
 msgid "This will display the read more link."
 msgstr "Это будет отображать ссылку \"Читать далее\"."
 
+#: src/modules/multiple-authors/multiple-authors.php:2788
+msgid ""
+"This will hide the \"Post not found for the author\" text when an author "
+"has no posts."
+msgstr ""
+"Это скроет текст \"Запись не найдена для автора\", когда у автора нет "
+"записей."
+
 #: src/modules/multiple-authors/multiple-authors.php:2755
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr ""
@@ -4909,15 +4921,25 @@ msgstr "Похоже, у вас установлен Co-Authors Plus."
 msgid "Please click here and read this guide!"
 msgstr "Пожалуйста, нажмите здесь и прочитайте это руководство!"
 
-#: src/modules/multiple-authors/multiple-authors.php:4662
-msgid "PublishPress Authors needs a database update for Permissions integration."
+#: src/modules/multiple-authors/multiple-authors.php:4979
+msgid ""
+"PublishPress Authors could not complete the background database update for "
+"Permissions integration."
 msgstr ""
-"PublishPress Authors требует обновления базы данных для интеграции с "
-"разрешениями."
+"PublishPress Authors не смогли завершить фоновое обновление базы данных для "
+"интеграции разрешений."
 
-#: src/modules/multiple-authors/multiple-authors.php:4663
-msgid "Click to run the update now"
-msgstr "Нажмите, чтобы выполнить обновление сейчас"
+#: src/modules/multiple-authors/multiple-authors.php:4980
+msgid ""
+"PublishPress Authors is waiting to complete the background database update "
+"for Permissions integration."
+msgstr ""
+"PublishPress Authors ожидает завершения фонового обновления базы данных для "
+"интеграции разрешений."
+
+#: src/modules/multiple-authors/multiple-authors.php:4987
+msgid "Run the update manually"
+msgstr "Запустить обновление вручную"
 
 #: src/modules/multiple-authors/multiple-authors.php:5068
 msgid "Guest Author cannot login on the site."

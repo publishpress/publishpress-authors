@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-04-20 12:08+0000\n"
+"PO-Revision-Date: 2026-06-02 07:13+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
 "Language: ja\n"
@@ -3970,6 +3970,10 @@ msgstr "タグを表示："
 msgid "Show read more link:"
 msgstr "もっと読むリンクを表示："
 
+#: src/modules/multiple-authors/multiple-authors.php:1003
+msgid "Hide empty posts message:"
+msgstr "空の投稿メッセージを非表示にする:"
+
 #: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr "ユーザーアカウントなしでゲスト著者を有効にする"
@@ -4425,6 +4429,12 @@ msgstr "タグを表示します。"
 msgid "This will display the read more link."
 msgstr "続きを読むリンクを表示します。"
 
+#: src/modules/multiple-authors/multiple-authors.php:2788
+msgid ""
+"This will hide the \"Post not found for the author\" text when an author "
+"has no posts."
+msgstr "これは、著者に投稿がない場合に「著者の投稿が見つかりません」というテキストを非表示にします。"
+
 #: src/modules/multiple-authors/multiple-authors.php:2755
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr "この設定は、他の投稿を編集できないユーザーには無効にされる場合があります。"
@@ -4689,13 +4699,21 @@ msgstr "Co-Authors Plusがインストールされているようです。"
 msgid "Please click here and read this guide!"
 msgstr "こちらをクリックしてこのガイドをお読みください！"
 
-#: src/modules/multiple-authors/multiple-authors.php:4662
-msgid "PublishPress Authors needs a database update for Permissions integration."
-msgstr "PublishPress Authorsは、Permissions統合のためにデータベースの更新が必要です。"
+#: src/modules/multiple-authors/multiple-authors.php:4979
+msgid ""
+"PublishPress Authors could not complete the background database update for "
+"Permissions integration."
+msgstr "PublishPress Authors は、権限統合のためのバックグラウンドデータベース更新を完了できませんでした。"
 
-#: src/modules/multiple-authors/multiple-authors.php:4663
-msgid "Click to run the update now"
-msgstr "今すぐ更新を実行するにはクリックします"
+#: src/modules/multiple-authors/multiple-authors.php:4980
+msgid ""
+"PublishPress Authors is waiting to complete the background database update "
+"for Permissions integration."
+msgstr "PublishPress Authors は、権限統合のためのバックグラウンドデータベース更新を完了するのを待っています。"
+
+#: src/modules/multiple-authors/multiple-authors.php:4987
+msgid "Run the update manually"
+msgstr "更新を手動で実行する"
 
 #: src/modules/multiple-authors/multiple-authors.php:5068
 msgid "Guest Author cannot login on the site."

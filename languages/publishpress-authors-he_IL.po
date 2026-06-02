@@ -10,12 +10,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-04-20 12:08+0000\n"
+"PO-Revision-Date: 2026-06-02 07:13+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "% 10 == 0) ? 2 : 3)));\n"
-"Language: he_IL\n"
 "% 10 == 0) ? 2: 3)));\n"
+"Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 ? 0 : (n == 2 ? 1 : ((n > 10 && n % 10 == 0) ? 2 : 3)));\n"
 
 #: publishpress-authors.php:5
@@ -4022,6 +4022,10 @@ msgstr "הצג תגיות:"
 msgid "Show read more link:"
 msgstr "הצג קישור \"קרא עוד\":"
 
+#: src/modules/multiple-authors/multiple-authors.php:1003
+msgid "Hide empty posts message:"
+msgstr "הסתר הודעת פוסטים ריקים:"
+
 #: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr "אפשר מחבר אורח ללא חשבון משתמש"
@@ -4513,6 +4517,12 @@ msgstr "זה יציג את התגים."
 msgid "This will display the read more link."
 msgstr "זה יציג את הקישור לקריאה נוספת."
 
+#: src/modules/multiple-authors/multiple-authors.php:2788
+msgid ""
+"This will hide the \"Post not found for the author\" text when an author "
+"has no posts."
+msgstr "זה יסיר את הטקסט \"לא נמצאו פוסטים עבור המחבר\" כאשר למחבר אין פוסטים."
+
 #: src/modules/multiple-authors/multiple-authors.php:2755
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr "הגדרה זו עשויה להיות מושבתת עבור משתמשים שאינם יכולים לערוך פוסטים של אחרים."
@@ -4788,13 +4798,25 @@ msgstr "נראה שיש לך את Co-Authors Plus מותקן."
 msgid "Please click here and read this guide!"
 msgstr "אנא לחץ כאן וקרא מדריך זה!"
 
-#: src/modules/multiple-authors/multiple-authors.php:4662
-msgid "PublishPress Authors needs a database update for Permissions integration."
-msgstr "PublishPress Authors זקוק לעדכון מסד נתונים עבור אינטגרציית הרשאות."
+#: src/modules/multiple-authors/multiple-authors.php:4979
+msgid ""
+"PublishPress Authors could not complete the background database update for "
+"Permissions integration."
+msgstr ""
+"PublishPress Authors לא הצליח להשלים את עדכון מסד הנתונים ברקע עבור "
+"אינטגרציית הרשאות."
 
-#: src/modules/multiple-authors/multiple-authors.php:4663
-msgid "Click to run the update now"
-msgstr "לחץ כדי להריץ את העדכון עכשיו"
+#: src/modules/multiple-authors/multiple-authors.php:4980
+msgid ""
+"PublishPress Authors is waiting to complete the background database update "
+"for Permissions integration."
+msgstr ""
+"PublishPress Authors ממתין להשלים את עדכון מסד הנתונים ברקע עבור אינטגרציית "
+"הרשאות."
+
+#: src/modules/multiple-authors/multiple-authors.php:4987
+msgid "Run the update manually"
+msgstr "הרץ את העדכון ידנית"
 
 #: src/modules/multiple-authors/multiple-authors.php:5068
 msgid "Guest Author cannot login on the site."

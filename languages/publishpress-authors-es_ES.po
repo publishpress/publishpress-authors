@@ -75,7 +75,7 @@ msgstr ""
 #: includes-core/frontend-features-promo.php:32 includes/admin-load.php:814
 #: includes/features/admin-styles/admin-styles-ui.php:324
 msgid "Upgrade to Pro"
-msgstr "Actualiza a Pro"
+msgstr "Actualizar a Pro"
 
 #: includes-core/admin-menus-promo.php:29
 msgid "Admin Menu Restrictions"
@@ -189,7 +189,7 @@ msgstr ""
 
 #: includes-core/frontend-features-promo.php:39
 msgid "Select post types..."
-msgstr "Seleccionar tipos de contenido…"
+msgstr "Seleccionas tipo de contenido…"
 
 #: includes-core/frontend-features-promo.php:44
 msgid ""
@@ -248,7 +248,7 @@ msgstr "Permiso denegado"
 
 #: includes/admin-load.php:666
 msgid "Settings updated successfully."
-msgstr "Ajustes actualizados correctamente."
+msgstr "¡Ajustes actualizados correctamente!"
 
 #: includes/admin-load.php:762
 #: includes/features/frontend-features/frontend-features.php:39
@@ -510,7 +510,7 @@ msgstr "Menús de navegación (bloque)"
 
 #: includes/admin.php:209
 msgid "Block"
-msgstr "Bloquear"
+msgstr "Bloque"
 
 #: includes/admin.php:216 includes/admin.php:848
 msgid "Nav Menus (Legacy)"
@@ -1077,7 +1077,7 @@ msgstr "Herramienta de copia para PublishPress Capabilities"
 
 #: includes/backup.php:50
 msgid "Restore"
-msgstr "Restaurar"
+msgstr "Restablecer"
 
 #: includes/backup.php:51 includes/functions-admin.php:567
 msgid "Backup"
@@ -1818,7 +1818,7 @@ msgstr "Personalizar PublishPress"
 
 #: includes/features/admin-styles/admin-styles.php:904
 msgid "Display Name"
-msgstr "Nombre a mostrar"
+msgstr "Nombre visible"
 
 #: includes/features/admin-styles/admin-styles.php:905
 msgid "Change how this style is displayed"
@@ -2910,9 +2910,7 @@ msgstr "¿Necesita soporte para PublishPress Capabilities?"
 
 #: includes/functions.php:820
 msgid "If you need help or have a new feature request, let us know."
-msgstr ""
-"Si necesitas ayuda o tienes una petición de nueva característica, háznoslo "
-"saber."
+msgstr "Si necesitas ayuda o tienes una petición de nueva característica, háznoslo saber."
 
 #: includes/functions.php:823
 msgid "Request Support"
@@ -2920,7 +2918,7 @@ msgstr "Solicitar soporte"
 
 #: includes/functions.php:832
 msgid "Detailed documentation is also available on the plugin website."
-msgstr "También hay disponible documentación detallada en la web del plugin."
+msgstr "Una documentación detallada está también disponible en la web del plugin."
 
 #: includes/functions.php:834
 msgid "View Knowledge Base"
@@ -3411,7 +3409,7 @@ msgstr "%s redirecciones"
 #: includes/redirects/redirects.php:112 includes/redirects/redirects.php:315
 #: includes/roles/class/class-pp-roles-admin.php:512
 msgid "Save Changes"
-msgstr "Guardar los cambios"
+msgstr "Guardar cambios"
 
 #: includes/redirects/redirects.php:214
 msgid "Redirect users to the URL they were viewing before login."

@@ -75,7 +75,7 @@ msgstr ""
 #: includes-core/frontend-features-promo.php:32 includes/admin-load.php:814
 #: includes/features/admin-styles/admin-styles-ui.php:324
 msgid "Upgrade to Pro"
-msgstr "Mettre à niveau en Pro"
+msgstr "Passer à la version Pro"
 
 #: includes-core/admin-menus-promo.php:29
 msgid "Admin Menu Restrictions"
@@ -248,7 +248,7 @@ msgstr "Droit refusé"
 
 #: includes/admin-load.php:666
 msgid "Settings updated successfully."
-msgstr "Les réglages ont bien été enregistrés."
+msgstr "Les réglages ont été mises à jour correctement."
 
 #: includes/admin-load.php:762
 #: includes/features/frontend-features/frontend-features.php:39
@@ -515,7 +515,7 @@ msgstr "Menus de navigation (bloc)"
 
 #: includes/admin.php:209
 msgid "Block"
-msgstr "Bloquer"
+msgstr "Bloc"
 
 #: includes/admin.php:216 includes/admin.php:848
 msgid "Nav Menus (Legacy)"
@@ -2916,9 +2916,7 @@ msgstr "Vous avez besoin du support de PublishPress Capabilities ?"
 
 #: includes/functions.php:820
 msgid "If you need help or have a new feature request, let us know."
-msgstr ""
-"Si vous avez besoin d’aide ou si vous avez une nouvelle demande de "
-"fonctionnalité, faites-le nous savoir."
+msgstr "Si vous avez besoin d’aide ou si vous avez une nouvelle demande de fonctionnalité, faites-le nous savoir."
 
 #: includes/functions.php:823
 msgid "Request Support"
@@ -2926,9 +2924,7 @@ msgstr "Demande de support"
 
 #: includes/functions.php:832
 msgid "Detailed documentation is also available on the plugin website."
-msgstr ""
-"Une documentation détaillée est également disponible sur le site de "
-"l’extension."
+msgstr "Une documentation détaillée est également disponible sur le site de l’extension."
 
 #: includes/functions.php:834
 msgid "View Knowledge Base"
