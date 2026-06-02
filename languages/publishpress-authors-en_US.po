@@ -16,7 +16,7 @@ msgstr ""
 "X-Domain: publishpress-authors\n"
 
 #. Plugin Name of the plugin
-#: publishpress-authors.php:5 src/core/Plugin.php:724
+#: publishpress-authors.php:5 src/core/Plugin.php:724
 #: src/modules/settings/settings.php:64
 msgid "PublishPress Authors"
 msgstr ""
@@ -52,7 +52,7 @@ msgid ""
 "and support. %sUpgrade to Pro%s"
 msgstr ""
 
-#: includes.php:63 src/modules/author-boxes/author-boxes.php:3042
+#: includes.php:63 src/modules/author-boxes/author-boxes.php:3042
 #: src/modules/author-categories/author-categories.php:672
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:521
 #: src/modules/author-custom-fields/author-custom-fields.php:995
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: src/core/Authors_Widget.php:131 src/core/Widget.php:123
+#: src/core/Authors_Widget.php:131 src/core/Widget.php:123
 #: src/modules/author-list/author-list.php:393
 #: src/modules/author-list/classes/AuthorListTable.php:151
 #: src/modules/author-pages/author-pages.php:118
@@ -101,8 +101,8 @@ msgstr ""
 msgid "Limits per page"
 msgstr ""
 
-#: src/core/Authors_Widget.php:138 src/core/Classes/Post_Editor.php:95
-#: src/core/Classes/Post_Editor.php:209 src/core/Plugin.php:869
+#: src/core/Authors_Widget.php:138 src/core/Classes/Post_Editor.php:95
+#: src/core/Classes/Post_Editor.php:209 src/core/Plugin.php:869
 #: src/core/Traits/Author_box.php:209
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:82
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:165
@@ -123,7 +123,8 @@ msgstr ""
 msgid "Authors"
 msgstr ""
 
-#: src/core/Authors_Widget.php:139 src/modules/author-list/author-list.php:509
+#: src/core/Authors_Widget.php:139
+#: src/modules/author-list/author-list.php:509
 msgid "Order"
 msgstr ""
 
@@ -135,8 +136,8 @@ msgstr ""
 msgid "Author's search box field (Seperate multiple fields by comma(','))"
 msgstr ""
 
-#: src/core/Authors_Widget.php:181 src/core/Authors_Widget.php:446
-#: src/core/Classes/Post_Editor.php:563 src/core/Plugin.php:575
+#: src/core/Authors_Widget.php:181 src/core/Authors_Widget.php:446
+#: src/core/Classes/Post_Editor.php:563 src/core/Plugin.php:575
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1102
 msgid "All Authors"
 msgstr ""
@@ -167,18 +168,19 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: src/core/Authors_Widget.php:191 src/modules/author-list/author-list.php:499
+#: src/core/Authors_Widget.php:191
+#: src/modules/author-list/author-list.php:499
 msgid "Post Counts"
 msgstr ""
 
-#: src/core/Authors_Widget.php:192 src/core/Classes/Author_Editor.php:368
+#: src/core/Authors_Widget.php:192 src/core/Classes/Author_Editor.php:368
 #: src/modules/author-custom-fields/author-custom-fields.php:933
 #: src/modules/author-list/author-list.php:500
 #: src/modules/multiple-authors/multiple-authors.php:2171
 msgid "First Name"
 msgstr ""
 
-#: src/core/Authors_Widget.php:193 src/core/Classes/Author_Editor.php:373
+#: src/core/Authors_Widget.php:193 src/core/Classes/Author_Editor.php:373
 #: src/modules/author-custom-fields/author-custom-fields.php:941
 #: src/modules/author-list/author-list.php:501
 #: src/modules/multiple-authors/multiple-authors.php:2172
@@ -193,7 +195,8 @@ msgstr ""
 msgid "Search Box"
 msgstr ""
 
-#: src/core/Authors_Widget.php:416 src/modules/author-list/author-list.php:328
+#: src/core/Authors_Widget.php:416
+#: src/modules/author-list/author-list.php:328
 msgid "Search"
 msgstr ""
 
@@ -201,11 +204,11 @@ msgstr ""
 msgid "No recent posts from this author"
 msgstr ""
 
-#: src/core/Classes/Admin_Ajax.php:321 src/core/Classes/Admin_Ajax.php:431
+#: src/core/Classes/Admin_Ajax.php:321 src/core/Classes/Admin_Ajax.php:431
 msgid "Request status."
 msgstr ""
 
-#: src/core/Classes/Admin_Ajax.php:328 src/core/Classes/Admin_Ajax.php:438
+#: src/core/Classes/Admin_Ajax.php:328 src/core/Classes/Admin_Ajax.php:438
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:41
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:89
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:131
@@ -227,13 +230,15 @@ msgid ""
 "to a user account you do not have permission to edit."
 msgstr ""
 
-#: src/core/Classes/Admin_Ajax.php:374 src/core/Classes/Author_Editor.php:1008
+#: src/core/Classes/Admin_Ajax.php:374
+#: src/core/Classes/Author_Editor.php:1008
 msgid ""
 "Sorry, this WordPress user is already mapped to another Author. By default, "
 "each user can only be connected to one Author profile."
 msgstr ""
 
-#: src/core/Classes/Admin_Ajax.php:386 src/core/Classes/Author_Editor.php:1100
+#: src/core/Classes/Admin_Ajax.php:386
+#: src/core/Classes/Author_Editor.php:1100
 msgid "Registered User is required."
 msgstr ""
 
@@ -255,11 +260,12 @@ msgid ""
 "or is $post not set?"
 msgstr ""
 
-#: src/core/Classes/Author_Editor.php:47 src/core/Plugin.php:1618
+#: src/core/Classes/Author_Editor.php:47 src/core/Plugin.php:1618
 msgid "Display name publicly as"
 msgstr ""
 
-#: src/core/Classes/Author_Editor.php:48 src/core/Classes/Author_Editor.php:378
+#: src/core/Classes/Author_Editor.php:48
+#: src/core/Classes/Author_Editor.php:378
 #: src/modules/author-custom-fields/author-custom-fields.php:949
 msgid "Email"
 msgstr ""
@@ -314,7 +320,7 @@ msgstr ""
 msgid "Avatar"
 msgstr ""
 
-#: src/core/Classes/Author_Editor.php:345 src/core/Plugin.php:593
+#: src/core/Classes/Author_Editor.php:345 src/core/Plugin.php:593
 #: src/modules/author-boxes/author-boxes.php:2166
 #: src/modules/author-categories/author-categories.php:719
 #: src/modules/author-categories/author-categories.php:721
@@ -516,7 +522,7 @@ msgstr ""
 msgid "Drag-and-drop Authors to add them to the %s category"
 msgstr ""
 
-#: src/core/Classes/Post_Editor.php:375 src/core/Plugin.php:1627
+#: src/core/Classes/Post_Editor.php:375 src/core/Plugin.php:1627
 #: src/modules/multiple-authors/multiple-authors.php:2742
 msgid "Search for an author"
 msgstr ""
@@ -755,7 +761,7 @@ msgstr ""
 msgid "If you like %s please leave us a %s rating. Thank you!"
 msgstr ""
 
-#: src/core/Plugin.php:789 src/modules/author-pages/author-pages.php:121
+#: src/core/Plugin.php:789 src/modules/author-pages/author-pages.php:121
 #: src/modules/multiple-authors/multiple-authors.php:161
 msgid "Posts"
 msgstr ""
@@ -889,7 +895,7 @@ msgstr ""
 msgid "%1sView all posts%2s by %3s"
 msgstr ""
 
-#: src/functions/template-tags.php:1134 src/functions/template-tags.php:1755
+#: src/functions/template-tags.php:1134 src/functions/template-tags.php:1755
 msgid " and "
 msgstr ""
 
@@ -3957,6 +3963,10 @@ msgstr ""
 msgid "Show read more link:"
 msgstr ""
 
+#: src/modules/multiple-authors/multiple-authors.php:1003
+msgid "Hide empty posts message:"
+msgstr ""
+
 #: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr ""
@@ -4383,6 +4393,12 @@ msgstr ""
 msgid "This will display the read more link."
 msgstr ""
 
+#: src/modules/multiple-authors/multiple-authors.php:2788
+msgid ""
+"This will hide the \"Post not found for the author\" text when an author has "
+"no posts."
+msgstr ""
+
 #: src/modules/multiple-authors/multiple-authors.php:2755
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr ""
@@ -4636,13 +4652,20 @@ msgstr ""
 msgid "Please click here and read this guide!"
 msgstr ""
 
-#: src/modules/multiple-authors/multiple-authors.php:4662
+#: src/modules/multiple-authors/multiple-authors.php:4979
 msgid ""
-"PublishPress Authors needs a database update for Permissions integration."
+"PublishPress Authors could not complete the background database update for "
+"Permissions integration."
 msgstr ""
 
-#: src/modules/multiple-authors/multiple-authors.php:4663
-msgid "Click to run the update now"
+#: src/modules/multiple-authors/multiple-authors.php:4980
+msgid ""
+"PublishPress Authors is waiting to complete the background database update "
+"for Permissions integration."
+msgstr ""
+
+#: src/modules/multiple-authors/multiple-authors.php:4987
+msgid "Run the update manually"
 msgstr ""
 
 #: src/modules/multiple-authors/multiple-authors.php:5068
@@ -4675,7 +4698,7 @@ msgstr ""
 msgid "Rest API"
 msgstr ""
 
-#: src/modules/rest-api/rest-api.php:59 src/modules/rest-api/rest-api.php:60
+#: src/modules/rest-api/rest-api.php:59 src/modules/rest-api/rest-api.php:60
 msgid "Rest API support"
 msgstr ""
 
@@ -4699,7 +4722,8 @@ msgstr ""
 msgid "Author was created but could not be retrieved."
 msgstr ""
 
-#: src/modules/rest-api/rest-api.php:407 src/modules/rest-api/rest-api.php:423
+#: src/modules/rest-api/rest-api.php:407
+#: src/modules/rest-api/rest-api.php:423
 #: src/modules/rest-api/rest-api.php:442
 msgid "Author not found."
 msgstr ""
