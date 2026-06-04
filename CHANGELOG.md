@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.15.0] - 02 June, 2026
+[4.15.0] - 04 June, 2026
 
 * Feature: Allow post author to be added to multiple author category (Enabled via settings), #2246
 * Fixed: Updating user information does not update authors profile, #2340
