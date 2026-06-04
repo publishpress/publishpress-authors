@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-04-20 12:08+0000\n"
+"PO-Revision-Date: 2026-06-02 07:13+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
 "Language: ko_KR\n"
@@ -3969,6 +3969,10 @@ msgstr "태그 표시:"
 msgid "Show read more link:"
 msgstr "더 보기 링크 표시:"
 
+#: src/modules/multiple-authors/multiple-authors.php:1003
+msgid "Hide empty posts message:"
+msgstr "빈 게시물 메시지 숨기기:"
+
 #: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr "사용자 계정이 없는 게스트 작성자 활성화"
@@ -4433,6 +4437,12 @@ msgstr "태그가 다음과 같이 표시됩니다."
 msgid "This will display the read more link."
 msgstr "더 보기 링크가 다음과 같이 표시됩니다."
 
+#: src/modules/multiple-authors/multiple-authors.php:2788
+msgid ""
+"This will hide the \"Post not found for the author\" text when an author "
+"has no posts."
+msgstr "저자가 게시물이 없을 때 \"저자에 대한 게시물이 없습니다\" 텍스트를 숨깁니다."
+
 #: src/modules/multiple-authors/multiple-authors.php:2755
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr "이 설정은 다른 사용자의 게시물을 편집할 수 없는 사용자에게는 비활성화될 수 있습니다."
@@ -4701,13 +4711,21 @@ msgstr "Co-Authors Plus가 설치된 것 같습니다."
 msgid "Please click here and read this guide!"
 msgstr "여기를 클릭하여 이 가이드를 읽어주세요!"
 
-#: src/modules/multiple-authors/multiple-authors.php:4662
-msgid "PublishPress Authors needs a database update for Permissions integration."
-msgstr "PublishPress Authors는 권한 통합을 위한 데이터베이스 업데이트가 필요합니다."
+#: src/modules/multiple-authors/multiple-authors.php:4979
+msgid ""
+"PublishPress Authors could not complete the background database update for "
+"Permissions integration."
+msgstr "PublishPress Authors는 권한 통합을 위한 백그라운드 데이터베이스 업데이트를 완료할 수 없습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:4663
-msgid "Click to run the update now"
-msgstr "지금 업데이트를 실행하려면 클릭하세요"
+#: src/modules/multiple-authors/multiple-authors.php:4980
+msgid ""
+"PublishPress Authors is waiting to complete the background database update "
+"for Permissions integration."
+msgstr "PublishPress Authors가 권한 통합을 위한 백그라운드 데이터베이스 업데이트를 완료하기를 기다리고 있습니다."
+
+#: src/modules/multiple-authors/multiple-authors.php:4987
+msgid "Run the update manually"
+msgstr "업데이트를 수동으로 실행하기"
 
 #: src/modules/multiple-authors/multiple-authors.php:5068
 msgid "Guest Author cannot login on the site."

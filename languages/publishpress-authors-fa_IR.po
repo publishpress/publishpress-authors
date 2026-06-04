@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-04-20 12:08+0000\n"
+"PO-Revision-Date: 2026-06-02 07:13+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "Language: fa_IR\n"
@@ -4063,6 +4063,10 @@ msgstr "نمایش برچسب‌ها:"
 msgid "Show read more link:"
 msgstr "نمایش لینک ادامه مطلب:"
 
+#: src/modules/multiple-authors/multiple-authors.php:1003
+msgid "Hide empty posts message:"
+msgstr "پیام پست‌های خالی را مخفی کن:"
+
 #: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr "فعال‌سازی نویسنده مهمان بدون حساب کاربری"
@@ -4575,6 +4579,14 @@ msgstr "این برچسب‌ها را نمایش می‌دهد."
 msgid "This will display the read more link."
 msgstr "این لینک \"بیشتر بخوانید\" را نمایش می‌دهد."
 
+#: src/modules/multiple-authors/multiple-authors.php:2788
+msgid ""
+"This will hide the \"Post not found for the author\" text when an author "
+"has no posts."
+msgstr ""
+"این متن \"پست برای نویسنده پیدا نشد\" را زمانی که نویسنده‌ای پستی ندارد "
+"مخفی می‌کند."
+
 #: src/modules/multiple-authors/multiple-authors.php:2755
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr ""
@@ -4861,13 +4873,25 @@ msgstr "به نظر می‌رسد که شما Co-Authors Plus را نصب کرد
 msgid "Please click here and read this guide!"
 msgstr "لطفاً اینجا کلیک کنید و این راهنما را بخوانید!"
 
-#: src/modules/multiple-authors/multiple-authors.php:4662
-msgid "PublishPress Authors needs a database update for Permissions integration."
-msgstr "PublishPress Authors به‌روزرسانی پایگاه داده برای یکپارچگی مجوزها نیاز دارد."
+#: src/modules/multiple-authors/multiple-authors.php:4979
+msgid ""
+"PublishPress Authors could not complete the background database update for "
+"Permissions integration."
+msgstr ""
+"PublishPress Authors نتوانست به‌روزرسانی پایگاه داده پس‌زمینه را برای ادغام "
+"مجوزها کامل کند."
 
-#: src/modules/multiple-authors/multiple-authors.php:4663
-msgid "Click to run the update now"
-msgstr "برای اجرای به‌روزرسانی اکنون کلیک کنید"
+#: src/modules/multiple-authors/multiple-authors.php:4980
+msgid ""
+"PublishPress Authors is waiting to complete the background database update "
+"for Permissions integration."
+msgstr ""
+"PublishPress Authors در انتظار کامل کردن به‌روزرسانی پایگاه داده پس‌زمینه "
+"برای ادغام مجوزها است."
+
+#: src/modules/multiple-authors/multiple-authors.php:4987
+msgid "Run the update manually"
+msgstr "به‌روزرسانی را به‌صورت دستی اجرا کن"
 
 #: src/modules/multiple-authors/multiple-authors.php:5068
 msgid "Guest Author cannot login on the site."

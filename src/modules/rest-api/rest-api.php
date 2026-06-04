@@ -219,7 +219,6 @@ if (!class_exists('MA_REST_API')) {
 
             $authors_fields = Author_Editor::get_fields(false);
             $authors_fields = apply_filters('multiple_authors_author_fields', $authors_fields, false);
-            $authors_fields = array_keys($authors_fields);
 
             $excluded_fields = ['user_id', 'avatar'];
             $excluded_fields = apply_filters('ppma_rest_api_authors_meta_excluded_fields', $excluded_fields);
@@ -246,12 +245,14 @@ if (!class_exists('MA_REST_API')) {
 
                 //add other fields
                 foreach ($authors_fields as $field_name => $field_config) {
-                    if (in_array($field_name, $excluded_fields)) {
+                    if (in_array($field_name, $excluded_fields, true)) {
                         continue;
                     }
-                    if (isset($field_config['show_in_rest']) && $field_config['show_in_rest'] === 'off') {
+
+                    if (!$this->isAuthorFieldVisibleInRest($field_name, $field_config)) {
                         continue;
                     }
+
                     $currentAuthorData[$field_name] = $author->$field_name;
                 }
 
@@ -588,7 +589,7 @@ if (!class_exists('MA_REST_API')) {
                 }
 
                 $field_config = $available_fields[$field_name];
-                if (isset($field_config['show_in_rest']) && $field_config['show_in_rest'] === 'off') {
+                if (!$this->isAuthorFieldVisibleInRest($field_name, $field_config)) {
                     continue;
                 }
 
@@ -596,6 +597,20 @@ if (!class_exists('MA_REST_API')) {
             }
 
             return new WP_REST_Response($response_data, $status_code);
+        }
+
+        private function isAuthorFieldVisibleInRest($field_name, $field_config)
+        {
+            if (is_array($field_config) && !empty($field_config['show_in_rest'])) {
+                return $field_config['show_in_rest'] !== 'off';
+            }
+
+            return !in_array($field_name, $this->getDefaultHiddenRestFields(), true);
+        }
+
+        private function getDefaultHiddenRestFields()
+        {
+            return apply_filters('ppma_rest_api_default_hidden_author_fields', ['user_email']);
         }
 
         private function sanitizeFieldValue($value, $field_config)

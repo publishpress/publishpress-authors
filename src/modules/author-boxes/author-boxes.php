@@ -146,7 +146,6 @@ class MA_Author_Boxes extends Module
         add_action('wp_footer', [$this, 'addAuthorBoxStyles']);
         add_action('enqueue_block_editor_assets', [$this, 'author_boxes_block_enqueue_assets']);
         add_action('wp_ajax_ppma_block_fetch_author_boxes', [$this, 'ppma_block_fetch_author_boxes']);
-        add_action('wp_ajax_nopriv_ppma_block_fetch_author_boxes', [$this, 'ppma_block_fetch_author_boxes']);
 
         add_action('wp_ajax_author_boxes_editor_get_preview', ['MultipleAuthorBoxes\AuthorBoxesAjax', 'handle_author_boxes_editor_get_preview']);
         add_action('wp_ajax_author_boxes_editor_get_template', ['MultipleAuthorBoxes\AuthorBoxesAjax', 'handle_author_boxes_editor_get_template']);
@@ -1752,6 +1751,9 @@ class MA_Author_Boxes extends Module
         // format author category support
         $author_categories = get_ppma_author_categories(['category_status' => 1]);
         $author_categories_data = ppma_get_grouped_post_authors($current_post_id, $authors, $author_categories);
+        $author_counts = array_reduce($author_categories_data, function ($total, $author_category_data) {
+            return $total + (isset($author_category_data['authors']) ? count($author_category_data['authors']) : 0);
+        }, 0);
 
         $author_categories_group_option = 'inline';
         $author_categories_title_option = '';
@@ -1903,7 +1905,7 @@ class MA_Author_Boxes extends Module
                                                         endif;
 
 
-                                                        $current_author_category = get_ppma_author_category($author, $author_categories_data);
+                                                        $current_author_category = get_ppma_author_category($author, $author_categories_data, $author_category_data);
 
                                                         //author fields item position
                                                         $name_row_extra = '';
@@ -2100,7 +2102,7 @@ class MA_Author_Boxes extends Module
                                                             if ($author_categories_title_option == 'after_individual' && !empty($author_category_data['title'])) :
                                                                 $display_name_markup .= '<' . $author_categories_title_html_tag . ' class="ppma-category-group-title">' . $author_categories_title_prefix . '' . $author_category_data['singular_title'] . '' . $author_categories_title_suffix . '</' . $author_categories_title_html_tag . '>';
                                                             endif;
-                                                            if (count($author_category_data['authors']) > 1 && $index !== count($author_category_data['authors']) - 1) {
+                                                            if ($global_author_index < $author_counts - 1) {
                                                                 $display_name_markup .= html_entity_decode($author_separator);
                                                             }
                                                             $display_name_markup .= '</'. esc_html($args['name_html_tag']['value']) .'>';
@@ -2213,7 +2215,7 @@ class MA_Author_Boxes extends Module
                                                                     </div>
                                                                 <?php endif; ?>
                                                             </<?php echo ($li_style ? 'div' : 'span'); ?>>
-                                                        <?php if (empty($args['name_show']['value']) && count($author_category_data['authors']) > 1 && $index !== count($author_category_data['authors']) - 1) {
+                                                        <?php if (empty($args['name_show']['value']) && $global_author_index < $author_counts - 1) {
                                                             echo html_entity_decode($author_separator); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                                                         } ?>
                                                     <?php endif; ?>
@@ -3134,6 +3136,15 @@ class MA_Author_Boxes extends Module
      * AJAX handler for fetching author boxes
      */
     public function ppma_block_fetch_author_boxes() {
+        if (!current_user_can('edit_posts') && !current_user_can('edit_pages')) {
+            wp_send_json_error(
+                [
+                    'message' => esc_html__('You do not have permission to perform this action', 'publishpress-authors'),
+                ],
+                403
+            );
+        }
+
         $author_boxes = $this->getAuthorBoxes(false);
 
         $boxes = [];

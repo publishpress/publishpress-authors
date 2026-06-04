@@ -1,58 +1,12 @@
-name: Code checks
+name: Enforce code standards and compatibility
+permissions:
+  contents: read
 on:
-  push:
-    branches:
-      - 'master'
-
-  pull_request:
-    branches:
-      - '*'
-
   workflow_call:
 
   workflow_dispatch:
-    inputs:
-      tmate_enabled:
-        type: boolean
-        description: 'Enable "tmate" for debugging'
-        required: false
-        default: false
+
 jobs:
   check:
-    name: Check the code
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup tmate session for Debugging, if inputs.tmate_enabled is true
-        uses: mxschmitt/action-tmate@v3
-        if: ${{ inputs.tmate_enabled }}
-        timeout-minutes: 10
-        with:
-          detached: true
+    uses: publishpress/github-workflows/.github/workflows/code-standards.yml@v3
 
-      - name: Checkout code
-        uses: actions/checkout@master
-
-      - name: Create .env file
-        run: |
-          cp $GITHUB_WORKSPACE/.env.example $GITHUB_WORKSPACE/.env
-
-      - name: Composer validation
-        uses: php-actions/composer@v6
-        with:
-          php_version: "8.4"
-          php_extensions: zip mysqli
-          command: validate
-
-      - name: Composer install
-        uses: php-actions/composer@v6
-        with:
-          php_version: "8.4"
-          php_extensions: zip mysqli
-
-      - name: Show version of tools inside the dev-workspace
-        run: |
-          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer info:versions
-
-      - name: Run Lint check
-        run: |
-          $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer lint:php

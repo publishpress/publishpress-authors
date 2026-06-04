@@ -229,11 +229,19 @@ if (!function_exists('ppma_post_authors_categorized')) {
             $categorized_authors['author'] = $authors;
         } else {
             $categorized_authors = [];
+            $allow_multiple_categories = Utils::isAuthorMultipleCategoriesEnabled();
+            $categorized_author_ids = [];
+
             foreach ($author_relations as $data) {
                 $category_slug = $data['category_slug'];
                 foreach ($authors as $author) {
                     if ($author->term_id == $data['author_term_id']) {
+                        if (!$allow_multiple_categories && in_array((int) $author->term_id, $categorized_author_ids, true)) {
+                            break;
+                        }
+
                         $categorized_authors[$category_slug][] = $author;
+                        $categorized_author_ids[] = (int) $author->term_id;
                         break; // Break the inner loop once a match is found
                     }
                 }
@@ -336,6 +344,117 @@ if (!function_exists('multiple_authors_get_author_recent_posts')) {
     }
 }
 
+
+if (!function_exists('publishpress_authors_normalize_author_list_search_fields')) {
+    /**
+     * Normalize configured author list search fields.
+     *
+     * @param array|string $search_fields Search fields to normalize.
+     *
+     * @return array
+     */
+    function publishpress_authors_normalize_author_list_search_fields($search_fields)
+    {
+        if (empty($search_fields)) {
+            return [];
+        }
+
+        if (!is_array($search_fields)) {
+            $search_fields = explode(',', (string)$search_fields);
+        }
+
+        $search_fields = array_map(
+            function ($search_field) {
+                return trim(sanitize_text_field((string)$search_field));
+            },
+            $search_fields
+        );
+
+        $search_fields = array_filter(
+            $search_fields,
+            function ($search_field) {
+                return $search_field !== '';
+            }
+        );
+
+        return array_values(array_unique($search_fields));
+    }
+}
+
+if (!function_exists('publishpress_authors_get_author_list_allowed_search_fields')) {
+    /**
+     * Get the author term meta fields allowed for public author list searches.
+     *
+     * @param array $instance The widget call object instance.
+     *
+     * @return array
+     */
+    function publishpress_authors_get_author_list_allowed_search_fields($instance = [])
+    {
+        $configured_fields = publishpress_authors_normalize_author_list_search_fields(
+            isset($instance['search_field']) ? $instance['search_field'] : []
+        );
+
+        if (empty($configured_fields)) {
+            return [];
+        }
+
+        /**
+         * Filter public-safe author fields available to author list searches.
+         *
+         * @param array $public_fields Public-safe author term meta fields.
+         * @param array $instance      The widget call object instance.
+         */
+        $public_fields = apply_filters(
+            'pp_multiple_authors_author_list_public_search_fields',
+            ['first_name', 'last_name'],
+            $instance
+        );
+        $public_fields = publishpress_authors_normalize_author_list_search_fields($public_fields);
+
+        /**
+         * Filter sensitive author fields excluded from public author list searches by default.
+         *
+         * @param array $sensitive_fields Sensitive author term meta fields.
+         * @param array $instance         The widget call object instance.
+         */
+        $sensitive_fields = apply_filters(
+            'pp_multiple_authors_author_list_sensitive_search_fields',
+            ['user_email', 'user_id'],
+            $instance
+        );
+        $sensitive_fields = publishpress_authors_normalize_author_list_search_fields($sensitive_fields);
+
+        $allowed_fields = array_values(array_intersect(
+            $configured_fields,
+            array_diff($public_fields, $sensitive_fields)
+        ));
+
+        /**
+         * Filter the final author fields allowed for public author list searches.
+         *
+         * Use this filter to explicitly opt into searching additional configured
+         * fields, including sensitive fields such as user_email.
+         *
+         * @param array $allowed_fields    Search fields allowed by default.
+         * @param array $configured_fields Search fields configured for the author list.
+         * @param array $public_fields     Public-safe author term meta fields.
+         * @param array $sensitive_fields  Sensitive author term meta fields.
+         * @param array $instance          The widget call object instance.
+         */
+        $allowed_fields = apply_filters(
+            'pp_multiple_authors_author_list_allowed_search_fields',
+            $allowed_fields,
+            $configured_fields,
+            $public_fields,
+            $sensitive_fields,
+            $instance
+        );
+        $allowed_fields = publishpress_authors_normalize_author_list_search_fields($allowed_fields);
+
+        return array_values(array_intersect($configured_fields, $allowed_fields));
+    }
+}
 
 if (!function_exists('publishpress_authors_get_all_authors')) {
     /**
@@ -502,9 +621,17 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
 
         $search_text = false;
         $search_field = false;
-        if ($search_instance && !empty($_GET['seach_query'])) {
-            $search_text =  sanitize_text_field($_GET['seach_query']);
-            $search_field = !empty($_GET['search_field']) ? sanitize_text_field($_GET['search_field']) : false;
+        if ($search_instance && !empty($_GET['seach_query']) && is_scalar($_GET['seach_query'])) {
+            $search_text = sanitize_text_field(wp_unslash($_GET['seach_query']));
+
+            if (!empty($_GET['search_field']) && is_scalar($_GET['search_field'])) {
+                $requested_search_field = sanitize_text_field(wp_unslash($_GET['search_field']));
+                $allowed_search_fields  = publishpress_authors_get_author_list_allowed_search_fields($instance);
+
+                if (in_array($requested_search_field, $allowed_search_fields, true)) {
+                    $search_field = $requested_search_field;
+                }
+            }
         }
 
         //other query limit condition
@@ -2106,6 +2233,8 @@ if (!function_exists('get_ppma_author_relations')) {
                 $sql .= $wpdb->prepare(" AND r.author_term_id = %d", $author_term_id);
             }
 
+            $sql .= ' ORDER BY r.id ASC';
+
             $results = $wpdb->get_results($sql, ARRAY_A);
 
             wp_cache_set($cache_key, $results, 'author_categories_relation_cache', 3600);
@@ -2121,24 +2250,57 @@ if (!function_exists('get_ppma_author_category')) {
      *
      * @param object $author
      * @param array $author_categories_data
+     * @param array|object|int|string $current_author_category
      *
      * @return array
      */
-    function get_ppma_author_category($author, $author_categories_data) {
+    function get_ppma_author_category($author, $author_categories_data, $current_author_category = []) {
 
-        $author_category = [];
-
-        foreach ($author_categories_data as $author_category_data) {
-            if (!empty($author_category_data['singular_title']) && !empty($author_category_data['authors'])) {
-                $author_term_id = array_column($author_category_data['authors'], 'term_id');
-                if (in_array($author->term_id, $author_term_id)) {
-                    $author_category = $author_category_data;
-                }
-            }
-
+        if (!is_object($author) || empty($author->term_id) || empty($author_categories_data) || !is_iterable($author_categories_data)) {
+            return [];
         }
 
-        return $author_category;
+        $author_term_id = (int) $author->term_id;
+        $current_category_id = 0;
+        $current_category_slug = '';
+
+        if (is_array($current_author_category)) {
+            $current_category_id = !empty($current_author_category['id']) ? (int) $current_author_category['id'] : 0;
+            $current_category_slug = !empty($current_author_category['slug']) ? (string) $current_author_category['slug'] : '';
+        } elseif (is_object($current_author_category)) {
+            $current_category_id = !empty($current_author_category->id) ? (int) $current_author_category->id : 0;
+            $current_category_slug = !empty($current_author_category->slug) ? (string) $current_author_category->slug : '';
+        } elseif (!empty($current_author_category)) {
+            if (is_numeric($current_author_category)) {
+                $current_category_id = (int) $current_author_category;
+            } else {
+                $current_category_slug = (string) $current_author_category;
+            }
+        }
+
+        foreach ($author_categories_data as $author_category_data) {
+            if (empty($author_category_data['singular_title']) || empty($author_category_data['authors'])) {
+                continue;
+            }
+
+            if ($current_category_id > 0 && (int) $author_category_data['id'] !== $current_category_id) {
+                continue;
+            }
+
+            if (!empty($current_category_slug) && $author_category_data['slug'] !== $current_category_slug) {
+                continue;
+            }
+
+            foreach ($author_category_data['authors'] as $category_author) {
+                $category_author_term_id = is_object($category_author) ? (int) $category_author->term_id : 0;
+
+                if ($category_author_term_id === $author_term_id) {
+                    return $author_category_data;
+                }
+            }
+        }
+
+        return [];
     }
 
 }

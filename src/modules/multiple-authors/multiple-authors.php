@@ -42,6 +42,10 @@ if (!class_exists('MA_Multiple_Authors')) {
 
         public $module_name = 'multiple_authors';
 
+        const PERMISSIONS_SYNC_CRON_HOOK = 'publishpress_authors_permissions_author_slug_sync';
+        const PERMISSIONS_SYNC_LOCK_KEY = 'publishpress_authors_permissions_author_slug_sync_lock';
+        const PERMISSIONS_SYNC_STATUS_OPTION = 'publishpress_authors_permissions_author_slug_sync_status';
+
         /**
          * The menu slug.
          */
@@ -115,6 +119,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'show_author_post_category'    => 'yes',
                     'show_author_post_tags'        => 'yes',
                     'show_author_post_readmore'    => 'yes',
+                    'hide_author_pages_empty_posts_message' => 'no',
                     'show_author_page_title'       => 'yes',
                     'author_pages_title_header'    => 'h1',
                     'author_post_title_header'     => 'h2',
@@ -129,6 +134,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'enable_font_awesome'            => 'yes',
                     'enable_guest_author_user'     => 'no',
                     'author_boxes_opt_out'         => 'no',
+                    'allow_author_multiple_categories' => 'no',
                     'enable_guest_author_acount'   => 'yes',
                     'show_editor_author_box_selection'   => 'yes',
                     'default_avatar'               => '',
@@ -185,6 +191,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                 add_action('admin_init', [$this, 'migrate_legacy_settings']);
                 add_action('admin_init', [$this, 'dismissCoAuthorsMigrationNotice']);
                 add_action('admin_init', [$this, 'dismissPermissionsSyncNotice']);
+                add_action('admin_init', [$this, 'maybeSchedulePermissionsSync']);
                 add_action('admin_init', [$this, 'pp_blocks_is_active']);
                 add_action('admin_notices', [$this, 'coauthorsMigrationNotice']);
                 add_action('admin_notices', [$this, 'permissionsSyncNotice']);
@@ -208,6 +215,7 @@ if (!class_exists('MA_Multiple_Authors')) {
             add_action('multiple_authors_create_role_authors', [$this, 'action_create_role_authors']);
             add_action('multiple_authors_copy_coauthor_plus_data', [$this, 'action_copy_coauthor_plus_data']);
             add_action('multiple_authors_create_author_categories', [$this, 'action_create_author_categories']);
+            add_action(self::PERMISSIONS_SYNC_CRON_HOOK, [$this, 'processPermissionsSyncBackgroundBatch']);
 
             add_action('deleted_user', [$this, 'handle_deleted_user']);
 
@@ -996,6 +1004,17 @@ if (!class_exists('MA_Multiple_Authors')) {
                 $this->module->options_group_name . '_author_pages'
             );
 
+            add_settings_field(
+                'hide_author_pages_empty_posts_message',
+                __(
+                    'Hide empty posts message:',
+                    'publishpress-authors'
+                ),
+                [$this, 'settings_hide_author_pages_empty_posts_message'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_author_pages'
+            );
+
 
             /**
              * Shortcodes
@@ -1102,6 +1121,17 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'publishpress-authors'
                 ),
                 [$this, 'settings_author_boxes_opt_out'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_guest_authors'
+            );
+
+            add_settings_field(
+                'allow_author_multiple_categories',
+                __(
+                    'Allow authors in multiple categories:',
+                    'publishpress-authors'
+                ),
+                [$this, 'settings_allow_author_multiple_categories'],
                 $this->module->options_group_name,
                 $this->module->options_group_name . '_guest_authors'
             );
@@ -2580,6 +2610,29 @@ echo '<span class="ppma_settings_field_description">'
             echo '</label>';
         }
 
+        /**
+         * @param array $args
+         */
+        public function settings_allow_author_multiple_categories($args = [])
+        {
+            $id    = $this->module->options_group_name . '_allow_author_multiple_categories';
+            $value = isset($this->module->options->allow_author_multiple_categories) ? $this->module->options->allow_author_multiple_categories : '';
+
+            echo '<label for="' . esc_attr($id) . '">';
+
+            echo '<input type="checkbox" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[allow_author_multiple_categories]" value="yes" ' . ($value === 'yes' ? 'checked="checked"' : '') . '/>';
+
+            echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">'
+                . esc_html__(
+                    'Allow the same author to be assigned to more than one Author Category on a single post.',
+                    'publishpress-authors'
+                )
+                . '</span>';
+
+
+            echo '</label>';
+        }
+
 
         /**
          * @param array $args
@@ -2716,6 +2769,29 @@ echo '<span class="ppma_settings_field_description">'
             echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">'
                 . esc_html__(
                     'This will display the read more link.',
+                    'publishpress-authors'
+                )
+                . '</span>';
+
+
+            echo '</label>';
+        }
+
+        /**
+         * @param array $args
+         */
+        public function settings_hide_author_pages_empty_posts_message($args = [])
+        {
+            $id    = $this->module->options_group_name . '_hide_author_pages_empty_posts_message';
+            $value = isset($this->module->options->hide_author_pages_empty_posts_message) ? $this->module->options->hide_author_pages_empty_posts_message : '';
+
+            echo '<label for="' . esc_attr($id) . '">';
+
+            echo '<input type="checkbox" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[hide_author_pages_empty_posts_message]" value="yes" ' . ($value === 'yes' ? 'checked="checked"' : '') . '/>';
+
+            echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">'
+                . esc_html__(
+                    'This will hide the "Post not found for the author" text when an author has no posts.',
                     'publishpress-authors'
                 )
                 . '</span>';
@@ -3072,6 +3148,10 @@ echo '<span class="ppma_settings_field_description">'
                 $new_options['remove_single_user_map_restriction'] = 'no';
             }
 
+            if (!isset($new_options['allow_author_multiple_categories'])) {
+                $new_options['allow_author_multiple_categories'] = 'no';
+            }
+
             if (!isset($new_options['enable_guest_author_user'])) {
                 $new_options['enable_guest_author_user'] = 'no';
             }
@@ -3106,6 +3186,10 @@ echo '<span class="ppma_settings_field_description">'
 
             if (!isset($new_options['show_author_post_readmore'])) {
                 $new_options['show_author_post_readmore'] = 'no';
+            }
+
+            if (!isset($new_options['hide_author_pages_empty_posts_message'])) {
+                $new_options['hide_author_pages_empty_posts_message'] = 'no';
             }
 
             if (!isset($new_options['show_author_page_title'])) {
@@ -4034,6 +4118,7 @@ echo '<span class="ppma_settings_field_description">'
                 wp_localize_script('multiple-authors-settings', 'ppmaSettings', [
                     'tab' => !empty($_REQUEST['ppma_tab']) ? 'ppma-tab-' . sanitize_key($_REQUEST['ppma_tab']) : '',
                     'runScript' => !empty($_REQUEST['ppma_maint']) ? sanitize_key($_REQUEST['ppma_maint']) : '',
+                    'select2_i18n' => Utils::getSelect2I18n(),
                 ]);
 
                 wp_enqueue_script(
@@ -4538,6 +4623,7 @@ echo '<span class="ppma_settings_field_description">'
             delete_transient('publishpress_authors_sync_author_slug_ids');
 
             update_option('publishpress_multiple_authors_usernicename_sync', 1);
+            delete_option(self::PERMISSIONS_SYNC_STATUS_OPTION);
 
             do_action('publishpress_authors_flush_cache');
 
@@ -4546,6 +4632,232 @@ echo '<span class="ppma_settings_field_description">'
                     'success' => true,
                 ]
             );
+        }
+
+        private function isPermissionsSyncIntegrationSupported()
+        {
+            return defined('PRESSPERMIT_VERSION')
+                && version_compare(constant('PRESSPERMIT_VERSION'), '3.4-alpha', '>=')
+                && !defined('PRESSPERMIT_DISABLE_AUTHORS_JOIN');
+        }
+
+        public function maybeSchedulePermissionsSync()
+        {
+            if (!$this->isPermissionsSyncIntegrationSupported()) {
+                return;
+            }
+
+            if (get_option('publishpress_multiple_authors_usernicename_sync')) {
+                return;
+            }
+
+            if (!current_user_can('ppma_manage_authors')) {
+                return;
+            }
+
+            $status = $this->getPermissionsSyncStatus();
+
+            if (!empty($status['status']) && $status['status'] === 'failed') {
+                return;
+            }
+
+            $this->schedulePermissionsSyncBackgroundBatch();
+        }
+
+        private function schedulePermissionsSyncBackgroundBatch($delay = 0)
+        {
+            if (wp_next_scheduled(self::PERMISSIONS_SYNC_CRON_HOOK)) {
+                return true;
+            }
+
+            $nextRunAt = time() + absint($delay);
+            $scheduled = wp_schedule_single_event($nextRunAt, self::PERMISSIONS_SYNC_CRON_HOOK);
+
+            if ($scheduled === false) {
+                $this->updatePermissionsSyncStatus(
+                    'failed',
+                    [
+                        'message'   => 'Unable to schedule the background update.',
+                        'failed_at' => time(),
+                    ]
+                );
+
+                return false;
+            }
+
+            $this->updatePermissionsSyncStatus(
+                'scheduled',
+                [
+                    'next_run_at' => $nextRunAt,
+                ]
+            );
+
+            return true;
+        }
+
+        public function processPermissionsSyncBackgroundBatch()
+        {
+            if (!$this->isPermissionsSyncIntegrationSupported()) {
+                return;
+            }
+
+            if (get_option('publishpress_multiple_authors_usernicename_sync')) {
+                return;
+            }
+
+            if (get_transient(self::PERMISSIONS_SYNC_LOCK_KEY)) {
+                $this->schedulePermissionsSyncBackgroundBatch(5 * MINUTE_IN_SECONDS);
+                return;
+            }
+
+            set_transient(self::PERMISSIONS_SYNC_LOCK_KEY, time(), 10 * MINUTE_IN_SECONDS);
+
+            $processedThisRun = 0;
+
+            try {
+                $batchSize  = $this->getPermissionsSyncBatchSize();
+                $maxRuntime = $this->getPermissionsSyncMaxRuntime();
+                $startedAt  = microtime(true);
+
+                // Keep each cron request bounded while still allowing several small batches per run.
+                do {
+                    $authors = Utils::detect_author_slug_mismatch($batchSize);
+
+                    if (empty($authors)) {
+                        $this->markPermissionsSyncComplete($processedThisRun);
+                        return;
+                    }
+
+                    Utils::sync_author_slug_to_user_nicename($authors);
+
+                    $processedThisRun += count($authors);
+                } while ((microtime(true) - $startedAt) < $maxRuntime);
+
+                $this->updatePermissionsSyncStatus(
+                    'running',
+                    [
+                        'last_run_at'     => time(),
+                        'last_batch_size' => $processedThisRun,
+                        'total_updated'   => $this->getPermissionsSyncTotalUpdated() + $processedThisRun,
+                    ]
+                );
+
+                $this->schedulePermissionsSyncBackgroundBatch($this->getPermissionsSyncBatchDelay());
+            } catch (Throwable $e) {
+                $this->updatePermissionsSyncStatus(
+                    'failed',
+                    [
+                        'message'   => $e->getMessage(),
+                        'failed_at' => time(),
+                    ]
+                );
+            } finally {
+                delete_transient(self::PERMISSIONS_SYNC_LOCK_KEY);
+            }
+        }
+
+        private function getPermissionsSyncBatchSize()
+        {
+            $batchSize = (int) apply_filters(
+                'pp_authors_permissions_sync_author_slug_batch_size',
+                PUBLISHPRESS_AUTHORS_SYNC_AUTHOR_SLUG_CHUNK_SIZE
+            );
+
+            return max(1, min(500, $batchSize));
+        }
+
+        private function getPermissionsSyncBatchDelay()
+        {
+            $delay = (int) apply_filters('pp_authors_permissions_sync_author_slug_batch_delay', MINUTE_IN_SECONDS);
+
+            return max(1, $delay);
+        }
+
+        private function getPermissionsSyncMaxRuntime()
+        {
+            $maxRuntime = (int) apply_filters('pp_authors_permissions_sync_author_slug_max_runtime', 15);
+
+            return max(1, $maxRuntime);
+        }
+
+        private function getPermissionsSyncStatus()
+        {
+            $status = get_option(self::PERMISSIONS_SYNC_STATUS_OPTION, []);
+
+            return is_array($status) ? $status : [];
+        }
+
+        private function updatePermissionsSyncStatus($status, $data = [])
+        {
+            $current = $this->getPermissionsSyncStatus();
+            $now     = time();
+
+            if (empty($current['started_at'])) {
+                $current['started_at'] = $now;
+            }
+
+            update_option(
+                self::PERMISSIONS_SYNC_STATUS_OPTION,
+                array_merge(
+                    $current,
+                    $data,
+                    [
+                        'status'     => $status,
+                        'updated_at' => $now,
+                    ]
+                ),
+                false
+            );
+        }
+
+        private function getPermissionsSyncTotalUpdated()
+        {
+            $status = $this->getPermissionsSyncStatus();
+
+            return !empty($status['total_updated']) ? (int) $status['total_updated'] : 0;
+        }
+
+        private function markPermissionsSyncComplete($processedThisRun = 0)
+        {
+            update_option('publishpress_multiple_authors_usernicename_sync', 1);
+
+            $this->updatePermissionsSyncStatus(
+                'completed',
+                [
+                    'completed_at'    => time(),
+                    'last_batch_size' => $processedThisRun,
+                    'total_updated'   => $this->getPermissionsSyncTotalUpdated() + (int) $processedThisRun,
+                ]
+            );
+
+            do_action('publishpress_authors_flush_cache');
+        }
+
+        private function shouldShowPermissionsSyncFallbackNotice($status)
+        {
+            if (!empty($status['status']) && $status['status'] === 'failed') {
+                return true;
+            }
+
+            return $this->isPermissionsSyncStatusStale($status);
+        }
+
+        private function isPermissionsSyncStatusStale($status)
+        {
+            if (empty($status['status']) || !in_array($status['status'], ['scheduled', 'running'], true)) {
+                return false;
+            }
+
+            if (empty($status['updated_at'])) {
+                return false;
+            }
+
+            $staleAfter = (int) apply_filters(
+                'pp_authors_permissions_sync_author_slug_stale_notice_after',
+                6 * HOUR_IN_SECONDS
+            );
+
+            return (time() - (int) $status['updated_at']) > $staleAfter;
         }
 
         public function handle_deleted_user($id)
@@ -4614,17 +4926,21 @@ echo '<span class="ppma_settings_field_description">'
         {
             global $pagenow;
 
-            // Only request the script if also running a PublishPress Permissions version which supports posts query integration
-            if (!defined('PRESSPERMIT_VERSION') || version_compare(constant('PRESSPERMIT_VERSION'), '3.4-alpha', '<') || defined('PRESSPERMIT_DISABLE_AUTHORS_JOIN')) {
+            // Only run if PublishPress Permissions supports Authors query integration.
+            if (!$this->isPermissionsSyncIntegrationSupported()) {
                 return;
             }
 
             // Display the notice on Authors and Permissions plugin screens
-            $is_pp_plugin_page = (isset($_GET['page']) && in_array($_GET['page'], ['ppma-modules-settings', 'presspermit-settings', 'presspermit-groups']))
-            || ('edit-tags.php' == $pagenow && !empty($_REQUEST['taxonomy']) && ('author' == $_REQUEST['taxonomy']));
+            // phpcs:disable WordPress.Security.NonceVerification.Missing -- Read-only routing checks.
+            $page     = !empty($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
+            $taxonomy = !empty($_REQUEST['taxonomy']) ? sanitize_key(wp_unslash($_REQUEST['taxonomy'])) : '';
+
+            $is_pp_plugin_page = in_array($page, ['ppma-modules-settings', 'presspermit-settings', 'presspermit-groups'], true)
+                || ($pagenow === 'edit-tags.php' && $taxonomy === 'author');
 
             $requirements = [
-                in_array($pagenow, ['plugins.php', 'edit.php', 'edit-tags.php']),
+                in_array($pagenow, ['plugins.php', 'edit.php', 'edit-tags.php'], true),
                 $is_pp_plugin_page,
             ];
 
@@ -4634,7 +4950,10 @@ echo '<span class="ppma_settings_field_description">'
             }
 
             // This request is launching Sync script directly
-            if (!empty($_REQUEST['ppma_maint']) && ('ppma_maint=sync-user-login' == $_REQUEST['ppma_maint'])) {
+            $maintenanceAction = !empty($_REQUEST['ppma_maint']) ? sanitize_key(wp_unslash($_REQUEST['ppma_maint'])) : '';
+            // phpcs:enable WordPress.Security.NonceVerification.Missing
+
+            if ($maintenanceAction === 'sync-user-login') {
                 return;
             }
 
@@ -4656,12 +4975,22 @@ echo '<span class="ppma_settings_field_description">'
                 return;
             }
 
+            $status = $this->getPermissionsSyncStatus();
+
+            if (!$this->shouldShowPermissionsSyncFallbackNotice($status)) {
+                return;
+            }
+
+            $message = (!empty($status['status']) && $status['status'] === 'failed')
+                ? __('PublishPress Authors could not complete the background database update for Permissions integration.', 'publishpress-authors')
+                : __('PublishPress Authors is waiting to complete the background database update for Permissions integration.', 'publishpress-authors');
+
             ?>
-            <div class="updated">
+            <div class="notice notice-warning">
                 <p>
-                    <?php esc_html_e('PublishPress Authors needs a database update for Permissions integration.', 'publishpress-authors'); ?>
+                    <?php echo esc_html($message); ?>
                     &nbsp;<a href="<?php echo esc_url(admin_url('admin.php?page=ppma-modules-settings&ppma_tab=maintenance&ppma_maint=sync-user-login#publishpress-authors-sync-author-slug'));?>"><?php esc_html_e(
-                            'Click to run the update now',
+                            'Run the update manually',
                             'publishpress-authors'
                         ); ?></a>
                     <?php if (!$ignore_dismissal):?>
@@ -4841,9 +5170,36 @@ echo '<span class="ppma_settings_field_description">'
             if (is_object($author) && !is_wp_error($author)) {
                 $user = get_user_by('id', $userId);
 
+                if (empty($user) || is_wp_error($user)) {
+                    return;
+                }
+
                 global $wpdb, $wp_rewrite;
 
-                $wpdb->update($wpdb->terms, ['slug' => $user->user_nicename], ['term_id' => $author->term_id]);
+                $wpdb->update(
+                    $wpdb->terms,
+                    [
+                        'name' => $user->display_name,
+                        'slug' => $user->user_nicename,
+                    ],
+                    ['term_id' => $author->term_id]
+                );
+
+                clean_term_cache($author->term_id, 'author');
+
+                $user_fields = [
+                    'first_name',
+                    'last_name',
+                    'user_email',
+                    'user_login',
+                    'user_url',
+                    'description',
+                ];
+
+                update_term_meta($author->term_id, 'user_id', $user->ID);
+                foreach ($user_fields as $field) {
+                    update_term_meta($author->term_id, $field, $user->$field);
+                }
 
                 /**
                  * Filter whether to flush rewrite rules on user profile update.

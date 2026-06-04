@@ -132,7 +132,8 @@ class MA_Author_Categories extends Module
             'author-categories-inline-edit',
             'authorCategoriesInlineEdit',
             [
-                'proActive' => $proActive
+                'proActive' => $proActive,
+                'select2_i18n' => Utils::getSelect2I18n()
             ]
         );
 
@@ -405,6 +406,11 @@ class MA_Author_Categories extends Module
         ) {
             $response_message = esc_html__(
                 'Security error. Kindly reload this page and try again.',
+                'publishpress-authors'
+            );
+        } elseif (!current_user_can(apply_filters('pp_multiple_authors_manage_categories_cap', 'ppma_manage_author_categories'))) {
+            $response_message = esc_html__(
+                'You do not have permission to perform this action',
                 'publishpress-authors'
             );
         } elseif (empty($_POST['categories'])) {

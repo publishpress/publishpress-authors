@@ -1,6 +1,14 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.15.0] - 04 June, 2026
+
+* Feature: Allow post author to be added to multiple author category (Enabled via settings), #2246
+* Fixed: Updating user information does not update authors profile, #2340
+* Update: Author Boxes Separator only works for users in same categories and not across categories, #2330
+* Update: Add settings to Hide Author Pages "Post not found for the author" text, #2287
+* Update: Update translation.
+
 [4.14.0] - 20 April, 2026
 
 * Update: Add Free to the plugin name, #2285

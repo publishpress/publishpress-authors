@@ -49,6 +49,7 @@ if (is_array($ppma_custom_settings)) {
                             case 'multiple_authors_multiple_authors_options_show_author_post_category':
                             case 'multiple_authors_multiple_authors_options_show_author_post_tags':
                             case 'multiple_authors_multiple_authors_options_show_author_post_readmore':
+                            case 'multiple_authors_multiple_authors_options_hide_author_pages_empty_posts_message':
                                 $tr_class = 'ppma-author-pages-tab-posts';
                                 break;
                         }
@@ -93,7 +94,8 @@ if (is_array($ppma_custom_settings)) {
 <script>
     jQuery(function ($) {
         $(".chosen-select").chosen({
-            'width': '95%'
+            'width': '95%',
+            'no_results_text': '<?php echo esc_js(__('No results match', 'publishpress-authors')); ?>'
         });
     });
 </script>

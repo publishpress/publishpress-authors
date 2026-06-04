@@ -102,4 +102,47 @@ class PluginCest
 
         $I->assertInstanceOf(Author::class, $author);
     }
+
+    public function profileUpdate_forMappedAuthor_syncsAuthorProfileFields(WpunitTester $I)
+    {
+        $userID = $I->factory('a new user')->user->create(
+            [
+                'role'          => 'author',
+                'display_name'  => 'Original Author',
+                'first_name'    => 'Original',
+                'last_name'     => 'Author',
+                'user_email'    => 'original-author@example.com',
+                'user_login'    => 'original-author',
+                'user_nicename' => 'original-author',
+                'user_url'      => 'https://example.com/original-author',
+                'description'   => 'Original author bio.',
+            ]
+        );
+
+        $author = Author::create_from_user($userID);
+
+        wp_update_user(
+            [
+                'ID'            => $userID,
+                'display_name'  => 'Updated Author',
+                'first_name'    => 'Updated',
+                'last_name'     => 'Author',
+                'user_email'    => 'updated-author@example.com',
+                'user_nicename' => 'updated-author',
+                'user_url'      => 'https://example.com/updated-author',
+                'description'   => 'Updated author bio.',
+            ]
+        );
+
+        $term = get_term($author->term_id, 'author');
+
+        $I->assertEquals('Updated Author', $term->name);
+        $I->assertEquals('updated-author', $term->slug);
+        $I->assertEquals('Updated', get_term_meta($author->term_id, 'first_name', true));
+        $I->assertEquals('Author', get_term_meta($author->term_id, 'last_name', true));
+        $I->assertEquals('updated-author@example.com', get_term_meta($author->term_id, 'user_email', true));
+        $I->assertEquals('original-author', get_term_meta($author->term_id, 'user_login', true));
+        $I->assertEquals('https://example.com/updated-author', get_term_meta($author->term_id, 'user_url', true));
+        $I->assertEquals('Updated author bio.', get_term_meta($author->term_id, 'description', true));
+    }
 }

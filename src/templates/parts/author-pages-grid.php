@@ -35,6 +35,8 @@ $show_post_comments        = $legacyPlugin->modules->multiple_authors->options->
 $show_post_category        = $legacyPlugin->modules->multiple_authors->options->show_author_post_category === 'yes';
 $show_post_tags            = $legacyPlugin->modules->multiple_authors->options->show_author_post_tags === 'yes';
 $show_post_readmore        = $legacyPlugin->modules->multiple_authors->options->show_author_post_readmore === 'yes';
+$hide_empty_posts_message  = isset($legacyPlugin->modules->multiple_authors->options->hide_author_pages_empty_posts_message)
+    && $legacyPlugin->modules->multiple_authors->options->hide_author_pages_empty_posts_message === 'yes';
 $show_author_page_title    = $legacyPlugin->modules->multiple_authors->options->show_author_page_title === 'yes';
 $author_pages_title_header = $legacyPlugin->modules->multiple_authors->options->author_pages_title_header;
 $author_post_title_header  = $legacyPlugin->modules->multiple_authors->options->author_post_title_header;
@@ -181,7 +183,7 @@ if ($author_post_custom_height > 0) {
                 );
                 ?>
             </div>
-        <?php else : ?>
+        <?php elseif (!$hide_empty_posts_message) : ?>
             <h2><?php esc_html_e('Post not found for the author', 'publishpress-authors'); ?></h2>
         <?php endif; ?>
     </div> <!-- #main-content -->

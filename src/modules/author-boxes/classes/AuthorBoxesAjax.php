@@ -132,6 +132,12 @@ class AuthorBoxesAjax
                 'Security error. Kindly reload this page and try again',
                 'publishpress-authors'
             );
+        } elseif (!current_user_can(apply_filters('pp_multiple_authors_manage_layouts_cap', 'ppma_manage_layouts'))) {
+            $response['status']  = 'error';
+            $response['content'] = esc_html__(
+                'You do not have permission to perform this action',
+                'publishpress-authors'
+            );
         } else {
             $post_data = $_POST['editor_data'];// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
             $editor_data = [];
@@ -189,6 +195,12 @@ class AuthorBoxesAjax
                 'Security error. Kindly reload this page and try again',
                 'publishpress-authors'
             );
+        } elseif (!current_user_can(apply_filters('pp_multiple_authors_manage_layouts_cap', 'ppma_manage_layouts'))) {
+            $response['status']  = 'error';
+            $response['content'] = esc_html__(
+                'You do not have permission to perform this action',
+                'publishpress-authors'
+            );
         } else {
             ob_start();
 
@@ -236,11 +248,13 @@ class AuthorBoxesAjax
 global $ppma_template_authors, $ppma_template_authors_post, $post, $ppma_instance_id;
 
 $authors            = $ppma_template_authors;
-$author_counts      = count($authors);
 $global_author_index = 0;
 $post_id = isset($ppma_template_authors_post->ID) ? $ppma_template_authors_post->ID : $post->ID;
 //Group author by categories
 $author_categories_data = ppma_get_grouped_post_authors($post_id, $authors);
+$author_counts = array_reduce($author_categories_data, function ($total, $author_category_data) {
+    return $total + (isset($author_category_data['authors']) ? count($author_category_data['authors']) : 0);
+}, 0);
 
 if (!$ppma_instance_id) {
     $ppma_instance_id = 1;
@@ -359,7 +373,7 @@ $selected_post_types_string = "[$selected_post_types]";
 <?php else : ?>
                     </?php $author_recent_posts = []; ?>
 <?php endif; ?>
-                    </?php $current_author_category = get_ppma_author_category($author, $author_categories_data); ?>
+                    </?php $current_author_category = get_ppma_author_category($author, $author_categories_data, $author_category_data); ?>
 <?php
 $name_row_extra = '';
 $bio_row_extra  = '';
@@ -544,7 +558,7 @@ $display_name_markup = '';
     if ($author_categories_title_option == 'after_individual') :
         $display_name_markup .= str_repeat(" ", 32) . '</?php if (!empty($author_category_data["title"])) : ?>' . str_repeat(" ", 36) . '<' . $author_categories_title_html_tag . ' class="ppma-category-group-title">' . "\n" . str_repeat(" ", 40) . $author_categories_title_prefix . '</?php echo $author_category_data["singular_title"]; ?>' . $author_categories_title_suffix . "\n" . str_repeat(" ", 36) . '</' . $author_categories_title_html_tag . '>' . "\n" . str_repeat(" ", 32) . '</?php endif; ?>' . "\n";
     endif;
-    $display_name_markup .= '</?php if (count($author_category_data["authors"]) > 1 && $index !== count($author_category_data["authors"]) - 1) : ?>' . html_entity_decode($author_separator) . '</?php endif; ?>';
+    $display_name_markup .= '</?php if ($global_author_index < $author_counts - 1) : ?>' . html_entity_decode($author_separator) . '</?php endif; ?>';
     $display_name_markup .= "\n" . str_repeat(" ", 28) . '</'. esc_html($args['name_html_tag']['value']) .'>' . "\n";
 endif; ?>
 <?php if ($li_style) : ?>
@@ -651,7 +665,7 @@ endif ?>
 <?php endif; ?>
                         </<?php echo ($li_style ? 'div' : 'span'); ?>>
 <?php if (empty($args['name_show']['value'])) : ?>
-                        </?php if (count($author_category_data['authors']) > 1 && $index !== count($author_category_data['authors']) - 1); ?> <?php echo html_entity_decode($author_separator); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></?php endif; ?>
+                        </?php if ($global_author_index < $author_counts - 1) : ?> <?php echo html_entity_decode($author_separator); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></?php endif; ?>
 <?php endif; ?>
                     </?php endif; ?>
 <?php if ($li_style) : ?>

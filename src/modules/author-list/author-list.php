@@ -152,7 +152,8 @@ class MA_Author_List extends Module
 
         $localized_data = [
             'nonce' => wp_create_nonce('author-list-request-nonce'),
-            'isAuthorsProActive' => Utils::isAuthorsProActive()
+            'isAuthorsProActive' => Utils::isAuthorsProActive(),
+            'chosen_i18n' => Utils::getChosenI18n()
         ];
 
         wp_localize_script(
@@ -619,11 +620,11 @@ class MA_Author_List extends Module
             'order'                 => $pro_active ? 'asc' : '',
             'last_article_date'     => '',
             'search_box'            => $pro_active ? 1 : '',
-            'search_field'          => $pro_active ? ['first_name', 'last_name', 'user_email'] : [],
+            'search_field'          => $pro_active ? ['first_name', 'last_name'] : [],
             'dynamic_shortcode'     => '[publishpress_authors_list list_id="'. $author_list_last_id .'"]',
         ];
         if ($pro_active) {
-            $author_recent_list['static_shortcode'] = '[publishpress_authors_list layout="authors_recent" authors_recent_col="2" limit_per_page="20" show_empty="1" orderby="name" order="asc" search_box="true" search_field="first_name,last_name,user_email"]';
+            $author_recent_list['static_shortcode'] = '[publishpress_authors_list layout="authors_recent" authors_recent_col="2" limit_per_page="20" show_empty="1" orderby="name" order="asc" search_box="true" search_field="first_name,last_name"]';
             $author_recent_list['shortcode_args'] = [
                 'layout'                => 'authors_recent',
                 'authors_recent_col'    => 2,
@@ -632,7 +633,7 @@ class MA_Author_List extends Module
                 'orderby'               => 'name',
                 'order'                 => 'asc',
                 'search_box'            => true,
-                'search_field'          => 'first_name,last_name,user_email'
+                'search_field'          => 'first_name,last_name'
             ];
         } else {
             $author_recent_list['static_shortcode'] = '[publishpress_authors_list layout="authors_recent" authors_recent_col="2"]';
@@ -669,11 +670,11 @@ class MA_Author_List extends Module
             'order'                 => $pro_active ? 'asc' : '',
             'last_article_date'     => '',
             'search_box'            => $pro_active ? 1 : '',
-            'search_field'          => $pro_active ? ['first_name', 'last_name', 'user_email'] : [],
+            'search_field'          => $pro_active ? ['first_name', 'last_name'] : [],
             'dynamic_shortcode'     => '[publishpress_authors_list list_id="'. $author_list_last_id .'"]',
         ];
         if ($pro_active) {
-            $author_index_list['static_shortcode'] = '[publishpress_authors_list layout="authors_index" limit_per_page="20" show_empty="1" orderby="name" order="asc" search_box="true" search_field="first_name,last_name,user_email"]';
+            $author_index_list['static_shortcode'] = '[publishpress_authors_list layout="authors_index" limit_per_page="20" show_empty="1" orderby="name" order="asc" search_box="true" search_field="first_name,last_name"]';
             $author_index_list['shortcode_args'] = [
                 'layout'                => 'authors_index',
                 'limit_per_page'        => 20,
@@ -681,7 +682,7 @@ class MA_Author_List extends Module
                 'orderby'               => 'name',
                 'order'                 => 'asc',
                 'search_box'            => true,
-                'search_field'          => 'first_name,last_name,user_email'
+                'search_field'          => 'first_name,last_name'
             ];
         } else {
             $author_index_list['static_shortcode'] = '[publishpress_authors_list layout="authors_index"]';

@@ -10,12 +10,12 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-04-20 12:08+0000\n"
+"PO-Revision-Date: 2026-06-02 07:13+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
 "|| n % 10 == 6 || n % 10 == 9);\n"
-"Language: fil\n"
 "|| n % 10 == 6 || n % 10 == 9);: \n"
+"Language: fil\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: publishpress-authors.php\n"
@@ -4124,6 +4124,10 @@ msgstr "Ipakita ang mga tag:"
 msgid "Show read more link:"
 msgstr "Ipakita ang link na \"basahin pa\":"
 
+#: src/modules/multiple-authors/multiple-authors.php:1003
+msgid "Hide empty posts message:"
+msgstr "Itago ang mensahe ng walang laman na mga post:"
+
 #: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr "Paganahin ang Guest Author na Walang User Account"
@@ -4663,6 +4667,14 @@ msgstr "Ito ay magpapakita ng mga tag."
 msgid "This will display the read more link."
 msgstr "Ito ay magpapakita ng link na \"magbasa pa\"."
 
+#: src/modules/multiple-authors/multiple-authors.php:2788
+msgid ""
+"This will hide the \"Post not found for the author\" text when an author "
+"has no posts."
+msgstr ""
+"Itago nito ang \"Walang natagpuang post para sa may-akda\" na teksto kapag "
+"ang isang may-akda ay walang mga post."
+
 #: src/modules/multiple-authors/multiple-authors.php:2755
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr ""
@@ -4963,15 +4975,25 @@ msgstr "Mukhang mayroon kang naka-install na Co-Authors Plus."
 msgid "Please click here and read this guide!"
 msgstr "Mangyaring mag-click dito at basahin ang gabay na ito!"
 
-#: src/modules/multiple-authors/multiple-authors.php:4662
-msgid "PublishPress Authors needs a database update for Permissions integration."
+#: src/modules/multiple-authors/multiple-authors.php:4979
+msgid ""
+"PublishPress Authors could not complete the background database update for "
+"Permissions integration."
 msgstr ""
-"Ang PublishPress Authors ay nangangailangan ng pag-update ng database para "
-"sa integrasyon ng Permissions."
+"Hindi nakumpleto ng PublishPress Authors ang background database update "
+"para sa Permissions integration."
 
-#: src/modules/multiple-authors/multiple-authors.php:4663
-msgid "Click to run the update now"
-msgstr "I-click upang patakbuhin ang update ngayon"
+#: src/modules/multiple-authors/multiple-authors.php:4980
+msgid ""
+"PublishPress Authors is waiting to complete the background database update "
+"for Permissions integration."
+msgstr ""
+"Naghihintay ang PublishPress Authors na makumpleto ang background database "
+"update para sa Permissions integration."
+
+#: src/modules/multiple-authors/multiple-authors.php:4987
+msgid "Run the update manually"
+msgstr "Manu-manong patakbuhin ang update"
 
 #: src/modules/multiple-authors/multiple-authors.php:5068
 msgid "Guest Author cannot login on the site."
