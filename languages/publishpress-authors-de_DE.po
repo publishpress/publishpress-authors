@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2021-11-04 15:04-0300\n"
-"PO-Revision-Date: 2026-04-20 12:08+0000\n"
+"PO-Revision-Date: 2026-06-02 07:13+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
@@ -4133,6 +4133,10 @@ msgstr "Tags anzeigen:"
 msgid "Show read more link:"
 msgstr "Link \"Mehr lesen\" anzeigen:"
 
+#: src/modules/multiple-authors/multiple-authors.php:1003
+msgid "Hide empty posts message:"
+msgstr "Leere Beitrag-Nachricht ausblenden:"
+
 #: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr "Gastautor ohne Benutzerkonto aktivieren"
@@ -4662,6 +4666,14 @@ msgstr "Dies wird die Tags anzeigen."
 msgid "This will display the read more link."
 msgstr "Dies wird den Link „Mehr lesen“ anzeigen."
 
+#: src/modules/multiple-authors/multiple-authors.php:2788
+msgid ""
+"This will hide the \"Post not found for the author\" text when an author "
+"has no posts."
+msgstr ""
+"Dies wird den \"Beitrag für den Autor nicht gefunden\"-Text ausblenden, "
+"wenn ein Autor keine Beiträge hat."
+
 #: src/modules/multiple-authors/multiple-authors.php:2755
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr ""
@@ -4948,15 +4960,25 @@ msgstr "Es sieht so aus, als ob Sie Co-Authors Plus installiert haben."
 msgid "Please click here and read this guide!"
 msgstr "Bitte klicken Sie hier und lesen Sie diesen Leitfaden!"
 
-#: src/modules/multiple-authors/multiple-authors.php:4662
-msgid "PublishPress Authors needs a database update for Permissions integration."
+#: src/modules/multiple-authors/multiple-authors.php:4979
+msgid ""
+"PublishPress Authors could not complete the background database update for "
+"Permissions integration."
 msgstr ""
-"PublishPress Authors benötigt ein Datenbank-Update für die "
-"Berechtigungsintegration."
+"PublishPress Autoren konnten das Hintergrunddatenbank-Update für die "
+"Berechtigungsintegration nicht abschließen."
 
-#: src/modules/multiple-authors/multiple-authors.php:4663
-msgid "Click to run the update now"
-msgstr "Klicken, um das Update jetzt auszuführen"
+#: src/modules/multiple-authors/multiple-authors.php:4980
+msgid ""
+"PublishPress Authors is waiting to complete the background database update "
+"for Permissions integration."
+msgstr ""
+"PublishPress Autoren warten darauf, das Hintergrunddatenbank-Update für die "
+"Berechtigungsintegration abzuschließen."
+
+#: src/modules/multiple-authors/multiple-authors.php:4987
+msgid "Run the update manually"
+msgstr "Update manuell ausführen"
 
 #: src/modules/multiple-authors/multiple-authors.php:5068
 msgid "Guest Author cannot login on the site."

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-04-20 12:08+0000\n"
+"PO-Revision-Date: 2026-06-02 07:13+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -4085,6 +4085,10 @@ msgstr "Näytä tagit:"
 msgid "Show read more link:"
 msgstr "Näytä \"lue lisää\" -linkki:"
 
+#: src/modules/multiple-authors/multiple-authors.php:1003
+msgid "Hide empty posts message:"
+msgstr "Piilota tyhjät viestit:"
+
 #: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr "Ota käyttöön vieraskirjoittaja ilman käyttäjätiliä"
@@ -4607,6 +4611,14 @@ msgstr "Tämä näyttää tagit."
 msgid "This will display the read more link."
 msgstr "Tämä näyttää \"Lue lisää\" -linkin."
 
+#: src/modules/multiple-authors/multiple-authors.php:2788
+msgid ""
+"This will hide the \"Post not found for the author\" text when an author "
+"has no posts."
+msgstr ""
+"Tämä piilottaa \"Viestiä ei löydy kirjoittajalta\" -tekstin, kun "
+"kirjoittajalla ei ole viestejä."
+
 #: src/modules/multiple-authors/multiple-authors.php:2755
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr ""
@@ -4892,15 +4904,25 @@ msgstr "Näyttää siltä, että sinulla on Co-Authors Plus asennettuna."
 msgid "Please click here and read this guide!"
 msgstr "Ole hyvä ja napsauta täällä ja lue tämä opas!"
 
-#: src/modules/multiple-authors/multiple-authors.php:4662
-msgid "PublishPress Authors needs a database update for Permissions integration."
+#: src/modules/multiple-authors/multiple-authors.php:4979
+msgid ""
+"PublishPress Authors could not complete the background database update for "
+"Permissions integration."
 msgstr ""
-"PublishPress Authors tarvitsee tietokannan päivityksen "
-"Oikeudet-integraatiota varten."
+"PublishPress Authors ei pystynyt suorittamaan taustatietokannan päivitystä "
+"käyttöoikeuksien integroimiseksi."
 
-#: src/modules/multiple-authors/multiple-authors.php:4663
-msgid "Click to run the update now"
-msgstr "Napsauta suorittaaksesi päivityksen nyt"
+#: src/modules/multiple-authors/multiple-authors.php:4980
+msgid ""
+"PublishPress Authors is waiting to complete the background database update "
+"for Permissions integration."
+msgstr ""
+"PublishPress Authors odottaa taustatietokannan päivityksen suorittamista "
+"käyttöoikeuksien integroimiseksi."
+
+#: src/modules/multiple-authors/multiple-authors.php:4987
+msgid "Run the update manually"
+msgstr "Suorita päivitys manuaalisesti"
 
 #: src/modules/multiple-authors/multiple-authors.php:5068
 msgid "Guest Author cannot login on the site."

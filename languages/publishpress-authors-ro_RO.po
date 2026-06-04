@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-04-20 12:08+0000\n"
+"PO-Revision-Date: 2026-06-02 07:14+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
@@ -4088,6 +4088,10 @@ msgstr "Afișează etichetele:"
 msgid "Show read more link:"
 msgstr "Afișează linkul Citește mai mult:"
 
+#: src/modules/multiple-authors/multiple-authors.php:1003
+msgid "Hide empty posts message:"
+msgstr "Ascunde mesajul pentru postările goale:"
+
 #: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr "Activează Autorul Oaspete Fără Cont de Utilizator"
@@ -4620,6 +4624,14 @@ msgstr "Aceasta va afișa etichetele."
 msgid "This will display the read more link."
 msgstr "Aceasta va afișa linkul „citește mai mult”."
 
+#: src/modules/multiple-authors/multiple-authors.php:2788
+msgid ""
+"This will hide the \"Post not found for the author\" text when an author "
+"has no posts."
+msgstr ""
+"Aceasta va ascunde textul \"Postare nu găsită pentru autor\" atunci când un "
+"autor nu are postări."
+
 #: src/modules/multiple-authors/multiple-authors.php:2755
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr ""
@@ -4913,15 +4925,25 @@ msgstr "Se pare că ai instalat Co-Authors Plus."
 msgid "Please click here and read this guide!"
 msgstr "Te rugăm să faci clic aici și să citești acest ghid!"
 
-#: src/modules/multiple-authors/multiple-authors.php:4662
-msgid "PublishPress Authors needs a database update for Permissions integration."
+#: src/modules/multiple-authors/multiple-authors.php:4979
+msgid ""
+"PublishPress Authors could not complete the background database update for "
+"Permissions integration."
 msgstr ""
-"PublishPress Authors necesită o actualizare a bazei de date pentru "
-"integrarea Permisiunilor."
+"PublishPress Authors nu a putut finaliza actualizarea de fundal a bazei de "
+"date pentru integrarea Permisiunilor."
 
-#: src/modules/multiple-authors/multiple-authors.php:4663
-msgid "Click to run the update now"
-msgstr "Fă clic pentru a rula actualizarea acum"
+#: src/modules/multiple-authors/multiple-authors.php:4980
+msgid ""
+"PublishPress Authors is waiting to complete the background database update "
+"for Permissions integration."
+msgstr ""
+"PublishPress Authors așteaptă să finalizeze actualizarea de fundal a bazei "
+"de date pentru integrarea Permisiunilor."
+
+#: src/modules/multiple-authors/multiple-authors.php:4987
+msgid "Run the update manually"
+msgstr "Rulează actualizarea manual"
 
 #: src/modules/multiple-authors/multiple-authors.php:5068
 msgid "Guest Author cannot login on the site."

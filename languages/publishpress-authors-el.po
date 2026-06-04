@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-04-20 12:08+0000\n"
+"PO-Revision-Date: 2026-06-02 07:13+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -4119,6 +4119,10 @@ msgstr "Εμφάνιση ετικετών:"
 msgid "Show read more link:"
 msgstr "Εμφάνιση συνδέσμου \"διαβάστε περισσότερα\":"
 
+#: src/modules/multiple-authors/multiple-authors.php:1003
+msgid "Hide empty posts message:"
+msgstr "Απόκρυψη μηνύματος κενών δημοσιεύσεων:"
+
 #: src/modules/multiple-authors/multiple-authors.php:1078
 msgid "Enable Guest Author With No User Account"
 msgstr "Ενεργοποίηση Συγγραφέα Επισκέπτη Χωρίς Λογαριασμό Χρήστη"
@@ -4663,6 +4667,14 @@ msgstr "Αυτό θα εμφανίσει τις ετικέτες."
 msgid "This will display the read more link."
 msgstr "Αυτό θα εμφανίσει τον σύνδεσμο \"διαβάστε περισσότερα\"."
 
+#: src/modules/multiple-authors/multiple-authors.php:2788
+msgid ""
+"This will hide the \"Post not found for the author\" text when an author "
+"has no posts."
+msgstr ""
+"Αυτό θα αποκρύψει το κείμενο \"Δημοσίευση δεν βρέθηκε για τον συγγραφέα\" "
+"όταν ένας συγγραφέας δεν έχει δημοσιεύσεις."
+
 #: src/modules/multiple-authors/multiple-authors.php:2755
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr ""
@@ -4956,15 +4968,25 @@ msgstr "Φαίνεται ότι έχετε εγκαταστήσει το Co-Auth
 msgid "Please click here and read this guide!"
 msgstr "Παρακαλώ κάντε κλικ εδώ και διαβάστε αυτόν τον οδηγό!"
 
-#: src/modules/multiple-authors/multiple-authors.php:4662
-msgid "PublishPress Authors needs a database update for Permissions integration."
+#: src/modules/multiple-authors/multiple-authors.php:4979
+msgid ""
+"PublishPress Authors could not complete the background database update for "
+"Permissions integration."
 msgstr ""
-"Το PublishPress Authors χρειάζεται ενημέρωση βάσης δεδομένων για την "
-"ενσωμάτωση δικαιωμάτων."
+"Οι PublishPress Authors δεν μπόρεσαν να ολοκληρώσουν την ενημέρωση της "
+"βάσης δεδομένων στο παρασκήνιο για την ενσωμάτωση δικαιωμάτων."
 
-#: src/modules/multiple-authors/multiple-authors.php:4663
-msgid "Click to run the update now"
-msgstr "Κάντε κλικ για να εκτελέσετε την ενημέρωση τώρα"
+#: src/modules/multiple-authors/multiple-authors.php:4980
+msgid ""
+"PublishPress Authors is waiting to complete the background database update "
+"for Permissions integration."
+msgstr ""
+"Οι PublishPress Authors περιμένουν να ολοκληρώσουν την ενημέρωση της βάσης "
+"δεδομένων στο παρασκήνιο για την ενσωμάτωση δικαιωμάτων."
+
+#: src/modules/multiple-authors/multiple-authors.php:4987
+msgid "Run the update manually"
+msgstr "Εκτέλεση της ενημέρωσης χειροκίνητα"
 
 #: src/modules/multiple-authors/multiple-authors.php:5068
 msgid "Guest Author cannot login on the site."
