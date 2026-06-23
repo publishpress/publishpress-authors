@@ -696,7 +696,13 @@ class Author_Editor
             update_term_meta($term_id, $key, $field_value);
             if ($user_id) {
                 update_user_meta($user_id, $key, $field_value);
-                $updated_args[$key] = $field_value;
+                // Don't route the bio through wp_update_user(): core's
+                // pre_user_description filter (wp_filter_kses) strips block-level
+                // HTML (<p>, headings, lists) that wp_kses_post above allows. The
+                // update_user_meta() call just above already stored the correct value.
+                if ($key !== 'description') {
+                    $updated_args[$key] = $field_value;
+                }
             }
 
             if (in_array($args['type'], ['text', 'textarea'])) {
