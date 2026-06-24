@@ -1303,7 +1303,7 @@ class Utils
 
                 <div class="inside ppma-advert">
                     <p><?php echo esc_html__('If you need help or have a new feature request, let us know.', 'publishpress-authors'); ?>
-                        <a class="advert-link" href="https://wordpress.org/plugins/publishpress-authors/" target="_blank">
+                        <a class="advert-link" href="https://wordpress.org/support/plugin/publishpress-authors/" target="_blank">
                         <?php echo esc_html__('Request Support', 'publishpress-authors'); ?>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="linkIcon">
                                 <path
@@ -1314,7 +1314,7 @@ class Utils
                     </p>
                     <p>
                     <?php echo esc_html__('Detailed documentation is also available on the plugin website.', 'publishpress-authors'); ?>
-                        <a class="advert-link" href="https://publishpress.com/knowledge-base/getting-started-ma/" target="_blank">
+                        <a class="advert-link" href="https://publishpress.com/knowledge-base/authors-getting-started/" target="_blank">
                         <?php echo esc_html__('View Knowledge Base', 'publishpress-authors'); ?>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="linkIcon">
                                 <path
