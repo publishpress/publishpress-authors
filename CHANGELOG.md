@@ -1,6 +1,11 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.16.0] - 24 June, 2026
+
+* Fixed: block-level HTML stripped from mapped-user Biographical Info on save, #2373
+* Update: Update sidebar link, #2371
+
 [4.15.0] - 04 June, 2026
 
 * Feature: Allow post author to be added to multiple author category (Enabled via settings), #2246
