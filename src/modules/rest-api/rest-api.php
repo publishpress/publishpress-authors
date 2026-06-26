@@ -560,7 +560,9 @@ if (!class_exists('MA_REST_API')) {
                     // Also update user meta if there's a mapped user
                     if ($user_id) {
                         update_user_meta($user_id, $field_name, $sanitized_value);
-                        $updated_args[$field_name] = $sanitized_value;
+                        if ($field_name !== 'description') {
+                            $updated_args[$field_name] = $sanitized_value;
+                        }
                     }
                 }
             }

@@ -604,7 +604,7 @@ class Author_Editor
                         <?php echo $group_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                     </div>
                 <?php elseif ('wysiwyg' === $args['type']) : ?>
-                    <?php wp_editor($args['value'], $key, []); ?>
+                    <?php wp_editor($args['value'], $key, self::get_wysiwyg_editor_settings($key)); ?>
                 <?php elseif ('checkbox' === $args['type']) :
                     $checked = !empty($args['value']);
                     ?>
@@ -631,6 +631,27 @@ class Author_Editor
         </tr>
         <?php
         return ob_get_clean();
+    }
+
+    /**
+     * Get settings for WYSIWYG author fields.
+     *
+     * @param string $field_key Rendered field key.
+     *
+     * @return array
+     */
+    private static function get_wysiwyg_editor_settings($field_key)
+    {
+        if ($field_key !== 'authors-description') {
+            return [];
+        }
+
+        return [
+            'wpautop' => false,
+            'tinymce' => [
+                'wpautop' => false,
+            ],
+        ];
     }
 
     /**
