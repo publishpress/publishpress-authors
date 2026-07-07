@@ -668,6 +668,7 @@ class Author_Editor
         }
         $author = Author::get_by_term_id($term_id);
         $updated_args = [];
+        $saved_description = null;
 
         $user_id = false;
         $user    = false;
@@ -721,7 +722,9 @@ class Author_Editor
                 // pre_user_description filter (wp_filter_kses) strips block-level
                 // HTML (<p>, headings, lists) that wp_kses_post above allows. The
                 // update_user_meta() call just above already stored the correct value.
-                if ($key !== 'description') {
+                if ($key === 'description') {
+                    $saved_description = $field_value;
+                } else {
                     $updated_args[$key] = $field_value;
                 }
             }
@@ -742,6 +745,11 @@ class Author_Editor
                     $updated_args['display_name'] = sanitize_text_field($_POST['name']);
                 }
                 wp_update_user($updated_args);
+
+                if (!is_null($saved_description)) {
+                    update_user_meta($user_id, 'description', $saved_description);
+                    update_term_meta($term_id, 'description', $saved_description);
+                }
             }
 
             // Do they have the same slug and nicename?
