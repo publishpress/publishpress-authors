@@ -303,6 +303,9 @@ class Authors_Widget extends WP_Widget
             PP_AUTHORS_VERSION
         );
 
+        $ajax_instance = $instance;
+        unset($ajax_instance['page']);
+
         if (!function_exists('publishpress_authors_get_all_authors')) {
             require_once PP_AUTHORS_BASE_PATH . 'functions/template-tags.php';
         }
@@ -392,6 +395,29 @@ class Authors_Widget extends WP_Widget
             $pagination = false;
         }
 
+        $navigation_results = $authors;
+        if (isset($instance['layout']) && $instance['layout'] === 'authors_index'
+            && (isset($author_results['page']) || !empty($_GET['ppma_author_letter']))) {
+            $navigation_instance = $instance;
+            unset($navigation_instance['page'], $navigation_instance['limit_per_page']);
+            $navigation_instance['skip_alphabet_filter'] = true;
+            $navigation_author_results = publishpress_authors_get_all_authors(
+                ['hide_empty' => !$showEmpty],
+                $navigation_instance
+            );
+            $navigation_results = isset($navigation_author_results['authors'])
+                ? $navigation_author_results['authors'] : $navigation_author_results;
+        }
+
+        $selected_letter = '';
+        if (isset($_GET['ppma_author_letter']) && is_scalar($_GET['ppma_author_letter'])) {
+            $selected_letter = strtolower(
+                publishpress_authors_normalize_character(
+                    sanitize_text_field(wp_unslash($_GET['ppma_author_letter']))
+                )
+            );
+        }
+
         // search options
         $filter_fields = false;
         $allowed_search_field_options = [];
@@ -453,9 +479,14 @@ class Authors_Widget extends WP_Widget
             'title'        => $title,
             'authors'      => $authors,
             'results'      => $authors,
+            'navigation_results' => $navigation_results,
+            'selected_letter' => $selected_letter,
             'pagination'   => $pagination,
             'search_box_html' => $search_box_html,
             'all_text'     => esc_html__('All Authors', 'publishpress-authors'),
+            'ajax_url'     => admin_url('admin-ajax.php'),
+            'ajax_nonce'   => wp_create_nonce('ppma-authors-index'),
+            'ajax_instance' => wp_json_encode($ajax_instance),
             'no_post_text' => esc_html__('No recent posts from this author', 'publishpress-authors'),
             'target'       => $target,
             'item_class'   => 'author url fn',
