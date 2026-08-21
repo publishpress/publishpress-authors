@@ -1,5 +1,8 @@
 jQuery(document).ready(function ($) {
 
+    /**
+     * Requery the authors index through AJAX when an alphabet filter is selected.
+     */
     $(document).on('click', '.author-index-navigation .page-link', function (e) {
         e.preventDefault();
         var link = $(this);
