@@ -65,6 +65,13 @@ class MA_Author_Boxes extends Module
     protected $customFields = null;
 
     /**
+     * Fields skipped because they were changed by another editor.
+     *
+     * @var array
+     */
+    protected $saveConflicts = [];
+
+    /**
      * Construct the MA_Multiple_Authors class
      */
     public function __construct()
@@ -135,6 +142,8 @@ class MA_Author_Boxes extends Module
         add_filter('author_boxes_editor_fields', ['MultipleAuthorBoxes\AuthorBoxesEditorFields', 'getGenerateTemplateFields'], 10, 2);
         add_action("save_post_" . self::POST_TYPE_BOXES, [$this, 'saveAuthorBoxesData']);
         add_filter('manage_edit-' . self::POST_TYPE_BOXES . '_columns', [$this, 'filterAuthorBoxesColumns']);
+        add_filter('redirect_post_location', [$this, 'addAuthorBoxesSaveConflictQueryArg'], 99, 2);
+        add_action('admin_notices', [$this, 'displayAuthorBoxesSaveConflictNotice']);
         add_action('manage_' . self::POST_TYPE_BOXES . '_posts_custom_column', [$this, 'manageAuthorBoxesColumns'], 10, 2);
         add_filter('pp_multiple_authors_author_layouts', [$this, 'filterAuthorLayouts'], 9);
         add_filter('pp_multiple_authors_author_box_html', [$this, 'filterAuthorBoxHtml'], 9, 2);
@@ -253,26 +262,82 @@ class MA_Author_Boxes extends Module
 
         $post = get_post($post_id);
 
+        $submitted_data = $_POST; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+        $baseline_data = null;
+        $uses_consolidated_payload = !empty($_POST['author_boxes_editor_data']);
+
+        if ($uses_consolidated_payload) {
+            $submitted_data = json_decode(
+                wp_unslash($_POST['author_boxes_editor_data']), // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+                true
+            );
+
+            // Do not replace a valid layout if the consolidated editor payload is malformed.
+            if (!is_array($submitted_data)) {
+                return;
+            }
+
+            if (!empty($_POST['author_boxes_editor_baseline'])) {
+                $baseline_data = json_decode(
+                    wp_unslash($_POST['author_boxes_editor_baseline']), // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+                    true
+                );
+
+                if (!is_array($baseline_data)) {
+                    return;
+                }
+            }
+        }
+
         $fields = apply_filters('multiple_authors_author_boxes_fields', self::get_fields($post), $post);
         $excluded_input = ['template_action', 'import_action'];
         $meta_data = [];
+        $latest_data = (array) get_post_meta($post_id, self::META_PREFIX . 'layout_meta_value', true);
+        $conflicts = [];
         $preview_author_post = isset($_POST['preview_author_post']) ? sanitize_text_field($_POST['preview_author_post']) : '';
         $parent_author_box = isset($_POST['parent_author_box']) ? sanitize_text_field($_POST['parent_author_box']) : '';
 
         foreach ($fields as $key => $args) {
-            if (!isset($_POST[$key]) || in_array($key, $excluded_input)) {
+            if (in_array($key, $excluded_input)) {
                 continue;
             }
-            if (isset($args['sanitize']) && is_array($args['sanitize']) && $_POST[$key] !== '') {
-                $value = $_POST[$key]; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+            if (!array_key_exists($key, $submitted_data)) {
+                if ($uses_consolidated_payload && array_key_exists($key, $latest_data)) {
+                    $meta_data[$key] = $latest_data[$key];
+                }
+                continue;
+            }
+
+            $value = $submitted_data[$key]; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+            if (is_array($baseline_data) && array_key_exists($key, $baseline_data)) {
+                $baseline_value = $baseline_data[$key];
+                $latest_value = array_key_exists($key, $latest_data) ? $latest_data[$key] : '';
+                $client_changed = $this->normalizeAuthorBoxFieldValue($value)
+                    !== $this->normalizeAuthorBoxFieldValue($baseline_value);
+                $server_changed = $this->normalizeAuthorBoxFieldValue($latest_value)
+                    !== $this->normalizeAuthorBoxFieldValue($baseline_value);
+
+                if (!$client_changed) {
+                    $value = $latest_value;
+                } elseif ($server_changed
+                    && $this->normalizeAuthorBoxFieldValue($value)
+                        !== $this->normalizeAuthorBoxFieldValue($latest_value)
+                ) {
+                    $value = $latest_value;
+                    $conflicts[] = $key;
+                }
+            }
+
+            if (isset($args['sanitize']) && is_array($args['sanitize']) && $value !== '') {
                 foreach ($args['sanitize'] as $sanitize) {
                     $value = is_array($value) ? map_deep($value, $sanitize) : $sanitize($value);
                 }
                 $meta_data[$key] = $value;
             } else {
                 $sanitize = isset($args['sanitize']) ? $args['sanitize'] : 'sanitize_text_field';
-                if (isset($_POST[$key]) && $_POST[$key] !== '') {
-                    $value = $_POST[$key]; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+                if ($value !== '') {
                     $meta_data[$key] = is_array($value) ? map_deep($value, $sanitize) : $sanitize($value);
                 } else {
                     $meta_data[$key] = '';
@@ -283,6 +348,90 @@ class MA_Author_Boxes extends Module
         update_post_meta($post_id, self::META_PREFIX . 'layout_parent_author_box', $parent_author_box);
         update_post_meta($post_id, self::META_PREFIX . 'layout_preview_author_post', $preview_author_post);
         update_post_meta($post_id, self::META_PREFIX . 'layout_meta_value', $meta_data);
+
+        if (!empty($conflicts)) {
+            $this->saveConflicts[$post_id] = $conflicts;
+        }
+    }
+
+    /**
+     * Normalize an editor value before comparing browser and stored states.
+     *
+     * Form values are strings, while values already stored by WordPress may be
+     * integers or booleans after their field sanitizers have run.
+     *
+     * @param mixed $value Field value.
+     *
+     * @return mixed
+     */
+    protected function normalizeAuthorBoxFieldValue($value) {
+        if (is_array($value)) {
+            foreach ($value as $key => $item) {
+                $value[$key] = $this->normalizeAuthorBoxFieldValue($item);
+            }
+
+            return $value;
+        }
+
+        if ($value === null || $value === false) {
+            return '';
+        }
+
+        if ($value === true) {
+            return '1';
+        }
+
+        return (string) $value;
+    }
+
+    /**
+     * Add the conflict count to the redirect after saving an Author Box.
+     *
+     * @param string $location Redirect URL.
+     * @param int    $post_id  Saved post ID.
+     *
+     * @return string
+     */
+    public function addAuthorBoxesSaveConflictQueryArg($location, $post_id) {
+        if (empty($this->saveConflicts[$post_id])) {
+            return $location;
+        }
+
+        return add_query_arg(
+            'ppma_author_box_save_conflicts',
+            count($this->saveConflicts[$post_id]),
+            $location
+        );
+    }
+
+    /**
+     * Warn when concurrent changes to the same Author Box field were skipped.
+     *
+     * @return void
+     */
+    public function displayAuthorBoxesSaveConflictNotice() {
+        global $post_type;
+
+        $conflict_count = isset($_GET['ppma_author_box_save_conflicts'])
+            ? absint($_GET['ppma_author_box_save_conflicts'])
+            : 0;
+
+        if ($post_type !== self::POST_TYPE_BOXES || $conflict_count < 1) {
+            return;
+        }
+
+        $message = sprintf(
+            _n(
+                '%s Author Box setting was not saved because it was changed in another browser or tab. The latest saved value was kept; review the layout and try again.',
+                '%s Author Box settings were not saved because they were changed in another browser or tab. The latest saved values were kept; review the layout and try again.',
+                $conflict_count,
+                'publishpress-authors'
+            ),
+            number_format_i18n($conflict_count)
+        );
+        ?>
+        <div class="notice notice-warning is-dismissible"><p><?php echo esc_html($message); ?></p></div>
+        <?php
     }
 
     /**

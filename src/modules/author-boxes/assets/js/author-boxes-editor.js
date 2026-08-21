@@ -6,6 +6,52 @@
         if ($('body').hasClass('post-type-ppma_boxes') && $(".publishpress-author-box-editor").length > 0) {
             var author_field_icons = '';
             populate_author_fields_icons();
+            var initialEditorData = '';
+
+            /**
+             * Submit the current and initially loaded editor settings as JSON
+             * so large layouts can be merged without hitting max_input_vars.
+             */
+            $('#post').on('submit', function () {
+                var editorFields = $('.ppma-author-box-editor-fields .input input, .ppma-author-box-editor-fields .input textarea, .ppma-author-box-editor-fields .input select');
+                var editorData = $('#author_boxes_editor_data');
+                var editorBaseline = $('#author_boxes_editor_baseline');
+                var fieldNames = [];
+
+                if (!editorData.length) {
+                    editorData = $('<input>', {
+                        type: 'hidden',
+                        id: 'author_boxes_editor_data',
+                        name: 'author_boxes_editor_data'
+                    }).prependTo(this);
+                }
+
+                if (!editorBaseline.length) {
+                    editorBaseline = $('<input>', {
+                        type: 'hidden',
+                        id: 'author_boxes_editor_baseline',
+                        name: 'author_boxes_editor_baseline'
+                    }).prependTo(this);
+                }
+
+                editorData.val(JSON.stringify(Object.assign({}, getAllEditorFieldsValues())));
+                editorBaseline.val(initialEditorData);
+
+                editorFields.each(function () {
+                    fieldNames.push(this.name);
+                    this.removeAttribute('name');
+                });
+
+                // Restore field names if another handler prevents the submission.
+                setTimeout(function () {
+                    editorFields.each(function (index) {
+                        if (fieldNames[index]) {
+                            this.name = fieldNames[index];
+                        }
+                    });
+                }, 0);
+            });
+
             /**
              * Author field icon
              */
@@ -224,6 +270,8 @@
                     current_code_editor.codemirror.refresh();
                 });
             }
+
+            initialEditorData = JSON.stringify(Object.assign({}, getAllEditorFieldsValues()));
         }
 
         /**
