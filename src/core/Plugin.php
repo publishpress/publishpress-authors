@@ -384,7 +384,8 @@ class Plugin
         add_action(
             'add_meta_boxes',
             ['MultipleAuthors\\Classes\\Post_Editor', 'action_add_meta_boxes_late'],
-            100
+            100,
+            2
         );
         add_filter(
             'rest_prepare_taxonomy',
@@ -1935,6 +1936,74 @@ class Plugin
         }
 
         wp_cache_delete('coauthors_post_' . $object_id, 'publishpress-authors');
+
+        if (! defined('REST_REQUEST') || ! REST_REQUEST) {
+            return;
+        }
+
+        $this->sync_author_terms_after_rest_update($object_id);
+    }
+
+    /**
+     * Sync Authors data after the block editor saves the REST taxonomy field.
+     *
+     * @param int $post_id Post ID.
+     */
+    private function sync_author_terms_after_rest_update($post_id)
+    {
+        $post_id = (int)$post_id;
+
+        if (
+            empty($post_id)
+            || wp_is_post_revision($post_id)
+            || wp_is_post_autosave($post_id)
+        ) {
+            return;
+        }
+
+        $post = get_post($post_id);
+
+        if (
+            ! $post
+            || is_wp_error($post)
+            || ! Utils::is_post_type_enabled($post->post_type)
+        ) {
+            return;
+        }
+
+        $term_ids = wp_get_object_terms(
+            $post_id,
+            self::$coauthor_taxonomy,
+            [
+                'fields'  => 'ids',
+                'orderby' => 'term_order',
+            ]
+        );
+
+        if (is_wp_error($term_ids)) {
+            return;
+        }
+
+        $authors = [];
+
+        foreach ($term_ids as $term_id) {
+            $author = Author::get_by_term_id((int)$term_id);
+
+            if (is_object($author) && ! is_wp_error($author)) {
+                $authors[] = $author;
+            }
+        }
+
+        $fallback_user_id = null;
+        $legacyPlugin     = Factory::getLegacyPlugin();
+
+        if (isset($legacyPlugin->modules->multiple_authors->options->fallback_user_for_guest_post)) {
+            $fallback_user_id = (int)$legacyPlugin->modules->multiple_authors->options->fallback_user_for_guest_post;
+        }
+
+        Utils::set_post_authors_name_meta($post_id, $authors);
+        Utils::sync_post_author_column($post_id, $authors, $fallback_user_id);
+        Post_Editor::flush_post_cache($post_id);
     }
 
     /**
