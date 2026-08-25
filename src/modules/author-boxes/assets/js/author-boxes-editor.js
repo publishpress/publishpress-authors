@@ -654,7 +654,8 @@
                 'author_recent_posts_empty_show',
                 'author_recent_posts_limit',
                 'author_recent_posts_orderby',
-                'author_recent_posts_order'
+                'author_recent_posts_order',
+                'author_recent_posts_icon'
             ];
             var name_refresh_trigger = [
                 'name_show',
@@ -663,6 +664,7 @@
                 'name_author_categories_divider',
                 'name_author_categories_position',
                 'display_name_position',
+                'display_name_source',
                 'display_name_prefix',
                 'display_name_suffix'
             ];
