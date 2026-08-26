@@ -106,6 +106,41 @@ class MA_Author_Categories extends Module
         add_filter('removable_query_args', [$this, 'removableQueryArgs']);
         add_action('delete_post', [$this, 'deleteAuthorCategoryRelation']);
         add_action('publishpress_author_categories_flush_cache', [$this, 'flush_cache'], 15);
+        add_action('wp_initialize_site', [$this, 'createTablesForNewNetworkSite'], 100);
+    }
+
+    /**
+     * Create the plugin's custom tables for a newly created Multisite sub-site.
+     *
+     * On Multisite the custom tables are created per-site by the installer, but a
+     * newly created sub-site never runs that installer, so its author-categories
+     * tables are missing and any query against them fails. This hooks
+     * wp_initialize_site (WP 5.1+) to run the install tasks on the new site when
+     * the plugin is network-active.
+     *
+     * @param \WP_Site $new_site The new site object.
+     *
+     * @return void
+     */
+    public function createTablesForNewNetworkSite($new_site)
+    {
+        if (!is_multisite() || !is_a($new_site, 'WP_Site')) {
+            return;
+        }
+
+        if (!function_exists('is_plugin_active_for_network')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        // Only act when the plugin is network-active; otherwise the new sub-site
+        // is not running this plugin and should not get its tables.
+        if (!is_plugin_active_for_network(PP_AUTHORS_FILE)) {
+            return;
+        }
+
+        switch_to_blog((int) $new_site->blog_id);
+        $this->runInstallTasks(PP_AUTHORS_VERSION);
+        restore_current_blog();
     }
 
     /**
