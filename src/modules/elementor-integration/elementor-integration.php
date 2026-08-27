@@ -23,6 +23,7 @@
 
 use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthors\Factory;
+use PublishPressAuthors\ElementorIntegration\Modules\AuthorsBox\AuthorsBoxWidget;
 use PublishPressAuthors\ElementorIntegration\Modules\AuthorsList\AuthorsListWidget;
 use PublishPressAuthors\ElementorIntegration\Modules\Posts\Skins\PostsSkinCards;
 use PublishPressAuthors\ElementorIntegration\Modules\Posts\Skins\PostsSkinClassic;
@@ -186,13 +187,21 @@ if (!class_exists('MA_Elementor_Integration')) {
             }
 
             require_once __DIR__ . '/Modules/AuthorsList/AuthorsListWidget.php';
+            require_once __DIR__ . '/Modules/AuthorsBox/AuthorsBoxWidget.php';
 
-            if (method_exists($widgetsManager, 'register')) {
-                // Elementor 3.5+
-                $widgetsManager->register(new AuthorsListWidget());
-            } else {
-                // Legacy Elementor
-                $widgetsManager->register_widget_type(new AuthorsListWidget());
+            $widgets = [
+                new AuthorsListWidget(),
+                new AuthorsBoxWidget(),
+            ];
+
+            foreach ($widgets as $widget) {
+                if (method_exists($widgetsManager, 'register')) {
+                    // Elementor 3.5+
+                    $widgetsManager->register($widget);
+                } else {
+                    // Legacy Elementor
+                    $widgetsManager->register_widget_type($widget);
+                }
             }
         }
 
