@@ -186,6 +186,16 @@ if (!class_exists('MA_Elementor_Integration')) {
                 return;
             }
 
+            if (!wp_style_is('multiple-authors-widget-css', 'registered')) {
+                wp_register_style(
+                    'multiple-authors-widget-css',
+                    PP_AUTHORS_ASSETS_URL . 'css/multiple-authors-widget.css',
+                    [],
+                    defined('PP_AUTHORS_VERSION') ? PP_AUTHORS_VERSION : false,
+                    'all'
+                );
+            }
+
             require_once __DIR__ . '/Modules/AuthorsList/AuthorsListWidget.php';
             require_once __DIR__ . '/Modules/AuthorsBox/AuthorsBoxWidget.php';
 

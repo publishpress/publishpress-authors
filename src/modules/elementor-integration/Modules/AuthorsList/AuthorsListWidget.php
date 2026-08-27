@@ -82,6 +82,16 @@ class AuthorsListWidget extends Widget_Base
     }
 
     /**
+     * Make sure the authors layout CSS is loaded in the editor and frontend.
+     *
+     * @return array
+     */
+    public function get_style_depends()
+    {
+        return ['multiple-authors-widget-css'];
+    }
+
+    /**
      * List of author list layouts available.
      *
      * @return array
