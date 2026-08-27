@@ -23,6 +23,7 @@
 
 use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthors\Factory;
+use PublishPressAuthors\ElementorIntegration\Modules\AuthorsList\AuthorsListWidget;
 use PublishPressAuthors\ElementorIntegration\Modules\Posts\Skins\PostsSkinCards;
 use PublishPressAuthors\ElementorIntegration\Modules\Posts\Skins\PostsSkinClassic;
 use PublishPressAuthors\ElementorIntegration\Modules\Posts\Skins\PostsSkinFullContent;
@@ -88,6 +89,9 @@ if (!class_exists('MA_Elementor_Integration')) {
         {
             add_action('elementor/widget/posts/skins_init', [$this, 'add_posts_skins'], 10, 2);
             add_action('elementor/widget/archive-posts/skins_init', [$this, 'add_archive_posts_skins'], 10, 2);
+            add_action('elementor/widgets/register', [$this, 'register_authors_widgets']);
+            // Legacy Elementor (< 3.5) widget registration hook
+            add_action('elementor/widgets/widgets_registered', [$this, 'register_authors_widgets']);
             add_filter( 'elementor/theme/posts_archive/query_posts/query_vars', [$this, 'filter_posts_archive_query_vars'], 15);
             add_filter( 'elementor/utils/get_the_archive_title', [$this, 'filter_author_archive_title']);
         }
@@ -163,6 +167,28 @@ if (!class_exists('MA_Elementor_Integration')) {
                               ($widget));
             $widget->add_skin(new ArchivePostsSkinClassic($widget));
             $widget->add_skin(new ArchivePostsSkinFullContent($widget));
+        }
+
+        /**
+         * Register the PublishPress Authors Elementor widgets.
+         *
+         * @param \Elementor\Widgets_Manager $widgetsManager
+         */
+        public function register_authors_widgets($widgetsManager)
+        {
+            if (!did_action('elementor/loaded')) {
+                return;
+            }
+
+            require_once __DIR__ . '/Modules/AuthorsList/AuthorsListWidget.php';
+
+            if (method_exists($widgetsManager, 'register')) {
+                // Elementor 3.5+
+                $widgetsManager->register(new AuthorsListWidget());
+            } else {
+                // Legacy Elementor
+                $widgetsManager->register_widget_type(new AuthorsListWidget());
+            }
         }
 
         public function filter_posts_archive_query_vars($query_vars)
