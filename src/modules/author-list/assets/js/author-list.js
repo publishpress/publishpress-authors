@@ -18,16 +18,7 @@
             $('.author-list-wrap .shortcode-textarea.static').val(getShortCodes());
 
             if ($(this).attr('id') == 'layout') {
-                if ($(this).val() == 'authors_index') {
-                    $('.ppma-author-list-editor-tab-content.ppma-editor-group_by').show();
-                } else {
-                    $('.ppma-author-list-editor-tab-content.ppma-editor-group_by').hide();
-                }
-                if ($(this).val() == 'authors_recent') {
-                    $('.ppma-author-list-editor-tab-content.ppma-editor-featured_image_size').show();
-                } else {
-                    $('.ppma-author-list-editor-tab-content.ppma-editor-featured_image_size').hide();
-                }
+                updateLayoutFields($(this).val());
             }
         });
 
@@ -35,6 +26,7 @@
          * Author list editor tab switch
          */
         if ($('.author-list-wrap .shortcode-textarea.static').length) {
+            updateLayoutFields($('.author-list-tab-content .input #layout').val());
             $('.author-list-wrap .shortcode-textarea.static').val(getShortCodes());
         }
         $(document).on('click', '.author-list-tab li', function (event) {
@@ -72,7 +64,7 @@
             }
             // add layout_columns
             var layout_columns = $('.author-list-tab-content .input #layout_columns').val();
-            if (!isEmptyOrSpaces(layout_columns)) {
+            if (!isEmptyOrSpaces(layout_columns) && layout !== 'authors_table') {
                 if (layout === 'authors_recent') {
                     shortcode += ' authors_recent_col="' + layout_columns + '"';
                     // add featured_image_size
@@ -86,7 +78,7 @@
             }
             // add group_by
             var group_by = $('.author-list-tab-content .input #group_by').val();
-            if (!isEmptyOrSpaces(group_by)) {
+            if (layout === 'authors_index' && !isEmptyOrSpaces(group_by)) {
                 shortcode += ' group_by="' + group_by + '"';
             }
             // add user roles, authors, term_id or category_id
@@ -179,6 +171,12 @@
 
         function isEmptyOrSpaces(str) {
             return !str || str == '' || str === null || str.match(/^ *$/) !== null;
+        }
+
+        function updateLayoutFields(layout) {
+            $('.ppma-author-list-editor-tab-content.ppma-editor-group_by').toggle(layout === 'authors_index');
+            $('.ppma-author-list-editor-tab-content.ppma-editor-featured_image_size').toggle(layout === 'authors_recent');
+            $('.ppma-author-list-editor-tab-content.ppma-editor-layout_columns').toggle(layout !== 'authors_table');
         }
     });
 

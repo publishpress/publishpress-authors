@@ -401,8 +401,8 @@ class MA_Author_List extends Module
             'required'          => true,
         ];
         $fields['layout_columns'] = [
-            'label'             => esc_html__('Layout Columns', 'publishpress-authors'),
-            'description'       => '',
+            'label'             => esc_html__('Columns', 'publishpress-authors'),
+            'description'       => esc_html__('Choose how many columns to use for grid-style Author Lists.', 'publishpress-authors'),
             'type'              => 'number',
             'min'               => 1,
             'max'               => 9999,
@@ -588,110 +588,227 @@ class MA_Author_List extends Module
         $author_list_last_id = $legacyPlugin->modules->author_list->options->author_list_last_id;
         $author_lists        = $legacyPlugin->modules->author_list->options->author_list_data;
 
-        if (!empty($author_lists)) {
+        $existing_layouts = [];
+        foreach ((array) $author_lists as $author_list) {
+            if (!empty($author_list['layout'])) {
+                $existing_layouts[$author_list['layout']] = true;
+            }
+        }
+
+        $create_base_default_lists = empty($author_lists);
+        $create_grid_list          = !isset($existing_layouts['authors_grid']);
+        $create_table_list         = !isset($existing_layouts['authors_table']);
+
+        if (!$create_base_default_lists && !$create_grid_list && !$create_table_list) {
             return;
         }
 
         $pro_active = Utils::isAuthorsProActive();
 
-        // Add author recent list
-        $author_list_last_id++;
-        $author_recent_list = [
-            'ID'                    => $author_list_last_id,
-            'title'                 => esc_html__('Author Recent List', 'publishpress-authors'),
-            'layout'                => 'authors_recent',
-            'layout_columns'        => 2,
-            'group_by'              => '',
-
-            'author_type'           => 'roles',
-            'authors'               => '',
-            'roles'                 => '',
-            'term_id'               => '',
-            'category_id'           => [],
-            'author_type_exclude'   => 'exclude_roles',
-            'exclude_authors'       => '',
-            'exclude_roles'         => '',
-            'exclude_term_id'       => '',
-            'exclude_category_id'   => [],
-
-            'limit_per_page'        => $pro_active ? 20 : '',
-            'show_empty'            => $pro_active ? 1 : '',
-            'orderby'               => $pro_active ? 'name' : '',
-            'order'                 => $pro_active ? 'asc' : '',
-            'last_article_date'     => '',
-            'search_box'            => $pro_active ? 1 : '',
-            'search_field'          => $pro_active ? ['first_name', 'last_name'] : [],
-            'dynamic_shortcode'     => '[publishpress_authors_list list_id="'. $author_list_last_id .'"]',
-        ];
-        if ($pro_active) {
-            $author_recent_list['static_shortcode'] = '[publishpress_authors_list layout="authors_recent" authors_recent_col="2" limit_per_page="20" show_empty="1" orderby="name" order="asc" search_box="true" search_field="first_name,last_name"]';
-            $author_recent_list['shortcode_args'] = [
+        if ($create_base_default_lists) {
+            // Add author recent list
+            $author_list_last_id++;
+            $author_recent_list = [
+                'ID'                    => $author_list_last_id,
+                'title'                 => esc_html__('Author Recent List', 'publishpress-authors'),
                 'layout'                => 'authors_recent',
-                'authors_recent_col'    => 2,
-                'limit_per_page'        => 20,
-                'show_empty'            => 1,
-                'orderby'               => 'name',
-                'order'                 => 'asc',
-                'search_box'            => true,
-                'search_field'          => 'first_name,last_name'
+                'layout_columns'        => 2,
+                'group_by'              => '',
+
+                'author_type'           => 'roles',
+                'authors'               => '',
+                'roles'                 => '',
+                'term_id'               => '',
+                'category_id'           => [],
+                'author_type_exclude'   => 'exclude_roles',
+                'exclude_authors'       => '',
+                'exclude_roles'         => '',
+                'exclude_term_id'       => '',
+                'exclude_category_id'   => [],
+
+                'limit_per_page'        => $pro_active ? 20 : '',
+                'show_empty'            => $pro_active ? 1 : '',
+                'orderby'               => $pro_active ? 'name' : '',
+                'order'                 => $pro_active ? 'asc' : '',
+                'last_article_date'     => '',
+                'search_box'            => $pro_active ? 1 : '',
+                'search_field'          => $pro_active ? ['first_name', 'last_name'] : [],
+                'dynamic_shortcode'     => '[publishpress_authors_list list_id="'. $author_list_last_id .'"]',
             ];
-        } else {
-            $author_recent_list['static_shortcode'] = '[publishpress_authors_list layout="authors_recent" authors_recent_col="2"]';
-            $author_recent_list['shortcode_args'] = [
-                'layout'                => 'authors_recent',
-                'authors_recent_col'    => 2,
-            ];
-        }
-        $author_lists[$author_list_last_id] = $author_recent_list;
+            if ($pro_active) {
+                $author_recent_list['static_shortcode'] = '[publishpress_authors_list layout="authors_recent" authors_recent_col="2" limit_per_page="20" show_empty="1" orderby="name" order="asc" search_box="true" search_field="first_name,last_name"]';
+                $author_recent_list['shortcode_args'] = [
+                    'layout'                => 'authors_recent',
+                    'authors_recent_col'    => 2,
+                    'limit_per_page'        => 20,
+                    'show_empty'            => 1,
+                    'orderby'               => 'name',
+                    'order'                 => 'asc',
+                    'search_box'            => true,
+                    'search_field'          => 'first_name,last_name'
+                ];
+            } else {
+                $author_recent_list['static_shortcode'] = '[publishpress_authors_list layout="authors_recent" authors_recent_col="2"]';
+                $author_recent_list['shortcode_args'] = [
+                    'layout'                => 'authors_recent',
+                    'authors_recent_col'    => 2,
+                ];
+            }
+            $author_lists[$author_list_last_id] = $author_recent_list;
 
-        // add author index list
-        $author_list_last_id++;
-        $author_index_list = [
-            'ID'                    => $author_list_last_id,
-            'title'                 => esc_html__('Author Index List', 'publishpress-authors'),
-            'layout'                => 'authors_index',
-            'layout_columns'        => 1,
-            'group_by'              => '',
-
-            'author_type'           => 'roles',
-            'authors'               => '',
-            'roles'                 => '',
-            'term_id'               => '',
-            'category_id'           => [],
-            'author_type_exclude'   => 'exclude_roles',
-            'exclude_authors'       => '',
-            'exclude_roles'         => '',
-            'exclude_term_id'       => '',
-            'exclude_category_id'   => [],
-
-            'limit_per_page'        => $pro_active ? 20 : '',
-            'show_empty'            => $pro_active ? 1 : '',
-            'orderby'               => $pro_active ? 'name' : '',
-            'order'                 => $pro_active ? 'asc' : '',
-            'last_article_date'     => '',
-            'search_box'            => $pro_active ? 1 : '',
-            'search_field'          => $pro_active ? ['first_name', 'last_name'] : [],
-            'dynamic_shortcode'     => '[publishpress_authors_list list_id="'. $author_list_last_id .'"]',
-        ];
-        if ($pro_active) {
-            $author_index_list['static_shortcode'] = '[publishpress_authors_list layout="authors_index" limit_per_page="20" show_empty="1" orderby="name" order="asc" search_box="true" search_field="first_name,last_name"]';
-            $author_index_list['shortcode_args'] = [
+            // add author index list
+            $author_list_last_id++;
+            $author_index_list = [
+                'ID'                    => $author_list_last_id,
+                'title'                 => esc_html__('Author Index List', 'publishpress-authors'),
                 'layout'                => 'authors_index',
-                'limit_per_page'        => 20,
-                'show_empty'            => 1,
-                'orderby'               => 'name',
-                'order'                 => 'asc',
-                'search_box'            => true,
-                'search_field'          => 'first_name,last_name'
+                'layout_columns'        => 1,
+                'group_by'              => '',
+
+                'author_type'           => 'roles',
+                'authors'               => '',
+                'roles'                 => '',
+                'term_id'               => '',
+                'category_id'           => [],
+                'author_type_exclude'   => 'exclude_roles',
+                'exclude_authors'       => '',
+                'exclude_roles'         => '',
+                'exclude_term_id'       => '',
+                'exclude_category_id'   => [],
+
+                'limit_per_page'        => $pro_active ? 20 : '',
+                'show_empty'            => $pro_active ? 1 : '',
+                'orderby'               => $pro_active ? 'name' : '',
+                'order'                 => $pro_active ? 'asc' : '',
+                'last_article_date'     => '',
+                'search_box'            => $pro_active ? 1 : '',
+                'search_field'          => $pro_active ? ['first_name', 'last_name'] : [],
+                'dynamic_shortcode'     => '[publishpress_authors_list list_id="'. $author_list_last_id .'"]',
             ];
-        } else {
-            $author_index_list['static_shortcode'] = '[publishpress_authors_list layout="authors_index"]';
-            $author_index_list['shortcode_args'] = [
-                'layout'                => 'authors_index',
-            ];
+            if ($pro_active) {
+                $author_index_list['static_shortcode'] = '[publishpress_authors_list layout="authors_index" limit_per_page="20" show_empty="1" orderby="name" order="asc" search_box="true" search_field="first_name,last_name"]';
+                $author_index_list['shortcode_args'] = [
+                    'layout'                => 'authors_index',
+                    'limit_per_page'        => 20,
+                    'show_empty'            => 1,
+                    'orderby'               => 'name',
+                    'order'                 => 'asc',
+                    'search_box'            => true,
+                    'search_field'          => 'first_name,last_name'
+                ];
+            } else {
+                $author_index_list['static_shortcode'] = '[publishpress_authors_list layout="authors_index"]';
+                $author_index_list['shortcode_args'] = [
+                    'layout'                => 'authors_index',
+                ];
+            }
+
+            $author_lists[$author_list_last_id] = $author_index_list;
         }
 
-        $author_lists[$author_list_last_id] = $author_index_list;
+        if ($create_grid_list) {
+            // add author grid list
+            $author_list_last_id++;
+            $author_grid_list = [
+                'ID'                    => $author_list_last_id,
+                'title'                 => esc_html__('Author Grid List', 'publishpress-authors'),
+                'layout'                => 'authors_grid',
+                'layout_columns'        => 3,
+                'group_by'              => '',
+
+                'author_type'           => 'roles',
+                'authors'               => '',
+                'roles'                 => '',
+                'term_id'               => '',
+                'category_id'           => [],
+                'author_type_exclude'   => 'exclude_roles',
+                'exclude_authors'       => '',
+                'exclude_roles'         => '',
+                'exclude_term_id'       => '',
+                'exclude_category_id'   => [],
+
+                'limit_per_page'        => $pro_active ? 20 : '',
+                'show_empty'            => $pro_active ? 1 : '',
+                'orderby'               => $pro_active ? 'name' : '',
+                'order'                 => $pro_active ? 'asc' : '',
+                'last_article_date'     => '',
+                'search_box'            => $pro_active ? 1 : '',
+                'search_field'          => $pro_active ? ['first_name', 'last_name'] : [],
+                'dynamic_shortcode'     => '[publishpress_authors_list list_id="'. $author_list_last_id .'"]',
+            ];
+            if ($pro_active) {
+                $author_grid_list['static_shortcode'] = '[publishpress_authors_list layout="authors_grid" layout_columns="3" limit_per_page="20" show_empty="1" orderby="name" order="asc" search_box="true" search_field="first_name,last_name"]';
+                $author_grid_list['shortcode_args'] = [
+                    'layout'                => 'authors_grid',
+                    'layout_columns'        => 3,
+                    'limit_per_page'        => 20,
+                    'show_empty'            => 1,
+                    'orderby'               => 'name',
+                    'order'                 => 'asc',
+                    'search_box'            => true,
+                    'search_field'          => 'first_name,last_name'
+                ];
+            } else {
+                $author_grid_list['static_shortcode'] = '[publishpress_authors_list layout="authors_grid" layout_columns="3"]';
+                $author_grid_list['shortcode_args'] = [
+                    'layout'                => 'authors_grid',
+                    'layout_columns'        => 3,
+                ];
+            }
+
+            $author_lists[$author_list_last_id] = $author_grid_list;
+        }
+
+        if ($create_table_list) {
+            // add author table list
+            $author_list_last_id++;
+            $author_table_list = [
+                'ID'                    => $author_list_last_id,
+                'title'                 => esc_html__('Author Table List', 'publishpress-authors'),
+                'layout'                => 'authors_table',
+                'layout_columns'        => '',
+                'group_by'              => '',
+
+                'author_type'           => 'roles',
+                'authors'               => '',
+                'roles'                 => '',
+                'term_id'               => '',
+                'category_id'           => [],
+                'author_type_exclude'   => 'exclude_roles',
+                'exclude_authors'       => '',
+                'exclude_roles'         => '',
+                'exclude_term_id'       => '',
+                'exclude_category_id'   => [],
+
+                'limit_per_page'        => $pro_active ? 20 : '',
+                'show_empty'            => $pro_active ? 1 : '',
+                'orderby'               => $pro_active ? 'name' : '',
+                'order'                 => $pro_active ? 'asc' : '',
+                'last_article_date'     => '',
+                'search_box'            => $pro_active ? 1 : '',
+                'search_field'          => $pro_active ? ['first_name', 'last_name'] : [],
+                'dynamic_shortcode'     => '[publishpress_authors_list list_id="'. $author_list_last_id .'"]',
+            ];
+            if ($pro_active) {
+                $author_table_list['static_shortcode'] = '[publishpress_authors_list layout="authors_table" limit_per_page="20" show_empty="1" orderby="name" order="asc" search_box="true" search_field="first_name,last_name"]';
+                $author_table_list['shortcode_args'] = [
+                    'layout'                => 'authors_table',
+                    'limit_per_page'        => 20,
+                    'show_empty'            => 1,
+                    'orderby'               => 'name',
+                    'order'                 => 'asc',
+                    'search_box'            => true,
+                    'search_field'          => 'first_name,last_name'
+                ];
+            } else {
+                $author_table_list['static_shortcode'] = '[publishpress_authors_list layout="authors_table"]';
+                $author_table_list['shortcode_args'] = [
+                    'layout'                => 'authors_table',
+                ];
+            }
+
+            $author_lists[$author_list_last_id] = $author_table_list;
+        }
 
         $legacyPlugin->update_module_option('author_list', 'author_list_last_id', $author_list_last_id);
         $legacyPlugin->update_module_option('author_list', 'author_list_data', $author_lists);
@@ -1018,6 +1135,9 @@ class MA_Author_List extends Module
             $tr_style = 'display: none;';
         }
         if ($key === 'featured_image_size' && $option_values['layout'] !== 'authors_recent') {
+            $tr_style = 'display: none;';
+        }
+        if ($key === 'layout_columns' && isset($option_values['layout']) && $option_values['layout'] === 'authors_table') {
             $tr_style = 'display: none;';
         }
         ?>

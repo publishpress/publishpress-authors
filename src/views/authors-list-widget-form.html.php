@@ -62,6 +62,12 @@
 </p>
 
 <p>
+    <label for="<?php echo esc_attr($context['ids']['layout_columns']); ?>"><?php echo esc_html($context['labels']['layout_columns']); ?></label>
+    <input class="widefat" id="<?php echo esc_attr($context['ids']['layout_columns']); ?>" name="<?php echo esc_attr($context['names']['layout_columns']); ?>" type="number"
+           min="1" max="6" value="<?php echo esc_attr($context['values']['layout_columns']); ?>">
+</p>
+
+<p>
     <input class="checkbox" id="<?php echo esc_attr($context['ids']['show_empty']); ?>" name="<?php echo esc_attr($context['names']['show_empty']); ?>" type="checkbox"
     <?php checked($context['values']['show_empty'], true); ?>
     />

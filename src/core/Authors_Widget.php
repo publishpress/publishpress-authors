@@ -111,6 +111,7 @@ class Authors_Widget extends WP_Widget
                 'authors'        => '',
                 'order'          => 'asc',
                 'orderby'        => 'name',
+                'layout_columns' => 3,
                 'search_field'    => 'first_name,last_name'
             )
         );
@@ -123,6 +124,8 @@ class Authors_Widget extends WP_Widget
         $authors        = esc_html($instance['authors']);
         $order          = esc_html($instance['order']);
         $orderBy        = esc_html($instance['orderby']);
+        $layoutColumns  = isset($instance['layout_columns']) ? (int)$instance['layout_columns'] : 3;
+        $layoutColumns  = max(1, min(6, $layoutColumns));
         $search_field    = esc_html($instance['search_field']);
 
         $context   = array(
@@ -138,6 +141,7 @@ class Authors_Widget extends WP_Widget
                 'authors'        => esc_html__('Authors', 'publishpress-authors'),
                 'order'          => esc_html__('Order', 'publishpress-authors'),
                 'orderby'        => esc_html__('Order by', 'publishpress-authors'),
+                'layout_columns' => esc_html__('Grid Columns', 'publishpress-authors'),
                 'search_field'    => esc_html__('Author\'s search box field (Seperate multiple fields by comma(\',\'))', 'publishpress-authors')
             ),
             'ids'     => array(
@@ -149,6 +153,7 @@ class Authors_Widget extends WP_Widget
                 'limit_per_page' => esc_html($this->get_field_id('limit_per_page')),
                 'authors'        => esc_html($this->get_field_id('authors')),
                 'order'          => esc_html($this->get_field_id('order')),
+                'layout_columns' => esc_html($this->get_field_id('layout_columns')),
 				'nonce'          => esc_html($this->get_field_id( 'nonce' )),
                 'orderby'        => esc_html($this->get_field_id('orderby'))
             ),
@@ -161,6 +166,7 @@ class Authors_Widget extends WP_Widget
                 'limit_per_page' => esc_html($this->get_field_name('limit_per_page')),
                 'authors'        => esc_html($this->get_field_name('authors')),
                 'order'          => esc_html($this->get_field_name('order')),
+                'layout_columns' => esc_html($this->get_field_name('layout_columns')),
 				'nonce'          => esc_html($this->get_field_name( 'nonce' )),
                 'orderby'        => esc_html($this->get_field_name('orderby'))
             ),
@@ -173,6 +179,7 @@ class Authors_Widget extends WP_Widget
                 'limit_per_page' => $limitPerPage,
                 'authors'        => $authors,
                 'order'          => $order,
+                'layout_columns' => $layoutColumns,
                 'nonce'          => wp_create_nonce('pp_multiple_authors_widget_form'),
                 'orderby'        => $orderBy
             ),
@@ -217,6 +224,7 @@ class Authors_Widget extends WP_Widget
         $instance['authors']        = isset($new_instance['authors']) ? sanitize_text_field($new_instance['authors']) : '';
         $instance['order']          = isset($new_instance['order']) ? sanitize_text_field($new_instance['order']) : '';
         $instance['orderby']        = isset($new_instance['orderby']) ? sanitize_text_field($new_instance['orderby']) : '';
+        $instance['layout_columns'] = isset($new_instance['layout_columns']) ? max(1, min(6, (int)$new_instance['layout_columns'])) : 3;
         $instance['show_empty']     = isset($new_instance['show_empty']) ? (bool)$new_instance['show_empty'] : false;
         $instance['search_field']    = isset($new_instance['search_field']) ? sanitize_text_field($new_instance['search_field']) : '';
         $instance['search_box']     = isset($new_instance['search_box']) ? (bool)$new_instance['search_box'] : false;
