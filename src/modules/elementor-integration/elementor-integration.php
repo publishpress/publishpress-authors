@@ -87,13 +87,18 @@ if (!class_exists('MA_Elementor_Integration')) {
          */
         public function init()
         {
-            add_action('elementor/widget/posts/skins_init', [$this, 'add_posts_skins'], 10, 2);
-            add_action('elementor/widget/archive-posts/skins_init', [$this, 'add_archive_posts_skins'], 10, 2);
+            $isPro = defined('ELEMENTOR_PRO_VERSION');
+
+            if ($isPro) {
+                add_action('elementor/widget/posts/skins_init', [$this, 'add_posts_skins'], 10, 2);
+                add_action('elementor/widget/archive-posts/skins_init', [$this, 'add_archive_posts_skins'], 10, 2);
+                add_filter('elementor/theme/posts_archive/query_posts/query_vars', [$this, 'filter_posts_archive_query_vars'], 15);
+                add_filter('elementor/utils/get_the_archive_title', [$this, 'filter_author_archive_title']);
+            }
+
             add_action('elementor/widgets/register', [$this, 'register_authors_widgets']);
             // Legacy Elementor (< 3.5) widget registration hook
             add_action('elementor/widgets/widgets_registered', [$this, 'register_authors_widgets']);
-            add_filter( 'elementor/theme/posts_archive/query_posts/query_vars', [$this, 'filter_posts_archive_query_vars'], 15);
-            add_filter( 'elementor/utils/get_the_archive_title', [$this, 'filter_author_archive_title']);
         }
 
         /**

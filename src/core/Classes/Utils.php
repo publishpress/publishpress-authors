@@ -788,14 +788,29 @@ class Utils
 
     public static function isElementorInstalled()
     {
-        // For now we only integrate with the Pro version because the Free one doesn't have the posts modules.
+        // Free Elementor is enough for the Authors List widget. The Pro-only
+        // skins are conditionally registered inside the integration module.
 
-        if (! defined('ELEMENTOR_PRO_VERSION')) {
+        if (! defined('ELEMENTOR_VERSION')) {
             return false;
         }
 
-        if (version_compare(ELEMENTOR_PRO_VERSION, '2.9.3', '<')) {
+        if (version_compare(ELEMENTOR_VERSION, '2.9.3', '<')) {
             return false;
+        }
+
+        if (! class_exists('\\Elementor\\Widget_Base')) {
+            return false;
+        }
+
+        // The posts/archive skins require Elementor Pro. Without it we still
+        // load the module (for the free widgets) but skip the Pro skins.
+        if (! defined('ELEMENTOR_PRO_VERSION')) {
+            return true;
+        }
+
+        if (version_compare(ELEMENTOR_PRO_VERSION, '2.9.3', '<')) {
+            return true;
         }
 
         $abort = false;
