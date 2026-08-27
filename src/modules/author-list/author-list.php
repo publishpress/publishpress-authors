@@ -1367,6 +1367,20 @@ class MA_Author_List extends Module
         $response['status']  = 'success';
         $response['content'] = esc_html__('An error occured.', 'publishpress-authors');
 
+        //do not process request if current user cannot manage plugin options
+        if (!current_user_can(Capability::getManageOptionsCapability())) {
+            wp_send_json_error(
+                [
+                    'status'  => 'error',
+                    'content' => esc_html__(
+                        'You do not have permission to perform this action',
+                        'publishpress-authors'
+                    ),
+                ],
+                403
+            );
+        }
+
         //do not process request if nonce validation failed
         if (empty($_POST['nonce'])
             || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'author-list-request-nonce')
