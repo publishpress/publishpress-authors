@@ -149,7 +149,34 @@ if (!class_exists('MA_REST_API')) {
 
         public function checkReadPermissions($request)
         {
-            return true;
+            if (current_user_can('ppma_manage_authors')) {
+                return true;
+            }
+
+            // Allow unauthenticated read only for publicly viewable authors.
+            return $this->isPubliclyViewableAuthor((int) $request['id']);
+        }
+
+        /**
+         * Check whether an author term is safe to expose publicly:
+         * it must belong to the author taxonomy and not be mapped to
+         * a real user account (user-linked authors can carry user meta).
+         *
+         * @param int $author_id Author term ID.
+         *
+         * @return bool
+         */
+        private function isPubliclyViewableAuthor($author_id)
+        {
+            $term = get_term($author_id, 'author');
+
+            if (!$term || is_wp_error($term)) {
+                return false;
+            }
+
+            $user_id = get_term_meta($author_id, 'user_id', true);
+
+            return empty((int) $user_id);
         }
 
         public function getCreateAuthorArgs()
