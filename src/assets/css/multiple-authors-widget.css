@@ -541,11 +541,26 @@ body:not(.theme-twentytwenty):not(.theme-twentytwentyone) .pp-multiple-authors-r
     margin: 0 0 10px;
 }
 
-.pp-multiple-authors-grid .ppma-author-grid-description {
-    margin-bottom: 14px;
+.pp-multiple-authors-grid .ppma-author-list-fields {
+    margin: 0 0 14px;
 }
 
-.pp-multiple-authors-grid .ppma-author-grid-description p {
+.pp-multiple-authors-grid .ppma-author-list-field {
+    margin-bottom: 12px;
+}
+
+.pp-multiple-authors-grid .ppma-author-list-field dt {
+    font-size: 0.8125em;
+    font-weight: 600;
+    margin: 0 0 10px;
+}
+
+.pp-multiple-authors-grid .ppma-author-list-field dd {
+    margin: 0;
+}
+
+.pp-multiple-authors-grid .ppma-author-list-field dd p,
+.pp-multiple-authors-table .ppma-author-list-field-description p {
     margin: 0 0 10px;
 }
 

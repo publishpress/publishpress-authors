@@ -2,6 +2,12 @@
 if (!defined('ABSPATH')) {
     exit;
 }
+
+$display_fields = MA_Author_List::normalize_author_list_display_fields(
+    isset($context['shortcode']['display_fields']) ? $context['shortcode']['display_fields'] : [],
+    $context['layout']
+);
+$display_field_definitions = MA_Author_List::get_author_list_display_fields();
 ?>
 <div class="pp-multiple-authors-wrapper pp-multiple-authors-table alignwide <?php echo esc_attr($context['css_class']); ?> pp-multiple-authors-layout-<?php echo esc_attr($context['layout']); ?>">
     <?php if (!empty($context['search_box_html'])) : ?>
@@ -13,17 +19,13 @@ if (!defined('ABSPATH')) {
             <thead>
                 <tr>
                     <th scope="col"><?php esc_html_e('Author', 'publishpress-authors'); ?></th>
-                    <th scope="col"><?php esc_html_e('Bio', 'publishpress-authors'); ?></th>
-                    <th scope="col"><?php esc_html_e('Posts', 'publishpress-authors'); ?></th>
-                    <th scope="col"><?php esc_html_e('Website', 'publishpress-authors'); ?></th>
+                    <?php foreach ($display_fields as $field_name) : ?>
+                        <th scope="col"><?php echo esc_html($display_field_definitions[$field_name]['label']); ?></th>
+                    <?php endforeach; ?>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($context['results'] as $index => $author) : ?>
-                    <?php
-                    $author_term = $author->getTerm();
-                    $post_count  = isset($author_term->count) ? (int) $author_term->count : 0;
-                    ?>
                     <tr class="author_index_<?php echo esc_attr($index); ?> author_<?php echo esc_attr($author->slug); ?>">
                         <td>
                             <div class="ppma-author-table-author">
@@ -35,24 +37,23 @@ if (!defined('ABSPATH')) {
                                 </a>
                             </div>
                         </td>
-                        <td>
-                            <?php $description = $author->get_description(140); ?>
-                            <?php if (!empty($description)) : ?>
-                                <?php echo wp_kses_post(wpautop($description)); ?>
-                            <?php else : ?>
-                                &mdash;
-                            <?php endif; ?>
-                        </td>
-                        <td><?php echo esc_html(number_format_i18n($post_count)); ?></td>
-                        <td>
-                            <?php if (!empty($author->user_url)) : ?>
-                                <a href="<?php echo esc_url($author->user_url); ?>" rel="nofollow">
-                                    <?php esc_html_e('Visit website', 'publishpress-authors'); ?>
-                                </a>
-                            <?php else : ?>
-                                &mdash;
-                            <?php endif; ?>
-                        </td>
+                        <?php foreach ($display_fields as $field_name) : ?>
+                            <?php
+                            $field_html = MA_Author_List::render_author_list_display_field(
+                                $author,
+                                $field_name,
+                                $display_field_definitions[$field_name],
+                                $context['layout']
+                            );
+                            ?>
+                            <td class="ppma-author-list-field-<?php echo esc_attr(sanitize_html_class($field_name)); ?>">
+                                <?php if ($field_html !== '') : ?>
+                                    <?php echo $field_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in MA_Author_List::render_author_list_display_field(). ?>
+                                <?php else : ?>
+                                    &mdash;
+                                <?php endif; ?>
+                            </td>
+                        <?php endforeach; ?>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

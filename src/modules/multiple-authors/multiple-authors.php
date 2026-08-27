@@ -1619,24 +1619,26 @@ if (!class_exists('MA_Multiple_Authors')) {
                         ),
                     ],
                     'option_3_grid' => [
-                        'shortcode'   => '[publishpress_authors_list layout="authors_grid" layout_columns="3"]',
+                        'shortcode'   => '[publishpress_authors_list layout="authors_grid" layout_columns="3" display_fields="description,user_url"]',
                         'description' => $this->safe_sprintf(
                             esc_html__(
-                                'You can show authors in a card grid by using %1$s and choose the number of grid columns with %2$s .',
+                                'You can show authors in a card grid by using %1$s, choose the number of grid columns with %2$s, and choose author fields with %3$s .',
                                 'publishpress-authors'
                             ),
                             '<code class="color-red">layout="authors_grid"</code>',
-                            '<code class="color-red">layout_columns="3"</code>'
+                            '<code class="color-red">layout_columns="3"</code>',
+                            '<code class="color-red">display_fields="description,user_url"</code>'
                         ),
                     ],
                     'option_3_table' => [
-                        'shortcode'   => '[publishpress_authors_list layout="authors_table"]',
+                        'shortcode'   => '[publishpress_authors_list layout="authors_table" display_fields="description,post_count,user_url"]',
                         'description' => $this->safe_sprintf(
                             esc_html__(
-                                'You can show authors in a table by using %1$s .',
+                                'You can show authors in a table by using %1$s and choose author fields with %2$s .',
                                 'publishpress-authors'
                             ),
-                            '<code class="color-red">layout="authors_table"</code>'
+                            '<code class="color-red">layout="authors_table"</code>',
+                            '<code class="color-red">display_fields="description,post_count,user_url"</code>'
                         ),
                     ],
                     'option_4' => [

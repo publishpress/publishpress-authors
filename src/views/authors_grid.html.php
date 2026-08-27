@@ -5,6 +5,11 @@ if (!defined('ABSPATH')) {
 
 $grid_columns = isset($context['shortcode']['layout_columns']) ? (int) $context['shortcode']['layout_columns'] : 3;
 $grid_columns = max(1, min(6, $grid_columns));
+$display_fields = MA_Author_List::normalize_author_list_display_fields(
+    isset($context['shortcode']['display_fields']) ? $context['shortcode']['display_fields'] : [],
+    $context['layout']
+);
+$display_field_definitions = MA_Author_List::get_author_list_display_fields();
 ?>
 <div class="pp-multiple-authors-wrapper pp-multiple-authors-grid alignwide <?php echo esc_attr($context['css_class']); ?> pp-multiple-authors-layout-<?php echo esc_attr($context['layout']); ?>">
     <?php if (!empty($context['search_box_html'])) : ?>
@@ -26,11 +31,25 @@ $grid_columns = max(1, min(6, $grid_columns));
                     </a>
                 </h4>
 
-                <?php $description = $author->get_description(180); ?>
-                <?php if (!empty($description)) : ?>
-                    <div class="ppma-author-grid-description">
-                        <?php echo wp_kses_post(wpautop($description)); ?>
-                    </div>
+                <?php if (!empty($display_fields)) : ?>
+                    <dl class="ppma-author-list-fields ppma-author-grid-fields">
+                        <?php foreach ($display_fields as $field_name) : ?>
+                            <?php
+                            $field_html = MA_Author_List::render_author_list_display_field(
+                                $author,
+                                $field_name,
+                                $display_field_definitions[$field_name],
+                                $context['layout']
+                            );
+                            ?>
+                            <?php if ($field_html !== '') : ?>
+                                <div class="ppma-author-list-field ppma-author-list-field-<?php echo esc_attr(sanitize_html_class($field_name)); ?>">
+                                    <dt><?php echo esc_html($display_field_definitions[$field_name]['label']); ?></dt>
+                                    <dd><?php echo $field_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in MA_Author_List::render_author_list_display_field(). ?></dd>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </dl>
                 <?php endif; ?>
 
                 <a class="ppma-author-grid-link" href="<?php echo esc_url($author->link); ?>">
