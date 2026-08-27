@@ -64,7 +64,7 @@ class AuthorsBoxWidget extends Widget_Base
      */
     public function get_icon()
     {
-        return 'eicon-user-card';
+        return 'eicon-user-circle-o';
     }
 
     /**
