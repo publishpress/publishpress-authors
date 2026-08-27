@@ -121,6 +121,9 @@ class Installer
         if (version_compare($currentVersions, '4.11.0', '<')) {
             self::migrateEmailFieldRestVisibility();
         }
+        if (version_compare($currentVersions, '4.15.1', '<')) {
+            MA_Author_List::createDefaultList();
+        }
 
         /**
          * @param string $previousVersion

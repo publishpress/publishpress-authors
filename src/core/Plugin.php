@@ -2021,7 +2021,10 @@ class Plugin
             'show_title' => true
         ];
 
-        if (isset($attributes['layout']) && in_array($attributes['layout'], ['authors_index', 'authors_recent'])) {
+        if (
+            isset($attributes['layout'])
+            && in_array($attributes['layout'], ['authors_index', 'authors_recent', 'authors_grid', 'authors_table'], true)
+        ) {
             $attributes['show_title'] = false;
         }
 

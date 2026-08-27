@@ -126,6 +126,8 @@ if (!class_exists('MA_Default_Layouts')) {
             $new_layout = [
                 'authors_index'  => __('Authors Index', 'publishpress-authors'),
                 'authors_recent' => __('Authors Recent', 'publishpress-authors'),
+                'authors_grid'   => __('Authors Grid', 'publishpress-authors'),
+                'authors_table'  => __('Authors Table', 'publishpress-authors'),
             ];
             $layouts = array_merge($layouts, $new_layout);
 

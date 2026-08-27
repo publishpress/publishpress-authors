@@ -538,6 +538,12 @@ class Post_Editor
             if (isset($layouts['authors_recent'])) {
                 unset($layouts['authors_recent']);
             }
+            if (isset($layouts['authors_grid'])) {
+                unset($layouts['authors_grid']);
+            }
+            if (isset($layouts['authors_table'])) {
+                unset($layouts['authors_table']);
+            }
 
             $selected_box = $post_id ? get_post_meta($post_id, 'ppma_selected_author_box', true) : '';
 
