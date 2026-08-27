@@ -166,8 +166,8 @@ class AuthorsBoxWidget extends Widget_Base
     {
         $boxes = $this->get_author_boxes();
 
-        if (!empty($boxes)) {
-            return (string)array_key_first($boxes);
+        foreach ($boxes as $boxId => $boxTitle) {
+            return (string)$boxId;
         }
 
         return 'boxed';
