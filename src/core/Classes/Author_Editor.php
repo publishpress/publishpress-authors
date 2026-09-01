@@ -644,14 +644,16 @@ class Author_Editor
         }
 
         $author               = Author::get_by_term_id($term_id);
-        $new_author_email     = sanitize_email($_POST['authors-user_email']);
+        $user_id              = !empty($_POST['authors-user_id']) ? (int)$_POST['authors-user_id'] : 0;
+        $user                 = !empty($user_id) ? get_user_by('id', $user_id) : false;
+        $new_author_email     = (is_a($user, 'WP_User') && (int)$author->user_id !== $user_id)
+            ? sanitize_email($user->user_email)
+            : sanitize_email($_POST['authors-user_email']);
         $current_author_email = sanitize_email($author->user_email);
 
         if ($new_author_email === $current_author_email) {
             return;
         }
-
-        $user_id = !empty($_POST['authors-user_id']) ? (int)$_POST['authors-user_id'] : 0;
 
         $email_validation = Author_Utils::validate_author_email_available($new_author_email, $user_id);
 
@@ -716,6 +718,10 @@ class Author_Editor
             $updated_args['ID'] = $user_id;
         }
 
+        if ($user && (int)$author->user_id !== (int)$user_id) {
+            $_POST['authors-user_email'] = $user->user_email;
+        }
+
         $skip_email_update = false;
         if (isset($_POST['authors-user_email'])) {
             $new_author_email     = sanitize_email($_POST['authors-user_email']);
@@ -755,6 +761,9 @@ class Author_Editor
                 $field_value = isset($_POST['authors-' . $key]) ? $sanitize($_POST['authors-' . $key]) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
             }
             update_term_meta($term_id, $key, $field_value);
+            if ($key === 'user_id') {
+                Author::clear_cache();
+            }
             if ($user_id && $key !== 'user_email') {
                 update_user_meta($user_id, $key, $field_value);
                 // Don't route the bio through wp_update_user(): core's

@@ -456,10 +456,13 @@ if (!class_exists('MA_REST_API')) {
         {
             $term_id = $author->term_id;
 
-            $author_user_id = $author->user_id;
+            $previous_author_user_id = (int)$author->user_id;
+            $author_user_id          = !empty($params['user_id']) ? (int)$params['user_id'] : $previous_author_user_id;
+            $linked_user_changed     = false;
 
             if (!empty($author_user_id)) {
                 $user = get_user_by('id', $author_user_id);
+                $linked_user_changed = is_a($user, 'WP_User') && $previous_author_user_id !== (int)$author_user_id;
 
                 if ($user && (int)$author_user_id !== get_current_user_id()) {
                     // Prevent editing administrators completely
@@ -480,6 +483,14 @@ if (!class_exists('MA_REST_API')) {
                             ['status' => 403]
                         );
                     }
+                }
+            }
+
+            if ($linked_user_changed) {
+                $params['user_email'] = $user->user_email;
+
+                if (array_key_exists('user_email', $author_fields)) {
+                    $author_fields['user_email'] = $user->user_email;
                 }
             }
 
@@ -517,6 +528,11 @@ if (!class_exists('MA_REST_API')) {
                         $updated_args   = [];
                     }
                 }
+            }
+
+            if ($linked_user_changed) {
+                update_term_meta($term_id, 'user_id', $author_user_id);
+                Author::clear_cache();
             }
 
             // update terms args data

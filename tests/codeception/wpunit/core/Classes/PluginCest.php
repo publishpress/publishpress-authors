@@ -247,6 +247,53 @@ class PluginCest
         $_POST = [];
     }
 
+    public function actionEditedAuthor_forLinkedUserChangeUsesNewUserEmail(WpunitTester $I)
+    {
+        $originalUserID = $I->factory('original linked user')->user->create(
+            [
+                'role'       => 'author',
+                'user_email' => 'original-linked-user@example.com',
+            ]
+        );
+        $newUserID = $I->factory('new linked user')->user->create(
+            [
+                'role'       => 'author',
+                'user_email' => 'new-linked-user@example.com',
+            ]
+        );
+        $author = Author::create_from_user($originalUserID);
+
+        $adminUserID = $I->factory('a new administrator user')->user->create(
+            [
+                'role' => 'administrator',
+            ]
+        );
+        wp_set_current_user($adminUserID);
+
+        $_POST['author-edit-nonce']  = wp_create_nonce('author-edit');
+        $_POST['authors-user_id']    = $newUserID;
+        $_POST['authors-first_name'] = '';
+        $_POST['authors-last_name']  = '';
+        $_POST['authors-user_email'] = 'original-linked-user@example.com';
+        $_POST['authors-user_url']   = '';
+        $_POST['authors-description'] = '';
+
+        Author_Editor::action_edit_terms($author->term_id, 'author');
+        Author_Editor::action_edited_author($author->term_id);
+
+        $originalUser = get_user_by('id', $originalUserID);
+        $newUser      = get_user_by('id', $newUserID);
+
+        $I->assertEquals('new-linked-user@example.com', get_term_meta($author->term_id, 'user_email', true));
+        $I->assertEquals($newUserID, (int)get_term_meta($author->term_id, 'user_id', true));
+        $I->assertFalse(Author::get_by_user_id($originalUserID));
+        $I->assertEquals($author->term_id, Author::get_by_user_id($newUserID)->term_id);
+        $I->assertEquals('original-linked-user@example.com', $originalUser->user_email);
+        $I->assertEquals('new-linked-user@example.com', $newUser->user_email);
+
+        $_POST = [];
+    }
+
     public function filterPreInsertTerm_forNewUserAuthorRejectsEmailUsedByAnotherUser(WpunitTester $I)
     {
         $I->factory('another user')->user->create(
