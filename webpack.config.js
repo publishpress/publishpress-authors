@@ -17,6 +17,7 @@ module.exports = {
         'bylines-migration': './src/modules/bylines-migration/assets/js/bylines-migration.jsx',
         'author-boxes-block': './src/modules/author-boxes/assets/js/author-boxes-block.jsx',
         'author-data-block': './src/modules/multiple-authors/assets/js/author-data-block.jsx',
+        'author-list-block': './src/modules/author-list/assets/js/author-list-block.jsx',
     },
     output: {
         path: path.join(__dirname, 'src/assets/js'),

@@ -1723,7 +1723,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                         'shortcode'   => '[publishpress_authors_list layout="'. $default_layout .'"]',
                         'description' => $this->safe_sprintf(
                             esc_html__(
-                                'You can specify layout by using author boxes layout slug. You can see full details of each layout option %1$s in this guide %2$s. %3$s %4$s This shortcode also provides two custom layouts: %5$s %6$s.',
+                                'You can specify layout by using author boxes layout slug. You can see full details of each layout option %1$s in this guide %2$s. %3$s %4$s This shortcode also provides four custom layouts: %5$s %6$s %7$s %8$s.',
                                 'publishpress-authors'
                             ),
                             '<a href="https://publishpress.com/knowledge-base/layout/">',
@@ -1731,7 +1731,9 @@ if (!class_exists('MA_Multiple_Authors')) {
                             '<br />',
                             '<br />',
                             '<code>authors_index</code>',
-                            '<code>authors_recent</code>'
+                            '<code>authors_recent</code>',
+                            '<code>authors_grid</code>',
+                            '<code>authors_table</code>'
                         ),
                     ],
                     'option_3' => [
@@ -1742,6 +1744,29 @@ if (!class_exists('MA_Multiple_Authors')) {
                                 'publishpress-authors'
                             ),
                             '<code class="color-red">layout_columns="2"</code>'
+                        ),
+                    ],
+                    'option_3_grid' => [
+                        'shortcode'   => '[publishpress_authors_list layout="authors_grid" layout_columns="3" display_fields="description,user_url"]',
+                        'description' => $this->safe_sprintf(
+                            esc_html__(
+                                'You can show authors in a card grid by using %1$s, choose the number of grid columns with %2$s, and choose author fields with %3$s .',
+                                'publishpress-authors'
+                            ),
+                            '<code class="color-red">layout="authors_grid"</code>',
+                            '<code class="color-red">layout_columns="3"</code>',
+                            '<code class="color-red">display_fields="description,user_url"</code>'
+                        ),
+                    ],
+                    'option_3_table' => [
+                        'shortcode'   => '[publishpress_authors_list layout="authors_table" display_fields="description,post_count,user_url"]',
+                        'description' => $this->safe_sprintf(
+                            esc_html__(
+                                'You can show authors in a table by using %1$s and choose author fields with %2$s .',
+                                'publishpress-authors'
+                            ),
+                            '<code class="color-red">layout="authors_table"</code>',
+                            '<code class="color-red">display_fields="description,post_count,user_url"</code>'
                         ),
                     ],
                     'option_4' => [
@@ -1919,6 +1944,8 @@ if (!class_exists('MA_Multiple_Authors')) {
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             foreach ($layouts as $layout => $text) {
                 $selected = $value === $layout ? 'selected="selected"' : '';
@@ -2422,6 +2449,8 @@ echo '<span class="ppma_settings_field_description">'
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             foreach ($layouts as $layout => $text) {
                 $selected = $value === $layout ? 'selected="selected"' : '';
@@ -2451,6 +2480,8 @@ echo '<span class="ppma_settings_field_description">'
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             echo '<option value="">' . esc_html__('Select option', 'publishpress-authors') . '</option>';
             foreach ($layouts as $layout => $text) {
@@ -2488,6 +2519,8 @@ echo '<span class="ppma_settings_field_description">'
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             echo '<option value="">' . esc_html__('Select option', 'publishpress-authors') . '</option>';
             foreach ($layouts as $layout => $text) {
@@ -2525,6 +2558,8 @@ echo '<span class="ppma_settings_field_description">'
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             echo '<option value="">' . esc_html__('Select option', 'publishpress-authors') . '</option>';
             foreach ($layouts as $layout => $text) {
@@ -2562,6 +2597,8 @@ echo '<span class="ppma_settings_field_description">'
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             echo '<option value="">' . esc_html__('Select option', 'publishpress-authors') . '</option>';
             foreach ($layouts as $layout => $text) {
@@ -2599,6 +2636,8 @@ echo '<span class="ppma_settings_field_description">'
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             echo '<option value="">' . esc_html__('Select option', 'publishpress-authors') . '</option>';
             foreach ($layouts as $layout => $text) {
