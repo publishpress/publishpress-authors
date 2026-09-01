@@ -379,6 +379,8 @@ class Plugin
             'wp_ajax_author_get_user_data',
             ['MultipleAuthors\\Classes\\Admin_Ajax', 'handle_author_get_user_data']
         );
+        add_action('wp_ajax_ppma_authors_index_filter', [$this, 'handle_authors_index_filter']);
+        add_action('wp_ajax_nopriv_ppma_authors_index_filter', [$this, 'handle_authors_index_filter']);
 
         // Post integration
         add_action(
@@ -2038,11 +2040,73 @@ class Plugin
             }
         }
 
+        if (isset($attributes['layout']) && in_array($attributes['layout'], ['authors_index', 'authors_recent'])) {
+            $attributes['show_title'] = false;
+        }
+
         $attributes = wp_parse_args($attributes, $defaults);
 
         ob_start();
         $widget->widget([], $attributes);
         return ob_get_clean();
+    }
+
+    /**
+     * Render an authors index after an alphabet filter is selected.
+     */
+    public function handle_authors_index_filter()
+    {
+        if (empty($_POST['nonce']) || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'ppma-authors-index')) {
+            wp_send_json_error(esc_html__('Security error. Kindly reload this page and try again', 'publishpress-authors'));
+        }
+
+        if (empty($_POST['instance']) || !is_scalar($_POST['instance'])) {
+            wp_send_json_error(esc_html__('Invalid author list.', 'publishpress-authors'));
+        }
+
+        $instance = json_decode(wp_unslash($_POST['instance']), true);
+        if (!is_array($instance) || empty($instance['layout']) || $instance['layout'] !== 'authors_index') {
+            wp_send_json_error(esc_html__('Invalid author list.', 'publishpress-authors'));
+        }
+        unset($instance['page']);
+        $instance['show_title'] = false;
+
+        $letter = '';
+        if (!empty($_POST['letter']) && is_scalar($_POST['letter'])) {
+            $letter = sanitize_text_field(wp_unslash($_POST['letter']));
+        }
+
+        $previous_request_uri = $_SERVER['REQUEST_URI'];
+        if (!empty($_POST['url']) && is_scalar($_POST['url'])) {
+            $request_url = wp_parse_url(esc_url_raw(wp_unslash($_POST['url'])));
+            if (!empty($request_url['path'])) {
+                $_SERVER['REQUEST_URI'] = $request_url['path'];
+                if (!empty($request_url['query'])) {
+                    $_SERVER['REQUEST_URI'] .= '?' . $request_url['query'];
+                }
+            }
+        }
+
+        if ($letter) {
+            $_SERVER['REQUEST_URI'] = add_query_arg('ppma_author_letter', $letter, $_SERVER['REQUEST_URI']);
+        } else {
+            $_SERVER['REQUEST_URI'] = remove_query_arg('ppma_author_letter', $_SERVER['REQUEST_URI']);
+        }
+
+        $previous_letter = isset($_GET['ppma_author_letter']) ? $_GET['ppma_author_letter'] : null;
+        $_GET['ppma_author_letter'] = $letter;
+        unset($_GET['ppma_page'], $_GET['paged']);
+
+        $content = $this->shortcodeAuthorsList($instance);
+
+        if (null === $previous_letter) {
+            unset($_GET['ppma_author_letter']);
+        } else {
+            $_GET['ppma_author_letter'] = $previous_letter;
+        }
+        $_SERVER['REQUEST_URI'] = $previous_request_uri;
+
+        wp_send_json_success($content);
     }
 
     /**

@@ -251,6 +251,28 @@ a.ppma-author-field-meta i {
     display: inline-block;
 }
 
+.pp-authors-index-skeleton-title,
+.pp-authors-index-skeleton-content {
+    height: 18px;
+    margin: 12px 0;
+    background: #e5e5e5;
+    animation: pp-authors-index-skeleton-pulse 1.2s ease-in-out infinite;
+}
+
+.pp-authors-index-skeleton-title {
+    width: 30%;
+    height: 28px;
+}
+
+.pp-authors-index-skeleton-content {
+    width: 100%;
+}
+
+@keyframes pp-authors-index-skeleton-pulse {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+}
+
 .pp-multiple-authors-index .author-index-header {
     padding-bottom: 5px;
     margin-bottom: 20px;
