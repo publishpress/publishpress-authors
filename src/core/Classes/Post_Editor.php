@@ -200,9 +200,13 @@ class Post_Editor
     /**
      * Deregister the author meta box, and register Author meta boxes
      */
-    public static function action_add_meta_boxes_late()
+    public static function action_add_meta_boxes_late($post_type = null, $post = null)
     {
         if (!Utils::is_valid_page()) {
+            return;
+        }
+
+        if (self::is_block_editor_page($post_type, $post)) {
             return;
         }
 
@@ -223,7 +227,7 @@ class Post_Editor
     }
 
     /**
-     * Remove author metabox for gutenberg
+     * Filter author taxonomy visibility for Gutenberg.
      *
      * @param object $response
      * @param object $taxonomy
@@ -235,8 +239,13 @@ class Post_Editor
         $context       = ! empty( $request['context'] ) ? $request['context'] : 'view';
         $taxonomy_name = isset($taxonomy->name) ? $taxonomy->name : false;
 
-        // Context is edit in the editor
-        if ($taxonomy_name === 'author' && $context === 'edit' && $taxonomy->meta_box_cb === false) {
+        // Context is edit in the editor.
+        if (
+            $taxonomy_name === 'author'
+            && $context === 'edit'
+            && $taxonomy->meta_box_cb === false
+            && apply_filters('publishpress_authors_hide_author_taxonomy_in_block_editor', false, $taxonomy, $request)
+        ) {
             $data_response = $response->get_data();
             $data_response['visibility']['show_ui'] = false;
             $response->set_data($data_response);
@@ -257,6 +266,46 @@ class Post_Editor
         $authors = get_post_authors(0, true);
 
         echo self::get_rendered_authors_selection($authors, false);  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    }
+
+    /**
+     * Check whether the current post edit request is using the block editor.
+     *
+     * Classic meta boxes disable Visual Revisions in WordPress 7.1+, so the
+     * Authors selection must use the REST-backed taxonomy panel there.
+     *
+     * @param string|null $post_type Post type for the add_meta_boxes request.
+     * @param WP_Post|null $post Post object for the add_meta_boxes request.
+     *
+     * @return bool
+     */
+    public static function is_block_editor_page($post_type = null, $post = null)
+    {
+        if (! is_admin()) {
+            return false;
+        }
+
+        if ($post instanceof WP_Post && function_exists('use_block_editor_for_post')) {
+            return (bool)use_block_editor_for_post($post);
+        }
+
+        if (empty($post_type)) {
+            if ($post instanceof WP_Post) {
+                $post_type = $post->post_type;
+            } elseif (function_exists('get_current_screen')) {
+                $screen = get_current_screen();
+
+                if ($screen && ! empty($screen->post_type)) {
+                    $post_type = $screen->post_type;
+                }
+            }
+        }
+
+        if (empty($post_type) || ! function_exists('use_block_editor_for_post_type')) {
+            return false;
+        }
+
+        return (bool)use_block_editor_for_post_type($post_type);
     }
 
     /**
@@ -537,6 +586,12 @@ class Post_Editor
             }
             if (isset($layouts['authors_recent'])) {
                 unset($layouts['authors_recent']);
+            }
+            if (isset($layouts['authors_grid'])) {
+                unset($layouts['authors_grid']);
+            }
+            if (isset($layouts['authors_table'])) {
+                unset($layouts['authors_table']);
             }
 
             $selected_box = $post_id ? get_post_meta($post_id, 'ppma_selected_author_box', true) : '';

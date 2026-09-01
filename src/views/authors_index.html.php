@@ -1,14 +1,14 @@
-<div class="pp-multiple-authors-wrapper pp-multiple-authors-index alignwide <?php echo esc_attr($context['css_class']); ?> pp-multiple-authors-layout-<?php echo esc_attr($context['layout']); ?>">
+<div class="pp-multiple-authors-wrapper pp-multiple-authors-index alignwide <?php echo esc_attr($context['css_class']); ?> pp-multiple-authors-layout-<?php echo esc_attr($context['layout']); ?>" data-ajax-url="<?php echo esc_url($context['ajax_url']); ?>" data-ajax-nonce="<?php echo esc_attr($context['ajax_nonce']); ?>" data-ajax-instance="<?php echo esc_attr($context['ajax_instance']); ?>">
     <?php if (!empty($context['search_box_html'])) : ?>
         <?php echo $context['search_box_html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
     <?php endif; ?>
     <ul class="author-index-navigation">
-        <li class="page-item active" data-item="all"><a class="page-link " href="#"><?php echo esc_html($context['all_text']); ?></a></li>
-        <?php foreach ($context['results'] as $key => $value) :
+        <li class="page-item <?php echo empty($context['selected_letter']) ? 'active' : ''; ?>"><a class="page-link " href="<?php echo esc_url(remove_query_arg(['ppma_author_letter', 'ppma_page', 'paged'])); ?>" data-letter=""><?php echo esc_html($context['all_text']); ?></a></li>
+        <?php foreach ($context['navigation_results'] as $key => $value) :
             $display_title = publishpress_authors_get_index_display_title($key);
         ?>
-            <li class="page-item" data-item="<?php echo esc_attr($key); ?>">
-                <a class="page-link" href="#"><?php echo esc_html(strtoupper($display_title)); ?></a>
+            <li class="page-item <?php echo $context['selected_letter'] === strtolower($key) ? 'active' : ''; ?>">
+                <a class="page-link" href="<?php echo esc_url(add_query_arg('ppma_author_letter', $key, remove_query_arg(['ppma_page', 'paged']))); ?>" data-letter="<?php echo esc_attr($key); ?>"><?php echo esc_html(strtoupper($display_title)); ?></a>
             </li>
         <?php endforeach; ?>
     </ul>

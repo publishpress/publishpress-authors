@@ -255,6 +255,11 @@ if (!class_exists('MA_Multiple_Authors')) {
             add_action('wp_ajax_finish_sync_author_slug', [$this, 'finishSyncAuthorSlug']);
             add_action('wp_ajax_deactivate_coauthors_plus', [$this, 'deactivateCoAuthorsPlus']);
 
+            // Authors Data block.
+            add_action('enqueue_block_editor_assets', [$this, 'author_data_block_enqueue_assets']);
+            add_action('wp_ajax_ppma_block_fetch_author_fields', [$this, 'ppma_block_fetch_author_fields']);
+            $this->author_data_block_register();
+
             // PublishPress compatibility hooks.
             add_filter('publishpress_search_authors_results_pre_search', [$this, 'publishpressSearchAuthors'], 10, 2);
             add_filter('publishpress_author_can_edit_posts', [$this, 'publishpressAuthorCanEditPosts'], 10, 2);
@@ -326,6 +331,129 @@ if (!class_exists('MA_Multiple_Authors')) {
 
             // Redirect on plugin activation
             add_action('admin_init', [$this, 'redirect_on_activate'], 2000);
+        }
+
+        /**
+         * Enqueue block editor assets for the Authors Data block.
+         */
+        public function author_data_block_enqueue_assets()
+        {
+            wp_enqueue_script(
+                'author-data-block',
+                PP_AUTHORS_URL . 'src/assets/js/author-data-block.min.js',
+                ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-data'],
+                PP_AUTHORS_VERSION
+            );
+
+            wp_localize_script('author-data-block', 'authorDataBlock', [
+                'ajax_url'                 => admin_url('admin-ajax.php'),
+                'block_title'              => __('PublishPress Authors Data', 'publishpress-authors'),
+                'field_label'              => __('Field', 'publishpress-authors'),
+                'default_field_label'      => __('Display Name', 'publishpress-authors'),
+                'separator_label'          => __('Separator', 'publishpress-authors'),
+                'archive_label'            => __('Use author archive page', 'publishpress-authors'),
+                'post_id_label'            => __('Post ID', 'publishpress-authors'),
+                'post_id_help'             => __('Optional. Load the authors for a specific post.', 'publishpress-authors'),
+                'term_id_label'            => __('Author term ID', 'publishpress-authors'),
+                'term_id_help'             => __('Optional. Load a specific author by term ID.', 'publishpress-authors'),
+                'author_categories_label'  => __('Author categories', 'publishpress-authors'),
+                'author_categories_help'   => __('Optional. Comma-separated author category slugs.', 'publishpress-authors'),
+            ]);
+        }
+
+        /**
+         * Register the Authors Data block.
+         */
+        public function author_data_block_register()
+        {
+            register_block_type('publishpress-authors/author-data-block', [
+                'editor_script'   => 'author-data-block',
+                'render_callback' => [$this, 'author_data_block_render'],
+                'attributes'      => [
+                    'field'            => ['type' => 'string', 'default' => 'display_name'],
+                    'separator'        => ['type' => 'string', 'default' => ', '],
+                    'postId'           => ['type' => 'string', 'default' => ''],
+                    'termId'           => ['type' => 'string', 'default' => ''],
+                    'archive'          => ['type' => 'boolean', 'default' => false],
+                    'authorCategories' => ['type' => 'string', 'default' => ''],
+                ],
+            ]);
+        }
+
+        /**
+         * Render callback for the Authors Data block.
+         *
+         * @param array $attributes
+         *
+         * @return string
+         */
+        public function author_data_block_render($attributes)
+        {
+            $field             = !empty($attributes['field']) ? sanitize_text_field($attributes['field']) : 'display_name';
+            $separator         = isset($attributes['separator']) ? $attributes['separator'] : ', ';
+            $post_id           = !empty($attributes['postId']) ? (int)$attributes['postId'] : 0;
+            $term_id           = !empty($attributes['termId']) ? (int)$attributes['termId'] : 0;
+            $archive           = !empty($attributes['archive']);
+            $author_categories = !empty($attributes['authorCategories']) ? sanitize_text_field($attributes['authorCategories']) : '';
+
+            $shortcode  = '[publishpress_authors_data field="' . esc_attr($field) . '"';
+            $shortcode .= ' separator="' . esc_attr($separator) . '"';
+            if ($post_id) {
+                $shortcode .= ' post_id="' . $post_id . '"';
+            }
+            if ($term_id) {
+                $shortcode .= ' term_id="' . $term_id . '"';
+            }
+            if ($archive) {
+                $shortcode .= ' archive="true"';
+            }
+            if (!empty($author_categories)) {
+                $shortcode .= ' author_categories="' . esc_attr($author_categories) . '"';
+            }
+            $shortcode .= ']';
+
+            return do_shortcode($shortcode);
+        }
+
+        /**
+         * AJAX handler returning the author fields available to the Authors Data block.
+         */
+        public function ppma_block_fetch_author_fields()
+        {
+            if (!current_user_can('edit_posts') && !current_user_can('edit_pages')) {
+                wp_send_json_error(
+                    [
+                        'message' => esc_html__('You do not have permission to perform this action', 'publishpress-authors'),
+                    ],
+                    403
+                );
+            }
+
+            $fields = [
+                ['value' => 'display_name', 'label' => esc_html__('Display Name', 'publishpress-authors')],
+                ['value' => 'first_name', 'label' => esc_html__('First Name', 'publishpress-authors')],
+                ['value' => 'last_name', 'label' => esc_html__('Last Name', 'publishpress-authors')],
+                ['value' => 'user_email', 'label' => esc_html__('Email', 'publishpress-authors')],
+                ['value' => 'user_url', 'label' => esc_html__('Website', 'publishpress-authors')],
+                ['value' => 'description', 'label' => esc_html__('Biographical Info', 'publishpress-authors')],
+                ['value' => 'avatar', 'label' => esc_html__('Avatar', 'publishpress-authors')],
+            ];
+
+            $existing = wp_list_pluck($fields, 'value');
+
+            // Include configured/custom author profile fields.
+            $profile_fields = apply_filters('multiple_authors_author_fields', [], false);
+            if (is_array($profile_fields)) {
+                foreach ($profile_fields as $key => $data) {
+                    if (in_array($key, $existing, true)) {
+                        continue;
+                    }
+                    $label = (is_array($data) && !empty($data['label'])) ? $data['label'] : $key;
+                    $fields[] = ['value' => $key, 'label' => $label];
+                }
+            }
+
+            wp_send_json($fields);
         }
 
         /**
@@ -1595,7 +1723,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                         'shortcode'   => '[publishpress_authors_list layout="'. $default_layout .'"]',
                         'description' => $this->safe_sprintf(
                             esc_html__(
-                                'You can specify layout by using author boxes layout slug. You can see full details of each layout option %1$s in this guide %2$s. %3$s %4$s This shortcode also provides two custom layouts: %5$s %6$s.',
+                                'You can specify layout by using author boxes layout slug. You can see full details of each layout option %1$s in this guide %2$s. %3$s %4$s This shortcode also provides four custom layouts: %5$s %6$s %7$s %8$s.',
                                 'publishpress-authors'
                             ),
                             '<a href="https://publishpress.com/knowledge-base/layout/">',
@@ -1603,7 +1731,9 @@ if (!class_exists('MA_Multiple_Authors')) {
                             '<br />',
                             '<br />',
                             '<code>authors_index</code>',
-                            '<code>authors_recent</code>'
+                            '<code>authors_recent</code>',
+                            '<code>authors_grid</code>',
+                            '<code>authors_table</code>'
                         ),
                     ],
                     'option_3' => [
@@ -1614,6 +1744,29 @@ if (!class_exists('MA_Multiple_Authors')) {
                                 'publishpress-authors'
                             ),
                             '<code class="color-red">layout_columns="2"</code>'
+                        ),
+                    ],
+                    'option_3_grid' => [
+                        'shortcode'   => '[publishpress_authors_list layout="authors_grid" layout_columns="3" display_fields="description,user_url"]',
+                        'description' => $this->safe_sprintf(
+                            esc_html__(
+                                'You can show authors in a card grid by using %1$s, choose the number of grid columns with %2$s, and choose author fields with %3$s .',
+                                'publishpress-authors'
+                            ),
+                            '<code class="color-red">layout="authors_grid"</code>',
+                            '<code class="color-red">layout_columns="3"</code>',
+                            '<code class="color-red">display_fields="description,user_url"</code>'
+                        ),
+                    ],
+                    'option_3_table' => [
+                        'shortcode'   => '[publishpress_authors_list layout="authors_table" display_fields="description,post_count,user_url"]',
+                        'description' => $this->safe_sprintf(
+                            esc_html__(
+                                'You can show authors in a table by using %1$s and choose author fields with %2$s .',
+                                'publishpress-authors'
+                            ),
+                            '<code class="color-red">layout="authors_table"</code>',
+                            '<code class="color-red">display_fields="description,post_count,user_url"</code>'
                         ),
                     ],
                     'option_4' => [
@@ -1791,6 +1944,8 @@ if (!class_exists('MA_Multiple_Authors')) {
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             foreach ($layouts as $layout => $text) {
                 $selected = $value === $layout ? 'selected="selected"' : '';
@@ -2294,6 +2449,8 @@ echo '<span class="ppma_settings_field_description">'
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             foreach ($layouts as $layout => $text) {
                 $selected = $value === $layout ? 'selected="selected"' : '';
@@ -2323,6 +2480,8 @@ echo '<span class="ppma_settings_field_description">'
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             echo '<option value="">' . esc_html__('Select option', 'publishpress-authors') . '</option>';
             foreach ($layouts as $layout => $text) {
@@ -2360,6 +2519,8 @@ echo '<span class="ppma_settings_field_description">'
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             echo '<option value="">' . esc_html__('Select option', 'publishpress-authors') . '</option>';
             foreach ($layouts as $layout => $text) {
@@ -2397,6 +2558,8 @@ echo '<span class="ppma_settings_field_description">'
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             echo '<option value="">' . esc_html__('Select option', 'publishpress-authors') . '</option>';
             foreach ($layouts as $layout => $text) {
@@ -2434,6 +2597,8 @@ echo '<span class="ppma_settings_field_description">'
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             echo '<option value="">' . esc_html__('Select option', 'publishpress-authors') . '</option>';
             foreach ($layouts as $layout => $text) {
@@ -2471,6 +2636,8 @@ echo '<span class="ppma_settings_field_description">'
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             unset($layouts['authors_index']);
             unset($layouts['authors_recent']);
+            unset($layouts['authors_grid']);
+            unset($layouts['authors_table']);
 
             echo '<option value="">' . esc_html__('Select option', 'publishpress-authors') . '</option>';
             foreach ($layouts as $layout => $text) {

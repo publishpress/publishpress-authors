@@ -1133,7 +1133,7 @@ class MA_Author_Custom_Fields extends Module
             }
             // filter out social fields if pro is not active
             if (!Utils::isAuthorsProActive() && isset($_GET['post_type']) && $_GET['post_type'] == self::POST_TYPE_CUSTOM_FIELDS) {
-                $social_field_names = ['facebook', 'x', 'instagram', 'linkedIn', 'youtube', 'tiktok'];
+                $social_field_names = ['facebook', 'x', 'instagram', 'linkedIn', 'pinterest', 'youtube', 'tiktok'];
 
                 $meta_query = $query->get('meta_query') ?: [];
                 $meta_query[] = [
@@ -1237,6 +1237,15 @@ class MA_Author_Custom_Fields extends Module
             'social_profile'  => 1,
             'field_status'  => 'off',
             'description'  => __('Please enter the full URL to your Instagram page.', 'publishpress-authors'),
+        ];
+        //add Pinterest
+        $social_custom_fields['pinterest'] = [
+            'post_title'   => __('Pinterest', 'publishpress-authors'),
+            'post_name'    => 'pinterest',
+            'type'         => 'url',
+            'social_profile'  => 1,
+            'field_status'  => 'off',
+            'description'  => __('Please enter the full URL to your Pinterest profile.', 'publishpress-authors'),
         ];
         //add LinkedIn
         $social_custom_fields['linkedIn'] = [

@@ -171,7 +171,7 @@ class AuthorListTable extends \WP_List_Table
     /** Text displayed when no stterm data is available */
     public function no_items()
     {
-        _e('No author list avaliable in the selected view.', 'publishpress-authors');
+        esc_html_e('No author list avaliable in the selected view.', 'publishpress-authors');
     }
 
     /**
@@ -422,11 +422,19 @@ class AuthorListTable extends \WP_List_Table
      */
     protected function column_layout($item)
     {
-        $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
+        $layouts = array_merge(
+            [
+                'authors_index'  => __('Authors Index', 'publishpress-authors'),
+                'authors_recent' => __('Authors Recent', 'publishpress-authors'),
+                'authors_grid'   => __('Authors Grid', 'publishpress-authors'),
+                'authors_table'  => __('Authors Table', 'publishpress-authors'),
+            ],
+            apply_filters('pp_multiple_authors_author_layouts', [])
+        );
 
-        $layout = $layouts[$item['layout']] ? $layouts[$item['layout']] : $item['layout'];
+        $layout = isset($layouts[$item['layout']]) ? $layouts[$item['layout']] : $item['layout'];
 
-        return $layout;
+        return esc_html($layout);
     }
 
     /**
