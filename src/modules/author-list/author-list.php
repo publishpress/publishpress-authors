@@ -1814,6 +1814,12 @@ class MA_Author_List extends Module
                 'Security error. Kindly reload this page and try again',
                 'publishpress-authors'
             );
+        } elseif (!current_user_can(Capability::getManageOptionsCapability())) {
+            $response['status']  = 'error';
+            $response['content'] = esc_html__(
+                'You do not have permission to perform this action',
+                'publishpress-authors'
+            );
         } elseif (empty($_POST['shortcode'])) {
             $response['status']  = 'error';
             $response['content'] = esc_html__(
