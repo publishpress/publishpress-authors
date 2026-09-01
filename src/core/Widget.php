@@ -112,9 +112,9 @@ class Widget extends WP_Widget {
 			)
 		);
 
-        $titleSingle = strip_tags($instance['title']);
-        $titlePlural = strip_tags($instance['title_plural']);
-        $layout      = strip_tags($instance['layout']);
+        $titleSingle = strip_tags((string) ($instance['title'] ?? ''));
+        $titlePlural = strip_tags((string) ($instance['title_plural'] ?? ''));
+        $layout      = strip_tags((string) ($instance['layout'] ?? ''));
 
         $layouts = apply_filters('pp_multiple_authors_author_layouts', array());
         foreach (['authors_index', 'authors_recent', 'authors_grid', 'authors_table'] as $author_list_layout) {
@@ -168,9 +168,9 @@ class Widget extends WP_Widget {
 
 		$instance = [];
 
-        $instance['title']        = sanitize_text_field($new_instance['title']);
+        $instance['title']        = isset($new_instance['title']) ? sanitize_text_field($new_instance['title']) : '';
         $instance['title_plural'] = isset($new_instance['title_plural']) ? sanitize_text_field($new_instance['title_plural']) : '';
-        $instance['layout']       = sanitize_text_field($new_instance['layout']);
+        $instance['layout']       = isset($new_instance['layout']) ? sanitize_text_field($new_instance['layout']) : '';
 
 		$layouts = apply_filters('pp_multiple_authors_author_layouts', []);
         foreach (['authors_index', 'authors_recent', 'authors_grid', 'authors_table'] as $author_list_layout) {
