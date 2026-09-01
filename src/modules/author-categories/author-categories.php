@@ -128,19 +128,41 @@ class MA_Author_Categories extends Module
             return;
         }
 
-        if (!function_exists('is_plugin_active_for_network')) {
-            require_once ABSPATH . 'wp-admin/includes/plugin.php';
-        }
-
-        // Only act when the plugin is network-active; otherwise the new sub-site
-        // is not running this plugin and should not get its tables.
-        if (!is_plugin_active_for_network(PP_AUTHORS_FILE)) {
+        // Only act when PublishPress Authors is network-active; otherwise the
+        // new sub-site is not running this plugin and should not get its tables.
+        if (!$this->isPluginActiveForNetwork()) {
             return;
         }
 
         switch_to_blog((int) $new_site->blog_id);
         $this->runInstallTasks(PP_AUTHORS_VERSION);
         restore_current_blog();
+    }
+
+    /**
+     * Check if PublishPress Authors free or Pro is network-active.
+     *
+     * @return bool
+     */
+    private function isPluginActiveForNetwork()
+    {
+        if (!function_exists('is_plugin_active_for_network')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        $plugin_files = [PP_AUTHORS_FILE];
+
+        if (defined('PP_AUTHORS_PRO_FILE')) {
+            $plugin_files[] = PP_AUTHORS_PRO_FILE;
+        }
+
+        foreach ($plugin_files as $plugin_file) {
+            if (is_plugin_active_for_network($plugin_file)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
