@@ -628,11 +628,12 @@ class AuthorBoxesDefault
         $editor_data['box_tab_custom_wrapper_class'] = 'pp-multiple-authors-layout-simple_list';
         //avatar default
         $editor_data['avatar_show'] = 1;
-        $editor_data['avatar_size'] = 35;
+        $editor_data['avatar_size'] = 100;
         $editor_data['avatar_border_radius'] = 0;
         //name default
         $editor_data['name_show'] = 1;
         $editor_data['name_disable_link'] = 0;
+        $editor_data['name_style'] = '';
         $editor_data['name_html_tag'] = 'div';
         //bio default
         $editor_data['author_bio_html_tag'] = 'div';
@@ -655,6 +656,8 @@ class AuthorBoxesDefault
         $editor_data['author_recent_posts_title_border_bottom_style'] = 'dotted';
         $editor_data['author_recent_posts_alignment'] = 'left';
         //box layout default
+        $editor_data['box_layout_margin_top'] = 15;
+        $editor_data['box_layout_margin_bottom'] = 15;
         $editor_data['box_layout_border_style'] = 'solid';
         $editor_data['box_layout_border_color'] = '#999999';
         $editor_data['box_layout_shadow_horizontal_offset'] = 10;
