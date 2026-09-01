@@ -1234,14 +1234,14 @@ class MA_Author_Boxes extends Module
      *
      * @return string
      */
-    public static function getAuthorBoxRecentPostsIcon($icon = '') {
-        if (empty($icon)) {
+    public static function getAuthorBoxRecentPostsIcon($icon = null) {
+        if (null === $icon) {
             $icon = '<span class="dashicons dashicons-media-text"></span>';
         }
 
-        $icon = wp_kses_post(html_entity_decode($icon));
+        $icon = wp_kses_post(html_entity_decode((string) $icon));
 
-        return !empty($icon) ? $icon : '<span class="dashicons dashicons-media-text"></span>';
+        return $icon;
     }
 
     /**
@@ -1641,7 +1641,7 @@ class MA_Author_Boxes extends Module
             $editor_data['display_name_source'] = 'display_name';
         }
 
-        if (empty($editor_data['author_recent_posts_icon'])) {
+        if (!isset($editor_data['author_recent_posts_icon'])) {
             $editor_data['author_recent_posts_icon'] = '<span class="dashicons dashicons-media-text"></span>';
         }
 
@@ -2253,7 +2253,11 @@ class MA_Author_Boxes extends Module
                                                         $display_name_suffix    = !empty($args['display_name_suffix']['value']) ? $args['display_name_suffix']['value'] : '';
                                                         $display_name_source    = (!empty($args['display_name_source']['value']) && is_string($args['display_name_source']['value'])) ? sanitize_key($args['display_name_source']['value']) : 'display_name';
                                                         $author_display_name    = self::getAuthorBoxDisplayName($author, $display_name_source);
-                                                        $recent_posts_icon      = !empty($args['author_recent_posts_icon']['value']) ? $args['author_recent_posts_icon']['value'] : '';
+                                                        $recent_posts_icon      = (
+                                                            isset($args['author_recent_posts_icon'])
+                                                            && is_array($args['author_recent_posts_icon'])
+                                                            && array_key_exists('value', $args['author_recent_posts_icon'])
+                                                        ) ? $args['author_recent_posts_icon']['value'] : null;
 
                                                         $display_name_markup = '';
                                                        if ($args['name_show']['value']) :

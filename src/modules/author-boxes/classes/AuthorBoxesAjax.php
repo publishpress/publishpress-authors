@@ -507,7 +507,11 @@ $display_name_source    = (!empty($args['display_name_source']['value']) && is_s
 if (!in_array($display_name_source, ['display_name', 'username'], true)) {
     $display_name_source = 'display_name';
 }
-$recent_posts_icon      = !empty($args['author_recent_posts_icon']['value']) ? $args['author_recent_posts_icon']['value'] : '';
+$recent_posts_icon      = (
+    isset($args['author_recent_posts_icon'])
+    && is_array($args['author_recent_posts_icon'])
+    && array_key_exists('value', $args['author_recent_posts_icon'])
+) ? $args['author_recent_posts_icon']['value'] : null;
 
 $display_name_markup = '';
                if ($args['name_show']['value']) :
