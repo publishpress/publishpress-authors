@@ -1197,6 +1197,54 @@ class MA_Author_Boxes extends Module
     }
 
     /**
+     * Get the author name value selected for author box display.
+     *
+     * @param object $author Author object.
+     * @param string $source Selected display source.
+     *
+     * @return string
+     */
+    public static function getAuthorBoxDisplayName($author, $source = 'display_name') {
+        $source = is_string($source) ? sanitize_key($source) : 'display_name';
+        $display_name = (is_object($author) && isset($author->display_name)) ? $author->display_name : '';
+
+        if ('username' !== $source || !is_object($author)) {
+            return $display_name;
+        }
+
+        if (method_exists($author, 'get_user_object')) {
+            $user = $author->get_user_object();
+
+            if ($user instanceof WP_User && !empty($user->user_login)) {
+                return $user->user_login;
+            }
+        }
+
+        if (isset($author->user_login) && !empty($author->user_login)) {
+            return $author->user_login;
+        }
+
+        return $display_name;
+    }
+
+    /**
+     * Get the recent posts icon markup selected for author boxes.
+     *
+     * @param string $icon Icon markup.
+     *
+     * @return string
+     */
+    public static function getAuthorBoxRecentPostsIcon($icon = null) {
+        if (null === $icon) {
+            $icon = '<span class="dashicons dashicons-media-text"></span>';
+        }
+
+        $icon = wp_kses_post(html_entity_decode((string) $icon));
+
+        return $icon;
+    }
+
+    /**
      * @param $html
      * @param $args
      *
@@ -1589,6 +1637,14 @@ class MA_Author_Boxes extends Module
             $editor_data['author_bio_html_tag'] = 'div';
         }
 
+        if (empty($editor_data['display_name_source'])) {
+            $editor_data['display_name_source'] = 'display_name';
+        }
+
+        if (!isset($editor_data['author_recent_posts_icon'])) {
+            $editor_data['author_recent_posts_icon'] = '<span class="dashicons dashicons-media-text"></span>';
+        }
+
         // set boxed_categories defautlt fields
         if (
         isset($editor_data['author_categories_layout'])
@@ -1599,7 +1655,7 @@ class MA_Author_Boxes extends Module
         }
 
         //set social profile defaults
-        $social_fields = ['facebook', 'twitter', 'x', 'instagram', 'linkedin', 'youtube', 'tiktok'];
+        $social_fields = ['facebook', 'twitter', 'x', 'instagram', 'linkedin', 'pinterest', 'youtube', 'tiktok'];
         foreach ($social_fields as $social_field) {
             //set default display to icon
             if (!isset($editor_data['profile_fields_'.$social_field.'_display'])
@@ -2195,6 +2251,13 @@ class MA_Author_Boxes extends Module
                                                         $display_name_position    = !empty($args['display_name_position']['value']) ? $args['display_name_position']['value'] : 'after_avatar';
                                                         $display_name_prefix    = !empty($args['display_name_prefix']['value']) ? $args['display_name_prefix']['value'] : '';
                                                         $display_name_suffix    = !empty($args['display_name_suffix']['value']) ? $args['display_name_suffix']['value'] : '';
+                                                        $display_name_source    = (!empty($args['display_name_source']['value']) && is_string($args['display_name_source']['value'])) ? sanitize_key($args['display_name_source']['value']) : 'display_name';
+                                                        $author_display_name    = self::getAuthorBoxDisplayName($author, $display_name_source);
+                                                        $recent_posts_icon      = (
+                                                            isset($args['author_recent_posts_icon'])
+                                                            && is_array($args['author_recent_posts_icon'])
+                                                            && array_key_exists('value', $args['author_recent_posts_icon'])
+                                                        ) ? $args['author_recent_posts_icon']['value'] : null;
 
                                                         $display_name_markup = '';
                                                        if ($args['name_show']['value']) :
@@ -2241,9 +2304,9 @@ class MA_Author_Boxes extends Module
                                                             endif;
                                                             $display_name_markup .= $before_name_author_category_content;
                                                             if (!$args['name_disable_link']['value']) {
-                                                                $display_name_markup .= '<a href="'. esc_url($author->link) .'" rel="author" title="'. esc_attr($author->display_name) .'" class="author url fn">';
+                                                                $display_name_markup .= '<a href="'. esc_url($author->link) .'" rel="author" title="'. esc_attr($author_display_name) .'" class="author url fn">';
                                                             }
-                                                            $display_name_markup .= esc_html($display_name_prefix . $author->display_name . $display_name_suffix);
+                                                            $display_name_markup .= esc_html($display_name_prefix . $author_display_name . $display_name_suffix);
                                                             if (!$args['name_disable_link']['value']) {
                                                                 $display_name_markup .= '</a>';
                                                             }
@@ -2349,7 +2412,7 @@ class MA_Author_Boxes extends Module
                                                                             <div class="pp-author-boxes-recent-posts-items">
                                                                                 <?php foreach($author_recent_posts as $recent_post_id) : ?>
                                                                                     <<?php echo esc_html($args['author_recent_posts_html_tag']['value']); ?> class="pp-author-boxes-recent-posts-item">
-                                                                                        <span class="dashicons dashicons-media-text"></span>
+                                                                                        <?php echo self::getAuthorBoxRecentPostsIcon($recent_posts_icon); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by getAuthorBoxRecentPostsIcon(). ?>
                                                                                         <a href="<?php echo esc_url(get_the_permalink($recent_post_id)); ?>" title="<?php echo esc_attr(get_the_title($recent_post_id)); ?>">
                                                                                             <?php echo esc_html(html_entity_decode(get_the_title($recent_post_id))); ?>
                                                                                         </a>

@@ -654,7 +654,8 @@
                 'author_recent_posts_empty_show',
                 'author_recent_posts_limit',
                 'author_recent_posts_orderby',
-                'author_recent_posts_order'
+                'author_recent_posts_order',
+                'author_recent_posts_icon'
             ];
             var name_refresh_trigger = [
                 'name_show',
@@ -663,6 +664,7 @@
                 'name_author_categories_divider',
                 'name_author_categories_position',
                 'display_name_position',
+                'display_name_source',
                 'display_name_prefix',
                 'display_name_suffix'
             ];
@@ -1249,7 +1251,7 @@
                         break;
                     case 'author_recent_posts_icon_color':
                         if (value) {
-                            editor_preview_styles += '.pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item span.dashicons { color: ' + value + ' !important; } ';
+                            editor_preview_styles += '.pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item span.dashicons, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.dashicons, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.fa, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.fas, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.far, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.fab { color: ' + value + ' !important; } ';
                         }
                         break;
                     //box layout styles

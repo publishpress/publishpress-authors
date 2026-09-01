@@ -291,6 +291,16 @@ class AuthorBoxesEditorFields
             ],
             'tab'      => 'name',
         ];
+        $fields['display_name_source'] = [
+            'label'    => esc_html__('Display Name Source', 'publishpress-authors'),
+            'type'     => 'select',
+            'sanitize' => 'sanitize_text_field',
+            'options'  => [
+                'display_name' => esc_html__('Display Name', 'publishpress-authors'),
+                'username'     => esc_html__('Username', 'publishpress-authors'),
+            ],
+            'tab'      => 'name',
+        ];
         $fields['name_disable_link'] = [
             'label'    => esc_html__('Remove Display Name Link', 'publishpress-authors'),
             'type'     => 'checkbox',
@@ -1431,6 +1441,12 @@ class AuthorBoxesEditorFields
             'label'    => esc_html__('Recent Posts Icon Color', 'publishpress-authors'),
             'type'     => 'color',
             'sanitize' => 'sanitize_text_field',
+            'tab'      => 'author_recent_posts',
+        ];
+        $fields['author_recent_posts_icon'] = [
+            'label'    => esc_html__('Recent Posts Icon', 'publishpress-authors'),
+            'type'     => 'icon',
+            'sanitize' => ['stripslashes_deep', 'wp_kses_post'],
             'tab'      => 'author_recent_posts',
         ];
         $fields['author_recent_posts_html_tag'] = [
