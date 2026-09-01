@@ -1520,6 +1520,10 @@ class Plugin
     {
         global $pagenow;
 
+        if (!$this->should_enqueue_admin_assets($hook_suffix)) {
+            return;
+        }
+
         wp_enqueue_script('jquery');
         wp_enqueue_script('jquery-ui-sortable');
 
@@ -1700,6 +1704,79 @@ class Plugin
         if ($enqueue_media_script) {
             wp_enqueue_media();
         }
+    }
+
+    private function should_enqueue_admin_assets($hook_suffix)
+    {
+        global $pagenow;
+
+        if (!is_admin()) {
+            return false;
+        }
+
+        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+
+        if (is_object($screen)) {
+            if (!empty($screen->taxonomy) && 'author' === $screen->taxonomy) {
+                return true;
+            }
+        }
+
+        if (isset($_GET['page']) && 0 === strpos(sanitize_key(wp_unslash($_GET['page'])), 'ppma-')) {
+            return true;
+        }
+
+        if (is_string($hook_suffix) && false !== strpos($hook_suffix, 'ppma-')) {
+            return true;
+        }
+
+        if (in_array($pagenow, ['edit-tags.php', 'term.php'], true)
+            && isset($_GET['taxonomy'])
+            && 'author' === sanitize_key(wp_unslash($_GET['taxonomy']))
+        ) {
+            return true;
+        }
+
+        if (in_array($pagenow, ['post.php', 'post-new.php', 'edit.php'], true)) {
+            $post_type = $this->get_current_admin_post_type();
+
+            if (in_array($post_type, $this->get_admin_assets_post_types(), true)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function get_admin_assets_post_types()
+    {
+        $post_types = array_values((array)Utils::get_enabled_post_types());
+
+        $post_types[] = 'ppma_boxes';
+        $post_types[] = 'ppmacf_field';
+
+        return array_unique($post_types);
+    }
+
+    private function get_current_admin_post_type()
+    {
+        if (!empty($_GET['post_type'])) {
+            return sanitize_key(wp_unslash($_GET['post_type']));
+        }
+
+        if (!empty($_POST['post_type'])) {
+            return sanitize_key(wp_unslash($_POST['post_type']));
+        }
+
+        if (!empty($_GET['post'])) {
+            return get_post_type((int)$_GET['post']);
+        }
+
+        if (!empty($_POST['post_ID'])) {
+            return get_post_type((int)$_POST['post_ID']);
+        }
+
+        return 'post';
     }
 
     /**
