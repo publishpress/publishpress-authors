@@ -908,6 +908,14 @@ class Author
         return self::get_by_term_id($id);
     }
 
+    public static function clear_cache()
+    {
+        self::$authorsByIdCache     = [];
+        self::$authorsBySlugCache   = [];
+        self::$authorsByTermIdCache = [];
+        self::$authorsByEmailCache  = [];
+    }
+
     /**
      * Get author posts count with support for post_type.
      *

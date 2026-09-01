@@ -9,7 +9,9 @@
 
 namespace MultipleAuthors\Classes;
 
+use MultipleAuthors\Classes\Objects\Author;
 use MultipleAuthors\Factory;
+use WP_Error;
 
 /**
  * Utility methods for managing authors
@@ -81,6 +83,41 @@ abstract class Author_Utils
     public static function update_author_meta($termId, $metaKey, $value, $single = true)
     {
         return update_term_meta($termId, $metaKey, $value);
+    }
+
+    public static function validate_author_email_available($emailAddress, $allowedUserId = 0)
+    {
+        $emailAddress = sanitize_email($emailAddress);
+
+        if (empty($emailAddress)) {
+            return true;
+        }
+
+        $existingUserId = email_exists($emailAddress);
+
+        if (!empty($existingUserId) && (int)$existingUserId !== (int)$allowedUserId) {
+            return new WP_Error(
+                'publishpress_authors_email_exists',
+                __('This email address is already linked to another WordPress user.', 'publishpress-authors')
+            );
+        }
+
+        return true;
+    }
+
+    public static function unlink_author_from_user($termId)
+    {
+        $metas = get_term_meta($termId);
+
+        foreach ($metas as $key => $meta) {
+            if (0 === strpos($key, 'user_id_')) {
+                delete_term_meta($termId, $key);
+            }
+        }
+
+        delete_term_meta($termId, 'user_id');
+        clean_term_cache($termId, 'author');
+        Author::clear_cache();
     }
 
     public static function author_is_guest($termId)

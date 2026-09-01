@@ -274,6 +274,12 @@ class Plugin
                 2
             );
             add_action(
+                'edit_terms',
+                ['MultipleAuthors\\Classes\\Author_Editor', 'action_edit_terms'],
+                10,
+                3
+            );
+            add_action(
                 'wp_ajax_mapped_author_validation',
                 ['MultipleAuthors\\Classes\\Admin_Ajax', 'handle_mapped_author_validation']
             );

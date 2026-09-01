@@ -633,6 +633,39 @@ class Author_Editor
         return ob_get_clean();
     }
 
+    public static function action_edit_terms($term_id, $taxonomy, $args = [])
+    {
+        if ('author' !== $taxonomy
+            || empty($_POST['author-edit-nonce'])
+            || !is_user_logged_in()
+            || !wp_verify_nonce(sanitize_key($_POST['author-edit-nonce']), 'author-edit')
+            || !isset($_POST['authors-user_email'])) {
+            return;
+        }
+
+        $author               = Author::get_by_term_id($term_id);
+        $new_author_email     = sanitize_email($_POST['authors-user_email']);
+        $current_author_email = sanitize_email($author->user_email);
+
+        if ($new_author_email === $current_author_email) {
+            return;
+        }
+
+        $user_id = !empty($_POST['authors-user_id']) ? (int)$_POST['authors-user_id'] : 0;
+
+        $email_validation = Author_Utils::validate_author_email_available($new_author_email, $user_id);
+
+        if (is_wp_error($email_validation)) {
+            self::add_author_editor_error($email_validation->get_error_message());
+
+            wp_die(
+                esc_html($email_validation->get_error_message()),
+                esc_html__('Author email error', 'publishpress-authors'),
+                ['back_link' => true]
+            );
+        }
+    }
+
     /**
      * Handle saving of term meta
      *
@@ -683,8 +716,36 @@ class Author_Editor
             $updated_args['ID'] = $user_id;
         }
 
+        $skip_email_update = false;
+        if (isset($_POST['authors-user_email'])) {
+            $new_author_email     = sanitize_email($_POST['authors-user_email']);
+            $current_author_email = sanitize_email($author->user_email);
+
+            if ($new_author_email !== $current_author_email) {
+                $email_validation = Author_Utils::validate_author_email_available($new_author_email, $user_id);
+
+                if (is_wp_error($email_validation)) {
+                    $skip_email_update = true;
+                    self::add_author_editor_error($email_validation->get_error_message());
+                } else {
+                    $email_user_id = !empty($new_author_email) ? email_exists($new_author_email) : false;
+
+                    if ($user_id && (empty($email_user_id) || (int)$email_user_id !== (int)$user_id)) {
+                        Author_Utils::unlink_author_from_user($term_id);
+
+                        $user_id      = false;
+                        $user         = false;
+                        $updated_args = [];
+                    }
+                }
+            }
+        }
+
         foreach (self::get_fields($author) as $key => $args) {
             if (!isset($_POST['authors-' . $key]) && $args['type'] !== 'checkbox') {
+                continue;
+            }
+            if ($skip_email_update && $key === 'user_email') {
                 continue;
             }
             $sanitize = isset($args['sanitize']) ? $args['sanitize'] : 'sanitize_text_field';
@@ -694,7 +755,7 @@ class Author_Editor
                 $field_value = isset($_POST['authors-' . $key]) ? $sanitize($_POST['authors-' . $key]) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
             }
             update_term_meta($term_id, $key, $field_value);
-            if ($user_id) {
+            if ($user_id && $key !== 'user_email') {
                 update_user_meta($user_id, $key, $field_value);
                 // Don't route the bio through wp_update_user(): core's
                 // pre_user_description filter (wp_filter_kses) strips block-level
@@ -961,6 +1022,12 @@ class Author_Editor
      */
     public static function admin_notices()
     {
+        $errors = self::get_author_editor_errors();
+
+        foreach ($errors as $error) {
+            echo '<div class="notice notice-error is-dismissible"><p>' . esc_html($error) . '</p></div>';
+        }
+
         if (!empty($_REQUEST['bulk_update_author'])) {
             $count = (int)$_REQUEST['bulk_update_author'];
 
@@ -977,6 +1044,35 @@ class Author_Editor
 
             echo '</p></div>';
         }
+    }
+
+    private static function add_author_editor_error($message)
+    {
+        $transient_key = self::get_author_editor_errors_transient_key();
+        $errors        = get_transient($transient_key);
+
+        if (!is_array($errors)) {
+            $errors = [];
+        }
+
+        $errors[] = $message;
+
+        set_transient($transient_key, $errors, MINUTE_IN_SECONDS);
+    }
+
+    private static function get_author_editor_errors()
+    {
+        $transient_key = self::get_author_editor_errors_transient_key();
+        $errors        = get_transient($transient_key);
+
+        delete_transient($transient_key);
+
+        return is_array($errors) ? $errors : [];
+    }
+
+    private static function get_author_editor_errors_transient_key()
+    {
+        return 'ppma_author_editor_errors_' . get_current_user_id();
     }
 
     /**
@@ -1074,6 +1170,12 @@ class Author_Editor
                         )
                     );
                 } else {
+                    $email_validation = Author_Utils::validate_author_email_available($_POST['authors-author_email']);
+
+                    if (is_wp_error($email_validation)) {
+                        return $email_validation;
+                    }
+
                     if (!get_role('ppma_guest_author')) {
                         //Make sure Guest authir role exist
                         add_role('ppma_guest_author', 'Guest Author', []);

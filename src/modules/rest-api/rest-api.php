@@ -25,6 +25,7 @@ use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthors\Classes\Legacy\Util;
 use MultipleAuthors\Classes\Objects\Author;
 use MultipleAuthors\Classes\Author_Editor;
+use MultipleAuthors\Classes\Author_Utils;
 use MultipleAuthors\Factory;
 
 if (!class_exists('MA_REST_API')) {
@@ -488,6 +489,36 @@ if (!class_exists('MA_REST_API')) {
                 $updated_args['ID'] = $author_user_id;
             }
 
+            $has_email_update = array_key_exists('user_email', $params) || array_key_exists('user_email', $author_fields);
+            if ($has_email_update) {
+                $new_author_email = array_key_exists('user_email', $author_fields)
+                    ? sanitize_email($author_fields['user_email'])
+                    : sanitize_email($params['user_email']);
+                $current_author_email = sanitize_email($author->user_email);
+
+                if ($new_author_email !== $current_author_email) {
+                    $email_validation = Author_Utils::validate_author_email_available(
+                        $new_author_email,
+                        $author_user_id
+                    );
+
+                    if (is_wp_error($email_validation)) {
+                        $email_validation->add_data(['status' => 409]);
+
+                        return $email_validation;
+                    }
+
+                    $email_user_id = !empty($new_author_email) ? email_exists($new_author_email) : false;
+
+                    if ($author_user_id && (empty($email_user_id) || (int)$email_user_id !== (int)$author_user_id)) {
+                        Author_Utils::unlink_author_from_user($term_id);
+
+                        $author_user_id = 0;
+                        $updated_args   = [];
+                    }
+                }
+            }
+
             // update terms args data
             $update_data = [];
             if (!empty($params['display_name'])) {
@@ -512,13 +543,9 @@ if (!class_exists('MA_REST_API')) {
                 }
             }
 
-            // Update email and sync to user if mapped
-            if (!empty($params['user_email'])) {
+            // Update author email without changing the mapped WordPress user account email.
+            if (array_key_exists('user_email', $params)) {
                 update_term_meta($term_id, 'user_email', sanitize_email($params['user_email']));
-                if ($author_user_id) {
-                    update_user_meta($author_user_id, 'user_email', sanitize_email($params['user_email']));
-                    $updated_args['user_email'] = sanitize_email($params['user_email']);
-                }
             }
 
             $this->setAuthorFields($term_id, $author_fields, $author_user_id, $updated_args);
@@ -557,8 +584,8 @@ if (!class_exists('MA_REST_API')) {
                     $sanitized_value = $this->sanitizeFieldValue($field_value, $field_config);
                     update_term_meta($term_id, $field_name, $sanitized_value);
 
-                    // Also update user meta if there's a mapped user
-                    if ($user_id) {
+                    // Also update user meta if there's a mapped user, except the core account email.
+                    if ($user_id && $field_name !== 'user_email') {
                         update_user_meta($user_id, $field_name, $sanitized_value);
                         $updated_args[$field_name] = $sanitized_value;
                     }
