@@ -701,9 +701,9 @@ class MA_Author_Categories extends Module
                                     <select
                                         style="width: 95%;"
                                         class="authors-select2-default-select"
+                                        id="category-post-types"
                                         <?php if ($proActive) : ?>
                                         name="category-post-types[]"
-                                        id="category-post-types"
                                         <?php endif; ?>
                                         data-placeholder="<?php esc_attr_e('Select Post Type...', 'publishpress-authors'); ?>"
                                         multiple

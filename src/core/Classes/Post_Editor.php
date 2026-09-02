@@ -451,6 +451,7 @@ class Post_Editor
         }
         ?>
         <?php if (current_user_can(get_taxonomy('author')->cap->assign_terms)) : ?>
+            <label class="screen-reader-text" for="publishpress-authors-author-select"><?php esc_html_e('Search for an author', 'publishpress-authors'); ?></label>
             <select data-nonce="<?php
             echo esc_attr(wp_create_nonce('authors-search')); ?>"
                     id="publishpress-authors-author-select"
@@ -646,8 +647,10 @@ class Post_Editor
                 }
             }
             ?>
+            <label class="screen-reader-text" for="publishpress-authors-author-filter"><?php esc_html_e('Filter posts by author', 'publishpress-authors'); ?></label>
             <select data-nonce="<?php
                 echo esc_attr(wp_create_nonce('authors-user-search')); ?>"
+                    id="publishpress-authors-author-filter"
                     class="authors-select2 authors-user-slug-search"
                     data-placeholder="<?php
                     esc_attr_e('All Authors', 'publishpress-authors'); ?>" style="width: 150px"
