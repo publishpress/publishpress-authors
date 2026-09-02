@@ -60,3 +60,5 @@
 - webpack.mix.js
 - .idea
 - .ide.php
+- .web
+- .ddev
