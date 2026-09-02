@@ -690,9 +690,9 @@ class Post_Editor
         echo esc_attr($args['category_id']); ?>" data-term-id="<?php
         echo esc_attr($args['term']); ?>" data-is-guest="<?php
         echo esc_attr($args['is_guest']); ?>" class="ui-sortable-handle publishpress-authors-author">
-            <span class="author-remove">
-                <span class="dashicons dashicons-no-alt"></span>
-            </span>
+            <button type="button" class="author-remove" aria-label="<?php echo esc_attr(sprintf(esc_html__('Remove %s', 'publishpress-authors'), $args['display_name'])); ?>">
+                <span class="dashicons dashicons-no-alt" aria-hidden="true"></span>
+            </button>
             <?php
             if (!empty($args['avatar'])) : ?>
                 <?php

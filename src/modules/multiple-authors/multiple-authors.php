@@ -1915,14 +1915,16 @@ if (!class_exists('MA_Multiple_Authors')) {
                         class="shortcode-field"
                         type="text"
                         value="<?php echo esc_attr($option['shortcode']); ?>"
+                        aria-label="<?php esc_attr_e('Shortcode', 'publishpress-authors'); ?>"
                         readonly
                         />
-                    <span class="ppma-copy-clipboard dashicons dashicons-admin-page">
+                    <button type="button" class="ppma-copy-clipboard dashicons dashicons-admin-page"
+                        aria-label="<?php esc_attr_e('Copy shortcode to clipboard', 'publishpress-authors'); ?>">
                         <span data-copied="<?php echo esc_attr__('Copied!', 'publishpress-authors'); ?>"
                             data-copy="<?php echo esc_attr__('Click To Copy!', 'publishpress-authors'); ?>">
                             <?php echo esc_html__('Click To Copy!', 'publishpress-authors'); ?>
                         </span>
-                    </span>
+                    </button>
                     </div>
             <?php endforeach; ?>
 

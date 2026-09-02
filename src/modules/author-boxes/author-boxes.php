@@ -2775,10 +2775,10 @@ class MA_Author_Boxes extends Module
                                         </select>
                                         </td>
                                         <td class="shortcode-field">
-                                            <div class="add-new-shortcode button"
+                                            <button type="button" class="add-new-shortcode button"
                                                 data-delete="<?php echo esc_attr__('Delete', 'publishpress-authors'); ?>">
                                                 <?php echo esc_html__('Add', 'publishpress-authors'); ?>
-                                            </div>
+                                            </button>
                                         </td>
                                     </tr>
                                     <?php if (is_array($shortcodes_data) && !empty($shortcodes_data)) : ?>
@@ -2804,9 +2804,9 @@ class MA_Author_Boxes extends Module
                                                         type="hidden"
                                                         value="<?php echo esc_attr($shortcode_position); ?>"
                                                     />
-                                                    <span class="delete-shortcode">
+                                                    <button type="button" class="delete-shortcode">
                                                         <?php echo esc_html__('Delete', 'publishpress-authors'); ?>
-                                                    </span>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -2949,10 +2949,10 @@ class MA_Author_Boxes extends Module
                     $additional_class .= ' profile-header-' .$args['tab_name'];
                     ?>
                     <?php if ((int)$args['index'] === 1) : ?>
-                        <div class="ppma-editor-field-reorder-btn">
+                        <button type="button" class="ppma-editor-field-reorder-btn">
                             <span class="dashicons dashicons-admin-generic"></span>
                             <?php esc_html_e('Reorder Fields', 'publishpress-authors'); ?>
-                        </div>
+                        </button>
                         <?php
 
                         $profile_fields   = self::get_profile_fields($args['post_id']);
