@@ -626,7 +626,7 @@ class MA_Author_List extends Module
         // add display fields
         $fields['display_fields'] = [
             'label'             => esc_html__('Display Fields', 'publishpress-authors'),
-            'description'       => esc_html__('Choose which author profile fields to show in Grid and Table Author Lists.', 'publishpress-authors'),
+            'description'       => esc_html__('Choose which author profile fields to show. This applies to Authors Grid and Authors Table layouts only.', 'publishpress-authors'),
             'type'              => 'select',
             'multiple'          => true,
             'options'           => $display_field_options,

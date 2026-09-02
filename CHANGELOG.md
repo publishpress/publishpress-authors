@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.16.0] - 02 September, 2026
+[4.16.0] - 03 September, 2026
 
 * Fixed: block-level HTML stripped from mapped-user Biographical Info on save, #2373
 * Fixed: create author-categories tables for new Multisite sub-sites, #2414
