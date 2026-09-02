@@ -189,6 +189,11 @@ ul.authors-list.authors-current-user-can-assign li .author-remove {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     cursor: pointer;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
 }
 
 ul.authors-list.authors-current-user-can-assign li .author-remove .dashicons {
@@ -371,6 +376,10 @@ form#edittag tr.form-field #slug {
     right: 30px;
     top: 15px;
     color: #655997;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    font: inherit;
 }
 
 .ppma-settings-shortcodes-shortcode .ppma-copy-clipboard span {

@@ -1320,7 +1320,9 @@ class Utils
         </div>
         <a
             href="#TB_inline?&width=<?php echo esc_attr($width); ?>&height=<?php echo esc_attr($height); ?>&inlineId=<?php echo esc_attr($button_id); ?>"
-            class="<?php echo esc_attr($button_class); ?> thickbox">
+            class="<?php echo esc_attr($button_class); ?> thickbox"
+            aria-hidden="true"
+            tabindex="-1">
         </a>
         <?php
     }

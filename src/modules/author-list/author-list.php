@@ -1358,10 +1358,10 @@ class MA_Author_List extends Module
                                         <div id="minor-publishing"></div>
                                         <div id="major-publishing-actions">
                                             <div>
-                                                <label style="display: none;"><strong><?php esc_html_e('Dynamic Shortcode', 'publishpress-authors'); ?>:</strong></label>
-                                                <textarea name="author_list[dynamic_shortcode]" class="shortcode-textarea dynamic" readonly="">[publishpress_authors_list list_id="<?php echo esc_attr($shortcode_id); ?>"]</textarea>
-                                                <label style="display: none;"><strong><?php esc_html_e('Static Shortcode', 'publishpress-authors'); ?>:</strong></label>
-                                                <textarea style="display: none;" name="author_list[static_shortcode]" class="shortcode-textarea static" readonly=""><?php echo esc_html($static_shortcode) ?></textarea>
+                                                <label class="screen-reader-text" for="author-list-dynamic-shortcode"><strong><?php esc_html_e('Dynamic Shortcode', 'publishpress-authors'); ?>:</strong></label>
+                                                <textarea id="author-list-dynamic-shortcode" name="author_list[dynamic_shortcode]" class="shortcode-textarea dynamic" readonly="">[publishpress_authors_list list_id="<?php echo esc_attr($shortcode_id); ?>"]</textarea>
+                                                <label class="screen-reader-text" for="author-list-static-shortcode"><strong><?php esc_html_e('Static Shortcode', 'publishpress-authors'); ?>:</strong></label>
+                                                <textarea id="author-list-static-shortcode" style="display: none;" name="author_list[static_shortcode]" class="shortcode-textarea static" readonly=""><?php echo esc_html($static_shortcode) ?></textarea>
                                             </div>
                                             <div class="clear"></div>
                                         </div>

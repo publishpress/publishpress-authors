@@ -794,7 +794,7 @@ class Plugin
         }
 
         $columns['posts_count'] = sprintf(
-            '%s <i class="dashicons dashicons-info-outline" title="%s"></i>',
+            '%s <i class="dashicons dashicons-info-outline" aria-hidden="true" title="%s"></i>',
             __('Posts', 'publishpress-authors'),
             sprintf(
                 __('Published posts of the following post types: %s', 'publishpress-authors'),

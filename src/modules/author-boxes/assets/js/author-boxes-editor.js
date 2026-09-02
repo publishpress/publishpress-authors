@@ -1453,7 +1453,7 @@
             var new_entry = '<tr class="shortcode-entry">';
             new_entry += '<td class="shortcode">' + escAttr(shortcode) + '</td>';
             new_entry += '<td class="position">' + position.charAt(0).toUpperCase() + position.slice(1) + '</td>';
-            new_entry += '<td class="action"><input name="shortcodes[shortcode][]" id="shortcodes-shortcode" type="hidden" value="' + escAttr(shortcode) + '"><input name="shortcodes[position][]" id="shortcodes-position" type="hidden" value="' + position + '"><span class="delete-shortcode">' + $('.ppma-boxes-shortcodes-wrap .shortcode-entries .add-new-shortcode').attr('data-delete') +'</span></td>';
+            new_entry += '<td class="action"><input name="shortcodes[shortcode][]" id="shortcodes-shortcode" type="hidden" value="' + escAttr(shortcode) + '"><input name="shortcodes[position][]" id="shortcodes-position" type="hidden" value="' + position + '"><button type="button" class="delete-shortcode">' + $('.ppma-boxes-shortcodes-wrap .shortcode-entries .add-new-shortcode').attr('data-delete') +'</button></td>';
             new_entry += '</tr>';
             $('.ppma-boxes-shortcodes-wrap .shortcode-form .shortcodes-shortcode-input').val('');
             $('.ppma-boxes-shortcodes-wrap .shortcode-form').after(new_entry);

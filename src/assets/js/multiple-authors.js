@@ -1155,6 +1155,7 @@ jQuery(document).ready(function ($) {
      * Settings shortcode copy to clipboard
      */
     $(document).on('click', '.ppma-copy-clipboard', function (event) {
+        var copy_button = event.target.closest('.ppma-copy-clipboard');
         //get the text field
         var shortcode_input = event.target.closest('.ppma-settings-shortcodes-shortcode').querySelector('.shortcode-field');
         //select the text field
@@ -1163,21 +1164,20 @@ jQuery(document).ready(function ($) {
         //copy the text inside the text field
         navigator.clipboard.writeText(shortcode_input.value);
         //update tooltip notification
-        event.target.closest('.ppma-settings-shortcodes-shortcode')
-            .querySelector('.ppma-copy-clipboard span')
-            .innerHTML = event.target.closest('.ppma-settings-shortcodes-shortcode').querySelector('.ppma-copy-clipboard span')
-                .getAttribute('data-copied');
+        var copy_message = copy_button.querySelector('span');
+        copy_message.innerHTML = copy_message.getAttribute('data-copied');
+        copy_button.setAttribute('aria-label', copy_message.getAttribute('data-copied'));
     });
 
     /**
      * Copy to clipboard copied text change
      */
     $(document).on('mouseleave', '.ppma-copy-clipboard', function (event) {
+        var copy_button = event.target.closest('.ppma-copy-clipboard');
         //update tooltip text
-        event.target.closest('.ppma-settings-shortcodes-shortcode')
-            .querySelector('.ppma-copy-clipboard span')
-            .innerHTML = event.target.closest('.ppma-settings-shortcodes-shortcode').querySelector('.ppma-copy-clipboard span')
-                .getAttribute('data-copy');
+        var copy_message = copy_button.querySelector('span');
+        copy_message.innerHTML = copy_message.getAttribute('data-copy');
+        copy_button.setAttribute('aria-label', copy_message.getAttribute('data-copy'));
     });
 
     /**

@@ -92,7 +92,7 @@ class AuthorCategoriesTable extends \WP_List_Table
     function get_columns()
     {
         $columns = [
-            'cb' => '<input type="checkbox" />',
+            'cb' => '<input type="checkbox" aria-label="' . esc_attr__('Select all author categories', 'publishpress-authors') . '" />',
             'category_name' => esc_html__('Name', 'publishpress-authors'),
             'plural_name' => esc_html__('Plural Name', 'publishpress-authors'),
             'post_types' => esc_html__('Post Types', 'publishpress-authors'),
@@ -129,7 +129,12 @@ class AuthorCategoriesTable extends \WP_List_Table
      */
     function column_cb($item)
     {
-        return sprintf('<input type="checkbox" name="%1$s[]" value="%2$s" />', 'author_categories', $item['id']);
+        return sprintf(
+            '<input type="checkbox" name="%1$s[]" value="%2$s" aria-label="%3$s" />',
+            'author_categories',
+            $item['id'],
+            esc_attr(sprintf(esc_html__('Select %s', 'publishpress-authors'), $item['category_name']))
+        );
     }
 
     /**
