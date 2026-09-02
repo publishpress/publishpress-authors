@@ -794,6 +794,9 @@ class Author
             $imageId = attachment_url_to_postid($urls['url']);
             $alt = get_post_meta( $imageId, '_wp_attachment_image_alt', true );
         }
+        if (empty($alt)) {
+            $alt = $this->display_name;
+        }
 
         // Build the HTML tag.
         $avatar = sprintf(
