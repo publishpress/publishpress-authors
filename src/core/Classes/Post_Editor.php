@@ -25,6 +25,8 @@ use WP_REST_Response;
  */
 class Post_Editor
 {
+    public const BLOCK_EDITOR_AUTHORS_META_KEY = '_ppma_block_editor_authors';
+
     /**
      * Register callbacks for managing custom columns
      */
@@ -307,6 +309,69 @@ class Post_Editor
     }
 
     /**
+     * Register the block editor Authors panel state meta.
+     *
+     * @param array $post_types Post types that support Authors.
+     */
+    public static function register_block_editor_authors_meta($post_types)
+    {
+        foreach ((array)$post_types as $post_type) {
+            register_post_meta(
+                $post_type,
+                self::BLOCK_EDITOR_AUTHORS_META_KEY,
+                [
+                    'auth_callback' => function ($allowed, $meta_key, $post_id) {
+                        return current_user_can('edit_post', $post_id);
+                    },
+                    'default'       => '',
+                    'single'        => true,
+                    'show_in_rest'  => true,
+                    'type'          => 'string',
+                ]
+            );
+
+            add_action(
+                'rest_after_insert_' . $post_type,
+                [self::class, 'save_block_editor_authors_from_rest_meta'],
+                10,
+                3
+            );
+        }
+    }
+
+    /**
+     * Save Authors selected in the block editor document panel after a REST post save.
+     *
+     * @param WP_Post $post     Inserted or updated post object.
+     * @param mixed   $request  Request object.
+     * @param bool    $creating Whether this is a new post.
+     */
+    public static function save_block_editor_authors_from_rest_meta($post, $request, $creating)
+    {
+        if (
+            !$post
+            || !Utils::is_post_type_enabled($post->post_type)
+            || !current_user_can('edit_post', $post->ID)
+        ) {
+            return;
+        }
+
+        $meta = $request->get_param('meta');
+
+        if (!is_array($meta) || !array_key_exists(self::BLOCK_EDITOR_AUTHORS_META_KEY, $meta)) {
+            return;
+        }
+
+        $payload = json_decode(wp_unslash((string)$meta[self::BLOCK_EDITOR_AUTHORS_META_KEY]), true);
+
+        if (!is_array($payload)) {
+            return;
+        }
+
+        self::save_block_editor_authors_payload($post->ID, $payload);
+    }
+
+    /**
      * Save Authors selected in the block editor document panel.
      */
     public static function save_block_editor_authors()
@@ -334,10 +399,32 @@ class Post_Editor
             wp_send_json_error(null, 403);
         }
 
-        $authors           = isset($_POST['authors']) ? Utils::sanitizeArray($_POST['authors']) : [];
-        $author_categories = isset($_POST['author_categories']) ? Utils::sanitizeArray($_POST['author_categories']) : [];
+        $payload = [
+            'authors'                => isset($_POST['authors']) ? Utils::sanitizeArray($_POST['authors']) : [],
+            'author_categories'      => isset($_POST['author_categories']) ? Utils::sanitizeArray($_POST['author_categories']) : [],
+            'fallback_author_user'   => isset($_POST['fallback_author_user']) ? (int)$_POST['fallback_author_user'] : null,
+            'ppma_author_box_select' => isset($_POST['ppma_author_box_select'])
+                ? sanitize_text_field($_POST['ppma_author_box_select'])
+                : null,
+        ];
+
+        self::save_block_editor_authors_payload($post_id, $payload);
+
+        wp_send_json_success(true);
+    }
+
+    /**
+     * Save Authors selected in the block editor document panel.
+     *
+     * @param int   $post_id Post ID.
+     * @param array $payload Authors panel payload.
+     */
+    private static function save_block_editor_authors_payload($post_id, $payload)
+    {
+        $authors           = isset($payload['authors']) ? Utils::sanitizeArray($payload['authors']) : [];
+        $author_categories = isset($payload['author_categories']) ? Utils::sanitizeArray($payload['author_categories']) : [];
         $authors           = self::remove_dirty_authors_from_authors_arr($authors);
-        $fallback_user_id  = isset($_POST['fallback_author_user']) ? (int)$_POST['fallback_author_user'] : null;
+        $fallback_user_id  = isset($payload['fallback_author_user']) ? (int)$payload['fallback_author_user'] : null;
 
         Utils::set_post_authors($post_id, $authors, true, $fallback_user_id, $author_categories);
 
@@ -345,8 +432,8 @@ class Post_Editor
         $show_editor_author_box = isset($legacyPlugin->modules->multiple_authors->options->show_editor_author_box_selection)
                 && 'yes' === $legacyPlugin->modules->multiple_authors->options->show_editor_author_box_selection;
 
-        if ($show_editor_author_box && isset($_POST['ppma_author_box_select'])) {
-            $selected_box = sanitize_text_field($_POST['ppma_author_box_select']);
+        if ($show_editor_author_box && isset($payload['ppma_author_box_select'])) {
+            $selected_box = sanitize_text_field($payload['ppma_author_box_select']);
 
             if (empty($selected_box)) {
                 delete_post_meta($post_id, 'ppma_selected_author_box');
@@ -359,8 +446,6 @@ class Post_Editor
 
         do_action('publishpress_authors_post_authors_metabox_action_saved', $post_id);
         do_action('publishpress_authors_flush_cache_for_post', $post_id);
-
-        wp_send_json_success(true);
     }
 
     /**

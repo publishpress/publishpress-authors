@@ -639,6 +639,7 @@ class Plugin
 
         $supported_post_types = Utils::get_enabled_post_types();
         register_taxonomy(self::$coauthor_taxonomy, $supported_post_types, $args);
+        Post_Editor::register_block_editor_authors_meta($supported_post_types);
 
         if (apply_filters('publishpress_authors_flush_rewrite_rules', PUBLISHPRESS_AUTHORS_FLUSH_REWRITE_RULES)) {
             /**
@@ -1813,6 +1814,7 @@ class Plugin
                 'save_error'                       => __('Sorry, the request returned an error.', 'publishpress-authors'),
                 'saving'                           => __('Please, wait...', 'publishpress-authors'),
                 'select2_i18n'                     => Utils::getSelect2I18n(),
+                'state_meta_key'                   => Post_Editor::BLOCK_EDITOR_AUTHORS_META_KEY,
                 'title'                            => __('Authors', 'publishpress-authors'),
             ]
         );

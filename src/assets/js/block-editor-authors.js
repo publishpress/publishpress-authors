@@ -13,7 +13,7 @@
     var useState = wp.element.useState;
     var Spinner = wp.components.Spinner;
     var Notice = wp.components.Notice;
-    var postSavingLock = 'publishpress-authors-block-editor';
+    var draftAuthorsSelection = null;
 
     if (!PluginDocumentSettingPanel) {
         return;
@@ -320,6 +320,49 @@
         });
     }
 
+    function applyAuthorsSelection(container, data) {
+        var $context = $(container);
+        var template;
+
+        if (!data || !data.selected_authors || !wp.template) {
+            return;
+        }
+
+        template = wp.template("authors-author-partial");
+
+        $context.find(".authors-list li:not(.sortable-placeholder)").remove();
+
+        data.selected_authors.forEach(function (authorData) {
+            var categoryId = authorData.category_id;
+            var $targetList;
+
+            if (data.author_categories && typeof data.author_categories[authorData.id] !== 'undefined') {
+                categoryId = $.isArray(data.author_categories[authorData.id])
+                    ? data.author_categories[authorData.id][0]
+                    : data.author_categories[authorData.id];
+            }
+
+            authorData.category_id = categoryId;
+            $targetList = $context.find(".authors-list.authors-category-" + categoryId).first();
+
+            if (!$targetList.length) {
+                $targetList = $context.find(".authors-list:first");
+            }
+
+            if ($targetList.length && !authorExistsInCategory($targetList, authorData.id)) {
+                $targetList.append(htmlDecode(template(authorData)));
+            }
+        });
+
+        if (typeof data.ppma_author_box_select !== 'undefined') {
+            $context.find('#ppma_author_box_select').val(data.ppma_author_box_select);
+        }
+
+        if (typeof data.fallback_author_user !== 'undefined') {
+            $context.find('#publishpress-authors-user-author-select').val(data.fallback_author_user);
+        }
+    }
+
     function initAuthorsSelection(container) {
         var $context = $(container);
 
@@ -339,6 +382,7 @@
             $select.ppma_select2(withSelect2Language({}));
         });
         initSortable($context);
+        applyAuthorsSelection(container, draftAuthorsSelection);
         handleUsersAuthorField($context);
         handleAuthorCategory($context);
 
@@ -353,13 +397,16 @@
         var $context = $(container);
         var selectedAuthors = [];
         var selectedAuthorCategories = {};
+        var selectedAuthorData = [];
 
         $context.find(".authors-list input.author_term").each(function () {
             var selectedVal = parseInt($(this).val(), 10);
+            var $authorItem = $(this).closest('li');
+            var selectedCategory;
             selectedAuthors.push(selectedVal);
 
             if (settings.allow_author_multiple_categories === 'yes') {
-                var selectedCategory = $(this).closest('ul').attr('data-category_id');
+                selectedCategory = $(this).closest('ul').attr('data-category_id');
 
                 if (typeof selectedAuthorCategories[selectedVal] === 'undefined') {
                     selectedAuthorCategories[selectedVal] = [];
@@ -369,72 +416,99 @@
                     selectedAuthorCategories[selectedVal].push(selectedCategory);
                 }
             } else {
-                selectedAuthorCategories[selectedVal] = $(this).closest('ul').attr('data-category_id');
+                selectedCategory = $(this).closest('ul').attr('data-category_id');
+                selectedAuthorCategories[selectedVal] = selectedCategory;
             }
+
+            selectedAuthorData.push({
+                id: selectedVal,
+                display_name: $authorItem.find('.display-name').text(),
+                is_guest: $authorItem.data('is-guest') || 0,
+                category_id: selectedCategory
+            });
         });
 
         return {
             authors: selectedAuthors,
             author_categories: selectedAuthorCategories,
             fallback_author_user: $context.find('#publishpress-authors-user-author-select').val(),
-            ppma_author_box_select: $context.find('#ppma_author_box_select').val()
+            ppma_author_box_select: $context.find('#ppma_author_box_select').val(),
+            selected_authors: selectedAuthorData
         };
     }
 
-    function saveAuthors(container, setSaving, setError) {
+    function updateEditedPostAuthors(container) {
         var data = collectAuthorsSelection(container);
+        var meta = {};
 
-        setSaving(true);
-        setError('');
+        draftAuthorsSelection = data;
 
-        if (wp.data && wp.data.dispatch('core/editor')) {
-            wp.data.dispatch('core/editor').lockPostSaving(postSavingLock);
+        if (!settings.state_meta_key || !wp.data || !wp.data.dispatch('core/editor')) {
+            return;
         }
 
-        $.ajax({
-            url: settings.ajax_url,
-            type: 'POST',
-            data: $.extend(
-                {
-                    action: 'ppma_save_block_editor_authors',
-                    post_id: settings.post_id,
-                    nonce: settings.nonce
-                },
-                data
-            )
-        }).done(function (response) {
-            if (!response || !response.success) {
-                setError(settings.save_error);
-            }
-        }).fail(function () {
-            setError(settings.save_error);
-        }).always(function () {
-            setSaving(false);
+        meta[settings.state_meta_key] = JSON.stringify(data);
+        wp.data.dispatch('core/editor').editPost({meta: meta});
+    }
 
-            if (wp.data && wp.data.dispatch('core/editor')) {
-                wp.data.dispatch('core/editor').unlockPostSaving(postSavingLock);
-            }
-        });
+    function getEditedPostAuthorsDraft() {
+        var postMeta;
+        var draft;
+
+        if (!settings.state_meta_key || !wp.data || !wp.data.select('core/editor')) {
+            return null;
+        }
+
+        postMeta = wp.data.select('core/editor').getEditedPostAttribute('meta') || {};
+
+        if (!postMeta[settings.state_meta_key]) {
+            return null;
+        }
+
+        try {
+            draft = JSON.parse(postMeta[settings.state_meta_key]);
+        } catch (e) {
+            return null;
+        }
+
+        return draft && draft.selected_authors ? draft : null;
     }
 
     function AuthorsPanel() {
         var panelRef = useRef(null);
-        var saveTimer = useRef(null);
         var retryTimer = useRef(null);
         var initialized = useRef(false);
         var setHtmlState = useState('');
         var html = setHtmlState[0];
         var setHtml = setHtmlState[1];
-        var savingState = useState(false);
-        var saving = savingState[0];
-        var setSaving = savingState[1];
         var errorState = useState('');
         var error = errorState[0];
         var setError = errorState[1];
 
+        if (!draftAuthorsSelection) {
+            draftAuthorsSelection = getEditedPostAuthorsDraft();
+        }
+
         function bindAuthorsPanel(container) {
-            if (!container || initialized.current) {
+            if (!container) {
+                if (panelRef.current) {
+                    $(panelRef.current).off('publishpressAuthors:changed');
+                }
+
+                panelRef.current = null;
+                initialized.current = false;
+                window.clearTimeout(retryTimer.current);
                 return;
+            }
+
+            if (panelRef.current === container && initialized.current) {
+                return;
+            }
+
+            if (panelRef.current && panelRef.current !== container) {
+                $(panelRef.current).off('publishpressAuthors:changed');
+                initialized.current = false;
+                window.clearTimeout(retryTimer.current);
             }
 
             panelRef.current = container;
@@ -452,11 +526,9 @@
 
             initializeWhenReady();
 
+            $(container).off('publishpressAuthors:changed');
             $(container).on('publishpressAuthors:changed', function () {
-                window.clearTimeout(saveTimer.current);
-                saveTimer.current = window.setTimeout(function () {
-                    saveAuthors(container, setSaving, setError);
-                }, 700);
+                updateEditedPostAuthors(container);
             });
         }
 
@@ -509,7 +581,6 @@
                 }
 
                 window.clearTimeout(retryTimer.current);
-                window.clearTimeout(saveTimer.current);
             };
         }, []);
 
@@ -521,7 +592,6 @@
                 className: 'publishpress-authors-block-editor-panel'
             },
             error ? createElement(Notice, {status: 'error', isDismissible: false}, error) : null,
-            saving ? createElement('p', {className: 'description'}, settings.saving) : null,
             html ? createElement('div', {
                 'data-ppma-authors-panel': '1',
                 ref: bindAuthorsPanel,
