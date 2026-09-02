@@ -244,7 +244,7 @@ class Post_Editor
             $taxonomy_name === 'author'
             && $context === 'edit'
             && $taxonomy->meta_box_cb === false
-            && apply_filters('publishpress_authors_hide_author_taxonomy_in_block_editor', false, $taxonomy, $request)
+            && apply_filters('publishpress_authors_hide_author_taxonomy_in_block_editor', true, $taxonomy, $request)
         ) {
             $data_response = $response->get_data();
             $data_response['visibility']['show_ui'] = false;
@@ -266,6 +266,101 @@ class Post_Editor
         $authors = get_post_authors(0, true);
 
         echo self::get_rendered_authors_selection($authors, false);  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    }
+
+    /**
+     * Render the Authors selector for the block editor document panel.
+     */
+    public static function render_block_editor_authors()
+    {
+        $post_id = isset($_GET['post_id']) ? (int)$_GET['post_id'] : 0;
+
+        if (
+            empty($post_id)
+            || empty($_GET['nonce'])
+            || !wp_verify_nonce(sanitize_key($_GET['nonce']), 'ppma-block-editor-authors')
+            || !current_user_can('edit_post', $post_id)
+        ) {
+            wp_send_json_error(null, 403);
+        }
+
+        $post = get_post($post_id);
+
+        if (!$post || !Utils::is_post_type_enabled($post->post_type)) {
+            wp_send_json_error(null, 404);
+        }
+
+        $GLOBALS['post'] = $post;
+        setup_postdata($post);
+
+        ob_start();
+        echo self::get_rendered_authors_selection(get_post_authors($post_id, true), false); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        $html = ob_get_clean();
+
+        wp_reset_postdata();
+
+        wp_send_json_success(
+            [
+                'html' => $html,
+            ]
+        );
+    }
+
+    /**
+     * Save Authors selected in the block editor document panel.
+     */
+    public static function save_block_editor_authors()
+    {
+        $post_id = isset($_POST['post_id']) ? (int)$_POST['post_id'] : 0;
+
+        if (
+            empty($post_id)
+            || empty($_POST['nonce'])
+            || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'ppma-block-editor-authors')
+            || !current_user_can('edit_post', $post_id)
+        ) {
+            wp_send_json_error(null, 403);
+        }
+
+        $post = get_post($post_id);
+
+        if (!$post || !Utils::is_post_type_enabled($post->post_type)) {
+            wp_send_json_error(null, 404);
+        }
+
+        $taxonomy = get_taxonomy('author');
+
+        if (!$taxonomy || !current_user_can($taxonomy->cap->assign_terms)) {
+            wp_send_json_error(null, 403);
+        }
+
+        $authors           = isset($_POST['authors']) ? Utils::sanitizeArray($_POST['authors']) : [];
+        $author_categories = isset($_POST['author_categories']) ? Utils::sanitizeArray($_POST['author_categories']) : [];
+        $authors           = self::remove_dirty_authors_from_authors_arr($authors);
+        $fallback_user_id  = isset($_POST['fallback_author_user']) ? (int)$_POST['fallback_author_user'] : null;
+
+        Utils::set_post_authors($post_id, $authors, true, $fallback_user_id, $author_categories);
+
+        $legacyPlugin = Factory::getLegacyPlugin();
+        $show_editor_author_box = isset($legacyPlugin->modules->multiple_authors->options->show_editor_author_box_selection)
+                && 'yes' === $legacyPlugin->modules->multiple_authors->options->show_editor_author_box_selection;
+
+        if ($show_editor_author_box && isset($_POST['ppma_author_box_select'])) {
+            $selected_box = sanitize_text_field($_POST['ppma_author_box_select']);
+
+            if (empty($selected_box)) {
+                delete_post_meta($post_id, 'ppma_selected_author_box');
+            } else {
+                update_post_meta($post_id, 'ppma_selected_author_box', $selected_box);
+            }
+
+            delete_post_meta($post_id, 'ppma_disable_author_box');
+        }
+
+        do_action('publishpress_authors_post_authors_metabox_action_saved', $post_id);
+        do_action('publishpress_authors_flush_cache_for_post', $post_id);
+
+        wp_send_json_success(true);
     }
 
     /**
