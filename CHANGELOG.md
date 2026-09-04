@@ -1,6 +1,24 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.16.0] - 03 September, 2026
+
+* Fixed: block-level HTML stripped from mapped-user Biographical Info on save, #2373
+* Fixed: create author-categories tables for new Multisite sub-sites, #2414
+* Fixed: Removing email in Authors profile deletes the email from the mapped WordPress user account, #2423
+* Fixed: Restrict unauthenticated access to user mapped authors on REST read route, #2417
+* Update: Add Authors Data block, #2413
+* Update: Add Author List block, #2411
+* Update: Sync Author List query with Alphabet filter, #2384
+* Update: Add author box icon and display-name options, #2412
+* Fixed: WordPress 7.1 Visual Revisions compatibility, #2410
+* Fixed: Prevent stale Author Box sessions from overwriting newer layout settings, #2401
+* Fixed: Author Box Layout Settings Lost on Save (Large Field Count), #2393
+* Fixed: Limit Chosen and Select2 assets enqueue to only author pages, #2385
+* Fixed: PHP Deprecated warning — strip_tags(): Passing null to parameter #1 ($string) in Widget.php, #2386
+* Update: Add default Pinterest author field [PRO], #342,
+* Update: Update sidebar link, #2371
+
 [4.15.0] - 04 June, 2026
 
 * Feature: Allow post author to be added to multiple author category (Enabled via settings), #2246

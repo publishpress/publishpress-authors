@@ -254,12 +254,15 @@ window.wp = window.wp || {};
 		 * @return {boolean} Always returns false.
 		 */
 		save: function (id) {
-			var params, fields;
+			var params, fields, rowId, rowSelector;
 
 			// Makes sure we can pass an HTMLElement as the ID.
 			if (typeof (id) === 'object') {
 				id = this.getId(id);
 			}
+
+			rowId = 'authorcategory-' + id;
+			rowSelector = '#' + rowId;
 
 			$('table.widefat .spinner').addClass('is-active');
 
@@ -290,7 +293,7 @@ window.wp = window.wp || {};
 
 					if (r) {
 						if (-1 !== r.indexOf('<tr')) {
-							$('#' + id).siblings('tr.hidden').addBack().remove();
+							$(rowSelector).siblings('tr.hidden').addBack().remove();
 							new_id = $(r).attr('id');
 
 							$('#edit-' + id).before(r).remove();
@@ -300,7 +303,7 @@ window.wp = window.wp || {};
 								row = $('#' + new_id);
 							} else {
 								option_value = id;
-								row = $('#' + id);
+								row = $(rowSelector);
 							}
 
 							// Update the value in the Parent dropdown.
@@ -353,7 +356,7 @@ window.wp = window.wp || {};
 				id = id.substr(id.lastIndexOf('-') + 1);
 
 				// Show the taxonomy row and move focus back to the Quick Edit button.
-				$('#' + id).show().find('.editinline')
+				$('#authorcategory-' + id).show().find('.editinline')
 					.attr('aria-expanded', 'false')
 					.trigger('focus');
 			}

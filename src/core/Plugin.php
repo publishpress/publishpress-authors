@@ -274,6 +274,12 @@ class Plugin
                 2
             );
             add_action(
+                'edit_terms',
+                ['MultipleAuthors\\Classes\\Author_Editor', 'action_edit_terms'],
+                10,
+                3
+            );
+            add_action(
                 'wp_ajax_mapped_author_validation',
                 ['MultipleAuthors\\Classes\\Admin_Ajax', 'handle_mapped_author_validation']
             );
@@ -379,12 +385,23 @@ class Plugin
             'wp_ajax_author_get_user_data',
             ['MultipleAuthors\\Classes\\Admin_Ajax', 'handle_author_get_user_data']
         );
+        add_action(
+            'wp_ajax_ppma_render_block_editor_authors',
+            ['MultipleAuthors\\Classes\\Post_Editor', 'render_block_editor_authors']
+        );
+        add_action(
+            'wp_ajax_ppma_save_block_editor_authors',
+            ['MultipleAuthors\\Classes\\Post_Editor', 'save_block_editor_authors']
+        );
+        add_action('wp_ajax_ppma_authors_index_filter', [$this, 'handle_authors_index_filter']);
+        add_action('wp_ajax_nopriv_ppma_authors_index_filter', [$this, 'handle_authors_index_filter']);
 
         // Post integration
         add_action(
             'add_meta_boxes',
             ['MultipleAuthors\\Classes\\Post_Editor', 'action_add_meta_boxes_late'],
-            100
+            100,
+            2
         );
         add_filter(
             'rest_prepare_taxonomy',
@@ -622,6 +639,7 @@ class Plugin
 
         $supported_post_types = Utils::get_enabled_post_types();
         register_taxonomy(self::$coauthor_taxonomy, $supported_post_types, $args);
+        Post_Editor::register_block_editor_authors_meta($supported_post_types);
 
         if (apply_filters('publishpress_authors_flush_rewrite_rules', PUBLISHPRESS_AUTHORS_FLUSH_REWRITE_RULES)) {
             /**
@@ -641,6 +659,7 @@ class Plugin
     {
         // Add the main JS script and CSS file
         add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts']);
+        add_action('enqueue_block_editor_assets', [$this, 'enqueue_block_editor_assets']);
 
         // Add quick-edit author select field
         add_action('quick_edit_custom_box', [$this, '_action_quick_edit_custom_box'], 10, 2);
@@ -1512,6 +1531,10 @@ class Plugin
     {
         global $pagenow;
 
+        if (!$this->should_enqueue_admin_assets($hook_suffix)) {
+            return;
+        }
+
         wp_enqueue_script('jquery');
         wp_enqueue_script('jquery-ui-sortable');
 
@@ -1689,9 +1712,207 @@ class Plugin
                 'nonce' => wp_create_nonce('bulk-edit-nonce')
             )
         );
+
         if ($enqueue_media_script) {
             wp_enqueue_media();
         }
+    }
+
+    /**
+     * Enqueue Authors assets during the block editor asset pass.
+     *
+     * Some Gutenberg script handles are registered later than admin_enqueue_scripts,
+     * so the custom Authors document panel must also be enqueued here.
+     */
+    public function enqueue_block_editor_assets()
+    {
+        $current_post_type = $this->get_current_admin_post_type();
+
+        if (
+            !Post_Editor::is_block_editor_page($current_post_type)
+            || !Utils::is_post_type_enabled($current_post_type)
+        ) {
+            return;
+        }
+
+        wp_enqueue_script('jquery');
+        wp_enqueue_script('jquery-ui-sortable');
+
+        wp_enqueue_style(
+            'multiple-authors-style',
+            PP_AUTHORS_ASSETS_URL . 'css/multiple-authors.css',
+            [],
+            PP_AUTHORS_VERSION
+        );
+
+        wp_enqueue_script(
+            'multiple-authors-select2',
+            PP_AUTHORS_ASSETS_URL . 'lib/select2/js/select2.full.min.js',
+            ['jquery'],
+            PP_AUTHORS_VERSION
+        );
+
+        wp_enqueue_style(
+            'multiple-authors-select2',
+            PP_AUTHORS_ASSETS_URL . 'lib/select2/css/select2.min.css',
+            [],
+            PP_AUTHORS_VERSION
+        );
+
+        wp_add_inline_style(
+            'multiple-authors-select2',
+            '.publishpress-authors-block-editor-panel .ppma_select2-hidden-accessible{' .
+                'border:0!important;clip:rect(0 0 0 0)!important;' .
+                '-webkit-clip-path:inset(50%)!important;clip-path:inset(50%)!important;' .
+                'height:1px!important;overflow:hidden!important;padding:0!important;' .
+                'position:absolute!important;width:1px!important;white-space:nowrap!important;' .
+            '}' .
+            '.publishpress-authors-block-editor-panel .ppma_select2-container{' .
+                'max-width:100%;width:100%!important;' .
+            '}' .
+            '.publishpress-authors-block-editor-panel .authors-list{margin-top:8px;}'
+        );
+
+        $this->enqueue_block_editor_authors_panel();
+    }
+
+    private function enqueue_block_editor_authors_panel()
+    {
+        $post_id = $this->get_current_admin_post_id();
+
+        if ($post_id <= 0) {
+            return;
+        }
+
+        wp_enqueue_script(
+            'publishpress-authors-block-editor',
+            PP_AUTHORS_ASSETS_URL . 'js/block-editor-authors.js',
+            [
+                'jquery',
+                'jquery-ui-sortable',
+                'multiple-authors-select2',
+                'wp-components',
+                'wp-data',
+                'wp-edit-post',
+                'wp-editor',
+                'wp-element',
+                'wp-plugins',
+                'wp-util',
+            ],
+            PP_AUTHORS_VERSION
+        );
+
+        wp_localize_script(
+            'publishpress-authors-block-editor',
+            'PublishPressAuthorsBlockEditor',
+            [
+                'ajax_url'                         => admin_url('admin-ajax.php'),
+                'allow_author_multiple_categories' => Utils::isAuthorMultipleCategoriesEnabled() ? 'yes' : 'no',
+                'load_error'                       => __('Sorry, the request returned an error.', 'publishpress-authors'),
+                'nonce'                            => wp_create_nonce('ppma-block-editor-authors'),
+                'post_id'                          => $post_id,
+                'save_error'                       => __('Sorry, the request returned an error.', 'publishpress-authors'),
+                'saving'                           => __('Please, wait...', 'publishpress-authors'),
+                'select2_i18n'                     => Utils::getSelect2I18n(),
+                'state_meta_key'                   => Post_Editor::BLOCK_EDITOR_AUTHORS_META_KEY,
+                'title'                            => __('Authors', 'publishpress-authors'),
+            ]
+        );
+    }
+
+    private function should_enqueue_admin_assets($hook_suffix)
+    {
+        global $pagenow;
+
+        if (!is_admin()) {
+            return false;
+        }
+
+        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+
+        if (is_object($screen)) {
+            if (!empty($screen->taxonomy) && 'author' === $screen->taxonomy) {
+                return true;
+            }
+        }
+
+        if (isset($_GET['page']) && 0 === strpos(sanitize_key(wp_unslash($_GET['page'])), 'ppma-')) {
+            return true;
+        }
+
+        if (is_string($hook_suffix) && false !== strpos($hook_suffix, 'ppma-')) {
+            return true;
+        }
+
+        if (in_array($pagenow, ['edit-tags.php', 'term.php'], true)
+            && isset($_GET['taxonomy'])
+            && 'author' === sanitize_key(wp_unslash($_GET['taxonomy']))
+        ) {
+            return true;
+        }
+
+        if (in_array($pagenow, ['post.php', 'post-new.php', 'edit.php'], true)) {
+            $post_type = $this->get_current_admin_post_type();
+
+            if (in_array($post_type, $this->get_admin_assets_post_types(), true)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function get_admin_assets_post_types()
+    {
+        $post_types = array_values((array)Utils::get_enabled_post_types());
+
+        $post_types[] = 'ppma_boxes';
+        $post_types[] = 'ppmacf_field';
+
+        return array_unique($post_types);
+    }
+
+    private function get_current_admin_post_type()
+    {
+        if (!empty($_GET['post_type'])) {
+            return sanitize_key(wp_unslash($_GET['post_type']));
+        }
+
+        if (!empty($_POST['post_type'])) {
+            return sanitize_key(wp_unslash($_POST['post_type']));
+        }
+
+        if (!empty($_GET['post'])) {
+            return get_post_type((int)$_GET['post']);
+        }
+
+        if (!empty($_POST['post_ID'])) {
+            return get_post_type((int)$_POST['post_ID']);
+        }
+
+        return 'post';
+    }
+
+    private function get_current_admin_post_id()
+    {
+        global $post;
+
+        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+
+        if (
+            is_object($screen)
+            && !empty($screen->base)
+            && $screen->base === 'post'
+            && !empty($_GET['post'])
+        ) {
+            return (int)$_GET['post'];
+        }
+
+        if (is_object($post) && !empty($post->ID)) {
+            return (int)$post->ID;
+        }
+
+        return 0;
     }
 
     /**
@@ -1935,6 +2156,74 @@ class Plugin
         }
 
         wp_cache_delete('coauthors_post_' . $object_id, 'publishpress-authors');
+
+        if (! defined('REST_REQUEST') || ! REST_REQUEST) {
+            return;
+        }
+
+        $this->sync_author_terms_after_rest_update($object_id);
+    }
+
+    /**
+     * Sync Authors data after the block editor saves the REST taxonomy field.
+     *
+     * @param int $post_id Post ID.
+     */
+    private function sync_author_terms_after_rest_update($post_id)
+    {
+        $post_id = (int)$post_id;
+
+        if (
+            empty($post_id)
+            || wp_is_post_revision($post_id)
+            || wp_is_post_autosave($post_id)
+        ) {
+            return;
+        }
+
+        $post = get_post($post_id);
+
+        if (
+            ! $post
+            || is_wp_error($post)
+            || ! Utils::is_post_type_enabled($post->post_type)
+        ) {
+            return;
+        }
+
+        $term_ids = wp_get_object_terms(
+            $post_id,
+            self::$coauthor_taxonomy,
+            [
+                'fields'  => 'ids',
+                'orderby' => 'term_order',
+            ]
+        );
+
+        if (is_wp_error($term_ids)) {
+            return;
+        }
+
+        $authors = [];
+
+        foreach ($term_ids as $term_id) {
+            $author = Author::get_by_term_id((int)$term_id);
+
+            if (is_object($author) && ! is_wp_error($author)) {
+                $authors[] = $author;
+            }
+        }
+
+        $fallback_user_id = null;
+        $legacyPlugin     = Factory::getLegacyPlugin();
+
+        if (isset($legacyPlugin->modules->multiple_authors->options->fallback_user_for_guest_post)) {
+            $fallback_user_id = (int)$legacyPlugin->modules->multiple_authors->options->fallback_user_for_guest_post;
+        }
+
+        Utils::set_post_authors_name_meta($post_id, $authors);
+        Utils::sync_post_author_column($post_id, $authors, $fallback_user_id);
+        Post_Editor::flush_post_cache($post_id);
     }
 
     /**
@@ -2021,7 +2310,10 @@ class Plugin
             'show_title' => true
         ];
 
-        if (isset($attributes['layout']) && in_array($attributes['layout'], ['authors_index', 'authors_recent'])) {
+        if (
+            isset($attributes['layout'])
+            && in_array($attributes['layout'], ['authors_index', 'authors_recent', 'authors_grid', 'authors_table'], true)
+        ) {
             $attributes['show_title'] = false;
         }
 
@@ -2035,11 +2327,73 @@ class Plugin
             }
         }
 
+        if (isset($attributes['layout']) && in_array($attributes['layout'], ['authors_index', 'authors_recent'])) {
+            $attributes['show_title'] = false;
+        }
+
         $attributes = wp_parse_args($attributes, $defaults);
 
         ob_start();
         $widget->widget([], $attributes);
         return ob_get_clean();
+    }
+
+    /**
+     * Render an authors index after an alphabet filter is selected.
+     */
+    public function handle_authors_index_filter()
+    {
+        if (empty($_POST['nonce']) || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'ppma-authors-index')) {
+            wp_send_json_error(esc_html__('Security error. Kindly reload this page and try again', 'publishpress-authors'));
+        }
+
+        if (empty($_POST['instance']) || !is_scalar($_POST['instance'])) {
+            wp_send_json_error(esc_html__('Invalid author list.', 'publishpress-authors'));
+        }
+
+        $instance = json_decode(wp_unslash($_POST['instance']), true);
+        if (!is_array($instance) || empty($instance['layout']) || $instance['layout'] !== 'authors_index') {
+            wp_send_json_error(esc_html__('Invalid author list.', 'publishpress-authors'));
+        }
+        unset($instance['page']);
+        $instance['show_title'] = false;
+
+        $letter = '';
+        if (!empty($_POST['letter']) && is_scalar($_POST['letter'])) {
+            $letter = sanitize_text_field(wp_unslash($_POST['letter']));
+        }
+
+        $previous_request_uri = $_SERVER['REQUEST_URI'];
+        if (!empty($_POST['url']) && is_scalar($_POST['url'])) {
+            $request_url = wp_parse_url(esc_url_raw(wp_unslash($_POST['url'])));
+            if (!empty($request_url['path'])) {
+                $_SERVER['REQUEST_URI'] = $request_url['path'];
+                if (!empty($request_url['query'])) {
+                    $_SERVER['REQUEST_URI'] .= '?' . $request_url['query'];
+                }
+            }
+        }
+
+        if ($letter) {
+            $_SERVER['REQUEST_URI'] = add_query_arg('ppma_author_letter', $letter, $_SERVER['REQUEST_URI']);
+        } else {
+            $_SERVER['REQUEST_URI'] = remove_query_arg('ppma_author_letter', $_SERVER['REQUEST_URI']);
+        }
+
+        $previous_letter = isset($_GET['ppma_author_letter']) ? $_GET['ppma_author_letter'] : null;
+        $_GET['ppma_author_letter'] = $letter;
+        unset($_GET['ppma_page'], $_GET['paged']);
+
+        $content = $this->shortcodeAuthorsList($instance);
+
+        if (null === $previous_letter) {
+            unset($_GET['ppma_author_letter']);
+        } else {
+            $_GET['ppma_author_letter'] = $previous_letter;
+        }
+        $_SERVER['REQUEST_URI'] = $previous_request_uri;
+
+        wp_send_json_success($content);
     }
 
     /**

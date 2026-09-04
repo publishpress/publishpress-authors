@@ -222,6 +222,7 @@ class Utils
         }
 
         if (empty(array_filter(array_values($post_author_categories)))) {
+            self::deletePostAuthorCategoryRelationshipsForRemovedAuthors($post_id, $authors);
             return;
         }
 
@@ -327,6 +328,43 @@ class Utils
                 }
             }
         }
+        do_action('publishpress_authors_flush_cache_for_post', $post_id);
+    }
+
+    /**
+     * Delete author category relationships for authors no longer assigned to a post.
+     *
+     * @param int $post_id Post ID.
+     * @param array $authors Author term IDs still assigned to the post.
+     *
+     * @return void
+     */
+    private static function deletePostAuthorCategoryRelationshipsForRemovedAuthors($post_id, $authors)
+    {
+        global $wpdb;
+
+        $table_name = $wpdb->prefix . 'ppma_author_relationships';
+        $post_id    = (int) $post_id;
+        $authors    = array_values(array_unique(array_map('intval', (array) $authors)));
+
+        if (empty($post_id) || empty($authors)) {
+            return;
+        }
+
+        if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table_name)) !== $table_name) {
+            return;
+        }
+
+        $placeholders = implode(', ', array_fill(0, count($authors), '%d'));
+        $query_args   = array_merge([$post_id], $authors);
+
+        $wpdb->query(
+            $wpdb->prepare(
+                "DELETE FROM {$table_name} WHERE post_id = %d AND author_term_id NOT IN ({$placeholders})",
+                $query_args
+            )
+        );
+
         do_action('publishpress_authors_flush_cache_for_post', $post_id);
     }
 
@@ -1303,7 +1341,7 @@ class Utils
 
                 <div class="inside ppma-advert">
                     <p><?php echo esc_html__('If you need help or have a new feature request, let us know.', 'publishpress-authors'); ?>
-                        <a class="advert-link" href="https://wordpress.org/plugins/publishpress-authors/" target="_blank">
+                        <a class="advert-link" href="https://wordpress.org/support/plugin/publishpress-authors/" target="_blank">
                         <?php echo esc_html__('Request Support', 'publishpress-authors'); ?>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="linkIcon">
                                 <path
@@ -1314,7 +1352,7 @@ class Utils
                     </p>
                     <p>
                     <?php echo esc_html__('Detailed documentation is also available on the plugin website.', 'publishpress-authors'); ?>
-                        <a class="advert-link" href="https://publishpress.com/knowledge-base/getting-started-ma/" target="_blank">
+                        <a class="advert-link" href="https://publishpress.com/knowledge-base/authors-getting-started/" target="_blank">
                         <?php echo esc_html__('View Knowledge Base', 'publishpress-authors'); ?>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="linkIcon">
                                 <path

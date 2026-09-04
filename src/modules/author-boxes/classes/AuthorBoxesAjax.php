@@ -470,8 +470,7 @@ $profile_field_html = '
     $profile_field_html .= '                        <'. esc_html($profile_html_tag) .'';
     $profile_field_html .= ' class="ppma-author-'. esc_attr($key) .'-profile-data ppma-author-field-meta '. esc_attr('ppma-author-field-type-' . $data['type']) .'" aria-label="'. esc_attr(($data['label'])) .'"';
     if ($profile_html_tag === 'a') {
-
-        $profile_field_html .= ' href="'. $profile_value_prefix. '</?php echo $author->'. esc_attr($key) .'; ?>' .'" '. $rel_html .' '. $target_html .'';
+        $profile_field_html .= ' href="</?php echo esc_url(' . var_export($profile_value_prefix, true) . ' . $author->' . esc_attr($key) . '); ?>" '. $rel_html .' '. $target_html .'';
     }
     $profile_field_html .= '>' . "\n" . str_repeat(" ", 32);
     if ($profile_show_field) {
@@ -503,6 +502,15 @@ $meta_row_extra .= $meta_shortcode_output;
 $display_name_position    = !empty($args['display_name_position']['value']) ? $args['display_name_position']['value'] : 'after_avatar';
 $display_name_prefix    = !empty($args['display_name_prefix']['value']) ? $args['display_name_prefix']['value'] : '';
 $display_name_suffix    = !empty($args['display_name_suffix']['value']) ? $args['display_name_suffix']['value'] : '';
+$display_name_source    = (!empty($args['display_name_source']['value']) && is_string($args['display_name_source']['value'])) ? sanitize_key($args['display_name_source']['value']) : 'display_name';
+if (!in_array($display_name_source, ['display_name', 'username'], true)) {
+    $display_name_source = 'display_name';
+}
+$recent_posts_icon      = (
+    isset($args['author_recent_posts_icon'])
+    && is_array($args['author_recent_posts_icon'])
+    && array_key_exists('value', $args['author_recent_posts_icon'])
+) ? $args['author_recent_posts_icon']['value'] : null;
 
 $display_name_markup = '';
                if ($args['name_show']['value']) :
@@ -548,9 +556,9 @@ $display_name_markup = '';
     endif;
     $display_name_markup .= str_repeat(" ", 32) . $before_name_author_category_content . str_repeat(" ", 32);
     if (!$args['name_disable_link']['value']) {
-    $display_name_markup .= '<a href="</?php echo esc_url($author->link); ?>" rel="author" title="</?php echo esc_attr($author->display_name); ?>" class="author url fn">';
+    $display_name_markup .= '<a href="</?php echo esc_url($author->link); ?>" rel="author" title="</?php echo esc_attr(MA_Author_Boxes::getAuthorBoxDisplayName($author, \'' . esc_html($display_name_source) . '\')); ?>" class="author url fn">';
     }
-    $display_name_markup .= "\n" . str_repeat(" ", 36) . $display_name_prefix . '</?php echo esc_html($author->display_name); ?>' . $display_name_suffix . "\n" . str_repeat(" ", 32);
+    $display_name_markup .= "\n" . str_repeat(" ", 36) . $display_name_prefix . '</?php echo esc_html(MA_Author_Boxes::getAuthorBoxDisplayName($author, \'' . esc_html($display_name_source) . '\')); ?>' . $display_name_suffix . "\n" . str_repeat(" ", 32);
     if (!$args['name_disable_link']['value']) {
     $display_name_markup .= '</a>';
     }
@@ -624,7 +632,7 @@ endif ?>
                             <?php echo $bio_row_extra ; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 <?php if ($args['meta_view_all_show']['value']) :
- $view_all_link = !empty($args['meta_custom_link']['value']) ? $args['meta_custom_link']['value'] : '</?php echo esc_url($author->link); ?>'; ?>
+ $view_all_link = !empty($args['meta_custom_link']['value']) ? esc_url($args['meta_custom_link']['value']) : '</?php echo esc_url($author->link); ?>'; ?>
                             <<?php echo esc_html($args['meta_html_tag']['value']); ?> class="pp-author-boxes-meta multiple-authors-links">
                                 <a href="<?php echo $view_all_link; ?>">
                                     <span>
@@ -647,7 +655,7 @@ endif ?>
                                     <div class="pp-author-boxes-recent-posts-items">
                                         </?php foreach($author_recent_posts as $recent_post_id) : ?>
                                             <<?php echo esc_html($args['author_recent_posts_html_tag']['value']); ?> class="pp-author-boxes-recent-posts-item">
-                                                <span class="dashicons dashicons-media-text"></span>
+                                                <?php echo MA_Author_Boxes::getAuthorBoxRecentPostsIcon($recent_posts_icon); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by getAuthorBoxRecentPostsIcon(). ?>
                                                 <a href="</?php echo esc_url(get_the_permalink($recent_post_id)); ?>" title="</?php echo esc_attr(get_the_title($recent_post_id)); ?>">
                                                     </?php echo esc_html(html_entity_decode(get_the_title($recent_post_id))); ?>
                                                 </a>

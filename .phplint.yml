@@ -13,3 +13,5 @@ exclude:
   - dist
   - tests
   - dev-workspace
+  - .web
+  - .ddev

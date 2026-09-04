@@ -251,6 +251,28 @@ a.ppma-author-field-meta i {
     display: inline-block;
 }
 
+.pp-authors-index-skeleton-title,
+.pp-authors-index-skeleton-content {
+    height: 18px;
+    margin: 12px 0;
+    background: #e5e5e5;
+    animation: pp-authors-index-skeleton-pulse 1.2s ease-in-out infinite;
+}
+
+.pp-authors-index-skeleton-title {
+    width: 30%;
+    height: 28px;
+}
+
+.pp-authors-index-skeleton-content {
+    width: 100%;
+}
+
+@keyframes pp-authors-index-skeleton-pulse {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+}
+
 .pp-multiple-authors-index .author-index-header {
     padding-bottom: 5px;
     margin-bottom: 20px;
@@ -509,6 +531,100 @@ body:not(.theme-twentytwenty):not(.theme-twentytwentyone) .pp-multiple-authors-r
     display: flex;
 }
 
+.pp-multiple-authors-grid .ppma-author-grid-list {
+    display: grid;
+    grid-template-columns: repeat(var(--ppma-author-grid-columns, 3), minmax(0, 1fr));
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pp-multiple-authors-grid .ppma-author-grid-card {
+    border: 1px solid #dcdcde;
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+}
+
+.pp-multiple-authors-grid .ppma-author-grid-avatar {
+    margin-bottom: 14px;
+}
+
+.pp-multiple-authors-grid .ppma-author-grid-avatar img {
+    border-radius: 50%;
+    display: block;
+    height: 72px;
+    width: 72px;
+}
+
+.pp-multiple-authors-grid .ppma-author-grid-name {
+    font-size: 1.125em;
+    margin: 0 0 10px;
+}
+
+.pp-multiple-authors-grid .ppma-author-list-fields {
+    margin: 0 0 14px;
+}
+
+.pp-multiple-authors-grid .ppma-author-list-field {
+    margin-bottom: 12px;
+}
+
+.pp-multiple-authors-grid .ppma-author-list-field dt {
+    font-size: 0.8125em;
+    font-weight: 600;
+    margin: 0 0 10px;
+}
+
+.pp-multiple-authors-grid .ppma-author-list-field dd {
+    margin: 0;
+}
+
+.pp-multiple-authors-grid .ppma-author-list-field dd p,
+.pp-multiple-authors-table .ppma-author-list-field-description p {
+    margin: 0 0 10px;
+}
+
+.pp-multiple-authors-grid .ppma-author-grid-link {
+    display: inline-block;
+}
+
+.pp-multiple-authors-table .ppma-author-table-wrap {
+    overflow-x: auto;
+}
+
+.pp-multiple-authors-table table {
+    border-collapse: collapse;
+    margin: 0;
+    width: 100%;
+}
+
+.pp-multiple-authors-table th,
+.pp-multiple-authors-table td {
+    border-bottom: 1px solid #dcdcde;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.pp-multiple-authors-table th {
+    font-weight: 600;
+}
+
+.pp-multiple-authors-table .ppma-author-table-author {
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}
+
+.pp-multiple-authors-table .ppma-author-table-author img {
+    border-radius: 50%;
+    display: block;
+    height: 40px;
+    width: 40px;
+}
+
 .pp-multiple-authors-layout-inline .pp-author-boxes-name::after {
     display: none !important;
 }
@@ -588,6 +704,10 @@ body:not(.theme-twentytwenty):not(.theme-twentytwentyone) .pp-multiple-authors-r
 }
 
 @media (max-width: 600px) {
+    .pp-multiple-authors-grid .ppma-author-grid-list {
+        grid-template-columns: 1fr;
+    }
+
     .pp-multiple-authors-index .author-index-authors ul:after {
         content: "";
         display: table;

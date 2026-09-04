@@ -6,6 +6,52 @@
         if ($('body').hasClass('post-type-ppma_boxes') && $(".publishpress-author-box-editor").length > 0) {
             var author_field_icons = '';
             populate_author_fields_icons();
+            var initialEditorData = '';
+
+            /**
+             * Submit the current and initially loaded editor settings as JSON
+             * so large layouts can be merged without hitting max_input_vars.
+             */
+            $('#post').on('submit', function () {
+                var editorFields = $('.ppma-author-box-editor-fields .input input, .ppma-author-box-editor-fields .input textarea, .ppma-author-box-editor-fields .input select');
+                var editorData = $('#author_boxes_editor_data');
+                var editorBaseline = $('#author_boxes_editor_baseline');
+                var fieldNames = [];
+
+                if (!editorData.length) {
+                    editorData = $('<input>', {
+                        type: 'hidden',
+                        id: 'author_boxes_editor_data',
+                        name: 'author_boxes_editor_data'
+                    }).prependTo(this);
+                }
+
+                if (!editorBaseline.length) {
+                    editorBaseline = $('<input>', {
+                        type: 'hidden',
+                        id: 'author_boxes_editor_baseline',
+                        name: 'author_boxes_editor_baseline'
+                    }).prependTo(this);
+                }
+
+                editorData.val(JSON.stringify(Object.assign({}, getAllEditorFieldsValues())));
+                editorBaseline.val(initialEditorData);
+
+                editorFields.each(function () {
+                    fieldNames.push(this.name);
+                    this.removeAttribute('name');
+                });
+
+                // Restore field names if another handler prevents the submission.
+                setTimeout(function () {
+                    editorFields.each(function (index) {
+                        if (fieldNames[index]) {
+                            this.name = fieldNames[index];
+                        }
+                    });
+                }, 0);
+            });
+
             /**
              * Author field icon
              */
@@ -224,6 +270,8 @@
                     current_code_editor.codemirror.refresh();
                 });
             }
+
+            initialEditorData = JSON.stringify(Object.assign({}, getAllEditorFieldsValues()));
         }
 
         /**
@@ -606,7 +654,8 @@
                 'author_recent_posts_empty_show',
                 'author_recent_posts_limit',
                 'author_recent_posts_orderby',
-                'author_recent_posts_order'
+                'author_recent_posts_order',
+                'author_recent_posts_icon'
             ];
             var name_refresh_trigger = [
                 'name_show',
@@ -615,6 +664,7 @@
                 'name_author_categories_divider',
                 'name_author_categories_position',
                 'display_name_position',
+                'display_name_source',
                 'display_name_prefix',
                 'display_name_suffix'
             ];
@@ -1201,7 +1251,7 @@
                         break;
                     case 'author_recent_posts_icon_color':
                         if (value) {
-                            editor_preview_styles += '.pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item span.dashicons { color: ' + value + ' !important; } ';
+                            editor_preview_styles += '.pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item span.dashicons, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.dashicons, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.fa, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.fas, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.far, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.fab { color: ' + value + ' !important; } ';
                         }
                         break;
                     //box layout styles
