@@ -470,8 +470,7 @@ $profile_field_html = '
     $profile_field_html .= '                        <'. esc_html($profile_html_tag) .'';
     $profile_field_html .= ' class="ppma-author-'. esc_attr($key) .'-profile-data ppma-author-field-meta '. esc_attr('ppma-author-field-type-' . $data['type']) .'" aria-label="'. esc_attr(($data['label'])) .'"';
     if ($profile_html_tag === 'a') {
-
-        $profile_field_html .= ' href="'. $profile_value_prefix. '</?php echo $author->'. esc_attr($key) .'; ?>' .'" '. $rel_html .' '. $target_html .'';
+        $profile_field_html .= ' href="</?php echo esc_url(' . var_export($profile_value_prefix, true) . ' . $author->' . esc_attr($key) . '); ?>" '. $rel_html .' '. $target_html .'';
     }
     $profile_field_html .= '>' . "\n" . str_repeat(" ", 32);
     if ($profile_show_field) {
@@ -633,7 +632,7 @@ endif ?>
                             <?php echo $bio_row_extra ; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 <?php if ($args['meta_view_all_show']['value']) :
- $view_all_link = !empty($args['meta_custom_link']['value']) ? $args['meta_custom_link']['value'] : '</?php echo esc_url($author->link); ?>'; ?>
+ $view_all_link = !empty($args['meta_custom_link']['value']) ? esc_url($args['meta_custom_link']['value']) : '</?php echo esc_url($author->link); ?>'; ?>
                             <<?php echo esc_html($args['meta_html_tag']['value']); ?> class="pp-author-boxes-meta multiple-authors-links">
                                 <a href="<?php echo $view_all_link; ?>">
                                     <span>

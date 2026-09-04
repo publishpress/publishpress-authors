@@ -260,6 +260,12 @@ class MA_Author_Boxes extends Module
             return;
         }
 
+        if (!current_user_can(apply_filters('pp_multiple_authors_manage_layouts_cap', 'ppma_manage_layouts'))
+            || !current_user_can('edit_post', $post_id)
+        ) {
+            return;
+        }
+
         $post = get_post($post_id);
 
         $submitted_data = $_POST; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
@@ -586,6 +592,7 @@ class MA_Author_Boxes extends Module
             $postTypeLabels[$labelKey] = sprintf($labelValue, $labelSingular, $labelPlural);
         }
 
+        $manageLayoutsCapability = apply_filters('pp_multiple_authors_manage_layouts_cap', 'ppma_manage_layouts');
         $postTypeArgs = [
             'labels' => $postTypeLabels,
             'public' => false,
@@ -593,6 +600,22 @@ class MA_Author_Boxes extends Module
             'show_ui' => true,
             'show_in_menu' => false,
             'map_meta_cap' => true,
+            'capabilities' => [
+                'edit_post'              => $manageLayoutsCapability,
+                'read_post'              => $manageLayoutsCapability,
+                'delete_post'            => $manageLayoutsCapability,
+                'edit_posts'             => $manageLayoutsCapability,
+                'edit_others_posts'      => $manageLayoutsCapability,
+                'delete_posts'           => $manageLayoutsCapability,
+                'publish_posts'          => $manageLayoutsCapability,
+                'read_private_posts'     => $manageLayoutsCapability,
+                'delete_private_posts'   => $manageLayoutsCapability,
+                'delete_published_posts' => $manageLayoutsCapability,
+                'delete_others_posts'    => $manageLayoutsCapability,
+                'edit_private_posts'     => $manageLayoutsCapability,
+                'edit_published_posts'   => $manageLayoutsCapability,
+                'create_posts'           => $manageLayoutsCapability,
+            ],
             'has_archive' => self::POST_TYPE_BOXES,
             'hierarchical' => false,
             'rewrite' => false,
@@ -2221,7 +2244,7 @@ class MA_Author_Boxes extends Module
                                                                     $profile_field_html .= '<'. esc_html($profile_html_tag) .'';
                                                                     $profile_field_html .= ' class="ppma-author-'. esc_attr($key) .'-profile-data ppma-author-field-meta '. esc_attr('ppma-author-field-type-' . $data['type']) .'" aria-label="'. esc_attr(($data['label'])) .'"';
                                                                     if ($profile_html_tag === 'a') {
-                                                                        $profile_field_html .= ' href="'. $profile_value_prefix.$field_value .'" '. $rel_html .' '. $target_html .'';
+                                                                        $profile_field_html .= ' href="'. esc_url($profile_value_prefix . $author->$key) .'" '. $rel_html .' '. $target_html .'';
                                                                     }
                                                                     $profile_field_html .= '>';
                                                                     if ($profile_show_field) {

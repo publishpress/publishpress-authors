@@ -852,7 +852,7 @@ class AuthorBoxesEditorFields
                     'group_end' => true,
                     'description' => esc_html__('This is useful when linking to an email, URL, or phone number. For example, \'mailto:\', \'https://\' or \'tel:\' can be added as the prefix.', 'publishpress-authors'),
                     'type'        => 'text',
-                    'sanitize'    => 'sanitize_text_field',
+                    'sanitize'    => 'esc_url_raw',
                     'tabbed'      => 1,
                     'tab_name'    => $key,
                     'tab'         => 'profile_fields',
