@@ -3460,6 +3460,58 @@ echo '<span class="ppma_settings_field_description">'
         }
 
         /**
+         * Get the PublishPress author selected for the current post when a theme
+         * requests metadata for the post_author user.
+         *
+         * Some themes call get_the_author_meta() with the explicit WordPress
+         * post_author ID. For posts using guest authors, that ID can be the
+         * fallback/admin user instead of the visible PublishPress author.
+         *
+         * @param int $user_id WordPress user ID requested by get_the_author_meta().
+         * @return false|Author
+         */
+        private function get_current_post_author_for_user_id($user_id)
+        {
+            global $post;
+
+            if (empty($user_id) || !is_numeric($user_id)) {
+                return false;
+            }
+
+            $post_object = false;
+
+            if ($post instanceof WP_Post) {
+                $post_object = $post;
+            } elseif (is_singular()) {
+                $queried_post_id = get_queried_object_id();
+                if (!empty($queried_post_id)) {
+                    $post_object = get_post($queried_post_id);
+                }
+            }
+
+            if (!$post_object instanceof WP_Post) {
+                return false;
+            }
+
+            if ((int)$post_object->post_author !== (int)$user_id) {
+                return false;
+            }
+
+            $enabledPostTypes = Utils::get_enabled_post_types();
+            if (!in_array($post_object->post_type, $enabledPostTypes, true)) {
+                return false;
+            }
+
+            $authors = get_post_authors($post_object);
+
+            if (!empty($authors) && !is_wp_error($authors[0]) && $this->is_author_instance($authors[0])) {
+                return $authors[0];
+            }
+
+            return false;
+        }
+
+        /**
          * @param int $id
          * @return false|Author|WP_User
          */
@@ -3493,7 +3545,11 @@ echo '<span class="ppma_settings_field_description">'
             if (false === $original_user_id) {
                 $author = $this->get_currrent_post_author($original_user_id);
             } else {
-                $author = $this->get_author_by_id($original_user_id);
+                $author = $this->get_current_post_author_for_user_id($original_user_id);
+
+                if (!$author) {
+                    $author = $this->get_author_by_id($original_user_id);
+                }
             }
 
             return $author;
