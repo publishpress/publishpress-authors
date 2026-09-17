@@ -748,17 +748,18 @@ class Post_Editor
     }
 
     public static function render_editor_author_box_settings($post_id) {
-        ob_start();
         $legacyPlugin = Factory::getLegacyPlugin();
         $show_editor_author_box = isset($legacyPlugin->modules->multiple_authors->options->show_editor_author_box_selection)
                 && 'yes' === $legacyPlugin->modules->multiple_authors->options->show_editor_author_box_selection;
 
         if (!$show_editor_author_box) {
-            return;
+            return '';
         }
+
+        ob_start();
         ?>
         <div class="ppma-author-box-selection" style="margin-bottom: 15px;">
-            <label for="ppma_author_box_select"><?php _e('Author Box', 'publishpress-authors'); ?></label>
+            <label for="ppma_author_box_select"><?php esc_html_e('Author Box', 'publishpress-authors'); ?></label>
             <?php
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             if (isset($layouts['authors_index'])) {
@@ -782,8 +783,8 @@ class Post_Editor
             }
             ?>
             <select name="ppma_author_box_select" class="authors-select2-default-select" id="ppma_author_box_select" style="width: 100%;">
-                <option value=""><?php _e('Default Author Box', 'publishpress-authors'); ?></option>
-                <option value="none"<?php selected($selected_box, 'none'); ?>><?php _e('Hide Author Box', 'publishpress-authors'); ?></option>
+                <option value=""><?php esc_html_e('Default Author Box', 'publishpress-authors'); ?></option>
+                <option value="none"<?php selected($selected_box, 'none'); ?>><?php esc_html_e('Hide Author Box', 'publishpress-authors'); ?></option>
                 <?php foreach ($layouts as $layout => $text):
                     $selected = $selected_box == $layout;
                     ?>
