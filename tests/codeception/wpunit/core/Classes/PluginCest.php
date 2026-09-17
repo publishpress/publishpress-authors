@@ -140,6 +140,34 @@ class PluginCest
         $I->assertEquals('<p>First paragraph.</p><p>Second paragraph.</p>', get_term_meta($author->term_id, 'description', true));
     }
 
+    public function getGuestAuthorUserData_alwaysUsesGuestAuthorRole(WpunitTester $I)
+    {
+        $userData = Author_Editor::get_guest_author_user_data(
+            'Example User',
+            '<strong>Example User</strong>',
+            'example@example.com'
+        );
+
+        $I->assertEquals('ExampleUser', $userData['user_login']);
+        $I->assertEquals('Example User', $userData['display_name']);
+        $I->assertEquals('example@example.com', $userData['user_email']);
+        $I->assertEquals(Author_Editor::GUEST_AUTHOR_ROLE, $userData['role']);
+        $I->assertNotEmpty($userData['user_pass']);
+    }
+
+    /**
+     * @example ["role"]
+     * @example ["roles"]
+     * @example ["wp_capabilities"]
+     * @example ["user_pass"]
+     * @example ["session_tokens"]
+     */
+    public function canSyncAuthorFieldToUserMeta_blocksSensitiveUserFields(WpunitTester $I, Example $example)
+    {
+        $I->assertFalse(Author_Editor::can_sync_author_field_to_user_meta($example[0]));
+        $I->assertFalse(Author_Editor::can_sync_author_field_to_user_account($example[0]));
+    }
+
     public function profileUpdate_forMappedAuthor_syncsAuthorProfileFields(WpunitTester $I)
     {
         $userID = $I->factory('a new user')->user->create(

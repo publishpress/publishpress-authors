@@ -352,17 +352,9 @@ if (!class_exists('MA_REST_API')) {
                 $mapped_user_id = 0;
 
                 if ($author_type === 'new_user') {
-                    if (!get_role('ppma_guest_author')) {
-                        add_role('ppma_guest_author', 'Guest Author', []);
-                    }
+                    Author_Editor::ensure_guest_author_role();
 
-                    $user_data = [
-                        'user_login' => $slug,
-                        'display_name' => $display_name,
-                        'user_email' => $user_email,
-                        'user_pass' => wp_generate_password(),
-                        'role' => 'ppma_guest_author',
-                    ];
+                    $user_data = Author_Editor::get_guest_author_user_data($slug, $display_name, $user_email);
 
                     $new_user_id = wp_insert_user($user_data);
 
@@ -628,9 +620,9 @@ if (!class_exists('MA_REST_API')) {
                     update_term_meta($term_id, $field_name, $sanitized_value);
 
                     // Also update user meta if there's a mapped user, except the core account email.
-                    if ($user_id && $field_name !== 'user_email') {
+                    if ($user_id && Author_Editor::can_sync_author_field_to_user_meta($field_name)) {
                         update_user_meta($user_id, $field_name, $sanitized_value);
-                        if ($field_name !== 'description') {
+                        if (Author_Editor::can_sync_author_field_to_user_account($field_name)) {
                             $updated_args[$field_name] = $sanitized_value;
                         }
                     }
