@@ -905,7 +905,7 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
                 $term_query .= "AND p.post_status IN ('publish') ";
                 $post_type_placeholders = implode(', ', array_fill(0, count($postTypes), '%s'));
                 // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Post type placeholders are generated from a sanitized array.
-                $term_query .= $wpdb->prepare("AND p.post_type IN ({$post_type_placeholders}) ", $postTypes);
+                $term_query .= $wpdb->prepare("AND p.post_type IN ({$post_type_placeholders}) ", ...$postTypes);
 
                 if ($last_article_date) {
                     $last_article_date = str_replace(' ago', '', $last_article_date);
@@ -2104,22 +2104,19 @@ if (!function_exists('get_ppma_author_categories')) {
 
                 if (!empty($post_types)) {
                     $like_conditions = [];
-                    $prepare_values = [];
 
                     foreach ($post_types as $post_type) {
-                        $like_conditions[] = "meta_value LIKE %s";
-                        $prepare_values[] = '%"' . $wpdb->esc_like($post_type) . '"%';
+                        $like_conditions[] = $wpdb->prepare(
+                            'meta_value LIKE %s',
+                            '%"' . $wpdb->esc_like($post_type) . '"%'
+                        );
                     }
 
-                    // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared -- Table name and LIKE placeholders are generated internally.
-                    $subquery = $wpdb->prepare(
-                        "SELECT DISTINCT category_id
+                    // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name and prepared LIKE conditions are generated internally.
+                    $subquery = "SELECT DISTINCT category_id
                         FROM {$meta_table_name}
                         WHERE meta_key = 'post_types'
-                        AND (" . implode(' OR ', $like_conditions) . ")",
-                        ...$prepare_values
-                    );
-                    // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared
+                        AND (" . implode(' OR ', $like_conditions) . ")";
 
                     // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name and subquery are internally built.
                     $query .= " AND {$table_name}.id IN ({$subquery})";
@@ -2181,16 +2178,12 @@ if (!function_exists('get_ppma_author_categories')) {
 
                 // Query metas
                 $ids = wp_list_pluck($categories, 'id');
-                $placeholders = implode(',', array_fill(0, count($ids), '%d'));
-                // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name and placeholders are generated internally from integer IDs.
-                $meta_query = $wpdb->prepare(
-                    "SELECT category_id, meta_key, meta_value
+                $ids = array_map('absint', $ids);
+                // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name is generated internally and IDs are cast to integers.
+                $meta_query = "SELECT category_id, meta_key, meta_value
                     FROM {$meta_table_name}
-                    WHERE category_id IN ($placeholders)",
-                    ...$ids
-                );
-                // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-                // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Query is prepared above with generated integer placeholders.
+                    WHERE category_id IN (" . implode(',', $ids) . ")";
+                // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Query contains only an internal table name and integer IDs.
                 $metas = $wpdb->get_results($meta_query, ARRAY_A);
 
                 // Merge metas into main categories

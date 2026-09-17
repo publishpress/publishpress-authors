@@ -4372,7 +4372,7 @@ echo '<span class="ppma_settings_field_description">'
                 // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Post type placeholders are generated from a sanitized array.
                 $wpdb->prepare(
                     "SELECT ID FROM {$wpdb->posts} WHERE post_type IN ({$postTypePlaceholders}) AND post_status NOT IN ('trash')",
-                    $postTypes
+                    ...$postTypes
                 )
                 // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
                 ,
