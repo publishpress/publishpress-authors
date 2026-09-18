@@ -569,12 +569,14 @@ class Author_Editor
                     </div>
                 <?php elseif ('textarea' === $args['type']) : ?>
                     <textarea
-                            name="<?php echo esc_attr($key); ?>"><?php echo esc_textarea($args['value']); ?></textarea>
+                            name="<?php echo esc_attr($key); ?>"
+                            id="<?php echo esc_attr($key); ?>"><?php echo esc_textarea($args['value']); ?></textarea>
                 <?php
                 elseif ('ajax_user_select' === $args['type']) :
                     $user = !empty($args['value']) ? get_user_by('id', $args['value']) : false;
                     ?>
                     <select data-nonce="<?php echo esc_attr(wp_create_nonce('authors-user-search')); ?>"
+                            id="<?php echo esc_attr($key); ?>"
                             placeholder="<?php esc_attr_e('Select a user', 'publishpress-authors'); ?>"
                             class="authors-select2-user-select" name="<?php echo esc_attr($key); ?>" style="width: 95%">
                         <option></option>
