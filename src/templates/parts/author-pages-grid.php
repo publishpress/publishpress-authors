@@ -82,6 +82,9 @@ if ($author_post_custom_height > 0) {
                             $featured_image = $image_data[0];
                             $featured_image_id = get_post_thumbnail_id();
                             $featured_image_alt = get_post_meta($featured_image_id, '_wp_attachment_image_alt', true);
+                            if (empty($featured_image_alt)) {
+                                $featured_image_alt = get_the_title();
+                            }
                         }
                     }
                     $post_categories  = ($show_post_category) ? get_the_category_list(', ') : false;
