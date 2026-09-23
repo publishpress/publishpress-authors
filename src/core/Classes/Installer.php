@@ -210,7 +210,7 @@ class Installer
                     AND p.post_status NOT IN ('trash')
                 LIMIT %d, %d
                 ",
-                    $query_args
+                    ...$query_args
                 )
                 // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
             ),
@@ -366,7 +366,7 @@ class Installer
             ORDER BY {$parsedArgs['orderby']} {$parsedArgs['order']}
             LIMIT %d, %d
             ",
-                $query_args
+                ...$query_args
             )
             // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         );
