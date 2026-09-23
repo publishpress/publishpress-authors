@@ -25,6 +25,7 @@ class Author_Editor
 {
 
     const AUTHOR_EDITOR_DEFAULT_TAB = 'general';
+    const GUEST_AUTHOR_ROLE = 'ppma_guest_author';
 
     /**
      * Customize the term table to look more like the users table.
@@ -786,7 +787,7 @@ class Author_Editor
             if ($key === 'user_id') {
                 Author::clear_cache();
             }
-            if ($user_id && $key !== 'user_email') {
+            if ($user_id && self::can_sync_author_field_to_user_meta($key)) {
                 update_user_meta($user_id, $key, $field_value);
                 // Don't route the bio through wp_update_user(): core's
                 // pre_user_description filter (wp_filter_kses) strips block-level
@@ -794,7 +795,7 @@ class Author_Editor
                 // update_user_meta() call just above already stored the correct value.
                 if ($key === 'description') {
                     $saved_description = $field_value;
-                } else {
+                } elseif (self::can_sync_author_field_to_user_account($key)) {
                     $updated_args[$key] = $field_value;
                 }
             }
@@ -1214,18 +1215,13 @@ class Author_Editor
                         return $email_validation;
                     }
 
-                    if (!get_role('ppma_guest_author')) {
-                        //Make sure Guest authir role exist
-                        add_role('ppma_guest_author', 'Guest Author', []);
-                    }
+                    self::ensure_guest_author_role();
 
-                    // Add new user
-                    $user_data = array(
-                        'user_login'    => $slug,
-                        'display_name'  => sanitize_text_field($_POST['tag-name']),
-                        'user_email'    => sanitize_text_field($_POST['authors-author_email']),
-                        'user_pass'     => wp_generate_password(),
-                        'role'          => 'ppma_guest_author',
+                    // Add a restricted guest-author user. Do not pass request data through to role-sensitive keys.
+                    $user_data = self::get_guest_author_user_data(
+                        $slug,
+                        sanitize_text_field($_POST['tag-name']),
+                        sanitize_text_field($_POST['authors-author_email'])
                     );
                     $user_id = wp_insert_user($user_data);
 
@@ -1253,5 +1249,106 @@ class Author_Editor
         }
 
         return $term;
+    }
+
+    /**
+     * Build the only user fields permitted when creating a guest-author account.
+     *
+     * @param string $user_login User login.
+     * @param string $display_name Display name.
+     * @param string $user_email User email.
+     *
+     * @return array
+     */
+    public static function get_guest_author_user_data($user_login, $display_name, $user_email)
+    {
+        return [
+            'user_login'   => sanitize_user($user_login, true),
+            'display_name' => sanitize_text_field($display_name),
+            'user_email'   => sanitize_email($user_email),
+            'user_pass'    => wp_generate_password(),
+            'role'         => self::GUEST_AUTHOR_ROLE,
+        ];
+    }
+
+    /**
+     * Ensure the guest-author role exists before assigning it.
+     *
+     * @return void
+     */
+    public static function ensure_guest_author_role()
+    {
+        if (!get_role(self::GUEST_AUTHOR_ROLE)) {
+            // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.custom_role_add_role -- Required plugin role for guest authors.
+            add_role(self::GUEST_AUTHOR_ROLE, 'Guest Author', []);
+        }
+    }
+
+    /**
+     * Check if an author field can be mirrored to WordPress user meta.
+     *
+     * @param string $field_name Author field name.
+     *
+     * @return bool
+     */
+    public static function can_sync_author_field_to_user_meta($field_name)
+    {
+        $field_name = (string)$field_name;
+
+        if ($field_name === 'user_email') {
+            return false;
+        }
+
+        return !self::is_sensitive_user_field($field_name);
+    }
+
+    /**
+     * Check if an author field can be passed to wp_update_user().
+     *
+     * @param string $field_name Author field name.
+     *
+     * @return bool
+     */
+    public static function can_sync_author_field_to_user_account($field_name)
+    {
+        $allowed_fields = [
+            'display_name',
+            'first_name',
+            'last_name',
+            'nickname',
+            'user_nicename',
+            'user_url',
+        ];
+
+        return in_array($field_name, $allowed_fields, true);
+    }
+
+    /**
+     * User fields that can mutate roles, auth state, or privileged account data.
+     *
+     * @param string $field_name Field name.
+     *
+     * @return bool
+     */
+    public static function is_sensitive_user_field($field_name)
+    {
+        global $wpdb;
+
+        $field_name = strtolower((string)$field_name);
+
+        $blocked_fields = [
+            'role',
+            'roles',
+            'capabilities',
+            'user_capabilities',
+            $wpdb->prefix . 'capabilities',
+            'user_pass',
+            'user_activation_key',
+            'user_status',
+            'session_tokens',
+            'default_password_nag',
+        ];
+
+        return in_array($field_name, $blocked_fields, true) || substr($field_name, -13) === '_capabilities';
     }
 }

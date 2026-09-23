@@ -229,19 +229,32 @@ if (!class_exists('MA_REST_API')) {
             return $this->getUpdateAuthorArgs();
         }
 
-        public function getPostAuthorsCallBack($postData)
+        public function getPostAuthorsCallBack($postData, $fieldName = '', $request = null, $objectType = '')
         {
             $legacyPlugin = Factory::getLegacyPlugin();
 
-            $selectedPostTypes = array_values(Util::get_post_types_for_module($legacyPlugin->modules->multiple_authors));
+            $selectedPostTypes = Util::get_post_types_for_module($legacyPlugin->modules->multiple_authors);
+            if (!is_array($selectedPostTypes)) {
+                return [];
+            }
+            $selectedPostTypes = array_values($selectedPostTypes);
 
-            $post = get_post($postData['id']);
+            $post_id = $this->getPostIdFromRestData($postData, $request);
+            if (empty($post_id)) {
+                return [];
+            }
+
+            $post = get_post($post_id);
+
+            if (!$post || is_wp_error($post)) {
+                return [];
+            }
 
             if (!in_array($post->post_type, $selectedPostTypes)) {
                 return [];
             }
 
-            $authors = get_post_authors($postData['id']);
+            $authors = get_post_authors($post_id, false, false);
 
             $authorsData = [];
 
@@ -258,6 +271,22 @@ if (!class_exists('MA_REST_API')) {
                 }
 
                 if (!is_object($author) || is_wp_error($author)) {
+                    continue;
+                }
+
+                if (!is_a($author, Author::class)) {
+                    if (!($author instanceof WP_User)) {
+                        continue;
+                    }
+
+                    $authorsData[] = [
+                        'term_id'      => 0,
+                        'user_id'      => (int) $author->ID,
+                        'is_guest'     => 0,
+                        'slug'         => $author->user_nicename,
+                        'display_name' => $author->display_name,
+                        'avatar_url'   => get_avatar_url($author->ID),
+                    ];
                     continue;
                 }
 
@@ -289,6 +318,36 @@ if (!class_exists('MA_REST_API')) {
 
             return $authorsData = apply_filters('ppma_rest_api_authors_data', $authorsData);
         }
+
+        private function getPostIdFromRestData($postData, $request = null)
+        {
+            if (is_array($postData)) {
+                if (!empty($postData['id'])) {
+                    return absint($postData['id']);
+                }
+
+                if (!empty($postData['ID'])) {
+                    return absint($postData['ID']);
+                }
+            }
+
+            if (is_object($postData)) {
+                if (!empty($postData->id)) {
+                    return absint($postData->id);
+                }
+
+                if (!empty($postData->ID)) {
+                    return absint($postData->ID);
+                }
+            }
+
+            if ($request instanceof WP_REST_Request && !empty($request['id'])) {
+                return absint($request['id']);
+            }
+
+            return 0;
+        }
+
         public function createAuthorCallback($request)
         {
             $legacyPlugin = Factory::getLegacyPlugin();
@@ -352,17 +411,9 @@ if (!class_exists('MA_REST_API')) {
                 $mapped_user_id = 0;
 
                 if ($author_type === 'new_user') {
-                    if (!get_role('ppma_guest_author')) {
-                        add_role('ppma_guest_author', 'Guest Author', []);
-                    }
+                    Author_Editor::ensure_guest_author_role();
 
-                    $user_data = [
-                        'user_login' => $slug,
-                        'display_name' => $display_name,
-                        'user_email' => $user_email,
-                        'user_pass' => wp_generate_password(),
-                        'role' => 'ppma_guest_author',
-                    ];
+                    $user_data = Author_Editor::get_guest_author_user_data($slug, $display_name, $user_email);
 
                     $new_user_id = wp_insert_user($user_data);
 
@@ -628,9 +679,9 @@ if (!class_exists('MA_REST_API')) {
                     update_term_meta($term_id, $field_name, $sanitized_value);
 
                     // Also update user meta if there's a mapped user, except the core account email.
-                    if ($user_id && $field_name !== 'user_email') {
+                    if ($user_id && Author_Editor::can_sync_author_field_to_user_meta($field_name)) {
                         update_user_meta($user_id, $field_name, $sanitized_value);
-                        if ($field_name !== 'description') {
+                        if (Author_Editor::can_sync_author_field_to_user_account($field_name)) {
                             $updated_args[$field_name] = $sanitized_value;
                         }
                     }

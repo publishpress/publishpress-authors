@@ -1,6 +1,13 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.17.0] - 23 September, 2026
+
+* Fixed: Authors editor sidebar panel fails to load when "Show Author Box selection" is disabled, #2468
+* Fixed: REST authors on multi-post queries, #2475
+* Fixed: Prepared SQL placeholder handling, #2472
+* Fixed: Harden author user writes, #2471
+
 [4.16.0] - 09 September, 2026
 
 * Fixed: block-level HTML stripped from mapped-user Biographical Info on save, #2373
