@@ -11,6 +11,7 @@ namespace MultipleAuthors\Classes\Objects;
 
 use MultipleAuthors\Classes\Objects\Author;
 use MultipleAuthors\Classes\Author_Utils;
+use MultipleAuthors\Classes\Author_Editor;
 use MultipleAuthors\Factory;
 use WP_Error;
 use WP_User;
@@ -335,10 +336,7 @@ class Author
      */
     public static function convert_into_guest_author($term_id)
     {
-        if (!get_role('ppma_guest_author')) {
-            //Make sure Guest authir role exist
-            add_role('ppma_guest_author', 'Guest Author', []);
-        }
+        Author_Editor::ensure_guest_author_role();
 
         $userId = get_term_meta($term_id, 'user_id', true);
         $author = Author::get_by_term_id($term_id);
@@ -347,8 +345,8 @@ class Author
 
         if ($userId && is_object($author) && isset($author->display_name)) {
             $user_data = [
-                'ID'    => $userId,
-                'role'  => 'ppma_guest_author'
+                'ID'   => (int)$userId,
+                'role' => Author_Editor::GUEST_AUTHOR_ROLE
             ];
             wp_update_user($user_data);
             update_term_meta($term_id, 'user_id', $userId);
@@ -361,13 +359,11 @@ class Author
             } else {
                 $user_login = sanitize_title($new_author_email);
             }
-            $user_data = [
-                'user_login'    => $user_login,
-                'display_name'  => $author->display_name,
-                'user_email'    => $new_author_email,
-                'user_pass'     => wp_generate_password(),
-                'role'          => 'ppma_guest_author',
-            ];
+            $user_data = Author_Editor::get_guest_author_user_data(
+                $user_login,
+                $author->display_name,
+                $new_author_email
+            );
             $userId = wp_insert_user($user_data);
 
             if (!is_wp_error($userId)) {
