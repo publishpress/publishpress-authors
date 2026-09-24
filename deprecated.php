@@ -12,6 +12,10 @@
  * Just ignore the warning.
  */
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 class_alias('MultipleAuthors\\Plugin', 'PP_Multiple_authors_plugin');
 class_alias('MultipleAuthors\\Container', 'PublishPress\\Addon\\Multiple_authors\\Container');
 class_alias('MultipleAuthors\\Factory', 'PublishPress\Addon\Multiple_authors\Factory');

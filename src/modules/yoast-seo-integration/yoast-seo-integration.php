@@ -25,6 +25,10 @@ use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthors\Factory;
 use PPAuthors\YoastSEO\SchemaFacade;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Yoast_Seo_Integration')) {
     /**
      * class MA_Yoast_Seo_Integration

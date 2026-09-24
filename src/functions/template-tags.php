@@ -15,6 +15,10 @@ use MultipleAuthors\Classes\Objects\Author;
 use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!function_exists('get_archive_author')) {
     /**
      * Get the author on the archive page.

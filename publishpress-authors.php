@@ -43,6 +43,10 @@
 use MultipleAuthors\Factory;
 use MultipleAuthors\Plugin;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 global $wp_version;
 
 $min_php_version = '7.2.5';
