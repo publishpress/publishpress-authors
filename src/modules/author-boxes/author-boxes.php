@@ -383,7 +383,8 @@ class MA_Author_Boxes extends Module
             return $value;
         }
 
-        if ($value === null || $value === false) {
+        // Unchecked checkboxes arrive as '' from the editor but are stored as 0.
+        if ($value === null || $value === false || $value === '' || $value === 0 || $value === '0') {
             return '';
         }
 
