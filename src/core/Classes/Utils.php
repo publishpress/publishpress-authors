@@ -1158,9 +1158,10 @@ class Utils
     {
 
         $block_theme_header = '';
+        $get_block_template = 'get_block_template';
 
-        if (self::ppma_is_block_theme()) {
-            $header_template_part = get_block_template(get_stylesheet() . '//header', 'wp_template_part');
+        if (self::ppma_is_block_theme() && function_exists($get_block_template)) {
+            $header_template_part = $get_block_template(get_stylesheet() . '//header', 'wp_template_part');
             if ($header_template_part && isset($header_template_part->content)) {
                 $block_theme_header = do_blocks($header_template_part->content);
             }
@@ -1178,9 +1179,10 @@ class Utils
     {
 
         $block_theme_footer = '';
+        $get_block_template = 'get_block_template';
 
-        if (self::ppma_is_block_theme()) {
-            $footer_template_part = get_block_template(get_stylesheet() . '//footer', 'wp_template_part');
+        if (self::ppma_is_block_theme() && function_exists($get_block_template)) {
+            $footer_template_part = $get_block_template(get_stylesheet() . '//footer', 'wp_template_part');
             if ($footer_template_part && isset($footer_template_part->content)) {
                 $block_theme_footer = do_blocks($footer_template_part->content);
             }

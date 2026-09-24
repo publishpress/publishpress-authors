@@ -1118,10 +1118,14 @@ class Post_Editor
      */
     public static function flush_cache()
     {
-        wp_cache_flush_group('get_post_authors');
-        wp_cache_flush_group('author_categories_relation_cache');
-        wp_cache_flush_group('publishpress_authors_user_checks');
-        wp_cache_flush_group('ppma_categorized_authors');
+        self::flush_cache_groups(
+            [
+                'get_post_authors',
+                'author_categories_relation_cache',
+                'publishpress_authors_user_checks',
+                'ppma_categorized_authors',
+            ]
+        );
     }
 
     /**
@@ -1156,7 +1160,32 @@ class Post_Editor
             wp_cache_delete($authors_cache_key, 'get_post_authors:authors');
         }
 
-        wp_cache_flush_group('publishpress_authors_user_checks');
-        wp_cache_flush_group('ppma_categorized_authors');
+        self::flush_cache_groups(
+            [
+                'publishpress_authors_user_checks',
+                'ppma_categorized_authors',
+            ]
+        );
+    }
+
+    /**
+     * Flush object cache groups when supported, with a fallback for older WordPress versions.
+     *
+     * @param array $groups Cache group names.
+     * @return void
+     */
+    private static function flush_cache_groups($groups)
+    {
+        $flush_group = 'wp_cache_flush_group';
+
+        if (function_exists($flush_group)) {
+            foreach ($groups as $group) {
+                $flush_group($group);
+            }
+
+            return;
+        }
+
+        wp_cache_flush();
     }
 }
