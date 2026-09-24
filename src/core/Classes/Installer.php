@@ -248,7 +248,7 @@ class Installer
                 if (is_callable($logCallback)) {
                     $logCallback(
                         sprintf(
-                            __('%d/%d: Inspecting the user %d', 'publishpress-authors'),
+                            __('%1$d/%2$d: Inspecting the user %3$d', 'publishpress-authors'),
                             $i+1,
                             $total,
                             $userId
@@ -400,7 +400,7 @@ class Installer
                 if (is_callable($logCallback)) {
                     $logCallback(
                         sprintf(
-                            __('%d/%d: Inspecting the post %d', 'publishpress-authors'),
+                            __('%1$d/%2$d: Inspecting the post %3$d', 'publishpress-authors'),
                             $i+1,
                             $total,
                             $postData->ID
@@ -427,7 +427,7 @@ class Installer
                     if (is_callable($logCallback)) {
                         $logCallback(
                             sprintf(
-                                '   ' . __('Adding the author term %d to the post %d', 'publishpress-authors'),
+                                '   ' . __('Adding the author term %1$d to the post %2$d', 'publishpress-authors'),
                                 $author->term_id,
                                 $postData->ID
                             )

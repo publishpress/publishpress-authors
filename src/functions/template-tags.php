@@ -1044,7 +1044,7 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
                     //only add show more link if author has more than limit posts
                     if ($post_index > 4) {
                         $author_view_text = sprintf(
-                            esc_html__('%1sView all posts%2s by %3s', 'publishpress-authors'),
+                            esc_html__('%1$sView all posts%2$s by %3$s', 'publishpress-authors'),
                             '<span>',
                             '</span>',
                             $author->display_name

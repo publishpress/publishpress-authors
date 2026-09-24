@@ -36,7 +36,7 @@ if (!defined('PP_AUTHORS_LOADED')) {
                         \PPVersionNotices\Module\TopNotice\Module::SETTINGS_FILTER,
                         function ($settings) {
                             $settings['publishpress-authors'] = [
-                                'message' => esc_html__("You're using PublishPress Authors Free. The Pro version has more features and support. %sUpgrade to Pro%s", 'publishpress-authors'),
+                                'message' => esc_html__("You're using PublishPress Authors Free. The Pro version has more features and support. %1$sUpgrade to Pro%2$s", 'publishpress-authors'),
                                 'link'    => 'https://publishpress.com/links/authors-banner',
                                 'screens' => [
                                     ['base' => 'edit-tags', 'id' => 'edit-author', 'taxonomy' => 'author'],
