@@ -111,6 +111,107 @@ class MA_Author_List extends Module
         add_filter('set-screen-option', [$this, 'setScreen'], 10, 3);
         add_filter('removable_query_args', [$this, 'removableQueryArgs']);
         add_action('wp_ajax_author_list_editor_do_shortcode', [$this, 'handle_author_list_do_shortcode']);
+
+        add_action('enqueue_block_editor_assets', [$this, 'author_list_block_enqueue_assets']);
+        add_action('wp_ajax_ppma_block_fetch_author_lists', [$this, 'ppma_block_fetch_author_lists']);
+
+        $this->author_list_block_register();
+    }
+
+    /**
+     * Enqueue block editor assets for the Author List block.
+     */
+    public function author_list_block_enqueue_assets()
+    {
+        wp_enqueue_script(
+            'author-list-block',
+            PP_AUTHORS_URL . 'src/assets/js/author-list-block.min.js',
+            ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-data'],
+            PP_AUTHORS_VERSION
+        );
+
+        wp_localize_script('author-list-block', 'authorListBlock', [
+            'ajax_url'     => admin_url('admin-ajax.php'),
+            'block_title'  => __('PublishPress Authors List', 'publishpress-authors'),
+            'select_label' => __('Select an author list', 'publishpress-authors'),
+        ]);
+
+        wp_enqueue_style(
+            'multiple-authors-widget-css',
+            PP_AUTHORS_ASSETS_URL . 'css/multiple-authors-widget.css',
+            ['wp-edit-blocks'],
+            PP_AUTHORS_VERSION,
+            'all'
+        );
+    }
+
+    /**
+     * Register the Author List block.
+     */
+    public function author_list_block_register()
+    {
+        register_block_type('publishpress-authors/author-list-block', [
+            'editor_script'   => 'author-list-block',
+            'editor_style'    => 'multiple-authors-widget-css',
+            'render_callback' => [$this, 'author_list_block_render'],
+            'attributes'      => [
+                'selectedListId' => [
+                    'type' => 'string',
+                ],
+            ],
+        ]);
+    }
+
+    /**
+     * Render callback for the Author List block.
+     *
+     * @param array $attributes
+     *
+     * @return string
+     */
+    public function author_list_block_render($attributes)
+    {
+        $list_id = !empty($attributes['selectedListId']) ? sanitize_text_field($attributes['selectedListId']) : '';
+
+        if (empty($list_id)) {
+            return '';
+        }
+
+        return do_shortcode('[publishpress_authors_list list_id="' . esc_attr($list_id) . '"]');
+    }
+
+    /**
+     * AJAX handler for fetching the saved author lists shown in the block picker.
+     */
+    public function ppma_block_fetch_author_lists()
+    {
+        if (!current_user_can('edit_posts') && !current_user_can('edit_pages')) {
+            wp_send_json_error(
+                [
+                    'message' => esc_html__('You do not have permission to perform this action', 'publishpress-authors'),
+                ],
+                403
+            );
+        }
+
+        $legacyPlugin = Factory::getLegacyPlugin();
+        $author_lists = $legacyPlugin->modules->author_list->options->author_list_data;
+
+        $lists = [];
+        if (!empty($author_lists) && is_array($author_lists)) {
+            foreach ($author_lists as $list_id => $list_data) {
+                $title = (is_array($list_data) && !empty($list_data['title']))
+                    ? $list_data['title']
+                    : sprintf(esc_html__('Author List #%s', 'publishpress-authors'), $list_id);
+
+                $lists[] = [
+                    'id'    => (string)$list_id,
+                    'title' => $title,
+                ];
+            }
+        }
+
+        wp_send_json($lists);
     }
 
     public static function setScreen($status, $option, $value)
