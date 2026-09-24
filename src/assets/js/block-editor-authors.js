@@ -448,7 +448,35 @@
         }
 
         meta[settings.state_meta_key] = JSON.stringify(data);
-        wp.data.dispatch('core/editor').editPost({meta: meta});
+
+        var edits = {meta: meta};
+        var postAuthorId = getPostAuthorUserId(container, data);
+
+        // Keep the core author in sync: the meta box save sends it back as post_author.
+        if (postAuthorId) {
+            edits.author = postAuthorId;
+        }
+
+        wp.data.dispatch('core/editor').editPost(edits);
+    }
+
+    function getPostAuthorUserId(container, data) {
+        var userId = 0;
+
+        $(container).find(".authors-list li:not(.sortable-placeholder)").each(function () {
+            var itemUserId = parseInt($(this).data('user-id'), 10);
+
+            if ($(this).data('is-guest') != 1 && itemUserId > 0) {
+                userId = itemUserId;
+                return false;
+            }
+        });
+
+        if (!userId && data.fallback_author_user) {
+            userId = parseInt(data.fallback_author_user, 10) || 0;
+        }
+
+        return userId;
     }
 
     function getEditedPostAuthorsDraft() {
