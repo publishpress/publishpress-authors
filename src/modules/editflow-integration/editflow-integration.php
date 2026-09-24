@@ -24,6 +24,10 @@
 use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Editflow_Integration')) {
     /**
      * class MA_Editflow_Integration

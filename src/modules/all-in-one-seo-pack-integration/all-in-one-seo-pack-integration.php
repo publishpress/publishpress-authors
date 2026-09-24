@@ -24,6 +24,10 @@
 use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_All_In_One_Seo_Pack_Integration')) {
     /**
      * class MA_All_In_One_Seo_Pack_Integration

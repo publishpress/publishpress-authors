@@ -9,4 +9,8 @@
  * @deprecated 3.2.5-beta.8
  */
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 require_once __DIR__ . '/src/functions/template-tags.php';
