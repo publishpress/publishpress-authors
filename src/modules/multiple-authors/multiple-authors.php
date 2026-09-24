@@ -4366,16 +4366,11 @@ echo '<span class="ppma_settings_field_description">'
                 wp_send_json(['total' => 0]);
             }
 
-            $postTypePlaceholders = implode(', ', array_fill(0, count($postTypes), '%s'));
-
             $result = $wpdb->get_results(
-                // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Post type placeholders are generated from a sanitized array.
                 $wpdb->prepare(
-                    "SELECT ID FROM {$wpdb->posts} WHERE post_type IN ({$postTypePlaceholders}) AND post_status NOT IN ('trash')",
+                    'SELECT ID FROM ' . $wpdb->posts . ' WHERE post_type IN (' . implode(', ', array_fill(0, count($postTypes), '%s')) . ") AND post_status NOT IN ('trash')",
                     ...$postTypes
-                )
-                // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-                ,
+                ),
                 ARRAY_N
             );
 
