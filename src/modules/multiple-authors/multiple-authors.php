@@ -3887,13 +3887,13 @@ echo '<span class="ppma_settings_field_description">'
 
                 do_action('multiple_authors_' . $action);
 
-                wp_redirect(
+                wp_safe_redirect(
                     admin_url('/admin.php?page=ppma-modules-settings&author_term_reset_notice=success'),
                     301
                 );
                 exit;
             } catch (Exception $e) {
-                wp_redirect(
+                wp_safe_redirect(
                     admin_url('/admin.php?page=ppma-modules-settings&author_term_reset_notice=fail'),
                     301
                 );
@@ -5505,7 +5505,7 @@ echo '<span class="ppma_settings_field_description">'
         {
             if (get_option('ppma_activated')) {
                 delete_option('ppma_activated');
-                wp_redirect(admin_url("edit-tags.php?taxonomy=author&welcome"));
+                wp_safe_redirect(admin_url("edit-tags.php?taxonomy=author&welcome"));
                 exit;
               }
         }
