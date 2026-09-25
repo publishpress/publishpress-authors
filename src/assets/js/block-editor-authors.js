@@ -424,6 +424,7 @@
                 id: selectedVal,
                 display_name: $authorItem.find('.display-name').text(),
                 is_guest: $authorItem.data('is-guest') || 0,
+                user_id: parseInt($authorItem.data('user-id'), 10) || 0,
                 category_id: selectedCategory
             });
         });
@@ -450,7 +451,7 @@
         meta[settings.state_meta_key] = JSON.stringify(data);
 
         var edits = {meta: meta};
-        var postAuthorId = getPostAuthorUserId(container, data);
+        var postAuthorId = getPostAuthorUserId(data);
 
         // Keep the core author in sync: the meta box save sends it back as post_author.
         if (postAuthorId) {
@@ -460,23 +461,16 @@
         wp.data.dispatch('core/editor').editPost(edits);
     }
 
-    function getPostAuthorUserId(container, data) {
-        var userId = 0;
+    function getPostAuthorUserId(data) {
+        var i;
 
-        $(container).find(".authors-list li:not(.sortable-placeholder)").each(function () {
-            var itemUserId = parseInt($(this).data('user-id'), 10);
-
-            if ($(this).data('is-guest') != 1 && itemUserId > 0) {
-                userId = itemUserId;
-                return false;
+        for (i = 0; i < data.selected_authors.length; i++) {
+            if (data.selected_authors[i].is_guest != 1 && data.selected_authors[i].user_id > 0) {
+                return data.selected_authors[i].user_id;
             }
-        });
-
-        if (!userId && data.fallback_author_user) {
-            userId = parseInt(data.fallback_author_user, 10) || 0;
         }
 
-        return userId;
+        return parseInt(data.fallback_author_user, 10) || 0;
     }
 
     function getEditedPostAuthorsDraft() {
