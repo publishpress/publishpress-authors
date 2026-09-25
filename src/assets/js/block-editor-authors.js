@@ -424,6 +424,7 @@
                 id: selectedVal,
                 display_name: $authorItem.find('.display-name').text(),
                 is_guest: $authorItem.data('is-guest') || 0,
+                user_id: parseInt($authorItem.data('user-id'), 10) || 0,
                 category_id: selectedCategory
             });
         });
@@ -448,7 +449,28 @@
         }
 
         meta[settings.state_meta_key] = JSON.stringify(data);
-        wp.data.dispatch('core/editor').editPost({meta: meta});
+
+        var edits = {meta: meta};
+        var postAuthorId = getPostAuthorUserId(data);
+
+        // Keep the core author in sync: the meta box save sends it back as post_author.
+        if (postAuthorId) {
+            edits.author = postAuthorId;
+        }
+
+        wp.data.dispatch('core/editor').editPost(edits);
+    }
+
+    function getPostAuthorUserId(data) {
+        var i;
+
+        for (i = 0; i < data.selected_authors.length; i++) {
+            if (data.selected_authors[i].is_guest != 1 && data.selected_authors[i].user_id > 0) {
+                return data.selected_authors[i].user_id;
+            }
+        }
+
+        return parseInt(data.fallback_author_user, 10) || 0;
     }
 
     function getEditedPostAuthorsDraft() {

@@ -646,6 +646,7 @@ class Post_Editor
                         'display_name' => '{{ data.display_name }}',
                         'term'         => '{{ data.id }}',
                         'is_guest'     => '{{ data.is_guest }}',
+                        'user_id'      => '{{ data.user_id }}',
                         'category_id'  => '{{ data.category_id }}',
                     ]
                 );
@@ -675,14 +676,17 @@ class Post_Editor
                         $term         = is_a($author, 'WP_User') ? 'u' . $author->ID : $author->term_id;
 
                         $isGuest = 0;
+                        $userId  = is_a($author, 'WP_User') ? $author->ID : 0;
                         if (is_a($author, Author::class)) {
                             $isGuest = $author->is_guest() ? 1 : 0;
+                            $userId  = (int)$author->user_id;
                         }
 
                         $args = [
                             'display_name' => $display_name,
                             'term'         => $term,
                             'is_guest'     => $isGuest,
+                            'user_id'      => $userId,
                             'category_id'  => $author_category_data['id'],
                         ];
 
@@ -857,6 +861,7 @@ class Post_Editor
             'avatar'       => '',
             'term'         => '',
             'is_guest'     => 0,
+            'user_id'      => 0,
             'category_id'  => 0,
         ];
 
@@ -870,7 +875,8 @@ class Post_Editor
         echo esc_attr($args['term']); ?>-<?php
         echo esc_attr($args['category_id']); ?>" data-term-id="<?php
         echo esc_attr($args['term']); ?>" data-is-guest="<?php
-        echo esc_attr($args['is_guest']); ?>" class="ui-sortable-handle publishpress-authors-author">
+        echo esc_attr($args['is_guest']); ?>" data-user-id="<?php
+        echo esc_attr($args['user_id']); ?>" class="ui-sortable-handle publishpress-authors-author">
             <span class="author-remove">
                 <span class="dashicons dashicons-no-alt"></span>
             </span>
