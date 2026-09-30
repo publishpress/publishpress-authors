@@ -2327,7 +2327,7 @@ class Plugin
             $author_list_data   = isset($author_lists[$attributes['list_id']]) ? $author_lists[$attributes['list_id']] : false;
             if ($author_list_data) {
                 $list_id = $attributes['list_id'];
-                $attributes = $author_list_data['shortcode_args'];
+                $attributes = array_merge($author_list_data['shortcode_args'], $attributes);
                 $attributes['list_id'] = $list_id;
             }
         }
