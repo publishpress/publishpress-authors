@@ -26,6 +26,10 @@ use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthors\Classes\Objects\Author;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Bylines_Migration')) {
     /**
      * class MA_Bylines_Migration

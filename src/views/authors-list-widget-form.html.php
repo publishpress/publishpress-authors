@@ -1,3 +1,8 @@
+<?php
+if (!defined('ABSPATH')) {
+    exit;
+}
+?>
 <p>
     <label for="<?php echo esc_attr($context['ids']['title']); ?>"><?php echo esc_html($context['labels']['title']); ?></label>
     <input class="widefat" id="<?php echo esc_attr($context['ids']['title']); ?>" name="<?php echo esc_attr($context['names']['title']); ?>" type="text"

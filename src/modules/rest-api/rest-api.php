@@ -28,6 +28,10 @@ use MultipleAuthors\Classes\Author_Editor;
 use MultipleAuthors\Classes\Author_Utils;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_REST_API')) {
     /**
      * class MA_REST_API

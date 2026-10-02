@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!function_exists('wp_notify_postauthor')) {
     /**
      * Notify a co-author of a comment/trackback/pingback to one of their posts.

@@ -25,6 +25,10 @@ use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthors\Classes\Legacy\Util;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Genesis_Integration')) {
     /**
      * class MA_Genesis_Integration

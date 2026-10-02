@@ -13,6 +13,10 @@
  */
 
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!function_exists('get_multiple_authors')) {
     /**
      * Get all authors for a post.
