@@ -246,7 +246,15 @@ class MA_Author_Categories extends Module
      * Flush author category cache
      */
     public function flush_cache($category_id) {
-        wp_cache_flush_group('author_categories_results_cache');
+        $flush_group = 'wp_cache_flush_group';
+
+        if (function_exists($flush_group)) {
+            $flush_group('author_categories_results_cache');
+
+            return;
+        }
+
+        wp_cache_flush();
     }
 
     /**
