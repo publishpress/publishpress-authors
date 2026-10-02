@@ -64,7 +64,7 @@ class AuthorBoxesAjax
                     update_post_meta($author_box, MA_Author_Boxes::META_PREFIX . 'author_fields_order', $field_orders);
                 }
                 $response['status']  = 'success';
-                $response['content'] = sprintf(esc_html__('Field Order updated. %1sClick here%2s to reload this page to see new order changes.', 'publishpress-authors'), '<a href="'. esc_url(admin_url('post.php?post='. $post_id .'&action=edit')) .'">', '</a>');
+                $response['content'] = sprintf(esc_html__('Field Order updated. %1$sClick here%2$s to reload this page to see new order changes.', 'publishpress-authors'), '<a href="'. esc_url(admin_url('post.php?post='. $post_id .'&action=edit')) .'">', '</a>');
             }
         }
 

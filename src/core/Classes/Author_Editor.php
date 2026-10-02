@@ -391,7 +391,7 @@ class Author_Editor
                         'label'         => __('Default Avatar', 'publishpress-authors'),
                         'description'   => sprintf(
                                             esc_html__(
-                                                '(Uses the %1s Email field %2s to find the Gravatar account if default avatar is not uploaded in Authors Settings)',
+                                                '(Uses the %1$s Email field %2$s to find the Gravatar account if default avatar is not uploaded in Authors Settings)',
                                                 'publishpress-authors'
                                             ),
                                             '<a href="#" class="ppma-image-general-author-focus">', '</a>'

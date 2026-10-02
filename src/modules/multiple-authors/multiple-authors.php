@@ -4245,7 +4245,7 @@ echo '<span class="ppma_settings_field_description">'
                         'messageDone'      => esc_html__('Done! %d posts were updated.', 'publishpress-authors'),
                         'messageWait'      => esc_html__('Please, wait...', 'publishpress-authors'),
                         'messageStarting'      => esc_html__('Updating author field on posts...', 'publishpress-authors'),
-                        'messageProgress'      => esc_html__('Updated %d of %d posts...', 'publishpress-authors'),
+                        'messageProgress'      => esc_html__('Updated %1$d of %2$d posts...', 'publishpress-authors'),
                     ]
                 );
 
@@ -4276,7 +4276,7 @@ echo '<span class="ppma_settings_field_description">'
                         'messageDone'      => esc_html__('Done! %d authors were updated.', 'publishpress-authors'),
                         'messageWait'      => esc_html__('Please, wait...', 'publishpress-authors'),
                         'messageStarting'      => esc_html__('Updating authors slug...', 'publishpress-authors'),
-                        'messageProgress'      => esc_html__('Updated %d of %d authors...', 'publishpress-authors'),
+                        'messageProgress'      => esc_html__('Updated %1$d of %2$d authors...', 'publishpress-authors'),
                     ]
                 );
 
