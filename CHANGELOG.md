@@ -3,6 +3,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 [4.18.0] - 05 October, 2026
 
+* Update: Improve accessibility labels in author forms, #2431
+* Update: Add accessible image alternatives for authors, #2432
+* Update: Improve keyboard access to author controls, #2433
 * Fixed: Author metadata for theme bylines, #2470
 * Fixed: Use multisite aware blog name lookup, #2473
 * Fixed: Conflict with the old style Ultimate Member metabox, #2487
