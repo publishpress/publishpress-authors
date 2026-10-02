@@ -341,8 +341,8 @@ class Admin_Ajax
                 $user = get_user_by('id', $author_id);
 
                 if ($user) {
-                    // Prevent editing administrators
-                    if (in_array('administrator', $user->roles)) {
+                    // Only administrators can edit administrators
+                    if (in_array('administrator', $user->roles) && !current_user_can('manage_options')) {
                         $response['status']  = 'error';
                         $response['content'] = esc_html__(
                             'You cannot edit an author profile linked to an administrator account.',
