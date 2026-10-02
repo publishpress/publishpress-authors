@@ -305,6 +305,11 @@ class Utils
         $wpdb->delete($table_name, ['post_id' => $post_id], ['%d']);
 
         if (!empty($authors)) {
+            // Collect every relationship row first, then write them in a single
+            // multi-row INSERT instead of one query per row (avoids N+1 on save).
+            $row_placeholders = [];
+            $row_values       = [];
+
             foreach ($authors as $author) {
                 if (isset($author_category_map[$author])) {
                     foreach ($author_category_map[$author] as $category_id) {
@@ -312,23 +317,21 @@ class Utils
                             continue;
                         }
 
-                        $wpdb->insert(
-                            $table_name,
-                            [
-                                'category_id'       => $all_author_categories[$category_id]['id'],
-                                'category_slug'     => $all_author_categories[$category_id]['slug'],
-                                'post_id'           => $post_id,
-                                'author_term_id'    => $author,
-                            ],
-                            [
-                                '%d',
-                                '%s',
-                                '%d',
-                                '%d',
-                            ]
-                        );
+                        $row_placeholders[] = '(%d, %s, %d, %d)';
+                        $row_values[] = (int) $all_author_categories[$category_id]['id'];
+                        $row_values[] = $all_author_categories[$category_id]['slug'];
+                        $row_values[] = (int) $post_id;
+                        $row_values[] = (int) $author;
                     }
                 }
+            }
+
+            if (!empty($row_placeholders)) {
+                $sql = "INSERT INTO {$table_name} (category_id, category_slug, post_id, author_term_id) VALUES "
+                    . implode(', ', $row_placeholders);
+
+                // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+                $wpdb->query($wpdb->prepare($sql, $row_values));
             }
         }
         do_action('publishpress_authors_flush_cache_for_post', $post_id);
@@ -1325,7 +1328,9 @@ class Utils
         </div>
         <a
             href="#TB_inline?&width=<?php echo esc_attr($width); ?>&height=<?php echo esc_attr($height); ?>&inlineId=<?php echo esc_attr($button_id); ?>"
-            class="<?php echo esc_attr($button_class); ?> thickbox">
+            class="<?php echo esc_attr($button_class); ?> thickbox"
+            aria-hidden="true"
+            tabindex="-1">
         </a>
         <?php
     }

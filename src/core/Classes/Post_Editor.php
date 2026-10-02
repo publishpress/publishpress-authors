@@ -631,6 +631,7 @@ class Post_Editor
         }
         ?>
         <?php if (current_user_can(get_taxonomy('author')->cap->assign_terms)) : ?>
+            <label class="screen-reader-text" for="publishpress-authors-author-select"><?php esc_html_e('Search for an author', 'publishpress-authors'); ?></label>
             <select data-nonce="<?php
             echo esc_attr(wp_create_nonce('authors-search')); ?>"
                     id="publishpress-authors-author-select"
@@ -831,8 +832,10 @@ class Post_Editor
                 }
             }
             ?>
+            <label class="screen-reader-text" for="publishpress-authors-author-filter"><?php esc_html_e('Filter posts by author', 'publishpress-authors'); ?></label>
             <select data-nonce="<?php
                 echo esc_attr(wp_create_nonce('authors-user-search')); ?>"
+                    id="publishpress-authors-author-filter"
                     class="authors-select2 authors-user-slug-search"
                     data-placeholder="<?php
                     esc_attr_e('All Authors', 'publishpress-authors'); ?>" style="width: 150px"
@@ -877,9 +880,9 @@ class Post_Editor
         echo esc_attr($args['term']); ?>" data-is-guest="<?php
         echo esc_attr($args['is_guest']); ?>" data-user-id="<?php
         echo esc_attr($args['user_id']); ?>" class="ui-sortable-handle publishpress-authors-author">
-            <span class="author-remove">
-                <span class="dashicons dashicons-no-alt"></span>
-            </span>
+            <button type="button" class="author-remove" aria-label="<?php echo esc_attr(sprintf(esc_html__('Remove %s', 'publishpress-authors'), $args['display_name'])); ?>">
+                <span class="dashicons dashicons-no-alt" aria-hidden="true"></span>
+            </button>
             <?php
             if (!empty($args['avatar'])) : ?>
                 <?php
