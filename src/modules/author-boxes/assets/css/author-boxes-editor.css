@@ -297,6 +297,10 @@
 .ppma-boxes-shortcodes-wrap .shortcode-entries .delete-shortcode {
     color: #f54d4d;
     cursor: pointer;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    font: inherit;
 }
 
 .ppma-boxes-editor-tab-content.ppma-profile_fields-tab.profile_header .input {
@@ -407,6 +411,11 @@
     color: #655997;
     margin-bottom: 10px;
     text-align: right;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    font: inherit;
 }
 
 .ppma-editor-field-reorder-btn .dashicons {
