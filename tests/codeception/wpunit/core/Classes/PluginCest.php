@@ -140,6 +140,33 @@ class PluginCest
         $I->assertEquals('<p>First paragraph.</p><p>Second paragraph.</p>', get_term_meta($author->term_id, 'description', true));
     }
 
+    public function actionEditedAuthor_forAdministratorAuthor_allowsAdministratorsOnly(WpunitTester $I)
+    {
+        $adminID  = $I->factory('a new user')->user->create(['role' => 'administrator']);
+        $targetID = $I->factory('a new user')->user->create(['role' => 'administrator']);
+        $editorID = $I->factory('a new user')->user->create(['role' => 'editor']);
+
+        get_role('editor')->add_cap('edit_users');
+        get_role('editor')->add_cap('ppma_manage_authors');
+
+        $author = Author::create_from_user($targetID);
+
+        foreach ([$editorID => 'Editor', $adminID => 'Admin'] as $currentID => $firstName) {
+            wp_set_current_user($currentID);
+
+            $_POST = [
+                'author-edit-nonce' => wp_create_nonce('author-edit'),
+                'authors-user_id'   => $targetID,
+                'authors-first_name' => $firstName,
+            ];
+
+            Author_Editor::action_edited_author($author->term_id);
+
+            // The editor is rejected first, so only the administrator's change is saved.
+            $I->assertEquals($firstName === 'Admin' ? 'Admin' : '', get_user_meta($targetID, 'first_name', true));
+        }
+    }
+
     public function getGuestAuthorUserData_alwaysUsesGuestAuthorRole(WpunitTester $I)
     {
         $userData = Author_Editor::get_guest_author_user_data(

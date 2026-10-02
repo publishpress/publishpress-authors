@@ -723,11 +723,11 @@ class Author_Editor
          * Make sure current user is set as user ID if user does not
          * have capability to edit other authors/users.
          *
-         * Note: Prevent ability to edit administrator completely.
+         * Note: Only administrators can edit administrator accounts.
          */
         if ($user && (int)$user_id !== get_current_user_id()) {
-            // Prevent editing administrators completely
-            if (in_array('administrator', $user->roles)) {
+            // Only administrators can edit administrators
+            if (in_array('administrator', $user->roles) && !current_user_can('manage_options')) {
                 $user_id = false;
                 $user = false;
             }
