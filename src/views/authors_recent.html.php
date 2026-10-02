@@ -24,8 +24,8 @@
                             <?php foreach ($result['recent_posts'] as $post_id => $post) : ?>
                                 <?php if ($post['featuired_image']) : ?>
                                     <div class="ppma-col-5 featured-image-col post-<?php echo esc_attr($post_id); ?>">
-                                        <a href="<?php echo esc_url($post['permalink']); ?>">
-                                            <img src="<?php echo esc_url($post['featuired_image']); ?>">
+                                        <a href="<?php echo esc_url($post['permalink']); ?>" aria-label="<?php echo esc_attr(sprintf(__('View %s', 'publishpress-authors'), $post['post_title'])); ?>">
+                                            <img src="<?php echo esc_url($post['featuired_image']); ?>" alt="<?php echo esc_attr($post['featured_image_alt']); ?>">
                                         </a>
                                     </div>
 
