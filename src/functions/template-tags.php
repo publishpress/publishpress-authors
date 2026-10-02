@@ -903,9 +903,10 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
 
             if (true === $args['hide_empty'] || $last_article_date) {
                 $term_query .= "AND p.post_status IN ('publish') ";
-                $post_type_placeholders = implode(', ', array_fill(0, count($postTypes), '%s'));
-                // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Post type placeholders are generated from a sanitized array.
-                $term_query .= $wpdb->prepare("AND p.post_type IN ({$post_type_placeholders}) ", ...$postTypes);
+                $term_query .= $wpdb->prepare(
+                    'AND p.post_type IN (' . implode(', ', array_fill(0, count($postTypes), '%s')) . ') ',
+                    ...$postTypes
+                );
 
                 if ($last_article_date) {
                     $last_article_date = str_replace(' ago', '', $last_article_date);
