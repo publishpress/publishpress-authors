@@ -170,7 +170,7 @@
 }
 
 .ppma-author-boxes-editor-table .field-description {
-    color: gray;
+    color: #646970;
 }
 
 .ppma-author-boxes-editor-table .author-boxes-field-icon {
@@ -295,7 +295,7 @@
 }
 
 .ppma-boxes-shortcodes-wrap .shortcode-entries .delete-shortcode {
-    color: #f54d4d;
+    color: #b32d2e;
     cursor: pointer;
     border: 0;
     padding: 0;
@@ -484,7 +484,7 @@
 }
 
 .ppma-author-boxes-editor-table .code-mirror-before div {
-    color: #8F8F8F;
+    color: #646970;
     margin-left: 54.35px;
     border-left: 1px solid #ddd;
     padding: 3px 8px;
@@ -502,7 +502,7 @@
 }
 
 .ppma-author-boxes-editor-table .code-mirror-after div {
-    color: #8F8F8F;
+    color: #646970;
     margin-left: 54.35px;
     border-left: 1px solid #ddd;
     padding: 3px 8px;
