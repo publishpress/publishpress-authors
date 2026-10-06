@@ -570,12 +570,14 @@ class Author_Editor
                     </div>
                 <?php elseif ('textarea' === $args['type']) : ?>
                     <textarea
-                            name="<?php echo esc_attr($key); ?>"><?php echo esc_textarea($args['value']); ?></textarea>
+                            name="<?php echo esc_attr($key); ?>"
+                            id="<?php echo esc_attr($key); ?>"><?php echo esc_textarea($args['value']); ?></textarea>
                 <?php
                 elseif ('ajax_user_select' === $args['type']) :
                     $user = !empty($args['value']) ? get_user_by('id', $args['value']) : false;
                     ?>
                     <select data-nonce="<?php echo esc_attr(wp_create_nonce('authors-user-search')); ?>"
+                            id="<?php echo esc_attr($key); ?>"
                             placeholder="<?php esc_attr_e('Select a user', 'publishpress-authors'); ?>"
                             class="authors-select2-user-select" name="<?php echo esc_attr($key); ?>" style="width: 95%">
                         <option></option>
@@ -721,13 +723,19 @@ class Author_Editor
          * Make sure current user is set as user ID if user does not
          * have capability to edit other authors/users.
          *
-         * Note: Prevent ability to edit administrator completely.
+         * Note: Only administrators can edit administrator accounts if setting is enabled.
          */
         if ($user && (int)$user_id !== get_current_user_id()) {
-            // Prevent editing administrators completely
+            // Only administrators can edit administrators if setting is enabled
             if (in_array('administrator', $user->roles)) {
-                $user_id = false;
-                $user = false;
+                $legacyPlugin = Factory::getLegacyPlugin();
+                $allow_admin_edit = isset($legacyPlugin->modules->multiple_authors->options->allow_admin_edit_admin_profiles)
+                    && $legacyPlugin->modules->multiple_authors->options->allow_admin_edit_admin_profiles === 'yes';
+
+                if (!current_user_can('manage_options') || !$allow_admin_edit) {
+                    $user_id = false;
+                    $user = false;
+                }
             }
             // Check if the user lacks the necessary capabilities and prevent the user update
             elseif (!current_user_can(get_taxonomy('author')->cap->manage_terms)

@@ -139,7 +139,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'show_editor_author_box_selection'   => 'yes',
                     'default_avatar'               => '',
                     'display_name_format'          => 'custom',
-                    'translate_author_taxonomy' => 'yes'
+                    'translate_author_taxonomy' => 'yes',
+                    'allow_admin_edit_admin_profiles' => 'no'
                 ],
                 'options_page'         => false,
                 'autoload'             => true,
@@ -1159,6 +1160,17 @@ if (!class_exists('MA_Multiple_Authors')) {
             );
 
             add_settings_field(
+                'allow_admin_edit_admin_profiles',
+                __(
+                    'Allow administrators to edit administrator author profiles:',
+                    'publishpress-authors'
+                ),
+                [$this, 'settings_allow_admin_edit_admin_profiles_option'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_guest_authors'
+            );
+
+            add_settings_field(
                 'author_legacy_layout_boxed',
                 __('Boxed legacy layout Author Box:', 'publishpress-authors'),
                 [$this, 'settings_author_legacy_layout_boxed'],
@@ -1355,6 +1367,26 @@ if (!class_exists('MA_Multiple_Authors')) {
                 . checked($value, 'yes', false) . ' />';
             echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">' . esc_html__(
                     'Allow users to choose which Author Box is used on each post.',
+                    'publishpress-authors'
+                ) . '</span>';
+            echo '</label>';
+        }
+
+        /**
+         * Displays the field to allow administrators to edit administrator author profiles
+         *
+         * @param array
+         */
+        public function settings_allow_admin_edit_admin_profiles_option($args = [])
+        {
+            $id    = $this->module->options_group_name . '_allow_admin_edit_admin_profiles';
+            $value = isset($this->module->options->allow_admin_edit_admin_profiles) ? $this->module->options->allow_admin_edit_admin_profiles : 'no';
+
+            echo '<label for="' . esc_attr($id) . '">';
+            echo '<input type="checkbox" value="yes" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[allow_admin_edit_admin_profiles]" '
+                . checked($value, 'yes', false) . ' />';
+            echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">' . esc_html__(
+                    'Allow users with the "manage_options" capability to edit author profiles linked to administrator accounts. By default, editing administrator author profiles is blocked for security reasons.',
                     'publishpress-authors'
                 ) . '</span>';
             echo '</label>';
@@ -1787,14 +1819,16 @@ if (!class_exists('MA_Multiple_Authors')) {
                         class="shortcode-field"
                         type="text"
                         value="<?php echo esc_attr($option['shortcode']); ?>"
+                        aria-label="<?php esc_attr_e('Shortcode', 'publishpress-authors'); ?>"
                         readonly
                         />
-                    <span class="ppma-copy-clipboard dashicons dashicons-admin-page">
+                    <button type="button" class="ppma-copy-clipboard dashicons dashicons-admin-page"
+                        aria-label="<?php esc_attr_e('Copy shortcode to clipboard', 'publishpress-authors'); ?>">
                         <span data-copied="<?php echo esc_attr__('Copied!', 'publishpress-authors'); ?>"
                             data-copy="<?php echo esc_attr__('Click To Copy!', 'publishpress-authors'); ?>">
                             <?php echo esc_html__('Click To Copy!', 'publishpress-authors'); ?>
                         </span>
-                    </span>
+                    </button>
                     </div>
             <?php endforeach; ?>
 
@@ -3135,6 +3169,10 @@ echo '<span class="ppma_settings_field_description">'
                 $new_options['show_editor_author_box_selection'] = 'no';
             }
 
+            if (!isset($new_options['allow_admin_edit_admin_profiles'])) {
+                $new_options['allow_admin_edit_admin_profiles'] = 'no';
+            }
+
             if (!isset($new_options['mapped_author_roles']) || !is_array($new_options['mapped_author_roles'])) {
                 $new_options['mapped_author_roles'] = [];
             }
@@ -3460,6 +3498,58 @@ echo '<span class="ppma_settings_field_description">'
         }
 
         /**
+         * Get the PublishPress author selected for the current post when a theme
+         * requests metadata for the post_author user.
+         *
+         * Some themes call get_the_author_meta() with the explicit WordPress
+         * post_author ID. For posts using guest authors, that ID can be the
+         * fallback/admin user instead of the visible PublishPress author.
+         *
+         * @param int $user_id WordPress user ID requested by get_the_author_meta().
+         * @return false|Author
+         */
+        private function get_current_post_author_for_user_id($user_id)
+        {
+            global $post;
+
+            if (empty($user_id) || !is_numeric($user_id)) {
+                return false;
+            }
+
+            $post_object = false;
+
+            if ($post instanceof WP_Post) {
+                $post_object = $post;
+            } elseif (is_singular()) {
+                $queried_post_id = get_queried_object_id();
+                if (!empty($queried_post_id)) {
+                    $post_object = get_post($queried_post_id);
+                }
+            }
+
+            if (!$post_object instanceof WP_Post) {
+                return false;
+            }
+
+            if ((int)$post_object->post_author !== (int)$user_id) {
+                return false;
+            }
+
+            $enabledPostTypes = Utils::get_enabled_post_types();
+            if (!in_array($post_object->post_type, $enabledPostTypes, true)) {
+                return false;
+            }
+
+            $authors = get_post_authors($post_object);
+
+            if (!empty($authors) && !is_wp_error($authors[0]) && $this->is_author_instance($authors[0])) {
+                return $authors[0];
+            }
+
+            return false;
+        }
+
+        /**
          * @param int $id
          * @return false|Author|WP_User
          */
@@ -3493,7 +3583,11 @@ echo '<span class="ppma_settings_field_description">'
             if (false === $original_user_id) {
                 $author = $this->get_currrent_post_author($original_user_id);
             } else {
-                $author = $this->get_author_by_id($original_user_id);
+                $author = $this->get_current_post_author_for_user_id($original_user_id);
+
+                if (!$author) {
+                    $author = $this->get_author_by_id($original_user_id);
+                }
             }
 
             return $author;
@@ -5217,6 +5311,34 @@ echo '<span class="ppma_settings_field_description">'
             do_action('publishpress_authors_flush_cache_for_post', $postId);
         }
 
+        /**
+         * Whether the author bio should be kept when a mapped user is updated.
+         *
+         * wp_update_user() runs the bio through core's wp_filter_kses, which strips <p> tags.
+         * When the user bio is only the stripped version of the author bio, keep the author bio.
+         *
+         * @param int $termId
+         * @param \WP_User $user
+         *
+         * @return bool
+         */
+        private function shouldKeepAuthorDescription($termId, $user)
+        {
+            $authorDescription = (string)get_term_meta($termId, 'description', true);
+
+            if ($authorDescription === '') {
+                return false;
+            }
+
+            $userDescription = (string)$user->description;
+
+            if ($userDescription === $authorDescription) {
+                return false;
+            }
+
+            return wp_unslash(wp_filter_kses(wp_slash($authorDescription))) === $userDescription;
+        }
+
         public function userProfileUpdate($userId, $oldUserData)
         {
             $author = Author::get_by_user_id($userId);
@@ -5252,6 +5374,13 @@ echo '<span class="ppma_settings_field_description">'
 
                 update_term_meta($author->term_id, 'user_id', $user->ID);
                 foreach ($user_fields as $field) {
+                    if ($field === 'description' && $this->shouldKeepAuthorDescription($author->term_id, $user)) {
+                        // The user bio is only the kses-stripped copy of the author bio.
+                        // Keep the author bio and restore the user bio from it.
+                        update_user_meta($user->ID, 'description', get_term_meta($author->term_id, 'description', true));
+                        continue;
+                    }
+
                     update_term_meta($author->term_id, $field, $user->$field);
                 }
 
