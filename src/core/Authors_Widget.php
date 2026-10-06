@@ -469,7 +469,7 @@ class Authors_Widget extends WP_Widget
             $search_filter_id = wp_unique_id('authors-search-filter-');
 
             $search_box_html .= '<div class="pp-multiple-authors-searchbox searchbox">';
-            $search_box_html .= '<form action="' . esc_url($current_url) . '" method="GET" role="search">';
+            $search_box_html .= '<form action="' . esc_url($current_url) . '" method="GET" role="search" aria-label="' . esc_attr__('Authors', 'publishpress-authors') . '">';
             $search_box_html .= '<label class="screen-reader-text" for="' . esc_attr($search_input_id) . '">' . esc_html__('Search authors', 'publishpress-authors') . '</label>';
             $search_box_html .= '<input class="widefat" id="' . esc_attr($search_input_id) . '" name="seach_query" type="search" value="'. esc_attr($search_query) .'" placeholder="'. esc_attr($search_placeholder) .'">';
             if ($filter_fields) {
