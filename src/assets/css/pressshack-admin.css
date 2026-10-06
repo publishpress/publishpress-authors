@@ -160,6 +160,13 @@
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+.pressshack-admin-wrapper .button:not(.notice-dismiss):focus-visible {
+    -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--wp-admin-theme-color, #2271b1);
+    -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--wp-admin-theme-color, #2271b1);
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--wp-admin-theme-color, #2271b1);
+    outline: 2px solid transparent;
+}
+
 .pressshack-admin-wrapper .ppma-pressshack-logo img {
     width: 170px;
 }
