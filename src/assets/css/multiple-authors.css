@@ -181,9 +181,12 @@ ul.authors-list.authors-current-user-can-assign li:hover {
 
 ul.authors-list.authors-current-user-can-assign li .author-remove {
     position: absolute;
-    display: block;
-    right: 5px;
-    width: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 1px;
+    width: 24px;
+    height: 24px;
     z-index: 1;
     top: 50%;
     -webkit-transform: translateY(-50%);
@@ -194,6 +197,12 @@ ul.authors-list.authors-current-user-can-assign li .author-remove {
     background: transparent;
     color: inherit;
     font: inherit;
+    border-radius: 2px;
+}
+
+ul.authors-list.authors-current-user-can-assign li .author-remove:focus {
+    outline: 2px solid transparent;
+    box-shadow: 0 0 0 2px #2271b1;
 }
 
 ul.authors-list.authors-current-user-can-assign li .author-remove .dashicons {

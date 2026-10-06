@@ -591,9 +591,33 @@ jQuery(document).ready(function ($) {
             },
         }).on("click", ".author-remove", function () {
             var el = $(this);
+            var $container = el.closest(".authors-list").parent();
+            var $removeButtons = $container.find(".author-remove");
+            var index = $removeButtons.index(el);
             el.closest("li").remove();
             handleUsersAuthorField($(this).parent('.authors-list'));
+            focusAfterAuthorRemoval($container, $removeButtons.not(el), index);
         });
+    }
+
+    function focusAfterAuthorRemoval($container, $remainingButtons, index) {
+        var $target = $remainingButtons.eq(Math.min(index, $remainingButtons.length - 1));
+        var $search;
+
+        if (index === -1) {
+            return;
+        }
+
+        if (!$remainingButtons.length) {
+            $search = $container.find(".authors-search").first();
+            $target = $search.next(".ppma_select2-container").find(".ppma_select2-selection");
+
+            if (!$target.length) {
+                $target = $search;
+            }
+        }
+
+        $target.trigger("focus");
     }
 
     $(".authors-select2-user-select").each(function () {
