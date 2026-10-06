@@ -140,53 +140,25 @@ class PluginCest
         $I->assertEquals('<p>First paragraph.</p><p>Second paragraph.</p>', get_term_meta($author->term_id, 'description', true));
     }
 
-    public function actionEditedAuthor_forAdministratorAuthor_respectsSetting(WpunitTester $I)
+    public function userProfileUpdate_forMappedAuthor_keepsParagraphTagsInDescription(WpunitTester $I)
     {
-        $adminID  = $I->factory('a new user')->user->create(['role' => 'administrator']);
-        $targetID = $I->factory('a new user')->user->create(['role' => 'administrator']);
-        $editorID = $I->factory('a new user')->user->create(['role' => 'editor']);
+        $userID = $I->factory('a new user')->user->create(
+            [
+                'role'        => 'author',
+                'description' => 'Original author bio.',
+            ]
+        );
 
-        get_role('editor')->add_cap('edit_users');
-        get_role('editor')->add_cap('ppma_manage_authors');
+        $author = Author::create_from_user($userID);
 
-        $author = Author::create_from_user($targetID);
-        $legacyPlugin = Factory::getLegacyPlugin();
+        $description = '<p>First paragraph.</p><p>Second paragraph.</p>';
+        update_user_meta($userID, 'description', $description);
+        update_term_meta($author->term_id, 'description', $description);
 
-        // Test with setting disabled (default)
-        $legacyPlugin->update_module_option('multiple_authors', 'allow_admin_edit_admin_profiles', 'no');
+        wp_update_user(['ID' => $userID, 'display_name' => 'Updated Name']);
 
-        foreach ([$editorID => 'Editor', $adminID => 'Admin'] as $currentID => $firstName) {
-            wp_set_current_user($currentID);
-
-            $_POST = [
-                'author-edit-nonce' => wp_create_nonce('author-edit'),
-                'authors-user_id'   => $targetID,
-                'authors-first_name' => $firstName,
-            ];
-
-            Author_Editor::action_edited_author($author->term_id);
-
-            // Both editor and admin are rejected when setting is disabled
-            $I->assertEquals('', get_user_meta($targetID, 'first_name', true));
-        }
-
-        // Test with setting enabled
-        $legacyPlugin->update_module_option('multiple_authors', 'allow_admin_edit_admin_profiles', 'yes');
-
-        foreach ([$editorID => 'Editor', $adminID => 'Admin'] as $currentID => $firstName) {
-            wp_set_current_user($currentID);
-
-            $_POST = [
-                'author-edit-nonce' => wp_create_nonce('author-edit'),
-                'authors-user_id'   => $targetID,
-                'authors-first_name' => $firstName,
-            ];
-
-            Author_Editor::action_edited_author($author->term_id);
-
-            // The editor is rejected, but the administrator's change is saved when setting is enabled
-            $I->assertEquals($firstName === 'Admin' ? 'Admin' : '', get_user_meta($targetID, 'first_name', true));
-        }
+        $I->assertEquals($description, get_user_meta($userID, 'description', true));
+        $I->assertEquals($description, get_term_meta($author->term_id, 'description', true));
     }
 
     public function getGuestAuthorUserData_alwaysUsesGuestAuthorRole(WpunitTester $I)

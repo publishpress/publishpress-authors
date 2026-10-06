@@ -5311,6 +5311,34 @@ echo '<span class="ppma_settings_field_description">'
             do_action('publishpress_authors_flush_cache_for_post', $postId);
         }
 
+        /**
+         * Whether the author bio should be kept when a mapped user is updated.
+         *
+         * wp_update_user() runs the bio through core's wp_filter_kses, which strips <p> tags.
+         * When the user bio is only the stripped version of the author bio, keep the author bio.
+         *
+         * @param int $termId
+         * @param \WP_User $user
+         *
+         * @return bool
+         */
+        private function shouldKeepAuthorDescription($termId, $user)
+        {
+            $authorDescription = (string)get_term_meta($termId, 'description', true);
+
+            if ($authorDescription === '') {
+                return false;
+            }
+
+            $userDescription = (string)$user->description;
+
+            if ($userDescription === $authorDescription) {
+                return false;
+            }
+
+            return wp_unslash(wp_filter_kses(wp_slash($authorDescription))) === $userDescription;
+        }
+
         public function userProfileUpdate($userId, $oldUserData)
         {
             $author = Author::get_by_user_id($userId);
@@ -5346,6 +5374,13 @@ echo '<span class="ppma_settings_field_description">'
 
                 update_term_meta($author->term_id, 'user_id', $user->ID);
                 foreach ($user_fields as $field) {
+                    if ($field === 'description' && $this->shouldKeepAuthorDescription($author->term_id, $user)) {
+                        // The user bio is only the kses-stripped copy of the author bio.
+                        // Keep the author bio and restore the user bio from it.
+                        update_user_meta($user->ID, 'description', get_term_meta($author->term_id, 'description', true));
+                        continue;
+                    }
+
                     update_term_meta($author->term_id, $field, $user->$field);
                 }
 
