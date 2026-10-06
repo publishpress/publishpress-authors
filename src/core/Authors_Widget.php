@@ -239,14 +239,6 @@ class Authors_Widget extends WP_Widget
 
 
     /**
-     * Get HTML markdown
-     *
-     * @param array $args The args.
-     * @param array $instance The object instance.
-     *
-     * @return string $html The html.
-     */
-    /**
      * Localize the strings used by the authors index AJAX filter script.
      *
      * @return void
@@ -275,6 +267,14 @@ class Authors_Widget extends WP_Widget
         );
     }
 
+    /**
+     * Get HTML markdown
+     *
+     * @param array $args The args.
+     * @param array $instance The object instance.
+     *
+     * @return string $html The html.
+     */
     private function get_author_box_markup(
         $args,
         $instance,
