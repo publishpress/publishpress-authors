@@ -430,7 +430,7 @@ endif;
 $display_field_value = '';
 if ($profile_display === 'icon_prefix_value_suffix') {
     if (!empty($profile_display_icon)) {
-        $display_field_value .= html_entity_decode($profile_display_icon) . ' ';
+        $display_field_value .= MA_Author_Boxes::addAriaHiddenToIcon(html_entity_decode($profile_display_icon)) . ' ';
     }
     if (!empty($profile_display_prefix)) {
         $display_field_value .= esc_html($profile_display_prefix) . ' ';
@@ -447,7 +447,7 @@ if ($profile_display === 'icon_prefix_value_suffix') {
 } elseif ($profile_display === 'suffix') {
     $display_field_value .= esc_html($profile_display_suffix);
 } elseif ($profile_display === 'icon') {
-    $display_field_value .= html_entity_decode($profile_display_icon) . ' ';
+    $display_field_value .= MA_Author_Boxes::addAriaHiddenToIcon(html_entity_decode($profile_display_icon)) . ' ';
 } elseif ($profile_display === 'prefix_value_suffix') {
     if (!empty($profile_display_prefix)) {
         $display_field_value .= esc_html($profile_display_prefix) . ' ';

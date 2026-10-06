@@ -235,14 +235,16 @@ class MA_Author_Boxes extends Module
                 || ( (empty($legacyPlugin->modules->multiple_authors->options->layout) || in_array($legacyPlugin->modules->multiple_authors->options->layout, ['author_boxes_boxed', 'boxed'])) && get_post_field('post_name', $postId) === 'author_boxes_boxed')
             ) :
             ?>
-             <span class="dashicons dashicons-yes-alt ppma-green-check"></span>
+             <span class="dashicons dashicons-yes-alt ppma-green-check" aria-hidden="true"></span>
+             <span class="screen-reader-text"><?php esc_html_e('Default author box', 'publishpress-authors'); ?></span>
            <?php endif;
         } elseif ($column === 'author_category_boxes') {
             $layout_parent = get_post_meta($postId, self::META_PREFIX . 'layout_parent_author_box', true);
 
             if (!empty($layout_parent)) :
             ?>
-               <span class="dashicons dashicons-yes-alt ppma-green-check"></span>
+               <span class="dashicons dashicons-yes-alt ppma-green-check" aria-hidden="true"></span>
+               <span class="screen-reader-text"><?php esc_html_e('Author category box', 'publishpress-authors'); ?></span>
            <?php endif;
         }
     }
@@ -1275,9 +1277,26 @@ class MA_Author_Boxes extends Module
             $icon = '<span class="dashicons dashicons-media-text"></span>';
         }
 
-        $icon = wp_kses_post(html_entity_decode((string) $icon));
+        $icon = self::addAriaHiddenToIcon(wp_kses_post(html_entity_decode((string) $icon)));
 
         return $icon;
+    }
+
+    /**
+     * Mark a decorative icon (an <i> or <span> glyph) as hidden from assistive technology.
+     *
+     * @param string $icon_html
+     *
+     * @return string
+     */
+    public static function addAriaHiddenToIcon($icon_html)
+    {
+        return preg_replace(
+            '/^(\s*<(?:i|span)\b)(?![^>]*\baria-hidden\s*=)/i',
+            '$1 aria-hidden="true"',
+            (string) $icon_html,
+            1
+        );
     }
 
     /**
@@ -2215,7 +2234,7 @@ class MA_Author_Boxes extends Module
                                                                 $display_field_value = '';
                                                                 if ($profile_display === 'icon_prefix_value_suffix') {
                                                                     if (!empty($profile_display_icon)) {
-                                                                        $display_field_value .= html_entity_decode($profile_display_icon) . ' ';
+                                                                        $display_field_value .= self::addAriaHiddenToIcon(html_entity_decode($profile_display_icon)) . ' ';
                                                                     }
                                                                     if (!empty($profile_display_prefix)) {
                                                                         $display_field_value .= esc_html($profile_display_prefix) . ' ';
@@ -2234,7 +2253,7 @@ class MA_Author_Boxes extends Module
                                                                 } elseif ($profile_display === 'suffix') {
                                                                     $display_field_value .= esc_html($profile_display_suffix);
                                                                 } elseif ($profile_display === 'icon') {
-                                                                    $display_field_value .= html_entity_decode($profile_display_icon) . ' ';
+                                                                    $display_field_value .= self::addAriaHiddenToIcon(html_entity_decode($profile_display_icon)) . ' ';
                                                                 } elseif ($profile_display === 'prefix_value_suffix') {
                                                                     if (!empty($profile_display_prefix)) {
                                                                         $display_field_value .= esc_html($profile_display_prefix) . ' ';
