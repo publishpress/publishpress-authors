@@ -578,6 +578,10 @@ class Post_Editor
 
         if (!empty($remaining_authors)) {
             foreach ($remaining_authors as $remaining_author) {
+                if (!is_object($remaining_author)) {
+                    continue;
+                }
+
                 $author_default_category = (int) $remaining_author->author_category;
 
                 $category_index = ($author_default_category > 0)
