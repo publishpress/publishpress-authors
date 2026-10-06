@@ -273,10 +273,12 @@ class PPAuthorsProgressBar extends React.Component {
     render() {
         let className = 'p-progressbar p-component p-progressbar-determinate';
         let label = this.renderLabel();
+        let progressLabel = 'Migration progress';
+        let valueText = this.props.value + '% complete';
 
         return (
             <div role="progressbar" id={this.props.id} className={className} style={this.props.style} aria-valuemin="0"
-                 aria-valuenow={this.props.value} aria-valuemax="100" aria-label={this.props.value}>
+                 aria-valuenow={this.props.value} aria-valuemax="100" aria-label={progressLabel} aria-valuetext={valueText}>
                 <div className="p-progressbar-value p-progressbar-value-animate"
                      style={{width: this.props.value + '%', display: 'block'}}></div>
                 {label}
@@ -292,4 +294,3 @@ jQuery(function () {
         document.getElementById('publishpress-authors-byline-migration')
     );
 });
-
