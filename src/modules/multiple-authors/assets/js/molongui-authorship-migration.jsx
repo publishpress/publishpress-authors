@@ -190,7 +190,7 @@ class PPAuthorsMaintenanceLog extends React.Component {
     render() {
         return (
             <div>
-                <div className="ppma_maintenance_log" readOnly={true}>{this.props.log}</div>
+                <div className="ppma_maintenance_log" role="status" aria-live="polite" aria-atomic="true" readOnly={true}>{this.props.log}</div>
             </div>
         );
     }

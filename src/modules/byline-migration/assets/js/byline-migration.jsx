@@ -253,7 +253,7 @@ class PPAuthorsMaintenanceLog extends React.Component {
     render() {
         return (
             <div>
-                <div class="ppma_maintenance_log" readOnly={true}>{this.props.log}</div>
+                <div class="ppma_maintenance_log" role="status" aria-live="polite" aria-atomic="true" readOnly={true}>{this.props.log}</div>
             </div>
         );
     }
@@ -292,4 +292,3 @@ jQuery(function () {
         document.getElementById('publishpress-authors-byline-migration')
     );
 });
-
