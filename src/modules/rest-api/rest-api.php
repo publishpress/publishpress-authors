@@ -543,13 +543,19 @@ if (!class_exists('MA_REST_API')) {
                 $linked_user_changed = is_a($user, 'WP_User') && $previous_author_user_id !== (int)$author_user_id;
 
                 if ($user && (int)$author_user_id !== get_current_user_id()) {
-                    // Only administrators can edit administrators
-                    if (in_array('administrator', $user->roles) && !current_user_can('manage_options')) {
-                        return new WP_Error(
-                            'cannot_edit_administrator',
-                            __('You cannot edit author mapped to administrator account.', 'publishpress-authors'),
-                            ['status' => 403]
-                        );
+                    // Only administrators can edit administrators if setting is enabled
+                    if (in_array('administrator', $user->roles)) {
+                        $legacyPlugin = Factory::getLegacyPlugin();
+                        $allow_admin_edit = isset($legacyPlugin->modules->multiple_authors->options->allow_admin_edit_admin_profiles)
+                            && $legacyPlugin->modules->multiple_authors->options->allow_admin_edit_admin_profiles === 'yes';
+
+                        if (!current_user_can('manage_options') || !$allow_admin_edit) {
+                            return new WP_Error(
+                                'cannot_edit_administrator',
+                                __('You cannot edit author mapped to administrator account.', 'publishpress-authors'),
+                                ['status' => 403]
+                            );
+                        }
                     }
 
                     // Check if the user lacks the necessary capabilities

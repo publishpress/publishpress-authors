@@ -140,7 +140,7 @@ class PluginCest
         $I->assertEquals('<p>First paragraph.</p><p>Second paragraph.</p>', get_term_meta($author->term_id, 'description', true));
     }
 
-    public function actionEditedAuthor_forAdministratorAuthor_allowsAdministratorsOnly(WpunitTester $I)
+    public function actionEditedAuthor_forAdministratorAuthor_respectsSetting(WpunitTester $I)
     {
         $adminID  = $I->factory('a new user')->user->create(['role' => 'administrator']);
         $targetID = $I->factory('a new user')->user->create(['role' => 'administrator']);
@@ -150,6 +150,10 @@ class PluginCest
         get_role('editor')->add_cap('ppma_manage_authors');
 
         $author = Author::create_from_user($targetID);
+        $legacyPlugin = Factory::getLegacyPlugin();
+
+        // Test with setting disabled (default)
+        $legacyPlugin->update_module_option('multiple_authors', 'allow_admin_edit_admin_profiles', 'no');
 
         foreach ([$editorID => 'Editor', $adminID => 'Admin'] as $currentID => $firstName) {
             wp_set_current_user($currentID);
@@ -162,7 +166,25 @@ class PluginCest
 
             Author_Editor::action_edited_author($author->term_id);
 
-            // The editor is rejected first, so only the administrator's change is saved.
+            // Both editor and admin are rejected when setting is disabled
+            $I->assertEquals('', get_user_meta($targetID, 'first_name', true));
+        }
+
+        // Test with setting enabled
+        $legacyPlugin->update_module_option('multiple_authors', 'allow_admin_edit_admin_profiles', 'yes');
+
+        foreach ([$editorID => 'Editor', $adminID => 'Admin'] as $currentID => $firstName) {
+            wp_set_current_user($currentID);
+
+            $_POST = [
+                'author-edit-nonce' => wp_create_nonce('author-edit'),
+                'authors-user_id'   => $targetID,
+                'authors-first_name' => $firstName,
+            ];
+
+            Author_Editor::action_edited_author($author->term_id);
+
+            // The editor is rejected, but the administrator's change is saved when setting is enabled
             $I->assertEquals($firstName === 'Admin' ? 'Admin' : '', get_user_meta($targetID, 'first_name', true));
         }
     }

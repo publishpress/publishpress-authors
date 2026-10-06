@@ -341,15 +341,20 @@ class Admin_Ajax
                 $user = get_user_by('id', $author_id);
 
                 if ($user) {
-                    // Only administrators can edit administrators
-                    if (in_array('administrator', $user->roles) && !current_user_can('manage_options')) {
-                        $response['status']  = 'error';
-                        $response['content'] = esc_html__(
-                            'You cannot edit an author profile linked to an administrator account.',
-                            'publishpress-authors'
-                        );
-                        wp_send_json($response);
-                        exit;
+                    // Only administrators can edit administrators if setting is enabled
+                    if (in_array('administrator', $user->roles)) {
+                        $allow_admin_edit = isset($legacyPlugin->modules->multiple_authors->options->allow_admin_edit_admin_profiles)
+                            && $legacyPlugin->modules->multiple_authors->options->allow_admin_edit_admin_profiles === 'yes';
+
+                        if (!current_user_can('manage_options') || !$allow_admin_edit) {
+                            $response['status']  = 'error';
+                            $response['content'] = esc_html__(
+                                'You cannot edit an author profile linked to an administrator account.',
+                                'publishpress-authors'
+                            );
+                            wp_send_json($response);
+                            exit;
+                        }
                     }
 
                     // Check if user has permission to edit this user
