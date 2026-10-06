@@ -3167,7 +3167,8 @@ class MA_Author_Boxes extends Module
                 'code-editor',
                 'wp-color-picker',
                 'jquery-ui-sortable',
-                'js-beautify'
+                'js-beautify',
+                'wp-a11y'
             ],
             PP_AUTHORS_VERSION
         );

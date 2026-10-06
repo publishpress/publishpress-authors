@@ -1593,7 +1593,7 @@ class Plugin
         wp_enqueue_script(
             'multiple-authors-js',
             PP_AUTHORS_ASSETS_URL . 'js/multiple-authors.js',
-            ['jquery', 'suggest', 'multiple-authors-select2', 'jquery-ui-sortable', 'wp-util'],
+            ['jquery', 'suggest', 'multiple-authors-select2', 'jquery-ui-sortable', 'wp-util', 'wp-a11y'],
             PP_AUTHORS_VERSION
         );
 
