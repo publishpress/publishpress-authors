@@ -181,6 +181,7 @@ class MA_Author_List extends Module
             ['jquery'],
             PP_AUTHORS_VERSION
         );
+        \MultipleAuthors\Authors_Widget::localize_widget_script();
 
         wp_enqueue_style(
             'multiple-authors-widget-css',
