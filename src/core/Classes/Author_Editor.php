@@ -481,6 +481,9 @@ class Author_Editor
         } else {
             $required  = false;
         }
+        // Field types without a single form control the row label can point at.
+        $labelable     = !in_array($args['type'], ['image', 'avatar', 'button_group'], true);
+        $aria_required = $required ? ' aria-required="true"' : '';
         ob_start();
         ?>
         <tr
@@ -490,9 +493,14 @@ class Author_Editor
             >
             <th scope="row">
                 <?php if (!empty($args['label'])) : ?>
-                    <label for="<?php echo esc_attr($key); ?>"><?php echo esc_html($args['label']); ?></label>
+                    <?php if ($labelable) : ?>
+                        <label for="<?php echo esc_attr($key); ?>"><?php echo esc_html($args['label']); ?></label>
+                    <?php else : ?>
+                        <label><?php echo esc_html($args['label']); ?></label>
+                    <?php endif; ?>
                     <?php if ($required) : ?>
-                        <span class="required">*</span>
+                        <span class="required" aria-hidden="true">*</span>
+                        <span class="screen-reader-text"><?php esc_html_e('(required)', 'publishpress-authors'); ?></span>
                     <?php endif; ?>
                 <?php endif; ?>
             </th>
@@ -534,6 +542,8 @@ class Author_Editor
                     }
                     ?>
 
+                    <fieldset>
+                    <legend class="screen-reader-text"><?php echo esc_html($args['label']); ?></legend>
                     <?php foreach ($avatar_options as $avatar_option_key => $avatar_option_data) { ?>
                         <p>
                             <input name="<?php echo esc_attr($key.'-options'); ?>" type="radio"
@@ -549,6 +559,7 @@ class Author_Editor
                             </label>
                         </p>
                     <?php } ?>
+                    </fieldset>
 
                     <div class="author-image-field-wrapper" style="<?php echo esc_attr($image_field_style); ?>">
                         <div class="author-image-field-container">
@@ -571,13 +582,13 @@ class Author_Editor
                 <?php elseif ('textarea' === $args['type']) : ?>
                     <textarea
                             name="<?php echo esc_attr($key); ?>"
-                            id="<?php echo esc_attr($key); ?>"><?php echo esc_textarea($args['value']); ?></textarea>
+                            id="<?php echo esc_attr($key); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo esc_textarea($args['value']); ?></textarea>
                 <?php
                 elseif ('ajax_user_select' === $args['type']) :
                     $user = !empty($args['value']) ? get_user_by('id', $args['value']) : false;
                     ?>
                     <select data-nonce="<?php echo esc_attr(wp_create_nonce('authors-user-search')); ?>"
-                            id="<?php echo esc_attr($key); ?>"
+                            id="<?php echo esc_attr($key); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                             placeholder="<?php esc_attr_e('Select a user', 'publishpress-authors'); ?>"
                             class="authors-select2-user-select" name="<?php echo esc_attr($key); ?>" style="width: 95%">
                         <option></option>
@@ -616,7 +627,7 @@ class Author_Editor
 
                 <?php elseif ('select' === $args['type']) :
                     ?>
-                    <select name="<?php echo esc_attr($key); ?>" id="<?php echo esc_attr($key); ?>"/>
+                    <select name="<?php echo esc_attr($key); ?>" id="<?php echo esc_attr($key); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
                     <?php foreach ($args['options'] as $option_value => $option_text) :
                      ?>
                         <option value="<?php echo esc_attr($option_value); ?>" <?php selected($option_value, $args['value']); ?>><?php echo esc_html($option_text); ?></option>
@@ -624,7 +635,7 @@ class Author_Editor
                     </select>
                 <?php else : ?>
                     <input name="<?php echo esc_attr($key); ?>" type="<?php echo esc_attr($args['type']); ?>"
-                           id="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr($args['value']); ?>"/>
+                           id="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr($args['value']); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>/>
                 <?php endif; ?>
 
                 <?php if (!empty($args['description'])) : ?>
@@ -927,7 +938,7 @@ class Author_Editor
             echo '</div>';
             ?>
             <div class="form-field term-author_email-wrap" style="display: none;">
-                <label class="ppma-account-email"><?php echo esc_html__('Author Email', 'publishpress-authors'); ?> <span class="required">*</span></label>
+                <label class="ppma-account-email" for="authors-author_email"><?php echo esc_html__('Author Email', 'publishpress-authors'); ?> <span class="required">*</span></label>
                 <?php
                 echo static::get_rendered_author_partial( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     [
@@ -939,7 +950,7 @@ class Author_Editor
             echo '</div>';
             ?>
             <div class="form-field term-user_id-wrap">
-                <label for="tag-user-id"><?php echo esc_html__('User Account', 'publishpress-authors'); ?> <span class="required">*</span></label>
+                <label for="authors-new"><?php echo esc_html__('User Account', 'publishpress-authors'); ?> <span class="required">*</span></label>
                 <?php
                 echo static::get_rendered_author_partial( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     [
