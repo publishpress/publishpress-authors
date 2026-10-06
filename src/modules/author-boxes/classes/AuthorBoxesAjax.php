@@ -468,13 +468,23 @@ $profile_field_html = '
         $profile_field_html  .= '                  <span class="ppma-author-field-meta-prefix"> '. $profile_before_display_prefix .' </span>';
     }
     $profile_field_html .= '                        <'. esc_html($profile_html_tag) .'';
-    $profile_field_html .= ' class="ppma-author-'. esc_attr($key) .'-profile-data ppma-author-field-meta '. esc_attr('ppma-author-field-type-' . $data['type']) .'" aria-label="'. esc_attr(($data['label'])) .'"';
+    $profile_field_html .= ' class="ppma-author-'. esc_attr($key) .'-profile-data ppma-author-field-meta '. esc_attr('ppma-author-field-type-' . $data['type']) .'"';
+    $profile_opens_new_tab = $profile_html_tag === 'a' && !empty($data['target']);
     if ($profile_html_tag === 'a') {
         $profile_field_html .= ' href="</?php echo esc_url(' . var_export($profile_value_prefix, true) . ' . $author->' . esc_attr($key) . '); ?>" '. $rel_html .' '. $target_html .'';
+        // Icon-only links have no visible text, so give them an accessible name.
+        if ($profile_display === 'icon') {
+            $profile_field_html .= ' aria-label="</?php echo esc_attr(sprintf(__(\'%1$s for %2$s\', \'publishpress-authors\'), ' . var_export((string) $data['label'], true) . ', $author->display_name)'
+                . ($profile_opens_new_tab ? ' . \' \' . __(\'(opens in a new tab)\', \'publishpress-authors\')' : '')
+                . '); ?>"';
+        }
     }
     $profile_field_html .= '>' . "\n" . str_repeat(" ", 32);
     if ($profile_show_field) {
         $profile_field_html .= '    ' . $display_field_value;
+    }
+    if ($profile_opens_new_tab && $profile_display !== 'icon') {
+        $profile_field_html .= '<span class="screen-reader-text"> </?php esc_html_e(\'(opens in a new tab)\', \'publishpress-authors\'); ?></span>';
     }
     $profile_field_html .=  "\n" . str_repeat(" ", 32) . '</'. esc_html($profile_html_tag) .'>';
     if (!empty(trim($profile_after_display_suffix))) {

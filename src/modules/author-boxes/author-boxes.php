@@ -2255,13 +2255,30 @@ class MA_Author_Boxes extends Module
                                                                         $profile_field_html  .= '<span class="ppma-author-field-meta-prefix"> '. $profile_before_display_prefix .' </span>';
                                                                     }
                                                                     $profile_field_html .= '<'. esc_html($profile_html_tag) .'';
-                                                                    $profile_field_html .= ' class="ppma-author-'. esc_attr($key) .'-profile-data ppma-author-field-meta '. esc_attr('ppma-author-field-type-' . $data['type']) .'" aria-label="'. esc_attr(($data['label'])) .'"';
+                                                                    $profile_field_html .= ' class="ppma-author-'. esc_attr($key) .'-profile-data ppma-author-field-meta '. esc_attr('ppma-author-field-type-' . $data['type']) .'"';
+                                                                    $profile_opens_new_tab = $profile_html_tag === 'a' && !empty($data['target']);
                                                                     if ($profile_html_tag === 'a') {
                                                                         $profile_field_html .= ' href="'. esc_url($profile_value_prefix . $author->$key) .'" '. $rel_html .' '. $target_html .'';
+                                                                        // Icon-only links have no visible text, so give them an accessible name.
+                                                                        if ($profile_display === 'icon') {
+                                                                            $profile_link_label = sprintf(
+                                                                                /* translators: 1: Profile field label, e.g. Website or Email. 2: Author name. */
+                                                                                __('%1$s for %2$s', 'publishpress-authors'),
+                                                                                $data['label'],
+                                                                                $author->display_name
+                                                                            );
+                                                                            if ($profile_opens_new_tab) {
+                                                                                $profile_link_label .= ' ' . __('(opens in a new tab)', 'publishpress-authors');
+                                                                            }
+                                                                            $profile_field_html .= ' aria-label="'. esc_attr($profile_link_label) .'"';
+                                                                        }
                                                                     }
                                                                     $profile_field_html .= '>';
                                                                     if ($profile_show_field) {
                                                                         $profile_field_html .= $display_field_value;
+                                                                    }
+                                                                    if ($profile_opens_new_tab && $profile_display !== 'icon') {
+                                                                        $profile_field_html .= '<span class="screen-reader-text"> '. esc_html__('(opens in a new tab)', 'publishpress-authors') .'</span>';
                                                                     }
                                                                     $profile_field_html .= '</'. esc_html($profile_html_tag) .'>';
                                                                     if (!empty(trim($profile_after_display_suffix))) {
