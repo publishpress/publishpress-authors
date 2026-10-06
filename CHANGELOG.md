@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.18.0] - 05 October, 2026
+[4.18.0] - 06 October, 2026
 
 * Update: Improve accessibility labels in author forms, #2431
 * Update: Add accessible image alternatives for authors, #2432
@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Author List shortcode ignoring show_title when list_id is set, #2495
 * Fixed: Add an expiration to the rewrite rule flush transient, #2497
 * Update: Batch author category relationship inserts into a single query, #2498
+* Fixed: Allow administrators to edit author profiles linked to administrator accounts, #2510
+* Fixed: Attempt to read property "display_name" on false, #2513
+* Fixed: Attempt to read property "author_category" on false, #2512
+* Fixed: View is not readable: my-custom-author-box, #2511
+* Fixed: Bio loses <p> tags or reverts to an older version when the linked WP user is updated, #2507
 
 [4.17.0] - 23 September, 2026
 
