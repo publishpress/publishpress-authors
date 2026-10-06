@@ -372,7 +372,11 @@
             //copy original text to clipboard
             navigator.clipboard.writeText(data_input.value);
             //show notification
-            $(this).closest('.input').find(".ppma-editor-copied-to-clipboard").show().delay(2000).fadeOut('slow');
+            var $copied_notice = $(this).closest('.input').find(".ppma-editor-copied-to-clipboard");
+            $copied_notice.show().delay(2000).fadeOut('slow');
+            if (window.wp && wp.a11y) {
+                wp.a11y.speak($copied_notice.text().trim(), 'polite');
+            }
         });
 
         /**
