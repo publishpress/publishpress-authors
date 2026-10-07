@@ -364,6 +364,9 @@ class Post_Editor
 
         $payload = json_decode(wp_unslash((string)$meta[self::BLOCK_EDITOR_AUTHORS_META_KEY]), true);
 
+        // The meta only carries the selection to this save. Keeping it would restore stale authors in the panel.
+        delete_post_meta($post->ID, self::BLOCK_EDITOR_AUTHORS_META_KEY);
+
         if (!is_array($payload)) {
             return;
         }

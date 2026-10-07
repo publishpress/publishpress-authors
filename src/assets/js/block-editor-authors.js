@@ -475,6 +475,7 @@
 
     function getEditedPostAuthorsDraft() {
         var postMeta;
+        var savedMeta;
         var draft;
 
         if (!settings.state_meta_key || !wp.data || !wp.data.select('core/editor')) {
@@ -482,8 +483,10 @@
         }
 
         postMeta = wp.data.select('core/editor').getEditedPostAttribute('meta') || {};
+        savedMeta = wp.data.select('core/editor').getCurrentPostAttribute('meta') || {};
 
-        if (!postMeta[settings.state_meta_key]) {
+        // Only restore unsaved edits; a saved value can be older than the post's current authors.
+        if (!postMeta[settings.state_meta_key] || postMeta[settings.state_meta_key] === savedMeta[settings.state_meta_key]) {
             return null;
         }
 
