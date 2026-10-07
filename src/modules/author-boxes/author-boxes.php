@@ -1682,8 +1682,11 @@ class MA_Author_Boxes extends Module
         }
 
         // set boxed_categories defautlt fields
+        // Pro saves author_categories_layout for every box (boxed_categories is the first option),
+        // so only boxes that group authors by category get the first-author-only bio default.
         if (
-        isset($editor_data['author_categories_layout'])
+        !empty($editor_data['author_categories_group'])
+        && isset($editor_data['author_categories_layout'])
         && $editor_data['author_categories_layout'] === 'boxed_categories'
         && !isset($editor_data['author_bio_display_position'])
         ) {
