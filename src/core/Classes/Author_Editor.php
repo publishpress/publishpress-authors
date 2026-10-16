@@ -83,10 +83,10 @@ class Author_Editor
             $author = Author::get_by_term_id($term_id);
 
             $retval = $author->get_avatar(32);
-            $retval .= '<strong><a class="row-title" aria-label="' . $author->display_name . '" href="' . get_edit_term_link(
+            $retval .= '<strong><a class="row-title" aria-label="' . esc_attr($author->display_name) . '" href="' . esc_url(get_edit_term_link(
                     $author->term_id,
                     'author'
-                ) . '">' . $author->display_name . '</a>';
+                )) . '">' . esc_html($author->display_name) . '</a>';
 
             /*if (!$author->is_guest()) {
                 $retval .= ' — <span class="post-state">' . __('User', 'publishpress-authors') . '</span>';
@@ -101,8 +101,8 @@ class Author_Editor
 
             // Inline edit data (quick edit)
             $retval .= '<div class="hidden" id="inline_' . $term_id . '">';
-            $retval .= '<div class="name">' . $author->display_name . '</div>';
-            $retval .= '<div class="slug">' . $author->slug . '</div>';
+            $retval .= '<div class="name">' . esc_html($author->display_name) . '</div>';
+            $retval .= '<div class="slug">' . esc_html($author->slug) . '</div>';
             $retval .= '<div class="parent">0</div></div>';
         } elseif ('author_user_email' === $column_name) {
             $author = Author::get_by_term_id($term_id);
