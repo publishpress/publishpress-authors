@@ -1,6 +1,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[Unreleased]
+
+* Fixed: Escape author names, edit links, and quick-edit data in the admin Authors list.
+
 [4.17.0] - 23 September, 2026
 
 * Fixed: Authors editor sidebar panel fails to load when "Show Author Box selection" is disabled, #2468
