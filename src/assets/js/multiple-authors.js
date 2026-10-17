@@ -1020,6 +1020,26 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    function bindAvatarAlternativeTextToggle(checkbox, altText) {
+        if (!checkbox.length || !altText.length) {
+            return;
+        }
+
+        function updateAlternativeTextState() {
+            altText.prop('disabled', checkbox.is(':checked'));
+        }
+
+        checkbox.on('change', updateAlternativeTextState);
+        updateAlternativeTextState();
+    }
+
+    bindAvatarAlternativeTextToggle($('#authors-avatar_decorative'), $('#authors-avatar_alt'));
+
+    $('.ppma-avatar-decorative').each(function () {
+        var checkbox = $(this);
+        bindAvatarAlternativeTextToggle(checkbox, $('#' + checkbox.data('alt-target')));
+    });
+
     /**
      * Switch focus to general email from image tab handler
      */
