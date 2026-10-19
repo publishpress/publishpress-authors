@@ -143,7 +143,7 @@ if ($author_post_custom_height > 0) {
                             <?php endif; ?>
                                 <?php if ($show_post_date ) : ?>
                                     <span class="entry-meta-item post-meta-item post-meta meta posted-on">
-                                        <span class="dashicons dashicons-clock"></span>
+                                        <span class="dashicons dashicons-clock" aria-hidden="true"></span>
                                         <time class="article-date published" datetime="<?php echo esc_attr(get_the_date(DATE_W3C)); ?>">
                                             <?php echo esc_html(get_the_date()); ?>
                                         </time>
@@ -153,7 +153,18 @@ if ($author_post_custom_height > 0) {
                                 <?php if ($show_post_comments ) : ?>
                                     <span class="entry-meta-item post-meta-item post-meta meta">
                                         <a href="<?php echo esc_url(the_permalink() . '#comments'); ?>" title="<?php echo esc_html__('Comment counts', 'publishpress-authors'); ?>">
-                                            <span class="dashicons dashicons-admin-comments"></span><?php echo esc_html(get_comments_number()); ?>
+                                            <span class="dashicons dashicons-admin-comments" aria-hidden="true"></span><?php echo esc_html(get_comments_number()); ?>
+                                            <span class="screen-reader-text">
+                                                <?php
+                                                echo esc_html(
+                                                    sprintf(
+                                                        /* translators: %s: post title */
+                                                        _n('comment on %s', 'comments on %s', (int) get_comments_number(), 'publishpress-authors'),
+                                                        get_the_title()
+                                                    )
+                                                );
+                                                ?>
+                                            </span>
                                         </a>
                                     </span>
                                 <?php endif; ?>
