@@ -402,6 +402,25 @@ class Author_Editor
                     ],
                 ],
             ],
+            'avatar_alt'  => [
+                'label'       => esc_html__('Alternative Text', 'publishpress-authors'),
+                'type'        => 'textarea',
+                'sanitize'    => [self::class, 'sanitizeAvatarAlt'],
+                'tab'         => 'image',
+                'description' => esc_html__(
+                    'Describe the avatar. Leave blank to use the Media Library alternative text or author name.',
+                    'publishpress-authors'
+                ),
+            ],
+            'avatar_decorative' => [
+                'label'       => esc_html__('Decorative Image', 'publishpress-authors'),
+                'type'        => 'checkbox',
+                'tab'         => 'image',
+                'description' => esc_html__(
+                    'Use empty alternative text when this avatar is decorative.',
+                    'publishpress-authors'
+                ),
+            ],
             'user_url'    => [
                 'label'    => esc_html__('Website', 'publishpress-authors'),
                 'type'     => 'url',
@@ -453,6 +472,18 @@ class Author_Editor
         }
 
         return $fields;
+    }
+
+    /**
+     * Sanitize avatar alternative text.
+     *
+     * @param string $value Alternative text.
+     *
+     * @return string
+     */
+    public static function sanitizeAvatarAlt($value)
+    {
+        return mb_substr(sanitize_text_field($value), 0, 500);
     }
 
     /**

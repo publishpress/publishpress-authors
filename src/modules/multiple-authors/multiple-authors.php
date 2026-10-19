@@ -138,6 +138,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'enable_guest_author_acount'   => 'yes',
                     'show_editor_author_box_selection'   => 'yes',
                     'default_avatar'               => '',
+                    'default_avatar_alt'           => '',
+                    'default_avatar_decorative'    => 'no',
                     'display_name_format'          => 'custom',
                     'translate_author_taxonomy' => 'yes',
                     'allow_admin_edit_admin_profiles' => 'no'
@@ -2278,9 +2280,18 @@ if (!class_exists('MA_Multiple_Authors')) {
          */
         public function settings_default_avatar($args = [])
         {
-            $id    = $this->module->options_group_name . '_default_avatar';
-            $value = isset($this->module->options->default_avatar) ? $this->module->options->default_avatar : '';
-            $default_image = '';
+            $id              = $this->module->options_group_name . '_default_avatar';
+            $value           = isset($this->module->options->default_avatar)
+                ? $this->module->options->default_avatar
+                : '';
+            $alt_id          = $this->module->options_group_name . '_default_avatar_alt';
+            $alt_value       = isset($this->module->options->default_avatar_alt)
+                ? $this->module->options->default_avatar_alt
+                : '';
+            $decorative_id   = $this->module->options_group_name . '_default_avatar_decorative';
+            $is_decorative   = isset($this->module->options->default_avatar_decorative)
+                && 'yes' === $this->module->options->default_avatar_decorative;
+            $default_image   = '';
             if ($value) {
                 $default_image = wp_get_attachment_image_url($value, 'thumbnail');
             }
@@ -2303,6 +2314,45 @@ if (!class_exists('MA_Multiple_Authors')) {
                 <input name="<?php echo esc_attr($this->module->options_group_name); ?>[default_avatar]" class="author-image-field-id" type="hidden"
                        value="<?php echo esc_attr($value); ?>"/>
             </div>
+            <p>
+                <label for="<?php echo esc_attr($alt_id); ?>">
+                    <?php esc_html_e('Alternative Text', 'publishpress-authors'); ?>
+                </label>
+            </p>
+            <input
+                type="hidden"
+                name="<?php echo esc_attr($this->module->options_group_name); ?>[default_avatar_alt]"
+                value="<?php echo esc_attr($alt_value); ?>"/>
+            <textarea
+                id="<?php echo esc_attr($alt_id); ?>"
+                name="<?php echo esc_attr($this->module->options_group_name); ?>[default_avatar_alt]"
+                rows="3"
+                <?php disabled($is_decorative); ?>><?php echo esc_textarea($alt_value); ?></textarea>
+            <p class="description">
+                <?php
+                esc_html_e(
+                    'Describe the default avatar. Leave blank to use its Media Library alternative text.',
+                    'publishpress-authors'
+                );
+                ?>
+            </p>
+            <p>
+                <input
+                    type="hidden"
+                    name="<?php echo esc_attr($this->module->options_group_name); ?>[default_avatar_decorative]"
+                    value="no"/>
+                <input
+                    type="checkbox"
+                    class="ppma-avatar-decorative"
+                    data-alt-target="<?php echo esc_attr($alt_id); ?>"
+                    id="<?php echo esc_attr($decorative_id); ?>"
+                    name="<?php echo esc_attr($this->module->options_group_name); ?>[default_avatar_decorative]"
+                    value="yes"
+                    <?php checked($is_decorative); ?>/>
+                <label for="<?php echo esc_attr($decorative_id); ?>">
+                    <?php esc_html_e('This image is decorative', 'publishpress-authors'); ?>
+                </label>
+            </p>
             <?php
 
 echo '<span class="ppma_settings_field_description">'
@@ -3240,6 +3290,14 @@ echo '<span class="ppma_settings_field_description">'
             if (!isset($new_options['enable_guest_author_acount'])) {
                 $new_options['enable_guest_author_acount'] = 'no';
             }
+
+            $new_options['default_avatar_alt'] = isset($new_options['default_avatar_alt'])
+                ? mb_substr(sanitize_text_field($new_options['default_avatar_alt']), 0, 500)
+                : '';
+            $new_options['default_avatar_decorative'] = isset($new_options['default_avatar_decorative'])
+                && 'yes' === $new_options['default_avatar_decorative']
+                ? 'yes'
+                : 'no';
 
             if (!isset($new_options['show_author_post_authors'])) {
                 $new_options['show_author_post_authors'] = 'no';
