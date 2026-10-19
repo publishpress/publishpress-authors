@@ -3337,6 +3337,10 @@ echo '<span class="ppma_settings_field_description">'
                 }
 
                 foreach ($authors as $author) {
+                    if (!$author instanceof Author) {
+                        continue;
+                    }
+
                     if (!$author->is_guest() && !in_array($author->user_id, $receivers)) {
                         $receivers[] = $author->user_id;
                     }
