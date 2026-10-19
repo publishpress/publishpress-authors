@@ -313,11 +313,35 @@
                 }
             }
         }).on("click", ".author-remove", function () {
+            var $removeButtons = $context.find(".author-remove");
+            var index = $removeButtons.index(this);
+
             $(this).closest("li").remove();
             handleUsersAuthorField($context);
             handleAuthorCategory($context);
             triggerSelectionChange($context);
+            focusAfterAuthorRemoval($context, $removeButtons.not(this), index);
         });
+    }
+
+    function focusAfterAuthorRemoval($context, $remainingButtons, index) {
+        var $target = $remainingButtons.eq(Math.min(index, $remainingButtons.length - 1));
+        var $search;
+
+        if (index === -1) {
+            return;
+        }
+
+        if (!$remainingButtons.length) {
+            $search = $context.find(".authors-select2.authors-search").first();
+            $target = $search.next(".ppma_select2-container").find(".ppma_select2-selection");
+
+            if (!$target.length) {
+                $target = $search;
+            }
+        }
+
+        $target.trigger("focus");
     }
 
     function applyAuthorsSelection(container, data) {
