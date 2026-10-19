@@ -1041,6 +1041,7 @@ jQuery(document).ready(function ($) {
 
         $('.author-response-notice').remove();
         $('form#edittag tr.form-field').removeClass('form-invalid');
+        $('form#edittag tr.form-field.required-tab [aria-invalid]').removeAttr('aria-invalid');
 
         event.preventDefault();
 
@@ -1048,6 +1049,8 @@ jQuery(document).ready(function ($) {
         var field_label,
         field_object,
         field_error_count = 0,
+        first_invalid_field = null,
+        field_error_speak = [],
         field_error_message = '<div style="color:red;">' + MultipleAuthorsStrings.isRequiredWarning + '</div><ul>';
 
         $.each($('form#edittag tr.form-field.required-tab'), function (i, field) {
@@ -1062,6 +1065,11 @@ jQuery(document).ready(function ($) {
                 field_label = field_object.closest('tr').addClass('form-invalid').find('label').html();
                 field_error_count = 1;
                 field_error_message += '<li>' + field_label + ' ' + MultipleAuthorsStrings.isRequired + ' <span class="required">*</span></li>';
+                field_object.attr('aria-invalid', 'true');
+                if (first_invalid_field === null) {
+                    first_invalid_field = field_object.first();
+                }
+                field_error_speak.push($('<div>').html(field_label).find('.required').remove().end().text().trim() + ' ' + MultipleAuthorsStrings.isRequired);
             }
         });
         field_error_message += '</ul>';
@@ -1069,6 +1077,13 @@ jQuery(document).ready(function ($) {
         if (field_error_count > 0) {
             $('.ppma-thickbox-modal-content').html(field_error_message);
             $('.ppma-required-field-thickbox-botton').trigger('click');
+            if (window.wp && wp.a11y) {
+                wp.a11y.speak($('<div>').html(MultipleAuthorsStrings.isRequiredWarning).text() + ' ' + field_error_speak.join(', '), 'assertive');
+            }
+            //move focus to the first invalid field once the modal is closed
+            $('body').off('thickbox:removed.ppmaValidation').one('thickbox:removed.ppmaValidation', function () {
+                first_invalid_field.trigger('focus');
+            });
           return;
         }
 
@@ -1091,11 +1106,21 @@ jQuery(document).ready(function ($) {
             if (response.status === 'error') {
                 $('.edit-tag-actions').after('<div class="author-response-notice notice notice-error" style="margin-top: 10px;"><p> ' + response.content + ' </p></div>');
                 $('.author-loading-spinner').removeClass('is-active');
+                if (window.wp && wp.a11y) {
+                    wp.a11y.speak($('.author-response-notice').text().trim(), 'assertive');
+                }
             } else {
                 $form.unbind('submit').submit();
             }
         });
 
+    });
+
+    //clear invalid state from a required field once it has a value.
+    $(document).on('input change', 'body.taxonomy-author form#edittag tr.form-field.required-tab [aria-invalid="true"]', function () {
+        if (!isEmptyOrSpaces($(this).val())) {
+            $(this).removeAttr('aria-invalid').closest('tr').removeClass('form-invalid');
+        }
     });
 
     //prevent custon field submission if title is empty.
@@ -1167,6 +1192,9 @@ jQuery(document).ready(function ($) {
         var copy_message = copy_button.querySelector('span');
         copy_message.innerHTML = copy_message.getAttribute('data-copied');
         copy_button.setAttribute('aria-label', copy_message.getAttribute('data-copied'));
+        if (window.wp && wp.a11y) {
+            wp.a11y.speak(copy_message.getAttribute('data-copied'), 'polite');
+        }
     });
 
     /**
