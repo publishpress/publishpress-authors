@@ -239,6 +239,35 @@ class Authors_Widget extends WP_Widget
 
 
     /**
+     * Localize the strings used by the authors index AJAX filter script.
+     *
+     * @return void
+     */
+    public static function localize_widget_script()
+    {
+        static $localized = false;
+
+        if ($localized) {
+            return;
+        }
+
+        $localized = true;
+
+        wp_localize_script(
+            'multiple-authors-widget',
+            'ppmaAuthorsIndex',
+            [
+                /* translators: %s: the letter selected in the authors index */
+                'showingLetter' => esc_html__('Showing authors starting with %s', 'publishpress-authors'),
+                'showingAll'    => esc_html__('Showing all authors', 'publishpress-authors'),
+                'noResults'     => esc_html__('No authors found.', 'publishpress-authors'),
+                'loading'       => esc_html__('Loading authors...', 'publishpress-authors'),
+                'loadError'     => esc_html__('Unable to load authors.', 'publishpress-authors'),
+            ]
+        );
+    }
+
+    /**
      * Get HTML markdown
      *
      * @param array $args The args.
@@ -310,6 +339,7 @@ class Authors_Widget extends WP_Widget
             ['jquery'],
             PP_AUTHORS_VERSION
         );
+        self::localize_widget_script();
 
         $ajax_instance = $instance;
         unset($ajax_instance['page']);
