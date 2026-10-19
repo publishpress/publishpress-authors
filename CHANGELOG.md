@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Attempt to read property "author_category" on false, #2512
 * Fixed: View is not readable: my-custom-author-box, #2511
 * Fixed: Bio loses <p> tags or reverts to an older version when the linked WP user is updated, #2507
+* Fixed: Escape author names, edit links, and quick-edit data in the admin Authors list.
 
 [4.17.0] - 23 September, 2026
 
