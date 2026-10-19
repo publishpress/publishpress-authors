@@ -139,7 +139,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'show_editor_author_box_selection'   => 'yes',
                     'default_avatar'               => '',
                     'display_name_format'          => 'custom',
-                    'translate_author_taxonomy' => 'yes'
+                    'translate_author_taxonomy' => 'yes',
+                    'allow_admin_edit_admin_profiles' => 'no'
                 ],
                 'options_page'         => false,
                 'autoload'             => true,
@@ -1159,6 +1160,17 @@ if (!class_exists('MA_Multiple_Authors')) {
             );
 
             add_settings_field(
+                'allow_admin_edit_admin_profiles',
+                __(
+                    'Allow administrators to edit administrator author profiles:',
+                    'publishpress-authors'
+                ),
+                [$this, 'settings_allow_admin_edit_admin_profiles_option'],
+                $this->module->options_group_name,
+                $this->module->options_group_name . '_guest_authors'
+            );
+
+            add_settings_field(
                 'author_legacy_layout_boxed',
                 __('Boxed legacy layout Author Box:', 'publishpress-authors'),
                 [$this, 'settings_author_legacy_layout_boxed'],
@@ -1355,6 +1367,26 @@ if (!class_exists('MA_Multiple_Authors')) {
                 . checked($value, 'yes', false) . ' />';
             echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">' . esc_html__(
                     'Allow users to choose which Author Box is used on each post.',
+                    'publishpress-authors'
+                ) . '</span>';
+            echo '</label>';
+        }
+
+        /**
+         * Displays the field to allow administrators to edit administrator author profiles
+         *
+         * @param array
+         */
+        public function settings_allow_admin_edit_admin_profiles_option($args = [])
+        {
+            $id    = $this->module->options_group_name . '_allow_admin_edit_admin_profiles';
+            $value = isset($this->module->options->allow_admin_edit_admin_profiles) ? $this->module->options->allow_admin_edit_admin_profiles : 'no';
+
+            echo '<label for="' . esc_attr($id) . '">';
+            echo '<input type="checkbox" value="yes" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[allow_admin_edit_admin_profiles]" '
+                . checked($value, 'yes', false) . ' />';
+            echo '&nbsp;&nbsp;&nbsp;<span class="ppma_settings_field_description">' . esc_html__(
+                    'Allow users with the "manage_options" capability to edit author profiles linked to administrator accounts. By default, editing administrator author profiles is blocked for security reasons.',
                     'publishpress-authors'
                 ) . '</span>';
             echo '</label>';
@@ -3135,6 +3167,10 @@ echo '<span class="ppma_settings_field_description">'
 
             if (!isset($new_options['show_editor_author_box_selection'])) {
                 $new_options['show_editor_author_box_selection'] = 'no';
+            }
+
+            if (!isset($new_options['allow_admin_edit_admin_profiles'])) {
+                $new_options['allow_admin_edit_admin_profiles'] = 'no';
             }
 
             if (!isset($new_options['mapped_author_roles']) || !is_array($new_options['mapped_author_roles'])) {
@@ -5275,6 +5311,34 @@ echo '<span class="ppma_settings_field_description">'
             do_action('publishpress_authors_flush_cache_for_post', $postId);
         }
 
+        /**
+         * Whether the author bio should be kept when a mapped user is updated.
+         *
+         * wp_update_user() runs the bio through core's wp_filter_kses, which strips <p> tags.
+         * When the user bio is only the stripped version of the author bio, keep the author bio.
+         *
+         * @param int $termId
+         * @param \WP_User $user
+         *
+         * @return bool
+         */
+        private function shouldKeepAuthorDescription($termId, $user)
+        {
+            $authorDescription = (string)get_term_meta($termId, 'description', true);
+
+            if ($authorDescription === '') {
+                return false;
+            }
+
+            $userDescription = (string)$user->description;
+
+            if ($userDescription === $authorDescription) {
+                return false;
+            }
+
+            return wp_unslash(wp_filter_kses(wp_slash($authorDescription))) === $userDescription;
+        }
+
         public function userProfileUpdate($userId, $oldUserData)
         {
             $author = Author::get_by_user_id($userId);
@@ -5310,6 +5374,13 @@ echo '<span class="ppma_settings_field_description">'
 
                 update_term_meta($author->term_id, 'user_id', $user->ID);
                 foreach ($user_fields as $field) {
+                    if ($field === 'description' && $this->shouldKeepAuthorDescription($author->term_id, $user)) {
+                        // The user bio is only the kses-stripped copy of the author bio.
+                        // Keep the author bio and restore the user bio from it.
+                        update_user_meta($user->ID, 'description', get_term_meta($author->term_id, 'description', true));
+                        continue;
+                    }
+
                     update_term_meta($author->term_id, $field, $user->$field);
                 }
 

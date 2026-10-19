@@ -345,6 +345,10 @@ trait Author_box
             if (!empty($authors)) {
                 $profile_fields   = apply_filters('multiple_authors_author_fields', [], false);
                 foreach ($authors as $author) {
+                    if (!is_object($author)) {
+                        continue;
+                    }
+
                     if ($field === 'avatar') {
                         $avatar_url = $author->get_avatar_url();
                         if (is_array($avatar_url) && isset($avatar_url['url'])) {

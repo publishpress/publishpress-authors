@@ -169,7 +169,7 @@ class CMB2_Field_Display {
 	 * @since 2.2.2
 	 */
 	protected function _display() {
-		print_r( $this->value );
+		echo esc_html( print_r( $this->value, true ) );
 	}
 }
 
@@ -192,7 +192,7 @@ class CMB2_Display_Text_Money extends CMB2_Field_Display {
 	 */
 	protected function _display() {
 		$this->value = $this->value ? $this->value : '0';
-		echo ( ! $this->field->get_param_callback_result( 'before_field' ) ? '$' : ' ' ), $this->value;
+		echo ( ! $this->field->get_param_callback_result( 'before_field' ) ? '$' : ' ' ), esc_html( print_r( $this->value, true ) );
 	}
 }
 
@@ -285,7 +285,8 @@ class CMB2_Display_Textarea_Code extends CMB2_Field_Display {
 	 * @since 2.2.2
 	 */
 	protected function _display() {
-		echo '<xmp class="cmb2-code">' . print_r( $this->value, true ) . '</xmp>';
+		// Double-encode entities so the browser displays the stored source literally inside <pre>.
+		echo '<pre class="cmb2-code">', htmlspecialchars( print_r( $this->value, true ), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8' ), '</pre>';
 	}
 }
 
@@ -476,6 +477,10 @@ class CMB2_Display_File_List extends CMB2_Display_File {
 
 		echo '<ul class="cmb2-display-file-list">';
 		foreach ( $this->value as $id => $fullurl ) {
+			if ( ! is_scalar( $fullurl ) ) {
+				continue;
+			}
+
 			echo '<li>', $this->file_output( esc_url_raw( $fullurl ), $id, $type ), '</li>';
 		}
 		echo '</ul>';

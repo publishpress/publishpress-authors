@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-15T01:06:13+00:00\n"
-"PO-Revision-Date: 2026-09-23 08:19+0000\n"
+"PO-Revision-Date: 2026-10-02 10:17+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "% 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
@@ -19,19 +19,19 @@ msgstr ""
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=(n == 0 ? 0 : n == 1 ? 1 : n == 2 ? 2 : n % 100 >= 3 && n % 100 <= 10 ? 3 : n % 100 >= 11 ? 4 : 5);\n"
 
-#: publishpress-authors.php:3
+#: publishpress-authors.php:5
 #: src/core/Plugin.php:743
 #: src/modules/settings/settings.php:64
 #. Plugin Name of the plugin
 msgid "PublishPress Authors"
 msgstr "نشر بريس المؤلفين"
 
-#: publishpress-authors.php:4
+#: publishpress-authors.php:7
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/publishpress-authors/"
 msgstr "https://wordpress.org/plugins/publishpress-authors/"
 
-#: publishpress-authors.php:5
+#: publishpress-authors.php:9
 #: src/modules/multiple-authors/multiple-authors.php:79
 #: src/modules/multiple-authors/multiple-authors.php:83
 #. Description of the plugin
@@ -42,12 +42,12 @@ msgstr ""
 "يتيح لك PublishPress Authors إضافة مؤلفين متعددين ومؤلفي ضيوف إلى منشورات "
 "WordPress"
 
-#: publishpress-authors.php:6
+#: publishpress-authors.php:11
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "نشر بريس"
 
-#: publishpress-authors.php:7
+#: publishpress-authors.php:13
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
@@ -62,9 +62,9 @@ msgstr ""
 "إضافي. %sترقية إلى النسخة المحترفة%s"
 
 #: includes.php:63
-#: src/modules/author-boxes/author-boxes.php:3291
+#: src/modules/author-boxes/author-boxes.php:3292
 #: src/modules/author-categories/author-categories.php:739
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:545
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:550
 #: src/modules/author-custom-fields/author-custom-fields.php:995
 #: src/modules/author-custom-fields/author-custom-fields.php:1048
 #: src/modules/author-list/author-list.php:1598
@@ -155,8 +155,8 @@ msgid "Author's search box field (Seperate multiple fields by comma(','))"
 msgstr "حقل صندوق بحث المؤلف (افصل بين الحقول المتعددة بفاصلة(','))"
 
 #: src/core/Authors_Widget.php:188
-#: src/core/Authors_Widget.php:494
-#: src/core/Classes/Post_Editor.php:834
+#: src/core/Authors_Widget.php:498
+#: src/core/Classes/Post_Editor.php:841
 #: src/core/Plugin.php:592
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1112
 msgid "All Authors"
@@ -197,7 +197,7 @@ msgstr "عدد المنشورات"
 #: src/core/Classes/Author_Editor.php:369
 #: src/modules/author-custom-fields/author-custom-fields.php:933
 #: src/modules/author-list/author-list.php:704
-#: src/modules/multiple-authors/multiple-authors.php:2228
+#: src/modules/multiple-authors/multiple-authors.php:2230
 msgid "First Name"
 msgstr "الاسم الأول"
 
@@ -205,7 +205,7 @@ msgstr "الاسم الأول"
 #: src/core/Classes/Author_Editor.php:374
 #: src/modules/author-custom-fields/author-custom-fields.php:941
 #: src/modules/author-list/author-list.php:705
-#: src/modules/multiple-authors/multiple-authors.php:2229
+#: src/modules/multiple-authors/multiple-authors.php:2231
 msgid "Last Name"
 msgstr "اسم العائلة"
 
@@ -222,7 +222,15 @@ msgstr "صندوق البحث"
 msgid "Search"
 msgstr "بحث"
 
-#: src/core/Authors_Widget.php:498
+#: src/core/Authors_Widget.php:473
+msgid "Search authors"
+msgstr "ابحث عن المؤلفين"
+
+#: src/core/Authors_Widget.php:476
+msgid "Search authors by"
+msgstr "ابحث عن المؤلفين بواسطة"
+
+#: src/core/Authors_Widget.php:502
 msgid "No recent posts from this author"
 msgstr "لا توجد منشورات حديثة من هذا المؤلف"
 
@@ -258,7 +266,7 @@ msgstr ""
 "إذن لتحريره."
 
 #: src/core/Classes/Admin_Ajax.php:374
-#: src/core/Classes/Author_Editor.php:1150
+#: src/core/Classes/Author_Editor.php:1152
 msgid ""
 "Sorry, this WordPress user is already mapped to another Author. By default, "
 "each user can only be connected to one Author profile."
@@ -267,7 +275,7 @@ msgstr ""
 "ربط كل مستخدم بملف تعريف مؤلف واحد فقط."
 
 #: src/core/Classes/Admin_Ajax.php:386
-#: src/core/Classes/Author_Editor.php:1243
+#: src/core/Classes/Author_Editor.php:1245
 msgid "Registered User is required."
 msgstr "يتطلب تسجيل مستخدم."
 
@@ -309,19 +317,19 @@ msgid "Author Type"
 msgstr "نوع المؤلف"
 
 #: src/core/Classes/Author_Editor.php:118
-#: src/core/Classes/Author_Editor.php:895
+#: src/core/Classes/Author_Editor.php:897
 #: src/modules/author-list/author-list.php:1517
 msgid "Guest Author With User Account"
 msgstr "مؤلف ضيف مع حساب مستخدم"
 
 #: src/core/Classes/Author_Editor.php:120
-#: src/core/Classes/Author_Editor.php:889
+#: src/core/Classes/Author_Editor.php:891
 #: src/modules/author-list/author-list.php:1516
 msgid "Registered Author With User Account"
 msgstr "مؤلف مسجل مع حساب مستخدم"
 
 #: src/core/Classes/Author_Editor.php:122
-#: src/core/Classes/Author_Editor.php:902
+#: src/core/Classes/Author_Editor.php:904
 #: src/modules/author-list/author-list.php:1518
 msgid "Guest Author With No User Account"
 msgstr "مؤلف ضيف بدون حساب مستخدم"
@@ -343,18 +351,18 @@ msgstr "إنشاء ملف تعريف مؤلف"
 #: src/core/Classes/Author_Editor.php:314
 #: src/modules/author-list/author-list.php:330
 #: src/modules/author-pages/author-pages.php:117
-#: src/modules/multiple-authors/multiple-authors.php:3276
+#: src/modules/multiple-authors/multiple-authors.php:3278
 msgid "General"
 msgstr "عام"
 
 #: src/core/Classes/Author_Editor.php:317
-#: src/modules/author-boxes/author-boxes.php:1518
+#: src/modules/author-boxes/author-boxes.php:1519
 msgid "Avatar"
 msgstr "الصورة الرمزية"
 
 #: src/core/Classes/Author_Editor.php:346
 #: src/core/Plugin.php:610
-#: src/modules/author-boxes/author-boxes.php:2415
+#: src/modules/author-boxes/author-boxes.php:2416
 #: src/modules/author-categories/author-categories.php:786
 #: src/modules/author-categories/author-categories.php:788
 #: src/views/authors_table.html.php:21
@@ -366,7 +374,7 @@ msgid "Registered User"
 msgstr "مستخدم مسجل"
 
 #: src/core/Classes/Author_Editor.php:363
-#: src/modules/author-boxes/author-boxes.php:1526
+#: src/modules/author-boxes/author-boxes.php:1527
 msgid "Biographical Info"
 msgstr "معلومات سيرة ذاتية"
 
@@ -416,25 +424,25 @@ msgstr "لا تظهر هذا الملف الشخصي علنًا"
 
 #: src/core/Classes/Author_Editor.php:512
 #: src/core/Classes/Author_Editor.php:561
-#: src/modules/multiple-authors/multiple-authors.php:2262
+#: src/modules/multiple-authors/multiple-authors.php:2264
 msgid "Select image"
 msgstr "اختر صورة"
 
 #: src/core/Classes/Author_Editor.php:516
 #: src/core/Classes/Author_Editor.php:565
-#: src/modules/multiple-authors/multiple-authors.php:2266
+#: src/modules/multiple-authors/multiple-authors.php:2268
 msgid "Remove this image"
 msgstr "إزالة هذه الصورة"
 
-#: src/core/Classes/Author_Editor.php:579
+#: src/core/Classes/Author_Editor.php:581
 msgid "Select a user"
 msgstr "اختر مستخدمًا"
 
-#: src/core/Classes/Author_Editor.php:666
+#: src/core/Classes/Author_Editor.php:668
 msgid "Author email error"
 msgstr "خطأ في بريد المؤلف الإلكتروني"
 
-#: src/core/Classes/Author_Editor.php:890
+#: src/core/Classes/Author_Editor.php:892
 msgid ""
 "Create an author profile for a current user account. You can select users "
 "who are allowed to edit posts. This user will be able to update their "
@@ -443,7 +451,7 @@ msgstr ""
 "قم بإنشاء ملف تعريف مؤلف لحساب مستخدم حالي. يمكنك اختيار المستخدمين المسموح "
 "لهم بتحرير المنشورات. سيكون بإمكان هذا المستخدم تحديث ملفه الشخصي."
 
-#: src/core/Classes/Author_Editor.php:896
+#: src/core/Classes/Author_Editor.php:898
 msgid ""
 "Create an author profile and a linked user account. This account will be in "
 "the \"Guest Author\" role and will not be able to login to the WordPress "
@@ -453,7 +461,7 @@ msgstr ""
 "ضيف\" ولن يكون قادرًا على تسجيل الدخول إلى لوحة تحكم WordPress أو تحديث "
 "ملفه الشخصي."
 
-#: src/core/Classes/Author_Editor.php:903
+#: src/core/Classes/Author_Editor.php:905
 msgid ""
 "Create an author profile with no linked user account. This option is "
 "lightweight but may have compatibility issues with other themes and plugins."
@@ -461,42 +469,42 @@ msgstr ""
 "قم بإنشاء ملف تعريف مؤلف بدون حساب مستخدم مرتبط. هذا الخيار خفيف الوزن "
 "ولكنه قد يواجه مشكلات توافق مع سمات وإضافات أخرى."
 
-#: src/core/Classes/Author_Editor.php:922
+#: src/core/Classes/Author_Editor.php:924
 msgid "Author Email"
 msgstr "البريد الإلكتروني للمؤلف"
 
-#: src/core/Classes/Author_Editor.php:934
+#: src/core/Classes/Author_Editor.php:936
 msgid "User Account"
 msgstr "حساب المستخدم"
 
-#: src/core/Classes/Author_Editor.php:997
-#: src/modules/multiple-authors/multiple-authors.php:4184
+#: src/core/Classes/Author_Editor.php:999
+#: src/modules/multiple-authors/multiple-authors.php:4242
 msgid "Sync author and user fields"
 msgstr "مزامنة حقول المؤلف والمستخدم"
 
-#: src/core/Classes/Author_Editor.php:1001
+#: src/core/Classes/Author_Editor.php:1003
 msgid "Convert to Guest Author With User Account"
 msgstr "تحويل إلى مؤلف ضيف مع حساب مستخدم"
 
-#: src/core/Classes/Author_Editor.php:1005
+#: src/core/Classes/Author_Editor.php:1007
 msgid "Update post count"
 msgstr "تحديث عدد المنشورات"
 
-#: src/core/Classes/Author_Editor.php:1076
+#: src/core/Classes/Author_Editor.php:1078
 msgid "No authors were updated"
 msgstr "لم يتم تحديث أي مؤلفين"
 
-#: src/core/Classes/Author_Editor.php:1079
+#: src/core/Classes/Author_Editor.php:1081
 #, php-format
 msgid "Updated %d authors"
 msgstr "تم تحديث %d مؤلفًا"
 
-#: src/core/Classes/Author_Editor.php:1176
-#: src/core/Classes/Author_Editor.php:1194
+#: src/core/Classes/Author_Editor.php:1178
+#: src/core/Classes/Author_Editor.php:1196
 msgid "An author with the name provided already exists."
 msgstr "يوجد مؤلف بالاسم المقدم بالفعل."
 
-#: src/core/Classes/Author_Editor.php:1206
+#: src/core/Classes/Author_Editor.php:1208
 msgid "An author email is required when creating new User Author."
 msgstr "يتطلب البريد الإلكتروني للمؤلف عند إنشاء مؤلف مستخدم جديد."
 
@@ -575,13 +583,14 @@ msgstr " \"post_author\" فارغ"
 msgid "Drag-and-drop Authors to add them to the %s category"
 msgstr "اسحب وأفلت المؤلفين لإضافتهم إلى فئة %s"
 
-#: src/core/Classes/Post_Editor.php:639
+#: src/core/Classes/Post_Editor.php:634
+#: src/core/Classes/Post_Editor.php:640
 #: src/core/Plugin.php:1655
-#: src/modules/multiple-authors/multiple-authors.php:2857
+#: src/modules/multiple-authors/multiple-authors.php:2859
 msgid "Search for an author"
 msgstr "ابحث عن مؤلف"
 
-#: src/core/Classes/Post_Editor.php:730
+#: src/core/Classes/Post_Editor.php:735
 msgid ""
 "This option is showing because you do not have a WordPress user selected as "
 "an author. For some tasks, it can be helpful to have a user selected here. "
@@ -591,24 +600,33 @@ msgstr ""
 "يمكن أن يكون من المفيد اختيار مستخدم هنا. لن يكون هذا المستخدم مرئيًا في "
 "واجهة موقعك."
 
-#: src/core/Classes/Post_Editor.php:738
+#: src/core/Classes/Post_Editor.php:743
 msgid "Search for an user"
 msgstr "ابحث عن مستخدم"
 
-#: src/core/Classes/Post_Editor.php:762
-#: src/modules/author-boxes/author-boxes.php:565
-#: src/modules/author-boxes/author-boxes.php:685
+#: src/core/Classes/Post_Editor.php:767
+#: src/modules/author-boxes/author-boxes.php:566
+#: src/modules/author-boxes/author-boxes.php:686
 msgid "Author Box"
 msgstr "صندوق المؤلف"
 
-#: src/core/Classes/Post_Editor.php:786
+#: src/core/Classes/Post_Editor.php:791
 #: src/modules/author-boxes/author-boxes.php:206
 msgid "Default Author Box"
 msgstr "صندوق المؤلف الافتراضي"
 
-#: src/core/Classes/Post_Editor.php:787
+#: src/core/Classes/Post_Editor.php:792
 msgid "Hide Author Box"
 msgstr "إخفاء صندوق المؤلف"
+
+#: src/core/Classes/Post_Editor.php:835
+msgid "Filter posts by author"
+msgstr "فلتره المشاركات حسب المؤلف"
+
+#: src/core/Classes/Post_Editor.php:883
+#, php-format
+msgid "Remove %s"
+msgstr "إزالة %s"
 
 #: src/core/Classes/Term_Editor.php:42
 msgid "New author added."
@@ -635,7 +653,7 @@ msgid "Authors deleted."
 msgstr "تم حذف المؤلفين."
 
 #: src/core/Classes/Term_Editor.php:79
-#: src/modules/multiple-authors/multiple-authors.php:3376
+#: src/modules/multiple-authors/multiple-authors.php:3378
 msgid "Author URL"
 msgstr "رابط المؤلف"
 
@@ -643,88 +661,88 @@ msgstr "رابط المؤلف"
 msgid "Co-Authors Plus must be installed and active."
 msgstr "يجب تثبيت وتفعيل Co-Authors Plus."
 
-#: src/core/Classes/Utils.php:1121
+#: src/core/Classes/Utils.php:1124
 msgid "Read more."
 msgstr "اقرأ المزيد."
 
-#: src/core/Classes/Utils.php:1252
+#: src/core/Classes/Utils.php:1255
 msgid "The results could not be loaded."
 msgstr "لم يتم تحميل النتائج."
 
-#: src/core/Classes/Utils.php:1254
+#: src/core/Classes/Utils.php:1257
 #. translators: %d: number of characters over the maximum.
 #, php-format
 msgid "Please delete %d character"
 msgstr "يرجى حذف %d حرف"
 
-#: src/core/Classes/Utils.php:1256
+#: src/core/Classes/Utils.php:1259
 #. translators: %d: number of characters over the maximum.
 #, php-format
 msgid "Please delete %d characters"
 msgstr "يرجى حذف %d أحرف"
 
-#: src/core/Classes/Utils.php:1258
+#: src/core/Classes/Utils.php:1261
 #. translators: %d: number of characters still required.
 #, php-format
 msgid "Please enter %d or more character"
 msgstr "يرجى إدخال %d حرف أو أكثر"
 
-#: src/core/Classes/Utils.php:1260
+#: src/core/Classes/Utils.php:1263
 #. translators: %d: number of characters still required.
 #, php-format
 msgid "Please enter %d or more characters"
 msgstr "يرجى إدخال %d حرف أو أكثر"
 
-#: src/core/Classes/Utils.php:1261
+#: src/core/Classes/Utils.php:1264
 msgid "Loading more results..."
 msgstr "جارٍ تحميل المزيد من النتائج..."
 
-#: src/core/Classes/Utils.php:1263
+#: src/core/Classes/Utils.php:1266
 #. translators: %d: maximum number of items that can be selected.
 #, php-format
 msgid "You can only select %d item"
 msgstr "يمكنك اختيار %d عنصر فقط"
 
-#: src/core/Classes/Utils.php:1265
+#: src/core/Classes/Utils.php:1268
 #. translators: %d: maximum number of items that can be selected.
 #, php-format
 msgid "You can only select %d items"
 msgstr "يمكنك اختيار %d عناصر فقط"
 
-#: src/core/Classes/Utils.php:1266
+#: src/core/Classes/Utils.php:1269
 msgid "No results found"
 msgstr "لم يتم العثور على نتائج"
 
-#: src/core/Classes/Utils.php:1267
+#: src/core/Classes/Utils.php:1270
 msgid "Searching..."
 msgstr "جارٍ البحث..."
 
-#: src/core/Classes/Utils.php:1268
+#: src/core/Classes/Utils.php:1271
 msgid "Remove all items"
 msgstr "إزالة جميع العناصر"
 
-#: src/core/Classes/Utils.php:1280
+#: src/core/Classes/Utils.php:1283
 #: src/views/settings-tab.html.php:98
 msgid "No results match"
 msgstr "لا توجد نتائج مطابقة"
 
-#: src/core/Classes/Utils.php:1343
+#: src/core/Classes/Utils.php:1348
 msgid "Need PublishPress Authors Support?"
 msgstr "تحتاج إلى دعم PublishPress Authors؟"
 
-#: src/core/Classes/Utils.php:1348
+#: src/core/Classes/Utils.php:1353
 msgid "If you need help or have a new feature request, let us know."
 msgstr "إذا كنت بحاجة إلى مساعدة أو لديك طلب ميزة جديدة، يرجى إبلاغنا."
 
-#: src/core/Classes/Utils.php:1350
+#: src/core/Classes/Utils.php:1355
 msgid "Request Support"
 msgstr "طلب دعم"
 
-#: src/core/Classes/Utils.php:1359
+#: src/core/Classes/Utils.php:1364
 msgid "Detailed documentation is also available on the plugin website."
 msgstr "التوثيق التفصيلي متوفر أيضًا على موقع الإضافة."
 
-#: src/core/Classes/Utils.php:1361
+#: src/core/Classes/Utils.php:1366
 msgid "View Knowledge Base"
 msgstr "عرض قاعدة المعرفة"
 
@@ -754,7 +772,7 @@ msgid "Active"
 msgstr "نشط"
 
 #: src/core/CustomFieldsModel.php:62
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:418
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:423
 #: src/modules/author-custom-fields/author-custom-fields.php:834
 msgid "Disabled"
 msgstr "معطل"
@@ -891,7 +909,7 @@ msgid "No co-author exists for that term"
 msgstr "لا يوجد مؤلف مشارك لهذا المصطلح"
 
 #: src/core/Plugin.php:1644
-#: src/modules/author-list/classes/AuthorListTable.php:344
+#: src/modules/author-list/classes/AuthorListTable.php:345
 msgid "Edit"
 msgstr "تعديل"
 
@@ -952,9 +970,9 @@ msgstr "هل أنت متأكد أنك تريد إنشاء مؤلفين للأد�
 #: src/modules/byline-migration/byline-migration.php:148
 #: src/modules/bylines-migration/bylines-migration.php:150
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:137
-#: src/modules/multiple-authors/multiple-authors.php:4188
-#: src/modules/multiple-authors/multiple-authors.php:4219
-#: src/modules/multiple-authors/multiple-authors.php:4256
+#: src/modules/multiple-authors/multiple-authors.php:4246
+#: src/modules/multiple-authors/multiple-authors.php:4277
+#: src/modules/multiple-authors/multiple-authors.php:4314
 msgid "Please, wait..."
 msgstr "يرجى الانتظار..."
 
@@ -1014,27 +1032,27 @@ msgstr "لم يتم العثور على منشورات بدون مصطلحات �
 msgid "%d posts were found without author terms"
 msgstr "تم العثور على %d منشورات بدون مصطلحات مؤلفين"
 
-#: src/functions/template-tags.php:1047
+#: src/functions/template-tags.php:1054
 #, php-format
 msgid "%1sView all posts%2s by %3s"
 msgstr "%1sعرض جميع المنشورات%2s بواسطة %3s"
 
-#: src/functions/template-tags.php:1316
-#: src/functions/template-tags.php:1937
+#: src/functions/template-tags.php:1323
+#: src/functions/template-tags.php:1944
 msgid " and "
 msgstr " و "
 
-#: src/functions/template-tags.php:1467
+#: src/functions/template-tags.php:1474
 #, php-format
 msgid "Posts by %s"
 msgstr "المنشورات بواسطة %s"
 
-#: src/functions/template-tags.php:1852
+#: src/functions/template-tags.php:1859
 #, php-format
 msgid "Posts by %1$s"
 msgstr "المنشورات بواسطة %1$s"
 
-#: src/functions/template-tags.php:1938
+#: src/functions/template-tags.php:1945
 msgid ", and "
 msgstr "، و "
 
@@ -1047,11 +1065,11 @@ msgid "Add compatibility with the All In One Seo Pack plugin"
 msgstr "إضافة التوافق مع ملحق حزمة تحسين محركات البحث الكل في واحد"
 
 #: src/modules/author-boxes/author-boxes.php:83
-#: src/modules/author-boxes/author-boxes.php:566
-#: src/modules/author-boxes/author-boxes.php:642
+#: src/modules/author-boxes/author-boxes.php:567
 #: src/modules/author-boxes/author-boxes.php:643
-#: src/modules/author-boxes/author-boxes.php:686
-#: src/modules/multiple-authors/multiple-authors.php:3277
+#: src/modules/author-boxes/author-boxes.php:644
+#: src/modules/author-boxes/author-boxes.php:687
+#: src/modules/multiple-authors/multiple-authors.php:3279
 msgid "Author Boxes"
 msgstr "صناديق المؤلفين"
 
@@ -1065,15 +1083,16 @@ msgid "Author Category Boxes"
 msgstr "صناديق فئات المؤلفين"
 
 #: src/modules/author-boxes/author-boxes.php:211
-#: src/modules/author-boxes/author-boxes.php:1477
-#: src/modules/author-boxes/author-boxes.php:2785
-#: src/modules/author-boxes/author-boxes.php:2796
+#: src/modules/author-boxes/author-boxes.php:1478
+#: src/modules/author-boxes/author-boxes.php:2786
+#: src/modules/author-boxes/author-boxes.php:2797
 #: src/modules/author-list/author-list.php:1254
 #: src/modules/author-list/classes/AuthorListTable.php:152
+#: src/modules/multiple-authors/multiple-authors.php:1790
 msgid "Shortcode"
 msgstr "رمز قصير"
 
-#: src/modules/author-boxes/author-boxes.php:434
+#: src/modules/author-boxes/author-boxes.php:435
 #, php-format
 msgid ""
 "%s Author Box setting was not saved because it was changed in another "
@@ -1091,124 +1110,129 @@ msgstr[5] ""
 "try again."
 msgstr[0] ""
 "%s كانت إعدادات مربع المؤلف غير محفوظة لأنه تم تغييرها في متصفح أو علامة "
-"تبويب أخرى. تم الاحتفاظ بأحدث قيمة محفوظة؛ راجع التخطيط وحاول مرة أخرى.|%s "
-"لم يتم حفظ إعدادات مربعات المؤلفين لأنها تم تغييرها في متصفح أو علامة تبويب "
-"أخرى. تم الاحتفاظ بأحدث القيم المحفوظة؛ راجع التخطيط وحاول مرة أخرى."
+"تبويب أخرى. تم الاحتفاظ بأحدث قيمة محفوظة؛ راجع التخطيط وحاول مرة أخرى."
+msgstr[1] ""
+"%s لم يتم حفظ إعدادات مربعات المؤلفين لأنها تم تغييرها في متصفح أو علامة "
+"تبويب أخرى. تم الاحتفاظ بأحدث القيم المحفوظة؛ راجع التخطيط وحاول مرة أخرى."
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
-#: src/modules/author-boxes/author-boxes.php:575
+#: src/modules/author-boxes/author-boxes.php:576
 #: src/modules/author-custom-fields/author-custom-fields.php:172
 #, php-format
 msgid "New %1s"
 msgstr "جديد %1s"
 
-#: src/modules/author-boxes/author-boxes.php:576
+#: src/modules/author-boxes/author-boxes.php:577
 #: src/modules/author-custom-fields/author-custom-fields.php:173
 #, php-format
 msgid "Add New %1$s"
 msgstr "إضافة جديد %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:577
+#: src/modules/author-boxes/author-boxes.php:578
 #: src/modules/author-custom-fields/author-custom-fields.php:174
 #, php-format
 msgid "Edit %1$s"
 msgstr "تعديل %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:578
+#: src/modules/author-boxes/author-boxes.php:579
 #: src/modules/author-custom-fields/author-custom-fields.php:175
 #, php-format
 msgid "New %1$s"
 msgstr "جديد %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:579
+#: src/modules/author-boxes/author-boxes.php:580
 #: src/modules/author-custom-fields/author-custom-fields.php:176
 #, fuzzy, php-format
 msgid "%2$s"
 msgstr "%2$s"
 
-#: src/modules/author-boxes/author-boxes.php:580
+#: src/modules/author-boxes/author-boxes.php:581
 #: src/modules/author-custom-fields/author-custom-fields.php:177
 #, php-format
 msgid "View %1$s"
 msgstr "عرض %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:581
+#: src/modules/author-boxes/author-boxes.php:582
 #: src/modules/author-custom-fields/author-custom-fields.php:178
 #, php-format
 msgid "Search %2$s"
 msgstr "بحث عن %2$s"
 
-#: src/modules/author-boxes/author-boxes.php:582
+#: src/modules/author-boxes/author-boxes.php:583
 #: src/modules/author-custom-fields/author-custom-fields.php:179
 #, php-format
 msgid "No %2$s found"
 msgstr "لم يتم العثور على %2$s"
 
-#: src/modules/author-boxes/author-boxes.php:583
+#: src/modules/author-boxes/author-boxes.php:584
 #: src/modules/author-custom-fields/author-custom-fields.php:180
 #, php-format
 msgid "No %2$s found in Trash"
 msgstr "لم يتم العثور على %2$s في سلة المحذوفات"
 
-#: src/modules/author-boxes/author-boxes.php:586
+#: src/modules/author-boxes/author-boxes.php:587
 #: src/modules/author-custom-fields/author-custom-fields.php:183
 #, php-format
 msgid "%1$s Image"
 msgstr "%1$s صورة"
 
-#: src/modules/author-boxes/author-boxes.php:587
+#: src/modules/author-boxes/author-boxes.php:588
 #: src/modules/author-custom-fields/author-custom-fields.php:184
 #, php-format
 msgid "Set %1$s Image"
 msgstr "تعيين صورة %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:588
+#: src/modules/author-boxes/author-boxes.php:589
 #: src/modules/author-custom-fields/author-custom-fields.php:185
 #, php-format
 msgid "Remove %1$s Image"
 msgstr "إزالة صورة %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:589
+#: src/modules/author-boxes/author-boxes.php:590
 #: src/modules/author-custom-fields/author-custom-fields.php:186
 #, php-format
 msgid "Use as %1$s Image"
 msgstr "استخدام كصورة %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:590
+#: src/modules/author-boxes/author-boxes.php:591
 #: src/modules/author-custom-fields/author-custom-fields.php:187
 #, php-format
 msgid "Filter %2$s list"
 msgstr "تصفية قائمة %2$s"
 
-#: src/modules/author-boxes/author-boxes.php:591
+#: src/modules/author-boxes/author-boxes.php:592
 #: src/modules/author-custom-fields/author-custom-fields.php:188
 #, php-format
 msgid "%2$s list navigation"
 msgstr "%2$s قائمة التنقل"
 
-#: src/modules/author-boxes/author-boxes.php:592
+#: src/modules/author-boxes/author-boxes.php:593
 #: src/modules/author-custom-fields/author-custom-fields.php:189
 #, php-format
 msgid "%2$s list"
 msgstr "%2$s قائمة"
 
-#: src/modules/author-boxes/author-boxes.php:659
 #: src/modules/author-boxes/author-boxes.php:660
+#: src/modules/author-boxes/author-boxes.php:661
 msgid "Author Box updated."
 msgstr "تم تحديث صندوق المؤلف."
 
-#: src/modules/author-boxes/author-boxes.php:661
+#: src/modules/author-boxes/author-boxes.php:662
 msgid "Author Box added."
 msgstr "تم إضافة صندوق المؤلف."
 
-#: src/modules/author-boxes/author-boxes.php:662
+#: src/modules/author-boxes/author-boxes.php:663
 msgid "Author Box saved."
 msgstr "تم حفظ صندوق المؤلف."
 
-#: src/modules/author-boxes/author-boxes.php:663
+#: src/modules/author-boxes/author-boxes.php:664
 msgid "Author Box submitted."
 msgstr "تم إرسال صندوق المؤلف."
 
-#: src/modules/author-boxes/author-boxes.php:690
+#: src/modules/author-boxes/author-boxes.php:691
 #, php-format
 msgid "%1$s %2$s updated."
 msgid_plural "%1$s %3$s updated."
@@ -1219,7 +1243,7 @@ msgstr[3] ""
 msgstr[4] ""
 msgstr[5] ""
 
-#: src/modules/author-boxes/author-boxes.php:701
+#: src/modules/author-boxes/author-boxes.php:702
 #, php-format
 msgid "%1$s %2$s not updated, somebody is editing it."
 msgid_plural "%1$s %3$s not updated, somebody is editing them."
@@ -1230,7 +1254,7 @@ msgstr[3] ""
 msgstr[4] ""
 msgstr[5] ""
 
-#: src/modules/author-boxes/author-boxes.php:712
+#: src/modules/author-boxes/author-boxes.php:713
 #, php-format
 msgid "%1$s %2$s permanently deleted."
 msgid_plural "%1$s %3$s permanently deleted."
@@ -1241,7 +1265,7 @@ msgstr[3] ""
 msgstr[4] ""
 msgstr[5] ""
 
-#: src/modules/author-boxes/author-boxes.php:723
+#: src/modules/author-boxes/author-boxes.php:724
 #, php-format
 msgid "%1$s %2$s moved to the Trash."
 msgid_plural "%1$s %3$s moved to the Trash."
@@ -1252,7 +1276,7 @@ msgstr[3] ""
 msgstr[4] ""
 msgstr[5] ""
 
-#: src/modules/author-boxes/author-boxes.php:734
+#: src/modules/author-boxes/author-boxes.php:735
 #, php-format
 msgid "%1$s %2$s restored from the Trash."
 msgid_plural "%1$s %3$s restored from the Trash."
@@ -1263,38 +1287,38 @@ msgstr[3] ""
 msgstr[4] ""
 msgstr[5] ""
 
-#: src/modules/author-boxes/author-boxes.php:801
+#: src/modules/author-boxes/author-boxes.php:802
 msgid "Duplicate"
 msgstr "مكرر"
 
-#: src/modules/author-boxes/author-boxes.php:834
-#: src/modules/author-boxes/author-boxes.php:839
+#: src/modules/author-boxes/author-boxes.php:835
+#: src/modules/author-boxes/author-boxes.php:840
 msgid "Invalid Author Box."
 msgstr "صندوق المؤلف غير صالح."
 
-#: src/modules/author-boxes/author-boxes.php:851
+#: src/modules/author-boxes/author-boxes.php:852
 msgid "You are not allowed to duplicate this Author Box."
 msgstr "لا يُسمح لك بتكرار هذا صندوق المؤلف."
 
-#: src/modules/author-boxes/author-boxes.php:855
+#: src/modules/author-boxes/author-boxes.php:856
 msgid "You are not allowed to create Author Boxes."
 msgstr "لا يُسمح لك بإنشاء صناديق مؤلف."
 
-#: src/modules/author-boxes/author-boxes.php:879
+#: src/modules/author-boxes/author-boxes.php:880
 #, php-format
 msgid "%s (Copy)"
 msgstr "%s (نسخة)"
 
-#: src/modules/author-boxes/author-boxes.php:894
+#: src/modules/author-boxes/author-boxes.php:895
 msgid "Could not duplicate the Author Box."
 msgstr "تعذر تكرار صندوق المؤلف."
 
-#: src/modules/author-boxes/author-boxes.php:936
+#: src/modules/author-boxes/author-boxes.php:937
 msgid "Author Box duplicated."
 msgstr "تم تكرار صندوق المؤلف."
 
-#: src/modules/author-boxes/author-boxes.php:969
-#: src/modules/author-boxes/author-boxes.php:1007
+#: src/modules/author-boxes/author-boxes.php:970
+#: src/modules/author-boxes/author-boxes.php:1008
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:100
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:267
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:383
@@ -1306,43 +1330,43 @@ msgstr "تم تكرار صندوق المؤلف."
 msgid "View all posts"
 msgstr "عرض جميع المشاركات"
 
-#: src/modules/author-boxes/author-boxes.php:1121
+#: src/modules/author-boxes/author-boxes.php:1122
 msgid "Theme"
 msgstr "ثيم"
 
-#: src/modules/author-boxes/author-boxes.php:1427
+#: src/modules/author-boxes/author-boxes.php:1428
 msgid "Author Box Preview"
 msgstr "معاينة صندوق المؤلف"
 
-#: src/modules/author-boxes/author-boxes.php:1444
+#: src/modules/author-boxes/author-boxes.php:1445
 msgid "Author Box Editor"
 msgstr "محرر صندوق المؤلف"
 
-#: src/modules/author-boxes/author-boxes.php:1461
+#: src/modules/author-boxes/author-boxes.php:1462
 msgid "Layout Slug"
 msgstr "اسم التخطيط"
 
-#: src/modules/author-boxes/author-boxes.php:1494
+#: src/modules/author-boxes/author-boxes.php:1495
 #: src/modules/author-custom-fields/author-custom-fields.php:770
 msgid "Banner"
 msgstr "لافتة"
 
-#: src/modules/author-boxes/author-boxes.php:1514
+#: src/modules/author-boxes/author-boxes.php:1515
 msgid "Box Title"
 msgstr "عنوان الصندوق"
 
-#: src/modules/author-boxes/author-boxes.php:1522
+#: src/modules/author-boxes/author-boxes.php:1523
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:285
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:299
 #: src/modules/multiple-authors/multiple-authors.php:1141
 msgid "Display Name"
 msgstr "اسم العرض"
 
-#: src/modules/author-boxes/author-boxes.php:1530
+#: src/modules/author-boxes/author-boxes.php:1531
 msgid "View All Posts"
 msgstr "عرض جميع المشاركات"
 
-#: src/modules/author-boxes/author-boxes.php:1534
+#: src/modules/author-boxes/author-boxes.php:1535
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:253
 #: src/modules/author-categories/author-categories.php:65
 #: src/modules/author-categories/author-categories.php:261
@@ -1354,7 +1378,7 @@ msgstr "عرض جميع المشاركات"
 msgid "Author Categories"
 msgstr "فئات المؤلف"
 
-#: src/modules/author-boxes/author-boxes.php:1538
+#: src/modules/author-boxes/author-boxes.php:1539
 #: src/modules/author-custom-fields/author-custom-fields.php:64
 #: src/modules/author-custom-fields/author-custom-fields.php:163
 #: src/modules/author-custom-fields/author-custom-fields.php:221
@@ -1362,107 +1386,107 @@ msgstr "فئات المؤلف"
 msgid "Author Fields"
 msgstr "حقول المؤلف"
 
-#: src/modules/author-boxes/author-boxes.php:1542
+#: src/modules/author-boxes/author-boxes.php:1543
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1691
-#: src/modules/multiple-authors/multiple-authors.php:3280
+#: src/modules/multiple-authors/multiple-authors.php:3282
 msgid "Shortcodes"
 msgstr "الأكواد القصيرة"
 
-#: src/modules/author-boxes/author-boxes.php:1546
+#: src/modules/author-boxes/author-boxes.php:1547
 msgid "Author Recent Posts"
 msgstr "مشاركات المؤلف الأخيرة"
 
-#: src/modules/author-boxes/author-boxes.php:1550
+#: src/modules/author-boxes/author-boxes.php:1551
 msgid "Box Layout"
 msgstr "تخطيط الصندوق"
 
-#: src/modules/author-boxes/author-boxes.php:1554
+#: src/modules/author-boxes/author-boxes.php:1555
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1662
 msgid "Custom CSS"
 msgstr "CSS مخصص"
 
-#: src/modules/author-boxes/author-boxes.php:1558
+#: src/modules/author-boxes/author-boxes.php:1559
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1709
 msgid "Export"
 msgstr "تصدير"
 
-#: src/modules/author-boxes/author-boxes.php:1562
+#: src/modules/author-boxes/author-boxes.php:1563
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1728
 msgid "Import"
 msgstr "استيراد"
 
-#: src/modules/author-boxes/author-boxes.php:1566
+#: src/modules/author-boxes/author-boxes.php:1567
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1746
 msgid "Generate Theme Template"
 msgstr "توليد قالب السمة"
 
-#: src/modules/author-boxes/author-boxes.php:1645
+#: src/modules/author-boxes/author-boxes.php:1646
 msgid "Shortcode documentation."
 msgstr "وثائق الأكواد القصيرة."
 
-#: src/modules/author-boxes/author-boxes.php:2059
+#: src/modules/author-boxes/author-boxes.php:2060
 msgid "Post preview"
 msgstr "معاينة المشاركة"
 
-#: src/modules/author-boxes/author-boxes.php:2068
+#: src/modules/author-boxes/author-boxes.php:2069
 msgid "Select Preview Post"
 msgstr "اختر مشاركة المعاينة"
 
-#: src/modules/author-boxes/author-boxes.php:2459
+#: src/modules/author-boxes/author-boxes.php:2460
 msgid "No Recent Posts by this Author"
 msgstr "لا توجد مشاركات حديثة من هذا المؤلف"
 
-#: src/modules/author-boxes/author-boxes.php:2654
-#: src/modules/author-boxes/author-boxes.php:2735
-#: src/modules/author-boxes/author-boxes.php:3095
+#: src/modules/author-boxes/author-boxes.php:2655
+#: src/modules/author-boxes/author-boxes.php:2736
+#: src/modules/author-boxes/author-boxes.php:3096
 msgid "Pro feature"
 msgstr "ميزة احترافية"
 
-#: src/modules/author-boxes/author-boxes.php:2774
+#: src/modules/author-boxes/author-boxes.php:2775
 msgid "After View all posts Row"
 msgstr "بعد صف جميع المنشورات"
 
-#: src/modules/author-boxes/author-boxes.php:2775
+#: src/modules/author-boxes/author-boxes.php:2776
 msgid "After Name Row"
 msgstr "بعد صف الاسم"
 
-#: src/modules/author-boxes/author-boxes.php:2776
+#: src/modules/author-boxes/author-boxes.php:2777
 msgid "After Biographical Info Row"
 msgstr "بعد صف المعلومات البيوغرافية"
 
-#: src/modules/author-boxes/author-boxes.php:2777
+#: src/modules/author-boxes/author-boxes.php:2778
 msgid "After All Authors"
 msgstr "بعد جميع المؤلفين"
 
-#: src/modules/author-boxes/author-boxes.php:2786
+#: src/modules/author-boxes/author-boxes.php:2787
 msgid "Position"
 msgstr "الموقع"
 
-#: src/modules/author-boxes/author-boxes.php:2787
+#: src/modules/author-boxes/author-boxes.php:2788
 msgid "Action"
 msgstr "الإجراء"
 
-#: src/modules/author-boxes/author-boxes.php:2814
-#: src/modules/author-boxes/author-boxes.php:2843
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:145
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:399
+#: src/modules/author-boxes/author-boxes.php:2815
+#: src/modules/author-boxes/author-boxes.php:2844
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:150
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:404
 msgid "Delete"
 msgstr "حذف"
 
-#: src/modules/author-boxes/author-boxes.php:2815
+#: src/modules/author-boxes/author-boxes.php:2816
 msgid "Add"
 msgstr "إضافة"
 
-#: src/modules/author-boxes/author-boxes.php:2853
+#: src/modules/author-boxes/author-boxes.php:2854
 #, php-format
 msgid "You can use basic HTML in this field. For example: Read Time %1s."
 msgstr "يمكنك استخدام HTML الأساسية في هذا الحقل. على سبيل المثال: وقت القراءة %1s."
 
-#: src/modules/author-boxes/author-boxes.php:2857
+#: src/modules/author-boxes/author-boxes.php:2858
 msgid "Export Editor Settings"
 msgstr "تصدير إعدادات المحرر"
 
-#: src/modules/author-boxes/author-boxes.php:2858
+#: src/modules/author-boxes/author-boxes.php:2859
 msgid ""
 "You can use this data to export your author box design and import it to a "
 "new site."
@@ -1470,48 +1494,48 @@ msgstr ""
 "يمكنك استخدام هذه البيانات لتصدير تصميم صندوق المؤلف الخاص بك واستيراده إلى "
 "موقع جديد."
 
-#: src/modules/author-boxes/author-boxes.php:2868
-#: src/modules/author-boxes/author-boxes.php:2939
+#: src/modules/author-boxes/author-boxes.php:2869
+#: src/modules/author-boxes/author-boxes.php:2940
 msgid "Copy to Clipboard"
 msgstr "نسخ إلى الحافظة"
 
-#: src/modules/author-boxes/author-boxes.php:2872
-#: src/modules/author-boxes/author-boxes.php:2944
+#: src/modules/author-boxes/author-boxes.php:2873
+#: src/modules/author-boxes/author-boxes.php:2945
 msgid "Copied to Clipboard!"
 msgstr "تم النسخ إلى الحافظة!"
 
-#: src/modules/author-boxes/author-boxes.php:2877
+#: src/modules/author-boxes/author-boxes.php:2878
 msgid "Import Editor Settings"
 msgstr "استيراد إعدادات المحرر"
 
-#: src/modules/author-boxes/author-boxes.php:2878
+#: src/modules/author-boxes/author-boxes.php:2879
 msgid "Paste the editor data from the \"Export\" tab on another site."
 msgstr "الصق بيانات المحرر من علامة التبويب \"تصدير\" في موقع آخر."
 
-#: src/modules/author-boxes/author-boxes.php:2887
+#: src/modules/author-boxes/author-boxes.php:2888
 msgid "Invalid data"
 msgstr "بيانات غير صالحة"
 
-#: src/modules/author-boxes/author-boxes.php:2887
-#: src/modules/author-boxes/author-boxes.php:2892
+#: src/modules/author-boxes/author-boxes.php:2888
+#: src/modules/author-boxes/author-boxes.php:2893
 msgid "Settings Imported Successfully!"
 msgstr "تم استيراد الإعدادات بنجاح!"
 
-#: src/modules/author-boxes/author-boxes.php:2888
+#: src/modules/author-boxes/author-boxes.php:2889
 msgid "Import Data"
 msgstr "استيراد البيانات"
 
-#: src/modules/author-boxes/author-boxes.php:2897
+#: src/modules/author-boxes/author-boxes.php:2898
 msgid "How to generate and use a theme template file"
 msgstr "كيفية إنشاء واستخدام ملف قالب السمة"
 
-#: src/modules/author-boxes/author-boxes.php:2900
+#: src/modules/author-boxes/author-boxes.php:2901
 msgid ""
 "Click the \"Generate Template\" button under the text area. Wait for the "
 "code to be generated."
 msgstr "انقر على زر \"إنشاء نموذج\" أسفل منطقة النص. انتظر حتى يتم إنشاء الكود."
 
-#: src/modules/author-boxes/author-boxes.php:2901
+#: src/modules/author-boxes/author-boxes.php:2902
 #, php-format
 msgid ""
 "Create an empty php template file with your desired file slug in the %1s "
@@ -1526,94 +1550,94 @@ msgstr ""
 "/wp-content/themes/%5sاسم-ثيم-خاصتك%6s/publishpress-authors/author-boxes/my-"
 "first-custom-author-template.php %7s."
 
-#: src/modules/author-boxes/author-boxes.php:2902
+#: src/modules/author-boxes/author-boxes.php:2903
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "انسخ الكود الذي تم إنشاؤه والصقه داخل الملف الذي تم إنشاؤه حديثًا."
 
-#: src/modules/author-boxes/author-boxes.php:2903
+#: src/modules/author-boxes/author-boxes.php:2904
 msgid ""
 "Congratulations. Your can now choose your template inside the PublishPress "
 "Authors Settings."
 msgstr "مبروك. يمكنك الآن اختيار النموذج الخاص بك داخل إعدادات PublishPress Authors."
 
-#: src/modules/author-boxes/author-boxes.php:2907
+#: src/modules/author-boxes/author-boxes.php:2908
 #, php-format
 msgid "You can read more information on the %s."
 msgstr "يمكنك قراءة مزيد من المعلومات على %s."
 
-#: src/modules/author-boxes/author-boxes.php:2908
+#: src/modules/author-boxes/author-boxes.php:2909
 msgid "documentation page"
 msgstr "صفحة الوثائق"
 
-#: src/modules/author-boxes/author-boxes.php:2933
+#: src/modules/author-boxes/author-boxes.php:2934
 msgid "Generate Template"
 msgstr "إنشاء قالب"
 
-#: src/modules/author-boxes/author-boxes.php:2947
+#: src/modules/author-boxes/author-boxes.php:2948
 msgid "Template generated successfuly!"
 msgstr "تم إنشاء القالب بنجاح!"
 
-#: src/modules/author-boxes/author-boxes.php:2989
+#: src/modules/author-boxes/author-boxes.php:2990
 msgid "Reorder Fields"
 msgstr "إعادة ترتيب الحقول"
 
-#: src/modules/author-boxes/author-boxes.php:2997
+#: src/modules/author-boxes/author-boxes.php:2998
 msgid ""
 "Reorder the fields by dragging them to the correct position and saving your "
 "changes."
 msgstr "أعد ترتيب الحقول من خلال سحبها إلى الموضع الصحيح وحفظ التغييرات الخاصة بك."
 
-#: src/modules/author-boxes/author-boxes.php:3011
+#: src/modules/author-boxes/author-boxes.php:3012
 msgid "Save for Current Author Box"
 msgstr "احفظ لصندوق المؤلف الحالي"
 
-#: src/modules/author-boxes/author-boxes.php:3015
+#: src/modules/author-boxes/author-boxes.php:3016
 msgid "Save for All Author Boxes"
 msgstr "احفظ لجميع صناديق المؤلفين"
 
-#: src/modules/author-boxes/author-boxes.php:3038
+#: src/modules/author-boxes/author-boxes.php:3039
 #, php-format
 msgid "Select %1s"
 msgstr "اختر %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3039
+#: src/modules/author-boxes/author-boxes.php:3040
 #, php-format
 msgid "Change %1s"
 msgstr "غير %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3040
+#: src/modules/author-boxes/author-boxes.php:3041
 #, php-format
 msgid "Remove %1s"
 msgstr "إزالة %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3067
+#: src/modules/author-boxes/author-boxes.php:3068
 #, php-format
 msgid "Search %1s Icon"
 msgstr "بحث عن أيقونة %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3278
+#: src/modules/author-boxes/author-boxes.php:3279
 msgid "New Author Categories Box"
 msgstr "صندوق فئات المؤلفين الجديدة"
 
-#: src/modules/author-boxes/author-boxes.php:3286
+#: src/modules/author-boxes/author-boxes.php:3287
 msgid ""
 "PublishPress Authors Pro allows you to unlock the full potential of Author "
 "Categories."
 msgstr "تتيح لك PublishPress Authors Pro فتح الإمكانيات الكاملة لفئات المؤلفين."
 
-#: src/modules/author-boxes/author-boxes.php:3288
+#: src/modules/author-boxes/author-boxes.php:3289
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr "يمكنك إنشاء صناديق مؤلفين حيث يتم تجميع المؤلفين في فئاتهم."
 
-#: src/modules/author-boxes/author-boxes.php:3341
+#: src/modules/author-boxes/author-boxes.php:3342
 msgid "PublishPress Authors Box"
 msgstr "صندوق PublishPress Authors"
 
-#: src/modules/author-boxes/author-boxes.php:3342
+#: src/modules/author-boxes/author-boxes.php:3343
 msgid "Select an author box"
 msgstr "اختر صندوق مؤلف"
 
-#: src/modules/author-boxes/author-boxes.php:3389
+#: src/modules/author-boxes/author-boxes.php:3390
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:47
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:137
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:200
@@ -2003,8 +2027,8 @@ msgstr "علامة HTML لعنوان الصندوق"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:841
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1234
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1457
-#: src/modules/multiple-authors/multiple-authors.php:2081
-#: src/modules/multiple-authors/multiple-authors.php:2113, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2083
+#: src/modules/multiple-authors/multiple-authors.php:2115, fuzzy
 msgid "H1"
 msgstr "H1"
 
@@ -2015,8 +2039,8 @@ msgstr "H1"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:842
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1235
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1458
-#: src/modules/multiple-authors/multiple-authors.php:2082
-#: src/modules/multiple-authors/multiple-authors.php:2114, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2084
+#: src/modules/multiple-authors/multiple-authors.php:2116, fuzzy
 msgid "H2"
 msgstr "H2"
 
@@ -2027,8 +2051,8 @@ msgstr "H2"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1236
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1459
-#: src/modules/multiple-authors/multiple-authors.php:2083
-#: src/modules/multiple-authors/multiple-authors.php:2115, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2085
+#: src/modules/multiple-authors/multiple-authors.php:2117, fuzzy
 msgid "H3"
 msgstr "H3"
 
@@ -2039,8 +2063,8 @@ msgstr "H3"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:844
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1237
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1460
-#: src/modules/multiple-authors/multiple-authors.php:2084
-#: src/modules/multiple-authors/multiple-authors.php:2116, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2086
+#: src/modules/multiple-authors/multiple-authors.php:2118, fuzzy
 msgid "H4"
 msgstr "H4"
 
@@ -2051,8 +2075,8 @@ msgstr "H4"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:845
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1238
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1461
-#: src/modules/multiple-authors/multiple-authors.php:2085
-#: src/modules/multiple-authors/multiple-authors.php:2117, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2087
+#: src/modules/multiple-authors/multiple-authors.php:2119, fuzzy
 msgid "H5"
 msgstr "H5"
 
@@ -2063,8 +2087,8 @@ msgstr "H5"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:846
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1239
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1462
-#: src/modules/multiple-authors/multiple-authors.php:2086
-#: src/modules/multiple-authors/multiple-authors.php:2118, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2088
+#: src/modules/multiple-authors/multiple-authors.php:2120, fuzzy
 msgid "H6"
 msgstr "H6"
 
@@ -3071,7 +3095,7 @@ msgid "Add Author Category"
 msgstr "إضافة فئة مؤلف"
 
 #: src/modules/author-categories/author-categories.php:676
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:487
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:492
 msgid "Singular Name"
 msgstr "اسم المفرد"
 
@@ -3081,7 +3105,7 @@ msgstr "أدخل اسم فئة المؤلف عندما يكون هناك مؤل�
 
 #: src/modules/author-categories/author-categories.php:681
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:97
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:492
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:497
 msgid "Plural Name"
 msgstr "اسم الجمع"
 
@@ -3090,13 +3114,13 @@ msgid "Enter the Author Category name when there are more than 1 author"
 msgstr "أدخل اسم فئة المؤلف عندما يكون هناك أكثر من مؤلف واحد"
 
 #: src/modules/author-categories/author-categories.php:686
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:497
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:502
 #: src/modules/author-custom-fields/author-custom-fields.php:418
 msgid "Schema Property"
 msgstr "خاصية المخطط"
 
 #: src/modules/author-categories/author-categories.php:689
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:500
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:505
 #, php-format
 msgid ""
 "Example: when this value is set to reviewedBy, all users in this category "
@@ -3109,12 +3133,12 @@ msgstr ""
 
 #: src/modules/author-categories/author-categories.php:701
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:98
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:510
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:515
 msgid "Post Types"
 msgstr "أنواع المنشورات"
 
 #: src/modules/author-categories/author-categories.php:712
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:518
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:523
 msgid "Select Post Type..."
 msgstr "اختر نوع المنشور..."
 
@@ -3128,7 +3152,7 @@ msgstr ""
 
 #: src/modules/author-categories/author-categories.php:750
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:100
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:555
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:560
 msgid "Enable Category"
 msgstr "تفعيل التصنيف"
 
@@ -3163,74 +3187,83 @@ msgstr "محرر"
 msgid "Editors"
 msgstr "محررون"
 
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:95
+msgid "Select all author categories"
+msgstr "حدد جميع فئات المؤلفين"
+
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:99
 #: src/modules/author-custom-fields/author-custom-fields.php:804
 msgid "Slug"
 msgstr "الرابط الثابت"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:143
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:136
+#, php-format
+msgid "Select %s"
+msgstr "حدد %s"
+
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:148
 msgid "Enable Categories"
 msgstr "تفعيل التصنيفات"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:144
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:149
 msgid "Disable Categories"
 msgstr "تعطيل التصنيفات"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:173
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:178
 msgid "Author categories deleted successfully."
 msgstr "تم حذف تصنيفات المؤلفين بنجاح."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:176
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:181
 msgid "Author category deleted successfully."
 msgstr "تم حذف تصنيف المؤلف بنجاح."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:187
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:192
 msgid "Author categories enabled."
 msgstr "تم تفعيل تصنيفات المؤلفين."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:190
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:195
 msgid "Author category enabled."
 msgstr "تم تفعيل تصنيف المؤلف."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:201
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:206
 msgid "Author categories disabled."
 msgstr "تم تعطيل تصنيفات المؤلفين."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:204
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:209
 msgid "Author category disabled."
 msgstr "تم تعطيل تصنيف المؤلف."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:288
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:293
 msgid "No author categories."
 msgstr "لا توجد فئات للمؤلفين."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:377
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:382
 #. translators: %s: Taxonomy term name.
 #, php-format
 msgid "Quick edit &#8220;%s&#8221; inline"
 msgstr "تحرير سريع &#8220;%s&#8221; داخل النص"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:385
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:390
 msgid "Quick&nbsp;Edit"
 msgstr "تحرير&nbsp;سريع"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:416
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:421
 msgid "Enabled"
 msgstr "مفعل"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:462
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:467
 msgid "All"
 msgstr "الكل"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:484
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:489
 msgid "Quick Edit"
 msgstr "تحرير سريع"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:563
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:568
 msgid "Update"
 msgstr "تحديث"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:564
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:569
 msgid "Cancel"
 msgstr "إلغاء"
 
@@ -3699,7 +3732,7 @@ msgstr "شفرة قصيرة ثابتة"
 
 #: src/modules/author-list/author-list.php:1497
 #: src/modules/author-list/author-list.php:1524
-#: src/modules/multiple-authors/multiple-authors.php:1888
+#: src/modules/multiple-authors/multiple-authors.php:1890
 msgid "Select some options"
 msgstr "اختر بعض الخيارات"
 
@@ -3755,42 +3788,70 @@ msgstr[5] "سلة المهملات %s"
 msgid "No author list avaliable in the selected view."
 msgstr "لا توجد قائمة مؤلفين متاحة في العرض المحدد."
 
-#: src/modules/author-list/classes/AuthorListTable.php:356
+#: src/modules/author-list/classes/AuthorListTable.php:344
+#, php-format
+msgid "Edit %s"
+msgstr "تحرير %s"
+
+#: src/modules/author-list/classes/AuthorListTable.php:357
+#, php-format
+msgid "Move %s to Trash"
+msgstr "نقل %s إلى سلة المهملات"
+
+#: src/modules/author-list/classes/AuthorListTable.php:358
 msgid "Trash"
 msgstr "سلة المهملات"
 
-#: src/modules/author-list/classes/AuthorListTable.php:372
+#: src/modules/author-list/classes/AuthorListTable.php:374
+#, php-format
+msgid "Restore %s"
+msgstr "استعادة %s"
+
+#: src/modules/author-list/classes/AuthorListTable.php:375
 msgid "Restore"
 msgstr "استعادة"
 
-#: src/modules/author-list/classes/AuthorListTable.php:384
+#: src/modules/author-list/classes/AuthorListTable.php:387
+#, php-format
+msgid "Delete %s permanently"
+msgstr "حذف %s بشكل دائم"
+
+#: src/modules/author-list/classes/AuthorListTable.php:388
 msgid "Delete Permanently"
 msgstr "حذف بشكل دائم"
 
-#: src/modules/author-list/classes/AuthorListTable.php:427
+#: src/modules/author-list/classes/AuthorListTable.php:431
 #: src/modules/default-layouts/default-layouts.php:127
 msgid "Authors Index"
 msgstr "فهرس المؤلفين"
 
-#: src/modules/author-list/classes/AuthorListTable.php:428
+#: src/modules/author-list/classes/AuthorListTable.php:432
 #: src/modules/default-layouts/default-layouts.php:128
 msgid "Authors Recent"
 msgstr "المؤلفون الجدد"
 
-#: src/modules/author-list/classes/AuthorListTable.php:429
+#: src/modules/author-list/classes/AuthorListTable.php:433
 #: src/modules/default-layouts/default-layouts.php:129
 msgid "Authors Grid"
 msgstr "شبكة المؤلفين"
 
-#: src/modules/author-list/classes/AuthorListTable.php:430
+#: src/modules/author-list/classes/AuthorListTable.php:434
 #: src/modules/default-layouts/default-layouts.php:130
 msgid "Authors Table"
 msgstr "جدول المؤلفين"
 
+#: src/modules/author-list/classes/AuthorListTable.php:455
+msgid "Dynamic shortcode"
+msgstr "shortcode الديناميكي"
+
+#: src/modules/author-list/classes/AuthorListTable.php:470
+msgid "Static shortcode"
+msgstr "shortcode الثابت"
+
 #: src/modules/author-pages/author-pages.php:60
 #: src/modules/author-pages/author-pages.php:106
 #: src/modules/author-pages/author-pages.php:107
-#: src/modules/multiple-authors/multiple-authors.php:3279
+#: src/modules/multiple-authors/multiple-authors.php:3281
 msgid "Author Pages"
 msgstr "صفحات المؤلفين"
 
@@ -3819,14 +3880,14 @@ msgstr "إضافة خيار الترحيل للسطر"
 #: src/modules/byline-migration/byline-migration.php:145
 #: src/modules/bylines-migration/bylines-migration.php:147
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:134
-#: src/modules/multiple-authors/multiple-authors.php:4253
+#: src/modules/multiple-authors/multiple-authors.php:4311
 msgid "Collecting data for the migration..."
 msgstr "جمع البيانات للترحيل..."
 
 #: src/modules/byline-migration/byline-migration.php:146
 #: src/modules/bylines-migration/bylines-migration.php:148
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:135
-#: src/modules/multiple-authors/multiple-authors.php:4254
+#: src/modules/multiple-authors/multiple-authors.php:4312
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:54
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:136
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:167
@@ -3839,7 +3900,7 @@ msgstr "تم! تم نسخ بيانات السطر ويمكنك إلغاء تنش
 
 #: src/modules/byline-migration/byline-migration.php:149
 #: src/modules/bylines-migration/bylines-migration.php:151
-#: src/modules/multiple-authors/multiple-authors.php:4257
+#: src/modules/multiple-authors/multiple-authors.php:4315
 msgid "Copying authors' data..."
 msgstr "نسخ بيانات المؤلفين..."
 
@@ -4049,8 +4110,8 @@ msgid "Please click here to migrate to PublishPress Authors"
 msgstr "يرجى النقر هنا للانتقال إلى مؤلفي نشر الصحف"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:193
-#: src/modules/multiple-authors/multiple-authors.php:4961
-#: src/modules/multiple-authors/multiple-authors.php:5052
+#: src/modules/multiple-authors/multiple-authors.php:5019
+#: src/modules/multiple-authors/multiple-authors.php:5110
 msgid "Dismiss"
 msgstr "تجاهل"
 
@@ -4569,20 +4630,24 @@ msgstr ""
 "معينة باستخدام %1$s. هذا يقبل قيمة تاريخ باللغة الإنجليزية مثل 1 أسبوع مضى، "
 "1 شهر مضى، 6 أشهر مضت، 1 سنة مضت إلخ."
 
-#: src/modules/multiple-authors/multiple-authors.php:1793
+#: src/modules/multiple-authors/multiple-authors.php:1794
+msgid "Copy shortcode to clipboard"
+msgstr "نسخ shortcode إلى الحافظة"
+
+#: src/modules/multiple-authors/multiple-authors.php:1795
 msgid "Copied!"
 msgstr "تم النسخ!"
 
-#: src/modules/multiple-authors/multiple-authors.php:1794
-#: src/modules/multiple-authors/multiple-authors.php:1795
+#: src/modules/multiple-authors/multiple-authors.php:1796
+#: src/modules/multiple-authors/multiple-authors.php:1797
 msgid "Click To Copy!"
 msgstr "انقر لنسخ!"
 
-#: src/modules/multiple-authors/multiple-authors.php:1859
+#: src/modules/multiple-authors/multiple-authors.php:1861
 msgid "Select roles"
 msgstr "اختر الأدوار"
 
-#: src/modules/multiple-authors/multiple-authors.php:1870
+#: src/modules/multiple-authors/multiple-authors.php:1872
 msgid ""
 "Choose which WordPress user roles can be selected using the \"Registered "
 "Author With User Account\" option for author profiles."
@@ -4590,7 +4655,7 @@ msgstr ""
 "اختر أدوار مستخدمي WordPress التي يمكن تحديدها باستخدام خيار \"مؤلف مسجل مع "
 "حساب مستخدم\" لملفات المؤلفين."
 
-#: src/modules/multiple-authors/multiple-authors.php:1899
+#: src/modules/multiple-authors/multiple-authors.php:1901
 msgid ""
 "Author profiles can be mapped to WordPress user accounts. This option "
 "allows you to automatically create author profiles when users are created "
@@ -4604,7 +4669,7 @@ msgstr ""
 "ملفات تعريف مؤلفي PublishPress لجميع المستخدمين في الدور\" في علامة التبويب "
 "الصيانة."
 
-#: src/modules/multiple-authors/multiple-authors.php:1920
+#: src/modules/multiple-authors/multiple-authors.php:1922
 msgid ""
 "If the Author is mapped to a WordPress user, this will display the authors' "
 "\"Display name\" and their \"Username\". The default is to show only the "
@@ -4615,19 +4680,19 @@ msgstr ""
 "المستخدم\" للمؤلفين. الافتراضي هو عرض \"اسم العرض\" فقط. عرض \"اسم "
 "المستخدم\" مفيد إذا كان لديك عدة مؤلفين بأسماء مشابهة."
 
-#: src/modules/multiple-authors/multiple-authors.php:1943
+#: src/modules/multiple-authors/multiple-authors.php:1945
 msgid "Allow authors to be created without a real user account."
 msgstr "السماح بإنشاء مؤلفين بدون حساب مستخدم حقيقي."
 
-#: src/modules/multiple-authors/multiple-authors.php:1966
+#: src/modules/multiple-authors/multiple-authors.php:1968
 msgid "Show a profile checkbox allowing Authors to be excluded from Author Boxes."
 msgstr "عرض خانة اختيار الملف الشخصي للسماح باستبعاد المؤلفين من صناديق المؤلفين."
 
-#: src/modules/multiple-authors/multiple-authors.php:1989
+#: src/modules/multiple-authors/multiple-authors.php:1991
 msgid "Allow authors to be created without a connected user account."
 msgstr "السماح بإنشاء مؤلفين بدون حساب مستخدم متصل."
 
-#: src/modules/multiple-authors/multiple-authors.php:2013
+#: src/modules/multiple-authors/multiple-authors.php:2015
 msgid ""
 "If enabled, PublishPress Authors will replace the default WordPress author "
 "pages."
@@ -4635,40 +4700,40 @@ msgstr ""
 "إذا تم تمكينه، سيحل مؤلفو PublishPress محل صفحات المؤلف الافتراضية في "
 "WordPress."
 
-#: src/modules/multiple-authors/multiple-authors.php:2018
+#: src/modules/multiple-authors/multiple-authors.php:2020
 msgid "Please note this feature will not work for all themes."
 msgstr "يرجى ملاحظة أن هذه الميزة قد لا تعمل مع جميع الثيمات."
 
-#: src/modules/multiple-authors/multiple-authors.php:2018
-#: src/modules/multiple-authors/multiple-authors.php:2872
+#: src/modules/multiple-authors/multiple-authors.php:2020
+#: src/modules/multiple-authors/multiple-authors.php:2874
 msgid "Click here for more details."
 msgstr "انقر هنا للحصول على مزيد من التفاصيل."
 
-#: src/modules/multiple-authors/multiple-authors.php:2031
+#: src/modules/multiple-authors/multiple-authors.php:2033
 msgid "View sample Author Page"
 msgstr "عرض عينة من صفحة المؤلف"
 
-#: src/modules/multiple-authors/multiple-authors.php:2052
+#: src/modules/multiple-authors/multiple-authors.php:2054
 msgid "List"
 msgstr "قائمة"
 
-#: src/modules/multiple-authors/multiple-authors.php:2053
+#: src/modules/multiple-authors/multiple-authors.php:2055
 msgid "Grid"
 msgstr "شبكة"
 
-#: src/modules/multiple-authors/multiple-authors.php:2225
+#: src/modules/multiple-authors/multiple-authors.php:2227
 msgid "Allow User to Choose"
 msgstr "السماح للمستخدم بالاختيار"
 
-#: src/modules/multiple-authors/multiple-authors.php:2226
+#: src/modules/multiple-authors/multiple-authors.php:2228
 msgid "First Name Last Name"
 msgstr "الاسم الأول الاسم الأخير"
 
-#: src/modules/multiple-authors/multiple-authors.php:2227
+#: src/modules/multiple-authors/multiple-authors.php:2229
 msgid "Last Name First Name"
 msgstr "الاسم الأخير الاسم الأول"
 
-#: src/modules/multiple-authors/multiple-authors.php:2275
+#: src/modules/multiple-authors/multiple-authors.php:2277
 msgid ""
 "This avatar will be used as default avatar instead of gravatar where no "
 "custom avatar is added to profile."
@@ -4676,44 +4741,44 @@ msgstr ""
 "سيتم استخدام هذه الصورة الرمزية كصورة رمزية افتراضية بدلاً من gravatar حيث "
 "لم يتم إضافة صورة رمزية مخصصة إلى الملف الشخصي."
 
-#: src/modules/multiple-authors/multiple-authors.php:2297
+#: src/modules/multiple-authors/multiple-authors.php:2299
 msgid "This will display the author bio."
 msgstr "سيظهر هذا سيرة المؤلف."
 
-#: src/modules/multiple-authors/multiple-authors.php:2358
-#: src/modules/multiple-authors/multiple-authors.php:2397
-#: src/modules/multiple-authors/multiple-authors.php:2436
-#: src/modules/multiple-authors/multiple-authors.php:2475
-#: src/modules/multiple-authors/multiple-authors.php:2514
+#: src/modules/multiple-authors/multiple-authors.php:2360
+#: src/modules/multiple-authors/multiple-authors.php:2399
+#: src/modules/multiple-authors/multiple-authors.php:2438
+#: src/modules/multiple-authors/multiple-authors.php:2477
+#: src/modules/multiple-authors/multiple-authors.php:2516
 msgid "Select option"
 msgstr "اختر خيارًا"
 
-#: src/modules/multiple-authors/multiple-authors.php:2370
-#: src/modules/multiple-authors/multiple-authors.php:2409
-#: src/modules/multiple-authors/multiple-authors.php:2448
-#: src/modules/multiple-authors/multiple-authors.php:2487
-#: src/modules/multiple-authors/multiple-authors.php:2526
+#: src/modules/multiple-authors/multiple-authors.php:2372
+#: src/modules/multiple-authors/multiple-authors.php:2411
+#: src/modules/multiple-authors/multiple-authors.php:2450
+#: src/modules/multiple-authors/multiple-authors.php:2489
+#: src/modules/multiple-authors/multiple-authors.php:2528
 #, php-format
 msgid "This is useful if you use legacy shortcode %s"
 msgstr "هذا مفيد إذا كنت تستخدم كود قصير قديم %s"
 
-#: src/modules/multiple-authors/multiple-authors.php:2546
+#: src/modules/multiple-authors/multiple-authors.php:2548
 msgid "This will display the featured image."
 msgstr "سيظهر هذا الصورة المميزة."
 
-#: src/modules/multiple-authors/multiple-authors.php:2570
+#: src/modules/multiple-authors/multiple-authors.php:2572
 msgid "This will make the featured image clickable and link to the post."
 msgstr "سيجعل هذا الصورة المميزة قابلة للنقر وترتبط بالمنشور."
 
-#: src/modules/multiple-authors/multiple-authors.php:2594
+#: src/modules/multiple-authors/multiple-authors.php:2596
 msgid "This will display author page title."
 msgstr "سيعرض عنوان صفحة المؤلف."
 
-#: src/modules/multiple-authors/multiple-authors.php:2618
+#: src/modules/multiple-authors/multiple-authors.php:2620
 msgid "This will display the excerpt."
 msgstr "سيعرض المقتطف."
 
-#: src/modules/multiple-authors/multiple-authors.php:2642
+#: src/modules/multiple-authors/multiple-authors.php:2644
 msgid ""
 "This will allows you map a WordPress user to more than one author. Don't "
 "use this feature unless requested to do so by the PublishPress team. This "
@@ -4723,37 +4788,37 @@ msgstr ""
 "لم يُطلب منك ذلك من قبل فريق PublishPress. يعمل هذا المكون الإضافي بشكل "
 "أفضل عندما يتم ربط المؤلفين والمستخدمين واحدًا لواحد."
 
-#: src/modules/multiple-authors/multiple-authors.php:2665
+#: src/modules/multiple-authors/multiple-authors.php:2667
 msgid ""
 "Allow the same author to be assigned to more than one Author Category on a "
 "single post."
 msgstr "السماح لنفس المؤلف أن يُعين لأكثر من فئة مؤلف واحدة في منشور واحد."
 
-#: src/modules/multiple-authors/multiple-authors.php:2689
+#: src/modules/multiple-authors/multiple-authors.php:2691
 msgid "This will display the authors."
 msgstr "سيعرض المؤلفين."
 
-#: src/modules/multiple-authors/multiple-authors.php:2713
+#: src/modules/multiple-authors/multiple-authors.php:2715
 msgid "This will display the published date."
 msgstr "سيعرض تاريخ النشر."
 
-#: src/modules/multiple-authors/multiple-authors.php:2737
+#: src/modules/multiple-authors/multiple-authors.php:2739
 msgid "This will display the comment count."
 msgstr "سيعرض عدد التعليقات."
 
-#: src/modules/multiple-authors/multiple-authors.php:2761
+#: src/modules/multiple-authors/multiple-authors.php:2763
 msgid "This will display the categories."
 msgstr "سيعرض الفئات."
 
-#: src/modules/multiple-authors/multiple-authors.php:2785
+#: src/modules/multiple-authors/multiple-authors.php:2787
 msgid "This will display the tags."
 msgstr "سيعرض العلامات."
 
-#: src/modules/multiple-authors/multiple-authors.php:2809
+#: src/modules/multiple-authors/multiple-authors.php:2811
 msgid "This will display the read more link."
 msgstr "سيعرض رابط \"اقرأ المزيد\"."
 
-#: src/modules/multiple-authors/multiple-authors.php:2832
+#: src/modules/multiple-authors/multiple-authors.php:2834
 msgid ""
 "This will hide the \"Post not found for the author\" text when an author "
 "has no posts."
@@ -4761,15 +4826,15 @@ msgstr ""
 "سيؤدي هذا إلى إخفاء نص \"لم يتم العثور على مشاركة للكاتب\" عندما لا يكون "
 "لدى الكاتب أي مشاركات."
 
-#: src/modules/multiple-authors/multiple-authors.php:2870
+#: src/modules/multiple-authors/multiple-authors.php:2872
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr "قد يتم تعطيل هذا الإعداد للمستخدمين الذين لا يمكنهم تعديل منشورات الآخرين."
 
-#: src/modules/multiple-authors/multiple-authors.php:2893
+#: src/modules/multiple-authors/multiple-authors.php:2895
 msgid "Search for a fallback author"
 msgstr "ابحث عن مؤلف بديل"
 
-#: src/modules/multiple-authors/multiple-authors.php:2906
+#: src/modules/multiple-authors/multiple-authors.php:2908
 msgid ""
 "If you only have Guest Authors selected for a post, this user may be used "
 "as a fallback. WordPress sometimes requires a WordPress user to be assigned "
@@ -4779,27 +4844,27 @@ msgstr ""
 "يحتاج WordPress أحيانًا إلى تعيين مستخدم WordPress لكل مقال. لن يكون هذا "
 "المستخدم مرئيًا في واجهة موقعك."
 
-#: src/modules/multiple-authors/multiple-authors.php:2924
+#: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "This will display the authors email in the author box."
 msgstr "سيعرض بريد المؤلف الإلكتروني في صندوق المؤلف."
 
-#: src/modules/multiple-authors/multiple-authors.php:2944
+#: src/modules/multiple-authors/multiple-authors.php:2946
 msgid "This will display the authors site in the author box."
 msgstr "سيعرض موقع المؤلف في صندوق المؤلف."
 
-#: src/modules/multiple-authors/multiple-authors.php:2964
+#: src/modules/multiple-authors/multiple-authors.php:2966
 msgid "This will load Font Awesome icons for use in Author Boxes."
 msgstr "سيقوم بتحميل أيقونات Font Awesome للاستخدام في صناديق المؤلفين."
 
-#: src/modules/multiple-authors/multiple-authors.php:2982
+#: src/modules/multiple-authors/multiple-authors.php:2984
 msgid "This will remove the Authors Box in \"Quick Edit\"."
 msgstr "سيقوم بإزالة صندوق المؤلف في \"التعديل السريع\"."
 
-#: src/modules/multiple-authors/multiple-authors.php:3001
+#: src/modules/multiple-authors/multiple-authors.php:3003
 msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr "إنشاء ملفات تعريف مؤلفي PublishPress لجميع مؤلفي المنشورات"
 
-#: src/modules/multiple-authors/multiple-authors.php:3002
+#: src/modules/multiple-authors/multiple-authors.php:3004
 msgid ""
 "If a WordPress user is the author of a post, but does not have a "
 "PublishPress Authors profile, this will automatically create a profile for "
@@ -4808,22 +4873,22 @@ msgstr ""
 "إذا كان مستخدم WordPress هو مؤلف مقال، ولكنه ليس لديه ملف تعريف مؤلفي "
 "PublishPress، فسيتم إنشاء ملف تعريف لهم تلقائيًا."
 
-#: src/modules/multiple-authors/multiple-authors.php:3002
-#: src/modules/multiple-authors/multiple-authors.php:3008
-#: src/modules/multiple-authors/multiple-authors.php:3014
-#: src/modules/multiple-authors/multiple-authors.php:3021
+#: src/modules/multiple-authors/multiple-authors.php:3004
+#: src/modules/multiple-authors/multiple-authors.php:3010
+#: src/modules/multiple-authors/multiple-authors.php:3016
+#: src/modules/multiple-authors/multiple-authors.php:3023
 msgid "Click here for documentation"
 msgstr "انقر هنا للحصول على الوثائق"
 
-#: src/modules/multiple-authors/multiple-authors.php:3003
+#: src/modules/multiple-authors/multiple-authors.php:3005
 msgid "Create missing PublishPress Authors profiles"
 msgstr "إنشاء ملفات تعريف مؤلفي PublishPress المفقودة"
 
-#: src/modules/multiple-authors/multiple-authors.php:3007
+#: src/modules/multiple-authors/multiple-authors.php:3009
 msgid "Create PublishPress Authors Profiles for all users in a role"
 msgstr "إنشاء ملفات تعريف مؤلفي PublishPress لجميع المستخدمين في دور"
 
-#: src/modules/multiple-authors/multiple-authors.php:3008
+#: src/modules/multiple-authors/multiple-authors.php:3010
 msgid ""
 "This will find all the users in a role and create author profiles for them. "
 "You can choose the roles using the \"Automatically create author profiles\" "
@@ -4832,15 +4897,15 @@ msgstr ""
 "سيجد هذا جميع المستخدمين في دور ما ويقوم بإنشاء ملفات تعريف مؤلفين لهم. "
 "يمكنك اختيار الأدوار باستخدام إعداد \"إنشاء ملفات تعريف مؤلفين تلقائيًا\"."
 
-#: src/modules/multiple-authors/multiple-authors.php:3009
+#: src/modules/multiple-authors/multiple-authors.php:3011
 msgid "Create PublishPress Authors profiles"
 msgstr "إنشاء ملفات تعريف مؤلفي PublishPress"
 
-#: src/modules/multiple-authors/multiple-authors.php:3013
+#: src/modules/multiple-authors/multiple-authors.php:3015
 msgid "Synchronize PublishPress Authors Fields and user profile fields"
 msgstr "مزامنة حقول مؤلفي PublishPress وحقول ملفات تعريف المستخدمين"
 
-#: src/modules/multiple-authors/multiple-authors.php:3014
+#: src/modules/multiple-authors/multiple-authors.php:3016
 msgid ""
 "This will update all the author profiles in PublishPress Authors to match "
 "the default WordPress fields for each user."
@@ -4848,11 +4913,11 @@ msgstr ""
 "سيقوم هذا بتحديث جميع ملفات تعريف المؤلفين في PublishPress Authors لتتناسب "
 "مع الحقول الافتراضية في WordPress لكل مستخدم."
 
-#: src/modules/multiple-authors/multiple-authors.php:3020
+#: src/modules/multiple-authors/multiple-authors.php:3022
 msgid "Synchronize the author and user URLs"
 msgstr "مزامنة عناوين URLs للمؤلفين والمستخدمين"
 
-#: src/modules/multiple-authors/multiple-authors.php:3021
+#: src/modules/multiple-authors/multiple-authors.php:3023
 msgid ""
 "This will update all the Author URLs in PublishPress Authors to match the "
 "default WordPress URLs for each user."
@@ -4860,12 +4925,12 @@ msgstr ""
 "سيقوم هذا بتحديث جميع عناوين URL للمؤلفين في PublishPress Authors لتتناسب "
 "مع عناوين URL الافتراضية في WordPress لكل مستخدم."
 
-#: src/modules/multiple-authors/multiple-authors.php:3027
 #: src/modules/multiple-authors/multiple-authors.php:3029
+#: src/modules/multiple-authors/multiple-authors.php:3031
 msgid "Create Author Categories"
 msgstr "إنشاء فئات المؤلفين"
 
-#: src/modules/multiple-authors/multiple-authors.php:3028
+#: src/modules/multiple-authors/multiple-authors.php:3030
 msgid ""
 "This will create author categories table if missing and add default "
 "categories."
@@ -4873,11 +4938,11 @@ msgstr ""
 "سيقوم هذا بإنشاء جدول فئات المؤلفين إذا كان مفقودًا وإضافة الفئات "
 "الافتراضية."
 
-#: src/modules/multiple-authors/multiple-authors.php:3041
+#: src/modules/multiple-authors/multiple-authors.php:3043
 msgid "Copy Co-Authors Plus Data"
 msgstr "نسخ بيانات Co-Authors Plus"
 
-#: src/modules/multiple-authors/multiple-authors.php:3042
+#: src/modules/multiple-authors/multiple-authors.php:3044
 msgid ""
 "This action will copy the authors from the plugin Co-Authors Plus allowing "
 "you to migrate to PublishPress Authors without losing any data. This action "
@@ -4887,11 +4952,11 @@ msgstr ""
 "لك الانتقال إلى PublishPress Authors دون فقدان أي بيانات. يمكن تنفيذ هذه "
 "العملية عدة مرات."
 
-#: src/modules/multiple-authors/multiple-authors.php:3052
+#: src/modules/multiple-authors/multiple-authors.php:3054
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr "حذف الاتصالات بين ملفات تعريف المؤلفين والمستخدمين"
 
-#: src/modules/multiple-authors/multiple-authors.php:3053
+#: src/modules/multiple-authors/multiple-authors.php:3055
 msgid ""
 "This action can reset the PublishPress Authors data before using other "
 "maintenance options. It will delete all author profiles that are mapped to "
@@ -4903,15 +4968,15 @@ msgstr ""
 "مستخدم WordPress. لن تحذف حسابات مستخدم WordPress، ولكن أي روابط بين "
 "المقالات وملفات تعريف المؤلفين ستفقد."
 
-#: src/modules/multiple-authors/multiple-authors.php:3054
+#: src/modules/multiple-authors/multiple-authors.php:3056
 msgid "Delete all authors mapped to users"
 msgstr "حذف جميع المؤلفين المرتبطين بالمستخدمين"
 
-#: src/modules/multiple-authors/multiple-authors.php:3059
+#: src/modules/multiple-authors/multiple-authors.php:3061
 msgid "Delete Guest Authors"
 msgstr "حذف المؤلفين الضيوف"
 
-#: src/modules/multiple-authors/multiple-authors.php:3060
+#: src/modules/multiple-authors/multiple-authors.php:3062
 msgid ""
 "This action can reset the PublishPress Authors data before using other "
 "maintenance options. Guest authors are author profiles that are not mapped "
@@ -4921,11 +4986,11 @@ msgstr ""
 "خيارات الصيانة الأخرى. المؤلفون الضيوف هم ملفات تعريف المؤلفين التي ليست "
 "مرتبطة بحساب مستخدم WordPress. ستقوم هذه العملية بحذف جميع المؤلفين الضيوف."
 
-#: src/modules/multiple-authors/multiple-authors.php:3061
+#: src/modules/multiple-authors/multiple-authors.php:3063
 msgid "Delete all guest authors"
 msgstr "حذف جميع المؤلفين الضيوف"
 
-#: src/modules/multiple-authors/multiple-authors.php:3067
+#: src/modules/multiple-authors/multiple-authors.php:3069
 msgid ""
 "Please be careful clicking these buttons. Before clicking, we recommend "
 "taking a site backup in case anything goes wrong."
@@ -4933,113 +4998,113 @@ msgstr ""
 "يرجى توخي الحذر عند النقر على هذه الأزرار. قبل النقر، نوصي بأخذ نسخة "
 "احتياطية من الموقع في حالة حدوث أي خطأ."
 
-#: src/modules/multiple-authors/multiple-authors.php:3278
+#: src/modules/multiple-authors/multiple-authors.php:3280
 msgid "Author Profiles"
 msgstr "ملفات تعريف المؤلفين"
 
-#: src/modules/multiple-authors/multiple-authors.php:3281
+#: src/modules/multiple-authors/multiple-authors.php:3283
 msgid "Integration"
 msgstr "تكامل"
 
-#: src/modules/multiple-authors/multiple-authors.php:3282
+#: src/modules/multiple-authors/multiple-authors.php:3284
 msgid "Maintenance"
 msgstr "الصيانة"
 
-#: src/modules/multiple-authors/multiple-authors.php:3283
+#: src/modules/multiple-authors/multiple-authors.php:3285
 msgid "Advanced"
 msgstr "متقدم"
 
-#: src/modules/multiple-authors/multiple-authors.php:3878
+#: src/modules/multiple-authors/multiple-authors.php:3936
 msgid "Invalid nonce"
 msgstr "رمز غير صالح"
 
-#: src/modules/multiple-authors/multiple-authors.php:3882
+#: src/modules/multiple-authors/multiple-authors.php:3940
 msgid "Access denied"
 msgstr "تم رفض الوصول"
 
-#: src/modules/multiple-authors/multiple-authors.php:4055
+#: src/modules/multiple-authors/multiple-authors.php:4113
 msgid "Error. Author terms could not be reseted."
 msgstr "خطأ. لا يمكن إعادة تعيين شروط المؤلف."
 
-#: src/modules/multiple-authors/multiple-authors.php:4066
+#: src/modules/multiple-authors/multiple-authors.php:4124
 msgid "Maintenance completed successfully."
 msgstr "اكتملت الصيانة بنجاح."
 
-#: src/modules/multiple-authors/multiple-authors.php:4185
-#: src/modules/multiple-authors/multiple-authors.php:4216
+#: src/modules/multiple-authors/multiple-authors.php:4243
+#: src/modules/multiple-authors/multiple-authors.php:4274
 msgid "Collecting data..."
 msgstr "جمع البيانات..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4186
-#: src/modules/multiple-authors/multiple-authors.php:4217
+#: src/modules/multiple-authors/multiple-authors.php:4244
+#: src/modules/multiple-authors/multiple-authors.php:4275
 msgid "Finishing the process..."
 msgstr "إنهاء العملية..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4187
+#: src/modules/multiple-authors/multiple-authors.php:4245
 #, php-format
 msgid "Done! %d posts were updated."
 msgstr "تم! تم تحديث %d منشورات."
 
-#: src/modules/multiple-authors/multiple-authors.php:4189
+#: src/modules/multiple-authors/multiple-authors.php:4247
 msgid "Updating author field on posts..."
 msgstr "تحديث حقل المؤلف في المنشورات..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4190
+#: src/modules/multiple-authors/multiple-authors.php:4248
 #, php-format
 msgid "Updated %d of %d posts..."
 msgstr "تم تحديث %d من %d منشورات..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4215
+#: src/modules/multiple-authors/multiple-authors.php:4273
 msgid "Sync author and user URLs"
 msgstr "مزامنة عناوين URL للمؤلفين والمستخدمين"
 
-#: src/modules/multiple-authors/multiple-authors.php:4218
+#: src/modules/multiple-authors/multiple-authors.php:4276
 #, php-format
 msgid "Done! %d authors were updated."
 msgstr "تم! تم تحديث %d مؤلفين."
 
-#: src/modules/multiple-authors/multiple-authors.php:4220
+#: src/modules/multiple-authors/multiple-authors.php:4278
 msgid "Updating authors slug..."
 msgstr "تحديث أسماء المؤلفين..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4221
+#: src/modules/multiple-authors/multiple-authors.php:4279
 #, php-format
 msgid "Updated %d of %d authors..."
 msgstr "تم تحديث %d من %d مؤلفين..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4255
+#: src/modules/multiple-authors/multiple-authors.php:4313
 msgid "Creating missed post authors...."
 msgstr "إنشاء مؤلفين للمنشورات المفقودة...."
 
-#: src/modules/multiple-authors/multiple-authors.php:4258
+#: src/modules/multiple-authors/multiple-authors.php:4316
 msgid "Copy Co-Authors Plus data"
 msgstr "نسخ بيانات Co-Authors Plus"
 
-#: src/modules/multiple-authors/multiple-authors.php:4259
+#: src/modules/multiple-authors/multiple-authors.php:4317
 msgid "Deactivating Co-uthors Plus..."
 msgstr "تعطيل Co-Authors Plus..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4260
+#: src/modules/multiple-authors/multiple-authors.php:4318
 msgid "Done! Co-Authors Plus is deactivated."
 msgstr "تم! تم تعطيل Co-Authors Plus."
 
-#: src/modules/multiple-authors/multiple-authors.php:4261
+#: src/modules/multiple-authors/multiple-authors.php:4319
 msgid "Deactivate Co-Authors Plus"
 msgstr "تعطيل Co-Authors Plus"
 
-#: src/modules/multiple-authors/multiple-authors.php:4262
+#: src/modules/multiple-authors/multiple-authors.php:4320
 msgid "Done! Co-Authors Plus data was copied."
 msgstr "تم! تم نسخ بيانات Co-Authors Plus."
 
-#: src/modules/multiple-authors/multiple-authors.php:4955
+#: src/modules/multiple-authors/multiple-authors.php:5013
 msgid "It looks like you have Co-Authors Plus installed."
 msgstr "يبدو أنك قد قمت بتثبيت Co-Authors Plus."
 
-#: src/modules/multiple-authors/multiple-authors.php:4956
+#: src/modules/multiple-authors/multiple-authors.php:5014
 msgid "Please click here and read this guide!"
 msgstr "يرجى النقر هنا وقراءة هذا الدليل!"
 
-#: src/modules/multiple-authors/multiple-authors.php:5039
+#: src/modules/multiple-authors/multiple-authors.php:5097
 msgid ""
 "PublishPress Authors could not complete the background database update for "
 "Permissions integration."
@@ -5047,7 +5112,7 @@ msgstr ""
 "لم يتمكن PublishPress من إكمال تحديث قاعدة البيانات في الخلفية لتكامل "
 "الأذونات."
 
-#: src/modules/multiple-authors/multiple-authors.php:5040
+#: src/modules/multiple-authors/multiple-authors.php:5098
 msgid ""
 "PublishPress Authors is waiting to complete the background database update "
 "for Permissions integration."
@@ -5055,11 +5120,11 @@ msgstr ""
 "يتم انتظار PublishPress لإكمال تحديث قاعدة البيانات في الخلفية لتكامل "
 "الأذونات."
 
-#: src/modules/multiple-authors/multiple-authors.php:5046
+#: src/modules/multiple-authors/multiple-authors.php:5104
 msgid "Run the update manually"
 msgstr "تشغيل التحديث يدويًا"
 
-#: src/modules/multiple-authors/multiple-authors.php:5478
+#: src/modules/multiple-authors/multiple-authors.php:5536
 msgid "Guest Author cannot login on the site."
 msgstr "لا يمكن للمؤلف الضيف تسجيل الدخول إلى الموقع."
 
@@ -5184,29 +5249,34 @@ msgstr "تكامل Yoast SEO"
 msgid "Add compatibility with the Yoast SEO plugin"
 msgstr "إضافة التوافق مع إضافة Yoast SEO"
 
-#: src/templates/parts/author-pages-grid.php:152
-#: src/templates/parts/author-pages-list.php:141
+#: src/templates/parts/author-pages-grid.php:155
+#: src/templates/parts/author-pages-list.php:144
 msgid "Comment counts"
 msgstr "عدد التعليقات"
 
-#: src/templates/parts/author-pages-grid.php:180
-#: src/templates/parts/author-pages-list.php:173
+#: src/templates/parts/author-pages-grid.php:183
+#: src/templates/parts/author-pages-list.php:176
 msgid "Prev"
 msgstr "السابق"
 
-#: src/templates/parts/author-pages-grid.php:181
-#: src/templates/parts/author-pages-list.php:174
+#: src/templates/parts/author-pages-grid.php:184
+#: src/templates/parts/author-pages-list.php:177
 msgid "Next"
 msgstr "التالي"
 
-#: src/templates/parts/author-pages-grid.php:187
-#: src/templates/parts/author-pages-list.php:180
+#: src/templates/parts/author-pages-grid.php:190
+#: src/templates/parts/author-pages-list.php:183
 msgid "Post not found for the author"
 msgstr "لم يتم العثور على منشور لهذا المؤلف"
 
-#: src/templates/parts/author-pages-list.php:134
+#: src/templates/parts/author-pages-list.php:137
 msgid "Published date"
 msgstr "تاريخ النشر"
+
+#: src/views/authors_recent.html.php:27
+#, php-format
+msgid "View %s"
+msgstr "عرض %s"
 
 #: src/views/footer-base.html.php:14
 #, php-format
@@ -5235,19 +5305,19 @@ msgctxt "taxonomy singular name"
 msgid "Author"
 msgstr "مؤلف"
 
-#: src/modules/author-boxes/author-boxes.php:569
+#: src/modules/author-boxes/author-boxes.php:570
 #, fuzzy, php-format
 msgctxt "Author Box post type name"
 msgid "%2$s"
 msgstr "%2$s"
 
-#: src/modules/author-boxes/author-boxes.php:570
+#: src/modules/author-boxes/author-boxes.php:571
 #, fuzzy, php-format
 msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
-#: src/modules/author-boxes/author-boxes.php:585
+#: src/modules/author-boxes/author-boxes.php:586
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
 msgid "%2$s"

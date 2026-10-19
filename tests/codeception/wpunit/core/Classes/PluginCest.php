@@ -140,6 +140,27 @@ class PluginCest
         $I->assertEquals('<p>First paragraph.</p><p>Second paragraph.</p>', get_term_meta($author->term_id, 'description', true));
     }
 
+    public function userProfileUpdate_forMappedAuthor_keepsParagraphTagsInDescription(WpunitTester $I)
+    {
+        $userID = $I->factory('a new user')->user->create(
+            [
+                'role'        => 'author',
+                'description' => 'Original author bio.',
+            ]
+        );
+
+        $author = Author::create_from_user($userID);
+
+        $description = '<p>First paragraph.</p><p>Second paragraph.</p>';
+        update_user_meta($userID, 'description', $description);
+        update_term_meta($author->term_id, 'description', $description);
+
+        wp_update_user(['ID' => $userID, 'display_name' => 'Updated Name']);
+
+        $I->assertEquals($description, get_user_meta($userID, 'description', true));
+        $I->assertEquals($description, get_term_meta($author->term_id, 'description', true));
+    }
+
     public function getGuestAuthorUserData_alwaysUsesGuestAuthorRole(WpunitTester $I)
     {
         $userData = Author_Editor::get_guest_author_user_data(

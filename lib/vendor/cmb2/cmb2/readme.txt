@@ -4,8 +4,8 @@ Donate link:       https://cmb2.io
 Tags:              metaboxes, forms, fields, options, settings
 Requires at least: 3.8.0
 Requires PHP:      7.4
-Tested up to:      7.0
-Stable tag:        2.13.0
+Tested up to:      7.1
+Stable tag:        2.13.2
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -138,6 +138,22 @@ If including the library in your plugin or theme:
 FAQ's usually end up in the [github wiki](https://github.com/CMB2/CMB2/wiki).
 
 == Changelog ==
+
+### 2.13.2
+
+#### Bug Fixes
+* Escaped stored values in default field displays, including admin columns and front-end `display_cb` output. Stored HTML in default `text` and `text_money` displays now appears as text. `textarea_code` preserves visible source and uses `<pre class="cmb2-code">` in place of `<xmp class="cmb2-code">`; integrations selecting the old element should update their selector. Valid source remains unchanged in storage, while unexpected non-scalar values are discarded on save to avoid PHP errors. Props Kuba (via Wordfence).
+
+### 2.13.1
+
+#### Enhancements
+* Tested up to WordPress 7.1.
+
+#### Bug Fixes
+* Sanitized and escaped `file_list` field values, which were previously stored and rendered verbatim. Array keys must now be positive-integer attachment IDs, and URLs are sanitized with the field's `protocols` on save and on render. Entries with a malformed key (including `0` and positional-list keys) or a URL that sanitizes to empty are dropped the next time the field is saved. Props Ivaylo (via Wordfence).
+* Fixed a PHP 8 `TypeError` when displaying a `file_list` field containing a non-scalar value.
+* Gave the options-page setting CMB2 registers a `sanitize_callback`, which wp.org's Plugin Check requires of every `register_setting()` call. It is a passthrough by design: values are already sanitized per field type before the option is saved. Props [@rubengc](https://github.com/rubengc) ([#1533](https://github.com/CMB2/CMB2/issues/1533)).
+* Removed the `en@pirate` translation files, whose `@` in the filename fails wp.org's plugin submission checks for any plugin bundling CMB2. Props [@rubengc](https://github.com/rubengc) ([#1533](https://github.com/CMB2/CMB2/issues/1533)).
 
 ### 2.13.0
 
@@ -389,3 +405,11 @@ FAQ's usually end up in the [github wiki](https://github.com/CMB2/CMB2/wiki).
 ### Older versions
 
 For the changelog of versions prior to 2.3.0, see [CHANGELOG.md](https://github.com/CMB2/CMB2/blob/master/CHANGELOG.md).
+
+== Upgrade Notice ==
+
+= 2.13.2 =
+Security update: stored values are safely displayed in default field views, including admin columns. Update recommended for all sites.
+
+= 2.13.1 =
+Security hardening: sanitizes and escapes file_list field values. Recommended for all sites.

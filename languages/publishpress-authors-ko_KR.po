@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-09-23 08:22+0000\n"
+"PO-Revision-Date: 2026-10-02 10:18+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
 "Language: ko_KR\n"
@@ -32,19 +32,19 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-6: src/assets/lib\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: publishpress-authors.php:3
+#: publishpress-authors.php:5
 #: src/core/Plugin.php:743
 #: src/modules/settings/settings.php:64, fuzzy
 #. Plugin Name of the plugin
 msgid "PublishPress Authors"
 msgstr "PublishPress Authors"
 
-#: publishpress-authors.php:4
+#: publishpress-authors.php:7
 #. Plugin URI of the plugin
 msgid "https://wordpress.org/plugins/publishpress-authors/"
 msgstr "https://wordpress.org/plugins/publishpress-authors/"
 
-#: publishpress-authors.php:5
+#: publishpress-authors.php:9
 #: src/modules/multiple-authors/multiple-authors.php:79
 #: src/modules/multiple-authors/multiple-authors.php:83
 #. Description of the plugin
@@ -53,12 +53,12 @@ msgid ""
 "to WordPress posts"
 msgstr "PublishPress Authors는 WordPress 게시물에 여러 저자와 게스트 저자를 추가할 수 있게 해줍니다"
 
-#: publishpress-authors.php:6
+#: publishpress-authors.php:11
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: publishpress-authors.php:7
+#: publishpress-authors.php:13
 #. Author URI of the plugin
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
@@ -73,9 +73,9 @@ msgstr ""
 "%sPro로 업그레이드%s"
 
 #: includes.php:63
-#: src/modules/author-boxes/author-boxes.php:3291
+#: src/modules/author-boxes/author-boxes.php:3292
 #: src/modules/author-categories/author-categories.php:739
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:545
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:550
 #: src/modules/author-custom-fields/author-custom-fields.php:995
 #: src/modules/author-custom-fields/author-custom-fields.php:1048
 #: src/modules/author-list/author-list.php:1598
@@ -166,8 +166,8 @@ msgid "Author's search box field (Seperate multiple fields by comma(','))"
 msgstr "저자 검색 상자 필드(여러 필드는 쉼표(&#39;,&#39;)로 구분)"
 
 #: src/core/Authors_Widget.php:188
-#: src/core/Authors_Widget.php:494
-#: src/core/Classes/Post_Editor.php:834
+#: src/core/Authors_Widget.php:498
+#: src/core/Classes/Post_Editor.php:841
 #: src/core/Plugin.php:592
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1112
 msgid "All Authors"
@@ -208,7 +208,7 @@ msgstr "게시물 수"
 #: src/core/Classes/Author_Editor.php:369
 #: src/modules/author-custom-fields/author-custom-fields.php:933
 #: src/modules/author-list/author-list.php:704
-#: src/modules/multiple-authors/multiple-authors.php:2228
+#: src/modules/multiple-authors/multiple-authors.php:2230
 msgid "First Name"
 msgstr "이름"
 
@@ -216,7 +216,7 @@ msgstr "이름"
 #: src/core/Classes/Author_Editor.php:374
 #: src/modules/author-custom-fields/author-custom-fields.php:941
 #: src/modules/author-list/author-list.php:705
-#: src/modules/multiple-authors/multiple-authors.php:2229
+#: src/modules/multiple-authors/multiple-authors.php:2231
 msgid "Last Name"
 msgstr "성"
 
@@ -233,7 +233,15 @@ msgstr "검색 상자"
 msgid "Search"
 msgstr "검색"
 
-#: src/core/Authors_Widget.php:498
+#: src/core/Authors_Widget.php:473
+msgid "Search authors"
+msgstr "저자 검색"
+
+#: src/core/Authors_Widget.php:476
+msgid "Search authors by"
+msgstr "저자별 검색"
+
+#: src/core/Authors_Widget.php:502
 msgid "No recent posts from this author"
 msgstr "이 저자에게서 최근 게시물이 없습니다"
 
@@ -267,7 +275,7 @@ msgid ""
 msgstr "이 저자 프로필을 편집할 권한이 없습니다. 이 프로필은 편집할 권한이 없는 사용자 계정에 연결되어 있습니다."
 
 #: src/core/Classes/Admin_Ajax.php:374
-#: src/core/Classes/Author_Editor.php:1150
+#: src/core/Classes/Author_Editor.php:1152
 msgid ""
 "Sorry, this WordPress user is already mapped to another Author. By default, "
 "each user can only be connected to one Author profile."
@@ -276,7 +284,7 @@ msgstr ""
 "수 있습니다."
 
 #: src/core/Classes/Admin_Ajax.php:386
-#: src/core/Classes/Author_Editor.php:1243
+#: src/core/Classes/Author_Editor.php:1245
 msgid "Registered User is required."
 msgstr "등록된 사용자가 필요합니다."
 
@@ -316,19 +324,19 @@ msgid "Author Type"
 msgstr "저자 유형"
 
 #: src/core/Classes/Author_Editor.php:118
-#: src/core/Classes/Author_Editor.php:895
+#: src/core/Classes/Author_Editor.php:897
 #: src/modules/author-list/author-list.php:1517
 msgid "Guest Author With User Account"
 msgstr "사용자 계정이 있는 게스트 저자"
 
 #: src/core/Classes/Author_Editor.php:120
-#: src/core/Classes/Author_Editor.php:889
+#: src/core/Classes/Author_Editor.php:891
 #: src/modules/author-list/author-list.php:1516
 msgid "Registered Author With User Account"
 msgstr "사용자 계정으로 등록된 저자"
 
 #: src/core/Classes/Author_Editor.php:122
-#: src/core/Classes/Author_Editor.php:902
+#: src/core/Classes/Author_Editor.php:904
 #: src/modules/author-list/author-list.php:1518
 msgid "Guest Author With No User Account"
 msgstr "사용자 계정이 없는 게스트 저자"
@@ -350,18 +358,18 @@ msgstr "저자 프로필 생성"
 #: src/core/Classes/Author_Editor.php:314
 #: src/modules/author-list/author-list.php:330
 #: src/modules/author-pages/author-pages.php:117
-#: src/modules/multiple-authors/multiple-authors.php:3276
+#: src/modules/multiple-authors/multiple-authors.php:3278
 msgid "General"
 msgstr "일반"
 
 #: src/core/Classes/Author_Editor.php:317
-#: src/modules/author-boxes/author-boxes.php:1518
+#: src/modules/author-boxes/author-boxes.php:1519
 msgid "Avatar"
 msgstr "아바타"
 
 #: src/core/Classes/Author_Editor.php:346
 #: src/core/Plugin.php:610
-#: src/modules/author-boxes/author-boxes.php:2415
+#: src/modules/author-boxes/author-boxes.php:2416
 #: src/modules/author-categories/author-categories.php:786
 #: src/modules/author-categories/author-categories.php:788
 #: src/views/authors_table.html.php:21
@@ -373,7 +381,7 @@ msgid "Registered User"
 msgstr "등록된 사용자"
 
 #: src/core/Classes/Author_Editor.php:363
-#: src/modules/author-boxes/author-boxes.php:1526
+#: src/modules/author-boxes/author-boxes.php:1527
 msgid "Biographical Info"
 msgstr "전기 정보"
 
@@ -419,25 +427,25 @@ msgstr "이 프로필을 공개적으로 표시하지 않음"
 
 #: src/core/Classes/Author_Editor.php:512
 #: src/core/Classes/Author_Editor.php:561
-#: src/modules/multiple-authors/multiple-authors.php:2262
+#: src/modules/multiple-authors/multiple-authors.php:2264
 msgid "Select image"
 msgstr "이미지 선택"
 
 #: src/core/Classes/Author_Editor.php:516
 #: src/core/Classes/Author_Editor.php:565
-#: src/modules/multiple-authors/multiple-authors.php:2266
+#: src/modules/multiple-authors/multiple-authors.php:2268
 msgid "Remove this image"
 msgstr "이 이미지 제거"
 
-#: src/core/Classes/Author_Editor.php:579
+#: src/core/Classes/Author_Editor.php:581
 msgid "Select a user"
 msgstr "사용자 선택"
 
-#: src/core/Classes/Author_Editor.php:666
+#: src/core/Classes/Author_Editor.php:668
 msgid "Author email error"
 msgstr "저자 이메일 오류"
 
-#: src/core/Classes/Author_Editor.php:890
+#: src/core/Classes/Author_Editor.php:892
 msgid ""
 "Create an author profile for a current user account. You can select users "
 "who are allowed to edit posts. This user will be able to update their "
@@ -446,7 +454,7 @@ msgstr ""
 "현재 사용자 계정에 대한 저자 프로필을 생성하십시오. 게시물을 편집할 수 있는 사용자를 선택할 수 있습니다. 이 사용자는 자신의 "
 "프로필을 업데이트할 수 있습니다."
 
-#: src/core/Classes/Author_Editor.php:896
+#: src/core/Classes/Author_Editor.php:898
 msgid ""
 "Create an author profile and a linked user account. This account will be in "
 "the \"Guest Author\" role and will not be able to login to the WordPress "
@@ -455,48 +463,48 @@ msgstr ""
 "저자 프로필과 연결된 사용자 계정을 생성하십시오. 이 계정은 \"게스트 저자\" 역할을 가지며 WordPress 대시보드에 로그인하거나 "
 "프로필을 업데이트할 수 없습니다."
 
-#: src/core/Classes/Author_Editor.php:903
+#: src/core/Classes/Author_Editor.php:905
 msgid ""
 "Create an author profile with no linked user account. This option is "
 "lightweight but may have compatibility issues with other themes and plugins."
 msgstr "연결된 사용자 계정이 없는 저자 프로필을 생성하십시오. 이 옵션은 가벼우나 다른 테마 및 플러그인과의 호환성 문제가 있을 수 있습니다."
 
-#: src/core/Classes/Author_Editor.php:922
+#: src/core/Classes/Author_Editor.php:924
 msgid "Author Email"
 msgstr "저자 이메일"
 
-#: src/core/Classes/Author_Editor.php:934
+#: src/core/Classes/Author_Editor.php:936
 msgid "User Account"
 msgstr "사용자 계정"
 
-#: src/core/Classes/Author_Editor.php:997
-#: src/modules/multiple-authors/multiple-authors.php:4184
+#: src/core/Classes/Author_Editor.php:999
+#: src/modules/multiple-authors/multiple-authors.php:4242
 msgid "Sync author and user fields"
 msgstr "저자 및 사용자 필드 동기화"
 
-#: src/core/Classes/Author_Editor.php:1001
+#: src/core/Classes/Author_Editor.php:1003
 msgid "Convert to Guest Author With User Account"
 msgstr "사용자 계정으로 게스트 저자로 변환"
 
-#: src/core/Classes/Author_Editor.php:1005
+#: src/core/Classes/Author_Editor.php:1007
 msgid "Update post count"
 msgstr "게시물 수 업데이트"
 
-#: src/core/Classes/Author_Editor.php:1076
+#: src/core/Classes/Author_Editor.php:1078
 msgid "No authors were updated"
 msgstr "업데이트된 저자가 없습니다"
 
-#: src/core/Classes/Author_Editor.php:1079
+#: src/core/Classes/Author_Editor.php:1081
 #, php-format
 msgid "Updated %d authors"
 msgstr "%d명의 저자가 업데이트되었습니다"
 
-#: src/core/Classes/Author_Editor.php:1176
-#: src/core/Classes/Author_Editor.php:1194
+#: src/core/Classes/Author_Editor.php:1178
+#: src/core/Classes/Author_Editor.php:1196
 msgid "An author with the name provided already exists."
 msgstr "제공된 이름을 가진 저자가 이미 존재합니다."
 
-#: src/core/Classes/Author_Editor.php:1206
+#: src/core/Classes/Author_Editor.php:1208
 msgid "An author email is required when creating new User Author."
 msgstr "새 사용자 저자를 생성할 때 저자 이메일이 필요합니다."
 
@@ -575,13 +583,14 @@ msgstr "\"post_author\"가 비어 있습니다"
 msgid "Drag-and-drop Authors to add them to the %s category"
 msgstr "카테고리 %s에 저자를 추가하려면 드래그 앤 드롭하세요"
 
-#: src/core/Classes/Post_Editor.php:639
+#: src/core/Classes/Post_Editor.php:634
+#: src/core/Classes/Post_Editor.php:640
 #: src/core/Plugin.php:1655
-#: src/modules/multiple-authors/multiple-authors.php:2857
+#: src/modules/multiple-authors/multiple-authors.php:2859
 msgid "Search for an author"
 msgstr "저자 검색"
 
-#: src/core/Classes/Post_Editor.php:730
+#: src/core/Classes/Post_Editor.php:735
 msgid ""
 "This option is showing because you do not have a WordPress user selected as "
 "an author. For some tasks, it can be helpful to have a user selected here. "
@@ -590,24 +599,33 @@ msgstr ""
 "이 옵션은 저자로 선택된 WordPress 사용자가 없기 때문에 표시되고 있습니다. 일부 작업에는 여기에서 사용자를 선택하는 것이 "
 "유용할 수 있습니다. 이 사용자는 사이트의 전면에 표시되지 않습니다."
 
-#: src/core/Classes/Post_Editor.php:738
+#: src/core/Classes/Post_Editor.php:743
 msgid "Search for an user"
 msgstr "사용자 검색"
 
-#: src/core/Classes/Post_Editor.php:762
-#: src/modules/author-boxes/author-boxes.php:565
-#: src/modules/author-boxes/author-boxes.php:685
+#: src/core/Classes/Post_Editor.php:767
+#: src/modules/author-boxes/author-boxes.php:566
+#: src/modules/author-boxes/author-boxes.php:686
 msgid "Author Box"
 msgstr "저자 박스"
 
-#: src/core/Classes/Post_Editor.php:786
+#: src/core/Classes/Post_Editor.php:791
 #: src/modules/author-boxes/author-boxes.php:206
 msgid "Default Author Box"
 msgstr "기본 저자 상자"
 
-#: src/core/Classes/Post_Editor.php:787
+#: src/core/Classes/Post_Editor.php:792
 msgid "Hide Author Box"
 msgstr "저자 박스 숨기기"
+
+#: src/core/Classes/Post_Editor.php:835
+msgid "Filter posts by author"
+msgstr "저자별 게시물 필터링"
+
+#: src/core/Classes/Post_Editor.php:883
+#, php-format
+msgid "Remove %s"
+msgstr "%s 제거"
 
 #: src/core/Classes/Term_Editor.php:42
 msgid "New author added."
@@ -634,7 +652,7 @@ msgid "Authors deleted."
 msgstr "저자가 삭제되었습니다."
 
 #: src/core/Classes/Term_Editor.php:79
-#: src/modules/multiple-authors/multiple-authors.php:3376
+#: src/modules/multiple-authors/multiple-authors.php:3378
 msgid "Author URL"
 msgstr "저자 URL"
 
@@ -642,88 +660,88 @@ msgstr "저자 URL"
 msgid "Co-Authors Plus must be installed and active."
 msgstr "Co-Authors Plus가 설치되어 있고 활성화되어 있어야 합니다."
 
-#: src/core/Classes/Utils.php:1121
+#: src/core/Classes/Utils.php:1124
 msgid "Read more."
 msgstr "더 읽기."
 
-#: src/core/Classes/Utils.php:1252
+#: src/core/Classes/Utils.php:1255
 msgid "The results could not be loaded."
 msgstr "결과를 로드할 수 없습니다."
 
-#: src/core/Classes/Utils.php:1254
+#: src/core/Classes/Utils.php:1257
 #. translators: %d: number of characters over the maximum.
 #, php-format
 msgid "Please delete %d character"
 msgstr "%d 글자를 삭제하십시오"
 
-#: src/core/Classes/Utils.php:1256
+#: src/core/Classes/Utils.php:1259
 #. translators: %d: number of characters over the maximum.
 #, php-format
 msgid "Please delete %d characters"
 msgstr "%d 글자를 삭제하십시오"
 
-#: src/core/Classes/Utils.php:1258
+#: src/core/Classes/Utils.php:1261
 #. translators: %d: number of characters still required.
 #, php-format
 msgid "Please enter %d or more character"
 msgstr "%d 글자 이상을 입력하십시오"
 
-#: src/core/Classes/Utils.php:1260
+#: src/core/Classes/Utils.php:1263
 #. translators: %d: number of characters still required.
 #, php-format
 msgid "Please enter %d or more characters"
 msgstr "%d 글자 이상을 입력하십시오"
 
-#: src/core/Classes/Utils.php:1261
+#: src/core/Classes/Utils.php:1264
 msgid "Loading more results..."
 msgstr "결과를 더 로드하는 중..."
 
-#: src/core/Classes/Utils.php:1263
+#: src/core/Classes/Utils.php:1266
 #. translators: %d: maximum number of items that can be selected.
 #, php-format
 msgid "You can only select %d item"
 msgstr "%d 항목만 선택할 수 있습니다"
 
-#: src/core/Classes/Utils.php:1265
+#: src/core/Classes/Utils.php:1268
 #. translators: %d: maximum number of items that can be selected.
 #, php-format
 msgid "You can only select %d items"
 msgstr "%d 항목만 선택할 수 있습니다"
 
-#: src/core/Classes/Utils.php:1266
+#: src/core/Classes/Utils.php:1269
 msgid "No results found"
 msgstr "결과를 찾을 수 없습니다"
 
-#: src/core/Classes/Utils.php:1267
+#: src/core/Classes/Utils.php:1270
 msgid "Searching..."
 msgstr "검색 중..."
 
-#: src/core/Classes/Utils.php:1268
+#: src/core/Classes/Utils.php:1271
 msgid "Remove all items"
 msgstr "모든 항목 제거"
 
-#: src/core/Classes/Utils.php:1280
+#: src/core/Classes/Utils.php:1283
 #: src/views/settings-tab.html.php:98
 msgid "No results match"
 msgstr "일치하는 결과가 없습니다"
 
-#: src/core/Classes/Utils.php:1343
+#: src/core/Classes/Utils.php:1348
 msgid "Need PublishPress Authors Support?"
 msgstr "PublishPress 저자 지원이 필요하신가요?"
 
-#: src/core/Classes/Utils.php:1348
+#: src/core/Classes/Utils.php:1353
 msgid "If you need help or have a new feature request, let us know."
 msgstr "도움이 필요하거나 새로운 기능 요청이 있는 경우 알려주세요."
 
-#: src/core/Classes/Utils.php:1350
+#: src/core/Classes/Utils.php:1355
 msgid "Request Support"
 msgstr "지원 요청"
 
-#: src/core/Classes/Utils.php:1359
+#: src/core/Classes/Utils.php:1364
 msgid "Detailed documentation is also available on the plugin website."
 msgstr "자세한 문서는 플러그인 웹사이트에서도 확인할 수 있습니다."
 
-#: src/core/Classes/Utils.php:1361
+#: src/core/Classes/Utils.php:1366
 msgid "View Knowledge Base"
 msgstr "지식 베이스 보기"
 
@@ -753,7 +771,7 @@ msgid "Active"
 msgstr "활성"
 
 #: src/core/CustomFieldsModel.php:62
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:418
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:423
 #: src/modules/author-custom-fields/author-custom-fields.php:834
 msgid "Disabled"
 msgstr "비활성화됨"
@@ -888,7 +906,7 @@ msgid "No co-author exists for that term"
 msgstr "해당 용어에 대한 공동 저자가 존재하지 않습니다"
 
 #: src/core/Plugin.php:1644
-#: src/modules/author-list/classes/AuthorListTable.php:344
+#: src/modules/author-list/classes/AuthorListTable.php:345
 msgid "Edit"
 msgstr "편집"
 
@@ -943,9 +961,9 @@ msgstr "선택한 역할에 대한 저자를 생성하시겠습니까?"
 #: src/modules/byline-migration/byline-migration.php:148
 #: src/modules/bylines-migration/bylines-migration.php:150
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:137
-#: src/modules/multiple-authors/multiple-authors.php:4188
-#: src/modules/multiple-authors/multiple-authors.php:4219
-#: src/modules/multiple-authors/multiple-authors.php:4256
+#: src/modules/multiple-authors/multiple-authors.php:4246
+#: src/modules/multiple-authors/multiple-authors.php:4277
+#: src/modules/multiple-authors/multiple-authors.php:4314
 msgid "Please, wait..."
 msgstr "잠시만 기다려 주세요..."
 
@@ -1005,27 +1023,27 @@ msgstr "저자 용어가 없는 게시물을 찾을 수 없습니다"
 msgid "%d posts were found without author terms"
 msgstr "%d개의 게시물이 저자 조건 없이 발견되었습니다"
 
-#: src/functions/template-tags.php:1047
+#: src/functions/template-tags.php:1054
 #, php-format
 msgid "%1sView all posts%2s by %3s"
 msgstr "%1s 모든 게시물 보기%2s by %3s"
 
-#: src/functions/template-tags.php:1316
-#: src/functions/template-tags.php:1937
+#: src/functions/template-tags.php:1323
+#: src/functions/template-tags.php:1944
 msgid " and "
 msgstr " 및 "
 
-#: src/functions/template-tags.php:1467
+#: src/functions/template-tags.php:1474
 #, php-format
 msgid "Posts by %s"
 msgstr "%s님의 게시물"
 
-#: src/functions/template-tags.php:1852
+#: src/functions/template-tags.php:1859
 #, php-format
 msgid "Posts by %1$s"
 msgstr "%1$s님의 게시물"
 
-#: src/functions/template-tags.php:1938
+#: src/functions/template-tags.php:1945
 msgid ", and "
 msgstr ", 및 "
 
@@ -1038,11 +1056,11 @@ msgid "Add compatibility with the All In One Seo Pack plugin"
 msgstr "All In One Seo Pack 플러그인과의 호환성 추가"
 
 #: src/modules/author-boxes/author-boxes.php:83
-#: src/modules/author-boxes/author-boxes.php:566
-#: src/modules/author-boxes/author-boxes.php:642
+#: src/modules/author-boxes/author-boxes.php:567
 #: src/modules/author-boxes/author-boxes.php:643
-#: src/modules/author-boxes/author-boxes.php:686
-#: src/modules/multiple-authors/multiple-authors.php:3277
+#: src/modules/author-boxes/author-boxes.php:644
+#: src/modules/author-boxes/author-boxes.php:687
+#: src/modules/multiple-authors/multiple-authors.php:3279
 msgid "Author Boxes"
 msgstr "작가 박스"
 
@@ -1056,15 +1074,16 @@ msgid "Author Category Boxes"
 msgstr "작가 카테고리 박스"
 
 #: src/modules/author-boxes/author-boxes.php:211
-#: src/modules/author-boxes/author-boxes.php:1477
-#: src/modules/author-boxes/author-boxes.php:2785
-#: src/modules/author-boxes/author-boxes.php:2796
+#: src/modules/author-boxes/author-boxes.php:1478
+#: src/modules/author-boxes/author-boxes.php:2786
+#: src/modules/author-boxes/author-boxes.php:2797
 #: src/modules/author-list/author-list.php:1254
 #: src/modules/author-list/classes/AuthorListTable.php:152
+#: src/modules/multiple-authors/multiple-authors.php:1790
 msgid "Shortcode"
 msgstr "단축 코드"
 
-#: src/modules/author-boxes/author-boxes.php:434
+#: src/modules/author-boxes/author-boxes.php:435
 #, php-format
 msgid ""
 "%s Author Box setting was not saved because it was changed in another "
@@ -1077,184 +1096,183 @@ msgstr[0] ""
 "try again."
 msgstr[0] ""
 "%s 저자 상자 설정은 다른 브라우저나 탭에서 변경되었기 때문에 저장되지 않았습니다. 최신 저장된 값이 유지되었습니다; 레이아웃을 "
-"검토하고 다시 시도하세요.|%s 저자 상자 설정들은 다른 브라우저나 탭에서 변경되었기 때문에 저장되지 않았습니다. 최신 저장된 값들이 "
-"유지되었습니다; 레이아웃을 검토하고 다시 시도하세요."
+"검토하고 다시 시도하세요."
 
-#: src/modules/author-boxes/author-boxes.php:575
+#: src/modules/author-boxes/author-boxes.php:576
 #: src/modules/author-custom-fields/author-custom-fields.php:172
 #, php-format
 msgid "New %1s"
 msgstr "새 %1s"
 
-#: src/modules/author-boxes/author-boxes.php:576
+#: src/modules/author-boxes/author-boxes.php:577
 #: src/modules/author-custom-fields/author-custom-fields.php:173
 #, php-format
 msgid "Add New %1$s"
 msgstr "새로 추가 %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:577
+#: src/modules/author-boxes/author-boxes.php:578
 #: src/modules/author-custom-fields/author-custom-fields.php:174
 #, php-format
 msgid "Edit %1$s"
 msgstr "%1$s 편집"
 
-#: src/modules/author-boxes/author-boxes.php:578
+#: src/modules/author-boxes/author-boxes.php:579
 #: src/modules/author-custom-fields/author-custom-fields.php:175
 #, php-format
 msgid "New %1$s"
 msgstr "새 %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:579
+#: src/modules/author-boxes/author-boxes.php:580
 #: src/modules/author-custom-fields/author-custom-fields.php:176
 #, fuzzy, php-format
 msgid "%2$s"
 msgstr "%2$s"
 
-#: src/modules/author-boxes/author-boxes.php:580
+#: src/modules/author-boxes/author-boxes.php:581
 #: src/modules/author-custom-fields/author-custom-fields.php:177
 #, php-format
 msgid "View %1$s"
 msgstr "보기 %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:581
+#: src/modules/author-boxes/author-boxes.php:582
 #: src/modules/author-custom-fields/author-custom-fields.php:178
 #, php-format
 msgid "Search %2$s"
 msgstr "%2$s 검색"
 
-#: src/modules/author-boxes/author-boxes.php:582
+#: src/modules/author-boxes/author-boxes.php:583
 #: src/modules/author-custom-fields/author-custom-fields.php:179
 #, php-format
 msgid "No %2$s found"
 msgstr "%2$s를 찾을 수 없습니다"
 
-#: src/modules/author-boxes/author-boxes.php:583
+#: src/modules/author-boxes/author-boxes.php:584
 #: src/modules/author-custom-fields/author-custom-fields.php:180
 #, php-format
 msgid "No %2$s found in Trash"
 msgstr "휴지통에서 %2$s를 찾을 수 없습니다"
 
-#: src/modules/author-boxes/author-boxes.php:586
+#: src/modules/author-boxes/author-boxes.php:587
 #: src/modules/author-custom-fields/author-custom-fields.php:183
 #, php-format
 msgid "%1$s Image"
 msgstr "%1$s 이미지"
 
-#: src/modules/author-boxes/author-boxes.php:587
+#: src/modules/author-boxes/author-boxes.php:588
 #: src/modules/author-custom-fields/author-custom-fields.php:184
 #, php-format
 msgid "Set %1$s Image"
 msgstr "%1$s 이미지 설정"
 
-#: src/modules/author-boxes/author-boxes.php:588
+#: src/modules/author-boxes/author-boxes.php:589
 #: src/modules/author-custom-fields/author-custom-fields.php:185
 #, php-format
 msgid "Remove %1$s Image"
 msgstr "%1$s 이미지 제거"
 
-#: src/modules/author-boxes/author-boxes.php:589
+#: src/modules/author-boxes/author-boxes.php:590
 #: src/modules/author-custom-fields/author-custom-fields.php:186
 #, php-format
 msgid "Use as %1$s Image"
 msgstr "%1$s 이미지로 사용"
 
-#: src/modules/author-boxes/author-boxes.php:590
+#: src/modules/author-boxes/author-boxes.php:591
 #: src/modules/author-custom-fields/author-custom-fields.php:187
 #, php-format
 msgid "Filter %2$s list"
 msgstr "필터 %2$s 목록"
 
-#: src/modules/author-boxes/author-boxes.php:591
+#: src/modules/author-boxes/author-boxes.php:592
 #: src/modules/author-custom-fields/author-custom-fields.php:188
 #, php-format
 msgid "%2$s list navigation"
 msgstr "%2$s 목록 탐색"
 
-#: src/modules/author-boxes/author-boxes.php:592
+#: src/modules/author-boxes/author-boxes.php:593
 #: src/modules/author-custom-fields/author-custom-fields.php:189
 #, php-format
 msgid "%2$s list"
 msgstr "%2$s 목록"
 
-#: src/modules/author-boxes/author-boxes.php:659
 #: src/modules/author-boxes/author-boxes.php:660
+#: src/modules/author-boxes/author-boxes.php:661
 msgid "Author Box updated."
 msgstr "작가 박스가 업데이트되었습니다."
 
-#: src/modules/author-boxes/author-boxes.php:661
+#: src/modules/author-boxes/author-boxes.php:662
 msgid "Author Box added."
 msgstr "저자 박스가 추가되었습니다."
 
-#: src/modules/author-boxes/author-boxes.php:662
+#: src/modules/author-boxes/author-boxes.php:663
 msgid "Author Box saved."
 msgstr "작가 박스가 저장되었습니다."
 
-#: src/modules/author-boxes/author-boxes.php:663
+#: src/modules/author-boxes/author-boxes.php:664
 msgid "Author Box submitted."
 msgstr "작가 박스가 제출되었습니다."
 
-#: src/modules/author-boxes/author-boxes.php:690
+#: src/modules/author-boxes/author-boxes.php:691
 #, php-format
 msgid "%1$s %2$s updated."
 msgid_plural "%1$s %3$s updated."
 msgstr[0] "%1$s %2$s 업데이트되었습니다."
 
-#: src/modules/author-boxes/author-boxes.php:701
+#: src/modules/author-boxes/author-boxes.php:702
 #, php-format
 msgid "%1$s %2$s not updated, somebody is editing it."
 msgid_plural "%1$s %3$s not updated, somebody is editing them."
 msgstr[0] "%1$s %2$s 업데이트되지 않았습니다. 누군가가 편집 중입니다."
 
-#: src/modules/author-boxes/author-boxes.php:712
+#: src/modules/author-boxes/author-boxes.php:713
 #, php-format
 msgid "%1$s %2$s permanently deleted."
 msgid_plural "%1$s %3$s permanently deleted."
 msgstr[0] "%1$s %2$s 영구 삭제되었습니다."
 
-#: src/modules/author-boxes/author-boxes.php:723
+#: src/modules/author-boxes/author-boxes.php:724
 #, php-format
 msgid "%1$s %2$s moved to the Trash."
 msgid_plural "%1$s %3$s moved to the Trash."
 msgstr[0] "%1$s %2$s 휴지통으로 이동했습니다."
 
-#: src/modules/author-boxes/author-boxes.php:734
+#: src/modules/author-boxes/author-boxes.php:735
 #, php-format
 msgid "%1$s %2$s restored from the Trash."
 msgid_plural "%1$s %3$s restored from the Trash."
 msgstr[0] "%1$s %2$s 휴지통에서 복원되었습니다."
 
-#: src/modules/author-boxes/author-boxes.php:801
+#: src/modules/author-boxes/author-boxes.php:802
 msgid "Duplicate"
 msgstr "복제"
 
-#: src/modules/author-boxes/author-boxes.php:834
-#: src/modules/author-boxes/author-boxes.php:839
+#: src/modules/author-boxes/author-boxes.php:835
+#: src/modules/author-boxes/author-boxes.php:840
 msgid "Invalid Author Box."
 msgstr "유효하지 않은 저자 상자입니다."
 
-#: src/modules/author-boxes/author-boxes.php:851
+#: src/modules/author-boxes/author-boxes.php:852
 msgid "You are not allowed to duplicate this Author Box."
 msgstr "이 저자 상자를 복제할 수 없습니다."
 
-#: src/modules/author-boxes/author-boxes.php:855
+#: src/modules/author-boxes/author-boxes.php:856
 msgid "You are not allowed to create Author Boxes."
 msgstr "저자 상자를 생성할 수 없습니다."
 
-#: src/modules/author-boxes/author-boxes.php:879
+#: src/modules/author-boxes/author-boxes.php:880
 #, php-format
 msgid "%s (Copy)"
 msgstr "%s (복사)"
 
-#: src/modules/author-boxes/author-boxes.php:894
+#: src/modules/author-boxes/author-boxes.php:895
 msgid "Could not duplicate the Author Box."
 msgstr "저자 상자를 복제할 수 없습니다."
 
-#: src/modules/author-boxes/author-boxes.php:936
+#: src/modules/author-boxes/author-boxes.php:937
 msgid "Author Box duplicated."
 msgstr "저자 상자가 복제되었습니다."
 
-#: src/modules/author-boxes/author-boxes.php:969
-#: src/modules/author-boxes/author-boxes.php:1007
+#: src/modules/author-boxes/author-boxes.php:970
+#: src/modules/author-boxes/author-boxes.php:1008
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:100
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:267
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:383
@@ -1266,43 +1284,43 @@ msgstr "저자 상자가 복제되었습니다."
 msgid "View all posts"
 msgstr "모든 게시물 보기"
 
-#: src/modules/author-boxes/author-boxes.php:1121
+#: src/modules/author-boxes/author-boxes.php:1122
 msgid "Theme"
 msgstr "테마"
 
-#: src/modules/author-boxes/author-boxes.php:1427
+#: src/modules/author-boxes/author-boxes.php:1428
 msgid "Author Box Preview"
 msgstr "작가 박스 미리보기"
 
-#: src/modules/author-boxes/author-boxes.php:1444
+#: src/modules/author-boxes/author-boxes.php:1445
 msgid "Author Box Editor"
 msgstr "저자 박스 편집기"
 
-#: src/modules/author-boxes/author-boxes.php:1461
+#: src/modules/author-boxes/author-boxes.php:1462
 msgid "Layout Slug"
 msgstr "레이아웃 슬러그"
 
-#: src/modules/author-boxes/author-boxes.php:1494
+#: src/modules/author-boxes/author-boxes.php:1495
 #: src/modules/author-custom-fields/author-custom-fields.php:770
 msgid "Banner"
 msgstr "배너"
 
-#: src/modules/author-boxes/author-boxes.php:1514
+#: src/modules/author-boxes/author-boxes.php:1515
 msgid "Box Title"
 msgstr "상자 제목"
 
-#: src/modules/author-boxes/author-boxes.php:1522
+#: src/modules/author-boxes/author-boxes.php:1523
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:285
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:299
 #: src/modules/multiple-authors/multiple-authors.php:1141
 msgid "Display Name"
 msgstr "표시 이름"
 
-#: src/modules/author-boxes/author-boxes.php:1530
+#: src/modules/author-boxes/author-boxes.php:1531
 msgid "View All Posts"
 msgstr "모든 게시물 보기"
 
-#: src/modules/author-boxes/author-boxes.php:1534
+#: src/modules/author-boxes/author-boxes.php:1535
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:253
 #: src/modules/author-categories/author-categories.php:65
 #: src/modules/author-categories/author-categories.php:261
@@ -1314,7 +1332,7 @@ msgstr "모든 게시물 보기"
 msgid "Author Categories"
 msgstr "작가 카테고리"
 
-#: src/modules/author-boxes/author-boxes.php:1538
+#: src/modules/author-boxes/author-boxes.php:1539
 #: src/modules/author-custom-fields/author-custom-fields.php:64
 #: src/modules/author-custom-fields/author-custom-fields.php:163
 #: src/modules/author-custom-fields/author-custom-fields.php:221
@@ -1322,154 +1340,154 @@ msgstr "작가 카테고리"
 msgid "Author Fields"
 msgstr "저자 필드들"
 
-#: src/modules/author-boxes/author-boxes.php:1542
+#: src/modules/author-boxes/author-boxes.php:1543
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1691
-#: src/modules/multiple-authors/multiple-authors.php:3280
+#: src/modules/multiple-authors/multiple-authors.php:3282
 msgid "Shortcodes"
 msgstr "단축 코드들"
 
-#: src/modules/author-boxes/author-boxes.php:1546
+#: src/modules/author-boxes/author-boxes.php:1547
 msgid "Author Recent Posts"
 msgstr "저자 최근 게시물"
 
-#: src/modules/author-boxes/author-boxes.php:1550
+#: src/modules/author-boxes/author-boxes.php:1551
 msgid "Box Layout"
 msgstr "상자 레이아웃"
 
-#: src/modules/author-boxes/author-boxes.php:1554
+#: src/modules/author-boxes/author-boxes.php:1555
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1662
 msgid "Custom CSS"
 msgstr "사용자 정의 CSS"
 
-#: src/modules/author-boxes/author-boxes.php:1558
+#: src/modules/author-boxes/author-boxes.php:1559
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1709
 msgid "Export"
 msgstr "내보내기"
 
-#: src/modules/author-boxes/author-boxes.php:1562
+#: src/modules/author-boxes/author-boxes.php:1563
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1728
 msgid "Import"
 msgstr "가져오기"
 
-#: src/modules/author-boxes/author-boxes.php:1566
+#: src/modules/author-boxes/author-boxes.php:1567
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1746
 msgid "Generate Theme Template"
 msgstr "테마 템플릿 생성"
 
-#: src/modules/author-boxes/author-boxes.php:1645
+#: src/modules/author-boxes/author-boxes.php:1646
 msgid "Shortcode documentation."
 msgstr "단축 코드 문서."
 
-#: src/modules/author-boxes/author-boxes.php:2059
+#: src/modules/author-boxes/author-boxes.php:2060
 msgid "Post preview"
 msgstr "게시물 미리보기"
 
-#: src/modules/author-boxes/author-boxes.php:2068
+#: src/modules/author-boxes/author-boxes.php:2069
 msgid "Select Preview Post"
 msgstr "미리보기 게시물 선택"
 
-#: src/modules/author-boxes/author-boxes.php:2459
+#: src/modules/author-boxes/author-boxes.php:2460
 msgid "No Recent Posts by this Author"
 msgstr "이 저자의 최근 게시물이 없습니다"
 
-#: src/modules/author-boxes/author-boxes.php:2654
-#: src/modules/author-boxes/author-boxes.php:2735
-#: src/modules/author-boxes/author-boxes.php:3095
+#: src/modules/author-boxes/author-boxes.php:2655
+#: src/modules/author-boxes/author-boxes.php:2736
+#: src/modules/author-boxes/author-boxes.php:3096
 msgid "Pro feature"
 msgstr "프로 기능"
 
-#: src/modules/author-boxes/author-boxes.php:2774
+#: src/modules/author-boxes/author-boxes.php:2775
 msgid "After View all posts Row"
 msgstr "모든 게시물 보기 행 뒤"
 
-#: src/modules/author-boxes/author-boxes.php:2775
+#: src/modules/author-boxes/author-boxes.php:2776
 msgid "After Name Row"
 msgstr "이름 행 뒤"
 
-#: src/modules/author-boxes/author-boxes.php:2776
+#: src/modules/author-boxes/author-boxes.php:2777
 msgid "After Biographical Info Row"
 msgstr "전기 정보 행 뒤"
 
-#: src/modules/author-boxes/author-boxes.php:2777
+#: src/modules/author-boxes/author-boxes.php:2778
 msgid "After All Authors"
 msgstr "모든 작가 뒤"
 
-#: src/modules/author-boxes/author-boxes.php:2786
+#: src/modules/author-boxes/author-boxes.php:2787
 msgid "Position"
 msgstr "위치"
 
-#: src/modules/author-boxes/author-boxes.php:2787
+#: src/modules/author-boxes/author-boxes.php:2788
 msgid "Action"
 msgstr "작업"
 
-#: src/modules/author-boxes/author-boxes.php:2814
-#: src/modules/author-boxes/author-boxes.php:2843
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:145
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:399
+#: src/modules/author-boxes/author-boxes.php:2815
+#: src/modules/author-boxes/author-boxes.php:2844
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:150
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:404
 msgid "Delete"
 msgstr "삭제"
 
-#: src/modules/author-boxes/author-boxes.php:2815
+#: src/modules/author-boxes/author-boxes.php:2816
 msgid "Add"
 msgstr "추가"
 
-#: src/modules/author-boxes/author-boxes.php:2853
+#: src/modules/author-boxes/author-boxes.php:2854
 #, php-format
 msgid "You can use basic HTML in this field. For example: Read Time %1s."
 msgstr "이 필드에서 기본 HTML을 사용할 수 있습니다. 예: 읽기 시간 %1s."
 
-#: src/modules/author-boxes/author-boxes.php:2857
+#: src/modules/author-boxes/author-boxes.php:2858
 msgid "Export Editor Settings"
 msgstr "편집기 설정 내보내기"
 
-#: src/modules/author-boxes/author-boxes.php:2858
+#: src/modules/author-boxes/author-boxes.php:2859
 msgid ""
 "You can use this data to export your author box design and import it to a "
 "new site."
 msgstr "이 데이터를 사용하여 저자 상자 디자인을 내보내고 새 사이트에 가져올 수 있습니다."
 
-#: src/modules/author-boxes/author-boxes.php:2868
-#: src/modules/author-boxes/author-boxes.php:2939
+#: src/modules/author-boxes/author-boxes.php:2869
+#: src/modules/author-boxes/author-boxes.php:2940
 msgid "Copy to Clipboard"
 msgstr "클립보드에 복사"
 
-#: src/modules/author-boxes/author-boxes.php:2872
-#: src/modules/author-boxes/author-boxes.php:2944
+#: src/modules/author-boxes/author-boxes.php:2873
+#: src/modules/author-boxes/author-boxes.php:2945
 msgid "Copied to Clipboard!"
 msgstr "클립보드에 복사됨!"
 
-#: src/modules/author-boxes/author-boxes.php:2877
+#: src/modules/author-boxes/author-boxes.php:2878
 msgid "Import Editor Settings"
 msgstr "편집기 설정 가져오기"
 
-#: src/modules/author-boxes/author-boxes.php:2878
+#: src/modules/author-boxes/author-boxes.php:2879
 msgid "Paste the editor data from the \"Export\" tab on another site."
 msgstr "다른 사이트의 \"내보내기\" 탭에서 편집기 데이터를 붙여넣으세요."
 
-#: src/modules/author-boxes/author-boxes.php:2887
+#: src/modules/author-boxes/author-boxes.php:2888
 msgid "Invalid data"
 msgstr "잘못된 데이터"
 
-#: src/modules/author-boxes/author-boxes.php:2887
-#: src/modules/author-boxes/author-boxes.php:2892
+#: src/modules/author-boxes/author-boxes.php:2888
+#: src/modules/author-boxes/author-boxes.php:2893
 msgid "Settings Imported Successfully!"
 msgstr "설정이 성공적으로 가져와졌습니다!"
 
-#: src/modules/author-boxes/author-boxes.php:2888
+#: src/modules/author-boxes/author-boxes.php:2889
 msgid "Import Data"
 msgstr "데이터 가져오기"
 
-#: src/modules/author-boxes/author-boxes.php:2897
+#: src/modules/author-boxes/author-boxes.php:2898
 msgid "How to generate and use a theme template file"
 msgstr "테마 템플릿 파일을 생성하고 사용하는 방법"
 
-#: src/modules/author-boxes/author-boxes.php:2900
+#: src/modules/author-boxes/author-boxes.php:2901
 msgid ""
 "Click the \"Generate Template\" button under the text area. Wait for the "
 "code to be generated."
 msgstr "텍스트 영역 아래의 \"템플릿 생성\" 버튼을 클릭하십시오. 코드가 생성될 때까지 기다리십시오."
 
-#: src/modules/author-boxes/author-boxes.php:2901
+#: src/modules/author-boxes/author-boxes.php:2902
 #, php-format
 msgid ""
 "Create an empty php template file with your desired file slug in the %1s "
@@ -1483,94 +1501,94 @@ msgstr ""
 "%4s/wp-content/themes/%5s당신의-테마-이름%6s/publishpress-authors/author-boxes/my-"
 "first-custom-author-template.php %7s ."
 
-#: src/modules/author-boxes/author-boxes.php:2902
+#: src/modules/author-boxes/author-boxes.php:2903
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "생성된 코드를 복사하여 새로 만든 파일 안에 붙여넣으세요."
 
-#: src/modules/author-boxes/author-boxes.php:2903
+#: src/modules/author-boxes/author-boxes.php:2904
 msgid ""
 "Congratulations. Your can now choose your template inside the PublishPress "
 "Authors Settings."
 msgstr "축하합니다. 이제 PublishPress Authors 설정 내에서 템플릿을 선택할 수 있습니다."
 
-#: src/modules/author-boxes/author-boxes.php:2907
+#: src/modules/author-boxes/author-boxes.php:2908
 #, php-format
 msgid "You can read more information on the %s."
 msgstr "%s에 대한 더 많은 정보를 읽을 수 있습니다."
 
-#: src/modules/author-boxes/author-boxes.php:2908
+#: src/modules/author-boxes/author-boxes.php:2909
 msgid "documentation page"
 msgstr "문서 페이지"
 
-#: src/modules/author-boxes/author-boxes.php:2933
+#: src/modules/author-boxes/author-boxes.php:2934
 msgid "Generate Template"
 msgstr "템플릿 생성"
 
-#: src/modules/author-boxes/author-boxes.php:2947
+#: src/modules/author-boxes/author-boxes.php:2948
 msgid "Template generated successfuly!"
 msgstr "템플릿이 성공적으로 생성되었습니다!"
 
-#: src/modules/author-boxes/author-boxes.php:2989
+#: src/modules/author-boxes/author-boxes.php:2990
 msgid "Reorder Fields"
 msgstr "필드 재정렬"
 
-#: src/modules/author-boxes/author-boxes.php:2997
+#: src/modules/author-boxes/author-boxes.php:2998
 msgid ""
 "Reorder the fields by dragging them to the correct position and saving your "
 "changes."
 msgstr "필드를 올바른 위치로 드래그하여 재배치하고 변경 사항을 저장하세요."
 
-#: src/modules/author-boxes/author-boxes.php:3011
+#: src/modules/author-boxes/author-boxes.php:3012
 msgid "Save for Current Author Box"
 msgstr "현재 저자 상자에 대해 저장"
 
-#: src/modules/author-boxes/author-boxes.php:3015
+#: src/modules/author-boxes/author-boxes.php:3016
 msgid "Save for All Author Boxes"
 msgstr "모든 저자 상자에 대해 저장"
 
-#: src/modules/author-boxes/author-boxes.php:3038
+#: src/modules/author-boxes/author-boxes.php:3039
 #, php-format
 msgid "Select %1s"
 msgstr "%1s 선택"
 
-#: src/modules/author-boxes/author-boxes.php:3039
+#: src/modules/author-boxes/author-boxes.php:3040
 #, php-format
 msgid "Change %1s"
 msgstr "변경 %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3040
+#: src/modules/author-boxes/author-boxes.php:3041
 #, php-format
 msgid "Remove %1s"
 msgstr "%1s 제거"
 
-#: src/modules/author-boxes/author-boxes.php:3067
+#: src/modules/author-boxes/author-boxes.php:3068
 #, php-format
 msgid "Search %1s Icon"
 msgstr "%1$s 아이콘 검색"
 
-#: src/modules/author-boxes/author-boxes.php:3278
+#: src/modules/author-boxes/author-boxes.php:3279
 msgid "New Author Categories Box"
 msgstr "새 저자 카테고리 상자"
 
-#: src/modules/author-boxes/author-boxes.php:3286
+#: src/modules/author-boxes/author-boxes.php:3287
 msgid ""
 "PublishPress Authors Pro allows you to unlock the full potential of Author "
 "Categories."
 msgstr "PublishPress Authors Pro를 사용하면 저자 카테고리의 전체 잠재력을 활용할 수 있습니다."
 
-#: src/modules/author-boxes/author-boxes.php:3288
+#: src/modules/author-boxes/author-boxes.php:3289
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr "저자들이 자신의 카테고리로 그룹화된 저자 상자를 만들 수 있습니다."
 
-#: src/modules/author-boxes/author-boxes.php:3341
+#: src/modules/author-boxes/author-boxes.php:3342
 msgid "PublishPress Authors Box"
 msgstr "PublishPress 저자 상자"
 
-#: src/modules/author-boxes/author-boxes.php:3342
+#: src/modules/author-boxes/author-boxes.php:3343
 msgid "Select an author box"
 msgstr "작성자 박스 선택"
 
-#: src/modules/author-boxes/author-boxes.php:3389
+#: src/modules/author-boxes/author-boxes.php:3390
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:47
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:137
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:200
@@ -1958,8 +1976,8 @@ msgstr "상자 제목 HTML 태그"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:841
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1234
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1457
-#: src/modules/multiple-authors/multiple-authors.php:2081
-#: src/modules/multiple-authors/multiple-authors.php:2113, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2083
+#: src/modules/multiple-authors/multiple-authors.php:2115, fuzzy
 msgid "H1"
 msgstr "H1"
 
@@ -1970,8 +1988,8 @@ msgstr "H1"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:842
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1235
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1458
-#: src/modules/multiple-authors/multiple-authors.php:2082
-#: src/modules/multiple-authors/multiple-authors.php:2114, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2084
+#: src/modules/multiple-authors/multiple-authors.php:2116, fuzzy
 msgid "H2"
 msgstr "H2"
 
@@ -1982,8 +2000,8 @@ msgstr "H2"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1236
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1459
-#: src/modules/multiple-authors/multiple-authors.php:2083
-#: src/modules/multiple-authors/multiple-authors.php:2115, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2085
+#: src/modules/multiple-authors/multiple-authors.php:2117, fuzzy
 msgid "H3"
 msgstr "H3"
 
@@ -1994,8 +2012,8 @@ msgstr "H3"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:844
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1237
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1460
-#: src/modules/multiple-authors/multiple-authors.php:2084
-#: src/modules/multiple-authors/multiple-authors.php:2116, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2086
+#: src/modules/multiple-authors/multiple-authors.php:2118, fuzzy
 msgid "H4"
 msgstr "H4"
 
@@ -2006,8 +2024,8 @@ msgstr "H4"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:845
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1238
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1461
-#: src/modules/multiple-authors/multiple-authors.php:2085
-#: src/modules/multiple-authors/multiple-authors.php:2117, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2087
+#: src/modules/multiple-authors/multiple-authors.php:2119, fuzzy
 msgid "H5"
 msgstr "H5"
 
@@ -2018,8 +2036,8 @@ msgstr "H5"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:846
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1239
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1462
-#: src/modules/multiple-authors/multiple-authors.php:2086
-#: src/modules/multiple-authors/multiple-authors.php:2118, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2088
+#: src/modules/multiple-authors/multiple-authors.php:2120, fuzzy
 msgid "H6"
 msgstr "H6"
 
@@ -3020,7 +3038,7 @@ msgid "Add Author Category"
 msgstr "저자 카테고리 추가"
 
 #: src/modules/author-categories/author-categories.php:676
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:487
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:492
 msgid "Singular Name"
 msgstr "단수 이름"
 
@@ -3030,7 +3048,7 @@ msgstr "단일 작성자일 때 작성자 카테고리 이름을 입력하십시
 
 #: src/modules/author-categories/author-categories.php:681
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:97
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:492
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:497
 msgid "Plural Name"
 msgstr "복수형 이름"
 
@@ -3039,13 +3057,13 @@ msgid "Enter the Author Category name when there are more than 1 author"
 msgstr "작성자가 1명 이상일 때 작성자 카테고리 이름을 입력하십시오"
 
 #: src/modules/author-categories/author-categories.php:686
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:497
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:502
 #: src/modules/author-custom-fields/author-custom-fields.php:418
 msgid "Schema Property"
 msgstr "스키마 속성"
 
 #: src/modules/author-categories/author-categories.php:689
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:500
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:505
 #, php-format
 msgid ""
 "Example: when this value is set to reviewedBy, all users in this category "
@@ -3057,12 +3075,12 @@ msgstr ""
 
 #: src/modules/author-categories/author-categories.php:701
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:98
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:510
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:515
 msgid "Post Types"
 msgstr "게시물 유형"
 
 #: src/modules/author-categories/author-categories.php:712
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:518
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:523
 msgid "Select Post Type..."
 msgstr "게시물 유형 선택..."
 
@@ -3074,7 +3092,7 @@ msgstr "이 카테고리가 적용되는 게시물 유형을 선택하세요. �
 
 #: src/modules/author-categories/author-categories.php:750
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:100
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:555
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:560
 msgid "Enable Category"
 msgstr "카테고리 활성화"
 
@@ -3109,74 +3127,83 @@ msgstr "편집자"
 msgid "Editors"
 msgstr "편집자들"
 
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:95
+msgid "Select all author categories"
+msgstr "모든 저자 카테고리 선택"
+
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:99
 #: src/modules/author-custom-fields/author-custom-fields.php:804
 msgid "Slug"
 msgstr "슬러그"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:143
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:136
+#, php-format
+msgid "Select %s"
+msgstr "%s 선택"
+
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:148
 msgid "Enable Categories"
 msgstr "카테고리 활성화"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:144
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:149
 msgid "Disable Categories"
 msgstr "카테고리 비활성화"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:173
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:178
 msgid "Author categories deleted successfully."
 msgstr "작가 카테고리가 성공적으로 삭제되었습니다."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:176
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:181
 msgid "Author category deleted successfully."
 msgstr "작가 카테고리가 성공적으로 삭제되었습니다."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:187
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:192
 msgid "Author categories enabled."
 msgstr "작가 카테고리가 활성화되었습니다."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:190
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:195
 msgid "Author category enabled."
 msgstr "저자 카테고리가 활성화되었습니다."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:201
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:206
 msgid "Author categories disabled."
 msgstr "작가 카테고리가 비활성화되었습니다."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:204
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:209
 msgid "Author category disabled."
 msgstr "저자 카테고리가 비활성화되었습니다."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:288
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:293
 msgid "No author categories."
 msgstr "저자 카테고리가 없습니다."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:377
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:382
 #. translators: %s: Taxonomy term name.
 #, php-format
 msgid "Quick edit &#8220;%s&#8221; inline"
 msgstr "빠른 편집 &#8220;%s&#8221; 인라인"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:385
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:390
 msgid "Quick&nbsp;Edit"
 msgstr "빠른&nbsp;편집"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:416
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:421
 msgid "Enabled"
 msgstr "활성화됨"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:462
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:467
 msgid "All"
 msgstr "모두"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:484
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:489
 msgid "Quick Edit"
 msgstr "빠른 편집"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:563
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:568
 msgid "Update"
 msgstr "업데이트"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:564
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:569
 msgid "Cancel"
 msgstr "취소"
 
@@ -3628,7 +3655,7 @@ msgstr "정적 숏코드"
 
 #: src/modules/author-list/author-list.php:1497
 #: src/modules/author-list/author-list.php:1524
-#: src/modules/multiple-authors/multiple-authors.php:1888
+#: src/modules/multiple-authors/multiple-authors.php:1890
 msgid "Select some options"
 msgstr "일부 옵션 선택"
 
@@ -3672,42 +3699,70 @@ msgstr[0] "휴지통 %s"
 msgid "No author list avaliable in the selected view."
 msgstr "선택한 보기에서 사용 가능한 저자 목록이 없습니다."
 
-#: src/modules/author-list/classes/AuthorListTable.php:356
+#: src/modules/author-list/classes/AuthorListTable.php:344
+#, php-format
+msgid "Edit %s"
+msgstr "%s 편집"
+
+#: src/modules/author-list/classes/AuthorListTable.php:357
+#, php-format
+msgid "Move %s to Trash"
+msgstr "%s를 휴지통으로 이동"
+
+#: src/modules/author-list/classes/AuthorListTable.php:358
 msgid "Trash"
 msgstr "휴지통"
 
-#: src/modules/author-list/classes/AuthorListTable.php:372
+#: src/modules/author-list/classes/AuthorListTable.php:374
+#, php-format
+msgid "Restore %s"
+msgstr "%s 복원"
+
+#: src/modules/author-list/classes/AuthorListTable.php:375
 msgid "Restore"
 msgstr "복원"
 
-#: src/modules/author-list/classes/AuthorListTable.php:384
+#: src/modules/author-list/classes/AuthorListTable.php:387
+#, php-format
+msgid "Delete %s permanently"
+msgstr "%s를 영구 삭제"
+
+#: src/modules/author-list/classes/AuthorListTable.php:388
 msgid "Delete Permanently"
 msgstr "영구 삭제"
 
-#: src/modules/author-list/classes/AuthorListTable.php:427
+#: src/modules/author-list/classes/AuthorListTable.php:431
 #: src/modules/default-layouts/default-layouts.php:127
 msgid "Authors Index"
 msgstr "저자 인덱스"
 
-#: src/modules/author-list/classes/AuthorListTable.php:428
+#: src/modules/author-list/classes/AuthorListTable.php:432
 #: src/modules/default-layouts/default-layouts.php:128
 msgid "Authors Recent"
 msgstr "저자 최근"
 
-#: src/modules/author-list/classes/AuthorListTable.php:429
+#: src/modules/author-list/classes/AuthorListTable.php:433
 #: src/modules/default-layouts/default-layouts.php:129
 msgid "Authors Grid"
 msgstr "저자 그리드"
 
-#: src/modules/author-list/classes/AuthorListTable.php:430
+#: src/modules/author-list/classes/AuthorListTable.php:434
 #: src/modules/default-layouts/default-layouts.php:130
 msgid "Authors Table"
 msgstr "저자 테이블"
 
+#: src/modules/author-list/classes/AuthorListTable.php:455
+msgid "Dynamic shortcode"
+msgstr "동적 shortcode"
+
+#: src/modules/author-list/classes/AuthorListTable.php:470
+msgid "Static shortcode"
+msgstr "정적 shortcode"
+
 #: src/modules/author-pages/author-pages.php:60
 #: src/modules/author-pages/author-pages.php:106
 #: src/modules/author-pages/author-pages.php:107
-#: src/modules/multiple-authors/multiple-authors.php:3279
+#: src/modules/multiple-authors/multiple-authors.php:3281
 msgid "Author Pages"
 msgstr "저자 페이지들"
 
@@ -3736,14 +3791,14 @@ msgstr "Byline에 대한 마이그레이션 옵션 추가"
 #: src/modules/byline-migration/byline-migration.php:145
 #: src/modules/bylines-migration/bylines-migration.php:147
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:134
-#: src/modules/multiple-authors/multiple-authors.php:4253
+#: src/modules/multiple-authors/multiple-authors.php:4311
 msgid "Collecting data for the migration..."
 msgstr "마이그레이션을 위한 데이터 수집 중..."
 
 #: src/modules/byline-migration/byline-migration.php:146
 #: src/modules/bylines-migration/bylines-migration.php:148
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:135
-#: src/modules/multiple-authors/multiple-authors.php:4254
+#: src/modules/multiple-authors/multiple-authors.php:4312
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:54
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:136
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:167
@@ -3756,7 +3811,7 @@ msgstr "완료! 작성자 데이터가 복사되었으며 플러그인을 비활
 
 #: src/modules/byline-migration/byline-migration.php:149
 #: src/modules/bylines-migration/bylines-migration.php:151
-#: src/modules/multiple-authors/multiple-authors.php:4257
+#: src/modules/multiple-authors/multiple-authors.php:4315
 msgid "Copying authors' data..."
 msgstr "저자 데이터 복사 중..."
 
@@ -3963,8 +4018,8 @@ msgid "Please click here to migrate to PublishPress Authors"
 msgstr "여기를 클릭하여 PublishPress Authors로 마이그레이션하세요"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:193
-#: src/modules/multiple-authors/multiple-authors.php:4961
-#: src/modules/multiple-authors/multiple-authors.php:5052
+#: src/modules/multiple-authors/multiple-authors.php:5019
+#: src/modules/multiple-authors/multiple-authors.php:5110
 msgid "Dismiss"
 msgstr "무시"
 
@@ -4462,26 +4517,30 @@ msgstr ""
 "특정 기간 내에 게시된 게시물이 있는 사용자로 저자 목록을 제한할 수 있습니다 %1$s. 이는 1주 전, 1개월 전, 6개월 전, 1년 "
 "전과 같은 영어 날짜 값을 수용합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:1793
+#: src/modules/multiple-authors/multiple-authors.php:1794
+msgid "Copy shortcode to clipboard"
+msgstr "클립보드에 shortcode 복사"
+
+#: src/modules/multiple-authors/multiple-authors.php:1795
 msgid "Copied!"
 msgstr "복사됨!"
 
-#: src/modules/multiple-authors/multiple-authors.php:1794
-#: src/modules/multiple-authors/multiple-authors.php:1795
+#: src/modules/multiple-authors/multiple-authors.php:1796
+#: src/modules/multiple-authors/multiple-authors.php:1797
 msgid "Click To Copy!"
 msgstr "복사하려면 클릭하세요!"
 
-#: src/modules/multiple-authors/multiple-authors.php:1859
+#: src/modules/multiple-authors/multiple-authors.php:1861
 msgid "Select roles"
 msgstr "역할 선택"
 
-#: src/modules/multiple-authors/multiple-authors.php:1870
+#: src/modules/multiple-authors/multiple-authors.php:1872
 msgid ""
 "Choose which WordPress user roles can be selected using the \"Registered "
 "Author With User Account\" option for author profiles."
 msgstr "저자 프로필에 대해 \"사용자 계정이 있는 등록된 저자\" 옵션을 사용하여 선택할 수 있는 WordPress 사용자 역할을 선택하세요."
 
-#: src/modules/multiple-authors/multiple-authors.php:1899
+#: src/modules/multiple-authors/multiple-authors.php:1901
 msgid ""
 "Author profiles can be mapped to WordPress user accounts. This option "
 "allows you to automatically create author profiles when users are created "
@@ -4493,7 +4552,7 @@ msgstr ""
 "자동으로 생성할 수 있습니다. 유지 관리 탭에서 \"모든 역할의 사용자에 대해 PublishPress 저자 프로필 생성\" 버튼을 "
 "클릭하여 기존 사용자에 대해서도 이 작업을 수행할 수 있습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:1920
+#: src/modules/multiple-authors/multiple-authors.php:1922
 msgid ""
 "If the Author is mapped to a WordPress user, this will display the authors' "
 "\"Display name\" and their \"Username\". The default is to show only the "
@@ -4503,101 +4562,101 @@ msgstr ""
 "저자가 WordPress 사용자에 매핑된 경우, 저자의 \"표시 이름\"과 \"사용자 이름\"이 표시됩니다. 기본값은 \"표시 "
 "이름\"만 표시하는 것입니다. 여러 저자가 유사한 이름을 가질 경우 \"사용자 이름\"을 표시하는 것이 유용합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:1943
+#: src/modules/multiple-authors/multiple-authors.php:1945
 msgid "Allow authors to be created without a real user account."
 msgstr "실제 사용자 계정 없이 저자를 생성할 수 있습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:1966
+#: src/modules/multiple-authors/multiple-authors.php:1968
 msgid "Show a profile checkbox allowing Authors to be excluded from Author Boxes."
 msgstr "작성자 상자에서 제외될 수 있도록 작성자를 허용하는 프로필 체크박스 표시."
 
-#: src/modules/multiple-authors/multiple-authors.php:1989
+#: src/modules/multiple-authors/multiple-authors.php:1991
 msgid "Allow authors to be created without a connected user account."
 msgstr "연결된 사용자 계정 없이 저자를 생성할 수 있습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2013
+#: src/modules/multiple-authors/multiple-authors.php:2015
 msgid ""
 "If enabled, PublishPress Authors will replace the default WordPress author "
 "pages."
 msgstr "사용하도록 설정하면, PublishPress Authors가 기본 WordPress 저자 페이지를 대체합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2018
+#: src/modules/multiple-authors/multiple-authors.php:2020
 msgid "Please note this feature will not work for all themes."
 msgstr "이 기능은 모든 테마에서 작동하지 않을 수 있습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2018
-#: src/modules/multiple-authors/multiple-authors.php:2872
+#: src/modules/multiple-authors/multiple-authors.php:2020
+#: src/modules/multiple-authors/multiple-authors.php:2874
 msgid "Click here for more details."
 msgstr "자세한 내용을 보려면 여기를 클릭하세요."
 
-#: src/modules/multiple-authors/multiple-authors.php:2031
+#: src/modules/multiple-authors/multiple-authors.php:2033
 msgid "View sample Author Page"
 msgstr "샘플 저자 페이지 보기"
 
-#: src/modules/multiple-authors/multiple-authors.php:2052
+#: src/modules/multiple-authors/multiple-authors.php:2054
 msgid "List"
 msgstr "목록"
 
-#: src/modules/multiple-authors/multiple-authors.php:2053
+#: src/modules/multiple-authors/multiple-authors.php:2055
 msgid "Grid"
 msgstr "그리드"
 
-#: src/modules/multiple-authors/multiple-authors.php:2225
+#: src/modules/multiple-authors/multiple-authors.php:2227
 msgid "Allow User to Choose"
 msgstr "사용자가 선택할 수 있도록 허용"
 
-#: src/modules/multiple-authors/multiple-authors.php:2226
+#: src/modules/multiple-authors/multiple-authors.php:2228
 msgid "First Name Last Name"
 msgstr "이름 성"
 
-#: src/modules/multiple-authors/multiple-authors.php:2227
+#: src/modules/multiple-authors/multiple-authors.php:2229
 msgid "Last Name First Name"
 msgstr "성 이름"
 
-#: src/modules/multiple-authors/multiple-authors.php:2275
+#: src/modules/multiple-authors/multiple-authors.php:2277
 msgid ""
 "This avatar will be used as default avatar instead of gravatar where no "
 "custom avatar is added to profile."
 msgstr "이 아바타는 프로필에 사용자 지정 아바타가 추가되지 않은 경우 gravatar 대신 기본 아바타로 사용됩니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2297
+#: src/modules/multiple-authors/multiple-authors.php:2299
 msgid "This will display the author bio."
 msgstr "이것은 저자 소개를 표시합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2358
-#: src/modules/multiple-authors/multiple-authors.php:2397
-#: src/modules/multiple-authors/multiple-authors.php:2436
-#: src/modules/multiple-authors/multiple-authors.php:2475
-#: src/modules/multiple-authors/multiple-authors.php:2514
+#: src/modules/multiple-authors/multiple-authors.php:2360
+#: src/modules/multiple-authors/multiple-authors.php:2399
+#: src/modules/multiple-authors/multiple-authors.php:2438
+#: src/modules/multiple-authors/multiple-authors.php:2477
+#: src/modules/multiple-authors/multiple-authors.php:2516
 msgid "Select option"
 msgstr "옵션 선택"
 
-#: src/modules/multiple-authors/multiple-authors.php:2370
-#: src/modules/multiple-authors/multiple-authors.php:2409
-#: src/modules/multiple-authors/multiple-authors.php:2448
-#: src/modules/multiple-authors/multiple-authors.php:2487
-#: src/modules/multiple-authors/multiple-authors.php:2526
+#: src/modules/multiple-authors/multiple-authors.php:2372
+#: src/modules/multiple-authors/multiple-authors.php:2411
+#: src/modules/multiple-authors/multiple-authors.php:2450
+#: src/modules/multiple-authors/multiple-authors.php:2489
+#: src/modules/multiple-authors/multiple-authors.php:2528
 #, php-format
 msgid "This is useful if you use legacy shortcode %s"
 msgstr "이것은 레거시 단축 코드 %s를 사용할 경우 유용합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2546
+#: src/modules/multiple-authors/multiple-authors.php:2548
 msgid "This will display the featured image."
 msgstr "대표 이미지가 다음과 같이 표시됩니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2570
+#: src/modules/multiple-authors/multiple-authors.php:2572
 msgid "This will make the featured image clickable and link to the post."
 msgstr "이렇게 하면 대표 이미지가 클릭 가능해지고 게시물에 링크됩니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2594
+#: src/modules/multiple-authors/multiple-authors.php:2596
 msgid "This will display author page title."
 msgstr "이것은 저자 페이지 제목을 표시합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2618
+#: src/modules/multiple-authors/multiple-authors.php:2620
 msgid "This will display the excerpt."
 msgstr "발췌가 다음과 같이 표시됩니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2642
+#: src/modules/multiple-authors/multiple-authors.php:2644
 msgid ""
 "This will allows you map a WordPress user to more than one author. Don't "
 "use this feature unless requested to do so by the PublishPress team. This "
@@ -4606,51 +4665,51 @@ msgstr ""
 "이 기능을 사용하면 하나의 WordPress 사용자에 대해 여러 저자를 매핑할 수 있습니다. PublishPress 팀에 요청받지 않는 "
 "한 이 기능을 사용하지 마십시오. 이 플러그인은 저자와 사용자가 1:1로 쌍을 이룰 때 더 잘 작동합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2665
+#: src/modules/multiple-authors/multiple-authors.php:2667
 msgid ""
 "Allow the same author to be assigned to more than one Author Category on a "
 "single post."
 msgstr "하나의 게시물에서 동일한 저자를 둘 이상의 저자 카테고리에 할당할 수 있습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2689
+#: src/modules/multiple-authors/multiple-authors.php:2691
 msgid "This will display the authors."
 msgstr "저자는 다음과 같이 표시됩니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2713
+#: src/modules/multiple-authors/multiple-authors.php:2715
 msgid "This will display the published date."
 msgstr "게시 일자가 다음과 같이 표시됩니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2737
+#: src/modules/multiple-authors/multiple-authors.php:2739
 msgid "This will display the comment count."
 msgstr "댓글 수가 다음과 같이 표시됩니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2761
+#: src/modules/multiple-authors/multiple-authors.php:2763
 msgid "This will display the categories."
 msgstr "카테고리가 다음과 같이 표시됩니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2785
+#: src/modules/multiple-authors/multiple-authors.php:2787
 msgid "This will display the tags."
 msgstr "태그가 다음과 같이 표시됩니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2809
+#: src/modules/multiple-authors/multiple-authors.php:2811
 msgid "This will display the read more link."
 msgstr "더 보기 링크가 다음과 같이 표시됩니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2832
+#: src/modules/multiple-authors/multiple-authors.php:2834
 msgid ""
 "This will hide the \"Post not found for the author\" text when an author "
 "has no posts."
 msgstr "저자가 게시물이 없을 때 \"저자에 대한 게시물이 없습니다\" 텍스트를 숨깁니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2870
+#: src/modules/multiple-authors/multiple-authors.php:2872
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr "이 설정은 다른 사용자의 게시물을 편집할 수 없는 사용자에게는 비활성화될 수 있습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2893
+#: src/modules/multiple-authors/multiple-authors.php:2895
 msgid "Search for a fallback author"
 msgstr "대체 저자 검색"
 
-#: src/modules/multiple-authors/multiple-authors.php:2906
+#: src/modules/multiple-authors/multiple-authors.php:2908
 msgid ""
 "If you only have Guest Authors selected for a post, this user may be used "
 "as a fallback. WordPress sometimes requires a WordPress user to be assigned "
@@ -4659,49 +4718,49 @@ msgstr ""
 "게시물에 게스트 저자만 선택된 경우, 이 사용자가 대체 사용자로 사용될 수 있습니다. WordPress는 때때로 각 게시물에 "
 "WordPress 사용자가 할당되도록 요구합니다. 이 사용자는 사이트의 전면에 보이지 않습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2924
+#: src/modules/multiple-authors/multiple-authors.php:2926
 msgid "This will display the authors email in the author box."
 msgstr "이것은 저자 박스에 저자의 이메일을 표시합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2944
+#: src/modules/multiple-authors/multiple-authors.php:2946
 msgid "This will display the authors site in the author box."
 msgstr "이것은 저자 박스에 저자의 사이트를 표시합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2964
+#: src/modules/multiple-authors/multiple-authors.php:2966
 msgid "This will load Font Awesome icons for use in Author Boxes."
 msgstr "이것은 Author Boxes에서 사용할 Font Awesome 아이콘을 로드합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:2982
+#: src/modules/multiple-authors/multiple-authors.php:2984
 msgid "This will remove the Authors Box in \"Quick Edit\"."
 msgstr "이것은 \"빠른 편집\"에서 저자 상자를 제거합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:3001
+#: src/modules/multiple-authors/multiple-authors.php:3003
 msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr "모든 게시물 저자를 위한 PublishPress Authors 프로필 생성"
 
-#: src/modules/multiple-authors/multiple-authors.php:3002
+#: src/modules/multiple-authors/multiple-authors.php:3004
 msgid ""
 "If a WordPress user is the author of a post, but does not have a "
 "PublishPress Authors profile, this will automatically create a profile for "
 "them."
 msgstr "WordPress 사용자가 게시물의 저자이지만 PublishPress Authors 프로필이 없는 경우, 자동으로 프로필이 생성됩니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:3002
-#: src/modules/multiple-authors/multiple-authors.php:3008
-#: src/modules/multiple-authors/multiple-authors.php:3014
-#: src/modules/multiple-authors/multiple-authors.php:3021
+#: src/modules/multiple-authors/multiple-authors.php:3004
+#: src/modules/multiple-authors/multiple-authors.php:3010
+#: src/modules/multiple-authors/multiple-authors.php:3016
+#: src/modules/multiple-authors/multiple-authors.php:3023
 msgid "Click here for documentation"
 msgstr "문서를 보려면 여기를 클릭하세요"
 
-#: src/modules/multiple-authors/multiple-authors.php:3003
+#: src/modules/multiple-authors/multiple-authors.php:3005
 msgid "Create missing PublishPress Authors profiles"
 msgstr "누락된 PublishPress Authors 프로필 생성"
 
-#: src/modules/multiple-authors/multiple-authors.php:3007
+#: src/modules/multiple-authors/multiple-authors.php:3009
 msgid "Create PublishPress Authors Profiles for all users in a role"
 msgstr "역할에 있는 모든 사용자를 위한 PublishPress Authors 프로필 생성"
 
-#: src/modules/multiple-authors/multiple-authors.php:3008
+#: src/modules/multiple-authors/multiple-authors.php:3010
 msgid ""
 "This will find all the users in a role and create author profiles for them. "
 "You can choose the roles using the \"Automatically create author profiles\" "
@@ -4710,15 +4769,15 @@ msgstr ""
 "이 작업은 역할에 있는 모든 사용자를 찾아 저자 프로필을 생성합니다. \"자동으로 저자 프로필 생성\" 설정을 사용하여 역할을 선택할 "
 "수 있습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:3009
+#: src/modules/multiple-authors/multiple-authors.php:3011
 msgid "Create PublishPress Authors profiles"
 msgstr "PublishPress Authors 프로필 생성"
 
-#: src/modules/multiple-authors/multiple-authors.php:3013
+#: src/modules/multiple-authors/multiple-authors.php:3015
 msgid "Synchronize PublishPress Authors Fields and user profile fields"
 msgstr "PublishPress 저자 필드와 사용자 프로필 필드 동기화"
 
-#: src/modules/multiple-authors/multiple-authors.php:3014
+#: src/modules/multiple-authors/multiple-authors.php:3016
 msgid ""
 "This will update all the author profiles in PublishPress Authors to match "
 "the default WordPress fields for each user."
@@ -4726,11 +4785,11 @@ msgstr ""
 "이 작업은 PublishPress Authors의 모든 저자 프로필을 업데이트하여 각 사용자의 기본 WordPress 필드와 "
 "일치시킵니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:3020
+#: src/modules/multiple-authors/multiple-authors.php:3022
 msgid "Synchronize the author and user URLs"
 msgstr "저자 및 사용자 URL 동기화"
 
-#: src/modules/multiple-authors/multiple-authors.php:3021
+#: src/modules/multiple-authors/multiple-authors.php:3023
 msgid ""
 "This will update all the Author URLs in PublishPress Authors to match the "
 "default WordPress URLs for each user."
@@ -4738,22 +4797,22 @@ msgstr ""
 "이 작업은 PublishPress Authors의 모든 저자 URL을 업데이트하여 각 사용자의 기본 WordPress URL과 "
 "일치시킵니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:3027
 #: src/modules/multiple-authors/multiple-authors.php:3029
+#: src/modules/multiple-authors/multiple-authors.php:3031
 msgid "Create Author Categories"
 msgstr "저자 카테고리 생성"
 
-#: src/modules/multiple-authors/multiple-authors.php:3028
+#: src/modules/multiple-authors/multiple-authors.php:3030
 msgid ""
 "This will create author categories table if missing and add default "
 "categories."
 msgstr "이 작업은 저자 카테고리 테이블이 없으면 생성하고 기본 카테고리를 추가합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:3041
+#: src/modules/multiple-authors/multiple-authors.php:3043
 msgid "Copy Co-Authors Plus Data"
 msgstr "공동 저자 플러스 데이터 복사"
 
-#: src/modules/multiple-authors/multiple-authors.php:3042
+#: src/modules/multiple-authors/multiple-authors.php:3044
 msgid ""
 "This action will copy the authors from the plugin Co-Authors Plus allowing "
 "you to migrate to PublishPress Authors without losing any data. This action "
@@ -4762,11 +4821,11 @@ msgstr ""
 "이 작업은 Co-Authors Plus 플러그인에서 저자를 복사하여 PublishPress Authors로 데이터 손실 없이 "
 "마이그레이션할 수 있도록 합니다. 이 작업은 여러 번 실행할 수 있습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:3052
+#: src/modules/multiple-authors/multiple-authors.php:3054
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr "저자 프로필과 사용자 간의 연결 삭제"
 
-#: src/modules/multiple-authors/multiple-authors.php:3053
+#: src/modules/multiple-authors/multiple-authors.php:3055
 msgid ""
 "This action can reset the PublishPress Authors data before using other "
 "maintenance options. It will delete all author profiles that are mapped to "
@@ -4777,15 +4836,15 @@ msgstr ""
 "사용자 계정에 매핑된 모든 저자 프로필을 삭제합니다. WordPress 사용자 계정은 삭제되지 않지만 게시물과 저자 프로필 간의 연결은 "
 "손실됩니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:3054
+#: src/modules/multiple-authors/multiple-authors.php:3056
 msgid "Delete all authors mapped to users"
 msgstr "사용자에게 매핑된 모든 저자 삭제"
 
-#: src/modules/multiple-authors/multiple-authors.php:3059
+#: src/modules/multiple-authors/multiple-authors.php:3061
 msgid "Delete Guest Authors"
 msgstr "게스트 저자 삭제"
 
-#: src/modules/multiple-authors/multiple-authors.php:3060
+#: src/modules/multiple-authors/multiple-authors.php:3062
 msgid ""
 "This action can reset the PublishPress Authors data before using other "
 "maintenance options. Guest authors are author profiles that are not mapped "
@@ -4794,139 +4853,139 @@ msgstr ""
 "이 작업은 다른 유지 관리 옵션을 사용하기 전에 PublishPress Authors 데이터를 재설정할 수 있습니다. 게스트 저자는 "
 "WordPress 사용자 계정에 매핑되지 않은 저자 프로필입니다. 이 작업은 모든 게스트 저자를 삭제합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:3061
+#: src/modules/multiple-authors/multiple-authors.php:3063
 msgid "Delete all guest authors"
 msgstr "모든 게스트 저자 삭제"
 
-#: src/modules/multiple-authors/multiple-authors.php:3067
+#: src/modules/multiple-authors/multiple-authors.php:3069
 msgid ""
 "Please be careful clicking these buttons. Before clicking, we recommend "
 "taking a site backup in case anything goes wrong."
 msgstr "이 버튼을 클릭할 때는 주의하시기 바랍니다. 클릭하기 전에 문제가 발생할 경우를 대비해 사이트 백업을 권장합니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:3278
+#: src/modules/multiple-authors/multiple-authors.php:3280
 msgid "Author Profiles"
 msgstr "저자 프로필들"
 
-#: src/modules/multiple-authors/multiple-authors.php:3281
+#: src/modules/multiple-authors/multiple-authors.php:3283
 msgid "Integration"
 msgstr "통합"
 
-#: src/modules/multiple-authors/multiple-authors.php:3282
+#: src/modules/multiple-authors/multiple-authors.php:3284
 msgid "Maintenance"
 msgstr "유지보수"
 
-#: src/modules/multiple-authors/multiple-authors.php:3283
+#: src/modules/multiple-authors/multiple-authors.php:3285
 msgid "Advanced"
 msgstr "고급"
 
-#: src/modules/multiple-authors/multiple-authors.php:3878
+#: src/modules/multiple-authors/multiple-authors.php:3936
 msgid "Invalid nonce"
 msgstr "잘못된 논스"
 
-#: src/modules/multiple-authors/multiple-authors.php:3882
+#: src/modules/multiple-authors/multiple-authors.php:3940
 msgid "Access denied"
 msgstr "접근이 거부되었습니다"
 
-#: src/modules/multiple-authors/multiple-authors.php:4055
+#: src/modules/multiple-authors/multiple-authors.php:4113
 msgid "Error. Author terms could not be reseted."
 msgstr "오류. 저자 조건을 초기화할 수 없습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:4066
+#: src/modules/multiple-authors/multiple-authors.php:4124
 msgid "Maintenance completed successfully."
 msgstr "유지 관리가 성공적으로 완료되었습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:4185
-#: src/modules/multiple-authors/multiple-authors.php:4216
+#: src/modules/multiple-authors/multiple-authors.php:4243
+#: src/modules/multiple-authors/multiple-authors.php:4274
 msgid "Collecting data..."
 msgstr "데이터 수집 중..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4186
-#: src/modules/multiple-authors/multiple-authors.php:4217
+#: src/modules/multiple-authors/multiple-authors.php:4244
+#: src/modules/multiple-authors/multiple-authors.php:4275
 msgid "Finishing the process..."
 msgstr "프로세스 완료 중..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4187
+#: src/modules/multiple-authors/multiple-authors.php:4245
 #, php-format
 msgid "Done! %d posts were updated."
 msgstr "완료! %d개의 게시물이 업데이트되었습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:4189
+#: src/modules/multiple-authors/multiple-authors.php:4247
 msgid "Updating author field on posts..."
 msgstr "게시물에서 저자 필드 업데이트 중..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4190
+#: src/modules/multiple-authors/multiple-authors.php:4248
 #, php-format
 msgid "Updated %d of %d posts..."
 msgstr "%d개의 게시물 중 %d개가 업데이트되었습니다..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4215
+#: src/modules/multiple-authors/multiple-authors.php:4273
 msgid "Sync author and user URLs"
 msgstr "저자 및 사용자 URL 동기화"
 
-#: src/modules/multiple-authors/multiple-authors.php:4218
+#: src/modules/multiple-authors/multiple-authors.php:4276
 #, php-format
 msgid "Done! %d authors were updated."
 msgstr "완료! %d명의 저자가 업데이트되었습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:4220
+#: src/modules/multiple-authors/multiple-authors.php:4278
 msgid "Updating authors slug..."
 msgstr "저자 슬러그 업데이트 중..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4221
+#: src/modules/multiple-authors/multiple-authors.php:4279
 #, php-format
 msgid "Updated %d of %d authors..."
 msgstr "%d명의 저자 중 %d명이 업데이트되었습니다..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4255
+#: src/modules/multiple-authors/multiple-authors.php:4313
 msgid "Creating missed post authors...."
 msgstr "누락된 게시물 저자 생성 중...."
 
-#: src/modules/multiple-authors/multiple-authors.php:4258
+#: src/modules/multiple-authors/multiple-authors.php:4316
 msgid "Copy Co-Authors Plus data"
 msgstr "공동 저자 플러스 데이터 복사"
 
-#: src/modules/multiple-authors/multiple-authors.php:4259
+#: src/modules/multiple-authors/multiple-authors.php:4317
 msgid "Deactivating Co-uthors Plus..."
 msgstr "Co-Authors Plus 비활성화 중..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4260
+#: src/modules/multiple-authors/multiple-authors.php:4318
 msgid "Done! Co-Authors Plus is deactivated."
 msgstr "완료! Co-Authors Plus가 비활성화되었습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:4261
+#: src/modules/multiple-authors/multiple-authors.php:4319
 msgid "Deactivate Co-Authors Plus"
 msgstr "Co-Authors Plus 비활성화"
 
-#: src/modules/multiple-authors/multiple-authors.php:4262
+#: src/modules/multiple-authors/multiple-authors.php:4320
 msgid "Done! Co-Authors Plus data was copied."
 msgstr "완료! Co-Authors Plus 데이터가 복사되었습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:4955
+#: src/modules/multiple-authors/multiple-authors.php:5013
 msgid "It looks like you have Co-Authors Plus installed."
 msgstr "Co-Authors Plus가 설치된 것 같습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:4956
+#: src/modules/multiple-authors/multiple-authors.php:5014
 msgid "Please click here and read this guide!"
 msgstr "여기를 클릭하여 이 가이드를 읽어주세요!"
 
-#: src/modules/multiple-authors/multiple-authors.php:5039
+#: src/modules/multiple-authors/multiple-authors.php:5097
 msgid ""
 "PublishPress Authors could not complete the background database update for "
 "Permissions integration."
 msgstr "PublishPress Authors는 권한 통합을 위한 백그라운드 데이터베이스 업데이트를 완료할 수 없습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:5040
+#: src/modules/multiple-authors/multiple-authors.php:5098
 msgid ""
 "PublishPress Authors is waiting to complete the background database update "
 "for Permissions integration."
 msgstr "PublishPress Authors가 권한 통합을 위한 백그라운드 데이터베이스 업데이트를 완료하기를 기다리고 있습니다."
 
-#: src/modules/multiple-authors/multiple-authors.php:5046
+#: src/modules/multiple-authors/multiple-authors.php:5104
 msgid "Run the update manually"
 msgstr "업데이트를 수동으로 실행하기"
 
-#: src/modules/multiple-authors/multiple-authors.php:5478
+#: src/modules/multiple-authors/multiple-authors.php:5536
 msgid "Guest Author cannot login on the site."
 msgstr "게스트 저자는 사이트에 로그인할 수 없습니다."
 
@@ -5051,29 +5110,34 @@ msgstr "Yoast SEO 통합"
 msgid "Add compatibility with the Yoast SEO plugin"
 msgstr "Yoast SEO 플러그인과의 호환성 추가"
 
-#: src/templates/parts/author-pages-grid.php:152
-#: src/templates/parts/author-pages-list.php:141
+#: src/templates/parts/author-pages-grid.php:155
+#: src/templates/parts/author-pages-list.php:144
 msgid "Comment counts"
 msgstr "댓글 수"
 
-#: src/templates/parts/author-pages-grid.php:180
-#: src/templates/parts/author-pages-list.php:173
+#: src/templates/parts/author-pages-grid.php:183
+#: src/templates/parts/author-pages-list.php:176
 msgid "Prev"
 msgstr "이전"
 
-#: src/templates/parts/author-pages-grid.php:181
-#: src/templates/parts/author-pages-list.php:174
+#: src/templates/parts/author-pages-grid.php:184
+#: src/templates/parts/author-pages-list.php:177
 msgid "Next"
 msgstr "다음"
 
-#: src/templates/parts/author-pages-grid.php:187
-#: src/templates/parts/author-pages-list.php:180
+#: src/templates/parts/author-pages-grid.php:190
+#: src/templates/parts/author-pages-list.php:183
 msgid "Post not found for the author"
 msgstr "작성자에 대한 게시물을 찾을 수 없습니다"
 
-#: src/templates/parts/author-pages-list.php:134
+#: src/templates/parts/author-pages-list.php:137
 msgid "Published date"
 msgstr "게시된 날짜"
+
+#: src/views/authors_recent.html.php:27
+#, php-format
+msgid "View %s"
+msgstr "%s 보기"
 
 #: src/views/footer-base.html.php:14
 #, php-format
@@ -5102,19 +5166,19 @@ msgctxt "taxonomy singular name"
 msgid "Author"
 msgstr "저자"
 
-#: src/modules/author-boxes/author-boxes.php:569
+#: src/modules/author-boxes/author-boxes.php:570
 #, fuzzy, php-format
 msgctxt "Author Box post type name"
 msgid "%2$s"
 msgstr "%2$s"
 
-#: src/modules/author-boxes/author-boxes.php:570
+#: src/modules/author-boxes/author-boxes.php:571
 #, fuzzy, php-format
 msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
-#: src/modules/author-boxes/author-boxes.php:585
+#: src/modules/author-boxes/author-boxes.php:586
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
 msgid "%2$s"

@@ -70,6 +70,31 @@
         return $.extend(true, {}, {language: getSelect2Language(settings.select2_i18n)}, options);
     }
 
+    /**
+     * Select2 hides the original select, so expose its <label> on the
+     * generated combobox and search field instead.
+     */
+    function applySelect2Label($select) {
+        var select2 = $select.data('ppma_select2');
+        var selectId = $select.attr('id');
+
+        if (!select2 || !selectId) {
+            return;
+        }
+
+        var $label = $select.siblings('label[for="' + selectId + '"]').first();
+
+        if (!$label.length) {
+            return;
+        }
+
+        var labelId = selectId + '-label';
+        $label.attr('id', labelId);
+
+        select2.$selection.attr('aria-labelledby', labelId);
+        select2.$dropdown.find('.ppma_select2-search__field').attr('aria-labelledby', labelId);
+    }
+
     function htmlDecode(value) {
         if (window.htmlEnDeCode && window.htmlEnDeCode.htmlDecode) {
             return window.htmlEnDeCode.htmlDecode(value);
@@ -236,6 +261,7 @@
                     }
                 }
             }));
+            applySelect2Label($authorsSelect);
 
             $authorsSelect.on("ppma_select2:select", function (e) {
                 var $targetList = getAvailableCategoryList($context, e.params.data);
@@ -313,11 +339,35 @@
                 }
             }
         }).on("click", ".author-remove", function () {
+            var $removeButtons = $context.find(".author-remove");
+            var index = $removeButtons.index(this);
+
             $(this).closest("li").remove();
             handleUsersAuthorField($context);
             handleAuthorCategory($context);
             triggerSelectionChange($context);
+            focusAfterAuthorRemoval($context, $removeButtons.not(this), index);
         });
+    }
+
+    function focusAfterAuthorRemoval($context, $remainingButtons, index) {
+        var $target = $remainingButtons.eq(Math.min(index, $remainingButtons.length - 1));
+        var $search;
+
+        if (index === -1) {
+            return;
+        }
+
+        if (!$remainingButtons.length) {
+            $search = $context.find(".authors-select2.authors-search").first();
+            $target = $search.next(".ppma_select2-container").find(".ppma_select2-selection");
+
+            if (!$target.length) {
+                $target = $search;
+            }
+        }
+
+        $target.trigger("focus");
     }
 
     function applyAuthorsSelection(container, data) {
