@@ -132,6 +132,31 @@ jQuery(document).ready(function ($) {
         return $.extend(true, {}, {language: select2Language}, options);
     }
 
+    /**
+     * Select2 hides the original select, so expose its <label> on the
+     * generated combobox and search field instead.
+     */
+    function applySelect2Label($select) {
+        var select2 = $select.data('ppma_select2');
+        var selectId = $select.attr('id');
+
+        if (!select2 || !selectId) {
+            return;
+        }
+
+        var $label = $select.siblings('label[for="' + selectId + '"]').first();
+
+        if (!$label.length) {
+            return;
+        }
+
+        var labelId = selectId + '-label';
+        $label.attr('id', labelId);
+
+        select2.$selection.attr('aria-labelledby', labelId);
+        select2.$dropdown.find('.ppma_select2-search__field').attr('aria-labelledby', labelId);
+    }
+
     function authorExistsInCategory($authorsList, authorId, $excludeAuthorItem) {
         var exists = false;
         var authorIdValue = String(authorId);
@@ -216,6 +241,7 @@ jQuery(document).ready(function ($) {
                     }
                 }
             }));
+            applySelect2Label(authorsSearch);
             authorsSearch.on("ppma_select2:select", function (e) {
                 var template = wp.template("authors-author-partial");
                 var $targetList = getAvailableCategoryList(authorsSearch.closest("div"), e.params.data);
@@ -364,6 +390,7 @@ jQuery(document).ready(function ($) {
                     }
                 }
             }));
+            applySelect2Label(authorsSearch);
         });
     }
 
@@ -432,6 +459,13 @@ jQuery(document).ready(function ($) {
             var $authorsList = $quickEditTr.find('.authors-current-user-can-assign');
             var $usersList = $quickEditTr.find('.authors-user-search');
             var $authorList = '';
+
+            // The quick edit row is a clone of a hidden template, so give its select a unique id.
+            $select.each(function () {
+                var cloneId = $(this).attr('id') + '-' + postId;
+                $(this).siblings('label[for="' + $(this).attr('id') + '"]').attr('for', cloneId);
+                $(this).attr('id', cloneId);
+            });
 
             authorsSelect2($select);
             authorsUserSelect2($usersList);

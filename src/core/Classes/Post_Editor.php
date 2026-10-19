@@ -633,12 +633,20 @@ class Post_Editor
                 'authors'           => $authors
             ];
         }
+
+        // The selection box can render more than once per page (quick edit and bulk edit), so keep the ids unique.
+        static $author_select_instance = 0;
+        $author_select_instance++;
+        $author_select_id = 'publishpress-authors-author-select';
+        if ($author_select_instance > 1) {
+            $author_select_id .= '-' . $author_select_instance;
+        }
         ?>
         <?php if (current_user_can(get_taxonomy('author')->cap->assign_terms)) : ?>
-            <label class="screen-reader-text" for="publishpress-authors-author-select"><?php esc_html_e('Search for an author', 'publishpress-authors'); ?></label>
+            <label class="screen-reader-text" for="<?php echo esc_attr($author_select_id); ?>"><?php esc_html_e('Search for an author', 'publishpress-authors'); ?></label>
             <select data-nonce="<?php
             echo esc_attr(wp_create_nonce('authors-search')); ?>"
-                    id="publishpress-authors-author-select"
+                    id="<?php echo esc_attr($author_select_id); ?>"
                     class="authors-select2 authors-search"
                     data-placeholder="<?php
                     esc_attr_e('Search for an author', 'publishpress-authors'); ?>" style="width: 100%">
