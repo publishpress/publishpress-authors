@@ -531,6 +531,19 @@ body:not(.theme-twentytwenty):not(.theme-twentytwentyone) .pp-multiple-authors-r
     display: flex;
 }
 
+.pp-multiple-authors-searchbox .screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
 .pp-multiple-authors-grid .ppma-author-grid-list {
     display: grid;
     grid-template-columns: repeat(var(--ppma-author-grid-columns, 3), minmax(0, 1fr));
