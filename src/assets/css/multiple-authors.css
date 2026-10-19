@@ -695,6 +695,12 @@ body.edit-php.post-type-ppma_boxes .tablenav.top .alignleft.actions:not(.bulkact
     box-shadow: none;
 }
 
+/* Dark ring: the theme blue is below 3:1 against the orange promo background. */
+.ppma-promo-simply-overlay a:focus-visible {
+    box-shadow: 0 0 0 2px #1d2327;
+    outline: 2px solid transparent;
+}
+
 .ppma-pro-loc-icon {
     cursor: pointer;
     background: #FCB223;
