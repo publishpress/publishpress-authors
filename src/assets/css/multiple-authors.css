@@ -297,7 +297,7 @@ body.block-editor-page select[id^="post-author-selector-"] {
 
 .ppma_settings_field_description {
     margin-bottom: 10px !important;
-    color: gray;
+    color: #646970;
 }
 
 .ppma-module-settings table[id="ppma-tab-maintenance"] th {
@@ -336,7 +336,7 @@ body.block-editor-page select[id^="post-author-selector-"] {
 }
 
 .current-post-author-warning {
-    color: #d2ba83;
+    color: #996800;
     display: block;
     font-style: italic;
 }
@@ -366,7 +366,7 @@ form#edittag tr.form-field #slug {
 }
 
 .ppma-settings-shortcodes-shortcode code.color-red {
-    color: #de3e3e;
+    color: #b32d2e;
 }
 
 .ppma-settings-shortcodes-shortcode .shortcode-field {

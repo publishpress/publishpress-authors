@@ -1129,7 +1129,7 @@ jQuery(document).ready(function ($) {
         field_error_count = 0,
         first_invalid_field = null,
         field_error_speak = [],
-        field_error_message = '<div style="color:red;">' + MultipleAuthorsStrings.isRequiredWarning + '</div><ul>';
+        field_error_message = '<div style="color:#d63638;">' + MultipleAuthorsStrings.isRequiredWarning + '</div><ul>';
 
         $.each($('form#edittag tr.form-field.required-tab'), function (i, field) {
             field_object = $(this).find('td input');
@@ -1206,7 +1206,7 @@ jQuery(document).ready(function ($) {
 
         if (isEmptyOrSpaces($('input[name="post_title"]').val())) {
             event.preventDefault();
-            var field_error_message = '<div style="color:red;">' + MultipleAuthorsStrings.isRequiredWarning + '</div><ul>';
+            var field_error_message = '<div style="color:#d63638;">' + MultipleAuthorsStrings.isRequiredWarning + '</div><ul>';
             field_error_message += '<li>' + MultipleAuthorsStrings.fieldTitleRequired + ' <span class="required">*</span></li>';
             field_error_message += '</ul>';
             $('.ppma-thickbox-modal-content').html(field_error_message);
