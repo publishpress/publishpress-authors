@@ -1,6 +1,6 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.18.0] - 06 October, 2026
+[4.18.0] - 20 October, 2026
 
 * Update: Improve accessibility labels in author forms, #2431
 * Update: Add accessible image alternatives for authors, #2432
@@ -18,6 +18,21 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 * Fixed: View is not readable: my-custom-author-box, #2511
 * Fixed: Bio loses <p> tags or reverts to an older version when the linked WP user is updated, #2507
 * Fixed: Escape author names, edit links, and quick-edit data in the admin Authors list.
+* Feature: Add read-only WordPress Abilities API support for author profiles, profile fields, and post authors, #2546
+* Update: Improve accessible labels for front-end author search, #2514
+* Update: Announce admin validation errors, save errors, and copy confirmations to screen readers, #2515
+* Update: Improve visible keyboard focus on admin controls, #2516
+* Update: Make remove-author controls keyboard accessible and easier to target, #2517
+* Update: Preserve Authors Index focus, announce filtered results, and identify the current letter, #2518
+* Update: Improve admin text contrast, #2519
+* Update: Add accessible names to icon-only links and hide decorative icons from screen readers, #2520
+* Update: Improve accessible labels for author search, profile links, author editor fields, and settings, #2521, #2522, #2523
+* Update: Add accessible names and progress values to migration progress bars, #2524
+* Update: Announce migration and author-sync log updates to screen readers, #2525
+* Update: Add custom alternative text and decorative-image options for author avatars, #2541
+* Fixed: Author Boxes incorrectly showing only the first author biography after an upgrade, #2526
+* Fixed: Saved block editor data restoring stale post author selections, #2528
+* Fixed: Skip invalid authors when processing workflow author assignments, #2544
 
 [4.17.0] - 23 September, 2026
 
