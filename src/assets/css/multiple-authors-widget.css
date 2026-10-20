@@ -131,6 +131,20 @@ a.ppma-author-field-meta i {
     overflow-wrap: anywhere;
 }
 
+.ppma-author-field-meta .screen-reader-text {
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    margin: -1px !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
+    word-wrap: normal !important;
+}
+
 .ppma-author-field-type-wysiwyg {
     white-space: pre-line;
 }
@@ -236,7 +250,24 @@ a.ppma-author-field-meta i {
 
 .pp-multiple-authors-wrapper .author-index-navigation .page-item.active > a {
   color: #555;
+  font-weight: 700;
   text-decoration: none;
+}
+
+.pp-multiple-authors-wrapper .author-index-navigation .page-item.active {
+    border-color: currentColor;
+}
+
+.ppma-authors-index-status {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .pp-multiple-authors-wrapper .author-index-navigation {
@@ -529,6 +560,19 @@ body:not(.theme-twentytwenty):not(.theme-twentytwentyone) .pp-multiple-authors-r
 
 .pp-multiple-authors-searchbox form {
     display: flex;
+}
+
+.pp-multiple-authors-searchbox .screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important;
 }
 
 .pp-multiple-authors-grid .ppma-author-grid-list {
