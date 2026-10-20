@@ -147,6 +147,36 @@ class MultipleAuthorsCest
         );
     }
 
+    public function testFilterWorkflowReceiverPostAuthors_withMissingPostAuthor_shouldSkipInvalidAuthor(
+        WpunitTester $I
+    ) {
+        global $wpdb;
+
+        $missingUserId = 999999999;
+        $I->setPluginSettingsPostTypes(['post']);
+        $postId = $I->haveAPost();
+        wp_delete_object_term_relationships($postId, 'author');
+        $wpdb->update(
+            $wpdb->posts,
+            ['post_author' => $missingUserId],
+            ['ID' => $postId],
+            ['%d'],
+            ['%d']
+        );
+        clean_post_cache($postId);
+        wp_cache_delete('authors_' . $postId, 'get_post_authors:authors');
+
+        $args = [
+            'params' => [
+                'post_id' => $postId
+            ]
+        ];
+
+        $receivers = $this->getMultipleAuthorsModule()->filter_workflow_receiver_post_authors([99], 0, $args);
+
+        $I->assertSame([99], $receivers);
+    }
+
     public function testGetSyncPostAuthorDataWithNoPostTypesClearsStalePostIds(WpunitTester $I)
     {
         $module = $this->getMultipleAuthorsModule();

@@ -138,6 +138,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'enable_guest_author_acount'   => 'yes',
                     'show_editor_author_box_selection'   => 'yes',
                     'default_avatar'               => '',
+                    'default_avatar_alt'           => '',
+                    'default_avatar_decorative'    => 'no',
                     'display_name_format'          => 'custom',
                     'translate_author_taxonomy' => 'yes',
                     'allow_admin_edit_admin_profiles' => 'no'
@@ -620,7 +622,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 ),
                 [$this, 'settings_mapped_author_roles_option'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_general'
+                $this->module->options_group_name . '_general',
+                ['label_for' => $this->module->options_group_name . '_mapped_author_roles']
             );
 
             add_settings_field(
@@ -631,7 +634,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 ),
                 [$this, 'settings_author_for_new_users_option'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_general'
+                $this->module->options_group_name . '_general',
+                ['label_for' => $this->module->options_group_name . '_author_for_new_users']
             );
 
             add_settings_field(
@@ -653,7 +657,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 ),
                 [$this, 'settings_default_author_for_new_posts'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_advanced'
+                $this->module->options_group_name . '_advanced',
+                ['label_for' => $this->module->options_group_name . '_default_author_for_new_posts']
             );
 
             add_settings_field(
@@ -664,7 +669,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 ),
                 [$this, 'settings_fallback_user_for_guest_post'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_advanced'
+                $this->module->options_group_name . '_advanced',
+                ['label_for' => $this->module->options_group_name . '_fallback_user_for_guest_post']
             );
 
             add_settings_field(
@@ -728,7 +734,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 __('Default Layout:', 'publishpress-authors'),
                 [$this, 'settings_layout_option'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_display'
+                $this->module->options_group_name . '_display',
+                ['label_for' => $this->module->options_group_name . '_layout']
             );
 
             add_settings_field(
@@ -745,7 +752,7 @@ if (!class_exists('MA_Multiple_Authors')) {
                 [$this, 'settings_color_scheme_option'],
                 $this->module->options_group_name,
                 $this->module->options_group_name . '_display',
-                ['class' => 'ppauthors-color-scheme-field']
+                ['label_for' => $this->module->options_group_name . '_color_scheme', 'class' => 'ppauthors-color-scheme-field']
             );
 
             add_settings_field(
@@ -802,7 +809,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 ),
                 [$this, 'settings_author_pages_posts_limit'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_author_pages'
+                $this->module->options_group_name . '_author_pages',
+                ['label_for' => $this->module->options_group_name . '_author_pages_posts_limit']
             );
 
             add_settings_field(
@@ -813,7 +821,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 ),
                 [$this, 'settings_author_pages_layout'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_author_pages'
+                $this->module->options_group_name . '_author_pages',
+                ['label_for' => $this->module->options_group_name . '_author_pages_layout']
             );
 
             add_settings_field(
@@ -824,7 +833,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 ),
                 [$this, 'settings_author_pages_grid_layout_column'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_author_pages'
+                $this->module->options_group_name . '_author_pages',
+                ['label_for' => $this->module->options_group_name . '_author_pages_grid_layout_column']
             );
 
             add_settings_field(
@@ -843,7 +853,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 __('Author bio layout:', 'publishpress-authors'),
                 [$this, 'settings_author_pages_bio_layout'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_author_pages'
+                $this->module->options_group_name . '_author_pages',
+                ['label_for' => $this->module->options_group_name . '_author_pages_bio_layout']
             );
 
             add_settings_field(
@@ -865,7 +876,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 ),
                 [$this, 'settings_author_post_excerpt_ellipsis'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_author_pages'
+                $this->module->options_group_name . '_author_pages',
+                ['label_for' => $this->module->options_group_name . '_author_post_excerpt_ellipsis']
             );
 
             add_settings_field(
@@ -873,7 +885,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 __('Author pages title header:', 'publishpress-authors'),
                 [$this, 'settings_author_pages_title_header'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_author_pages'
+                $this->module->options_group_name . '_author_pages',
+                ['label_for' => $this->module->options_group_name . '_author_pages_title_header']
             );
 
             add_settings_field(
@@ -881,7 +894,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 __('Author post title header:', 'publishpress-authors'),
                 [$this, 'settings_author_post_title_header'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_author_pages'
+                $this->module->options_group_name . '_author_pages',
+                ['label_for' => $this->module->options_group_name . '_author_post_title_header']
             );
 
             add_settings_field(
@@ -914,7 +928,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 ),
                 [$this, 'settings_author_post_custom_width'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_author_pages'
+                $this->module->options_group_name . '_author_pages',
+                ['label_for' => $this->module->options_group_name . '_author_post_custom_width']
             );
 
             add_settings_field(
@@ -925,7 +940,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 ),
                 [$this, 'settings_author_post_custom_height'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_author_pages'
+                $this->module->options_group_name . '_author_pages',
+                ['label_for' => $this->module->options_group_name . '_author_post_custom_height']
             );
 
             add_settings_field(
@@ -1145,7 +1161,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 ),
                 [$this, 'settings_display_name_format'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_guest_authors'
+                $this->module->options_group_name . '_guest_authors',
+                ['label_for' => $this->module->options_group_name . '_display_name_format']
             );
 
             add_settings_field(
@@ -1175,7 +1192,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 __('Boxed legacy layout Author Box:', 'publishpress-authors'),
                 [$this, 'settings_author_legacy_layout_boxed'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_advanced'
+                $this->module->options_group_name . '_advanced',
+                ['label_for' => $this->module->options_group_name . '_author_legacy_layout_boxed']
             );
 
             add_settings_field(
@@ -1183,7 +1201,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 __('Centered legacy layout Author Box:', 'publishpress-authors'),
                 [$this, 'settings_author_legacy_layout_centered'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_advanced'
+                $this->module->options_group_name . '_advanced',
+                ['label_for' => $this->module->options_group_name . '_author_legacy_layout_centered']
             );
 
             add_settings_field(
@@ -1191,7 +1210,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 __('Inline legacy layout Author Box:', 'publishpress-authors'),
                 [$this, 'settings_author_legacy_layout_inline'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_advanced'
+                $this->module->options_group_name . '_advanced',
+                ['label_for' => $this->module->options_group_name . '_author_legacy_layout_inline']
             );
 
             add_settings_field(
@@ -1199,7 +1219,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 __('Inline avatar legacy layout Author Box:', 'publishpress-authors'),
                 [$this, 'settings_author_legacy_layout_inline_avatar'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_advanced'
+                $this->module->options_group_name . '_advanced',
+                ['label_for' => $this->module->options_group_name . '_author_legacy_layout_inline_avatar']
             );
 
             add_settings_field(
@@ -1207,7 +1228,8 @@ if (!class_exists('MA_Multiple_Authors')) {
                 __('Simple list legacy layout Author Box:', 'publishpress-authors'),
                 [$this, 'settings_author_legacy_layout_simple_list'],
                 $this->module->options_group_name,
-                $this->module->options_group_name . '_advanced'
+                $this->module->options_group_name . '_advanced',
+                ['label_for' => $this->module->options_group_name . '_author_legacy_layout_simple_list']
             );
 
             do_action('pp_authors_register_settings');
@@ -1843,8 +1865,6 @@ if (!class_exists('MA_Multiple_Authors')) {
             $id    = $this->module->options_group_name . '_layout';
             $value = isset($this->module->options->layout) ? $this->module->options->layout : Utils::getDefaultLayout();
 
-            echo '<label for="' . esc_attr($id) . '">';
-
             echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[layout]">';
 
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
@@ -1860,7 +1880,6 @@ if (!class_exists('MA_Multiple_Authors')) {
             }
 
             echo '</select>';
-            echo '</label>';
         }
 
         /**
@@ -1871,13 +1890,10 @@ if (!class_exists('MA_Multiple_Authors')) {
             $id    = $this->module->options_group_name . '_color_scheme';
             $value = isset($this->module->options->color_scheme) ? $this->module->options->color_scheme : '#655997';
 
-            echo '<label for="' . esc_attr($id) . '">';
-
-                echo '<input type="text" class="color-picker" data-default-color="#655997" name="' . esc_attr($this->module->options_group_name) . '[color_scheme]" value="' . esc_attr(
+                echo '<input type="text" class="color-picker" data-default-color="#655997" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[color_scheme]" value="' . esc_attr(
                 $value
                 ) . '"/>';
 
-            echo '</label>';
         }
 
         /**
@@ -1887,8 +1903,6 @@ if (!class_exists('MA_Multiple_Authors')) {
         {
             $id     = $this->module->options_group_name . '_mapped_author_roles';
             $values = isset($this->module->options->mapped_author_roles) ? $this->module->options->mapped_author_roles : [];
-
-            echo '<label for="' . esc_attr($id) . '">';
 
             echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[mapped_author_roles][]" multiple="multiple" class="chosen-select" data-placeholder="'.  esc_attr__('Select roles', 'publishpress-authors') .'">';
 
@@ -1906,7 +1920,6 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'publishpress-authors'
                 ) . '</p>';
 
-            echo '</label>';
         }
 
         /**
@@ -1916,8 +1929,6 @@ if (!class_exists('MA_Multiple_Authors')) {
         {
             $id     = $this->module->options_group_name . '_author_for_new_users';
             $values = isset($this->module->options->author_for_new_users) ? $this->module->options->author_for_new_users : '';
-
-            echo '<label for="' . esc_attr($id) . '">';
 
             echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_for_new_users][]" multiple="multiple" class="chosen-select" data-placeholder="'.  esc_attr__('Select some options', 'publishpress-authors') .'">';
 
@@ -1935,7 +1946,6 @@ if (!class_exists('MA_Multiple_Authors')) {
                     'publishpress-authors'
                 ) . '</p>';
 
-            echo '</label>';
         }
 
         /**
@@ -2076,8 +2086,6 @@ if (!class_exists('MA_Multiple_Authors')) {
             $id    = $this->module->options_group_name . '_author_pages_layout';
             $value = isset($this->module->options->author_pages_layout) ? $this->module->options->author_pages_layout : 'list';
 
-            echo '<label for="' . esc_attr($id) . '">';
-
             echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_pages_layout]">';
 
             $author_pages_layouts = apply_filters(
@@ -2095,7 +2103,6 @@ if (!class_exists('MA_Multiple_Authors')) {
             }
 
             echo '</select>';
-            echo '</label>';
         }
 
 
@@ -2106,8 +2113,6 @@ if (!class_exists('MA_Multiple_Authors')) {
         {
             $id    = $this->module->options_group_name . '_author_pages_title_header';
             $value = isset($this->module->options->author_pages_title_header) ? $this->module->options->author_pages_title_header : 'list';
-
-            echo '<label for="' . esc_attr($id) . '">';
 
             echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_pages_title_header]">';
 
@@ -2127,7 +2132,6 @@ if (!class_exists('MA_Multiple_Authors')) {
             }
 
             echo '</select>';
-            echo '</label>';
         }
 
 
@@ -2138,8 +2142,6 @@ if (!class_exists('MA_Multiple_Authors')) {
         {
             $id    = $this->module->options_group_name . '_author_post_title_header';
             $value = isset($this->module->options->author_post_title_header) ? $this->module->options->author_post_title_header : 'list';
-
-            echo '<label for="' . esc_attr($id) . '">';
 
             echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_post_title_header]">';
 
@@ -2159,7 +2161,6 @@ if (!class_exists('MA_Multiple_Authors')) {
             }
 
             echo '</select>';
-            echo '</label>';
         }
 
         /**
@@ -2171,10 +2172,7 @@ if (!class_exists('MA_Multiple_Authors')) {
             $value = isset($this->module->options->author_pages_grid_layout_column) ? $this->module->options->author_pages_grid_layout_column : '';
 
 
-            echo '<label for="' . esc_attr($id) . '">';
-
             echo '<input type="number" min="1" step="1" class="small-text" value="' . esc_attr($value) . '" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_pages_grid_layout_column]">';
-            echo '</label>';
 
         }
 
@@ -2187,10 +2185,7 @@ if (!class_exists('MA_Multiple_Authors')) {
             $value = isset($this->module->options->author_pages_posts_limit) ? $this->module->options->author_pages_posts_limit : '';
 
 
-            echo '<label for="' . esc_attr($id) . '">';
-
             echo '<input type="number" step="1" class="small-text" value="' . esc_attr($value) . '" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_pages_posts_limit]">';
-            echo '</label>';
 
         }
 
@@ -2203,10 +2198,7 @@ if (!class_exists('MA_Multiple_Authors')) {
             $value = isset($this->module->options->author_post_custom_width) ? $this->module->options->author_post_custom_width : '';
 
 
-            echo '<label for="' . esc_attr($id) . '">';
-
             echo '<input type="number" min="1" step="1" class="small-text" value="' . esc_attr($value) . '" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_post_custom_width]">';
-            echo '</label>';
 
         }
 
@@ -2219,10 +2211,7 @@ if (!class_exists('MA_Multiple_Authors')) {
             $value = isset($this->module->options->author_post_custom_height) ? $this->module->options->author_post_custom_height : '';
 
 
-            echo '<label for="' . esc_attr($id) . '">';
-
             echo '<input type="number" min="1" step="1" class="small-text" value="' . esc_attr($value) . '" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_post_custom_height]">';
-            echo '</label>';
 
         }
 
@@ -2235,10 +2224,7 @@ if (!class_exists('MA_Multiple_Authors')) {
             $value = isset($this->module->options->author_post_excerpt_ellipsis) ? $this->module->options->author_post_excerpt_ellipsis : '';
 
 
-            echo '<label for="' . esc_attr($id) . '">';
-
             echo '<input type="text" class="small-text" value="' . esc_attr($value) . '" id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_post_excerpt_ellipsis]">';
-            echo '</label>';
 
         }
 
@@ -2250,8 +2236,6 @@ if (!class_exists('MA_Multiple_Authors')) {
         {
             $id    = $this->module->options_group_name . '_display_name_format';
             $value = isset($this->module->options->display_name_format) ? $this->module->options->display_name_format : 'custom';
-
-            echo '<label for="' . esc_attr($id) . '">';
 
             echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[display_name_format]">';
 
@@ -2270,7 +2254,6 @@ if (!class_exists('MA_Multiple_Authors')) {
             }
 
             echo '</select>';
-            echo '</label>';
         }
 
         /**
@@ -2278,9 +2261,18 @@ if (!class_exists('MA_Multiple_Authors')) {
          */
         public function settings_default_avatar($args = [])
         {
-            $id    = $this->module->options_group_name . '_default_avatar';
-            $value = isset($this->module->options->default_avatar) ? $this->module->options->default_avatar : '';
-            $default_image = '';
+            $id              = $this->module->options_group_name . '_default_avatar';
+            $value           = isset($this->module->options->default_avatar)
+                ? $this->module->options->default_avatar
+                : '';
+            $alt_id          = $this->module->options_group_name . '_default_avatar_alt';
+            $alt_value       = isset($this->module->options->default_avatar_alt)
+                ? $this->module->options->default_avatar_alt
+                : '';
+            $decorative_id   = $this->module->options_group_name . '_default_avatar_decorative';
+            $is_decorative   = isset($this->module->options->default_avatar_decorative)
+                && 'yes' === $this->module->options->default_avatar_decorative;
+            $default_image   = '';
             if ($value) {
                 $default_image = wp_get_attachment_image_url($value, 'thumbnail');
             }
@@ -2303,6 +2295,45 @@ if (!class_exists('MA_Multiple_Authors')) {
                 <input name="<?php echo esc_attr($this->module->options_group_name); ?>[default_avatar]" class="author-image-field-id" type="hidden"
                        value="<?php echo esc_attr($value); ?>"/>
             </div>
+            <p>
+                <label for="<?php echo esc_attr($alt_id); ?>">
+                    <?php esc_html_e('Alternative Text', 'publishpress-authors'); ?>
+                </label>
+            </p>
+            <input
+                type="hidden"
+                name="<?php echo esc_attr($this->module->options_group_name); ?>[default_avatar_alt]"
+                value="<?php echo esc_attr($alt_value); ?>"/>
+            <textarea
+                id="<?php echo esc_attr($alt_id); ?>"
+                name="<?php echo esc_attr($this->module->options_group_name); ?>[default_avatar_alt]"
+                rows="3"
+                <?php disabled($is_decorative); ?>><?php echo esc_textarea($alt_value); ?></textarea>
+            <p class="description">
+                <?php
+                esc_html_e(
+                    'Describe the default avatar. Leave blank to use its Media Library alternative text.',
+                    'publishpress-authors'
+                );
+                ?>
+            </p>
+            <p>
+                <input
+                    type="hidden"
+                    name="<?php echo esc_attr($this->module->options_group_name); ?>[default_avatar_decorative]"
+                    value="no"/>
+                <input
+                    type="checkbox"
+                    class="ppma-avatar-decorative"
+                    data-alt-target="<?php echo esc_attr($alt_id); ?>"
+                    id="<?php echo esc_attr($decorative_id); ?>"
+                    name="<?php echo esc_attr($this->module->options_group_name); ?>[default_avatar_decorative]"
+                    value="yes"
+                    <?php checked($is_decorative); ?>/>
+                <label for="<?php echo esc_attr($decorative_id); ?>">
+                    <?php esc_html_e('This image is decorative', 'publishpress-authors'); ?>
+                </label>
+            </p>
             <?php
 
 echo '<span class="ppma_settings_field_description">'
@@ -2348,8 +2379,6 @@ echo '<span class="ppma_settings_field_description">'
                 ? $this->module->options->author_pages_bio_layout
                 : Utils::getDefaultLayout();
 
-            echo '<label for="' . esc_attr($id) . '">';
-
             echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_pages_bio_layout]">';
 
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
@@ -2365,7 +2394,6 @@ echo '<span class="ppma_settings_field_description">'
             }
 
             echo '</select>';
-            echo '</label>';
         }
 
 
@@ -2378,8 +2406,6 @@ echo '<span class="ppma_settings_field_description">'
             $value = isset($this->module->options->author_legacy_layout_boxed)
                 ? $this->module->options->author_legacy_layout_boxed
                 : '';
-
-            echo '<label for="' . esc_attr($id) . '">';
 
             echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_legacy_layout_boxed]">';
 
@@ -2398,7 +2424,6 @@ echo '<span class="ppma_settings_field_description">'
 
             echo '</select>';
 
-            echo '</label>';
             echo '<div class="ppma_settings_field_description">'
                 . sprintf(
                     esc_html__('This is useful if you use legacy shortcode %s', 'publishpress-authors'),
@@ -2418,8 +2443,6 @@ echo '<span class="ppma_settings_field_description">'
                 ? $this->module->options->author_legacy_layout_centered
                 : '';
 
-            echo '<label for="' . esc_attr($id) . '">';
-
             echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_legacy_layout_centered]">';
 
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
@@ -2437,7 +2460,6 @@ echo '<span class="ppma_settings_field_description">'
 
             echo '</select>';
 
-            echo '</label>';
             echo '<div class="ppma_settings_field_description">'
                 . sprintf(
                     esc_html__('This is useful if you use legacy shortcode %s', 'publishpress-authors'),
@@ -2457,8 +2479,6 @@ echo '<span class="ppma_settings_field_description">'
                 ? $this->module->options->author_legacy_layout_inline
                 : '';
 
-            echo '<label for="' . esc_attr($id) . '">';
-
             echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_legacy_layout_inline]">';
 
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
@@ -2476,7 +2496,6 @@ echo '<span class="ppma_settings_field_description">'
 
             echo '</select>';
 
-            echo '</label>';
             echo '<div class="ppma_settings_field_description">'
                 . sprintf(
                     esc_html__('This is useful if you use legacy shortcode %s', 'publishpress-authors'),
@@ -2496,8 +2515,6 @@ echo '<span class="ppma_settings_field_description">'
                 ? $this->module->options->author_legacy_layout_inline_avatar
                 : '';
 
-            echo '<label for="' . esc_attr($id) . '">';
-
             echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_legacy_layout_inline_avatar]">';
 
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
@@ -2515,7 +2532,6 @@ echo '<span class="ppma_settings_field_description">'
 
             echo '</select>';
 
-            echo '</label>';
             echo '<div class="ppma_settings_field_description">'
                 . sprintf(
                     esc_html__('This is useful if you use legacy shortcode %s', 'publishpress-authors'),
@@ -2535,8 +2551,6 @@ echo '<span class="ppma_settings_field_description">'
                 ? $this->module->options->author_legacy_layout_simple_list
                 : '';
 
-            echo '<label for="' . esc_attr($id) . '">';
-
             echo '<select id="' . esc_attr($id) . '" name="' . esc_attr($this->module->options_group_name) . '[author_legacy_layout_simple_list]">';
 
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
@@ -2554,7 +2568,6 @@ echo '<span class="ppma_settings_field_description">'
 
             echo '</select>';
 
-            echo '</label>';
             echo '<div class="ppma_settings_field_description">'
                 . sprintf(
                     esc_html__('This is useful if you use legacy shortcode %s', 'publishpress-authors'),
@@ -2883,8 +2896,8 @@ echo '<span class="ppma_settings_field_description">'
             $id    = $this->module->options_group_name . '_default_author_for_new_posts';
             $value = isset($this->module->options->default_author_for_new_posts) ? $this->module->options->default_author_for_new_posts : '';
             ?>
-            <label for="<?php echo esc_attr($id); ?>">
                 <select data-value="<?php echo esc_attr($value); ?>"
+                        id="<?php echo esc_attr($id); ?>"
                         name="<?php echo esc_attr($this->module->options_group_name) . '[default_author_for_new_posts]'; ?>"
                         data-nonce="<?php echo esc_attr(wp_create_nonce('authors-search')); ?>"
                         class="default-authors-select2"
@@ -2898,8 +2911,6 @@ echo '<span class="ppma_settings_field_description">'
                                 selected="selected"><?php echo esc_html($author->display_name); ?></option>
                     <?php } ?>
                 </select>
-
-            </label>
             <p class="ppma_settings_field_description">
                 <?php echo esc_html__('This setting may be disabled for users who can not edit others posts.', 'publishpress-authors'); ?>
                 <a href="https://publishpress.com/knowledge-base/troubleshooting/#default-author-is-not-applied-to-new-posts" target="_blank">
@@ -2919,8 +2930,8 @@ echo '<span class="ppma_settings_field_description">'
             $id    = $this->module->options_group_name . '_fallback_user_for_guest_post';
             $value = isset($this->module->options->fallback_user_for_guest_post) ? $this->module->options->fallback_user_for_guest_post : '';
             ?>
-            <label for="<?php echo esc_attr($id); ?>">
                 <select data-value="<?php echo esc_attr($value); ?>"
+                        id="<?php echo esc_attr($id); ?>"
                         name="<?php echo esc_attr($this->module->options_group_name) . '[fallback_user_for_guest_post]'; ?>"
                         data-nonce="<?php echo esc_attr(wp_create_nonce('authors-user-search')); ?>"
                         class="authors-select2 authors-user-search fallback-user-search-select2"
@@ -2934,8 +2945,6 @@ echo '<span class="ppma_settings_field_description">'
                                 selected="selected"><?php echo esc_html($author->display_name); ?></option>
                     <?php } ?>
                 </select>
-
-            </label>
             <p class="ppma_settings_field_description">
                 <?php echo esc_html__('If you only have Guest Authors selected for a post, this user may be used as a fallback. WordPress sometimes requires a WordPress user to be assigned to each post. This user will not be visible on the front of your site.', 'publishpress-authors'); ?>
             </p>
@@ -3241,6 +3250,14 @@ echo '<span class="ppma_settings_field_description">'
                 $new_options['enable_guest_author_acount'] = 'no';
             }
 
+            $new_options['default_avatar_alt'] = isset($new_options['default_avatar_alt'])
+                ? mb_substr(sanitize_text_field($new_options['default_avatar_alt']), 0, 500)
+                : '';
+            $new_options['default_avatar_decorative'] = isset($new_options['default_avatar_decorative'])
+                && 'yes' === $new_options['default_avatar_decorative']
+                ? 'yes'
+                : 'no';
+
             if (!isset($new_options['show_author_post_authors'])) {
                 $new_options['show_author_post_authors'] = 'no';
             }
@@ -3373,6 +3390,10 @@ echo '<span class="ppma_settings_field_description">'
                 }
 
                 foreach ($authors as $author) {
+                    if (!$author instanceof Author) {
+                        continue;
+                    }
+
                     if (!$author->is_guest() && !in_array($author->user_id, $receivers)) {
                         $receivers[] = $author->user_id;
                     }

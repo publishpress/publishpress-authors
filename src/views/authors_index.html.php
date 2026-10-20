@@ -3,12 +3,12 @@
         <?php echo $context['search_box_html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
     <?php endif; ?>
     <ul class="author-index-navigation">
-        <li class="page-item <?php echo empty($context['selected_letter']) ? 'active' : ''; ?>"><a class="page-link " href="<?php echo esc_url(remove_query_arg(['ppma_author_letter', 'ppma_page', 'paged'])); ?>" data-letter=""><?php echo esc_html($context['all_text']); ?></a></li>
+        <li class="page-item <?php echo empty($context['selected_letter']) ? 'active' : ''; ?>"><a class="page-link " href="<?php echo esc_url(remove_query_arg(['ppma_author_letter', 'ppma_page', 'paged'])); ?>" data-letter=""<?php echo empty($context['selected_letter']) ? ' aria-current="page"' : ''; ?>><?php echo esc_html($context['all_text']); ?></a></li>
         <?php foreach ($context['navigation_results'] as $key => $value) :
             $display_title = publishpress_authors_get_index_display_title($key);
         ?>
             <li class="page-item <?php echo $context['selected_letter'] === strtolower($key) ? 'active' : ''; ?>">
-                <a class="page-link" href="<?php echo esc_url(add_query_arg('ppma_author_letter', $key, remove_query_arg(['ppma_page', 'paged']))); ?>" data-letter="<?php echo esc_attr($key); ?>"><?php echo esc_html(strtoupper($display_title)); ?></a>
+                <a class="page-link" href="<?php echo esc_url(add_query_arg('ppma_author_letter', $key, remove_query_arg(['ppma_page', 'paged']))); ?>" data-letter="<?php echo esc_attr($key); ?>"<?php echo $context['selected_letter'] === strtolower($key) ? ' aria-current="page"' : ''; ?>><?php echo esc_html(strtoupper($display_title)); ?></a>
             </li>
         <?php endforeach; ?>
     </ul>
