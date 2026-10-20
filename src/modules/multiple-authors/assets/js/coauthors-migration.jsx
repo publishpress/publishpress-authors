@@ -244,7 +244,7 @@ class PPAuthorsCoAuthorsMigrationBox extends React.Component {
         let isEnabled = !this.state.inProgress;
 
         let progressBar = (this.state.inProgress) ? this.renderProgressBar() : '';
-        let logPanel = (this.state.log != '') ? this.renderLog() : '';
+        let logPanel = this.renderLog();
         let deactivatePluginPanel = (this.state.showDeactivateOption) ? this.renderDeactivatePluginOption() : '';
 
         return (
@@ -287,7 +287,7 @@ class PPAuthorsMaintenanceLog extends React.Component {
     render() {
         return (
             <div>
-                <div class="ppma_maintenance_log" readOnly={true}>{this.props.log}</div>
+                <div class="ppma_maintenance_log" role="status" aria-live="polite" aria-atomic="true" readOnly={true}>{this.props.log}</div>
             </div>
         );
     }
