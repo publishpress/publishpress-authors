@@ -33,6 +33,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 * Fixed: Author Boxes incorrectly showing only the first author biography after an upgrade, #2526
 * Fixed: Saved block editor data restoring stale post author selections, #2528
 * Fixed: Skip invalid authors when processing workflow author assignments, #2544
+* Fixed: Treat Authors Data shortcode separators as text and normalize author list and Genesis shortcode formatting.
 
 [4.17.0] - 23 September, 2026
 

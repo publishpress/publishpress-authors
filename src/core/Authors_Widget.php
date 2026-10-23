@@ -311,7 +311,7 @@ class Authors_Widget extends WP_Widget
                 $column_width = ((100)/(int)$instance['layout_columns']);
                 $wrapper_class_selector = '';
                 if (!is_null($layout)) {
-                    $wrapper_class_selector = '.' . $layout;
+                    $wrapper_class_selector = '.' . sanitize_html_class($layout);
                 }
                 $inline_style .= '@media (min-width: 768px) {
                     .pp-multiple-authors-wrapper'. $wrapper_class_selector .' ul,

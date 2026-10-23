@@ -365,7 +365,7 @@ trait Author_box
                 }
             }
             $output  = array_filter($output);
-            $authors = join($separator, $output);
+            $authors = join(esc_html($separator), $output);
         }
 
         return $authors;
