@@ -1,6 +1,6 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.18.0] - 20 October, 2026
+[4.18.0] - 26 October, 2026
 
 * Update: Improve accessibility labels in author forms, #2431
 * Update: Add accessible image alternatives for authors, #2432
