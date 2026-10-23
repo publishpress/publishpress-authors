@@ -10,13 +10,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-09-23 08:25+0000\n"
+"PO-Revision-Date: 2026-10-23 09:17+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: publishpress-authors.php:3
+#: src/abilities.php:44
 #: src/core/Plugin.php:743
 #: src/modules/settings/settings.php:64
 #. Plugin Name of the plugin
@@ -47,21 +48,21 @@ msgstr "PublishPress"
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
-#: includes.php:39
+#: includes.php:40
 #, php-format
 msgid ""
 "You're using PublishPress Authors Free. The Pro version has more features "
 "and support. %sUpgrade to Pro%s"
 msgstr "您正在使用 PublishPress Authors 免费版。专业版具有更多功能和支持。 %s升级到专业版%s"
 
-#: includes.php:63
-#: src/modules/author-boxes/author-boxes.php:3291
+#: includes.php:64
+#: src/modules/author-boxes/author-boxes.php:3332
 #: src/modules/author-categories/author-categories.php:739
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:545
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:550
 #: src/modules/author-custom-fields/author-custom-fields.php:995
 #: src/modules/author-custom-fields/author-custom-fields.php:1048
-#: src/modules/author-list/author-list.php:1598
-#: src/modules/author-list/author-list.php:1636
+#: src/modules/author-list/author-list.php:1599
+#: src/modules/author-list/author-list.php:1637
 msgid "Upgrade to Pro"
 msgstr "升级到专业版"
 
@@ -69,8 +70,61 @@ msgstr "升级到专业版"
 msgid "This plugin can be deleted."
 msgstr "此插件可以被删除。"
 
+#: src/abilities.php:45
+msgid "Read author profiles, available profile fields, and post bylines."
+msgstr "阅读作者简介、可用的简介字段和文章署名。"
+
+#: src/abilities.php:107
+msgid "List Authors"
+msgstr "列出作者"
+
+#: src/abilities.php:108
+msgid "Lists PublishPress Authors. Results never include author email addresses."
+msgstr "列出 PublishPress 作者。结果从不包括作者的电子邮件地址。"
+
+#: src/abilities.php:133
+msgid "Get Author"
+msgstr "获取作者"
+
+#: src/abilities.php:134
+msgid ""
+"Gets one PublishPress Author by term ID. The response never includes an "
+"email address."
+msgstr "通过术语 ID 获取一个 PublishPress 作者。响应中绝不包括电子邮件地址。"
+
+#: src/abilities.php:157
+msgid "Get Post Authors"
+msgstr "获取文章作者"
+
+#: src/abilities.php:158
+msgid ""
+"Gets the ordered PublishPress Authors assigned to one editable post. The "
+"response never includes author email addresses."
+msgstr "获取分配给一个可编辑文章的有序 PublishPress 作者。响应中绝不包括作者的电子邮件地址。"
+
+#: src/abilities.php:181
+msgid "Get Author Fields"
+msgstr "获取作者字段"
+
+#: src/abilities.php:182
+msgid ""
+"Lists enabled author-profile field definitions without exposing profile "
+"values."
+msgstr "列出启用的作者简介字段定义，而不暴露简介值。"
+
+#: src/abilities.php:336
+#: src/modules/rest-api/rest-api.php:487
+#: src/modules/rest-api/rest-api.php:503
+#: src/modules/rest-api/rest-api.php:522
+msgid "Author not found."
+msgstr "未找到作者。"
+
+#: src/abilities.php:359
+msgid "Post not found."
+msgstr "未找到文章。"
+
 #: src/core/Authors_Widget.php:23
-#: src/modules/multiple-authors/multiple-authors.php:1588
+#: src/modules/multiple-authors/multiple-authors.php:1642
 msgid "Authors List"
 msgstr "作者列表"
 
@@ -80,14 +134,14 @@ msgstr "显示作者列表。"
 
 #: src/core/Authors_Widget.php:133
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1334
-#: src/modules/author-list/author-list.php:575
+#: src/modules/author-list/author-list.php:576
 #: src/modules/author-list/classes/AuthorListTable.php:150
 msgid "Title"
 msgstr "标题"
 
 #: src/core/Authors_Widget.php:134
 #: src/core/Widget.php:130
-#: src/modules/author-list/author-list.php:584
+#: src/modules/author-list/author-list.php:585
 #: src/modules/author-list/classes/AuthorListTable.php:151
 #: src/modules/author-pages/author-pages.php:118
 msgid "Layout"
@@ -106,6 +160,7 @@ msgid "Limits per page"
 msgstr "每页限制"
 
 #: src/core/Authors_Widget.php:141
+#: src/core/Authors_Widget.php:502
 #: src/core/Classes/Post_Editor.php:97
 #: src/core/Classes/Post_Editor.php:222
 #: src/core/Plugin.php:888
@@ -118,20 +173,20 @@ msgstr "每页限制"
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:535
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:626
 #: src/modules/author-categories/author-categories.php:787
-#: src/modules/author-list/author-list.php:647
-#: src/modules/author-list/author-list.php:661
+#: src/modules/author-list/author-list.php:648
+#: src/modules/author-list/author-list.php:662
 #: src/modules/editflow-integration/editflow-integration.php:114
-#: src/modules/multiple-authors/multiple-authors.php:337
-#: src/modules/multiple-authors/multiple-authors.php:338
-#: src/modules/multiple-authors/multiple-authors.php:386
-#: src/modules/multiple-authors/multiple-authors.php:387
-#: src/modules/multiple-authors/multiple-authors.php:406
-#: src/modules/multiple-authors/multiple-authors.php:1375
+#: src/modules/multiple-authors/multiple-authors.php:340
+#: src/modules/multiple-authors/multiple-authors.php:341
+#: src/modules/multiple-authors/multiple-authors.php:389
+#: src/modules/multiple-authors/multiple-authors.php:390
+#: src/modules/multiple-authors/multiple-authors.php:409
+#: src/modules/multiple-authors/multiple-authors.php:1429
 msgid "Authors"
 msgstr "作者"
 
 #: src/core/Authors_Widget.php:142
-#: src/modules/author-list/author-list.php:713
+#: src/modules/author-list/author-list.php:714
 msgid "Order"
 msgstr "顺序"
 
@@ -148,8 +203,8 @@ msgid "Author's search box field (Seperate multiple fields by comma(','))"
 msgstr "作者搜索框字段（用逗号（','）分隔多个字段）"
 
 #: src/core/Authors_Widget.php:188
-#: src/core/Authors_Widget.php:494
-#: src/core/Classes/Post_Editor.php:834
+#: src/core/Authors_Widget.php:528
+#: src/core/Classes/Post_Editor.php:856
 #: src/core/Plugin.php:592
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1112
 msgid "All Authors"
@@ -165,67 +220,98 @@ msgstr "用户作者"
 
 #: src/core/Authors_Widget.php:193
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1346
-#: src/modules/author-list/author-list.php:717
+#: src/modules/author-list/author-list.php:718
 msgid "Ascending"
 msgstr "升序"
 
 #: src/core/Authors_Widget.php:194
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1347
-#: src/modules/author-list/author-list.php:718
+#: src/modules/author-list/author-list.php:719
 msgid "Descending"
 msgstr "降序"
 
 #: src/core/Authors_Widget.php:197
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:96
-#: src/modules/author-list/author-list.php:702
+#: src/modules/author-list/author-list.php:703
 msgid "Name"
 msgstr "姓名"
 
 #: src/core/Authors_Widget.php:198
-#: src/modules/author-list/author-list.php:703
+#: src/modules/author-list/author-list.php:704
 msgid "Post Counts"
 msgstr "帖子数量"
 
 #: src/core/Authors_Widget.php:199
 #: src/core/Classes/Author_Editor.php:369
 #: src/modules/author-custom-fields/author-custom-fields.php:933
-#: src/modules/author-list/author-list.php:704
-#: src/modules/multiple-authors/multiple-authors.php:2228
+#: src/modules/author-list/author-list.php:705
+#: src/modules/multiple-authors/multiple-authors.php:2246
 msgid "First Name"
 msgstr "名字"
 
 #: src/core/Authors_Widget.php:200
 #: src/core/Classes/Author_Editor.php:374
 #: src/modules/author-custom-fields/author-custom-fields.php:941
-#: src/modules/author-list/author-list.php:705
-#: src/modules/multiple-authors/multiple-authors.php:2229
+#: src/modules/author-list/author-list.php:706
+#: src/modules/multiple-authors/multiple-authors.php:2247
 msgid "Last Name"
 msgstr "姓氏"
 
-#: src/core/Authors_Widget.php:438
+#: src/core/Authors_Widget.php:261
+#. translators: %s: the letter selected in the authors index
+#, php-format
+msgid "Showing authors starting with %s"
+msgstr "显示以 %s 开头的作者"
+
+#: src/core/Authors_Widget.php:262
+msgid "Showing all authors"
+msgstr "显示所有作者"
+
+#: src/core/Authors_Widget.php:263
+#: src/core/Plugin.php:609
+msgid "No authors found."
+msgstr "未找到作者。"
+
+#: src/core/Authors_Widget.php:264
+msgid "Loading authors..."
+msgstr "正在加载作者..."
+
+#: src/core/Authors_Widget.php:265
+msgid "Unable to load authors."
+msgstr "无法加载作者。"
+
+#: src/core/Authors_Widget.php:468
 msgid "Default Search"
 msgstr "默认搜索"
 
-#: src/core/Authors_Widget.php:447
+#: src/core/Authors_Widget.php:477
 msgid "Search Box"
 msgstr "搜索框"
 
-#: src/core/Authors_Widget.php:462
-#: src/modules/author-list/author-list.php:346
+#: src/core/Authors_Widget.php:492
+#: src/modules/author-list/author-list.php:347
 msgid "Search"
 msgstr "搜索"
 
-#: src/core/Authors_Widget.php:498
+#: src/core/Authors_Widget.php:503
+msgid "Search authors"
+msgstr "搜索作者"
+
+#: src/core/Authors_Widget.php:506
+msgid "Search authors by"
+msgstr "按作者搜索"
+
+#: src/core/Authors_Widget.php:532
 msgid "No recent posts from this author"
 msgstr "此作者没有最近的帖子"
 
 #: src/core/Classes/Admin_Ajax.php:321
-#: src/core/Classes/Admin_Ajax.php:431
+#: src/core/Classes/Admin_Ajax.php:436
 msgid "Request status."
 msgstr "请求状态。"
 
 #: src/core/Classes/Admin_Ajax.php:328
-#: src/core/Classes/Admin_Ajax.php:438
+#: src/core/Classes/Admin_Ajax.php:443
 #: src/core/Plugin.php:2352
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:41
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:89
@@ -234,41 +320,41 @@ msgstr "请求状态。"
 #: src/modules/author-categories/author-categories.php:304
 #: src/modules/author-categories/author-categories.php:392
 #: src/modules/author-custom-fields/author-custom-fields.php:1087
-#: src/modules/author-list/author-list.php:1712
+#: src/modules/author-list/author-list.php:1713
 msgid "Security error. Kindly reload this page and try again"
 msgstr "安全错误。请重新加载此页面并重试"
 
-#: src/core/Classes/Admin_Ajax.php:347
+#: src/core/Classes/Admin_Ajax.php:351
 msgid "You cannot edit an author profile linked to an administrator account."
 msgstr "您无法编辑与管理员账户关联的作者资料。"
 
-#: src/core/Classes/Admin_Ajax.php:359
+#: src/core/Classes/Admin_Ajax.php:364
 msgid ""
 "You do not have permission to edit this author profile because it is linked "
 "to a user account you do not have permission to edit."
 msgstr "您没有权限编辑此作者配置文件，因为它与您没有编辑权限的用户帐户关联。"
 
-#: src/core/Classes/Admin_Ajax.php:374
-#: src/core/Classes/Author_Editor.php:1150
+#: src/core/Classes/Admin_Ajax.php:379
+#: src/core/Classes/Author_Editor.php:1200
 msgid ""
 "Sorry, this WordPress user is already mapped to another Author. By default, "
 "each user can only be connected to one Author profile."
 msgstr "抱歉，此 WordPress 用户已映射到另一个作者。默认情况下，每个用户只能连接到一个作者配置文件。"
 
-#: src/core/Classes/Admin_Ajax.php:386
-#: src/core/Classes/Author_Editor.php:1243
+#: src/core/Classes/Admin_Ajax.php:391
+#: src/core/Classes/Author_Editor.php:1293
 msgid "Registered User is required."
 msgstr "需要注册用户。"
 
-#: src/core/Classes/Admin_Ajax.php:396
+#: src/core/Classes/Admin_Ajax.php:401
 msgid "Author URL cannot be empty."
 msgstr "作者 URL 不能为空。"
 
-#: src/core/Classes/Admin_Ajax.php:409
+#: src/core/Classes/Admin_Ajax.php:414
 msgid "Another user with Author URL already exists."
 msgstr "已经存在具有该作者 URL 的其他用户。"
 
-#: src/core/Classes/Admin_Ajax.php:444
+#: src/core/Classes/Admin_Ajax.php:449
 msgid "Author name is required"
 msgstr "作者名称是必需的"
 
@@ -290,26 +376,26 @@ msgid "Email"
 msgstr "电子邮件"
 
 #: src/core/Classes/Author_Editor.php:50
-#: src/modules/author-list/author-list.php:646
-#: src/modules/author-list/author-list.php:660
+#: src/modules/author-list/author-list.php:647
+#: src/modules/author-list/author-list.php:661
 msgid "Author Type"
 msgstr "作者类型"
 
 #: src/core/Classes/Author_Editor.php:118
-#: src/core/Classes/Author_Editor.php:895
-#: src/modules/author-list/author-list.php:1517
+#: src/core/Classes/Author_Editor.php:945
+#: src/modules/author-list/author-list.php:1518
 msgid "Guest Author With User Account"
 msgstr "具有用户帐户的访客作者"
 
 #: src/core/Classes/Author_Editor.php:120
-#: src/core/Classes/Author_Editor.php:889
-#: src/modules/author-list/author-list.php:1516
+#: src/core/Classes/Author_Editor.php:939
+#: src/modules/author-list/author-list.php:1517
 msgid "Registered Author With User Account"
 msgstr "具有用户帐户的注册作者"
 
 #: src/core/Classes/Author_Editor.php:122
-#: src/core/Classes/Author_Editor.php:902
-#: src/modules/author-list/author-list.php:1518
+#: src/core/Classes/Author_Editor.php:952
+#: src/modules/author-list/author-list.php:1519
 msgid "Guest Author With No User Account"
 msgstr "没有用户帐户的访客作者"
 
@@ -328,20 +414,20 @@ msgid "Create Author Profile"
 msgstr "创建作者资料"
 
 #: src/core/Classes/Author_Editor.php:314
-#: src/modules/author-list/author-list.php:330
+#: src/modules/author-list/author-list.php:331
 #: src/modules/author-pages/author-pages.php:117
-#: src/modules/multiple-authors/multiple-authors.php:3276
+#: src/modules/multiple-authors/multiple-authors.php:3331
 msgid "General"
 msgstr "常规"
 
 #: src/core/Classes/Author_Editor.php:317
-#: src/modules/author-boxes/author-boxes.php:1518
+#: src/modules/author-boxes/author-boxes.php:1538
 msgid "Avatar"
 msgstr "头像"
 
 #: src/core/Classes/Author_Editor.php:346
 #: src/core/Plugin.php:610
-#: src/modules/author-boxes/author-boxes.php:2415
+#: src/modules/author-boxes/author-boxes.php:2455
 #: src/modules/author-categories/author-categories.php:786
 #: src/modules/author-categories/author-categories.php:788
 #: src/views/authors_table.html.php:21
@@ -353,7 +439,7 @@ msgid "Registered User"
 msgstr "注册用户"
 
 #: src/core/Classes/Author_Editor.php:363
-#: src/modules/author-boxes/author-boxes.php:1526
+#: src/modules/author-boxes/author-boxes.php:1546
 msgid "Biographical Info"
 msgstr "个人信息"
 
@@ -362,7 +448,7 @@ msgid "Avatar Source"
 msgstr "头像来源"
 
 #: src/core/Classes/Author_Editor.php:391
-#: src/modules/multiple-authors/multiple-authors.php:1152
+#: src/modules/multiple-authors/multiple-authors.php:1170
 msgid "Default Avatar"
 msgstr "默认头像"
 
@@ -378,101 +464,124 @@ msgid "Custom image"
 msgstr "自定义图像"
 
 #: src/core/Classes/Author_Editor.php:406
+#: src/modules/multiple-authors/multiple-authors.php:2300
+msgid "Alternative Text"
+msgstr "替代文本"
+
+#: src/core/Classes/Author_Editor.php:410
+msgid ""
+"Describe the avatar. Leave blank to use the Media Library alternative text "
+"or author name."
+msgstr "描述头像。留空以使用媒体库的替代文本或作者姓名。"
+
+#: src/core/Classes/Author_Editor.php:416
+msgid "Decorative Image"
+msgstr "装饰图像"
+
+#: src/core/Classes/Author_Editor.php:419
+msgid "Use empty alternative text when this avatar is decorative."
+msgstr "当此头像是装饰性时使用空的替代文本。"
+
+#: src/core/Classes/Author_Editor.php:425
 #: src/modules/author-custom-fields/author-custom-fields.php:958
 msgid "Website"
 msgstr "网站"
 
-#: src/core/Classes/Author_Editor.php:412
+#: src/core/Classes/Author_Editor.php:431
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:28
 msgid "Author Category"
 msgstr "作者类别"
 
-#: src/core/Classes/Author_Editor.php:413
+#: src/core/Classes/Author_Editor.php:432
 msgid ""
 "Select the default Category for this Author. This will be used when the "
 "Author is added to new posts."
 msgstr "为此作者选择默认分类。这将在将作者添加到新帖子时使用。"
 
-#: src/core/Classes/Author_Editor.php:420
+#: src/core/Classes/Author_Editor.php:439
 msgid "Do not show this profile publicly"
 msgstr "不公开显示此个人资料"
 
-#: src/core/Classes/Author_Editor.php:512
-#: src/core/Classes/Author_Editor.php:561
-#: src/modules/multiple-authors/multiple-authors.php:2262
+#: src/core/Classes/Author_Editor.php:534
+msgid "(required)"
+msgstr "(必填)"
+
+#: src/core/Classes/Author_Editor.php:551
+#: src/core/Classes/Author_Editor.php:603
+#: src/modules/multiple-authors/multiple-authors.php:2288
 msgid "Select image"
 msgstr "选择图像"
 
-#: src/core/Classes/Author_Editor.php:516
-#: src/core/Classes/Author_Editor.php:565
-#: src/modules/multiple-authors/multiple-authors.php:2266
+#: src/core/Classes/Author_Editor.php:555
+#: src/core/Classes/Author_Editor.php:607
+#: src/modules/multiple-authors/multiple-authors.php:2292
 msgid "Remove this image"
 msgstr "删除此图像"
 
-#: src/core/Classes/Author_Editor.php:579
+#: src/core/Classes/Author_Editor.php:623
 msgid "Select a user"
 msgstr "选择用户"
 
-#: src/core/Classes/Author_Editor.php:666
+#: src/core/Classes/Author_Editor.php:710
 msgid "Author email error"
 msgstr "作者电子邮件错误"
 
-#: src/core/Classes/Author_Editor.php:890
+#: src/core/Classes/Author_Editor.php:940
 msgid ""
 "Create an author profile for a current user account. You can select users "
 "who are allowed to edit posts. This user will be able to update their "
 "profile."
 msgstr "为当前用户帐户创建一个作者配置文件。您可以选择允许编辑帖子的用户。该用户将能够更新其配置文件。"
 
-#: src/core/Classes/Author_Editor.php:896
+#: src/core/Classes/Author_Editor.php:946
 msgid ""
 "Create an author profile and a linked user account. This account will be in "
 "the \"Guest Author\" role and will not be able to login to the WordPress "
 "dashboard or update their profile."
 msgstr "创建一个作者配置文件和一个关联的用户帐户。该帐户将处于“访客作者”角色，无法登录 WordPress 仪表板或更新其配置文件。"
 
-#: src/core/Classes/Author_Editor.php:903
+#: src/core/Classes/Author_Editor.php:953
 msgid ""
 "Create an author profile with no linked user account. This option is "
 "lightweight but may have compatibility issues with other themes and plugins."
 msgstr "创建一个没有关联用户帐户的作者配置文件。此选项较轻，但可能与其他主题和插件存在兼容性问题。"
 
-#: src/core/Classes/Author_Editor.php:922
+#: src/core/Classes/Author_Editor.php:972
 msgid "Author Email"
 msgstr "作者电子邮件"
 
-#: src/core/Classes/Author_Editor.php:934
+#: src/core/Classes/Author_Editor.php:984
 msgid "User Account"
 msgstr "用户帐户"
 
-#: src/core/Classes/Author_Editor.php:997
-#: src/modules/multiple-authors/multiple-authors.php:4184
+#: src/core/Classes/Author_Editor.php:1047
+#: src/modules/multiple-authors/multiple-authors.php:4299
 msgid "Sync author and user fields"
 msgstr "同步作者和用户字段"
 
-#: src/core/Classes/Author_Editor.php:1001
+#: src/core/Classes/Author_Editor.php:1051
 msgid "Convert to Guest Author With User Account"
 msgstr "转换为具有用户帐户的访客作者"
 
-#: src/core/Classes/Author_Editor.php:1005
+#: src/core/Classes/Author_Editor.php:1055
 msgid "Update post count"
 msgstr "更新帖子数量"
 
-#: src/core/Classes/Author_Editor.php:1076
+#: src/core/Classes/Author_Editor.php:1126
 msgid "No authors were updated"
 msgstr "没有更新任何作者"
 
-#: src/core/Classes/Author_Editor.php:1079
+#: src/core/Classes/Author_Editor.php:1129
 #, php-format
 msgid "Updated %d authors"
 msgstr "已更新 %d 位作者"
 
-#: src/core/Classes/Author_Editor.php:1176
-#: src/core/Classes/Author_Editor.php:1194
+#: src/core/Classes/Author_Editor.php:1226
+#: src/core/Classes/Author_Editor.php:1244
 msgid "An author with the name provided already exists."
 msgstr "提供的名称已经存在一个作者。"
 
-#: src/core/Classes/Author_Editor.php:1206
+#: src/core/Classes/Author_Editor.php:1256
 msgid "An author email is required when creating new User Author."
 msgstr "创建新用户作者时需要电子邮件。"
 
@@ -546,42 +655,52 @@ msgstr "没有作者术语"
 msgid "\"post_author\" is empty"
 msgstr "“post_author”为空"
 
-#: src/core/Classes/Post_Editor.php:564
+#: src/core/Classes/Post_Editor.php:567
 #, php-format
 msgid "Drag-and-drop Authors to add them to the %s category"
 msgstr "拖放作者以将其添加到 %s 分类中"
 
-#: src/core/Classes/Post_Editor.php:639
+#: src/core/Classes/Post_Editor.php:649
+#: src/core/Classes/Post_Editor.php:655
 #: src/core/Plugin.php:1655
-#: src/modules/multiple-authors/multiple-authors.php:2857
+#: src/modules/multiple-authors/multiple-authors.php:2904
 msgid "Search for an author"
 msgstr "搜索作者"
 
-#: src/core/Classes/Post_Editor.php:730
+#: src/core/Classes/Post_Editor.php:750
 msgid ""
 "This option is showing because you do not have a WordPress user selected as "
 "an author. For some tasks, it can be helpful to have a user selected here. "
 "This user will not be visible on the front of your site."
 msgstr "此选项显示是因为您没有选择作为作者的 WordPress 用户。对于某些任务，选择用户可能会很有帮助。此用户在您网站的前端将不可见。"
 
-#: src/core/Classes/Post_Editor.php:738
+#: src/core/Classes/Post_Editor.php:758
 msgid "Search for an user"
 msgstr "搜索用户"
 
-#: src/core/Classes/Post_Editor.php:762
-#: src/modules/author-boxes/author-boxes.php:565
-#: src/modules/author-boxes/author-boxes.php:685
+#: src/core/Classes/Post_Editor.php:782
+#: src/modules/author-boxes/author-boxes.php:568
+#: src/modules/author-boxes/author-boxes.php:688
 msgid "Author Box"
 msgstr "作者框"
 
-#: src/core/Classes/Post_Editor.php:786
+#: src/core/Classes/Post_Editor.php:806
 #: src/modules/author-boxes/author-boxes.php:206
 msgid "Default Author Box"
 msgstr "默认作者框"
 
-#: src/core/Classes/Post_Editor.php:787
+#: src/core/Classes/Post_Editor.php:807
 msgid "Hide Author Box"
 msgstr "隐藏作者框"
+
+#: src/core/Classes/Post_Editor.php:850
+msgid "Filter posts by author"
+msgstr "按作者筛选帖子"
+
+#: src/core/Classes/Post_Editor.php:898
+#, php-format
+msgid "Remove %s"
+msgstr "移除 %s"
 
 #: src/core/Classes/Term_Editor.php:42
 msgid "New author added."
@@ -608,7 +727,7 @@ msgid "Authors deleted."
 msgstr "作者已删除。"
 
 #: src/core/Classes/Term_Editor.php:79
-#: src/modules/multiple-authors/multiple-authors.php:3376
+#: src/modules/multiple-authors/multiple-authors.php:3435
 msgid "Author URL"
 msgstr "作者网址"
 
@@ -616,88 +735,88 @@ msgstr "作者网址"
 msgid "Co-Authors Plus must be installed and active."
 msgstr "必须安装并激活 Co-Authors Plus。"
 
-#: src/core/Classes/Utils.php:1121
+#: src/core/Classes/Utils.php:1124
 msgid "Read more."
 msgstr "阅读更多。"
 
-#: src/core/Classes/Utils.php:1252
+#: src/core/Classes/Utils.php:1255
 msgid "The results could not be loaded."
 msgstr "无法加载结果。"
 
-#: src/core/Classes/Utils.php:1254
+#: src/core/Classes/Utils.php:1257
 #. translators: %d: number of characters over the maximum.
 #, php-format
 msgid "Please delete %d character"
 msgstr "请删除 %d 个字符"
 
-#: src/core/Classes/Utils.php:1256
+#: src/core/Classes/Utils.php:1259
 #. translators: %d: number of characters over the maximum.
 #, php-format
 msgid "Please delete %d characters"
 msgstr "请删除 %d 个字符"
 
-#: src/core/Classes/Utils.php:1258
+#: src/core/Classes/Utils.php:1261
 #. translators: %d: number of characters still required.
 #, php-format
 msgid "Please enter %d or more character"
 msgstr "请输入 %d 个或更多字符"
 
-#: src/core/Classes/Utils.php:1260
+#: src/core/Classes/Utils.php:1263
 #. translators: %d: number of characters still required.
 #, php-format
 msgid "Please enter %d or more characters"
 msgstr "请输入 %d 个或更多字符"
 
-#: src/core/Classes/Utils.php:1261
+#: src/core/Classes/Utils.php:1264
 msgid "Loading more results..."
 msgstr "正在加载更多结果..."
 
-#: src/core/Classes/Utils.php:1263
+#: src/core/Classes/Utils.php:1266
 #. translators: %d: maximum number of items that can be selected.
 #, php-format
 msgid "You can only select %d item"
 msgstr "您只能选择 %d 个项目"
 
-#: src/core/Classes/Utils.php:1265
+#: src/core/Classes/Utils.php:1268
 #. translators: %d: maximum number of items that can be selected.
 #, php-format
 msgid "You can only select %d items"
 msgstr "您只能选择 %d 个项目"
 
-#: src/core/Classes/Utils.php:1266
+#: src/core/Classes/Utils.php:1269
 msgid "No results found"
 msgstr "未找到结果"
 
-#: src/core/Classes/Utils.php:1267
+#: src/core/Classes/Utils.php:1270
 msgid "Searching..."
 msgstr "正在搜索..."
 
-#: src/core/Classes/Utils.php:1268
+#: src/core/Classes/Utils.php:1271
 msgid "Remove all items"
 msgstr "移除所有项目"
 
-#: src/core/Classes/Utils.php:1280
+#: src/core/Classes/Utils.php:1283
 #: src/views/settings-tab.html.php:98
 msgid "No results match"
 msgstr "没有匹配的结果"
 
-#: src/core/Classes/Utils.php:1343
+#: src/core/Classes/Utils.php:1348
 msgid "Need PublishPress Authors Support?"
 msgstr "需要 PublishPress Authors 支持吗？"
 
-#: src/core/Classes/Utils.php:1348
+#: src/core/Classes/Utils.php:1353
 msgid "If you need help or have a new feature request, let us know."
 msgstr "如果您需要帮助或有新的功能请求，请告诉我们。"
 
-#: src/core/Classes/Utils.php:1350
+#: src/core/Classes/Utils.php:1355
 msgid "Request Support"
 msgstr "请求支持"
 
-#: src/core/Classes/Utils.php:1359
+#: src/core/Classes/Utils.php:1364
 msgid "Detailed documentation is also available on the plugin website."
 msgstr "详细文档也可以在插件网站上找到。"
 
-#: src/core/Classes/Utils.php:1361
+#: src/core/Classes/Utils.php:1366
 msgid "View Knowledge Base"
 msgstr "查看知识库"
 
@@ -727,7 +846,7 @@ msgid "Active"
 msgstr "激活"
 
 #: src/core/CustomFieldsModel.php:62
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:418
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:423
 #: src/modules/author-custom-fields/author-custom-fields.php:834
 msgid "Disabled"
 msgstr "禁用"
@@ -752,7 +871,7 @@ msgid "Yes, this is a Social Profile"
 msgstr "是的，这是一个社交资料"
 
 #: src/core/CustomFieldsModel.php:115
-#: src/modules/author-list/author-list.php:537
+#: src/modules/author-list/author-list.php:538
 msgid "Select an option"
 msgstr "选择一个选项"
 
@@ -829,10 +948,6 @@ msgstr "添加或移除作者"
 msgid "Choose from the most used Authors"
 msgstr "从最常用的作者中选择"
 
-#: src/core/Plugin.php:609
-msgid "No authors found."
-msgstr "未找到作者。"
-
 #: src/core/Plugin.php:611
 msgid "Back to Authors"
 msgstr "返回作者"
@@ -844,7 +959,7 @@ msgstr "如果您喜欢%s，请给我们留下%s评分。谢谢！"
 
 #: src/core/Plugin.php:808
 #: src/modules/author-pages/author-pages.php:121
-#: src/modules/multiple-authors/multiple-authors.php:167
+#: src/modules/multiple-authors/multiple-authors.php:170
 msgid "Posts"
 msgstr "帖子"
 
@@ -862,7 +977,7 @@ msgid "No co-author exists for that term"
 msgstr "该术语不存在共同作者"
 
 #: src/core/Plugin.php:1644
-#: src/modules/author-list/classes/AuthorListTable.php:344
+#: src/modules/author-list/classes/AuthorListTable.php:345
 msgid "Edit"
 msgstr "编辑"
 
@@ -917,9 +1032,9 @@ msgstr "您确定要为选定的角色创建作者吗？"
 #: src/modules/byline-migration/byline-migration.php:148
 #: src/modules/bylines-migration/bylines-migration.php:150
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:137
-#: src/modules/multiple-authors/multiple-authors.php:4188
-#: src/modules/multiple-authors/multiple-authors.php:4219
-#: src/modules/multiple-authors/multiple-authors.php:4256
+#: src/modules/multiple-authors/multiple-authors.php:4303
+#: src/modules/multiple-authors/multiple-authors.php:4334
+#: src/modules/multiple-authors/multiple-authors.php:4371
 msgid "Please, wait..."
 msgstr "请稍等..."
 
@@ -979,27 +1094,27 @@ msgstr "未找到没有作者术语的帖子"
 msgid "%d posts were found without author terms"
 msgstr "找到%d个没有作者术语的帖子"
 
-#: src/functions/template-tags.php:1047
+#: src/functions/template-tags.php:1054
 #, php-format
 msgid "%1sView all posts%2s by %3s"
 msgstr "%1$s查看所有帖子%2$s由%3$s"
 
-#: src/functions/template-tags.php:1316
-#: src/functions/template-tags.php:1937
+#: src/functions/template-tags.php:1323
+#: src/functions/template-tags.php:1944
 msgid " and "
 msgstr " 和 "
 
-#: src/functions/template-tags.php:1467
+#: src/functions/template-tags.php:1474
 #, php-format
 msgid "Posts by %s"
 msgstr "由 %s 发布的帖子"
 
-#: src/functions/template-tags.php:1852
+#: src/functions/template-tags.php:1859
 #, php-format
 msgid "Posts by %1$s"
 msgstr "由 %1$s 发布的帖子"
 
-#: src/functions/template-tags.php:1938
+#: src/functions/template-tags.php:1945
 msgid ", and "
 msgstr "，和 "
 
@@ -1012,11 +1127,11 @@ msgid "Add compatibility with the All In One Seo Pack plugin"
 msgstr "添加与一体化 SEO 插件的兼容性"
 
 #: src/modules/author-boxes/author-boxes.php:83
-#: src/modules/author-boxes/author-boxes.php:566
-#: src/modules/author-boxes/author-boxes.php:642
-#: src/modules/author-boxes/author-boxes.php:643
-#: src/modules/author-boxes/author-boxes.php:686
-#: src/modules/multiple-authors/multiple-authors.php:3277
+#: src/modules/author-boxes/author-boxes.php:569
+#: src/modules/author-boxes/author-boxes.php:645
+#: src/modules/author-boxes/author-boxes.php:646
+#: src/modules/author-boxes/author-boxes.php:689
+#: src/modules/multiple-authors/multiple-authors.php:3332
 msgid "Author Boxes"
 msgstr "作者框"
 
@@ -1030,15 +1145,24 @@ msgid "Author Category Boxes"
 msgstr "作者分类框"
 
 #: src/modules/author-boxes/author-boxes.php:211
-#: src/modules/author-boxes/author-boxes.php:1477
-#: src/modules/author-boxes/author-boxes.php:2785
-#: src/modules/author-boxes/author-boxes.php:2796
-#: src/modules/author-list/author-list.php:1254
+#: src/modules/author-boxes/author-boxes.php:1497
+#: src/modules/author-boxes/author-boxes.php:2825
+#: src/modules/author-boxes/author-boxes.php:2836
+#: src/modules/author-list/author-list.php:1255
 #: src/modules/author-list/classes/AuthorListTable.php:152
+#: src/modules/multiple-authors/multiple-authors.php:1844
 msgid "Shortcode"
 msgstr "短代码"
 
-#: src/modules/author-boxes/author-boxes.php:434
+#: src/modules/author-boxes/author-boxes.php:239
+msgid "Default author box"
+msgstr "默认作者框"
+
+#: src/modules/author-boxes/author-boxes.php:247
+msgid "Author category box"
+msgstr "作者类别框"
+
+#: src/modules/author-boxes/author-boxes.php:437
 #, php-format
 msgid ""
 "%s Author Box setting was not saved because it was changed in another "
@@ -1050,244 +1174,245 @@ msgstr[0] ""
 "browser or tab. The latest saved values were kept; review the layout and "
 "try again."
 msgstr[0] ""
-"%s 作者框设置未保存，因为它在另一个浏览器或选项卡中被更改。保留了最新的保存值；请检查布局并重试。|%s "
-"作者框设置未保存，因为它在另一个浏览器或选项卡中被更改。保留了最新的保存值；请检查布局并重试。"
+"%s Author Box settings were not saved because they were changed in another "
+"browser or tab. The latest saved values were kept; review the layout and "
+"try again."
 
-#: src/modules/author-boxes/author-boxes.php:575
+#: src/modules/author-boxes/author-boxes.php:578
 #: src/modules/author-custom-fields/author-custom-fields.php:172
 #, php-format
 msgid "New %1s"
 msgstr "新 %1s"
 
-#: src/modules/author-boxes/author-boxes.php:576
+#: src/modules/author-boxes/author-boxes.php:579
 #: src/modules/author-custom-fields/author-custom-fields.php:173
 #, php-format
 msgid "Add New %1$s"
 msgstr "添加新 %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:577
+#: src/modules/author-boxes/author-boxes.php:580
 #: src/modules/author-custom-fields/author-custom-fields.php:174
 #, php-format
 msgid "Edit %1$s"
 msgstr "编辑 %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:578
+#: src/modules/author-boxes/author-boxes.php:581
 #: src/modules/author-custom-fields/author-custom-fields.php:175
 #, php-format
 msgid "New %1$s"
 msgstr "新 %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:579
+#: src/modules/author-boxes/author-boxes.php:582
 #: src/modules/author-custom-fields/author-custom-fields.php:176
 #, fuzzy, php-format
 msgid "%2$s"
 msgstr "%2$s"
 
-#: src/modules/author-boxes/author-boxes.php:580
+#: src/modules/author-boxes/author-boxes.php:583
 #: src/modules/author-custom-fields/author-custom-fields.php:177
 #, php-format
 msgid "View %1$s"
 msgstr "查看 %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:581
+#: src/modules/author-boxes/author-boxes.php:584
 #: src/modules/author-custom-fields/author-custom-fields.php:178
 #, php-format
 msgid "Search %2$s"
 msgstr "搜索 %2$s"
 
-#: src/modules/author-boxes/author-boxes.php:582
+#: src/modules/author-boxes/author-boxes.php:585
 #: src/modules/author-custom-fields/author-custom-fields.php:179
 #, php-format
 msgid "No %2$s found"
 msgstr "未找到 %2$s"
 
-#: src/modules/author-boxes/author-boxes.php:583
+#: src/modules/author-boxes/author-boxes.php:586
 #: src/modules/author-custom-fields/author-custom-fields.php:180
 #, php-format
 msgid "No %2$s found in Trash"
 msgstr "在垃圾箱中未找到 %2$s"
 
-#: src/modules/author-boxes/author-boxes.php:586
+#: src/modules/author-boxes/author-boxes.php:589
 #: src/modules/author-custom-fields/author-custom-fields.php:183
 #, php-format
 msgid "%1$s Image"
 msgstr "%1$s 图片"
 
-#: src/modules/author-boxes/author-boxes.php:587
+#: src/modules/author-boxes/author-boxes.php:590
 #: src/modules/author-custom-fields/author-custom-fields.php:184
 #, php-format
 msgid "Set %1$s Image"
 msgstr "设置 %1$s 图片"
 
-#: src/modules/author-boxes/author-boxes.php:588
+#: src/modules/author-boxes/author-boxes.php:591
 #: src/modules/author-custom-fields/author-custom-fields.php:185
 #, php-format
 msgid "Remove %1$s Image"
 msgstr "移除 %1$s 图片"
 
-#: src/modules/author-boxes/author-boxes.php:589
+#: src/modules/author-boxes/author-boxes.php:592
 #: src/modules/author-custom-fields/author-custom-fields.php:186
 #, php-format
 msgid "Use as %1$s Image"
 msgstr "用作 %1$s 图片"
 
-#: src/modules/author-boxes/author-boxes.php:590
+#: src/modules/author-boxes/author-boxes.php:593
 #: src/modules/author-custom-fields/author-custom-fields.php:187
 #, php-format
 msgid "Filter %2$s list"
 msgstr "过滤 %2$s 列表"
 
-#: src/modules/author-boxes/author-boxes.php:591
+#: src/modules/author-boxes/author-boxes.php:594
 #: src/modules/author-custom-fields/author-custom-fields.php:188
 #, php-format
 msgid "%2$s list navigation"
 msgstr "%2$s 列表导航"
 
-#: src/modules/author-boxes/author-boxes.php:592
+#: src/modules/author-boxes/author-boxes.php:595
 #: src/modules/author-custom-fields/author-custom-fields.php:189
 #, php-format
 msgid "%2$s list"
 msgstr "%2$s 列表"
 
-#: src/modules/author-boxes/author-boxes.php:659
-#: src/modules/author-boxes/author-boxes.php:660
+#: src/modules/author-boxes/author-boxes.php:662
+#: src/modules/author-boxes/author-boxes.php:663
 msgid "Author Box updated."
 msgstr "作者框已更新。"
 
-#: src/modules/author-boxes/author-boxes.php:661
+#: src/modules/author-boxes/author-boxes.php:664
 msgid "Author Box added."
 msgstr "作者框已添加。"
 
-#: src/modules/author-boxes/author-boxes.php:662
+#: src/modules/author-boxes/author-boxes.php:665
 msgid "Author Box saved."
 msgstr "作者框已保存。"
 
-#: src/modules/author-boxes/author-boxes.php:663
+#: src/modules/author-boxes/author-boxes.php:666
 msgid "Author Box submitted."
 msgstr "作者框已提交。"
 
-#: src/modules/author-boxes/author-boxes.php:690
+#: src/modules/author-boxes/author-boxes.php:693
 #, php-format
 msgid "%1$s %2$s updated."
 msgid_plural "%1$s %3$s updated."
 msgstr[0] "%1$s %2$s 已更新。"
 
-#: src/modules/author-boxes/author-boxes.php:701
+#: src/modules/author-boxes/author-boxes.php:704
 #, php-format
 msgid "%1$s %2$s not updated, somebody is editing it."
 msgid_plural "%1$s %3$s not updated, somebody is editing them."
 msgstr[0] "%1$s %2$s 未更新，有人正在编辑它。"
 
-#: src/modules/author-boxes/author-boxes.php:712
+#: src/modules/author-boxes/author-boxes.php:715
 #, php-format
 msgid "%1$s %2$s permanently deleted."
 msgid_plural "%1$s %3$s permanently deleted."
 msgstr[0] "%1$s %2$s 已永久删除。"
 
-#: src/modules/author-boxes/author-boxes.php:723
+#: src/modules/author-boxes/author-boxes.php:726
 #, php-format
 msgid "%1$s %2$s moved to the Trash."
 msgid_plural "%1$s %3$s moved to the Trash."
 msgstr[0] "%1$s %2$s 已移至垃圾箱。"
 
-#: src/modules/author-boxes/author-boxes.php:734
+#: src/modules/author-boxes/author-boxes.php:737
 #, php-format
 msgid "%1$s %2$s restored from the Trash."
 msgid_plural "%1$s %3$s restored from the Trash."
 msgstr[0] "%1$s %2$s 已从垃圾箱恢复。"
 
-#: src/modules/author-boxes/author-boxes.php:801
+#: src/modules/author-boxes/author-boxes.php:804
 msgid "Duplicate"
 msgstr "重复项"
 
-#: src/modules/author-boxes/author-boxes.php:834
-#: src/modules/author-boxes/author-boxes.php:839
+#: src/modules/author-boxes/author-boxes.php:837
+#: src/modules/author-boxes/author-boxes.php:842
 msgid "Invalid Author Box."
 msgstr "无效的作者框。"
 
-#: src/modules/author-boxes/author-boxes.php:851
+#: src/modules/author-boxes/author-boxes.php:854
 msgid "You are not allowed to duplicate this Author Box."
 msgstr "您不允许复制此作者框。"
 
-#: src/modules/author-boxes/author-boxes.php:855
+#: src/modules/author-boxes/author-boxes.php:858
 msgid "You are not allowed to create Author Boxes."
 msgstr "您不允许创建作者框。"
 
-#: src/modules/author-boxes/author-boxes.php:879
+#: src/modules/author-boxes/author-boxes.php:882
 #, php-format
 msgid "%s (Copy)"
 msgstr "%s（复制）"
 
-#: src/modules/author-boxes/author-boxes.php:894
+#: src/modules/author-boxes/author-boxes.php:897
 msgid "Could not duplicate the Author Box."
 msgstr "无法复制作者框。"
 
-#: src/modules/author-boxes/author-boxes.php:936
+#: src/modules/author-boxes/author-boxes.php:939
 msgid "Author Box duplicated."
 msgstr "作者框已复制。"
 
-#: src/modules/author-boxes/author-boxes.php:969
-#: src/modules/author-boxes/author-boxes.php:1007
+#: src/modules/author-boxes/author-boxes.php:972
+#: src/modules/author-boxes/author-boxes.php:1010
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:100
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:267
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:383
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:464
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:551
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:642
-#: src/modules/default-layouts/default-layouts.php:107
+#: src/modules/default-layouts/default-layouts.php:118
 #: src/views/authors_grid.html.php:56
 msgid "View all posts"
 msgstr "查看所有帖子"
 
-#: src/modules/author-boxes/author-boxes.php:1121
+#: src/modules/author-boxes/author-boxes.php:1124
 msgid "Theme"
 msgstr "主题"
 
-#: src/modules/author-boxes/author-boxes.php:1427
+#: src/modules/author-boxes/author-boxes.php:1447
 msgid "Author Box Preview"
 msgstr "作者框预览"
 
-#: src/modules/author-boxes/author-boxes.php:1444
+#: src/modules/author-boxes/author-boxes.php:1464
 msgid "Author Box Editor"
 msgstr "作者框编辑器"
 
-#: src/modules/author-boxes/author-boxes.php:1461
+#: src/modules/author-boxes/author-boxes.php:1481
 msgid "Layout Slug"
 msgstr "布局别名"
 
-#: src/modules/author-boxes/author-boxes.php:1494
+#: src/modules/author-boxes/author-boxes.php:1514
 #: src/modules/author-custom-fields/author-custom-fields.php:770
 msgid "Banner"
 msgstr "横幅"
 
-#: src/modules/author-boxes/author-boxes.php:1514
+#: src/modules/author-boxes/author-boxes.php:1534
 msgid "Box Title"
 msgstr "框标题"
 
-#: src/modules/author-boxes/author-boxes.php:1522
+#: src/modules/author-boxes/author-boxes.php:1542
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:285
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:299
-#: src/modules/multiple-authors/multiple-authors.php:1141
+#: src/modules/multiple-authors/multiple-authors.php:1158
 msgid "Display Name"
 msgstr "显示名称"
 
-#: src/modules/author-boxes/author-boxes.php:1530
+#: src/modules/author-boxes/author-boxes.php:1550
 msgid "View All Posts"
 msgstr "查看所有帖子"
 
-#: src/modules/author-boxes/author-boxes.php:1534
+#: src/modules/author-boxes/author-boxes.php:1554
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:253
 #: src/modules/author-categories/author-categories.php:65
 #: src/modules/author-categories/author-categories.php:261
 #: src/modules/author-categories/author-categories.php:262
 #: src/modules/author-categories/author-categories.php:649
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:29
-#: src/modules/author-list/author-list.php:648
-#: src/modules/author-list/author-list.php:662
+#: src/modules/author-list/author-list.php:649
+#: src/modules/author-list/author-list.php:663
 msgid "Author Categories"
 msgstr "作者分类"
 
-#: src/modules/author-boxes/author-boxes.php:1538
+#: src/modules/author-boxes/author-boxes.php:1558
 #: src/modules/author-custom-fields/author-custom-fields.php:64
 #: src/modules/author-custom-fields/author-custom-fields.php:163
 #: src/modules/author-custom-fields/author-custom-fields.php:221
@@ -1295,154 +1420,165 @@ msgstr "作者分类"
 msgid "Author Fields"
 msgstr "作者字段"
 
-#: src/modules/author-boxes/author-boxes.php:1542
+#: src/modules/author-boxes/author-boxes.php:1562
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1691
-#: src/modules/multiple-authors/multiple-authors.php:3280
+#: src/modules/multiple-authors/multiple-authors.php:3335
 msgid "Shortcodes"
 msgstr "短代码"
 
-#: src/modules/author-boxes/author-boxes.php:1546
+#: src/modules/author-boxes/author-boxes.php:1566
 msgid "Author Recent Posts"
 msgstr "作者最近帖子"
 
-#: src/modules/author-boxes/author-boxes.php:1550
+#: src/modules/author-boxes/author-boxes.php:1570
 msgid "Box Layout"
 msgstr "框布局"
 
-#: src/modules/author-boxes/author-boxes.php:1554
+#: src/modules/author-boxes/author-boxes.php:1574
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1662
 msgid "Custom CSS"
 msgstr "自定义 CSS"
 
-#: src/modules/author-boxes/author-boxes.php:1558
+#: src/modules/author-boxes/author-boxes.php:1578
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1709
 msgid "Export"
 msgstr "导出"
 
-#: src/modules/author-boxes/author-boxes.php:1562
+#: src/modules/author-boxes/author-boxes.php:1582
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1728
 msgid "Import"
 msgstr "导入"
 
-#: src/modules/author-boxes/author-boxes.php:1566
+#: src/modules/author-boxes/author-boxes.php:1586
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1746
 msgid "Generate Theme Template"
 msgstr "生成主题模板"
 
-#: src/modules/author-boxes/author-boxes.php:1645
+#: src/modules/author-boxes/author-boxes.php:1665
 msgid "Shortcode documentation."
 msgstr "短代码文档。"
 
-#: src/modules/author-boxes/author-boxes.php:2059
+#: src/modules/author-boxes/author-boxes.php:2082
 msgid "Post preview"
 msgstr "帖子预览"
 
-#: src/modules/author-boxes/author-boxes.php:2068
+#: src/modules/author-boxes/author-boxes.php:2091
 msgid "Select Preview Post"
 msgstr "选择预览帖子"
 
-#: src/modules/author-boxes/author-boxes.php:2459
+#: src/modules/author-boxes/author-boxes.php:2288
+#. translators: 1: Profile field label, e.g. Website or Email. 2: Author name.
+#, php-format
+msgid "%1$s for %2$s"
+msgstr "%1$s 为 %2$s"
+
+#: src/modules/author-boxes/author-boxes.php:2293
+#: src/modules/author-boxes/author-boxes.php:2303
+msgid "(opens in a new tab)"
+msgstr "(在新选项卡中打开)"
+
+#: src/modules/author-boxes/author-boxes.php:2499
 msgid "No Recent Posts by this Author"
 msgstr "此作者没有最近的帖子"
 
-#: src/modules/author-boxes/author-boxes.php:2654
-#: src/modules/author-boxes/author-boxes.php:2735
-#: src/modules/author-boxes/author-boxes.php:3095
+#: src/modules/author-boxes/author-boxes.php:2694
+#: src/modules/author-boxes/author-boxes.php:2775
+#: src/modules/author-boxes/author-boxes.php:3135
 msgid "Pro feature"
 msgstr "专业功能"
 
-#: src/modules/author-boxes/author-boxes.php:2774
+#: src/modules/author-boxes/author-boxes.php:2814
 msgid "After View all posts Row"
 msgstr "查看所有帖子行后"
 
-#: src/modules/author-boxes/author-boxes.php:2775
+#: src/modules/author-boxes/author-boxes.php:2815
 msgid "After Name Row"
 msgstr "姓名行后"
 
-#: src/modules/author-boxes/author-boxes.php:2776
+#: src/modules/author-boxes/author-boxes.php:2816
 msgid "After Biographical Info Row"
 msgstr "个人信息行后"
 
-#: src/modules/author-boxes/author-boxes.php:2777
+#: src/modules/author-boxes/author-boxes.php:2817
 msgid "After All Authors"
 msgstr "所有作者后"
 
-#: src/modules/author-boxes/author-boxes.php:2786
+#: src/modules/author-boxes/author-boxes.php:2826
 msgid "Position"
 msgstr "位置"
 
-#: src/modules/author-boxes/author-boxes.php:2787
+#: src/modules/author-boxes/author-boxes.php:2827
 msgid "Action"
 msgstr "操作"
 
-#: src/modules/author-boxes/author-boxes.php:2814
-#: src/modules/author-boxes/author-boxes.php:2843
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:145
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:399
+#: src/modules/author-boxes/author-boxes.php:2854
+#: src/modules/author-boxes/author-boxes.php:2883
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:150
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:404
 msgid "Delete"
 msgstr "删除"
 
-#: src/modules/author-boxes/author-boxes.php:2815
+#: src/modules/author-boxes/author-boxes.php:2855
 msgid "Add"
 msgstr "添加"
 
-#: src/modules/author-boxes/author-boxes.php:2853
+#: src/modules/author-boxes/author-boxes.php:2893
 #, php-format
 msgid "You can use basic HTML in this field. For example: Read Time %1s."
 msgstr "您可以在此字段中使用基本 HTML。例如：阅读时间 %1$s。"
 
-#: src/modules/author-boxes/author-boxes.php:2857
+#: src/modules/author-boxes/author-boxes.php:2897
 msgid "Export Editor Settings"
 msgstr "导出编辑器设置"
 
-#: src/modules/author-boxes/author-boxes.php:2858
+#: src/modules/author-boxes/author-boxes.php:2898
 msgid ""
 "You can use this data to export your author box design and import it to a "
 "new site."
 msgstr "您可以使用此数据导出您的作者框设计，并将其导入到新网站。"
 
-#: src/modules/author-boxes/author-boxes.php:2868
-#: src/modules/author-boxes/author-boxes.php:2939
+#: src/modules/author-boxes/author-boxes.php:2908
+#: src/modules/author-boxes/author-boxes.php:2979
 msgid "Copy to Clipboard"
 msgstr "复制到剪贴板"
 
-#: src/modules/author-boxes/author-boxes.php:2872
-#: src/modules/author-boxes/author-boxes.php:2944
+#: src/modules/author-boxes/author-boxes.php:2912
+#: src/modules/author-boxes/author-boxes.php:2984
 msgid "Copied to Clipboard!"
 msgstr "已复制到剪贴板！"
 
-#: src/modules/author-boxes/author-boxes.php:2877
+#: src/modules/author-boxes/author-boxes.php:2917
 msgid "Import Editor Settings"
 msgstr "导入编辑器设置"
 
-#: src/modules/author-boxes/author-boxes.php:2878
+#: src/modules/author-boxes/author-boxes.php:2918
 msgid "Paste the editor data from the \"Export\" tab on another site."
 msgstr "从其他网站的“导出”标签粘贴编辑器数据。"
 
-#: src/modules/author-boxes/author-boxes.php:2887
+#: src/modules/author-boxes/author-boxes.php:2927
 msgid "Invalid data"
 msgstr "无效数据"
 
-#: src/modules/author-boxes/author-boxes.php:2887
-#: src/modules/author-boxes/author-boxes.php:2892
+#: src/modules/author-boxes/author-boxes.php:2927
+#: src/modules/author-boxes/author-boxes.php:2932
 msgid "Settings Imported Successfully!"
 msgstr "设置导入成功！"
 
-#: src/modules/author-boxes/author-boxes.php:2888
+#: src/modules/author-boxes/author-boxes.php:2928
 msgid "Import Data"
 msgstr "导入数据"
 
-#: src/modules/author-boxes/author-boxes.php:2897
+#: src/modules/author-boxes/author-boxes.php:2937
 msgid "How to generate and use a theme template file"
 msgstr "如何生成和使用主题模板文件"
 
-#: src/modules/author-boxes/author-boxes.php:2900
+#: src/modules/author-boxes/author-boxes.php:2940
 msgid ""
 "Click the \"Generate Template\" button under the text area. Wait for the "
 "code to be generated."
 msgstr "单击文本区域下方的“生成模板”按钮。等待代码生成。"
 
-#: src/modules/author-boxes/author-boxes.php:2901
+#: src/modules/author-boxes/author-boxes.php:2941
 #, php-format
 msgid ""
 "Create an empty php template file with your desired file slug in the %1s "
@@ -1456,94 +1592,94 @@ msgstr ""
 "/wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/"
 "my-first-custom-author-template.php %7s。"
 
-#: src/modules/author-boxes/author-boxes.php:2902
+#: src/modules/author-boxes/author-boxes.php:2942
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "复制生成的代码并将其粘贴到新创建的文件中。"
 
-#: src/modules/author-boxes/author-boxes.php:2903
+#: src/modules/author-boxes/author-boxes.php:2943
 msgid ""
 "Congratulations. Your can now choose your template inside the PublishPress "
 "Authors Settings."
 msgstr "恭喜。您现在可以在 PublishPress Authors 设置中选择您的模板。"
 
-#: src/modules/author-boxes/author-boxes.php:2907
+#: src/modules/author-boxes/author-boxes.php:2947
 #, php-format
 msgid "You can read more information on the %s."
 msgstr "您可以在 %s 上阅读更多信息。"
 
-#: src/modules/author-boxes/author-boxes.php:2908
+#: src/modules/author-boxes/author-boxes.php:2948
 msgid "documentation page"
 msgstr "文档页面"
 
-#: src/modules/author-boxes/author-boxes.php:2933
+#: src/modules/author-boxes/author-boxes.php:2973
 msgid "Generate Template"
 msgstr "生成模板"
 
-#: src/modules/author-boxes/author-boxes.php:2947
+#: src/modules/author-boxes/author-boxes.php:2987
 msgid "Template generated successfuly!"
 msgstr "模板生成成功！"
 
-#: src/modules/author-boxes/author-boxes.php:2989
+#: src/modules/author-boxes/author-boxes.php:3029
 msgid "Reorder Fields"
 msgstr "重新排序字段"
 
-#: src/modules/author-boxes/author-boxes.php:2997
+#: src/modules/author-boxes/author-boxes.php:3037
 msgid ""
 "Reorder the fields by dragging them to the correct position and saving your "
 "changes."
 msgstr "通过拖动字段到正确的位置并保存您的更改来重新排序字段。"
 
-#: src/modules/author-boxes/author-boxes.php:3011
+#: src/modules/author-boxes/author-boxes.php:3051
 msgid "Save for Current Author Box"
 msgstr "为当前作者框保存"
 
-#: src/modules/author-boxes/author-boxes.php:3015
+#: src/modules/author-boxes/author-boxes.php:3055
 msgid "Save for All Author Boxes"
 msgstr "为所有作者框保存"
 
-#: src/modules/author-boxes/author-boxes.php:3038
+#: src/modules/author-boxes/author-boxes.php:3078
 #, php-format
 msgid "Select %1s"
 msgstr "选择 %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3039
+#: src/modules/author-boxes/author-boxes.php:3079
 #, php-format
 msgid "Change %1s"
 msgstr "更改 %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3040
+#: src/modules/author-boxes/author-boxes.php:3080
 #, php-format
 msgid "Remove %1s"
 msgstr "删除 %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3067
+#: src/modules/author-boxes/author-boxes.php:3107
 #, php-format
 msgid "Search %1s Icon"
 msgstr "搜索 %1s 图标"
 
-#: src/modules/author-boxes/author-boxes.php:3278
+#: src/modules/author-boxes/author-boxes.php:3319
 msgid "New Author Categories Box"
 msgstr "新的作者类别框"
 
-#: src/modules/author-boxes/author-boxes.php:3286
+#: src/modules/author-boxes/author-boxes.php:3327
 msgid ""
 "PublishPress Authors Pro allows you to unlock the full potential of Author "
 "Categories."
 msgstr "PublishPress Authors Pro 允许您释放作者分类的全部潜力。"
 
-#: src/modules/author-boxes/author-boxes.php:3288
+#: src/modules/author-boxes/author-boxes.php:3329
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr "您可以创建作者框，将作者分组到他们的类别中。"
 
-#: src/modules/author-boxes/author-boxes.php:3341
+#: src/modules/author-boxes/author-boxes.php:3382
 msgid "PublishPress Authors Box"
 msgstr "PublishPress 作者框"
 
-#: src/modules/author-boxes/author-boxes.php:3342
+#: src/modules/author-boxes/author-boxes.php:3383
 msgid "Select an author box"
 msgstr "选择一个作者框"
 
-#: src/modules/author-boxes/author-boxes.php:3389
+#: src/modules/author-boxes/author-boxes.php:3430
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:47
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:137
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:200
@@ -1551,7 +1687,7 @@ msgstr "选择一个作者框"
 #: src/modules/author-categories/author-categories.php:397
 #: src/modules/author-categories/author-categories.php:469
 #: src/modules/author-custom-fields/author-custom-fields.php:1093
-#: src/modules/author-list/author-list.php:1718
+#: src/modules/author-list/author-list.php:1719
 msgid "You do not have permission to perform this action"
 msgstr "您没有权限执行此操作"
 
@@ -1563,7 +1699,7 @@ msgstr "您没有权限执行此操作"
 #: src/modules/author-categories/author-categories.php:451
 #: src/modules/author-categories/author-categories.php:459
 #: src/modules/author-custom-fields/author-custom-fields.php:1080
-#: src/modules/author-list/author-list.php:1705
+#: src/modules/author-list/author-list.php:1706
 msgid "An error occured."
 msgstr "发生错误。"
 
@@ -1931,8 +2067,8 @@ msgstr "框标题 HTML 标签"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:841
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1234
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1457
-#: src/modules/multiple-authors/multiple-authors.php:2081
-#: src/modules/multiple-authors/multiple-authors.php:2113, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2120
+#: src/modules/multiple-authors/multiple-authors.php:2149, fuzzy
 msgid "H1"
 msgstr "H1"
 
@@ -1943,8 +2079,8 @@ msgstr "H1"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:842
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1235
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1458
-#: src/modules/multiple-authors/multiple-authors.php:2082
-#: src/modules/multiple-authors/multiple-authors.php:2114, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2121
+#: src/modules/multiple-authors/multiple-authors.php:2150, fuzzy
 msgid "H2"
 msgstr "H2"
 
@@ -1955,8 +2091,8 @@ msgstr "H2"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1236
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1459
-#: src/modules/multiple-authors/multiple-authors.php:2083
-#: src/modules/multiple-authors/multiple-authors.php:2115, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2122
+#: src/modules/multiple-authors/multiple-authors.php:2151, fuzzy
 msgid "H3"
 msgstr "H3"
 
@@ -1967,8 +2103,8 @@ msgstr "H3"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:844
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1237
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1460
-#: src/modules/multiple-authors/multiple-authors.php:2084
-#: src/modules/multiple-authors/multiple-authors.php:2116, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2123
+#: src/modules/multiple-authors/multiple-authors.php:2152, fuzzy
 msgid "H4"
 msgstr "H4"
 
@@ -1979,8 +2115,8 @@ msgstr "H4"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:845
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1238
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1461
-#: src/modules/multiple-authors/multiple-authors.php:2085
-#: src/modules/multiple-authors/multiple-authors.php:2117, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2124
+#: src/modules/multiple-authors/multiple-authors.php:2153, fuzzy
 msgid "H5"
 msgstr "H5"
 
@@ -1991,8 +2127,8 @@ msgstr "H5"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:846
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1239
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1462
-#: src/modules/multiple-authors/multiple-authors.php:2086
-#: src/modules/multiple-authors/multiple-authors.php:2118, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2125
+#: src/modules/multiple-authors/multiple-authors.php:2154, fuzzy
 msgid "H6"
 msgstr "H6"
 
@@ -2935,7 +3071,7 @@ msgid "Add support for author categories."
 msgstr "添加对作者类别的支持。"
 
 #: src/modules/author-categories/author-categories.php:280
-#: src/modules/author-list/author-list.php:231
+#: src/modules/author-list/author-list.php:232
 msgid "Number of items per page"
 msgstr "每页项目数"
 
@@ -2989,7 +3125,7 @@ msgid "Add Author Category"
 msgstr "添加作者类别"
 
 #: src/modules/author-categories/author-categories.php:676
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:487
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:492
 msgid "Singular Name"
 msgstr "单数名称"
 
@@ -2999,7 +3135,7 @@ msgstr "当只有一个作者时，请输入作者类别名称"
 
 #: src/modules/author-categories/author-categories.php:681
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:97
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:492
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:497
 msgid "Plural Name"
 msgstr "复数名称"
 
@@ -3008,13 +3144,13 @@ msgid "Enter the Author Category name when there are more than 1 author"
 msgstr "当有多个作者时，请输入作者类别名称"
 
 #: src/modules/author-categories/author-categories.php:686
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:497
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:502
 #: src/modules/author-custom-fields/author-custom-fields.php:418
 msgid "Schema Property"
 msgstr "架构属性"
 
 #: src/modules/author-categories/author-categories.php:689
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:500
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:505
 #, php-format
 msgid ""
 "Example: when this value is set to reviewedBy, all users in this category "
@@ -3026,12 +3162,12 @@ msgstr ""
 
 #: src/modules/author-categories/author-categories.php:701
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:98
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:510
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:515
 msgid "Post Types"
 msgstr "帖子类型"
 
 #: src/modules/author-categories/author-categories.php:712
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:518
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:523
 msgid "Select Post Type..."
 msgstr "选择帖子类型..."
 
@@ -3043,7 +3179,7 @@ msgstr "选择此类别适用的文章类型。留空以适用于所有文章类
 
 #: src/modules/author-categories/author-categories.php:750
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:100
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:555
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:560
 msgid "Enable Category"
 msgstr "启用类别"
 
@@ -3078,74 +3214,83 @@ msgstr "编辑"
 msgid "Editors"
 msgstr "编辑们"
 
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:95
+msgid "Select all author categories"
+msgstr "选择所有作者类别"
+
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:99
 #: src/modules/author-custom-fields/author-custom-fields.php:804
 msgid "Slug"
 msgstr "别名"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:143
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:136
+#, php-format
+msgid "Select %s"
+msgstr "选择 %s"
+
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:148
 msgid "Enable Categories"
 msgstr "启用类别"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:144
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:149
 msgid "Disable Categories"
 msgstr "禁用类别"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:173
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:178
 msgid "Author categories deleted successfully."
 msgstr "作者类别删除成功。"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:176
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:181
 msgid "Author category deleted successfully."
 msgstr "作者类别删除成功。"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:187
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:192
 msgid "Author categories enabled."
 msgstr "作者类别已启用。"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:190
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:195
 msgid "Author category enabled."
 msgstr "作者类别已启用。"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:201
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:206
 msgid "Author categories disabled."
 msgstr "作者类别已禁用。"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:204
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:209
 msgid "Author category disabled."
 msgstr "作者类别已禁用。"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:288
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:293
 msgid "No author categories."
 msgstr "没有作者类别。"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:377
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:382
 #. translators: %s: Taxonomy term name.
 #, php-format
 msgid "Quick edit &#8220;%s&#8221; inline"
 msgstr "快速编辑“%s”内联"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:385
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:390
 msgid "Quick&nbsp;Edit"
 msgstr "快速&nbsp;编辑"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:416
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:421
 msgid "Enabled"
 msgstr "已启用"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:462
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:467
 msgid "All"
 msgstr "全部"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:484
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:489
 msgid "Quick Edit"
 msgstr "快速编辑"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:563
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:568
 msgid "Update"
 msgstr "更新"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:564
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:569
 msgid "Cancel"
 msgstr "取消"
 
@@ -3341,7 +3486,7 @@ msgid "Please enter the full URL to your TikTok profile."
 msgstr "请输入您的 TikTok 个人资料的完整 URL。"
 
 #: src/modules/author-list/author-list.php:73
-#: src/modules/author-list/author-list.php:1129
+#: src/modules/author-list/author-list.php:1130
 msgid "Author List"
 msgstr "作者列表"
 
@@ -3350,265 +3495,265 @@ msgstr "作者列表"
 msgid "Add support for author list."
 msgstr "添加对作者列表的支持。"
 
-#: src/modules/author-list/author-list.php:210
 #: src/modules/author-list/author-list.php:211
-#: src/modules/author-list/author-list.php:287
-#: src/modules/author-list/author-list.php:1181
+#: src/modules/author-list/author-list.php:212
+#: src/modules/author-list/author-list.php:288
+#: src/modules/author-list/author-list.php:1182
 msgid "Author Lists"
 msgstr "作者列表"
 
-#: src/modules/author-list/author-list.php:253
+#: src/modules/author-list/author-list.php:254
 msgid "Settings updated successfully."
 msgstr "设置已成功更新。"
 
-#: src/modules/author-list/author-list.php:257
+#: src/modules/author-list/author-list.php:258
 msgid "Author List deleted successfully."
 msgstr "作者列表已成功删除。"
 
-#: src/modules/author-list/author-list.php:261
+#: src/modules/author-list/author-list.php:262
 msgid "Author List restored from the Trash."
 msgstr "作者列表已从回收站恢复。"
 
-#: src/modules/author-list/author-list.php:265
+#: src/modules/author-list/author-list.php:266
 msgid "Author List moved to the Trash."
 msgstr "作者列表已移至回收站。"
 
-#: src/modules/author-list/author-list.php:293
+#: src/modules/author-list/author-list.php:294
 msgid "Add New"
 msgstr "添加新内容"
 
-#: src/modules/author-list/author-list.php:298
+#: src/modules/author-list/author-list.php:299
 #. translators: %s: search keywords
 #, php-format
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "搜索结果为 &#8220;%s&#8221;"
 
-#: src/modules/author-list/author-list.php:307
+#: src/modules/author-list/author-list.php:308
 msgid "Search Author Lists"
 msgstr "搜索作者列表"
 
-#: src/modules/author-list/author-list.php:326
-#: src/modules/author-list/author-list.php:768
+#: src/modules/author-list/author-list.php:327
+#: src/modules/author-list/author-list.php:769
 msgid "Preview"
 msgstr "预览"
 
-#: src/modules/author-list/author-list.php:334
+#: src/modules/author-list/author-list.php:335
 msgid "Fields"
 msgstr "字段"
 
-#: src/modules/author-list/author-list.php:338
+#: src/modules/author-list/author-list.php:339
 msgid "Users"
 msgstr "用户"
 
-#: src/modules/author-list/author-list.php:342
+#: src/modules/author-list/author-list.php:343
 msgid "Options"
 msgstr "选项"
 
-#: src/modules/author-list/author-list.php:371
+#: src/modules/author-list/author-list.php:372
 msgid "Post Count"
 msgstr "帖子数量"
 
-#: src/modules/author-list/author-list.php:550
+#: src/modules/author-list/author-list.php:551
 msgid "The original size of the uploaded image"
 msgstr "上传图像的原始大小"
 
-#: src/modules/author-list/author-list.php:551
+#: src/modules/author-list/author-list.php:552
 msgid "Large-sized image (1024px by 1024px)"
 msgstr "大尺寸图像（1024px x 1024px）"
 
-#: src/modules/author-list/author-list.php:552
+#: src/modules/author-list/author-list.php:553
 msgid "Medium-large image (768px)"
 msgstr "中大尺寸图像（768px）"
 
-#: src/modules/author-list/author-list.php:553
+#: src/modules/author-list/author-list.php:554
 msgid "Medium-sized image (300px by 300px)"
 msgstr "中尺寸图像（300px x 300px）"
 
-#: src/modules/author-list/author-list.php:554
+#: src/modules/author-list/author-list.php:555
 msgid "Small-sized image (150px by 150px)"
 msgstr "小尺寸图像（150px x 150px）"
 
-#: src/modules/author-list/author-list.php:594
+#: src/modules/author-list/author-list.php:595
 msgid "Columns"
 msgstr "列"
 
-#: src/modules/author-list/author-list.php:595
+#: src/modules/author-list/author-list.php:596
 msgid "Choose how many columns to use for grid-style Author Lists."
 msgstr "选择用于网格样式作者列表的列数。"
 
-#: src/modules/author-list/author-list.php:604
+#: src/modules/author-list/author-list.php:605
 msgid "Group By"
 msgstr "分组依据"
 
-#: src/modules/author-list/author-list.php:615
+#: src/modules/author-list/author-list.php:616
 msgid "Featured Image Size"
 msgstr "特色图像大小"
 
-#: src/modules/author-list/author-list.php:628
+#: src/modules/author-list/author-list.php:629
 msgid "Display Fields"
 msgstr "显示字段"
 
-#: src/modules/author-list/author-list.php:629
+#: src/modules/author-list/author-list.php:630
 msgid ""
 "Choose which author profile fields to show. This applies to Authors Grid "
 "and Authors Table layouts only."
 msgstr "选择要显示的作者个人资料字段。这仅适用于作者网格和作者表格布局。"
 
-#: src/modules/author-list/author-list.php:633
+#: src/modules/author-list/author-list.php:634
 msgid "Select fields"
 msgstr "选择字段"
 
-#: src/modules/author-list/author-list.php:641
+#: src/modules/author-list/author-list.php:642
 msgid "Show Authors"
 msgstr "显示作者"
 
-#: src/modules/author-list/author-list.php:642
+#: src/modules/author-list/author-list.php:643
 msgid ""
 "Select an option to limit the results to selected user roles, author types, "
 "specific authors or author Categories."
 msgstr "选择一个选项以限制结果为选定的用户角色、作者类型、特定作者或作者类别。"
 
-#: src/modules/author-list/author-list.php:645
-#: src/modules/author-list/author-list.php:659
+#: src/modules/author-list/author-list.php:646
+#: src/modules/author-list/author-list.php:660
 msgid "Roles"
 msgstr "角色"
 
-#: src/modules/author-list/author-list.php:655
+#: src/modules/author-list/author-list.php:656
 msgid "Exclude Authors"
 msgstr "排除作者"
 
-#: src/modules/author-list/author-list.php:656
+#: src/modules/author-list/author-list.php:657
 msgid ""
 "Select an option to exclude selected user roles, author types, specific "
 "authors or author Categories from Author list."
 msgstr "选择一个选项以从作者列表中排除选定的用户角色、作者类型、特定作者或作者类别。"
 
-#: src/modules/author-list/author-list.php:672
+#: src/modules/author-list/author-list.php:673
 msgid "Authors Per Page"
 msgstr "每页作者数"
 
-#: src/modules/author-list/author-list.php:673
+#: src/modules/author-list/author-list.php:674
 msgid "You can set the number of authors to show per page."
 msgstr "您可以设置每页显示的作者数量。"
 
-#: src/modules/author-list/author-list.php:683
+#: src/modules/author-list/author-list.php:684
 msgid "Show Empty"
 msgstr "显示空白"
 
-#: src/modules/author-list/author-list.php:684
+#: src/modules/author-list/author-list.php:685
 msgid ""
 "Enable this option to show all authors, including those without any posts. "
 "Disable this option to show only authors who are assigned to posts."
 msgstr "启用此选项以显示所有作者，包括没有任何文章的作者。禁用此选项以仅显示分配了文章的作者。"
 
-#: src/modules/author-list/author-list.php:692
+#: src/modules/author-list/author-list.php:693
 msgid "Configure Author List Options"
 msgstr "配置作者列表选项"
 
-#: src/modules/author-list/author-list.php:693
+#: src/modules/author-list/author-list.php:694
 msgid ""
 "Authors Pro allows you to add extra features to the Authors List. These "
 "features include pagination, choose the order of authors, and much more."
 msgstr "Authors Pro 允许您向作者列表添加额外功能。这些功能包括分页、选择作者排序等。"
 
-#: src/modules/author-list/author-list.php:698
+#: src/modules/author-list/author-list.php:699
 msgid "Order By"
 msgstr "排序依据"
 
-#: src/modules/author-list/author-list.php:726
+#: src/modules/author-list/author-list.php:727
 msgid "Last Article Date"
 msgstr "最后文章日期"
 
-#: src/modules/author-list/author-list.php:727
+#: src/modules/author-list/author-list.php:728
 msgid ""
 "You can limit the author list to users with a published post within a "
 "specific time. This option accepts date values such as 1 week ago, 1 month "
 "ago, 6 months ago, 1 year ago etc."
 msgstr "您可以将作者列表限制为在特定时间内发布文章的用户。此选项接受日期值，例如 1 周前、1 个月前、6 个月前、1 年前等。"
 
-#: src/modules/author-list/author-list.php:739
+#: src/modules/author-list/author-list.php:740
 msgid "Show Search Box"
 msgstr "显示搜索框"
 
-#: src/modules/author-list/author-list.php:748
+#: src/modules/author-list/author-list.php:749
 msgid "Add Search Box to Author Lists"
 msgstr "将搜索框添加到作者列表"
 
-#: src/modules/author-list/author-list.php:749
+#: src/modules/author-list/author-list.php:750
 msgid ""
 "Author Pro allows you to add a search box to the Authors List. You can also "
 "show a dropdown menu that allows users to search on specific author fields."
 msgstr "Author Pro 允许您向作者列表添加搜索框。您还可以显示一个下拉菜单，允许用户在特定作者字段上进行搜索。"
 
-#: src/modules/author-list/author-list.php:754
+#: src/modules/author-list/author-list.php:755
 msgid "Search Field Dropdown"
 msgstr "搜索字段下拉菜单"
 
-#: src/modules/author-list/author-list.php:755
+#: src/modules/author-list/author-list.php:756
 msgid ""
 "You can also show a dropdown menu that allows users to search on specific "
 "author fields."
 msgstr "您还可以显示一个下拉菜单，允许用户在特定作者字段上进行搜索。"
 
-#: src/modules/author-list/author-list.php:816
+#: src/modules/author-list/author-list.php:817
 msgid "Author Recent List"
 msgstr "作者最近列表"
 
-#: src/modules/author-list/author-list.php:866
+#: src/modules/author-list/author-list.php:867
 msgid "Author Index List"
 msgstr "作者索引列表"
 
-#: src/modules/author-list/author-list.php:917
+#: src/modules/author-list/author-list.php:918
 msgid "Author Grid List"
 msgstr "作者网格列表"
 
-#: src/modules/author-list/author-list.php:973
+#: src/modules/author-list/author-list.php:974
 msgid "Author Table List"
 msgstr "作者表格列表"
 
-#: src/modules/author-list/author-list.php:1166
+#: src/modules/author-list/author-list.php:1167
 msgid "Edit Author List"
 msgstr "编辑作者列表"
 
-#: src/modules/author-list/author-list.php:1166
+#: src/modules/author-list/author-list.php:1167
 msgid "Add Author List"
 msgstr "添加作者列表"
 
-#: src/modules/author-list/author-list.php:1237
-#: src/modules/author-list/author-list.php:1244
+#: src/modules/author-list/author-list.php:1238
+#: src/modules/author-list/author-list.php:1245
 msgid "Save Changes"
 msgstr "保存更改"
 
-#: src/modules/author-list/author-list.php:1260
+#: src/modules/author-list/author-list.php:1261
 msgid "Dynamic Shortcode"
 msgstr "动态短代码"
 
-#: src/modules/author-list/author-list.php:1262
+#: src/modules/author-list/author-list.php:1263
 msgid "Static Shortcode"
 msgstr "静态短代码"
 
-#: src/modules/author-list/author-list.php:1497
-#: src/modules/author-list/author-list.php:1524
-#: src/modules/multiple-authors/multiple-authors.php:1888
+#: src/modules/author-list/author-list.php:1498
+#: src/modules/author-list/author-list.php:1525
+#: src/modules/multiple-authors/multiple-authors.php:1933
 msgid "Select some options"
 msgstr "选择一些选项"
 
-#: src/modules/author-list/author-list.php:1545
-#: src/modules/author-list/author-list.php:1655
+#: src/modules/author-list/author-list.php:1546
+#: src/modules/author-list/author-list.php:1656
 msgid "Select Users"
 msgstr "选择用户"
 
-#: src/modules/author-list/author-list.php:1572
+#: src/modules/author-list/author-list.php:1573
 msgid "Select Author Category"
 msgstr "选择作者类别"
 
-#: src/modules/author-list/author-list.php:1620
+#: src/modules/author-list/author-list.php:1621
 msgid ""
 "This is a quick preview of this Author List. Test on frontend pages to see "
 "exactly how it looks with your theme."
 msgstr "这是作者列表的快速预览。在前端页面上测试以查看其在您的主题中的确切外观。"
 
-#: src/modules/author-list/author-list.php:1724
+#: src/modules/author-list/author-list.php:1725
 msgid "Invalid form"
 msgstr "无效表单"
 
@@ -3633,42 +3778,70 @@ msgstr[0] "垃圾箱 %s"
 msgid "No author list avaliable in the selected view."
 msgstr "所选视图中没有可用的作者列表。"
 
-#: src/modules/author-list/classes/AuthorListTable.php:356
+#: src/modules/author-list/classes/AuthorListTable.php:344
+#, php-format
+msgid "Edit %s"
+msgstr "编辑 %s"
+
+#: src/modules/author-list/classes/AuthorListTable.php:357
+#, php-format
+msgid "Move %s to Trash"
+msgstr "移动 %s 到垃圾箱"
+
+#: src/modules/author-list/classes/AuthorListTable.php:358
 msgid "Trash"
 msgstr "垃圾箱"
 
-#: src/modules/author-list/classes/AuthorListTable.php:372
+#: src/modules/author-list/classes/AuthorListTable.php:374
+#, php-format
+msgid "Restore %s"
+msgstr "恢复 %s"
+
+#: src/modules/author-list/classes/AuthorListTable.php:375
 msgid "Restore"
 msgstr "恢复"
 
-#: src/modules/author-list/classes/AuthorListTable.php:384
+#: src/modules/author-list/classes/AuthorListTable.php:387
+#, php-format
+msgid "Delete %s permanently"
+msgstr "永久删除 %s"
+
+#: src/modules/author-list/classes/AuthorListTable.php:388
 msgid "Delete Permanently"
 msgstr "永久删除"
 
-#: src/modules/author-list/classes/AuthorListTable.php:427
-#: src/modules/default-layouts/default-layouts.php:127
+#: src/modules/author-list/classes/AuthorListTable.php:431
+#: src/modules/default-layouts/default-layouts.php:138
 msgid "Authors Index"
 msgstr "作者索引"
 
-#: src/modules/author-list/classes/AuthorListTable.php:428
-#: src/modules/default-layouts/default-layouts.php:128
+#: src/modules/author-list/classes/AuthorListTable.php:432
+#: src/modules/default-layouts/default-layouts.php:139
 msgid "Authors Recent"
 msgstr "作者最近"
 
-#: src/modules/author-list/classes/AuthorListTable.php:429
-#: src/modules/default-layouts/default-layouts.php:129
+#: src/modules/author-list/classes/AuthorListTable.php:433
+#: src/modules/default-layouts/default-layouts.php:140
 msgid "Authors Grid"
 msgstr "作者网格"
 
-#: src/modules/author-list/classes/AuthorListTable.php:430
-#: src/modules/default-layouts/default-layouts.php:130
+#: src/modules/author-list/classes/AuthorListTable.php:434
+#: src/modules/default-layouts/default-layouts.php:141
 msgid "Authors Table"
 msgstr "作者表"
+
+#: src/modules/author-list/classes/AuthorListTable.php:455
+msgid "Dynamic shortcode"
+msgstr "动态 shortcode"
+
+#: src/modules/author-list/classes/AuthorListTable.php:470
+msgid "Static shortcode"
+msgstr "静态 shortcode"
 
 #: src/modules/author-pages/author-pages.php:60
 #: src/modules/author-pages/author-pages.php:106
 #: src/modules/author-pages/author-pages.php:107
-#: src/modules/multiple-authors/multiple-authors.php:3279
+#: src/modules/multiple-authors/multiple-authors.php:3334
 msgid "Author Pages"
 msgstr "作者页面"
 
@@ -3697,14 +3870,14 @@ msgstr "为署名添加迁移选项"
 #: src/modules/byline-migration/byline-migration.php:145
 #: src/modules/bylines-migration/bylines-migration.php:147
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:134
-#: src/modules/multiple-authors/multiple-authors.php:4253
+#: src/modules/multiple-authors/multiple-authors.php:4368
 msgid "Collecting data for the migration..."
 msgstr "正在收集迁移数据..."
 
 #: src/modules/byline-migration/byline-migration.php:146
 #: src/modules/bylines-migration/bylines-migration.php:148
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:135
-#: src/modules/multiple-authors/multiple-authors.php:4254
+#: src/modules/multiple-authors/multiple-authors.php:4369
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:54
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:136
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:167
@@ -3717,7 +3890,7 @@ msgstr "完成！署名数据已被复制，您可以停用插件。"
 
 #: src/modules/byline-migration/byline-migration.php:149
 #: src/modules/bylines-migration/bylines-migration.php:151
-#: src/modules/multiple-authors/multiple-authors.php:4257
+#: src/modules/multiple-authors/multiple-authors.php:4372
 msgid "Copying authors' data..."
 msgstr "正在复制作者的数据..."
 
@@ -3924,8 +4097,8 @@ msgid "Please click here to migrate to PublishPress Authors"
 msgstr "请点击这里迁移到 PublishPress Authors"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:193
-#: src/modules/multiple-authors/multiple-authors.php:4961
-#: src/modules/multiple-authors/multiple-authors.php:5052
+#: src/modules/multiple-authors/multiple-authors.php:5076
+#: src/modules/multiple-authors/multiple-authors.php:5167
 msgid "Dismiss"
 msgstr "关闭"
 
@@ -3933,217 +4106,221 @@ msgstr "关闭"
 msgid "Multiple Authors"
 msgstr "多个作者"
 
-#: src/modules/multiple-authors/multiple-authors.php:168
+#: src/modules/multiple-authors/multiple-authors.php:171
 msgid "Pages"
 msgstr "页面"
 
-#: src/modules/multiple-authors/multiple-authors.php:352
-#: src/modules/multiple-authors/multiple-authors.php:353
+#: src/modules/multiple-authors/multiple-authors.php:355
+#: src/modules/multiple-authors/multiple-authors.php:356
 msgid "Author Profile"
 msgstr "作者档案"
 
-#: src/modules/multiple-authors/multiple-authors.php:407
+#: src/modules/multiple-authors/multiple-authors.php:410
 #: src/modules/settings/settings.php:105
 msgid "Settings"
 msgstr "设置"
 
-#: src/modules/multiple-authors/multiple-authors.php:600
+#: src/modules/multiple-authors/multiple-authors.php:603
 msgid "Enable PublishPress Authors for these post types:"
 msgstr "为这些帖子类型启用 PublishPress Authors："
 
-#: src/modules/multiple-authors/multiple-authors.php:608
+#: src/modules/multiple-authors/multiple-authors.php:611
 msgid "Post types to display on the author's profile page:"
 msgstr "在作者档案页面上显示的帖子类型："
 
-#: src/modules/multiple-authors/multiple-authors.php:616
+#: src/modules/multiple-authors/multiple-authors.php:619
 msgid "Roles available for Author Profiles:"
 msgstr "可用于作者档案的角色："
 
-#: src/modules/multiple-authors/multiple-authors.php:627
+#: src/modules/multiple-authors/multiple-authors.php:631
 msgid "Automatically create author profiles:"
 msgstr "自动创建作者档案："
 
-#: src/modules/multiple-authors/multiple-authors.php:638
+#: src/modules/multiple-authors/multiple-authors.php:643
 msgid "Show username in the search field:"
 msgstr "在搜索字段中显示用户名："
 
-#: src/modules/multiple-authors/multiple-authors.php:649
+#: src/modules/multiple-authors/multiple-authors.php:654
 msgid "Default author for new posts:"
 msgstr "新帖子默认作者："
 
-#: src/modules/multiple-authors/multiple-authors.php:660
+#: src/modules/multiple-authors/multiple-authors.php:666
 msgid "Fallback user for Guest Authors:"
 msgstr "访客作者的后备用户："
 
-#: src/modules/multiple-authors/multiple-authors.php:671
+#: src/modules/multiple-authors/multiple-authors.php:678
 msgid "Remove single author map restriction:"
 msgstr "移除单个作者地图限制："
 
-#: src/modules/multiple-authors/multiple-authors.php:695
+#: src/modules/multiple-authors/multiple-authors.php:702
 msgid "Show above the content:"
 msgstr "内容上方显示："
 
-#: src/modules/multiple-authors/multiple-authors.php:703
+#: src/modules/multiple-authors/multiple-authors.php:710
 msgid "Show below the content:"
 msgstr "内容下方显示："
 
-#: src/modules/multiple-authors/multiple-authors.php:711
+#: src/modules/multiple-authors/multiple-authors.php:718
 msgid "Show Author Box selection:"
 msgstr "显示作者框选择："
 
-#: src/modules/multiple-authors/multiple-authors.php:719
+#: src/modules/multiple-authors/multiple-authors.php:726
 msgid "Disable the \"Authors\" box when using \"Quick Edit\":"
 msgstr "使用“快速编辑”时禁用“作者”框："
 
-#: src/modules/multiple-authors/multiple-authors.php:727
+#: src/modules/multiple-authors/multiple-authors.php:734
 msgid "Default Layout:"
 msgstr "默认布局："
 
-#: src/modules/multiple-authors/multiple-authors.php:735
+#: src/modules/multiple-authors/multiple-authors.php:743
 msgid "Title for the author box:"
 msgstr "作者框标题："
 
-#: src/modules/multiple-authors/multiple-authors.php:743
+#: src/modules/multiple-authors/multiple-authors.php:751
 msgid "Color scheme:"
 msgstr "配色方案："
 
-#: src/modules/multiple-authors/multiple-authors.php:752
+#: src/modules/multiple-authors/multiple-authors.php:760
 msgid "Show email link:"
 msgstr "显示电子邮件链接："
 
-#: src/modules/multiple-authors/multiple-authors.php:760
+#: src/modules/multiple-authors/multiple-authors.php:768
 msgid "Show site link:"
 msgstr "显示站点链接："
 
-#: src/modules/multiple-authors/multiple-authors.php:768
+#: src/modules/multiple-authors/multiple-authors.php:776
 msgid "Font Awesome icons:"
 msgstr "Font Awesome 图标："
 
-#: src/modules/multiple-authors/multiple-authors.php:787
+#: src/modules/multiple-authors/multiple-authors.php:795
 msgid "Enable author pages:"
 msgstr "启用作者页面："
 
-#: src/modules/multiple-authors/multiple-authors.php:798
+#: src/modules/multiple-authors/multiple-authors.php:806
 msgid "Author pages posts limit:"
 msgstr "作者页面帖子限制："
 
-#: src/modules/multiple-authors/multiple-authors.php:809
+#: src/modules/multiple-authors/multiple-authors.php:818
 msgid "Author pages layout:"
 msgstr "作者页面布局："
 
-#: src/modules/multiple-authors/multiple-authors.php:820
+#: src/modules/multiple-authors/multiple-authors.php:830
 msgid "Grid layout column:"
 msgstr "网格布局列："
 
-#: src/modules/multiple-authors/multiple-authors.php:831
+#: src/modules/multiple-authors/multiple-authors.php:842
 msgid "Show author bio:"
 msgstr "显示作者简介："
 
-#: src/modules/multiple-authors/multiple-authors.php:842
+#: src/modules/multiple-authors/multiple-authors.php:853
 msgid "Author bio layout:"
 msgstr "作者简介布局："
 
-#: src/modules/multiple-authors/multiple-authors.php:850
+#: src/modules/multiple-authors/multiple-authors.php:862
 msgid "Show author page title:"
 msgstr "显示作者页面标题："
 
-#: src/modules/multiple-authors/multiple-authors.php:861
+#: src/modules/multiple-authors/multiple-authors.php:873
 msgid "Author pages excerpt ellipsis:"
 msgstr "作者页面摘要省略号："
 
-#: src/modules/multiple-authors/multiple-authors.php:872
+#: src/modules/multiple-authors/multiple-authors.php:885
 msgid "Author pages title header:"
 msgstr "作者页面标题头部："
 
-#: src/modules/multiple-authors/multiple-authors.php:880
+#: src/modules/multiple-authors/multiple-authors.php:894
 msgid "Author post title header:"
 msgstr "作者帖子标题头："
 
-#: src/modules/multiple-authors/multiple-authors.php:888
+#: src/modules/multiple-authors/multiple-authors.php:903
 msgid "Show featured image:"
 msgstr "显示特色图片："
 
-#: src/modules/multiple-authors/multiple-authors.php:899
+#: src/modules/multiple-authors/multiple-authors.php:914
 msgid "Link featured image to post:"
 msgstr "将特色图片链接到帖子："
 
-#: src/modules/multiple-authors/multiple-authors.php:910
+#: src/modules/multiple-authors/multiple-authors.php:925
 msgid "Featured image custom width:"
 msgstr "特色图片自定义宽度："
 
-#: src/modules/multiple-authors/multiple-authors.php:921
+#: src/modules/multiple-authors/multiple-authors.php:937
 msgid "Featured image custom height:"
 msgstr "特色图片自定义高度："
 
-#: src/modules/multiple-authors/multiple-authors.php:932
+#: src/modules/multiple-authors/multiple-authors.php:949
 msgid "Show excerpt:"
 msgstr "显示摘要："
 
-#: src/modules/multiple-authors/multiple-authors.php:943
+#: src/modules/multiple-authors/multiple-authors.php:960
 msgid "Show authors:"
 msgstr "显示作者："
 
-#: src/modules/multiple-authors/multiple-authors.php:954
+#: src/modules/multiple-authors/multiple-authors.php:971
 msgid "Show post date:"
 msgstr "显示帖子日期："
 
-#: src/modules/multiple-authors/multiple-authors.php:965
+#: src/modules/multiple-authors/multiple-authors.php:982
 msgid "Show comment counts:"
 msgstr "显示评论数量："
 
-#: src/modules/multiple-authors/multiple-authors.php:976
+#: src/modules/multiple-authors/multiple-authors.php:993
 msgid "Show category:"
 msgstr "显示分类："
 
-#: src/modules/multiple-authors/multiple-authors.php:987
+#: src/modules/multiple-authors/multiple-authors.php:1004
 msgid "Show tags:"
 msgstr "显示标签："
 
-#: src/modules/multiple-authors/multiple-authors.php:998
+#: src/modules/multiple-authors/multiple-authors.php:1015
 msgid "Show read more link:"
 msgstr "显示“阅读更多”链接："
 
-#: src/modules/multiple-authors/multiple-authors.php:1009
+#: src/modules/multiple-authors/multiple-authors.php:1026
 msgid "Hide empty posts message:"
 msgstr "隐藏空帖子消息："
 
-#: src/modules/multiple-authors/multiple-authors.php:1097
+#: src/modules/multiple-authors/multiple-authors.php:1114
 msgid "Enable Guest Author With No User Account"
 msgstr "启用没有用户账户的访客作者"
 
-#: src/modules/multiple-authors/multiple-authors.php:1108
+#: src/modules/multiple-authors/multiple-authors.php:1125
 msgid "Enable Guest Author With User Account"
 msgstr "启用有用户账户的访客作者"
 
-#: src/modules/multiple-authors/multiple-authors.php:1119
+#: src/modules/multiple-authors/multiple-authors.php:1136
 msgid "Allow users to opt out of Author Boxes"
 msgstr "允许用户选择不显示作者框"
 
-#: src/modules/multiple-authors/multiple-authors.php:1130
+#: src/modules/multiple-authors/multiple-authors.php:1147
 msgid "Allow authors in multiple categories:"
 msgstr "允许多个类别的作者："
 
-#: src/modules/multiple-authors/multiple-authors.php:1163
+#: src/modules/multiple-authors/multiple-authors.php:1181
+msgid "Allow administrators to edit administrator author profiles:"
+msgstr "允许管理员编辑管理员作者简介："
+
+#: src/modules/multiple-authors/multiple-authors.php:1192
 msgid "Boxed legacy layout Author Box:"
 msgstr "盒式传统布局作者框："
 
-#: src/modules/multiple-authors/multiple-authors.php:1171
+#: src/modules/multiple-authors/multiple-authors.php:1201
 msgid "Centered legacy layout Author Box:"
 msgstr "居中传统布局作者框："
 
-#: src/modules/multiple-authors/multiple-authors.php:1179
+#: src/modules/multiple-authors/multiple-authors.php:1210
 msgid "Inline legacy layout Author Box:"
 msgstr "内联传统布局作者框："
 
-#: src/modules/multiple-authors/multiple-authors.php:1187
+#: src/modules/multiple-authors/multiple-authors.php:1219
 msgid "Inline avatar legacy layout Author Box:"
 msgstr "内联头像传统布局作者框："
 
-#: src/modules/multiple-authors/multiple-authors.php:1195
+#: src/modules/multiple-authors/multiple-authors.php:1228
 msgid "Simple list legacy layout Author Box:"
 msgstr "简单列表传统布局作者框："
 
-#: src/modules/multiple-authors/multiple-authors.php:1295
+#: src/modules/multiple-authors/multiple-authors.php:1329
 #: src/modules/settings/settings.php:275
 #, php-format
 msgid ""
@@ -4151,72 +4328,79 @@ msgid ""
 "loaded file."
 msgstr "已禁用，因为 add_post_type_support('%1$s', '%2$s') 已包含在加载的文件中。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1314
+#: src/modules/multiple-authors/multiple-authors.php:1348
 msgid "This will display the authors box at the top of the content."
 msgstr "这将在内容顶部显示作者框。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1335
+#: src/modules/multiple-authors/multiple-authors.php:1369
 msgid "This will display the authors box at the end of the content."
 msgstr "这将在内容末尾显示作者框。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1356
+#: src/modules/multiple-authors/multiple-authors.php:1390
 msgid "Allow users to choose which Author Box is used on each post."
 msgstr "允许用户选择在每个帖子中使用哪个作者框。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1381
+#: src/modules/multiple-authors/multiple-authors.php:1410
+msgid ""
+"Allow users with the \"manage_options\" capability to edit author profiles "
+"linked to administrator accounts. By default, editing administrator author "
+"profiles is blocked for security reasons."
+msgstr "允许具有“manage_options”能力的用户编辑与管理员帐户关联的作者简介。出于安全原因，默认情况下阻止编辑管理员作者简介。"
+
+#: src/modules/multiple-authors/multiple-authors.php:1435
 msgid "Single"
 msgstr "单个"
 
-#: src/modules/multiple-authors/multiple-authors.php:1388
+#: src/modules/multiple-authors/multiple-authors.php:1442
 msgid "Plural"
 msgstr "复数"
 
-#: src/modules/multiple-authors/multiple-authors.php:1438
+#: src/modules/multiple-authors/multiple-authors.php:1492
 msgid "Authors Box"
 msgstr "作者框"
 
-#: src/modules/multiple-authors/multiple-authors.php:1439
+#: src/modules/multiple-authors/multiple-authors.php:1493
 msgid ""
 "With this shortcode you can display the author box in any part of the "
 "content. "
 msgstr "使用此短代码，您可以在内容的任何部分显示作者框。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1447
+#: src/modules/multiple-authors/multiple-authors.php:1501
 #, php-format
 msgid ""
 "You can specify layout by using author boxes layout slug. You can see full "
 "details of each layout option %1$s in this guide %2$s."
 msgstr "您可以使用作者框布局别名指定布局。您可以在此指南 %2$s 中查看每个布局选项的完整详细信息 %1$s。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1458
+#: src/modules/multiple-authors/multiple-authors.php:1512
 #, php-format
 msgid ""
 "You can also decide whether or not to show the main title, using %1$s or "
 "%2$s ."
 msgstr "您还可以决定是否显示主标题，使用 %1$s 或 %2$s。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1468
-#: src/modules/multiple-authors/multiple-authors.php:1552
+#: src/modules/multiple-authors/multiple-authors.php:1522
+#: src/modules/multiple-authors/multiple-authors.php:1606
 msgid ""
 "You can load the authors for a specific post, even if you are not in that "
 "post currently. For example, this shortcode will load the authors for the "
 "post with the ID of 32."
 msgstr "您可以为特定文章加载作者，即使您当前不在该文章中。例如，此短代码将加载 ID 为 32 的文章的作者。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1475
+#: src/modules/multiple-authors/multiple-authors.php:1529
 msgid ""
 "You can load the authors for a specific user by providing the user id. For "
 "example, this shortcode will load the author with user id of 32"
 msgstr "您可以通过提供用户 ID 为特定用户加载作者。例如，此短代码将加载用户 ID 为 32 的作者。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1482
+#: src/modules/multiple-authors/multiple-authors.php:1536
 msgid ""
 "You can load the authors for a specific author by providing the author term "
 "id for both guest and user author. For example, this shortcode will load "
 "the author with term id of 32"
 msgstr "您可以通过提供作者术语 ID 为特定作者加载作者，适用于访客和用户作者。例如，此短代码将加载术语 ID 为 32 的作者。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1490
+#: src/modules/multiple-authors/multiple-authors.php:1544
 #, php-format
 msgid ""
 "If you are having problems showing PublishPress Authors on author profile "
@@ -4227,7 +4411,7 @@ msgstr ""
 "如果您在作者个人资料页面上显示 PublishPress Authors 时遇到问题，可以使用下面的短代码。参数 %s "
 "强制插件从个人资料页面检索作者，而不是同一屏幕上的其他文章。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1500
+#: src/modules/multiple-authors/multiple-authors.php:1554
 #, php-format
 msgid ""
 "There is one final option to mention. This is mostly useful if you're using "
@@ -4239,24 +4423,24 @@ msgstr ""
 "还有一个最终的选项需要提及。这在您使用主题或页面构建器自定义您在 /author/username/ 等 URL "
 "找到的作者档案页面时非常有用。您可以在作者页面上使用以下短代码来显示当前作者的档案。您只需要添加参数 %s。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1509
+#: src/modules/multiple-authors/multiple-authors.php:1563
 msgid ""
 "You can load the authors belonging to a specific author categories by "
 "providing the category slug or slugs separated by comma for more than one "
 "category."
 msgstr "您可以通过提供类别别名或用逗号分隔的多个类别别名来加载属于特定作者类别的作者。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1519
+#: src/modules/multiple-authors/multiple-authors.php:1573
 msgid "Authors Data"
 msgstr "作者数据"
 
-#: src/modules/multiple-authors/multiple-authors.php:1520
+#: src/modules/multiple-authors/multiple-authors.php:1574
 msgid ""
 "With this shortcode you can display the author names or any profile field "
 "in any part of the content."
 msgstr "使用此短代码，您可以在内容的任何部分显示作者名称或任何档案字段。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1528
+#: src/modules/multiple-authors/multiple-authors.php:1582
 #, php-format
 msgid ""
 "The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s "
@@ -4266,17 +4450,17 @@ msgstr ""
 "作者数据短代码接受字段参数，例如：%1$s %2$s %3$s %4$s %5$s %6$s %7$s。您可以在本指南 %8$s 中查看完整细节和参数 "
 "%9$s。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1545
+#: src/modules/multiple-authors/multiple-authors.php:1599
 msgid "You can also specify the separator to be used for mulitple authors data."
 msgstr "您还可以指定用于多个作者数据的分隔符。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1559
+#: src/modules/multiple-authors/multiple-authors.php:1613
 msgid ""
 "You can retrieve a specific author by providing the author's term ID. For "
 "example, this shortcode will load the author with the term ID of 102."
 msgstr "您可以通过提供作者的术语 ID 来检索特定作者。例如，此短代码将加载术语 ID 为 102 的作者。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1567
+#: src/modules/multiple-authors/multiple-authors.php:1621
 #, php-format
 msgid ""
 "You can also decide to return an array list of authors by using "
@@ -4286,19 +4470,19 @@ msgstr ""
 "您还可以选择通过使用 user_objects=\"true\" 返回作者的数组列表，这将作为数组返回所有作者对象数据。您可以在本指南 %2$s "
 "中查看完整细节和示例用法 %3$s。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1578
+#: src/modules/multiple-authors/multiple-authors.php:1632
 msgid ""
 "You can retrieve authors belonging to a specific Author Category by "
 "providing the category slug or slugs. Separate multiple slugs with a comma."
 msgstr "您可以通过提供类别别名来检索属于特定作者类别的作者。用逗号分隔多个别名。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1589
+#: src/modules/multiple-authors/multiple-authors.php:1643
 msgid ""
 "With this shortcode, you can show all the authors together in a single "
 "display."
 msgstr "使用此短代码，您可以将所有作者一起显示在一个单一的展示中。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1597
+#: src/modules/multiple-authors/multiple-authors.php:1651
 #, php-format
 msgid ""
 "You can specify layout by using author boxes layout slug. You can see full "
@@ -4308,35 +4492,35 @@ msgstr ""
 "您可以通过使用作者框布局别名来指定布局。您可以在本指南中查看每个布局选项的完整详细信息 %1$s %2$s。 %3$s %4$s "
 "此短代码还提供四种自定义布局： %5$s %6$s %7$s %8$s。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1614
+#: src/modules/multiple-authors/multiple-authors.php:1668
 #, php-format
 msgid ""
 "You can define the number of layout columns by using %1$s to show authors "
 "in 2 column."
 msgstr "您可以通过使用 %1$s 定义布局列的数量，以在 2 列中显示作者。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1624
+#: src/modules/multiple-authors/multiple-authors.php:1678
 #, php-format
 msgid ""
 "You can show authors in a card grid by using %1$s, choose the number of "
 "grid columns with %2$s, and choose author fields with %3$s ."
 msgstr "您可以通过使用 %1$s 在卡片网格中显示作者，使用 %2$s 选择网格列的数量，并使用 %3$s 选择作者字段。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1636
+#: src/modules/multiple-authors/multiple-authors.php:1690
 #, php-format
 msgid ""
 "You can show authors in a table by using %1$s and choose author fields with "
 "%2$s ."
 msgstr "您可以通过使用 %1$s 在表格中显示作者，并使用 %2$s 选择作者字段。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1647
+#: src/modules/multiple-authors/multiple-authors.php:1701
 #, php-format
 msgid ""
 "You can choose the number of authors per page using %1$s . %2$s Pagination "
 "will be automatically added if required."
 msgstr "您可以使用 %1$s 选择每页的作者数量。%2$s 如果需要，将自动添加分页。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1658
+#: src/modules/multiple-authors/multiple-authors.php:1712
 #, php-format
 msgid ""
 "You can limit the result to only authors who are assigned to posts by using "
@@ -4344,28 +4528,28 @@ msgid ""
 "without any posts."
 msgstr "您可以使用 %1$s 将结果限制为仅分配给帖子作者。%2$s 另外，使用 %3$s 显示所有作者，包括那些没有帖子的人。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1670
+#: src/modules/multiple-authors/multiple-authors.php:1724
 #, php-format
 msgid ""
 "You can limit the result to only guest authors by using %1$s . %2$s "
 "Alternatively, %3$s will show only authors with a WordPress account."
 msgstr "您可以使用 %1$s 将结果限制为仅访客作者。%2$s 另外，%3$s 将仅显示具有 WordPress 账户的作者。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1682
+#: src/modules/multiple-authors/multiple-authors.php:1736
 #, php-format
 msgid ""
 "If you are using the authors_recent layout, you can define the number of "
 "columns by using %1$s ."
 msgstr "如果您使用的是 authors_recent 布局，您可以通过使用 %1$s 定义列的数量。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1692
+#: src/modules/multiple-authors/multiple-authors.php:1746
 #, php-format
 msgid ""
 "For authors_index layout, you can group user by profile field by using %1$s "
 "."
 msgstr "对于 authors_index 布局，您可以通过使用 %1$s 按档案字段对用户进行分组。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1702
+#: src/modules/multiple-authors/multiple-authors.php:1756
 #, php-format
 msgid ""
 "To order the results based on post count, use %1$s . To order the results "
@@ -4375,17 +4559,17 @@ msgstr ""
 "要根据帖子数量对结果进行排序，请使用 %1$s 。要按名称对结果进行排序，请使用 %2$s 。另外，您可以按档案字段排序，例如 %3$s、%4$s "
 "等等。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1715
+#: src/modules/multiple-authors/multiple-authors.php:1769
 #, php-format
 msgid "To further customize the order of results, use %1$s or %2$s ."
 msgstr "要进一步自定义结果的顺序，请使用%1$s或%2$s。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1726
+#: src/modules/multiple-authors/multiple-authors.php:1780
 #, php-format
 msgid "To display a search box for authors, use %1$s ."
 msgstr "要显示作者的搜索框，请使用%1$s。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1736
+#: src/modules/multiple-authors/multiple-authors.php:1790
 #, php-format
 msgid ""
 "You can also show a dropdown menu that allows users to search on specific "
@@ -4393,7 +4577,7 @@ msgid ""
 "requires the search box to be active."
 msgstr "您还可以显示一个下拉菜单，允许用户在特定作者字段上进行搜索。您可以使用 %1$s 将字段添加到下拉菜单中。这要求搜索框处于活动状态。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1746
+#: src/modules/multiple-authors/multiple-authors.php:1800
 #, php-format
 msgid ""
 "You can limit the author list to users with a published post within a "
@@ -4401,26 +4585,30 @@ msgid ""
 "ago, 1 month ago, 6 months ago, 1 year ago etc."
 msgstr "您可以使用 %1$s 将作者列表限制为在特定期间内发布过帖子用户。这接受英语日期值，例如 1 周前、1 个月前、6 个月前、1 年前等。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1793
+#: src/modules/multiple-authors/multiple-authors.php:1848
+msgid "Copy shortcode to clipboard"
+msgstr "复制 shortcode 到剪贴板"
+
+#: src/modules/multiple-authors/multiple-authors.php:1849
 msgid "Copied!"
 msgstr "已复制！"
 
-#: src/modules/multiple-authors/multiple-authors.php:1794
-#: src/modules/multiple-authors/multiple-authors.php:1795
+#: src/modules/multiple-authors/multiple-authors.php:1850
+#: src/modules/multiple-authors/multiple-authors.php:1851
 msgid "Click To Copy!"
 msgstr "点击复制！"
 
-#: src/modules/multiple-authors/multiple-authors.php:1859
+#: src/modules/multiple-authors/multiple-authors.php:1907
 msgid "Select roles"
 msgstr "选择角色"
 
-#: src/modules/multiple-authors/multiple-authors.php:1870
+#: src/modules/multiple-authors/multiple-authors.php:1918
 msgid ""
 "Choose which WordPress user roles can be selected using the \"Registered "
 "Author With User Account\" option for author profiles."
 msgstr "选择可以使用“具有用户账户的注册作者”选项选择的 WordPress 用户角色。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1899
+#: src/modules/multiple-authors/multiple-authors.php:1944
 msgid ""
 "Author profiles can be mapped to WordPress user accounts. This option "
 "allows you to automatically create author profiles when users are created "
@@ -4432,7 +4620,7 @@ msgstr ""
 "用户账户。此选项允许您在这些角色中创建用户时自动创建作者档案。您还可以通过单击维护选项卡中的“为角色中的所有用户创建 PublishPress "
 "作者档案”按钮来为现有用户执行此操作。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1920
+#: src/modules/multiple-authors/multiple-authors.php:1964
 msgid ""
 "If the Author is mapped to a WordPress user, this will display the authors' "
 "\"Display name\" and their \"Username\". The default is to show only the "
@@ -4442,101 +4630,111 @@ msgstr ""
 "如果作者被映射到一个 WordPress 用户，这将显示作者的 \"显示名称\" 和他们的 \"用户名\"。默认情况下只显示 "
 "\"显示名称\"。如果您有多个名称相似的作者，显示 \"用户名\" 是很有用的。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1943
+#: src/modules/multiple-authors/multiple-authors.php:1987
 msgid "Allow authors to be created without a real user account."
 msgstr "允许在没有真实用户账户的情况下创建作者。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1966
+#: src/modules/multiple-authors/multiple-authors.php:2010
 msgid "Show a profile checkbox allowing Authors to be excluded from Author Boxes."
 msgstr "显示一个复选框，允许作者从作者框中排除。"
 
-#: src/modules/multiple-authors/multiple-authors.php:1989
+#: src/modules/multiple-authors/multiple-authors.php:2033
 msgid "Allow authors to be created without a connected user account."
 msgstr "允许在没有连接的用户账户的情况下创建作者。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2013
+#: src/modules/multiple-authors/multiple-authors.php:2057
 msgid ""
 "If enabled, PublishPress Authors will replace the default WordPress author "
 "pages."
 msgstr "如果启用，PublishPress Authors 将替换默认的 WordPress 作者页面。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2018
+#: src/modules/multiple-authors/multiple-authors.php:2062
 msgid "Please note this feature will not work for all themes."
 msgstr "请注意，此功能并不适用于所有主题。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2018
-#: src/modules/multiple-authors/multiple-authors.php:2872
+#: src/modules/multiple-authors/multiple-authors.php:2062
+#: src/modules/multiple-authors/multiple-authors.php:2917
 msgid "Click here for more details."
 msgstr "点击此处获取更多详细信息。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2031
+#: src/modules/multiple-authors/multiple-authors.php:2075
 msgid "View sample Author Page"
 msgstr "查看示例作者页面"
 
-#: src/modules/multiple-authors/multiple-authors.php:2052
+#: src/modules/multiple-authors/multiple-authors.php:2094
 msgid "List"
 msgstr "列表"
 
-#: src/modules/multiple-authors/multiple-authors.php:2053
+#: src/modules/multiple-authors/multiple-authors.php:2095
 msgid "Grid"
 msgstr "网格"
 
-#: src/modules/multiple-authors/multiple-authors.php:2225
+#: src/modules/multiple-authors/multiple-authors.php:2243
 msgid "Allow User to Choose"
 msgstr "允许用户选择"
 
-#: src/modules/multiple-authors/multiple-authors.php:2226
+#: src/modules/multiple-authors/multiple-authors.php:2244
 msgid "First Name Last Name"
 msgstr "名 姓"
 
-#: src/modules/multiple-authors/multiple-authors.php:2227
+#: src/modules/multiple-authors/multiple-authors.php:2245
 msgid "Last Name First Name"
 msgstr "姓 名"
 
-#: src/modules/multiple-authors/multiple-authors.php:2275
+#: src/modules/multiple-authors/multiple-authors.php:2314
 msgid ""
-"This avatar will be used as default avatar instead of gravatar where no "
-"custom avatar is added to profile."
-msgstr "如果没有为个人资料添加自定义头像，则此头像将用作默认头像，而不是 Gravatar。"
+"Describe the default avatar. Leave blank to use its Media Library "
+"alternative text."
+msgstr "描述默认头像。留空以使用其媒体库的替代文本。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2297
+#: src/modules/multiple-authors/multiple-authors.php:2334
+msgid "This image is decorative"
+msgstr "此图像是装饰性的"
+
+#: src/modules/multiple-authors/multiple-authors.php:2340
+msgid ""
+"This avatar will be used if no custom avatar is uploaded for an author "
+"profile."
+msgstr "如果没有为作者简介上传自定义头像，将使用此头像。"
+
+#: src/modules/multiple-authors/multiple-authors.php:2362
 msgid "This will display the author bio."
 msgstr "这将显示作者简介。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2358
-#: src/modules/multiple-authors/multiple-authors.php:2397
-#: src/modules/multiple-authors/multiple-authors.php:2436
-#: src/modules/multiple-authors/multiple-authors.php:2475
-#: src/modules/multiple-authors/multiple-authors.php:2514
+#: src/modules/multiple-authors/multiple-authors.php:2418
+#: src/modules/multiple-authors/multiple-authors.php:2454
+#: src/modules/multiple-authors/multiple-authors.php:2490
+#: src/modules/multiple-authors/multiple-authors.php:2526
+#: src/modules/multiple-authors/multiple-authors.php:2562
 msgid "Select option"
 msgstr "选择选项"
 
-#: src/modules/multiple-authors/multiple-authors.php:2370
-#: src/modules/multiple-authors/multiple-authors.php:2409
-#: src/modules/multiple-authors/multiple-authors.php:2448
-#: src/modules/multiple-authors/multiple-authors.php:2487
-#: src/modules/multiple-authors/multiple-authors.php:2526
+#: src/modules/multiple-authors/multiple-authors.php:2429
+#: src/modules/multiple-authors/multiple-authors.php:2465
+#: src/modules/multiple-authors/multiple-authors.php:2501
+#: src/modules/multiple-authors/multiple-authors.php:2537
+#: src/modules/multiple-authors/multiple-authors.php:2573
 #, php-format
 msgid "This is useful if you use legacy shortcode %s"
 msgstr "如果您使用遗留短代码 %s，这将很有用"
 
-#: src/modules/multiple-authors/multiple-authors.php:2546
+#: src/modules/multiple-authors/multiple-authors.php:2593
 msgid "This will display the featured image."
 msgstr "这将显示特色图片。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2570
+#: src/modules/multiple-authors/multiple-authors.php:2617
 msgid "This will make the featured image clickable and link to the post."
 msgstr "这将使特色图片可点击并链接到帖子。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2594
+#: src/modules/multiple-authors/multiple-authors.php:2641
 msgid "This will display author page title."
 msgstr "这将显示作者页面标题。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2618
+#: src/modules/multiple-authors/multiple-authors.php:2665
 msgid "This will display the excerpt."
 msgstr "这将显示摘录。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2642
+#: src/modules/multiple-authors/multiple-authors.php:2689
 msgid ""
 "This will allows you map a WordPress user to more than one author. Don't "
 "use this feature unless requested to do so by the PublishPress team. This "
@@ -4545,51 +4743,51 @@ msgstr ""
 "这将允许您将一个 WordPress 用户映射到多个作者。除非 PublishPress "
 "团队要求，否则请不要使用此功能。当作者和用户一对一配对时，此插件效果更好。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2665
+#: src/modules/multiple-authors/multiple-authors.php:2712
 msgid ""
 "Allow the same author to be assigned to more than one Author Category on a "
 "single post."
 msgstr "允许在单个帖子中将同一作者分配给多个作者类别。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2689
+#: src/modules/multiple-authors/multiple-authors.php:2736
 msgid "This will display the authors."
 msgstr "这将显示作者。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2713
+#: src/modules/multiple-authors/multiple-authors.php:2760
 msgid "This will display the published date."
 msgstr "这将显示发布时间。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2737
+#: src/modules/multiple-authors/multiple-authors.php:2784
 msgid "This will display the comment count."
 msgstr "这将显示评论数量。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2761
+#: src/modules/multiple-authors/multiple-authors.php:2808
 msgid "This will display the categories."
 msgstr "这将显示类别。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2785
+#: src/modules/multiple-authors/multiple-authors.php:2832
 msgid "This will display the tags."
 msgstr "这将显示标签。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2809
+#: src/modules/multiple-authors/multiple-authors.php:2856
 msgid "This will display the read more link."
 msgstr "这将显示“阅读更多”链接。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2832
+#: src/modules/multiple-authors/multiple-authors.php:2879
 msgid ""
 "This will hide the \"Post not found for the author\" text when an author "
 "has no posts."
 msgstr "当作者没有帖子时，这将隐藏“未找到作者的帖子”文本。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2870
+#: src/modules/multiple-authors/multiple-authors.php:2915
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr "此设置可能会对无法编辑他人帖子用户禁用。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2893
+#: src/modules/multiple-authors/multiple-authors.php:2938
 msgid "Search for a fallback author"
 msgstr "搜索备用作者"
 
-#: src/modules/multiple-authors/multiple-authors.php:2906
+#: src/modules/multiple-authors/multiple-authors.php:2949
 msgid ""
 "If you only have Guest Authors selected for a post, this user may be used "
 "as a fallback. WordPress sometimes requires a WordPress user to be assigned "
@@ -4598,95 +4796,95 @@ msgstr ""
 "如果您仅为帖子选择了访客作者，则此用户可以用作后备。WordPress 有时要求每个帖子分配一个 WordPress "
 "用户。此用户将在您网站的前端不可见。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2924
+#: src/modules/multiple-authors/multiple-authors.php:2967
 msgid "This will display the authors email in the author box."
 msgstr "这将显示作者邮箱在作者框中。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2944
+#: src/modules/multiple-authors/multiple-authors.php:2987
 msgid "This will display the authors site in the author box."
 msgstr "这将显示作者网站在作者框中。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2964
+#: src/modules/multiple-authors/multiple-authors.php:3007
 msgid "This will load Font Awesome icons for use in Author Boxes."
 msgstr "这将加载Font Awesome图标以供作者框使用。"
 
-#: src/modules/multiple-authors/multiple-authors.php:2982
+#: src/modules/multiple-authors/multiple-authors.php:3025
 msgid "This will remove the Authors Box in \"Quick Edit\"."
 msgstr "这将删除“快速编辑”中的作者框。"
 
-#: src/modules/multiple-authors/multiple-authors.php:3001
+#: src/modules/multiple-authors/multiple-authors.php:3044
 msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr "为所有帖子作者创建PublishPress作者档案"
 
-#: src/modules/multiple-authors/multiple-authors.php:3002
+#: src/modules/multiple-authors/multiple-authors.php:3045
 msgid ""
 "If a WordPress user is the author of a post, but does not have a "
 "PublishPress Authors profile, this will automatically create a profile for "
 "them."
 msgstr "如果一个 WordPress 用户是帖子的作者，但没有 PublishPress Authors 个人资料，这将自动为他们创建一个个人资料。"
 
-#: src/modules/multiple-authors/multiple-authors.php:3002
-#: src/modules/multiple-authors/multiple-authors.php:3008
-#: src/modules/multiple-authors/multiple-authors.php:3014
-#: src/modules/multiple-authors/multiple-authors.php:3021
+#: src/modules/multiple-authors/multiple-authors.php:3045
+#: src/modules/multiple-authors/multiple-authors.php:3051
+#: src/modules/multiple-authors/multiple-authors.php:3057
+#: src/modules/multiple-authors/multiple-authors.php:3064
 msgid "Click here for documentation"
 msgstr "点击此处查看文档"
 
-#: src/modules/multiple-authors/multiple-authors.php:3003
+#: src/modules/multiple-authors/multiple-authors.php:3046
 msgid "Create missing PublishPress Authors profiles"
 msgstr "创建缺失的PublishPress作者档案"
 
-#: src/modules/multiple-authors/multiple-authors.php:3007
+#: src/modules/multiple-authors/multiple-authors.php:3050
 msgid "Create PublishPress Authors Profiles for all users in a role"
 msgstr "为角色中的所有用户创建 PublishPress 作者档案"
 
-#: src/modules/multiple-authors/multiple-authors.php:3008
+#: src/modules/multiple-authors/multiple-authors.php:3051
 msgid ""
 "This will find all the users in a role and create author profiles for them. "
 "You can choose the roles using the \"Automatically create author profiles\" "
 "setting."
 msgstr "这将找到角色中的所有用户并为他们创建作者个人资料。您可以使用 \"自动创建作者个人资料\" 设置选择角色。"
 
-#: src/modules/multiple-authors/multiple-authors.php:3009
+#: src/modules/multiple-authors/multiple-authors.php:3052
 msgid "Create PublishPress Authors profiles"
 msgstr "创建 PublishPress 作者档案"
 
-#: src/modules/multiple-authors/multiple-authors.php:3013
+#: src/modules/multiple-authors/multiple-authors.php:3056
 msgid "Synchronize PublishPress Authors Fields and user profile fields"
 msgstr "同步 PublishPress 作者字段和用户档案字段"
 
-#: src/modules/multiple-authors/multiple-authors.php:3014
+#: src/modules/multiple-authors/multiple-authors.php:3057
 msgid ""
 "This will update all the author profiles in PublishPress Authors to match "
 "the default WordPress fields for each user."
 msgstr "这将更新 PublishPress Authors 中的所有作者个人资料，以匹配每个用户的默认 WordPress 字段。"
 
-#: src/modules/multiple-authors/multiple-authors.php:3020
+#: src/modules/multiple-authors/multiple-authors.php:3063
 msgid "Synchronize the author and user URLs"
 msgstr "同步作者和用户的 URL"
 
-#: src/modules/multiple-authors/multiple-authors.php:3021
+#: src/modules/multiple-authors/multiple-authors.php:3064
 msgid ""
 "This will update all the Author URLs in PublishPress Authors to match the "
 "default WordPress URLs for each user."
 msgstr "这将更新 PublishPress Authors 中的所有作者 URL，以匹配每个用户的默认 WordPress URL。"
 
-#: src/modules/multiple-authors/multiple-authors.php:3027
-#: src/modules/multiple-authors/multiple-authors.php:3029
+#: src/modules/multiple-authors/multiple-authors.php:3070
+#: src/modules/multiple-authors/multiple-authors.php:3072
 msgid "Create Author Categories"
 msgstr "创建作者分类"
 
-#: src/modules/multiple-authors/multiple-authors.php:3028
+#: src/modules/multiple-authors/multiple-authors.php:3071
 msgid ""
 "This will create author categories table if missing and add default "
 "categories."
 msgstr "如果缺失，这将创建作者类别表并添加默认类别。"
 
-#: src/modules/multiple-authors/multiple-authors.php:3041
+#: src/modules/multiple-authors/multiple-authors.php:3084
 msgid "Copy Co-Authors Plus Data"
 msgstr "复制 Co-Authors Plus 数据"
 
-#: src/modules/multiple-authors/multiple-authors.php:3042
+#: src/modules/multiple-authors/multiple-authors.php:3085
 msgid ""
 "This action will copy the authors from the plugin Co-Authors Plus allowing "
 "you to migrate to PublishPress Authors without losing any data. This action "
@@ -4695,11 +4893,11 @@ msgstr ""
 "此操作将从插件 Co-Authors Plus 复制作者，允许您在不丢失任何数据的情况下迁移到 PublishPress "
 "Authors。此操作可以多次运行。"
 
-#: src/modules/multiple-authors/multiple-authors.php:3052
+#: src/modules/multiple-authors/multiple-authors.php:3095
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr "删除作者档案与用户之间的连接"
 
-#: src/modules/multiple-authors/multiple-authors.php:3053
+#: src/modules/multiple-authors/multiple-authors.php:3096
 msgid ""
 "This action can reset the PublishPress Authors data before using other "
 "maintenance options. It will delete all author profiles that are mapped to "
@@ -4709,15 +4907,15 @@ msgstr ""
 "此操作可以在使用其他维护选项之前重置 PublishPress Authors 数据。它将删除所有与 WordPress "
 "用户帐户映射的作者个人资料。这不会删除 WordPress 用户帐户，但帖子和作者个人资料之间的任何链接将丢失。"
 
-#: src/modules/multiple-authors/multiple-authors.php:3054
+#: src/modules/multiple-authors/multiple-authors.php:3097
 msgid "Delete all authors mapped to users"
 msgstr "删除所有映射到用户的作者"
 
-#: src/modules/multiple-authors/multiple-authors.php:3059
+#: src/modules/multiple-authors/multiple-authors.php:3102
 msgid "Delete Guest Authors"
 msgstr "删除访客作者"
 
-#: src/modules/multiple-authors/multiple-authors.php:3060
+#: src/modules/multiple-authors/multiple-authors.php:3103
 msgid ""
 "This action can reset the PublishPress Authors data before using other "
 "maintenance options. Guest authors are author profiles that are not mapped "
@@ -4726,139 +4924,139 @@ msgstr ""
 "此操作可以在使用其他维护选项之前重置 PublishPress Authors 数据。访客作者是未映射到 WordPress "
 "用户帐户的作者个人资料。此操作将删除所有访客作者。"
 
-#: src/modules/multiple-authors/multiple-authors.php:3061
+#: src/modules/multiple-authors/multiple-authors.php:3104
 msgid "Delete all guest authors"
 msgstr "删除所有访客作者"
 
-#: src/modules/multiple-authors/multiple-authors.php:3067
+#: src/modules/multiple-authors/multiple-authors.php:3110
 msgid ""
 "Please be careful clicking these buttons. Before clicking, we recommend "
 "taking a site backup in case anything goes wrong."
 msgstr "请小心点击这些按钮。在点击之前，我们建议进行网站备份，以防出现任何问题。"
 
-#: src/modules/multiple-authors/multiple-authors.php:3278
+#: src/modules/multiple-authors/multiple-authors.php:3333
 msgid "Author Profiles"
 msgstr "作者档案"
 
-#: src/modules/multiple-authors/multiple-authors.php:3281
+#: src/modules/multiple-authors/multiple-authors.php:3336
 msgid "Integration"
 msgstr "集成"
 
-#: src/modules/multiple-authors/multiple-authors.php:3282
+#: src/modules/multiple-authors/multiple-authors.php:3337
 msgid "Maintenance"
 msgstr "维护"
 
-#: src/modules/multiple-authors/multiple-authors.php:3283
+#: src/modules/multiple-authors/multiple-authors.php:3338
 msgid "Advanced"
 msgstr "高级"
 
-#: src/modules/multiple-authors/multiple-authors.php:3878
+#: src/modules/multiple-authors/multiple-authors.php:3993
 msgid "Invalid nonce"
 msgstr "无效的随机数"
 
-#: src/modules/multiple-authors/multiple-authors.php:3882
+#: src/modules/multiple-authors/multiple-authors.php:3997
 msgid "Access denied"
 msgstr "访问被拒绝"
 
-#: src/modules/multiple-authors/multiple-authors.php:4055
+#: src/modules/multiple-authors/multiple-authors.php:4170
 msgid "Error. Author terms could not be reseted."
 msgstr "错误。无法重置作者条款。"
 
-#: src/modules/multiple-authors/multiple-authors.php:4066
+#: src/modules/multiple-authors/multiple-authors.php:4181
 msgid "Maintenance completed successfully."
 msgstr "维护成功完成。"
 
-#: src/modules/multiple-authors/multiple-authors.php:4185
-#: src/modules/multiple-authors/multiple-authors.php:4216
+#: src/modules/multiple-authors/multiple-authors.php:4300
+#: src/modules/multiple-authors/multiple-authors.php:4331
 msgid "Collecting data..."
 msgstr "正在收集数据..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4186
-#: src/modules/multiple-authors/multiple-authors.php:4217
+#: src/modules/multiple-authors/multiple-authors.php:4301
+#: src/modules/multiple-authors/multiple-authors.php:4332
 msgid "Finishing the process..."
 msgstr "正在完成过程..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4187
+#: src/modules/multiple-authors/multiple-authors.php:4302
 #, php-format
 msgid "Done! %d posts were updated."
 msgstr "完成！%d 篇文章已更新。"
 
-#: src/modules/multiple-authors/multiple-authors.php:4189
+#: src/modules/multiple-authors/multiple-authors.php:4304
 msgid "Updating author field on posts..."
 msgstr "正在更新文章中的作者字段..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4190
+#: src/modules/multiple-authors/multiple-authors.php:4305
 #, php-format
 msgid "Updated %d of %d posts..."
 msgstr "更新了 %d 篇中的 %d 篇文章..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4215
+#: src/modules/multiple-authors/multiple-authors.php:4330
 msgid "Sync author and user URLs"
 msgstr "同步作者和用户网址"
 
-#: src/modules/multiple-authors/multiple-authors.php:4218
+#: src/modules/multiple-authors/multiple-authors.php:4333
 #, php-format
 msgid "Done! %d authors were updated."
 msgstr "完成！%d 位作者已更新。"
 
-#: src/modules/multiple-authors/multiple-authors.php:4220
+#: src/modules/multiple-authors/multiple-authors.php:4335
 msgid "Updating authors slug..."
 msgstr "正在更新作者别名..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4221
+#: src/modules/multiple-authors/multiple-authors.php:4336
 #, php-format
 msgid "Updated %d of %d authors..."
 msgstr "更新了 %d 位作者中的 %d 位..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4255
+#: src/modules/multiple-authors/multiple-authors.php:4370
 msgid "Creating missed post authors...."
 msgstr "正在创建缺失的文章作者...."
 
-#: src/modules/multiple-authors/multiple-authors.php:4258
+#: src/modules/multiple-authors/multiple-authors.php:4373
 msgid "Copy Co-Authors Plus data"
 msgstr "复制 Co-Authors Plus 数据"
 
-#: src/modules/multiple-authors/multiple-authors.php:4259
+#: src/modules/multiple-authors/multiple-authors.php:4374
 msgid "Deactivating Co-uthors Plus..."
 msgstr "正在停用 Co-Authors Plus..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4260
+#: src/modules/multiple-authors/multiple-authors.php:4375
 msgid "Done! Co-Authors Plus is deactivated."
 msgstr "完成！Co-Authors Plus 已停用。"
 
-#: src/modules/multiple-authors/multiple-authors.php:4261
+#: src/modules/multiple-authors/multiple-authors.php:4376
 msgid "Deactivate Co-Authors Plus"
 msgstr "停用 Co-Authors Plus"
 
-#: src/modules/multiple-authors/multiple-authors.php:4262
+#: src/modules/multiple-authors/multiple-authors.php:4377
 msgid "Done! Co-Authors Plus data was copied."
 msgstr "完成！Co-Authors Plus 数据已复制。"
 
-#: src/modules/multiple-authors/multiple-authors.php:4955
+#: src/modules/multiple-authors/multiple-authors.php:5070
 msgid "It looks like you have Co-Authors Plus installed."
 msgstr "看起来您已经安装了 Co-Authors Plus。"
 
-#: src/modules/multiple-authors/multiple-authors.php:4956
+#: src/modules/multiple-authors/multiple-authors.php:5071
 msgid "Please click here and read this guide!"
 msgstr "请点击这里阅读此指南！"
 
-#: src/modules/multiple-authors/multiple-authors.php:5039
+#: src/modules/multiple-authors/multiple-authors.php:5154
 msgid ""
 "PublishPress Authors could not complete the background database update for "
 "Permissions integration."
 msgstr "PublishPress Authors 无法完成权限集成的后台数据库更新。"
 
-#: src/modules/multiple-authors/multiple-authors.php:5040
+#: src/modules/multiple-authors/multiple-authors.php:5155
 msgid ""
 "PublishPress Authors is waiting to complete the background database update "
 "for Permissions integration."
 msgstr "PublishPress Authors 正在等待完成权限集成的后台数据库更新。"
 
-#: src/modules/multiple-authors/multiple-authors.php:5046
+#: src/modules/multiple-authors/multiple-authors.php:5161
 msgid "Run the update manually"
 msgstr "手动运行更新"
 
-#: src/modules/multiple-authors/multiple-authors.php:5478
+#: src/modules/multiple-authors/multiple-authors.php:5628
 msgid "Guest Author cannot login on the site."
 msgstr "访客作者无法登录网站。"
 
@@ -4913,17 +5111,11 @@ msgstr "此 WordPress 用户已经映射到另一位作者。"
 msgid "Author was created but could not be retrieved."
 msgstr "作者已创建但无法检索。"
 
-#: src/modules/rest-api/rest-api.php:487
-#: src/modules/rest-api/rest-api.php:503
-#: src/modules/rest-api/rest-api.php:522
-msgid "Author not found."
-msgstr "未找到作者。"
-
-#: src/modules/rest-api/rest-api.php:550
+#: src/modules/rest-api/rest-api.php:555
 msgid "You cannot edit author mapped to administrator account."
 msgstr "您无法编辑映射到管理员账户的作者。"
 
-#: src/modules/rest-api/rest-api.php:560
+#: src/modules/rest-api/rest-api.php:566
 msgid "You do not have permission to edit this author."
 msgstr "您没有权限编辑此作者。"
 
@@ -4983,29 +5175,42 @@ msgstr "Yoast SEO 集成"
 msgid "Add compatibility with the Yoast SEO plugin"
 msgstr "添加与 Yoast SEO 插件的兼容性"
 
-#: src/templates/parts/author-pages-grid.php:152
-#: src/templates/parts/author-pages-list.php:141
+#: src/templates/parts/author-pages-grid.php:155
+#: src/templates/parts/author-pages-list.php:144
 msgid "Comment counts"
 msgstr "评论数量"
 
-#: src/templates/parts/author-pages-grid.php:180
-#: src/templates/parts/author-pages-list.php:173
+#: src/templates/parts/author-pages-grid.php:162
+#: src/templates/parts/author-pages-list.php:151
+#. translators: %s: post title
+#, php-format
+msgid "comment on %s"
+msgid_plural "comments on %s"
+msgstr[0] "对 %s 进行评论"
+
+#: src/templates/parts/author-pages-grid.php:194
+#: src/templates/parts/author-pages-list.php:187
 msgid "Prev"
 msgstr "上一页"
 
-#: src/templates/parts/author-pages-grid.php:181
-#: src/templates/parts/author-pages-list.php:174
+#: src/templates/parts/author-pages-grid.php:195
+#: src/templates/parts/author-pages-list.php:188
 msgid "Next"
 msgstr "下一页"
 
-#: src/templates/parts/author-pages-grid.php:187
-#: src/templates/parts/author-pages-list.php:180
+#: src/templates/parts/author-pages-grid.php:201
+#: src/templates/parts/author-pages-list.php:194
 msgid "Post not found for the author"
 msgstr "未找到该作者的帖子"
 
-#: src/templates/parts/author-pages-list.php:134
+#: src/templates/parts/author-pages-list.php:137
 msgid "Published date"
 msgstr "发布日期"
+
+#: src/views/authors_recent.html.php:27
+#, php-format
+msgid "View %s"
+msgstr "查看 %s"
 
 #: src/views/footer-base.html.php:14
 #, php-format
@@ -5034,19 +5239,19 @@ msgctxt "taxonomy singular name"
 msgid "Author"
 msgstr "作者"
 
-#: src/modules/author-boxes/author-boxes.php:569
+#: src/modules/author-boxes/author-boxes.php:572
 #, fuzzy, php-format
 msgctxt "Author Box post type name"
 msgid "%2$s"
 msgstr "%2$s"
 
-#: src/modules/author-boxes/author-boxes.php:570
+#: src/modules/author-boxes/author-boxes.php:573
 #, fuzzy, php-format
 msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
-#: src/modules/author-boxes/author-boxes.php:585
+#: src/modules/author-boxes/author-boxes.php:588
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
 msgid "%2$s"

@@ -233,7 +233,7 @@ class PPAuthorsBylinesMigrationBox extends React.Component {
         let isEnabled = !this.state.inProgress;
 
         let progressBar = (this.state.inProgress) ? this.renderProgressBar() : '';
-        let logPanel = (this.state.log != '') ? this.renderLog() : '';
+        let logPanel = this.renderLog();
         let deactivatePluginPanel = (this.state.showDeactivateOption) ? this.renderDeactivatePluginOption() : '';
 
         return (
@@ -275,7 +275,7 @@ class PPAuthorsMaintenanceLog extends React.Component {
     render() {
         return (
             <div>
-                <div class="ppma_maintenance_log" readOnly={true}>{this.props.log}</div>
+                <div class="ppma_maintenance_log" role="status" aria-live="polite" aria-atomic="true" readOnly={true}>{this.props.log}</div>
             </div>
         );
     }
@@ -295,10 +295,12 @@ class PPAuthorsProgressBar extends React.Component {
     render() {
         let className = 'p-progressbar p-component p-progressbar-determinate';
         let label = this.renderLabel();
+        let progressLabel = 'Migration progress';
+        let valueText = this.props.value + '% complete';
 
         return (
             <div role="progressbar" id={this.props.id} className={className} style={this.props.style} aria-valuemin="0"
-                 aria-valuenow={this.props.value} aria-valuemax="100" aria-label={this.props.value}>
+                 aria-valuenow={this.props.value} aria-valuemax="100" aria-label={progressLabel} aria-valuetext={valueText}>
                 <div className="p-progressbar-value p-progressbar-value-animate"
                      style={{width: this.props.value + '%', display: 'block'}}></div>
                 {label}
@@ -314,4 +316,3 @@ jQuery(function () {
         document.getElementById('publishpress-authors-bylines-migration')
     );
 });
-

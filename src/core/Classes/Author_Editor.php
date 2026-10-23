@@ -83,10 +83,10 @@ class Author_Editor
             $author = Author::get_by_term_id($term_id);
 
             $retval = $author->get_avatar(32);
-            $retval .= '<strong><a class="row-title" aria-label="' . $author->display_name . '" href="' . get_edit_term_link(
+            $retval .= '<strong><a class="row-title" aria-label="' . esc_attr($author->display_name) . '" href="' . esc_url(get_edit_term_link(
                     $author->term_id,
                     'author'
-                ) . '">' . $author->display_name . '</a>';
+                )) . '">' . esc_html($author->display_name) . '</a>';
 
             /*if (!$author->is_guest()) {
                 $retval .= ' — <span class="post-state">' . __('User', 'publishpress-authors') . '</span>';
@@ -101,8 +101,8 @@ class Author_Editor
 
             // Inline edit data (quick edit)
             $retval .= '<div class="hidden" id="inline_' . $term_id . '">';
-            $retval .= '<div class="name">' . $author->display_name . '</div>';
-            $retval .= '<div class="slug">' . $author->slug . '</div>';
+            $retval .= '<div class="name">' . esc_html($author->display_name) . '</div>';
+            $retval .= '<div class="slug">' . esc_html($author->slug) . '</div>';
             $retval .= '<div class="parent">0</div></div>';
         } elseif ('author_user_email' === $column_name) {
             $author = Author::get_by_term_id($term_id);
@@ -402,6 +402,25 @@ class Author_Editor
                     ],
                 ],
             ],
+            'avatar_alt'  => [
+                'label'       => esc_html__('Alternative Text', 'publishpress-authors'),
+                'type'        => 'textarea',
+                'sanitize'    => [self::class, 'sanitizeAvatarAlt'],
+                'tab'         => 'image',
+                'description' => esc_html__(
+                    'Describe the avatar. Leave blank to use the Media Library alternative text or author name.',
+                    'publishpress-authors'
+                ),
+            ],
+            'avatar_decorative' => [
+                'label'       => esc_html__('Decorative Image', 'publishpress-authors'),
+                'type'        => 'checkbox',
+                'tab'         => 'image',
+                'description' => esc_html__(
+                    'Use empty alternative text when this avatar is decorative.',
+                    'publishpress-authors'
+                ),
+            ],
             'user_url'    => [
                 'label'    => esc_html__('Website', 'publishpress-authors'),
                 'type'     => 'url',
@@ -456,6 +475,18 @@ class Author_Editor
     }
 
     /**
+     * Sanitize avatar alternative text.
+     *
+     * @param string $value Alternative text.
+     *
+     * @return string
+     */
+    public static function sanitizeAvatarAlt($value)
+    {
+        return mb_substr(sanitize_text_field($value), 0, 500);
+    }
+
+    /**
      * Get a rendered field partial
      *
      * @param array $args Arguments to render in the partial.
@@ -481,6 +512,9 @@ class Author_Editor
         } else {
             $required  = false;
         }
+        // Field types without a single form control the row label can point at.
+        $labelable     = !in_array($args['type'], ['image', 'avatar', 'button_group'], true);
+        $aria_required = $required ? ' aria-required="true"' : '';
         ob_start();
         ?>
         <tr
@@ -490,9 +524,14 @@ class Author_Editor
             >
             <th scope="row">
                 <?php if (!empty($args['label'])) : ?>
-                    <label for="<?php echo esc_attr($key); ?>"><?php echo esc_html($args['label']); ?></label>
+                    <?php if ($labelable) : ?>
+                        <label for="<?php echo esc_attr($key); ?>"><?php echo esc_html($args['label']); ?></label>
+                    <?php else : ?>
+                        <label><?php echo esc_html($args['label']); ?></label>
+                    <?php endif; ?>
                     <?php if ($required) : ?>
-                        <span class="required">*</span>
+                        <span class="required" aria-hidden="true">*</span>
+                        <span class="screen-reader-text"><?php esc_html_e('(required)', 'publishpress-authors'); ?></span>
                     <?php endif; ?>
                 <?php endif; ?>
             </th>
@@ -534,6 +573,8 @@ class Author_Editor
                     }
                     ?>
 
+                    <fieldset>
+                    <legend class="screen-reader-text"><?php echo esc_html($args['label']); ?></legend>
                     <?php foreach ($avatar_options as $avatar_option_key => $avatar_option_data) { ?>
                         <p>
                             <input name="<?php echo esc_attr($key.'-options'); ?>" type="radio"
@@ -549,6 +590,7 @@ class Author_Editor
                             </label>
                         </p>
                     <?php } ?>
+                    </fieldset>
 
                     <div class="author-image-field-wrapper" style="<?php echo esc_attr($image_field_style); ?>">
                         <div class="author-image-field-container">
@@ -570,12 +612,14 @@ class Author_Editor
                     </div>
                 <?php elseif ('textarea' === $args['type']) : ?>
                     <textarea
-                            name="<?php echo esc_attr($key); ?>"><?php echo esc_textarea($args['value']); ?></textarea>
+                            name="<?php echo esc_attr($key); ?>"
+                            id="<?php echo esc_attr($key); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo esc_textarea($args['value']); ?></textarea>
                 <?php
                 elseif ('ajax_user_select' === $args['type']) :
                     $user = !empty($args['value']) ? get_user_by('id', $args['value']) : false;
                     ?>
                     <select data-nonce="<?php echo esc_attr(wp_create_nonce('authors-user-search')); ?>"
+                            id="<?php echo esc_attr($key); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                             placeholder="<?php esc_attr_e('Select a user', 'publishpress-authors'); ?>"
                             class="authors-select2-user-select" name="<?php echo esc_attr($key); ?>" style="width: 95%">
                         <option></option>
@@ -614,7 +658,7 @@ class Author_Editor
 
                 <?php elseif ('select' === $args['type']) :
                     ?>
-                    <select name="<?php echo esc_attr($key); ?>" id="<?php echo esc_attr($key); ?>"/>
+                    <select name="<?php echo esc_attr($key); ?>" id="<?php echo esc_attr($key); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
                     <?php foreach ($args['options'] as $option_value => $option_text) :
                      ?>
                         <option value="<?php echo esc_attr($option_value); ?>" <?php selected($option_value, $args['value']); ?>><?php echo esc_html($option_text); ?></option>
@@ -622,7 +666,7 @@ class Author_Editor
                     </select>
                 <?php else : ?>
                     <input name="<?php echo esc_attr($key); ?>" type="<?php echo esc_attr($args['type']); ?>"
-                           id="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr($args['value']); ?>"/>
+                           id="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr($args['value']); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>/>
                 <?php endif; ?>
 
                 <?php if (!empty($args['description'])) : ?>
@@ -721,13 +765,19 @@ class Author_Editor
          * Make sure current user is set as user ID if user does not
          * have capability to edit other authors/users.
          *
-         * Note: Prevent ability to edit administrator completely.
+         * Note: Only administrators can edit administrator accounts if setting is enabled.
          */
         if ($user && (int)$user_id !== get_current_user_id()) {
-            // Prevent editing administrators completely
+            // Only administrators can edit administrators if setting is enabled
             if (in_array('administrator', $user->roles)) {
-                $user_id = false;
-                $user = false;
+                $legacyPlugin = Factory::getLegacyPlugin();
+                $allow_admin_edit = isset($legacyPlugin->modules->multiple_authors->options->allow_admin_edit_admin_profiles)
+                    && $legacyPlugin->modules->multiple_authors->options->allow_admin_edit_admin_profiles === 'yes';
+
+                if (!current_user_can('manage_options') || !$allow_admin_edit) {
+                    $user_id = false;
+                    $user = false;
+                }
             }
             // Check if the user lacks the necessary capabilities and prevent the user update
             elseif (!current_user_can(get_taxonomy('author')->cap->manage_terms)
@@ -919,7 +969,7 @@ class Author_Editor
             echo '</div>';
             ?>
             <div class="form-field term-author_email-wrap" style="display: none;">
-                <label class="ppma-account-email"><?php echo esc_html__('Author Email', 'publishpress-authors'); ?> <span class="required">*</span></label>
+                <label class="ppma-account-email" for="authors-author_email"><?php echo esc_html__('Author Email', 'publishpress-authors'); ?> <span class="required">*</span></label>
                 <?php
                 echo static::get_rendered_author_partial( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     [
@@ -931,7 +981,7 @@ class Author_Editor
             echo '</div>';
             ?>
             <div class="form-field term-user_id-wrap">
-                <label for="tag-user-id"><?php echo esc_html__('User Account', 'publishpress-authors'); ?> <span class="required">*</span></label>
+                <label for="authors-new"><?php echo esc_html__('User Account', 'publishpress-authors'); ?> <span class="required">*</span></label>
                 <?php
                 echo static::get_rendered_author_partial( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     [

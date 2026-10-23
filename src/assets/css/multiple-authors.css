@@ -181,14 +181,28 @@ ul.authors-list.authors-current-user-can-assign li:hover {
 
 ul.authors-list.authors-current-user-can-assign li .author-remove {
     position: absolute;
-    display: block;
-    right: 5px;
-    width: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 1px;
+    width: 24px;
+    height: 24px;
     z-index: 1;
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     cursor: pointer;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    border-radius: 2px;
+}
+
+ul.authors-list.authors-current-user-can-assign li .author-remove:focus {
+    outline: 2px solid transparent;
+    box-shadow: 0 0 0 2px #2271b1;
 }
 
 ul.authors-list.authors-current-user-can-assign li .author-remove .dashicons {
@@ -283,7 +297,7 @@ body.block-editor-page select[id^="post-author-selector-"] {
 
 .ppma_settings_field_description {
     margin-bottom: 10px !important;
-    color: gray;
+    color: #646970;
 }
 
 .ppma-module-settings table[id="ppma-tab-maintenance"] th {
@@ -322,7 +336,7 @@ body.block-editor-page select[id^="post-author-selector-"] {
 }
 
 .current-post-author-warning {
-    color: #d2ba83;
+    color: #996800;
     display: block;
     font-style: italic;
 }
@@ -352,7 +366,7 @@ form#edittag tr.form-field #slug {
 }
 
 .ppma-settings-shortcodes-shortcode code.color-red {
-    color: #de3e3e;
+    color: #b32d2e;
 }
 
 .ppma-settings-shortcodes-shortcode .shortcode-field {
@@ -371,6 +385,10 @@ form#edittag tr.form-field #slug {
     right: 30px;
     top: 15px;
     color: #655997;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    font: inherit;
 }
 
 .ppma-settings-shortcodes-shortcode .ppma-copy-clipboard span {
@@ -684,6 +702,12 @@ body.edit-php.post-type-ppma_boxes .tablenav.top .alignleft.actions:not(.bulkact
 .ppma-promo-simply-overlay a:focus {
     outline: none;
     box-shadow: none;
+}
+
+/* Dark ring: the theme blue is below 3:1 against the orange promo background. */
+.ppma-promo-simply-overlay a:focus-visible {
+    box-shadow: 0 0 0 2px #1d2327;
+    outline: 2px solid transparent;
 }
 
 .ppma-pro-loc-icon {

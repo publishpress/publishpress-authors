@@ -170,7 +170,7 @@
 }
 
 .ppma-author-boxes-editor-table .field-description {
-    color: gray;
+    color: #646970;
 }
 
 .ppma-author-boxes-editor-table .author-boxes-field-icon {
@@ -295,8 +295,12 @@
 }
 
 .ppma-boxes-shortcodes-wrap .shortcode-entries .delete-shortcode {
-    color: #f54d4d;
+    color: #b32d2e;
     cursor: pointer;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    font: inherit;
 }
 
 .ppma-boxes-editor-tab-content.ppma-profile_fields-tab.profile_header .input {
@@ -339,6 +343,11 @@
     text-decoration: none;
     line-height: 20px !important;
     border-bottom: 1px solid #eee;
+}
+
+.publishpress-author-box-editor .ppma-author-box-editor-tabs ul li a:focus-visible {
+    box-shadow: inset 0 0 0 2px var(--wp-admin-theme-color, #2271b1);
+    outline: 2px solid transparent;
 }
 
 .publishpress-author-box-editor .ppma-author-box-editor-tabs ul li {
@@ -407,6 +416,11 @@
     color: #655997;
     margin-bottom: 10px;
     text-align: right;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    font: inherit;
 }
 
 .ppma-editor-field-reorder-btn .dashicons {
@@ -475,7 +489,7 @@
 }
 
 .ppma-author-boxes-editor-table .code-mirror-before div {
-    color: #8F8F8F;
+    color: #646970;
     margin-left: 54.35px;
     border-left: 1px solid #ddd;
     padding: 3px 8px;
@@ -493,7 +507,7 @@
 }
 
 .ppma-author-boxes-editor-table .code-mirror-after div {
-    color: #8F8F8F;
+    color: #646970;
     margin-left: 54.35px;
     border-left: 1px solid #ddd;
     padding: 3px 8px;

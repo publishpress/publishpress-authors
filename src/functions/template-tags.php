@@ -1019,6 +1019,7 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
                         $post_index++;
                         if ($post_index === 1) {
                             $featured_image = PP_AUTHORS_ASSETS_URL . 'img/no-image.jpeg';
+                            $featured_image_alt = '';
                             if (has_post_thumbnail($author_recent_post)) {
                                 if (!empty($featured_image_size)) {
                                     $featured_image_data = wp_get_attachment_image_src(get_post_thumbnail_id($author_recent_post), $featured_image_size);
@@ -1028,16 +1029,22 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
                                 if ($featured_image_data && is_array($featured_image_data)) {
                                     $featured_image = $featured_image_data[0];
                                 }
+                                $featured_image_alt = get_post_meta(get_post_thumbnail_id($author_recent_post), '_wp_attachment_image_alt', true);
+                                if (empty($featured_image_alt)) {
+                                    $featured_image_alt = get_the_title($author_recent_post);
+                                }
                             }
 
                         } else {
                             $featured_image = false;
+                            $featured_image_alt = '';
                         }
                         $author_recent[$author_recent_post] = [
                             'ID'              => $author_recent_post,
                             'post_title'      => html_entity_decode(get_the_title($author_recent_post)),
                             'permalink'       => get_the_permalink($author_recent_post),
-                            'featuired_image' => $featured_image
+                            'featuired_image' => $featured_image,
+                            'featured_image_alt' => $featured_image_alt,
 
                         ];
                     }
@@ -2457,7 +2464,8 @@ if (!function_exists('publishpress_authors_remove_single_user_map_restriction'))
     function publishpress_authors_remove_single_user_map_restriction() {
          $legacyPlugin = Factory::getLegacyPlugin();
 
-         $remove = $legacyPlugin->modules->multiple_authors->options->enable_guest_author_user === 'yes';
+         $remove = isset($legacyPlugin->modules->multiple_authors->options->remove_single_user_map_restriction)
+            && $legacyPlugin->modules->multiple_authors->options->remove_single_user_map_restriction === 'yes';
 
          if (function_exists('pll_current_language') && function_exists('pll_get_term')) {
             // This restriction should be removed for Polylang due to multi-lang feature
