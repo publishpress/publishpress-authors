@@ -2338,7 +2338,7 @@ if (!class_exists('MA_Multiple_Authors')) {
 
 echo '<span class="ppma_settings_field_description">'
     . esc_html__(
-        'This avatar will be used as default avatar instead of gravatar where no custom avatar is added to profile.',
+        'This avatar will be used if no custom avatar is uploaded for an author profile.',
         'publishpress-authors'
     )
     . '</span>';
