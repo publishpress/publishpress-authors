@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => 'df8bf5df4abbc6e3c8b353e199470e695b97dcf6',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,18 +11,18 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'df8bf5df4abbc6e3c8b353e199470e695b97dcf6',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'cmb2/cmb2' => array(
-            'pretty_version' => 'v2.13.2',
-            'version' => '2.13.2.0',
-            'reference' => '7b5eb968df05db393f5801ed1db3fa952e4afa07',
+            'pretty_version' => 'v2.13.4',
+            'version' => '2.13.4.0',
+            'reference' => '9916c5b21b0f0618f878d4ba4b625ae124d1fae7',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../cmb2/cmb2',
             'aliases' => array(),
