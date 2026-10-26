@@ -183,7 +183,7 @@ class DataMigrationBox extends React.Component {
 
     render() {
         let progressBar = (this.state.inProgress) ? <ProgressBar value={this.state.progress}/> : '';
-        let logPanel = (this.state.log != '') ? <LogBox log={this.state.log}/> : '';
+        let logPanel = <LogBox log={this.state.log}/>;
 
         return (
             <div>

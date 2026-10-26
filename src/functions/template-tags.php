@@ -2464,7 +2464,8 @@ if (!function_exists('publishpress_authors_remove_single_user_map_restriction'))
     function publishpress_authors_remove_single_user_map_restriction() {
          $legacyPlugin = Factory::getLegacyPlugin();
 
-         $remove = $legacyPlugin->modules->multiple_authors->options->enable_guest_author_user === 'yes';
+         $remove = isset($legacyPlugin->modules->multiple_authors->options->remove_single_user_map_restriction)
+            && $legacyPlugin->modules->multiple_authors->options->remove_single_user_map_restriction === 'yes';
 
          if (function_exists('pll_current_language') && function_exists('pll_get_term')) {
             // This restriction should be removed for Polylang due to multi-lang feature
