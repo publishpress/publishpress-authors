@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-09-23 08:22+0000\n"
+"POT-Creation-Date: 2026-10-02T10:08:37+00:00\n"
+"PO-Revision-Date: 2026-10-23 09:15+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: publishpress-authors\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -33,6 +33,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-6: src/assets/lib\n"
 
 #: publishpress-authors.php:3
+#: src/abilities.php:44
 #: src/core/Plugin.php:743
 #: src/modules/settings/settings.php:64, fuzzy
 #. Plugin Name of the plugin
@@ -65,7 +66,7 @@ msgstr "PublishPress"
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
-#: includes.php:39
+#: includes.php:40
 #, php-format
 msgid ""
 "You're using PublishPress Authors Free. The Pro version has more features "
@@ -74,14 +75,14 @@ msgstr ""
 "Anda sedang menggunakan PublishPress Authors Gratis. Versi Pro memiliki "
 "lebih banyak fitur dan dukungan. %sUpgrade ke Pro%s"
 
-#: includes.php:63
-#: src/modules/author-boxes/author-boxes.php:3291
+#: includes.php:64
+#: src/modules/author-boxes/author-boxes.php:3332
 #: src/modules/author-categories/author-categories.php:739
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:545
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:550
 #: src/modules/author-custom-fields/author-custom-fields.php:995
 #: src/modules/author-custom-fields/author-custom-fields.php:1048
-#: src/modules/author-list/author-list.php:1598
-#: src/modules/author-list/author-list.php:1636
+#: src/modules/author-list/author-list.php:1599
+#: src/modules/author-list/author-list.php:1637
 msgid "Upgrade to Pro"
 msgstr "Upgrade ke Pro"
 
@@ -89,8 +90,69 @@ msgstr "Upgrade ke Pro"
 msgid "This plugin can be deleted."
 msgstr "Plugin ini bisa dihapus."
 
+#: src/abilities.php:45
+msgid "Read author profiles, available profile fields, and post bylines."
+msgstr "Baca profil penulis, bidang profil yang tersedia, dan keterangan pos."
+
+#: src/abilities.php:107
+msgid "List Authors"
+msgstr "Daftar Penulis"
+
+#: src/abilities.php:108
+msgid "Lists PublishPress Authors. Results never include author email addresses."
+msgstr ""
+"Menampilkan Penulis PublishPress. Hasil tidak pernah menyertakan alamat "
+"email penulis."
+
+#: src/abilities.php:133
+msgid "Get Author"
+msgstr "Ambil Penulis"
+
+#: src/abilities.php:134
+msgid ""
+"Gets one PublishPress Author by term ID. The response never includes an "
+"email address."
+msgstr ""
+"Mengambil satu Penulis PublishPress berdasarkan ID istilah. Respons tidak "
+"pernah menyertakan alamat email."
+
+#: src/abilities.php:157
+msgid "Get Post Authors"
+msgstr "Ambil Penulis Pos"
+
+#: src/abilities.php:158
+msgid ""
+"Gets the ordered PublishPress Authors assigned to one editable post. The "
+"response never includes author email addresses."
+msgstr ""
+"Mengambil Penulis PublishPress yang terurut yang ditugaskan ke satu pos "
+"yang dapat diedit. Respons tidak pernah menyertakan alamat email penulis."
+
+#: src/abilities.php:181
+msgid "Get Author Fields"
+msgstr "Ambil Bidang Penulis"
+
+#: src/abilities.php:182
+msgid ""
+"Lists enabled author-profile field definitions without exposing profile "
+"values."
+msgstr ""
+"Menampilkan definisi bidang profil penulis yang diaktifkan tanpa mengekspos "
+"nilai profil."
+
+#: src/abilities.php:336
+#: src/modules/rest-api/rest-api.php:487
+#: src/modules/rest-api/rest-api.php:503
+#: src/modules/rest-api/rest-api.php:522
+msgid "Author not found."
+msgstr "Penulis tidak ditemukan."
+
+#: src/abilities.php:359
+msgid "Post not found."
+msgstr "Pos tidak ditemukan."
+
 #: src/core/Authors_Widget.php:23
-#: src/modules/multiple-authors/multiple-authors.php:1588
+#: src/modules/multiple-authors/multiple-authors.php:1642
 msgid "Authors List"
 msgstr "Daftar Author"
 
@@ -100,14 +162,14 @@ msgstr "Tampilkan daftar author."
 
 #: src/core/Authors_Widget.php:133
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1334
-#: src/modules/author-list/author-list.php:575
+#: src/modules/author-list/author-list.php:576
 #: src/modules/author-list/classes/AuthorListTable.php:150
 msgid "Title"
 msgstr "Judul"
 
 #: src/core/Authors_Widget.php:134
 #: src/core/Widget.php:130
-#: src/modules/author-list/author-list.php:584
+#: src/modules/author-list/author-list.php:585
 #: src/modules/author-list/classes/AuthorListTable.php:151
 #: src/modules/author-pages/author-pages.php:118
 msgid "Layout"
@@ -126,6 +188,7 @@ msgid "Limits per page"
 msgstr "Batasi per halaman"
 
 #: src/core/Authors_Widget.php:141
+#: src/core/Authors_Widget.php:502
 #: src/core/Classes/Post_Editor.php:97
 #: src/core/Classes/Post_Editor.php:222
 #: src/core/Plugin.php:888
@@ -138,20 +201,20 @@ msgstr "Batasi per halaman"
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:535
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:626
 #: src/modules/author-categories/author-categories.php:787
-#: src/modules/author-list/author-list.php:647
-#: src/modules/author-list/author-list.php:661
+#: src/modules/author-list/author-list.php:648
+#: src/modules/author-list/author-list.php:662
 #: src/modules/editflow-integration/editflow-integration.php:114
-#: src/modules/multiple-authors/multiple-authors.php:337
-#: src/modules/multiple-authors/multiple-authors.php:338
-#: src/modules/multiple-authors/multiple-authors.php:386
-#: src/modules/multiple-authors/multiple-authors.php:387
-#: src/modules/multiple-authors/multiple-authors.php:406
-#: src/modules/multiple-authors/multiple-authors.php:1375
+#: src/modules/multiple-authors/multiple-authors.php:340
+#: src/modules/multiple-authors/multiple-authors.php:341
+#: src/modules/multiple-authors/multiple-authors.php:389
+#: src/modules/multiple-authors/multiple-authors.php:390
+#: src/modules/multiple-authors/multiple-authors.php:409
+#: src/modules/multiple-authors/multiple-authors.php:1429
 msgid "Authors"
 msgstr "Author"
 
 #: src/core/Authors_Widget.php:142
-#: src/modules/author-list/author-list.php:713
+#: src/modules/author-list/author-list.php:714
 msgid "Order"
 msgstr "Urutan"
 
@@ -168,8 +231,8 @@ msgid "Author's search box field (Seperate multiple fields by comma(','))"
 msgstr "Bidang kotak pencarian penulis (Pisahkan beberapa bidang dengan koma (',')))"
 
 #: src/core/Authors_Widget.php:188
-#: src/core/Authors_Widget.php:494
-#: src/core/Classes/Post_Editor.php:834
+#: src/core/Authors_Widget.php:528
+#: src/core/Classes/Post_Editor.php:856
 #: src/core/Plugin.php:592
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1112
 msgid "All Authors"
@@ -185,67 +248,98 @@ msgstr "Pengguna Author"
 
 #: src/core/Authors_Widget.php:193
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1346
-#: src/modules/author-list/author-list.php:717
+#: src/modules/author-list/author-list.php:718
 msgid "Ascending"
 msgstr "Meningkat"
 
 #: src/core/Authors_Widget.php:194
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1347
-#: src/modules/author-list/author-list.php:718
+#: src/modules/author-list/author-list.php:719
 msgid "Descending"
 msgstr "Menurun"
 
 #: src/core/Authors_Widget.php:197
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:96
-#: src/modules/author-list/author-list.php:702
+#: src/modules/author-list/author-list.php:703
 msgid "Name"
 msgstr "Nama"
 
 #: src/core/Authors_Widget.php:198
-#: src/modules/author-list/author-list.php:703
+#: src/modules/author-list/author-list.php:704
 msgid "Post Counts"
 msgstr "Jumlah Artikel"
 
 #: src/core/Authors_Widget.php:199
 #: src/core/Classes/Author_Editor.php:369
 #: src/modules/author-custom-fields/author-custom-fields.php:933
-#: src/modules/author-list/author-list.php:704
-#: src/modules/multiple-authors/multiple-authors.php:2228
+#: src/modules/author-list/author-list.php:705
+#: src/modules/multiple-authors/multiple-authors.php:2246
 msgid "First Name"
 msgstr "Nama Depan"
 
 #: src/core/Authors_Widget.php:200
 #: src/core/Classes/Author_Editor.php:374
 #: src/modules/author-custom-fields/author-custom-fields.php:941
-#: src/modules/author-list/author-list.php:705
-#: src/modules/multiple-authors/multiple-authors.php:2229
+#: src/modules/author-list/author-list.php:706
+#: src/modules/multiple-authors/multiple-authors.php:2247
 msgid "Last Name"
 msgstr "Nama Belakang"
 
-#: src/core/Authors_Widget.php:438
+#: src/core/Authors_Widget.php:261
+#. translators: %s: the letter selected in the authors index
+#, php-format
+msgid "Showing authors starting with %s"
+msgstr "Menampilkan penulis yang dimulai dengan %s"
+
+#: src/core/Authors_Widget.php:262
+msgid "Showing all authors"
+msgstr "Menampilkan semua penulis"
+
+#: src/core/Authors_Widget.php:263
+#: src/core/Plugin.php:609
+msgid "No authors found."
+msgstr "Tidak ada author ditemukan."
+
+#: src/core/Authors_Widget.php:264
+msgid "Loading authors..."
+msgstr "Memuat penulis..."
+
+#: src/core/Authors_Widget.php:265
+msgid "Unable to load authors."
+msgstr "Tidak dapat memuat penulis."
+
+#: src/core/Authors_Widget.php:468
 msgid "Default Search"
 msgstr "Pencarian Standar"
 
-#: src/core/Authors_Widget.php:447
+#: src/core/Authors_Widget.php:477
 msgid "Search Box"
 msgstr "Kotak Pencarian"
 
-#: src/core/Authors_Widget.php:462
-#: src/modules/author-list/author-list.php:346
+#: src/core/Authors_Widget.php:492
+#: src/modules/author-list/author-list.php:347
 msgid "Search"
 msgstr "Cari"
 
-#: src/core/Authors_Widget.php:498
+#: src/core/Authors_Widget.php:503
+msgid "Search authors"
+msgstr "Cari penulis"
+
+#: src/core/Authors_Widget.php:506
+msgid "Search authors by"
+msgstr "Cari penulis berdasarkan"
+
+#: src/core/Authors_Widget.php:532
 msgid "No recent posts from this author"
 msgstr "Tidak ada kiriman terbaru dari author ini"
 
 #: src/core/Classes/Admin_Ajax.php:321
-#: src/core/Classes/Admin_Ajax.php:431
+#: src/core/Classes/Admin_Ajax.php:436
 msgid "Request status."
 msgstr "Minta status."
 
 #: src/core/Classes/Admin_Ajax.php:328
-#: src/core/Classes/Admin_Ajax.php:438
+#: src/core/Classes/Admin_Ajax.php:443
 #: src/core/Plugin.php:2352
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:41
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:89
@@ -254,17 +348,17 @@ msgstr "Minta status."
 #: src/modules/author-categories/author-categories.php:304
 #: src/modules/author-categories/author-categories.php:392
 #: src/modules/author-custom-fields/author-custom-fields.php:1087
-#: src/modules/author-list/author-list.php:1712
+#: src/modules/author-list/author-list.php:1713
 msgid "Security error. Kindly reload this page and try again"
 msgstr "Kesalahan keamanan. Harap muat ulang halaman ini dan coba lagi"
 
-#: src/core/Classes/Admin_Ajax.php:347
+#: src/core/Classes/Admin_Ajax.php:351
 msgid "You cannot edit an author profile linked to an administrator account."
 msgstr ""
 "Anda tidak dapat mengedit profil penulis yang terhubung ke akun "
 "administrator."
 
-#: src/core/Classes/Admin_Ajax.php:359
+#: src/core/Classes/Admin_Ajax.php:364
 msgid ""
 "You do not have permission to edit this author profile because it is linked "
 "to a user account you do not have permission to edit."
@@ -272,8 +366,8 @@ msgstr ""
 "Anda tidak memiliki izin untuk mengedit profil penulis ini karena terhubung "
 "ke akun pengguna yang tidak memiliki izin untuk diedit."
 
-#: src/core/Classes/Admin_Ajax.php:374
-#: src/core/Classes/Author_Editor.php:1150
+#: src/core/Classes/Admin_Ajax.php:379
+#: src/core/Classes/Author_Editor.php:1200
 msgid ""
 "Sorry, this WordPress user is already mapped to another Author. By default, "
 "each user can only be connected to one Author profile."
@@ -281,20 +375,20 @@ msgstr ""
 "Maaf, pengguna WordPress ini sudah terhubung ke author lain. Secara "
 "default, setiap pengguna hanya dapat terhubung ke satu profil author."
 
-#: src/core/Classes/Admin_Ajax.php:386
-#: src/core/Classes/Author_Editor.php:1243
+#: src/core/Classes/Admin_Ajax.php:391
+#: src/core/Classes/Author_Editor.php:1293
 msgid "Registered User is required."
 msgstr "Pengguna Terdaftar diperlukan."
 
-#: src/core/Classes/Admin_Ajax.php:396
+#: src/core/Classes/Admin_Ajax.php:401
 msgid "Author URL cannot be empty."
 msgstr "URL Author tidak boleh kosong"
 
-#: src/core/Classes/Admin_Ajax.php:409
+#: src/core/Classes/Admin_Ajax.php:414
 msgid "Another user with Author URL already exists."
 msgstr "Pengguna lain dengan URL Author sudah ada"
 
-#: src/core/Classes/Admin_Ajax.php:444
+#: src/core/Classes/Admin_Ajax.php:449
 msgid "Author name is required"
 msgstr "Nama author diperlukan"
 
@@ -318,26 +412,26 @@ msgid "Email"
 msgstr "Email"
 
 #: src/core/Classes/Author_Editor.php:50
-#: src/modules/author-list/author-list.php:646
-#: src/modules/author-list/author-list.php:660
+#: src/modules/author-list/author-list.php:647
+#: src/modules/author-list/author-list.php:661
 msgid "Author Type"
 msgstr "Jenis Penulis"
 
 #: src/core/Classes/Author_Editor.php:118
-#: src/core/Classes/Author_Editor.php:895
-#: src/modules/author-list/author-list.php:1517
+#: src/core/Classes/Author_Editor.php:945
+#: src/modules/author-list/author-list.php:1518
 msgid "Guest Author With User Account"
 msgstr "Penulis Tamu Dengan Akun Pengguna"
 
 #: src/core/Classes/Author_Editor.php:120
-#: src/core/Classes/Author_Editor.php:889
-#: src/modules/author-list/author-list.php:1516
+#: src/core/Classes/Author_Editor.php:939
+#: src/modules/author-list/author-list.php:1517
 msgid "Registered Author With User Account"
 msgstr "Penulis Terdaftar Dengan Akun Pengguna"
 
 #: src/core/Classes/Author_Editor.php:122
-#: src/core/Classes/Author_Editor.php:902
-#: src/modules/author-list/author-list.php:1518
+#: src/core/Classes/Author_Editor.php:952
+#: src/modules/author-list/author-list.php:1519
 msgid "Guest Author With No User Account"
 msgstr "Penulis Tamu Tanpa Akun Pengguna"
 
@@ -356,20 +450,20 @@ msgid "Create Author Profile"
 msgstr "Buat Profil Penulis"
 
 #: src/core/Classes/Author_Editor.php:314
-#: src/modules/author-list/author-list.php:330
+#: src/modules/author-list/author-list.php:331
 #: src/modules/author-pages/author-pages.php:117
-#: src/modules/multiple-authors/multiple-authors.php:3276
+#: src/modules/multiple-authors/multiple-authors.php:3331
 msgid "General"
 msgstr "Umum"
 
 #: src/core/Classes/Author_Editor.php:317
-#: src/modules/author-boxes/author-boxes.php:1518, fuzzy
+#: src/modules/author-boxes/author-boxes.php:1538, fuzzy
 msgid "Avatar"
 msgstr "Avatar"
 
 #: src/core/Classes/Author_Editor.php:346
 #: src/core/Plugin.php:610
-#: src/modules/author-boxes/author-boxes.php:2415
+#: src/modules/author-boxes/author-boxes.php:2455
 #: src/modules/author-categories/author-categories.php:786
 #: src/modules/author-categories/author-categories.php:788
 #: src/views/authors_table.html.php:21, fuzzy
@@ -381,7 +475,7 @@ msgid "Registered User"
 msgstr "Pengguna Terdaftar"
 
 #: src/core/Classes/Author_Editor.php:363
-#: src/modules/author-boxes/author-boxes.php:1526
+#: src/modules/author-boxes/author-boxes.php:1546
 msgid "Biographical Info"
 msgstr "Info Biografi"
 
@@ -390,7 +484,7 @@ msgid "Avatar Source"
 msgstr "Sumber Avatar"
 
 #: src/core/Classes/Author_Editor.php:391
-#: src/modules/multiple-authors/multiple-authors.php:1152
+#: src/modules/multiple-authors/multiple-authors.php:1170
 msgid "Default Avatar"
 msgstr "Avatar Standar"
 
@@ -408,16 +502,37 @@ msgid "Custom image"
 msgstr "Gambar Kustom"
 
 #: src/core/Classes/Author_Editor.php:406
+#: src/modules/multiple-authors/multiple-authors.php:2300
+msgid "Alternative Text"
+msgstr "Teks Alternatif"
+
+#: src/core/Classes/Author_Editor.php:410
+msgid ""
+"Describe the avatar. Leave blank to use the Media Library alternative text "
+"or author name."
+msgstr ""
+"Deskripsikan avatar. Biarkan kosong untuk menggunakan teks alternatif "
+"Perpustakaan Media atau nama penulis."
+
+#: src/core/Classes/Author_Editor.php:416
+msgid "Decorative Image"
+msgstr "Gambar Dekoratif"
+
+#: src/core/Classes/Author_Editor.php:419
+msgid "Use empty alternative text when this avatar is decorative."
+msgstr "Gunakan teks alternatif kosong ketika avatar ini bersifat dekoratif."
+
+#: src/core/Classes/Author_Editor.php:425
 #: src/modules/author-custom-fields/author-custom-fields.php:958, fuzzy
 msgid "Website"
 msgstr "Website"
 
-#: src/core/Classes/Author_Editor.php:412
+#: src/core/Classes/Author_Editor.php:431
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:28
 msgid "Author Category"
 msgstr "Kategori Penulis"
 
-#: src/core/Classes/Author_Editor.php:413
+#: src/core/Classes/Author_Editor.php:432
 msgid ""
 "Select the default Category for this Author. This will be used when the "
 "Author is added to new posts."
@@ -425,31 +540,35 @@ msgstr ""
 "Pilih Kategori default untuk Penulis ini. Ini akan digunakan ketika Penulis "
 "ditambahkan ke pos baru."
 
-#: src/core/Classes/Author_Editor.php:420
+#: src/core/Classes/Author_Editor.php:439
 msgid "Do not show this profile publicly"
 msgstr "Jangan tampilkan profil ini secara publik"
 
-#: src/core/Classes/Author_Editor.php:512
-#: src/core/Classes/Author_Editor.php:561
-#: src/modules/multiple-authors/multiple-authors.php:2262
+#: src/core/Classes/Author_Editor.php:534
+msgid "(required)"
+msgstr "(diperlukan)"
+
+#: src/core/Classes/Author_Editor.php:551
+#: src/core/Classes/Author_Editor.php:603
+#: src/modules/multiple-authors/multiple-authors.php:2288
 msgid "Select image"
 msgstr "Pilih gambar"
 
-#: src/core/Classes/Author_Editor.php:516
-#: src/core/Classes/Author_Editor.php:565
-#: src/modules/multiple-authors/multiple-authors.php:2266
+#: src/core/Classes/Author_Editor.php:555
+#: src/core/Classes/Author_Editor.php:607
+#: src/modules/multiple-authors/multiple-authors.php:2292
 msgid "Remove this image"
 msgstr "Hapus gambar ini"
 
-#: src/core/Classes/Author_Editor.php:579
+#: src/core/Classes/Author_Editor.php:623
 msgid "Select a user"
 msgstr "Pilih seorang pengguna"
 
-#: src/core/Classes/Author_Editor.php:666
+#: src/core/Classes/Author_Editor.php:710
 msgid "Author email error"
 msgstr "Kesalahan email penulis"
 
-#: src/core/Classes/Author_Editor.php:890
+#: src/core/Classes/Author_Editor.php:940
 msgid ""
 "Create an author profile for a current user account. You can select users "
 "who are allowed to edit posts. This user will be able to update their "
@@ -459,7 +578,7 @@ msgstr ""
 "pengguna yang diizinkan untuk mengedit pos. Pengguna ini akan dapat "
 "memperbarui profil mereka."
 
-#: src/core/Classes/Author_Editor.php:896
+#: src/core/Classes/Author_Editor.php:946
 msgid ""
 "Create an author profile and a linked user account. This account will be in "
 "the \"Guest Author\" role and will not be able to login to the WordPress "
@@ -469,7 +588,7 @@ msgstr ""
 "memiliki peran \"Penulis Tamu\" dan tidak akan dapat login ke dashboard "
 "WordPress atau memperbarui profil mereka."
 
-#: src/core/Classes/Author_Editor.php:903
+#: src/core/Classes/Author_Editor.php:953
 msgid ""
 "Create an author profile with no linked user account. This option is "
 "lightweight but may have compatibility issues with other themes and plugins."
@@ -477,42 +596,42 @@ msgstr ""
 "Buat profil penulis tanpa akun pengguna yang terhubung. Opsi ini ringan "
 "tetapi mungkin memiliki masalah kompatibilitas dengan tema dan plugin lain."
 
-#: src/core/Classes/Author_Editor.php:922
+#: src/core/Classes/Author_Editor.php:972
 msgid "Author Email"
 msgstr "Email Penulis"
 
-#: src/core/Classes/Author_Editor.php:934
+#: src/core/Classes/Author_Editor.php:984
 msgid "User Account"
 msgstr "Akun Pengguna"
 
-#: src/core/Classes/Author_Editor.php:997
-#: src/modules/multiple-authors/multiple-authors.php:4184
+#: src/core/Classes/Author_Editor.php:1047
+#: src/modules/multiple-authors/multiple-authors.php:4299
 msgid "Sync author and user fields"
 msgstr "Sinkronkan author dengan baris pengguna"
 
-#: src/core/Classes/Author_Editor.php:1001
+#: src/core/Classes/Author_Editor.php:1051
 msgid "Convert to Guest Author With User Account"
 msgstr "Ubah menjadi Penulis Tamu Dengan Akun Pengguna"
 
-#: src/core/Classes/Author_Editor.php:1005
+#: src/core/Classes/Author_Editor.php:1055
 msgid "Update post count"
 msgstr "Perbarui jumlah pos"
 
-#: src/core/Classes/Author_Editor.php:1076
+#: src/core/Classes/Author_Editor.php:1126
 msgid "No authors were updated"
 msgstr "Tidak ada author yang di perbarui"
 
-#: src/core/Classes/Author_Editor.php:1079
+#: src/core/Classes/Author_Editor.php:1129
 #, php-format
 msgid "Updated %d authors"
 msgstr "Author %d diperbarui"
 
-#: src/core/Classes/Author_Editor.php:1176
-#: src/core/Classes/Author_Editor.php:1194
+#: src/core/Classes/Author_Editor.php:1226
+#: src/core/Classes/Author_Editor.php:1244
 msgid "An author with the name provided already exists."
 msgstr "Author dengan nama yang disediakan sudah ada."
 
-#: src/core/Classes/Author_Editor.php:1206
+#: src/core/Classes/Author_Editor.php:1256
 msgid "An author email is required when creating new User Author."
 msgstr "Email penulis diperlukan saat membuat Penulis Pengguna baru."
 
@@ -586,18 +705,19 @@ msgstr "Tidak ada istilah author"
 msgid "\"post_author\" is empty"
 msgstr "\"post_author\" kosong"
 
-#: src/core/Classes/Post_Editor.php:564
+#: src/core/Classes/Post_Editor.php:567
 #, php-format
 msgid "Drag-and-drop Authors to add them to the %s category"
 msgstr "Seret dan lepas Pengarang untuk menambahkannya ke kategori %s"
 
-#: src/core/Classes/Post_Editor.php:639
+#: src/core/Classes/Post_Editor.php:649
+#: src/core/Classes/Post_Editor.php:655
 #: src/core/Plugin.php:1655
-#: src/modules/multiple-authors/multiple-authors.php:2857
+#: src/modules/multiple-authors/multiple-authors.php:2904
 msgid "Search for an author"
 msgstr "Cari Author"
 
-#: src/core/Classes/Post_Editor.php:730
+#: src/core/Classes/Post_Editor.php:750
 msgid ""
 "This option is showing because you do not have a WordPress user selected as "
 "an author. For some tasks, it can be helpful to have a user selected here. "
@@ -607,24 +727,33 @@ msgstr ""
 "sebagai author. Untuk beberapa tugas, bisa membantu untuk memiliki pengguna "
 "yang dipilih di sini. Pengguna ini tidak akan terlihat di depan situs Anda."
 
-#: src/core/Classes/Post_Editor.php:738
+#: src/core/Classes/Post_Editor.php:758
 msgid "Search for an user"
 msgstr "Cari pengguna"
 
-#: src/core/Classes/Post_Editor.php:762
-#: src/modules/author-boxes/author-boxes.php:565
-#: src/modules/author-boxes/author-boxes.php:685
+#: src/core/Classes/Post_Editor.php:782
+#: src/modules/author-boxes/author-boxes.php:568
+#: src/modules/author-boxes/author-boxes.php:688
 msgid "Author Box"
 msgstr "Kotak Author"
 
-#: src/core/Classes/Post_Editor.php:786
+#: src/core/Classes/Post_Editor.php:806
 #: src/modules/author-boxes/author-boxes.php:206
 msgid "Default Author Box"
 msgstr "Kotak Penulis Default"
 
-#: src/core/Classes/Post_Editor.php:787
+#: src/core/Classes/Post_Editor.php:807
 msgid "Hide Author Box"
 msgstr "Sembunyikan Kotak Penulis"
+
+#: src/core/Classes/Post_Editor.php:850
+msgid "Filter posts by author"
+msgstr "Filter pos berdasarkan penulis"
+
+#: src/core/Classes/Post_Editor.php:898
+#, php-format
+msgid "Remove %s"
+msgstr "Hapus %s"
 
 #: src/core/Classes/Term_Editor.php:42
 msgid "New author added."
@@ -651,7 +780,7 @@ msgid "Authors deleted."
 msgstr "Author dihapus."
 
 #: src/core/Classes/Term_Editor.php:79
-#: src/modules/multiple-authors/multiple-authors.php:3376
+#: src/modules/multiple-authors/multiple-authors.php:3435
 msgid "Author URL"
 msgstr "URL Author"
 
@@ -659,88 +788,88 @@ msgstr "URL Author"
 msgid "Co-Authors Plus must be installed and active."
 msgstr "Co-Author Plus harus diinstall dan aktif."
 
-#: src/core/Classes/Utils.php:1121
+#: src/core/Classes/Utils.php:1124
 msgid "Read more."
 msgstr "Baca lebih lanjut."
 
-#: src/core/Classes/Utils.php:1252
+#: src/core/Classes/Utils.php:1255
 msgid "The results could not be loaded."
 msgstr "Hasil tidak dapat dimuat."
 
-#: src/core/Classes/Utils.php:1254
+#: src/core/Classes/Utils.php:1257
 #. translators: %d: number of characters over the maximum.
 #, php-format
 msgid "Please delete %d character"
 msgstr "Silakan hapus %d karakter"
 
-#: src/core/Classes/Utils.php:1256
+#: src/core/Classes/Utils.php:1259
 #. translators: %d: number of characters over the maximum.
 #, php-format
 msgid "Please delete %d characters"
 msgstr "Silakan hapus %d karakter"
 
-#: src/core/Classes/Utils.php:1258
+#: src/core/Classes/Utils.php:1261
 #. translators: %d: number of characters still required.
 #, php-format
 msgid "Please enter %d or more character"
 msgstr "Silakan masukkan %d atau lebih karakter"
 
-#: src/core/Classes/Utils.php:1260
+#: src/core/Classes/Utils.php:1263
 #. translators: %d: number of characters still required.
 #, php-format
 msgid "Please enter %d or more characters"
 msgstr "Silakan masukkan %d atau lebih karakter"
 
-#: src/core/Classes/Utils.php:1261
+#: src/core/Classes/Utils.php:1264
 msgid "Loading more results..."
 msgstr "Memuat lebih banyak hasil..."
 
-#: src/core/Classes/Utils.php:1263
+#: src/core/Classes/Utils.php:1266
 #. translators: %d: maximum number of items that can be selected.
 #, php-format
 msgid "You can only select %d item"
 msgstr "Anda hanya dapat memilih %d item"
 
-#: src/core/Classes/Utils.php:1265
+#: src/core/Classes/Utils.php:1268
 #. translators: %d: maximum number of items that can be selected.
 #, php-format
 msgid "You can only select %d items"
 msgstr "Anda hanya dapat memilih %d item"
 
-#: src/core/Classes/Utils.php:1266
+#: src/core/Classes/Utils.php:1269
 msgid "No results found"
 msgstr "Tidak ada hasil yang ditemukan"
 
-#: src/core/Classes/Utils.php:1267
+#: src/core/Classes/Utils.php:1270
 msgid "Searching..."
 msgstr "Mencari..."
 
-#: src/core/Classes/Utils.php:1268
+#: src/core/Classes/Utils.php:1271
 msgid "Remove all items"
 msgstr "Hapus semua item"
 
-#: src/core/Classes/Utils.php:1280
+#: src/core/Classes/Utils.php:1283
 #: src/views/settings-tab.html.php:98
 msgid "No results match"
 msgstr "Tidak ada hasil yang cocok"
 
-#: src/core/Classes/Utils.php:1343
+#: src/core/Classes/Utils.php:1348
 msgid "Need PublishPress Authors Support?"
 msgstr "Butuh support untuk PublishPress Authors?"
 
-#: src/core/Classes/Utils.php:1348
+#: src/core/Classes/Utils.php:1353
 msgid "If you need help or have a new feature request, let us know."
 msgstr "Jika kamu butuh bantuan atau meminta fitur baru, beri tahu kami."
 
-#: src/core/Classes/Utils.php:1350
+#: src/core/Classes/Utils.php:1355
 msgid "Request Support"
 msgstr "Minta bantuan"
 
-#: src/core/Classes/Utils.php:1359
+#: src/core/Classes/Utils.php:1364
 msgid "Detailed documentation is also available on the plugin website."
 msgstr "Dokumentasi lebih lengkap juga tersedia di website plugin."
 
-#: src/core/Classes/Utils.php:1361
+#: src/core/Classes/Utils.php:1366
 msgid "View Knowledge Base"
 msgstr "Lihat Pengetahuan Dasar"
 
@@ -770,7 +899,7 @@ msgid "Active"
 msgstr "Aktif"
 
 #: src/core/CustomFieldsModel.php:62
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:418
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:423
 #: src/modules/author-custom-fields/author-custom-fields.php:834
 msgid "Disabled"
 msgstr "Nonaktif"
@@ -795,7 +924,7 @@ msgid "Yes, this is a Social Profile"
 msgstr "Ya, ini adalah profil sosial"
 
 #: src/core/CustomFieldsModel.php:115
-#: src/modules/author-list/author-list.php:537
+#: src/modules/author-list/author-list.php:538
 msgid "Select an option"
 msgstr "Pilih opsi"
 
@@ -877,10 +1006,6 @@ msgstr "Tambah atau hapus author"
 msgid "Choose from the most used Authors"
 msgstr "Pilih dari Author yang sering digunakan"
 
-#: src/core/Plugin.php:609
-msgid "No authors found."
-msgstr "Tidak ada author ditemukan."
-
 #: src/core/Plugin.php:611
 msgid "Back to Authors"
 msgstr "Kembali ke Author"
@@ -892,7 +1017,7 @@ msgstr "Jika Anda suka %s mohon tinggalkan %s rating untuk kami. Terimakasih!"
 
 #: src/core/Plugin.php:808
 #: src/modules/author-pages/author-pages.php:121
-#: src/modules/multiple-authors/multiple-authors.php:167
+#: src/modules/multiple-authors/multiple-authors.php:170
 msgid "Posts"
 msgstr "Pos"
 
@@ -910,7 +1035,7 @@ msgid "No co-author exists for that term"
 msgstr "Tidak ada co-author untuk term ini"
 
 #: src/core/Plugin.php:1644
-#: src/modules/author-list/classes/AuthorListTable.php:344
+#: src/modules/author-list/classes/AuthorListTable.php:345
 msgid "Edit"
 msgstr "Sunting"
 
@@ -973,9 +1098,9 @@ msgstr "Apakah anda yaking ingin membuat author dari role yang dipilih?"
 #: src/modules/byline-migration/byline-migration.php:148
 #: src/modules/bylines-migration/bylines-migration.php:150
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:137
-#: src/modules/multiple-authors/multiple-authors.php:4188
-#: src/modules/multiple-authors/multiple-authors.php:4219
-#: src/modules/multiple-authors/multiple-authors.php:4256
+#: src/modules/multiple-authors/multiple-authors.php:4303
+#: src/modules/multiple-authors/multiple-authors.php:4334
+#: src/modules/multiple-authors/multiple-authors.php:4371
 msgid "Please, wait..."
 msgstr "Mohon tunggu...."
 
@@ -1037,27 +1162,27 @@ msgstr "Tidak ada artikel tanpa term author yang ditemukan"
 msgid "%d posts were found without author terms"
 msgstr "%d kiriman ditemukan tanpa term author"
 
-#: src/functions/template-tags.php:1047
+#: src/functions/template-tags.php:1054
 #, php-format
 msgid "%1sView all posts%2s by %3s"
 msgstr "%1sLihat semua kiriman%2s oleh %3s"
 
-#: src/functions/template-tags.php:1316
-#: src/functions/template-tags.php:1937
+#: src/functions/template-tags.php:1323
+#: src/functions/template-tags.php:1944
 msgid " and "
 msgstr " dan "
 
-#: src/functions/template-tags.php:1467
+#: src/functions/template-tags.php:1474
 #, php-format
 msgid "Posts by %s"
 msgstr "Pos-pos oleh %s"
 
-#: src/functions/template-tags.php:1852
+#: src/functions/template-tags.php:1859
 #, php-format
 msgid "Posts by %1$s"
 msgstr "Pos-pos oleh %1$s"
 
-#: src/functions/template-tags.php:1938
+#: src/functions/template-tags.php:1945
 msgid ", and "
 msgstr ", dan "
 
@@ -1070,11 +1195,11 @@ msgid "Add compatibility with the All In One Seo Pack plugin"
 msgstr "Tambahkan kompatibilitas dengan plugin All In One Seo Pack"
 
 #: src/modules/author-boxes/author-boxes.php:83
-#: src/modules/author-boxes/author-boxes.php:566
-#: src/modules/author-boxes/author-boxes.php:642
-#: src/modules/author-boxes/author-boxes.php:643
-#: src/modules/author-boxes/author-boxes.php:686
-#: src/modules/multiple-authors/multiple-authors.php:3277
+#: src/modules/author-boxes/author-boxes.php:569
+#: src/modules/author-boxes/author-boxes.php:645
+#: src/modules/author-boxes/author-boxes.php:646
+#: src/modules/author-boxes/author-boxes.php:689
+#: src/modules/multiple-authors/multiple-authors.php:3332
 msgid "Author Boxes"
 msgstr "Kotak Author"
 
@@ -1088,15 +1213,24 @@ msgid "Author Category Boxes"
 msgstr "Kotak Kategori Penulis"
 
 #: src/modules/author-boxes/author-boxes.php:211
-#: src/modules/author-boxes/author-boxes.php:1477
-#: src/modules/author-boxes/author-boxes.php:2785
-#: src/modules/author-boxes/author-boxes.php:2796
-#: src/modules/author-list/author-list.php:1254
+#: src/modules/author-boxes/author-boxes.php:1497
+#: src/modules/author-boxes/author-boxes.php:2825
+#: src/modules/author-boxes/author-boxes.php:2836
+#: src/modules/author-list/author-list.php:1255
 #: src/modules/author-list/classes/AuthorListTable.php:152
+#: src/modules/multiple-authors/multiple-authors.php:1844
 msgid "Shortcode"
 msgstr "Shortcode"
 
-#: src/modules/author-boxes/author-boxes.php:434
+#: src/modules/author-boxes/author-boxes.php:239
+msgid "Default author box"
+msgstr "Kotak penulis default"
+
+#: src/modules/author-boxes/author-boxes.php:247
+msgid "Author category box"
+msgstr "Kotak kategori penulis"
+
+#: src/modules/author-boxes/author-boxes.php:437
 #, php-format
 msgid ""
 "%s Author Box setting was not saved because it was changed in another "
@@ -1113,241 +1247,241 @@ msgstr[0] ""
 "telah diubah di browser atau tab lain. Nilai terakhir yang disimpan telah "
 "dipertahankan; tinjau tata letak dan coba lagi."
 
-#: src/modules/author-boxes/author-boxes.php:575
+#: src/modules/author-boxes/author-boxes.php:578
 #: src/modules/author-custom-fields/author-custom-fields.php:172
 #, php-format
 msgid "New %1s"
 msgstr "%1s Baru"
 
-#: src/modules/author-boxes/author-boxes.php:576
+#: src/modules/author-boxes/author-boxes.php:579
 #: src/modules/author-custom-fields/author-custom-fields.php:173
 #, php-format
 msgid "Add New %1$s"
 msgstr "Tambahkan %1$s Baru"
 
-#: src/modules/author-boxes/author-boxes.php:577
+#: src/modules/author-boxes/author-boxes.php:580
 #: src/modules/author-custom-fields/author-custom-fields.php:174
 #, php-format
 msgid "Edit %1$s"
 msgstr "Sunting %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:578
+#: src/modules/author-boxes/author-boxes.php:581
 #: src/modules/author-custom-fields/author-custom-fields.php:175
 #, php-format
 msgid "New %1$s"
 msgstr "Baru %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:579
+#: src/modules/author-boxes/author-boxes.php:582
 #: src/modules/author-custom-fields/author-custom-fields.php:176
 #, fuzzy, php-format
 msgid "%2$s"
 msgstr "%2$s"
 
-#: src/modules/author-boxes/author-boxes.php:580
+#: src/modules/author-boxes/author-boxes.php:583
 #: src/modules/author-custom-fields/author-custom-fields.php:177
 #, php-format
 msgid "View %1$s"
 msgstr "Lihat %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:581
+#: src/modules/author-boxes/author-boxes.php:584
 #: src/modules/author-custom-fields/author-custom-fields.php:178
 #, php-format
 msgid "Search %2$s"
 msgstr "Cari: %2$s"
 
-#: src/modules/author-boxes/author-boxes.php:582
+#: src/modules/author-boxes/author-boxes.php:585
 #: src/modules/author-custom-fields/author-custom-fields.php:179
 #, php-format
 msgid "No %2$s found"
 msgstr "Tidak ada %2$s ditemukan"
 
-#: src/modules/author-boxes/author-boxes.php:583
+#: src/modules/author-boxes/author-boxes.php:586
 #: src/modules/author-custom-fields/author-custom-fields.php:180
 #, php-format
 msgid "No %2$s found in Trash"
 msgstr "Tidak ada %2$s yang ditemukan di tempat sampah"
 
-#: src/modules/author-boxes/author-boxes.php:586
+#: src/modules/author-boxes/author-boxes.php:589
 #: src/modules/author-custom-fields/author-custom-fields.php:183
 #, php-format
 msgid "%1$s Image"
 msgstr "Gambar %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:587
+#: src/modules/author-boxes/author-boxes.php:590
 #: src/modules/author-custom-fields/author-custom-fields.php:184
 #, php-format
 msgid "Set %1$s Image"
 msgstr "Atur gambar %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:588
+#: src/modules/author-boxes/author-boxes.php:591
 #: src/modules/author-custom-fields/author-custom-fields.php:185
 #, php-format
 msgid "Remove %1$s Image"
 msgstr "Hapus gambar %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:589
+#: src/modules/author-boxes/author-boxes.php:592
 #: src/modules/author-custom-fields/author-custom-fields.php:186
 #, php-format
 msgid "Use as %1$s Image"
 msgstr "Gunakan sebagai gambar %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:590
+#: src/modules/author-boxes/author-boxes.php:593
 #: src/modules/author-custom-fields/author-custom-fields.php:187
 #, php-format
 msgid "Filter %2$s list"
 msgstr "Sarin daftar %2$s"
 
-#: src/modules/author-boxes/author-boxes.php:591
+#: src/modules/author-boxes/author-boxes.php:594
 #: src/modules/author-custom-fields/author-custom-fields.php:188
 #, php-format
 msgid "%2$s list navigation"
 msgstr "%2$s daftar navigasi"
 
-#: src/modules/author-boxes/author-boxes.php:592
+#: src/modules/author-boxes/author-boxes.php:595
 #: src/modules/author-custom-fields/author-custom-fields.php:189
 #, php-format
 msgid "%2$s list"
 msgstr "daftar %2$s"
 
-#: src/modules/author-boxes/author-boxes.php:659
-#: src/modules/author-boxes/author-boxes.php:660
+#: src/modules/author-boxes/author-boxes.php:662
+#: src/modules/author-boxes/author-boxes.php:663
 msgid "Author Box updated."
 msgstr "Kotak Author diperbarui."
 
-#: src/modules/author-boxes/author-boxes.php:661
+#: src/modules/author-boxes/author-boxes.php:664
 msgid "Author Box added."
 msgstr "Kotak Author ditambahkan."
 
-#: src/modules/author-boxes/author-boxes.php:662
+#: src/modules/author-boxes/author-boxes.php:665
 msgid "Author Box saved."
 msgstr "Kotak Author disimpan."
 
-#: src/modules/author-boxes/author-boxes.php:663
+#: src/modules/author-boxes/author-boxes.php:666
 msgid "Author Box submitted."
 msgstr "Kotak Author dikirim."
 
-#: src/modules/author-boxes/author-boxes.php:690
+#: src/modules/author-boxes/author-boxes.php:693
 #, php-format
 msgid "%1$s %2$s updated."
 msgid_plural "%1$s %3$s updated."
 msgstr[0] "%1$s %2$s diperbarui."
 
-#: src/modules/author-boxes/author-boxes.php:701
+#: src/modules/author-boxes/author-boxes.php:704
 #, php-format
 msgid "%1$s %2$s not updated, somebody is editing it."
 msgid_plural "%1$s %3$s not updated, somebody is editing them."
 msgstr[0] "%1$s %2$s tidak diperbarui, seseorang sedang mengeditnya."
 
-#: src/modules/author-boxes/author-boxes.php:712
+#: src/modules/author-boxes/author-boxes.php:715
 #, php-format
 msgid "%1$s %2$s permanently deleted."
 msgid_plural "%1$s %3$s permanently deleted."
 msgstr[0] "%1$s %2$s dihapus secara permanen."
 
-#: src/modules/author-boxes/author-boxes.php:723
+#: src/modules/author-boxes/author-boxes.php:726
 #, php-format
 msgid "%1$s %2$s moved to the Trash."
 msgid_plural "%1$s %3$s moved to the Trash."
 msgstr[0] "%1$s %2$s dipindahkan ke Tempat Sampah."
 
-#: src/modules/author-boxes/author-boxes.php:734
+#: src/modules/author-boxes/author-boxes.php:737
 #, php-format
 msgid "%1$s %2$s restored from the Trash."
 msgid_plural "%1$s %3$s restored from the Trash."
 msgstr[0] "%1$s %2$s dipulihkan dari Tempat Sampah."
 
-#: src/modules/author-boxes/author-boxes.php:801
+#: src/modules/author-boxes/author-boxes.php:804
 msgid "Duplicate"
 msgstr "Duplikat"
 
-#: src/modules/author-boxes/author-boxes.php:834
-#: src/modules/author-boxes/author-boxes.php:839
+#: src/modules/author-boxes/author-boxes.php:837
+#: src/modules/author-boxes/author-boxes.php:842
 msgid "Invalid Author Box."
 msgstr "Kotak Penulis tidak valid."
 
-#: src/modules/author-boxes/author-boxes.php:851
+#: src/modules/author-boxes/author-boxes.php:854
 msgid "You are not allowed to duplicate this Author Box."
 msgstr "Anda tidak diizinkan untuk menduplikasi Kotak Penulis ini."
 
-#: src/modules/author-boxes/author-boxes.php:855
+#: src/modules/author-boxes/author-boxes.php:858
 msgid "You are not allowed to create Author Boxes."
 msgstr "Anda tidak diizinkan untuk membuat Kotak Penulis."
 
-#: src/modules/author-boxes/author-boxes.php:879
+#: src/modules/author-boxes/author-boxes.php:882
 #, php-format
 msgid "%s (Copy)"
 msgstr "%s (Salin)"
 
-#: src/modules/author-boxes/author-boxes.php:894
+#: src/modules/author-boxes/author-boxes.php:897
 msgid "Could not duplicate the Author Box."
 msgstr "Tidak dapat menduplikasi Kotak Penulis."
 
-#: src/modules/author-boxes/author-boxes.php:936
+#: src/modules/author-boxes/author-boxes.php:939
 msgid "Author Box duplicated."
 msgstr "Kotak Penulis diduplikasi."
 
-#: src/modules/author-boxes/author-boxes.php:969
-#: src/modules/author-boxes/author-boxes.php:1007
+#: src/modules/author-boxes/author-boxes.php:972
+#: src/modules/author-boxes/author-boxes.php:1010
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:100
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:267
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:383
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:464
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:551
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:642
-#: src/modules/default-layouts/default-layouts.php:107
+#: src/modules/default-layouts/default-layouts.php:118
 #: src/views/authors_grid.html.php:56
 msgid "View all posts"
 msgstr "Lihat semua pos"
 
-#: src/modules/author-boxes/author-boxes.php:1121
+#: src/modules/author-boxes/author-boxes.php:1124
 msgid "Theme"
 msgstr "Tema"
 
-#: src/modules/author-boxes/author-boxes.php:1427
+#: src/modules/author-boxes/author-boxes.php:1447
 msgid "Author Box Preview"
 msgstr "Pratinjau Kotak Author"
 
-#: src/modules/author-boxes/author-boxes.php:1444
+#: src/modules/author-boxes/author-boxes.php:1464
 msgid "Author Box Editor"
 msgstr "Kotak Author Editor"
 
-#: src/modules/author-boxes/author-boxes.php:1461
+#: src/modules/author-boxes/author-boxes.php:1481
 msgid "Layout Slug"
 msgstr "Tata Letak Slug"
 
-#: src/modules/author-boxes/author-boxes.php:1494
+#: src/modules/author-boxes/author-boxes.php:1514
 #: src/modules/author-custom-fields/author-custom-fields.php:770, fuzzy
 msgid "Banner"
 msgstr "Banner"
 
-#: src/modules/author-boxes/author-boxes.php:1514
+#: src/modules/author-boxes/author-boxes.php:1534
 msgid "Box Title"
 msgstr "Judul Kotak"
 
-#: src/modules/author-boxes/author-boxes.php:1522
+#: src/modules/author-boxes/author-boxes.php:1542
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:285
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:299
-#: src/modules/multiple-authors/multiple-authors.php:1141
+#: src/modules/multiple-authors/multiple-authors.php:1158
 msgid "Display Name"
 msgstr "Tampilkan Nama"
 
-#: src/modules/author-boxes/author-boxes.php:1530
+#: src/modules/author-boxes/author-boxes.php:1550
 msgid "View All Posts"
 msgstr "Lihat Semua Postingan"
 
-#: src/modules/author-boxes/author-boxes.php:1534
+#: src/modules/author-boxes/author-boxes.php:1554
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:253
 #: src/modules/author-categories/author-categories.php:65
 #: src/modules/author-categories/author-categories.php:261
 #: src/modules/author-categories/author-categories.php:262
 #: src/modules/author-categories/author-categories.php:649
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:29
-#: src/modules/author-list/author-list.php:648
-#: src/modules/author-list/author-list.php:662
+#: src/modules/author-list/author-list.php:649
+#: src/modules/author-list/author-list.php:663
 msgid "Author Categories"
 msgstr "Kategori Penulis"
 
-#: src/modules/author-boxes/author-boxes.php:1538
+#: src/modules/author-boxes/author-boxes.php:1558
 #: src/modules/author-custom-fields/author-custom-fields.php:64
 #: src/modules/author-custom-fields/author-custom-fields.php:163
 #: src/modules/author-custom-fields/author-custom-fields.php:221
@@ -1355,109 +1489,120 @@ msgstr "Kategori Penulis"
 msgid "Author Fields"
 msgstr "Bidang Author"
 
-#: src/modules/author-boxes/author-boxes.php:1542
+#: src/modules/author-boxes/author-boxes.php:1562
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1691
-#: src/modules/multiple-authors/multiple-authors.php:3280, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:3335, fuzzy
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
-#: src/modules/author-boxes/author-boxes.php:1546
+#: src/modules/author-boxes/author-boxes.php:1566
 msgid "Author Recent Posts"
 msgstr "Artikel Terbaru Author"
 
-#: src/modules/author-boxes/author-boxes.php:1550
+#: src/modules/author-boxes/author-boxes.php:1570
 msgid "Box Layout"
 msgstr "Tata Letak Kotak"
 
-#: src/modules/author-boxes/author-boxes.php:1554
+#: src/modules/author-boxes/author-boxes.php:1574
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1662
 msgid "Custom CSS"
 msgstr "CSS Kustom"
 
-#: src/modules/author-boxes/author-boxes.php:1558
+#: src/modules/author-boxes/author-boxes.php:1578
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1709
 msgid "Export"
 msgstr "Ekspor"
 
-#: src/modules/author-boxes/author-boxes.php:1562
+#: src/modules/author-boxes/author-boxes.php:1582
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1728
 msgid "Import"
 msgstr "Impor"
 
-#: src/modules/author-boxes/author-boxes.php:1566
+#: src/modules/author-boxes/author-boxes.php:1586
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1746
 msgid "Generate Theme Template"
 msgstr "Buat Template Tema"
 
-#: src/modules/author-boxes/author-boxes.php:1645
+#: src/modules/author-boxes/author-boxes.php:1665
 msgid "Shortcode documentation."
 msgstr "Dokumentasi Shortcode."
 
-#: src/modules/author-boxes/author-boxes.php:2059
+#: src/modules/author-boxes/author-boxes.php:2082
 msgid "Post preview"
 msgstr "Pratampil Postingan"
 
-#: src/modules/author-boxes/author-boxes.php:2068
+#: src/modules/author-boxes/author-boxes.php:2091
 msgid "Select Preview Post"
 msgstr "Pilih Prabaca Postingan"
 
-#: src/modules/author-boxes/author-boxes.php:2459
+#: src/modules/author-boxes/author-boxes.php:2288
+#. translators: 1: Profile field label, e.g. Website or Email. 2: Author name.
+#, php-format
+msgid "%1$s for %2$s"
+msgstr "%1$s untuk %2$s"
+
+#: src/modules/author-boxes/author-boxes.php:2293
+#: src/modules/author-boxes/author-boxes.php:2303
+msgid "(opens in a new tab)"
+msgstr "(membuka di tab baru)"
+
+#: src/modules/author-boxes/author-boxes.php:2499
 msgid "No Recent Posts by this Author"
 msgstr "Tidak Ada Pos Terbaru oleh Author ini"
 
-#: src/modules/author-boxes/author-boxes.php:2654
-#: src/modules/author-boxes/author-boxes.php:2735
-#: src/modules/author-boxes/author-boxes.php:3095
+#: src/modules/author-boxes/author-boxes.php:2694
+#: src/modules/author-boxes/author-boxes.php:2775
+#: src/modules/author-boxes/author-boxes.php:3135
 msgid "Pro feature"
 msgstr "Fitur pro"
 
-#: src/modules/author-boxes/author-boxes.php:2774
+#: src/modules/author-boxes/author-boxes.php:2814
 msgid "After View all posts Row"
 msgstr "Setelah Baris Lihat semua pos"
 
-#: src/modules/author-boxes/author-boxes.php:2775
+#: src/modules/author-boxes/author-boxes.php:2815
 msgid "After Name Row"
 msgstr "Setelah Baris Nama"
 
-#: src/modules/author-boxes/author-boxes.php:2776
+#: src/modules/author-boxes/author-boxes.php:2816
 msgid "After Biographical Info Row"
 msgstr "Setelah Baris Info Biografi"
 
-#: src/modules/author-boxes/author-boxes.php:2777
+#: src/modules/author-boxes/author-boxes.php:2817
 msgid "After All Authors"
 msgstr "Setelah Semua Penulis"
 
-#: src/modules/author-boxes/author-boxes.php:2786
+#: src/modules/author-boxes/author-boxes.php:2826
 msgid "Position"
 msgstr "Posisi"
 
-#: src/modules/author-boxes/author-boxes.php:2787
+#: src/modules/author-boxes/author-boxes.php:2827
 msgid "Action"
 msgstr "Aksi"
 
-#: src/modules/author-boxes/author-boxes.php:2814
-#: src/modules/author-boxes/author-boxes.php:2843
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:145
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:399
+#: src/modules/author-boxes/author-boxes.php:2854
+#: src/modules/author-boxes/author-boxes.php:2883
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:150
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:404
 msgid "Delete"
 msgstr "Hapus"
 
-#: src/modules/author-boxes/author-boxes.php:2815
+#: src/modules/author-boxes/author-boxes.php:2855
 msgid "Add"
 msgstr "Tambah"
 
-#: src/modules/author-boxes/author-boxes.php:2853
+#: src/modules/author-boxes/author-boxes.php:2893
 #, php-format
 msgid "You can use basic HTML in this field. For example: Read Time %1s."
 msgstr ""
 "Anda dapat menggunakan HTML dasar di bidang ini. Sebagai contoh: Waktu "
 "Bacaan %1s."
 
-#: src/modules/author-boxes/author-boxes.php:2857
+#: src/modules/author-boxes/author-boxes.php:2897
 msgid "Export Editor Settings"
 msgstr "Eksport Pengaturan Editor"
 
-#: src/modules/author-boxes/author-boxes.php:2858
+#: src/modules/author-boxes/author-boxes.php:2898
 msgid ""
 "You can use this data to export your author box design and import it to a "
 "new site."
@@ -1465,42 +1610,42 @@ msgstr ""
 "Anda dapat menggunakan data ini untuk eksport desain kotak author anda dan "
 "import ke situs yang baru."
 
-#: src/modules/author-boxes/author-boxes.php:2868
-#: src/modules/author-boxes/author-boxes.php:2939
+#: src/modules/author-boxes/author-boxes.php:2908
+#: src/modules/author-boxes/author-boxes.php:2979
 msgid "Copy to Clipboard"
 msgstr "Salin ke Clipboard"
 
-#: src/modules/author-boxes/author-boxes.php:2872
-#: src/modules/author-boxes/author-boxes.php:2944
+#: src/modules/author-boxes/author-boxes.php:2912
+#: src/modules/author-boxes/author-boxes.php:2984
 msgid "Copied to Clipboard!"
 msgstr "Disalin ke clipboard!"
 
-#: src/modules/author-boxes/author-boxes.php:2877
+#: src/modules/author-boxes/author-boxes.php:2917
 msgid "Import Editor Settings"
 msgstr "Impor Pengaturan Editor"
 
-#: src/modules/author-boxes/author-boxes.php:2878
+#: src/modules/author-boxes/author-boxes.php:2918
 msgid "Paste the editor data from the \"Export\" tab on another site."
 msgstr "Tempel data editor dari \"Export\" jendela di situs lain."
 
-#: src/modules/author-boxes/author-boxes.php:2887
+#: src/modules/author-boxes/author-boxes.php:2927
 msgid "Invalid data"
 msgstr "Data tidak valid"
 
-#: src/modules/author-boxes/author-boxes.php:2887
-#: src/modules/author-boxes/author-boxes.php:2892
+#: src/modules/author-boxes/author-boxes.php:2927
+#: src/modules/author-boxes/author-boxes.php:2932
 msgid "Settings Imported Successfully!"
 msgstr "Pengaturan berhasil diimpor!"
 
-#: src/modules/author-boxes/author-boxes.php:2888
+#: src/modules/author-boxes/author-boxes.php:2928
 msgid "Import Data"
 msgstr "Impor Data"
 
-#: src/modules/author-boxes/author-boxes.php:2897
+#: src/modules/author-boxes/author-boxes.php:2937
 msgid "How to generate and use a theme template file"
 msgstr "Bagaimana cara membuat dan menggunakan file template"
 
-#: src/modules/author-boxes/author-boxes.php:2900
+#: src/modules/author-boxes/author-boxes.php:2940
 msgid ""
 "Click the \"Generate Template\" button under the text area. Wait for the "
 "code to be generated."
@@ -1508,7 +1653,7 @@ msgstr ""
 "Klik tombol \"Generate Template\" di bawah area teks. Tunggu hingga kode "
 "dihasilkan."
 
-#: src/modules/author-boxes/author-boxes.php:2901
+#: src/modules/author-boxes/author-boxes.php:2941
 #, php-format
 msgid ""
 "Create an empty php template file with your desired file slug in the %1s "
@@ -1523,11 +1668,11 @@ msgstr ""
 "/wp-content/themes/%5snama-tema-anda%6s/publishpress-authors/author-boxes/"
 "template-penulis-kustom-pertama-saya.php %7s."
 
-#: src/modules/author-boxes/author-boxes.php:2902
+#: src/modules/author-boxes/author-boxes.php:2942
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "Salin kode yang dibuat dan tempel ke dalam file baru."
 
-#: src/modules/author-boxes/author-boxes.php:2903
+#: src/modules/author-boxes/author-boxes.php:2943
 msgid ""
 "Congratulations. Your can now choose your template inside the PublishPress "
 "Authors Settings."
@@ -1535,28 +1680,28 @@ msgstr ""
 "Selamat. Anda dapat memilih template anda didalam pengaturan PublishPress "
 "Authors."
 
-#: src/modules/author-boxes/author-boxes.php:2907
+#: src/modules/author-boxes/author-boxes.php:2947
 #, php-format
 msgid "You can read more information on the %s."
 msgstr "Anda dapat membaca informasi lebih lanjut disini %s."
 
-#: src/modules/author-boxes/author-boxes.php:2908
+#: src/modules/author-boxes/author-boxes.php:2948
 msgid "documentation page"
 msgstr "halaman dokumentasi"
 
-#: src/modules/author-boxes/author-boxes.php:2933
+#: src/modules/author-boxes/author-boxes.php:2973
 msgid "Generate Template"
 msgstr "Membuat Template"
 
-#: src/modules/author-boxes/author-boxes.php:2947
+#: src/modules/author-boxes/author-boxes.php:2987
 msgid "Template generated successfuly!"
 msgstr "Template berhasil dibuat!"
 
-#: src/modules/author-boxes/author-boxes.php:2989
+#: src/modules/author-boxes/author-boxes.php:3029
 msgid "Reorder Fields"
 msgstr "Urutkan Ulang Ruas"
 
-#: src/modules/author-boxes/author-boxes.php:2997
+#: src/modules/author-boxes/author-boxes.php:3037
 msgid ""
 "Reorder the fields by dragging them to the correct position and saving your "
 "changes."
@@ -1564,39 +1709,39 @@ msgstr ""
 "Urutkan ulang ruas dengan menyeret ke posisi yang benar dan simpan "
 "perubahan."
 
-#: src/modules/author-boxes/author-boxes.php:3011
+#: src/modules/author-boxes/author-boxes.php:3051
 msgid "Save for Current Author Box"
 msgstr "Simpan untuk kotak Author saat ini"
 
-#: src/modules/author-boxes/author-boxes.php:3015
+#: src/modules/author-boxes/author-boxes.php:3055
 msgid "Save for All Author Boxes"
 msgstr "Simpan untuk semua kotak Author"
 
-#: src/modules/author-boxes/author-boxes.php:3038
+#: src/modules/author-boxes/author-boxes.php:3078
 #, php-format
 msgid "Select %1s"
 msgstr "Pilih %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3039
+#: src/modules/author-boxes/author-boxes.php:3079
 #, php-format
 msgid "Change %1s"
 msgstr "Ubah %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3040
+#: src/modules/author-boxes/author-boxes.php:3080
 #, php-format
 msgid "Remove %1s"
 msgstr "Hapus %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3067
+#: src/modules/author-boxes/author-boxes.php:3107
 #, php-format
 msgid "Search %1s Icon"
 msgstr "Cari Ikon %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3278
+#: src/modules/author-boxes/author-boxes.php:3319
 msgid "New Author Categories Box"
 msgstr "Kotak Kategori Penulis Baru"
 
-#: src/modules/author-boxes/author-boxes.php:3286
+#: src/modules/author-boxes/author-boxes.php:3327
 msgid ""
 "PublishPress Authors Pro allows you to unlock the full potential of Author "
 "Categories."
@@ -1604,21 +1749,21 @@ msgstr ""
 "PublishPress Authors Pro memungkinkan Anda untuk membuka potensi penuh dari "
 "Kategori Penulis."
 
-#: src/modules/author-boxes/author-boxes.php:3288
+#: src/modules/author-boxes/author-boxes.php:3329
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr ""
 "Anda dapat membuat Kotak Penulis di mana Penulis dikelompokkan ke dalam "
 "kategori mereka."
 
-#: src/modules/author-boxes/author-boxes.php:3341
+#: src/modules/author-boxes/author-boxes.php:3382
 msgid "PublishPress Authors Box"
 msgstr "Kotak Penulis PublishPress"
 
-#: src/modules/author-boxes/author-boxes.php:3342
+#: src/modules/author-boxes/author-boxes.php:3383
 msgid "Select an author box"
 msgstr "Pilih kotak penulis"
 
-#: src/modules/author-boxes/author-boxes.php:3389
+#: src/modules/author-boxes/author-boxes.php:3430
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:47
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:137
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:200
@@ -1626,7 +1771,7 @@ msgstr "Pilih kotak penulis"
 #: src/modules/author-categories/author-categories.php:397
 #: src/modules/author-categories/author-categories.php:469
 #: src/modules/author-custom-fields/author-custom-fields.php:1093
-#: src/modules/author-list/author-list.php:1718
+#: src/modules/author-list/author-list.php:1719
 msgid "You do not have permission to perform this action"
 msgstr "Anda tidak memiliki izin untuk melakukan tindakan ini."
 
@@ -1638,7 +1783,7 @@ msgstr "Anda tidak memiliki izin untuk melakukan tindakan ini."
 #: src/modules/author-categories/author-categories.php:451
 #: src/modules/author-categories/author-categories.php:459
 #: src/modules/author-custom-fields/author-custom-fields.php:1080
-#: src/modules/author-list/author-list.php:1705
+#: src/modules/author-list/author-list.php:1706
 msgid "An error occured."
 msgstr "Terjadi kesalahan."
 
@@ -2008,8 +2153,8 @@ msgstr "Tag HTML Judul Kotak"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:841
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1234
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1457
-#: src/modules/multiple-authors/multiple-authors.php:2081
-#: src/modules/multiple-authors/multiple-authors.php:2113, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2120
+#: src/modules/multiple-authors/multiple-authors.php:2149, fuzzy
 msgid "H1"
 msgstr "H1"
 
@@ -2020,8 +2165,8 @@ msgstr "H1"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:842
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1235
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1458
-#: src/modules/multiple-authors/multiple-authors.php:2082
-#: src/modules/multiple-authors/multiple-authors.php:2114, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2121
+#: src/modules/multiple-authors/multiple-authors.php:2150, fuzzy
 msgid "H2"
 msgstr "H2"
 
@@ -2032,8 +2177,8 @@ msgstr "H2"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1236
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1459
-#: src/modules/multiple-authors/multiple-authors.php:2083
-#: src/modules/multiple-authors/multiple-authors.php:2115, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2122
+#: src/modules/multiple-authors/multiple-authors.php:2151, fuzzy
 msgid "H3"
 msgstr "H3"
 
@@ -2044,8 +2189,8 @@ msgstr "H3"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:844
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1237
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1460
-#: src/modules/multiple-authors/multiple-authors.php:2084
-#: src/modules/multiple-authors/multiple-authors.php:2116, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2123
+#: src/modules/multiple-authors/multiple-authors.php:2152, fuzzy
 msgid "H4"
 msgstr "H4"
 
@@ -2056,8 +2201,8 @@ msgstr "H4"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:845
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1238
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1461
-#: src/modules/multiple-authors/multiple-authors.php:2085
-#: src/modules/multiple-authors/multiple-authors.php:2117, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2124
+#: src/modules/multiple-authors/multiple-authors.php:2153, fuzzy
 msgid "H5"
 msgstr "H5"
 
@@ -2068,8 +2213,8 @@ msgstr "H5"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:846
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1239
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1462
-#: src/modules/multiple-authors/multiple-authors.php:2086
-#: src/modules/multiple-authors/multiple-authors.php:2118, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2125
+#: src/modules/multiple-authors/multiple-authors.php:2154, fuzzy
 msgid "H6"
 msgstr "H6"
 
@@ -3039,7 +3184,7 @@ msgid "Add support for author categories."
 msgstr "Tambahkan dukungan untuk kategori penulis."
 
 #: src/modules/author-categories/author-categories.php:280
-#: src/modules/author-list/author-list.php:231
+#: src/modules/author-list/author-list.php:232
 msgid "Number of items per page"
 msgstr "Jumlah item per halaman"
 
@@ -3093,7 +3238,7 @@ msgid "Add Author Category"
 msgstr "Tambahkan Kategori Penulis"
 
 #: src/modules/author-categories/author-categories.php:676
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:487
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:492
 msgid "Singular Name"
 msgstr "Nama Tunggal"
 
@@ -3103,7 +3248,7 @@ msgstr "Masukkan nama Kategori Penulis ketika hanya ada satu penulis"
 
 #: src/modules/author-categories/author-categories.php:681
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:97
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:492
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:497
 msgid "Plural Name"
 msgstr "Nama Jamak"
 
@@ -3112,13 +3257,13 @@ msgid "Enter the Author Category name when there are more than 1 author"
 msgstr "Masukkan nama Kategori Penulis ketika ada lebih dari 1 penulis"
 
 #: src/modules/author-categories/author-categories.php:686
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:497
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:502
 #: src/modules/author-custom-fields/author-custom-fields.php:418
 msgid "Schema Property"
 msgstr "Properti Skema"
 
 #: src/modules/author-categories/author-categories.php:689
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:500
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:505
 #, php-format
 msgid ""
 "Example: when this value is set to reviewedBy, all users in this category "
@@ -3131,12 +3276,12 @@ msgstr ""
 
 #: src/modules/author-categories/author-categories.php:701
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:98
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:510
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:515
 msgid "Post Types"
 msgstr "Tipe Pos"
 
 #: src/modules/author-categories/author-categories.php:712
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:518
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:523
 msgid "Select Post Type..."
 msgstr "Pilih Jenis Postingan..."
 
@@ -3150,7 +3295,7 @@ msgstr ""
 
 #: src/modules/author-categories/author-categories.php:750
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:100
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:555
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:560
 msgid "Enable Category"
 msgstr "Aktifkan Kategori"
 
@@ -3185,74 +3330,83 @@ msgstr "Editor"
 msgid "Editors"
 msgstr "Editor"
 
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:95
+msgid "Select all author categories"
+msgstr "Pilih semua kategori penulis"
+
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:99
 #: src/modules/author-custom-fields/author-custom-fields.php:804, fuzzy
 msgid "Slug"
 msgstr "Slug"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:143
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:136
+#, php-format
+msgid "Select %s"
+msgstr "Pilih %s"
+
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:148
 msgid "Enable Categories"
 msgstr "Aktifkan Kategori"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:144
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:149
 msgid "Disable Categories"
 msgstr "Nonaktifkan Kategori"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:173
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:178
 msgid "Author categories deleted successfully."
 msgstr "Kategori penulis berhasil dihapus."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:176
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:181
 msgid "Author category deleted successfully."
 msgstr "Kategori penulis berhasil dihapus."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:187
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:192
 msgid "Author categories enabled."
 msgstr "Kategori penulis diaktifkan."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:190
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:195
 msgid "Author category enabled."
 msgstr "Kategori penulis diaktifkan."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:201
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:206
 msgid "Author categories disabled."
 msgstr "Kategori penulis dinonaktifkan."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:204
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:209
 msgid "Author category disabled."
 msgstr "Kategori penulis dinonaktifkan."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:288
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:293
 msgid "No author categories."
 msgstr "Tidak ada kategori penulis."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:377
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:382
 #. translators: %s: Taxonomy term name.
 #, php-format
 msgid "Quick edit &#8220;%s&#8221; inline"
 msgstr "Edit cepat &#8220;%s&#8221; secara inline"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:385
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:390
 msgid "Quick&nbsp;Edit"
 msgstr "Edit Cepat"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:416
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:421
 msgid "Enabled"
 msgstr "Diaktifkan"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:462
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:467
 msgid "All"
 msgstr "Semua"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:484
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:489
 msgid "Quick Edit"
 msgstr "Edit Cepat"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:563
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:568
 msgid "Update"
 msgstr "Perbarui"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:564
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:569
 msgid "Cancel"
 msgstr "Batal"
 
@@ -3458,7 +3612,7 @@ msgid "Please enter the full URL to your TikTok profile."
 msgstr "Silakan masukkan URL lengkap ke profil TikTok Anda."
 
 #: src/modules/author-list/author-list.php:73
-#: src/modules/author-list/author-list.php:1129
+#: src/modules/author-list/author-list.php:1130
 msgid "Author List"
 msgstr "Daftar Penulis"
 
@@ -3467,107 +3621,107 @@ msgstr "Daftar Penulis"
 msgid "Add support for author list."
 msgstr "Tambahkan dukungan untuk daftar penulis."
 
-#: src/modules/author-list/author-list.php:210
 #: src/modules/author-list/author-list.php:211
-#: src/modules/author-list/author-list.php:287
-#: src/modules/author-list/author-list.php:1181
+#: src/modules/author-list/author-list.php:212
+#: src/modules/author-list/author-list.php:288
+#: src/modules/author-list/author-list.php:1182
 msgid "Author Lists"
 msgstr "Daftar Penulis"
 
-#: src/modules/author-list/author-list.php:253
+#: src/modules/author-list/author-list.php:254
 msgid "Settings updated successfully."
 msgstr "Pengaturan berhasil diperbarui."
 
-#: src/modules/author-list/author-list.php:257
+#: src/modules/author-list/author-list.php:258
 msgid "Author List deleted successfully."
 msgstr "Daftar Penulis berhasil dihapus."
 
-#: src/modules/author-list/author-list.php:261
+#: src/modules/author-list/author-list.php:262
 msgid "Author List restored from the Trash."
 msgstr "Daftar Penulis dipulihkan dari Tempat Sampah."
 
-#: src/modules/author-list/author-list.php:265
+#: src/modules/author-list/author-list.php:266
 msgid "Author List moved to the Trash."
 msgstr "Daftar Penulis dipindahkan ke Tempat Sampah."
 
-#: src/modules/author-list/author-list.php:293
+#: src/modules/author-list/author-list.php:294
 msgid "Add New"
 msgstr "Tambahkan Baru"
 
-#: src/modules/author-list/author-list.php:298
+#: src/modules/author-list/author-list.php:299
 #. translators: %s: search keywords
 #, php-format
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "Hasil pencarian untuk &#8220;%s&#8221;"
 
-#: src/modules/author-list/author-list.php:307
+#: src/modules/author-list/author-list.php:308
 msgid "Search Author Lists"
 msgstr "Cari Daftar Penulis"
 
-#: src/modules/author-list/author-list.php:326
-#: src/modules/author-list/author-list.php:768
+#: src/modules/author-list/author-list.php:327
+#: src/modules/author-list/author-list.php:769
 msgid "Preview"
 msgstr "Prabaca"
 
-#: src/modules/author-list/author-list.php:334
+#: src/modules/author-list/author-list.php:335
 msgid "Fields"
 msgstr "Bidang"
 
-#: src/modules/author-list/author-list.php:338
+#: src/modules/author-list/author-list.php:339
 msgid "Users"
 msgstr "Pengguna"
 
-#: src/modules/author-list/author-list.php:342
+#: src/modules/author-list/author-list.php:343
 msgid "Options"
 msgstr "Opsi"
 
-#: src/modules/author-list/author-list.php:371
+#: src/modules/author-list/author-list.php:372
 msgid "Post Count"
 msgstr "Jumlah Postingan"
 
-#: src/modules/author-list/author-list.php:550
+#: src/modules/author-list/author-list.php:551
 msgid "The original size of the uploaded image"
 msgstr "Ukuran asli dari gambar yang diunggah"
 
-#: src/modules/author-list/author-list.php:551
+#: src/modules/author-list/author-list.php:552
 msgid "Large-sized image (1024px by 1024px)"
 msgstr "Gambar berukuran besar (1024px x 1024px)"
 
-#: src/modules/author-list/author-list.php:552
+#: src/modules/author-list/author-list.php:553
 msgid "Medium-large image (768px)"
 msgstr "Gambar ukuran sedang-besar (768px)"
 
-#: src/modules/author-list/author-list.php:553
+#: src/modules/author-list/author-list.php:554
 msgid "Medium-sized image (300px by 300px)"
 msgstr "Gambar ukuran sedang (300px x 300px)"
 
-#: src/modules/author-list/author-list.php:554
+#: src/modules/author-list/author-list.php:555
 msgid "Small-sized image (150px by 150px)"
 msgstr "Gambar berukuran kecil (150px x 150px)"
 
-#: src/modules/author-list/author-list.php:594
+#: src/modules/author-list/author-list.php:595
 msgid "Columns"
 msgstr "Kolom"
 
-#: src/modules/author-list/author-list.php:595
+#: src/modules/author-list/author-list.php:596
 msgid "Choose how many columns to use for grid-style Author Lists."
 msgstr ""
 "Pilih berapa banyak kolom yang akan digunakan untuk Daftar Penulis gaya "
 "grid."
 
-#: src/modules/author-list/author-list.php:604
+#: src/modules/author-list/author-list.php:605
 msgid "Group By"
 msgstr "Kelompokkan Berdasarkan"
 
-#: src/modules/author-list/author-list.php:615
+#: src/modules/author-list/author-list.php:616
 msgid "Featured Image Size"
 msgstr "Ukuran Gambar Unggulan"
 
-#: src/modules/author-list/author-list.php:628
+#: src/modules/author-list/author-list.php:629
 msgid "Display Fields"
 msgstr "Tampilkan Bidang"
 
-#: src/modules/author-list/author-list.php:629
+#: src/modules/author-list/author-list.php:630
 msgid ""
 "Choose which author profile fields to show. This applies to Authors Grid "
 "and Authors Table layouts only."
@@ -3575,15 +3729,15 @@ msgstr ""
 "Pilih bidang profil penulis yang akan ditampilkan. Ini berlaku hanya untuk "
 "tata letak Grid Penulis dan Tabel Penulis."
 
-#: src/modules/author-list/author-list.php:633
+#: src/modules/author-list/author-list.php:634
 msgid "Select fields"
 msgstr "Pilih bidang"
 
-#: src/modules/author-list/author-list.php:641
+#: src/modules/author-list/author-list.php:642
 msgid "Show Authors"
 msgstr "Tampilkan Penulis"
 
-#: src/modules/author-list/author-list.php:642
+#: src/modules/author-list/author-list.php:643
 msgid ""
 "Select an option to limit the results to selected user roles, author types, "
 "specific authors or author Categories."
@@ -3591,16 +3745,16 @@ msgstr ""
 "Pilih opsi untuk membatasi hasil pada peran pengguna yang dipilih, jenis "
 "penulis, penulis tertentu, atau kategori penulis."
 
-#: src/modules/author-list/author-list.php:645
-#: src/modules/author-list/author-list.php:659
+#: src/modules/author-list/author-list.php:646
+#: src/modules/author-list/author-list.php:660
 msgid "Roles"
 msgstr "Peran"
 
-#: src/modules/author-list/author-list.php:655
+#: src/modules/author-list/author-list.php:656
 msgid "Exclude Authors"
 msgstr "Kecualikan Penulis"
 
-#: src/modules/author-list/author-list.php:656
+#: src/modules/author-list/author-list.php:657
 msgid ""
 "Select an option to exclude selected user roles, author types, specific "
 "authors or author Categories from Author list."
@@ -3608,19 +3762,19 @@ msgstr ""
 "Pilih opsi untuk mengecualikan peran pengguna yang dipilih, jenis penulis, "
 "penulis tertentu, atau kategori penulis dari daftar Penulis."
 
-#: src/modules/author-list/author-list.php:672
+#: src/modules/author-list/author-list.php:673
 msgid "Authors Per Page"
 msgstr "Penulis Per Halaman"
 
-#: src/modules/author-list/author-list.php:673
+#: src/modules/author-list/author-list.php:674
 msgid "You can set the number of authors to show per page."
 msgstr "Anda dapat mengatur jumlah penulis yang ditampilkan per halaman."
 
-#: src/modules/author-list/author-list.php:683
+#: src/modules/author-list/author-list.php:684
 msgid "Show Empty"
 msgstr "Tampilkan Kosong"
 
-#: src/modules/author-list/author-list.php:684
+#: src/modules/author-list/author-list.php:685
 msgid ""
 "Enable this option to show all authors, including those without any posts. "
 "Disable this option to show only authors who are assigned to posts."
@@ -3629,11 +3783,11 @@ msgstr ""
 "memiliki pos. Nonaktifkan opsi ini untuk menampilkan hanya penulis yang "
 "ditugaskan untuk pos."
 
-#: src/modules/author-list/author-list.php:692
+#: src/modules/author-list/author-list.php:693
 msgid "Configure Author List Options"
 msgstr "Konfigurasi Opsi Daftar Penulis"
 
-#: src/modules/author-list/author-list.php:693
+#: src/modules/author-list/author-list.php:694
 msgid ""
 "Authors Pro allows you to add extra features to the Authors List. These "
 "features include pagination, choose the order of authors, and much more."
@@ -3642,15 +3796,15 @@ msgstr ""
 "Fitur-fitur ini termasuk pagination, memilih urutan penulis, dan banyak "
 "lagi."
 
-#: src/modules/author-list/author-list.php:698
+#: src/modules/author-list/author-list.php:699
 msgid "Order By"
 msgstr "Urutkan Menurut"
 
-#: src/modules/author-list/author-list.php:726
+#: src/modules/author-list/author-list.php:727
 msgid "Last Article Date"
 msgstr "Tanggal Artikel Terakhir"
 
-#: src/modules/author-list/author-list.php:727
+#: src/modules/author-list/author-list.php:728
 msgid ""
 "You can limit the author list to users with a published post within a "
 "specific time. This option accepts date values such as 1 week ago, 1 month "
@@ -3661,15 +3815,15 @@ msgstr ""
 "minggu yang lalu, 1 bulan yang lalu, 6 bulan yang lalu, 1 tahun yang lalu, "
 "dll."
 
-#: src/modules/author-list/author-list.php:739
+#: src/modules/author-list/author-list.php:740
 msgid "Show Search Box"
 msgstr "Tampilkan Kotak Pencarian"
 
-#: src/modules/author-list/author-list.php:748
+#: src/modules/author-list/author-list.php:749
 msgid "Add Search Box to Author Lists"
 msgstr "Tambahkan Kotak Pencarian ke Daftar Penulis"
 
-#: src/modules/author-list/author-list.php:749
+#: src/modules/author-list/author-list.php:750
 msgid ""
 "Author Pro allows you to add a search box to the Authors List. You can also "
 "show a dropdown menu that allows users to search on specific author fields."
@@ -3678,11 +3832,11 @@ msgstr ""
 "Anda juga dapat menampilkan menu dropdown yang memungkinkan pengguna untuk "
 "mencari di bidang penulis tertentu."
 
-#: src/modules/author-list/author-list.php:754
+#: src/modules/author-list/author-list.php:755
 msgid "Search Field Dropdown"
 msgstr "Dropdown Bidang Pencarian"
 
-#: src/modules/author-list/author-list.php:755
+#: src/modules/author-list/author-list.php:756
 msgid ""
 "You can also show a dropdown menu that allows users to search on specific "
 "author fields."
@@ -3690,59 +3844,59 @@ msgstr ""
 "Anda juga dapat menampilkan menu dropdown yang memungkinkan pengguna untuk "
 "mencari di bidang penulis tertentu."
 
-#: src/modules/author-list/author-list.php:816
+#: src/modules/author-list/author-list.php:817
 msgid "Author Recent List"
 msgstr "Daftar Terbaru Penulis"
 
-#: src/modules/author-list/author-list.php:866
+#: src/modules/author-list/author-list.php:867
 msgid "Author Index List"
 msgstr "Daftar Indeks Penulis"
 
-#: src/modules/author-list/author-list.php:917
+#: src/modules/author-list/author-list.php:918
 msgid "Author Grid List"
 msgstr "Daftar Grid Penulis"
 
-#: src/modules/author-list/author-list.php:973
+#: src/modules/author-list/author-list.php:974
 msgid "Author Table List"
 msgstr "Daftar Tabel Penulis"
 
-#: src/modules/author-list/author-list.php:1166
+#: src/modules/author-list/author-list.php:1167
 msgid "Edit Author List"
 msgstr "Sunting Daftar Pengarang"
 
-#: src/modules/author-list/author-list.php:1166
+#: src/modules/author-list/author-list.php:1167
 msgid "Add Author List"
 msgstr "Tambahkan Daftar Penulis"
 
-#: src/modules/author-list/author-list.php:1237
-#: src/modules/author-list/author-list.php:1244
+#: src/modules/author-list/author-list.php:1238
+#: src/modules/author-list/author-list.php:1245
 msgid "Save Changes"
 msgstr "Simpan Perubahan"
 
-#: src/modules/author-list/author-list.php:1260
+#: src/modules/author-list/author-list.php:1261
 msgid "Dynamic Shortcode"
 msgstr "Kode Pendek Dinamis"
 
-#: src/modules/author-list/author-list.php:1262
+#: src/modules/author-list/author-list.php:1263
 msgid "Static Shortcode"
 msgstr "Shortcode Statis"
 
-#: src/modules/author-list/author-list.php:1497
-#: src/modules/author-list/author-list.php:1524
-#: src/modules/multiple-authors/multiple-authors.php:1888
+#: src/modules/author-list/author-list.php:1498
+#: src/modules/author-list/author-list.php:1525
+#: src/modules/multiple-authors/multiple-authors.php:1933
 msgid "Select some options"
 msgstr "Pilih beberapa opsi"
 
-#: src/modules/author-list/author-list.php:1545
-#: src/modules/author-list/author-list.php:1655
+#: src/modules/author-list/author-list.php:1546
+#: src/modules/author-list/author-list.php:1656
 msgid "Select Users"
 msgstr "Pilih Pengguna"
 
-#: src/modules/author-list/author-list.php:1572
+#: src/modules/author-list/author-list.php:1573
 msgid "Select Author Category"
 msgstr "Pilih Kategori Penulis"
 
-#: src/modules/author-list/author-list.php:1620
+#: src/modules/author-list/author-list.php:1621
 msgid ""
 "This is a quick preview of this Author List. Test on frontend pages to see "
 "exactly how it looks with your theme."
@@ -3750,7 +3904,7 @@ msgstr ""
 "Ini adalah pratinjau cepat dari Daftar Penulis ini. Uji di halaman frontend "
 "untuk melihat tepatnya bagaimana tampilannya dengan tema Anda."
 
-#: src/modules/author-list/author-list.php:1724
+#: src/modules/author-list/author-list.php:1725
 msgid "Invalid form"
 msgstr "Formulir tidak valid"
 
@@ -3775,42 +3929,70 @@ msgstr[0] "Tempat Sampah %s"
 msgid "No author list avaliable in the selected view."
 msgstr "Tidak ada daftar penulis yang tersedia di tampilan yang dipilih."
 
-#: src/modules/author-list/classes/AuthorListTable.php:356
+#: src/modules/author-list/classes/AuthorListTable.php:344
+#, fuzzy, php-format
+msgid "Edit %s"
+msgstr "Edit %s"
+
+#: src/modules/author-list/classes/AuthorListTable.php:357
+#, php-format
+msgid "Move %s to Trash"
+msgstr "Pindahkan %s ke Sampah"
+
+#: src/modules/author-list/classes/AuthorListTable.php:358
 msgid "Trash"
 msgstr "Tempat Sampah"
 
-#: src/modules/author-list/classes/AuthorListTable.php:372
+#: src/modules/author-list/classes/AuthorListTable.php:374
+#, php-format
+msgid "Restore %s"
+msgstr "Pulihkan %s"
+
+#: src/modules/author-list/classes/AuthorListTable.php:375
 msgid "Restore"
 msgstr "Pulihkan"
 
-#: src/modules/author-list/classes/AuthorListTable.php:384
+#: src/modules/author-list/classes/AuthorListTable.php:387
+#, php-format
+msgid "Delete %s permanently"
+msgstr "Hapus %s secara permanen"
+
+#: src/modules/author-list/classes/AuthorListTable.php:388
 msgid "Delete Permanently"
 msgstr "Hapus Secara Permanen"
 
-#: src/modules/author-list/classes/AuthorListTable.php:427
-#: src/modules/default-layouts/default-layouts.php:127
+#: src/modules/author-list/classes/AuthorListTable.php:431
+#: src/modules/default-layouts/default-layouts.php:138
 msgid "Authors Index"
 msgstr "Indeks Penulis"
 
-#: src/modules/author-list/classes/AuthorListTable.php:428
-#: src/modules/default-layouts/default-layouts.php:128
+#: src/modules/author-list/classes/AuthorListTable.php:432
+#: src/modules/default-layouts/default-layouts.php:139
 msgid "Authors Recent"
 msgstr "Penulis Terbaru"
 
-#: src/modules/author-list/classes/AuthorListTable.php:429
-#: src/modules/default-layouts/default-layouts.php:129
+#: src/modules/author-list/classes/AuthorListTable.php:433
+#: src/modules/default-layouts/default-layouts.php:140
 msgid "Authors Grid"
 msgstr "Grid Penulis"
 
-#: src/modules/author-list/classes/AuthorListTable.php:430
-#: src/modules/default-layouts/default-layouts.php:130
+#: src/modules/author-list/classes/AuthorListTable.php:434
+#: src/modules/default-layouts/default-layouts.php:141
 msgid "Authors Table"
 msgstr "Tabel Penulis"
+
+#: src/modules/author-list/classes/AuthorListTable.php:455, fuzzy
+msgid "Dynamic shortcode"
+msgstr "Dynamic shortcode"
+
+#: src/modules/author-list/classes/AuthorListTable.php:470, fuzzy
+msgid "Static shortcode"
+msgstr "Static shortcode"
 
 #: src/modules/author-pages/author-pages.php:60
 #: src/modules/author-pages/author-pages.php:106
 #: src/modules/author-pages/author-pages.php:107
-#: src/modules/multiple-authors/multiple-authors.php:3279
+#: src/modules/multiple-authors/multiple-authors.php:3334
 msgid "Author Pages"
 msgstr "Halaman Author"
 
@@ -3839,14 +4021,14 @@ msgstr "Tambahkan opsi migrasi untuk Byline"
 #: src/modules/byline-migration/byline-migration.php:145
 #: src/modules/bylines-migration/bylines-migration.php:147
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:134
-#: src/modules/multiple-authors/multiple-authors.php:4253
+#: src/modules/multiple-authors/multiple-authors.php:4368
 msgid "Collecting data for the migration..."
 msgstr "Mengumpulkan data untuk migrasi..."
 
 #: src/modules/byline-migration/byline-migration.php:146
 #: src/modules/bylines-migration/bylines-migration.php:148
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:135
-#: src/modules/multiple-authors/multiple-authors.php:4254
+#: src/modules/multiple-authors/multiple-authors.php:4369
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:54
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:136
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:167
@@ -3859,7 +4041,7 @@ msgstr "Selesai! Data Byline telah disalin dan Anda dapat menonaktifkan plugin."
 
 #: src/modules/byline-migration/byline-migration.php:149
 #: src/modules/bylines-migration/bylines-migration.php:151
-#: src/modules/multiple-authors/multiple-authors.php:4257
+#: src/modules/multiple-authors/multiple-authors.php:4372
 msgid "Copying authors' data..."
 msgstr "Menyalin data author..."
 
@@ -4076,8 +4258,8 @@ msgid "Please click here to migrate to PublishPress Authors"
 msgstr "Silakan klik di sini untuk migrasi ke PublishPress Authors"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:193
-#: src/modules/multiple-authors/multiple-authors.php:4961
-#: src/modules/multiple-authors/multiple-authors.php:5052
+#: src/modules/multiple-authors/multiple-authors.php:5076
+#: src/modules/multiple-authors/multiple-authors.php:5167
 msgid "Dismiss"
 msgstr "Tutup"
 
@@ -4085,217 +4267,221 @@ msgstr "Tutup"
 msgid "Multiple Authors"
 msgstr "Beberapa Author"
 
-#: src/modules/multiple-authors/multiple-authors.php:168
+#: src/modules/multiple-authors/multiple-authors.php:171
 msgid "Pages"
 msgstr "Halaman"
 
-#: src/modules/multiple-authors/multiple-authors.php:352
-#: src/modules/multiple-authors/multiple-authors.php:353
+#: src/modules/multiple-authors/multiple-authors.php:355
+#: src/modules/multiple-authors/multiple-authors.php:356
 msgid "Author Profile"
 msgstr "Profil Author"
 
-#: src/modules/multiple-authors/multiple-authors.php:407
+#: src/modules/multiple-authors/multiple-authors.php:410
 #: src/modules/settings/settings.php:105
 msgid "Settings"
 msgstr "Pengaturan"
 
-#: src/modules/multiple-authors/multiple-authors.php:600
+#: src/modules/multiple-authors/multiple-authors.php:603
 msgid "Enable PublishPress Authors for these post types:"
 msgstr "Aktifkan PublishPress Authors untuk jenis artikel ini:"
 
-#: src/modules/multiple-authors/multiple-authors.php:608
+#: src/modules/multiple-authors/multiple-authors.php:611
 msgid "Post types to display on the author's profile page:"
 msgstr "Jenis pos untuk ditampilkan di halaman profil author:"
 
-#: src/modules/multiple-authors/multiple-authors.php:616
+#: src/modules/multiple-authors/multiple-authors.php:619
 msgid "Roles available for Author Profiles:"
 msgstr "Peran yang tersedia untuk Profil Penulis:"
 
-#: src/modules/multiple-authors/multiple-authors.php:627
+#: src/modules/multiple-authors/multiple-authors.php:631
 msgid "Automatically create author profiles:"
 msgstr "Otomatis membuat profil author:"
 
-#: src/modules/multiple-authors/multiple-authors.php:638
+#: src/modules/multiple-authors/multiple-authors.php:643
 msgid "Show username in the search field:"
 msgstr "Tampilkan nama pengguna didalam bidang pencarian:"
 
-#: src/modules/multiple-authors/multiple-authors.php:649
+#: src/modules/multiple-authors/multiple-authors.php:654
 msgid "Default author for new posts:"
 msgstr "Standar author untuk postingan baru:"
 
-#: src/modules/multiple-authors/multiple-authors.php:660
+#: src/modules/multiple-authors/multiple-authors.php:666
 msgid "Fallback user for Guest Authors:"
 msgstr "Pengguna cadangan untuk author tamu:"
 
-#: src/modules/multiple-authors/multiple-authors.php:671
+#: src/modules/multiple-authors/multiple-authors.php:678
 msgid "Remove single author map restriction:"
 msgstr "Hapus pembatasan pemetaan satu author:"
 
-#: src/modules/multiple-authors/multiple-authors.php:695
+#: src/modules/multiple-authors/multiple-authors.php:702
 msgid "Show above the content:"
 msgstr "Tampilkan di atas konten:"
 
-#: src/modules/multiple-authors/multiple-authors.php:703
+#: src/modules/multiple-authors/multiple-authors.php:710
 msgid "Show below the content:"
 msgstr "Tampilkan di bawah konten:"
 
-#: src/modules/multiple-authors/multiple-authors.php:711
+#: src/modules/multiple-authors/multiple-authors.php:718
 msgid "Show Author Box selection:"
 msgstr "Tampilkan pilihan Kotak Penulis:"
 
-#: src/modules/multiple-authors/multiple-authors.php:719
+#: src/modules/multiple-authors/multiple-authors.php:726
 msgid "Disable the \"Authors\" box when using \"Quick Edit\":"
 msgstr "Nonaktifkan kotak \"Authors\" saat menggunakan \"Edit Cepat\":"
 
-#: src/modules/multiple-authors/multiple-authors.php:727
+#: src/modules/multiple-authors/multiple-authors.php:734
 msgid "Default Layout:"
 msgstr "Tata Letak Default:"
 
-#: src/modules/multiple-authors/multiple-authors.php:735
+#: src/modules/multiple-authors/multiple-authors.php:743
 msgid "Title for the author box:"
 msgstr "Judul untuk kotak author"
 
-#: src/modules/multiple-authors/multiple-authors.php:743
+#: src/modules/multiple-authors/multiple-authors.php:751
 msgid "Color scheme:"
 msgstr "Skema warna:"
 
-#: src/modules/multiple-authors/multiple-authors.php:752
+#: src/modules/multiple-authors/multiple-authors.php:760
 msgid "Show email link:"
 msgstr "Tampilkan link email:"
 
-#: src/modules/multiple-authors/multiple-authors.php:760
+#: src/modules/multiple-authors/multiple-authors.php:768
 msgid "Show site link:"
 msgstr "Tampilkan link situs:"
 
-#: src/modules/multiple-authors/multiple-authors.php:768
+#: src/modules/multiple-authors/multiple-authors.php:776
 msgid "Font Awesome icons:"
 msgstr "Ikon Font Awesome:"
 
-#: src/modules/multiple-authors/multiple-authors.php:787
+#: src/modules/multiple-authors/multiple-authors.php:795
 msgid "Enable author pages:"
 msgstr "Aktifkan halaman penulis:"
 
-#: src/modules/multiple-authors/multiple-authors.php:798
+#: src/modules/multiple-authors/multiple-authors.php:806
 msgid "Author pages posts limit:"
 msgstr "Batas posting halaman author:"
 
-#: src/modules/multiple-authors/multiple-authors.php:809
+#: src/modules/multiple-authors/multiple-authors.php:818
 msgid "Author pages layout:"
 msgstr "Tata letak halaman penulis:"
 
-#: src/modules/multiple-authors/multiple-authors.php:820
+#: src/modules/multiple-authors/multiple-authors.php:830
 msgid "Grid layout column:"
 msgstr "Kolom tata letak grid:"
 
-#: src/modules/multiple-authors/multiple-authors.php:831
+#: src/modules/multiple-authors/multiple-authors.php:842
 msgid "Show author bio:"
 msgstr "Tampilkan biografi author:"
 
-#: src/modules/multiple-authors/multiple-authors.php:842
+#: src/modules/multiple-authors/multiple-authors.php:853
 msgid "Author bio layout:"
 msgstr "Tata letak biografi author:"
 
-#: src/modules/multiple-authors/multiple-authors.php:850
+#: src/modules/multiple-authors/multiple-authors.php:862
 msgid "Show author page title:"
 msgstr "Tampilkan judul halaman author:"
 
-#: src/modules/multiple-authors/multiple-authors.php:861
+#: src/modules/multiple-authors/multiple-authors.php:873
 msgid "Author pages excerpt ellipsis:"
 msgstr "Halaman author ekstrak elipsis:"
 
-#: src/modules/multiple-authors/multiple-authors.php:872
+#: src/modules/multiple-authors/multiple-authors.php:885
 msgid "Author pages title header:"
 msgstr "Judul halaman author:"
 
-#: src/modules/multiple-authors/multiple-authors.php:880
+#: src/modules/multiple-authors/multiple-authors.php:894
 msgid "Author post title header:"
 msgstr "Judul kiriman author:"
 
-#: src/modules/multiple-authors/multiple-authors.php:888
+#: src/modules/multiple-authors/multiple-authors.php:903
 msgid "Show featured image:"
 msgstr "Tampilkan gambar unggulan:"
 
-#: src/modules/multiple-authors/multiple-authors.php:899
+#: src/modules/multiple-authors/multiple-authors.php:914
 msgid "Link featured image to post:"
 msgstr "Tautkan gambar unggulan ke pos:"
 
-#: src/modules/multiple-authors/multiple-authors.php:910
+#: src/modules/multiple-authors/multiple-authors.php:925
 msgid "Featured image custom width:"
 msgstr "Lebar gambar unggulan kustom:"
 
-#: src/modules/multiple-authors/multiple-authors.php:921
+#: src/modules/multiple-authors/multiple-authors.php:937
 msgid "Featured image custom height:"
 msgstr "Tinggi gambar unggulan kustom:"
 
-#: src/modules/multiple-authors/multiple-authors.php:932
+#: src/modules/multiple-authors/multiple-authors.php:949
 msgid "Show excerpt:"
 msgstr "Tampilkan kutipan:"
 
-#: src/modules/multiple-authors/multiple-authors.php:943
+#: src/modules/multiple-authors/multiple-authors.php:960
 msgid "Show authors:"
 msgstr "Tampilkan author:"
 
-#: src/modules/multiple-authors/multiple-authors.php:954
+#: src/modules/multiple-authors/multiple-authors.php:971
 msgid "Show post date:"
 msgstr "Tampilkan tanggal pos:"
 
-#: src/modules/multiple-authors/multiple-authors.php:965
+#: src/modules/multiple-authors/multiple-authors.php:982
 msgid "Show comment counts:"
 msgstr "Tampilkan jumlah komentar:"
 
-#: src/modules/multiple-authors/multiple-authors.php:976
+#: src/modules/multiple-authors/multiple-authors.php:993
 msgid "Show category:"
 msgstr "Tampilkan Kategori:"
 
-#: src/modules/multiple-authors/multiple-authors.php:987
+#: src/modules/multiple-authors/multiple-authors.php:1004
 msgid "Show tags:"
 msgstr "Tampilkan tag:"
 
-#: src/modules/multiple-authors/multiple-authors.php:998
+#: src/modules/multiple-authors/multiple-authors.php:1015
 msgid "Show read more link:"
 msgstr "Tampilkan link baca lebih lanjut:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1009
+#: src/modules/multiple-authors/multiple-authors.php:1026
 msgid "Hide empty posts message:"
 msgstr "Sembunyikan pesan pos kosong:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1097
+#: src/modules/multiple-authors/multiple-authors.php:1114
 msgid "Enable Guest Author With No User Account"
 msgstr "Aktifkan Penulis Tamu Tanpa Akun Pengguna"
 
-#: src/modules/multiple-authors/multiple-authors.php:1108
+#: src/modules/multiple-authors/multiple-authors.php:1125
 msgid "Enable Guest Author With User Account"
 msgstr "Aktifkan Penulis Tamu Dengan Akun Pengguna"
 
-#: src/modules/multiple-authors/multiple-authors.php:1119
+#: src/modules/multiple-authors/multiple-authors.php:1136
 msgid "Allow users to opt out of Author Boxes"
 msgstr "Izinkan pengguna untuk menolak Kotak Penulis"
 
-#: src/modules/multiple-authors/multiple-authors.php:1130
+#: src/modules/multiple-authors/multiple-authors.php:1147
 msgid "Allow authors in multiple categories:"
 msgstr "Izinkan penulis di beberapa kategori:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1163
+#: src/modules/multiple-authors/multiple-authors.php:1181
+msgid "Allow administrators to edit administrator author profiles:"
+msgstr "Izinkan administrator untuk mengedit profil penulis administrator:"
+
+#: src/modules/multiple-authors/multiple-authors.php:1192
 msgid "Boxed legacy layout Author Box:"
 msgstr "Tata letak warisan kotak Penulis:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1171
+#: src/modules/multiple-authors/multiple-authors.php:1201
 msgid "Centered legacy layout Author Box:"
 msgstr "Tata letak warisan terpusat Kotak Penulis:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1179
+#: src/modules/multiple-authors/multiple-authors.php:1210
 msgid "Inline legacy layout Author Box:"
 msgstr "Tata letak kotak penulis warisan Inline:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1187
+#: src/modules/multiple-authors/multiple-authors.php:1219
 msgid "Inline avatar legacy layout Author Box:"
 msgstr "Tata letak kotak penulis warisan Inline:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1195
+#: src/modules/multiple-authors/multiple-authors.php:1228
 msgid "Simple list legacy layout Author Box:"
 msgstr "Tata letak kotak penulis daftar sederhana warisan:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1295
+#: src/modules/multiple-authors/multiple-authors.php:1329
 #: src/modules/settings/settings.php:275
 #, php-format
 msgid ""
@@ -4305,33 +4491,43 @@ msgstr ""
 "Nonaktifkan karena add_post_type_support('%1$s', '%2$s') disertakan dalam "
 "file yang dimuat."
 
-#: src/modules/multiple-authors/multiple-authors.php:1314
+#: src/modules/multiple-authors/multiple-authors.php:1348
 msgid "This will display the authors box at the top of the content."
 msgstr "Ini akan menampilkan kotak penulis di bagian atas konten."
 
-#: src/modules/multiple-authors/multiple-authors.php:1335
+#: src/modules/multiple-authors/multiple-authors.php:1369
 msgid "This will display the authors box at the end of the content."
 msgstr "Ini akan menampilkan kotak author di akhir konten."
 
-#: src/modules/multiple-authors/multiple-authors.php:1356
+#: src/modules/multiple-authors/multiple-authors.php:1390
 msgid "Allow users to choose which Author Box is used on each post."
 msgstr ""
 "Izinkan pengguna untuk memilih kotak Penulis mana yang digunakan di setiap "
 "pos."
 
-#: src/modules/multiple-authors/multiple-authors.php:1381
+#: src/modules/multiple-authors/multiple-authors.php:1410
+msgid ""
+"Allow users with the \"manage_options\" capability to edit author profiles "
+"linked to administrator accounts. By default, editing administrator author "
+"profiles is blocked for security reasons."
+msgstr ""
+"Izinkan pengguna dengan kemampuan \"manage_options\" untuk mengedit profil "
+"penulis yang terhubung dengan akun administrator. Secara default, "
+"pengeditan profil penulis administrator diblokir untuk alasan keamanan."
+
+#: src/modules/multiple-authors/multiple-authors.php:1435
 msgid "Single"
 msgstr "Tunggal"
 
-#: src/modules/multiple-authors/multiple-authors.php:1388
+#: src/modules/multiple-authors/multiple-authors.php:1442
 msgid "Plural"
 msgstr "Jamak"
 
-#: src/modules/multiple-authors/multiple-authors.php:1438
+#: src/modules/multiple-authors/multiple-authors.php:1492
 msgid "Authors Box"
 msgstr "Kotak Author"
 
-#: src/modules/multiple-authors/multiple-authors.php:1439
+#: src/modules/multiple-authors/multiple-authors.php:1493
 msgid ""
 "With this shortcode you can display the author box in any part of the "
 "content. "
@@ -4339,7 +4535,7 @@ msgstr ""
 "Dengan shortcode ini, Anda dapat menampilkan kotak author di bagian konten "
 "apa pun. "
 
-#: src/modules/multiple-authors/multiple-authors.php:1447
+#: src/modules/multiple-authors/multiple-authors.php:1501
 #, php-format
 msgid ""
 "You can specify layout by using author boxes layout slug. You can see full "
@@ -4349,7 +4545,7 @@ msgstr ""
 "penulis. Anda dapat melihat detail lengkap dari setiap opsi tata letak %1$s "
 "dalam panduan ini %2$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1458
+#: src/modules/multiple-authors/multiple-authors.php:1512
 #, php-format
 msgid ""
 "You can also decide whether or not to show the main title, using %1$s or "
@@ -4358,8 +4554,8 @@ msgstr ""
 "Anda juga dapat memutuskan apakah akan menampilkan judul utama, dengan "
 "menggunakan %1$s atau %2$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1468
-#: src/modules/multiple-authors/multiple-authors.php:1552
+#: src/modules/multiple-authors/multiple-authors.php:1522
+#: src/modules/multiple-authors/multiple-authors.php:1606
 msgid ""
 "You can load the authors for a specific post, even if you are not in that "
 "post currently. For example, this shortcode will load the authors for the "
@@ -4369,7 +4565,7 @@ msgstr ""
 "di pos itu saat ini. Misalnya, shortcode ini akan memuat penulis untuk pos "
 "dengan ID 32."
 
-#: src/modules/multiple-authors/multiple-authors.php:1475
+#: src/modules/multiple-authors/multiple-authors.php:1529
 msgid ""
 "You can load the authors for a specific user by providing the user id. For "
 "example, this shortcode will load the author with user id of 32"
@@ -4377,7 +4573,7 @@ msgstr ""
 "Anda dapat memuat penulis untuk pengguna tertentu dengan memberikan ID "
 "pengguna. Misalnya, shortcode ini akan memuat penulis dengan ID pengguna 32."
 
-#: src/modules/multiple-authors/multiple-authors.php:1482
+#: src/modules/multiple-authors/multiple-authors.php:1536
 msgid ""
 "You can load the authors for a specific author by providing the author term "
 "id for both guest and user author. For example, this shortcode will load "
@@ -4387,7 +4583,7 @@ msgstr ""
 "istilah penulis untuk penulis tamu dan pengguna. Misalnya, shortcode ini "
 "akan memuat penulis dengan ID istilah 32."
 
-#: src/modules/multiple-authors/multiple-authors.php:1490
+#: src/modules/multiple-authors/multiple-authors.php:1544
 #, php-format
 msgid ""
 "If you are having problems showing PublishPress Authors on author profile "
@@ -4400,7 +4596,7 @@ msgstr ""
 "memaksa plugin untuk mengambil Author dari halaman profil dan bukan dari "
 "kiriman lain di layar yang sama."
 
-#: src/modules/multiple-authors/multiple-authors.php:1500
+#: src/modules/multiple-authors/multiple-authors.php:1554
 #, php-format
 msgid ""
 "There is one final option to mention. This is mostly useful if you're using "
@@ -4415,7 +4611,7 @@ msgstr ""
 "menggunakan shortcode berikut di halaman author untuk menampilkan profil "
 "author saat ini. Anda hanya perlu menambahkan parameter %s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1509
+#: src/modules/multiple-authors/multiple-authors.php:1563
 msgid ""
 "You can load the authors belonging to a specific author categories by "
 "providing the category slug or slugs separated by comma for more than one "
@@ -4425,11 +4621,11 @@ msgstr ""
 "dengan memberikan slug kategori atau slugs yang dipisahkan dengan koma "
 "untuk lebih dari satu kategori."
 
-#: src/modules/multiple-authors/multiple-authors.php:1519
+#: src/modules/multiple-authors/multiple-authors.php:1573
 msgid "Authors Data"
 msgstr "Data Author"
 
-#: src/modules/multiple-authors/multiple-authors.php:1520
+#: src/modules/multiple-authors/multiple-authors.php:1574
 msgid ""
 "With this shortcode you can display the author names or any profile field "
 "in any part of the content."
@@ -4437,7 +4633,7 @@ msgstr ""
 "Dengan shortcode ini, Anda dapat menampilkan nama author atau setiap bidang "
 "profil di bagian konten apa pun."
 
-#: src/modules/multiple-authors/multiple-authors.php:1528
+#: src/modules/multiple-authors/multiple-authors.php:1582
 #, php-format
 msgid ""
 "The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s "
@@ -4448,13 +4644,13 @@ msgstr ""
 "%4$s %5$s %6$s %7$s. Anda dapat melihat detail lengkap dan parameter %8$s "
 "di panduan ini %9$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1545
+#: src/modules/multiple-authors/multiple-authors.php:1599
 msgid "You can also specify the separator to be used for mulitple authors data."
 msgstr ""
 "Anda juga dapat menentukan pemisah yang akan digunakan untuk data author "
 "yang berbeda."
 
-#: src/modules/multiple-authors/multiple-authors.php:1559
+#: src/modules/multiple-authors/multiple-authors.php:1613
 msgid ""
 "You can retrieve a specific author by providing the author's term ID. For "
 "example, this shortcode will load the author with the term ID of 102."
@@ -4462,7 +4658,7 @@ msgstr ""
 "Anda dapat mengambil penulis tertentu dengan memberikan ID istilah penulis. "
 "Misalnya, shortcode ini akan memuat penulis dengan ID istilah 102."
 
-#: src/modules/multiple-authors/multiple-authors.php:1567
+#: src/modules/multiple-authors/multiple-authors.php:1621
 #, php-format
 msgid ""
 "You can also decide to return an array list of authors by using "
@@ -4474,7 +4670,7 @@ msgstr ""
 "penulis sebagai array. Anda dapat memeriksa detail lengkap dan penggunaan "
 "contoh %2$s dalam panduan ini %3$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1578
+#: src/modules/multiple-authors/multiple-authors.php:1632
 msgid ""
 "You can retrieve authors belonging to a specific Author Category by "
 "providing the category slug or slugs. Separate multiple slugs with a comma."
@@ -4483,7 +4679,7 @@ msgstr ""
 "dengan memberikan slug kategori atau slugs. Pisahkan beberapa slug dengan "
 "koma."
 
-#: src/modules/multiple-authors/multiple-authors.php:1589
+#: src/modules/multiple-authors/multiple-authors.php:1643
 msgid ""
 "With this shortcode, you can show all the authors together in a single "
 "display."
@@ -4491,7 +4687,7 @@ msgstr ""
 "Dengan shortcode ini, Anda dapat menampilkan semua author bersama-sama "
 "dalam satu tampilan."
 
-#: src/modules/multiple-authors/multiple-authors.php:1597
+#: src/modules/multiple-authors/multiple-authors.php:1651
 #, php-format
 msgid ""
 "You can specify layout by using author boxes layout slug. You can see full "
@@ -4503,7 +4699,7 @@ msgstr ""
 "%1$s dalam panduan ini %2$s. %3$s %4$s Shortcode ini juga menyediakan empat "
 "tata letak kustom: %5$s %6$s %7$s %8$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1614
+#: src/modules/multiple-authors/multiple-authors.php:1668
 #, php-format
 msgid ""
 "You can define the number of layout columns by using %1$s to show authors "
@@ -4512,7 +4708,7 @@ msgstr ""
 "Anda dapat menentukan jumlah kolom tata letak dengan menggunakan %1$s untuk "
 "menampilkan author dalam 2 kolom."
 
-#: src/modules/multiple-authors/multiple-authors.php:1624
+#: src/modules/multiple-authors/multiple-authors.php:1678
 #, php-format
 msgid ""
 "You can show authors in a card grid by using %1$s, choose the number of "
@@ -4521,7 +4717,7 @@ msgstr ""
 "Anda dapat menampilkan penulis dalam kisi kartu dengan menggunakan %1$s, "
 "pilih jumlah kolom kisi dengan %2$s, dan pilih bidang penulis dengan %3$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1636
+#: src/modules/multiple-authors/multiple-authors.php:1690
 #, php-format
 msgid ""
 "You can show authors in a table by using %1$s and choose author fields with "
@@ -4530,7 +4726,7 @@ msgstr ""
 "Anda dapat menampilkan penulis dalam tabel dengan menggunakan %1$s dan "
 "pilih bidang penulis dengan %2$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1647
+#: src/modules/multiple-authors/multiple-authors.php:1701
 #, php-format
 msgid ""
 "You can choose the number of authors per page using %1$s . %2$s Pagination "
@@ -4539,7 +4735,7 @@ msgstr ""
 "Anda dapat memilih jumlah author per halaman menggunakan %1$s. %2$s "
 "Pagination akan ditambahkan secara otomatis jika diperlukan."
 
-#: src/modules/multiple-authors/multiple-authors.php:1658
+#: src/modules/multiple-authors/multiple-authors.php:1712
 #, php-format
 msgid ""
 "You can limit the result to only authors who are assigned to posts by using "
@@ -4550,7 +4746,7 @@ msgstr ""
 "dengan menggunakan %1$s. %2$s Sebagai alternatif, gunakan %3$s untuk "
 "menampilkan semua author, termasuk yang tidak memiliki kiriman."
 
-#: src/modules/multiple-authors/multiple-authors.php:1670
+#: src/modules/multiple-authors/multiple-authors.php:1724
 #, php-format
 msgid ""
 "You can limit the result to only guest authors by using %1$s . %2$s "
@@ -4560,7 +4756,7 @@ msgstr ""
 "%2$s Sebagai alternatif, %3$s akan menampilkan hanya author dengan akun "
 "WordPress."
 
-#: src/modules/multiple-authors/multiple-authors.php:1682
+#: src/modules/multiple-authors/multiple-authors.php:1736
 #, php-format
 msgid ""
 "If you are using the authors_recent layout, you can define the number of "
@@ -4569,7 +4765,7 @@ msgstr ""
 "Jika Anda menggunakan tata letak authors_recent, Anda dapat menentukan "
 "jumlah kolom dengan menggunakan %1$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1692
+#: src/modules/multiple-authors/multiple-authors.php:1746
 #, php-format
 msgid ""
 "For authors_index layout, you can group user by profile field by using %1$s "
@@ -4578,7 +4774,7 @@ msgstr ""
 "Untuk tata letak authors_index, Anda dapat mengelompokkan pengguna "
 "berdasarkan bidang profil dengan menggunakan %1$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1702
+#: src/modules/multiple-authors/multiple-authors.php:1756
 #, php-format
 msgid ""
 "To order the results based on post count, use %1$s . To order the results "
@@ -4589,17 +4785,17 @@ msgstr ""
 "mengurutkan hasil berdasarkan nama, gunakan %2$s. Sebagai alternatif, Anda "
 "dapat mengurutkan berdasarkan bidang profil seperti %3$s, %4$s, dll."
 
-#: src/modules/multiple-authors/multiple-authors.php:1715
+#: src/modules/multiple-authors/multiple-authors.php:1769
 #, php-format
 msgid "To further customize the order of results, use %1$s or %2$s ."
 msgstr "Untuk lebih menyesuaikan urutan hasil, gunakan %1$s atau %2$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1726
+#: src/modules/multiple-authors/multiple-authors.php:1780
 #, php-format
 msgid "To display a search box for authors, use %1$s ."
 msgstr "Untuk menampilkan kotak pencarian untuk author, gunakan %1$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1736
+#: src/modules/multiple-authors/multiple-authors.php:1790
 #, php-format
 msgid ""
 "You can also show a dropdown menu that allows users to search on specific "
@@ -4610,7 +4806,7 @@ msgstr ""
 "melakukan pencarian pada bidang author tertentu. Anda dapat menambahkan "
 "bidang ke dropdown menggunakan %1$s. Ini memerlukan kotak pencarian aktif."
 
-#: src/modules/multiple-authors/multiple-authors.php:1746
+#: src/modules/multiple-authors/multiple-authors.php:1800
 #, php-format
 msgid ""
 "You can limit the author list to users with a published post within a "
@@ -4622,20 +4818,24 @@ msgstr ""
 "tanggal dalam bahasa Inggris seperti 1 week ago, 1 month ago, 6 months ago, "
 "1 year ago, dll."
 
-#: src/modules/multiple-authors/multiple-authors.php:1793
+#: src/modules/multiple-authors/multiple-authors.php:1848
+msgid "Copy shortcode to clipboard"
+msgstr "Salin shortcode ke clipboard"
+
+#: src/modules/multiple-authors/multiple-authors.php:1849
 msgid "Copied!"
 msgstr "Telah disalin!"
 
-#: src/modules/multiple-authors/multiple-authors.php:1794
-#: src/modules/multiple-authors/multiple-authors.php:1795
+#: src/modules/multiple-authors/multiple-authors.php:1850
+#: src/modules/multiple-authors/multiple-authors.php:1851
 msgid "Click To Copy!"
 msgstr "Klik untuk menyalin!"
 
-#: src/modules/multiple-authors/multiple-authors.php:1859
+#: src/modules/multiple-authors/multiple-authors.php:1907
 msgid "Select roles"
 msgstr "Pilih peran"
 
-#: src/modules/multiple-authors/multiple-authors.php:1870
+#: src/modules/multiple-authors/multiple-authors.php:1918
 msgid ""
 "Choose which WordPress user roles can be selected using the \"Registered "
 "Author With User Account\" option for author profiles."
@@ -4643,7 +4843,7 @@ msgstr ""
 "Pilih peran pengguna WordPress mana yang dapat dipilih menggunakan opsi "
 "\"Penulis Terdaftar Dengan Akun Pengguna\" untuk profil penulis."
 
-#: src/modules/multiple-authors/multiple-authors.php:1899
+#: src/modules/multiple-authors/multiple-authors.php:1944
 msgid ""
 "Author profiles can be mapped to WordPress user accounts. This option "
 "allows you to automatically create author profiles when users are created "
@@ -4657,7 +4857,7 @@ msgstr ""
 "pengguna yang sudah ada dengan mengklik tombol \"Buat Profil Penulis "
 "PublishPress untuk semua pengguna dalam peran\" di tab Pemeliharaan."
 
-#: src/modules/multiple-authors/multiple-authors.php:1920
+#: src/modules/multiple-authors/multiple-authors.php:1964
 msgid ""
 "If the Author is mapped to a WordPress user, this will display the authors' "
 "\"Display name\" and their \"Username\". The default is to show only the "
@@ -4669,21 +4869,21 @@ msgstr ""
 "\"Nama Tampilan\". Menampilkan \"Nama Pengguna\" berguna jika Anda memiliki "
 "beberapa Author dengan nama yang mirip."
 
-#: src/modules/multiple-authors/multiple-authors.php:1943
+#: src/modules/multiple-authors/multiple-authors.php:1987
 msgid "Allow authors to be created without a real user account."
 msgstr "Izinkan penulis dibuat tanpa akun pengguna yang nyata."
 
-#: src/modules/multiple-authors/multiple-authors.php:1966
+#: src/modules/multiple-authors/multiple-authors.php:2010
 msgid "Show a profile checkbox allowing Authors to be excluded from Author Boxes."
 msgstr ""
 "Tampilkan kotak centang profil yang memungkinkan Penulis dikecualikan dari "
 "Kotak Penulis."
 
-#: src/modules/multiple-authors/multiple-authors.php:1989
+#: src/modules/multiple-authors/multiple-authors.php:2033
 msgid "Allow authors to be created without a connected user account."
 msgstr "Izinkan penulis dibuat tanpa akun pengguna yang terhubung."
 
-#: src/modules/multiple-authors/multiple-authors.php:2013
+#: src/modules/multiple-authors/multiple-authors.php:2057
 msgid ""
 "If enabled, PublishPress Authors will replace the default WordPress author "
 "pages."
@@ -4691,85 +4891,97 @@ msgstr ""
 "Jika diaktifkan, PublishPress Author akan menggantikan halaman standar "
 "author."
 
-#: src/modules/multiple-authors/multiple-authors.php:2018
+#: src/modules/multiple-authors/multiple-authors.php:2062
 msgid "Please note this feature will not work for all themes."
 msgstr "Harap diperhatikan bahwa fitur ini tidak akan berfungsi untuk semua tema."
 
-#: src/modules/multiple-authors/multiple-authors.php:2018
-#: src/modules/multiple-authors/multiple-authors.php:2872
+#: src/modules/multiple-authors/multiple-authors.php:2062
+#: src/modules/multiple-authors/multiple-authors.php:2917
 msgid "Click here for more details."
 msgstr "Klik di sini untuk detail lebih lanjut."
 
-#: src/modules/multiple-authors/multiple-authors.php:2031
+#: src/modules/multiple-authors/multiple-authors.php:2075
 msgid "View sample Author Page"
 msgstr "Lihat contoh Halaman Penulis"
 
-#: src/modules/multiple-authors/multiple-authors.php:2052
+#: src/modules/multiple-authors/multiple-authors.php:2094
 msgid "List"
 msgstr "Daftar"
 
-#: src/modules/multiple-authors/multiple-authors.php:2053
+#: src/modules/multiple-authors/multiple-authors.php:2095
 msgid "Grid"
 msgstr "Kolom"
 
-#: src/modules/multiple-authors/multiple-authors.php:2225
+#: src/modules/multiple-authors/multiple-authors.php:2243
 msgid "Allow User to Choose"
 msgstr "Izinkan pengguna untuk memilih"
 
-#: src/modules/multiple-authors/multiple-authors.php:2226
+#: src/modules/multiple-authors/multiple-authors.php:2244
 msgid "First Name Last Name"
 msgstr "Nama Depan Nama Belakang"
 
-#: src/modules/multiple-authors/multiple-authors.php:2227
+#: src/modules/multiple-authors/multiple-authors.php:2245
 msgid "Last Name First Name"
 msgstr "Nama Belakang Nama Depan"
 
-#: src/modules/multiple-authors/multiple-authors.php:2275
+#: src/modules/multiple-authors/multiple-authors.php:2314
 msgid ""
-"This avatar will be used as default avatar instead of gravatar where no "
-"custom avatar is added to profile."
+"Describe the default avatar. Leave blank to use its Media Library "
+"alternative text."
 msgstr ""
-"Avatar ini akan digunakan sebagai avatar standar dibanding gravatar ketika "
-"tidak ada avatar kustom yang ditambahkan ke profil."
+"Deskripsikan avatar default. Biarkan kosong untuk menggunakan teks "
+"alternatif Perpustakaan Media-nya."
 
-#: src/modules/multiple-authors/multiple-authors.php:2297
+#: src/modules/multiple-authors/multiple-authors.php:2334
+msgid "This image is decorative"
+msgstr "Gambar ini bersifat dekoratif"
+
+#: src/modules/multiple-authors/multiple-authors.php:2340
+msgid ""
+"This avatar will be used if no custom avatar is uploaded for an author "
+"profile."
+msgstr ""
+"Avatar ini akan digunakan jika tidak ada avatar kustom yang diunggah untuk "
+"profil penulis."
+
+#: src/modules/multiple-authors/multiple-authors.php:2362
 msgid "This will display the author bio."
 msgstr "Ini akan menampilkan biografi author."
 
-#: src/modules/multiple-authors/multiple-authors.php:2358
-#: src/modules/multiple-authors/multiple-authors.php:2397
-#: src/modules/multiple-authors/multiple-authors.php:2436
-#: src/modules/multiple-authors/multiple-authors.php:2475
-#: src/modules/multiple-authors/multiple-authors.php:2514
+#: src/modules/multiple-authors/multiple-authors.php:2418
+#: src/modules/multiple-authors/multiple-authors.php:2454
+#: src/modules/multiple-authors/multiple-authors.php:2490
+#: src/modules/multiple-authors/multiple-authors.php:2526
+#: src/modules/multiple-authors/multiple-authors.php:2562
 msgid "Select option"
 msgstr "Pilih opsi"
 
-#: src/modules/multiple-authors/multiple-authors.php:2370
-#: src/modules/multiple-authors/multiple-authors.php:2409
-#: src/modules/multiple-authors/multiple-authors.php:2448
-#: src/modules/multiple-authors/multiple-authors.php:2487
-#: src/modules/multiple-authors/multiple-authors.php:2526
+#: src/modules/multiple-authors/multiple-authors.php:2429
+#: src/modules/multiple-authors/multiple-authors.php:2465
+#: src/modules/multiple-authors/multiple-authors.php:2501
+#: src/modules/multiple-authors/multiple-authors.php:2537
+#: src/modules/multiple-authors/multiple-authors.php:2573
 #, php-format
 msgid "This is useful if you use legacy shortcode %s"
 msgstr "Ini berguna jika Anda menggunakan shortcode warisan %s"
 
-#: src/modules/multiple-authors/multiple-authors.php:2546
+#: src/modules/multiple-authors/multiple-authors.php:2593
 msgid "This will display the featured image."
 msgstr "Ini akan menampilkan gambar andalan."
 
-#: src/modules/multiple-authors/multiple-authors.php:2570
+#: src/modules/multiple-authors/multiple-authors.php:2617
 msgid "This will make the featured image clickable and link to the post."
 msgstr "Ini akan membuat gambar unggulan dapat diklik dan terhubung ke pos."
 
-#: src/modules/multiple-authors/multiple-authors.php:2594
+#: src/modules/multiple-authors/multiple-authors.php:2641
 msgid "This will display author page title."
 msgstr "Ini akan menampilkan judul halaman author."
 
-#: src/modules/multiple-authors/multiple-authors.php:2618
+#: src/modules/multiple-authors/multiple-authors.php:2665
 msgid "This will display the excerpt."
 msgstr "Ini akan menampilkan kutipan."
 
-#: src/modules/multiple-authors/multiple-authors.php:2642
+#: src/modules/multiple-authors/multiple-authors.php:2689
 msgid ""
 "This will allows you map a WordPress user to more than one author. Don't "
 "use this feature unless requested to do so by the PublishPress team. This "
@@ -4780,7 +4992,7 @@ msgstr ""
 "Plugin ini berfungsi lebih baik ketika author dan pengguna dipasangkan satu "
 "lawan satu."
 
-#: src/modules/multiple-authors/multiple-authors.php:2665
+#: src/modules/multiple-authors/multiple-authors.php:2712
 msgid ""
 "Allow the same author to be assigned to more than one Author Category on a "
 "single post."
@@ -4788,31 +5000,31 @@ msgstr ""
 "Izinkan penulis yang sama ditetapkan ke lebih dari satu Kategori Penulis "
 "dalam satu pos."
 
-#: src/modules/multiple-authors/multiple-authors.php:2689
+#: src/modules/multiple-authors/multiple-authors.php:2736
 msgid "This will display the authors."
 msgstr "Ini akan menampilkan author."
 
-#: src/modules/multiple-authors/multiple-authors.php:2713
+#: src/modules/multiple-authors/multiple-authors.php:2760
 msgid "This will display the published date."
 msgstr "Ini akan menampilkan tanggal dipublikasikan."
 
-#: src/modules/multiple-authors/multiple-authors.php:2737
+#: src/modules/multiple-authors/multiple-authors.php:2784
 msgid "This will display the comment count."
 msgstr "Ini akan menampilkan jumlah komentar."
 
-#: src/modules/multiple-authors/multiple-authors.php:2761
+#: src/modules/multiple-authors/multiple-authors.php:2808
 msgid "This will display the categories."
 msgstr "Ini akan menampilkan kategori."
 
-#: src/modules/multiple-authors/multiple-authors.php:2785
+#: src/modules/multiple-authors/multiple-authors.php:2832
 msgid "This will display the tags."
 msgstr "Ini akan menampilkan tag."
 
-#: src/modules/multiple-authors/multiple-authors.php:2809
+#: src/modules/multiple-authors/multiple-authors.php:2856
 msgid "This will display the read more link."
 msgstr "Ini akan menampilkan link baca lebih lanjut."
 
-#: src/modules/multiple-authors/multiple-authors.php:2832
+#: src/modules/multiple-authors/multiple-authors.php:2879
 msgid ""
 "This will hide the \"Post not found for the author\" text when an author "
 "has no posts."
@@ -4820,17 +5032,17 @@ msgstr ""
 "Ini akan menyembunyikan teks \"Pos tidak ditemukan untuk penulis\" ketika "
 "seorang penulis tidak memiliki pos."
 
-#: src/modules/multiple-authors/multiple-authors.php:2870
+#: src/modules/multiple-authors/multiple-authors.php:2915
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr ""
 "Pengaturan ini mungkin dinonaktifkan untuk pengguna yang tidak dapat "
 "mengedit kiriman orang lain."
 
-#: src/modules/multiple-authors/multiple-authors.php:2893
+#: src/modules/multiple-authors/multiple-authors.php:2938
 msgid "Search for a fallback author"
 msgstr "Cari untuk author cadangan"
 
-#: src/modules/multiple-authors/multiple-authors.php:2906
+#: src/modules/multiple-authors/multiple-authors.php:2949
 msgid ""
 "If you only have Guest Authors selected for a post, this user may be used "
 "as a fallback. WordPress sometimes requires a WordPress user to be assigned "
@@ -4841,27 +5053,27 @@ msgstr ""
 "memerlukan pengguna WordPress yang ditugaskan ke setiap kiriman. Pengguna "
 "ini tidak akan terlihat di bagian depan situs Anda."
 
-#: src/modules/multiple-authors/multiple-authors.php:2924
+#: src/modules/multiple-authors/multiple-authors.php:2967
 msgid "This will display the authors email in the author box."
 msgstr "Ini akan menmpilkan email author di kotak author."
 
-#: src/modules/multiple-authors/multiple-authors.php:2944
+#: src/modules/multiple-authors/multiple-authors.php:2987
 msgid "This will display the authors site in the author box."
 msgstr "Ini akan menampilkan situs author di kotak author."
 
-#: src/modules/multiple-authors/multiple-authors.php:2964
+#: src/modules/multiple-authors/multiple-authors.php:3007
 msgid "This will load Font Awesome icons for use in Author Boxes."
 msgstr "Ini akan memuat ikon Font Awesome untuk digunakan dalam Kotak Author."
 
-#: src/modules/multiple-authors/multiple-authors.php:2982
+#: src/modules/multiple-authors/multiple-authors.php:3025
 msgid "This will remove the Authors Box in \"Quick Edit\"."
 msgstr "Ini akan menghapus Kotak Authors dalam \"Edit Cepat\""
 
-#: src/modules/multiple-authors/multiple-authors.php:3001
+#: src/modules/multiple-authors/multiple-authors.php:3044
 msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr "Buat Profil PublishPress Authors untuk semua penulis pos"
 
-#: src/modules/multiple-authors/multiple-authors.php:3002
+#: src/modules/multiple-authors/multiple-authors.php:3045
 msgid ""
 "If a WordPress user is the author of a post, but does not have a "
 "PublishPress Authors profile, this will automatically create a profile for "
@@ -4871,22 +5083,22 @@ msgstr ""
 "memiliki profil PublishPress Authors, ini akan secara otomatis membuat "
 "profil untuk mereka."
 
-#: src/modules/multiple-authors/multiple-authors.php:3002
-#: src/modules/multiple-authors/multiple-authors.php:3008
-#: src/modules/multiple-authors/multiple-authors.php:3014
-#: src/modules/multiple-authors/multiple-authors.php:3021
+#: src/modules/multiple-authors/multiple-authors.php:3045
+#: src/modules/multiple-authors/multiple-authors.php:3051
+#: src/modules/multiple-authors/multiple-authors.php:3057
+#: src/modules/multiple-authors/multiple-authors.php:3064
 msgid "Click here for documentation"
 msgstr "Klik di sini untuk dokumentasi"
 
-#: src/modules/multiple-authors/multiple-authors.php:3003
+#: src/modules/multiple-authors/multiple-authors.php:3046
 msgid "Create missing PublishPress Authors profiles"
 msgstr "Buat profil Author yang hilang"
 
-#: src/modules/multiple-authors/multiple-authors.php:3007
+#: src/modules/multiple-authors/multiple-authors.php:3050
 msgid "Create PublishPress Authors Profiles for all users in a role"
 msgstr "Buat Profil PublishPress Authors untuk semua pengguna dalam peran"
 
-#: src/modules/multiple-authors/multiple-authors.php:3008
+#: src/modules/multiple-authors/multiple-authors.php:3051
 msgid ""
 "This will find all the users in a role and create author profiles for them. "
 "You can choose the roles using the \"Automatically create author profiles\" "
@@ -4896,15 +5108,15 @@ msgstr ""
 "penulis untuk mereka. Anda dapat memilih peran menggunakan pengaturan "
 "\"Secara otomatis membuat profil penulis\"."
 
-#: src/modules/multiple-authors/multiple-authors.php:3009
+#: src/modules/multiple-authors/multiple-authors.php:3052
 msgid "Create PublishPress Authors profiles"
 msgstr "Buat profil Author"
 
-#: src/modules/multiple-authors/multiple-authors.php:3013
+#: src/modules/multiple-authors/multiple-authors.php:3056
 msgid "Synchronize PublishPress Authors Fields and user profile fields"
 msgstr "Sinkronkan Kolom Penulis PublishPress dan kolom profil pengguna"
 
-#: src/modules/multiple-authors/multiple-authors.php:3014
+#: src/modules/multiple-authors/multiple-authors.php:3057
 msgid ""
 "This will update all the author profiles in PublishPress Authors to match "
 "the default WordPress fields for each user."
@@ -4912,11 +5124,11 @@ msgstr ""
 "Ini akan memperbarui semua profil penulis di PublishPress Authors untuk "
 "mencocokkan bidang default WordPress untuk setiap pengguna."
 
-#: src/modules/multiple-authors/multiple-authors.php:3020
+#: src/modules/multiple-authors/multiple-authors.php:3063
 msgid "Synchronize the author and user URLs"
 msgstr "Sinkronisasi author dengan URL pengguna"
 
-#: src/modules/multiple-authors/multiple-authors.php:3021
+#: src/modules/multiple-authors/multiple-authors.php:3064
 msgid ""
 "This will update all the Author URLs in PublishPress Authors to match the "
 "default WordPress URLs for each user."
@@ -4924,12 +5136,12 @@ msgstr ""
 "Ini akan memperbarui semua URL Penulis di PublishPress Authors untuk "
 "mencocokkan URL default WordPress untuk setiap pengguna."
 
-#: src/modules/multiple-authors/multiple-authors.php:3027
-#: src/modules/multiple-authors/multiple-authors.php:3029
+#: src/modules/multiple-authors/multiple-authors.php:3070
+#: src/modules/multiple-authors/multiple-authors.php:3072
 msgid "Create Author Categories"
 msgstr "Buat Kategori Penulis"
 
-#: src/modules/multiple-authors/multiple-authors.php:3028
+#: src/modules/multiple-authors/multiple-authors.php:3071
 msgid ""
 "This will create author categories table if missing and add default "
 "categories."
@@ -4937,11 +5149,11 @@ msgstr ""
 "Ini akan membuat tabel kategori penulis jika hilang dan menambahkan "
 "kategori default."
 
-#: src/modules/multiple-authors/multiple-authors.php:3041
+#: src/modules/multiple-authors/multiple-authors.php:3084
 msgid "Copy Co-Authors Plus Data"
 msgstr "Salin data dari Co-Author Plus"
 
-#: src/modules/multiple-authors/multiple-authors.php:3042
+#: src/modules/multiple-authors/multiple-authors.php:3085
 msgid ""
 "This action will copy the authors from the plugin Co-Authors Plus allowing "
 "you to migrate to PublishPress Authors without losing any data. This action "
@@ -4951,11 +5163,11 @@ msgstr ""
 "memungkinkan Anda bermigrasi ke PublishPress Authors tanpa kehilangan data "
 "apapun. Tindakan ini dapat dijalankan beberapa kali."
 
-#: src/modules/multiple-authors/multiple-authors.php:3052
+#: src/modules/multiple-authors/multiple-authors.php:3095
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr "Hapus Koneksi Antara Profil Penulis dan Pengguna"
 
-#: src/modules/multiple-authors/multiple-authors.php:3053
+#: src/modules/multiple-authors/multiple-authors.php:3096
 msgid ""
 "This action can reset the PublishPress Authors data before using other "
 "maintenance options. It will delete all author profiles that are mapped to "
@@ -4968,15 +5180,15 @@ msgstr ""
 "akun pengguna WordPress, tetapi tautan antara pos dan profil penulis akan "
 "hilang."
 
-#: src/modules/multiple-authors/multiple-authors.php:3054
+#: src/modules/multiple-authors/multiple-authors.php:3097
 msgid "Delete all authors mapped to users"
 msgstr "Hapus semua author yang dipetakan ke pengguna"
 
-#: src/modules/multiple-authors/multiple-authors.php:3059
+#: src/modules/multiple-authors/multiple-authors.php:3102
 msgid "Delete Guest Authors"
 msgstr "Hapus Author Tamu"
 
-#: src/modules/multiple-authors/multiple-authors.php:3060
+#: src/modules/multiple-authors/multiple-authors.php:3103
 msgid ""
 "This action can reset the PublishPress Authors data before using other "
 "maintenance options. Guest authors are author profiles that are not mapped "
@@ -4987,11 +5199,11 @@ msgstr ""
 "yang tidak dipetakan ke akun pengguna WordPress. Tindakan ini akan "
 "menghapus semua penulis tamu."
 
-#: src/modules/multiple-authors/multiple-authors.php:3061
+#: src/modules/multiple-authors/multiple-authors.php:3104
 msgid "Delete all guest authors"
 msgstr "Hapus semua author tamu"
 
-#: src/modules/multiple-authors/multiple-authors.php:3067
+#: src/modules/multiple-authors/multiple-authors.php:3110
 msgid ""
 "Please be careful clicking these buttons. Before clicking, we recommend "
 "taking a site backup in case anything goes wrong."
@@ -5000,113 +5212,113 @@ msgstr ""
 "ini, kami rekomendasikan untuk melakukan pencadangan pada website apabila "
 "ada hal yang tidak diinginkan terjadi."
 
-#: src/modules/multiple-authors/multiple-authors.php:3278
+#: src/modules/multiple-authors/multiple-authors.php:3333
 msgid "Author Profiles"
 msgstr "Profil Author"
 
-#: src/modules/multiple-authors/multiple-authors.php:3281
+#: src/modules/multiple-authors/multiple-authors.php:3336
 msgid "Integration"
 msgstr "Integrasi"
 
-#: src/modules/multiple-authors/multiple-authors.php:3282
+#: src/modules/multiple-authors/multiple-authors.php:3337
 msgid "Maintenance"
 msgstr "Pemeliharaan"
 
-#: src/modules/multiple-authors/multiple-authors.php:3283
+#: src/modules/multiple-authors/multiple-authors.php:3338
 msgid "Advanced"
 msgstr "Lanjutan"
 
-#: src/modules/multiple-authors/multiple-authors.php:3878
+#: src/modules/multiple-authors/multiple-authors.php:3993
 msgid "Invalid nonce"
 msgstr "Nonce tidak valid"
 
-#: src/modules/multiple-authors/multiple-authors.php:3882
+#: src/modules/multiple-authors/multiple-authors.php:3997
 msgid "Access denied"
 msgstr "Akses ditolak"
 
-#: src/modules/multiple-authors/multiple-authors.php:4055
+#: src/modules/multiple-authors/multiple-authors.php:4170
 msgid "Error. Author terms could not be reseted."
 msgstr "Eror. Term Author tidak dapat diatur ulang."
 
-#: src/modules/multiple-authors/multiple-authors.php:4066
+#: src/modules/multiple-authors/multiple-authors.php:4181
 msgid "Maintenance completed successfully."
 msgstr "Pemeilharaan berhasil diselesaikan."
 
-#: src/modules/multiple-authors/multiple-authors.php:4185
-#: src/modules/multiple-authors/multiple-authors.php:4216
+#: src/modules/multiple-authors/multiple-authors.php:4300
+#: src/modules/multiple-authors/multiple-authors.php:4331
 msgid "Collecting data..."
 msgstr "Mengumpulkan data..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4186
-#: src/modules/multiple-authors/multiple-authors.php:4217
+#: src/modules/multiple-authors/multiple-authors.php:4301
+#: src/modules/multiple-authors/multiple-authors.php:4332
 msgid "Finishing the process..."
 msgstr "Menyelesaikan proses..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4187
+#: src/modules/multiple-authors/multiple-authors.php:4302
 #, php-format
 msgid "Done! %d posts were updated."
 msgstr "Selesai! %d kiriman telah diperbarui."
 
-#: src/modules/multiple-authors/multiple-authors.php:4189
+#: src/modules/multiple-authors/multiple-authors.php:4304
 msgid "Updating author field on posts..."
 msgstr "Memperbarui bidang author pada artikel..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4190
+#: src/modules/multiple-authors/multiple-authors.php:4305
 #, php-format
 msgid "Updated %d of %d posts..."
 msgstr "Diperbarui %d dari %d kiriman..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4215
+#: src/modules/multiple-authors/multiple-authors.php:4330
 msgid "Sync author and user URLs"
 msgstr "Sinkronkan author dengan URL pengguna"
 
-#: src/modules/multiple-authors/multiple-authors.php:4218
+#: src/modules/multiple-authors/multiple-authors.php:4333
 #, php-format
 msgid "Done! %d authors were updated."
 msgstr "Selesai! %d author telah diperbarui."
 
-#: src/modules/multiple-authors/multiple-authors.php:4220
+#: src/modules/multiple-authors/multiple-authors.php:4335
 msgid "Updating authors slug..."
 msgstr "Memperbarui slug author..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4221
+#: src/modules/multiple-authors/multiple-authors.php:4336
 #, php-format
 msgid "Updated %d of %d authors..."
 msgstr "Diperbarui %d dari %d author..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4255
+#: src/modules/multiple-authors/multiple-authors.php:4370
 msgid "Creating missed post authors...."
 msgstr "Membuat penulis pos yang terlewat...."
 
-#: src/modules/multiple-authors/multiple-authors.php:4258
+#: src/modules/multiple-authors/multiple-authors.php:4373
 msgid "Copy Co-Authors Plus data"
 msgstr "Salin data dari Co-Author Plus"
 
-#: src/modules/multiple-authors/multiple-authors.php:4259
+#: src/modules/multiple-authors/multiple-authors.php:4374
 msgid "Deactivating Co-uthors Plus..."
 msgstr "Menonaktifkan Co-Author Plus..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4260
+#: src/modules/multiple-authors/multiple-authors.php:4375
 msgid "Done! Co-Authors Plus is deactivated."
 msgstr "Selesai! Co-Author Plus dinonaktifkan."
 
-#: src/modules/multiple-authors/multiple-authors.php:4261
+#: src/modules/multiple-authors/multiple-authors.php:4376
 msgid "Deactivate Co-Authors Plus"
 msgstr "Nonaktifkan Co-Author Plus"
 
-#: src/modules/multiple-authors/multiple-authors.php:4262
+#: src/modules/multiple-authors/multiple-authors.php:4377
 msgid "Done! Co-Authors Plus data was copied."
 msgstr "Selesai! Data Co-Author Plus sudah disalin."
 
-#: src/modules/multiple-authors/multiple-authors.php:4955
+#: src/modules/multiple-authors/multiple-authors.php:5070
 msgid "It looks like you have Co-Authors Plus installed."
 msgstr "Tampaknya anda memiliki plugin Co-Authors Plus terinstal."
 
-#: src/modules/multiple-authors/multiple-authors.php:4956
+#: src/modules/multiple-authors/multiple-authors.php:5071
 msgid "Please click here and read this guide!"
 msgstr "Mohon klik disini dan baca panduannya disini!"
 
-#: src/modules/multiple-authors/multiple-authors.php:5039
+#: src/modules/multiple-authors/multiple-authors.php:5154
 msgid ""
 "PublishPress Authors could not complete the background database update for "
 "Permissions integration."
@@ -5114,7 +5326,7 @@ msgstr ""
 "PublishPress Authors tidak dapat menyelesaikan pembaruan basis data latar "
 "belakang untuk integrasi Permissions."
 
-#: src/modules/multiple-authors/multiple-authors.php:5040
+#: src/modules/multiple-authors/multiple-authors.php:5155
 msgid ""
 "PublishPress Authors is waiting to complete the background database update "
 "for Permissions integration."
@@ -5122,11 +5334,11 @@ msgstr ""
 "PublishPress Authors sedang menunggu untuk menyelesaikan pembaruan basis "
 "data latar belakang untuk integrasi Permissions."
 
-#: src/modules/multiple-authors/multiple-authors.php:5046
+#: src/modules/multiple-authors/multiple-authors.php:5161
 msgid "Run the update manually"
 msgstr "Jalankan pembaruan secara manual"
 
-#: src/modules/multiple-authors/multiple-authors.php:5478
+#: src/modules/multiple-authors/multiple-authors.php:5628
 msgid "Guest Author cannot login on the site."
 msgstr "Penulis Tamu tidak dapat masuk ke situs."
 
@@ -5181,17 +5393,11 @@ msgstr "Pengguna WordPress ini sudah dipetakan ke penulis lain."
 msgid "Author was created but could not be retrieved."
 msgstr "Penulis telah dibuat tetapi tidak dapat diambil."
 
-#: src/modules/rest-api/rest-api.php:487
-#: src/modules/rest-api/rest-api.php:503
-#: src/modules/rest-api/rest-api.php:522
-msgid "Author not found."
-msgstr "Penulis tidak ditemukan."
-
-#: src/modules/rest-api/rest-api.php:550
+#: src/modules/rest-api/rest-api.php:555
 msgid "You cannot edit author mapped to administrator account."
 msgstr "Anda tidak dapat mengedit penulis yang dipetakan ke akun administrator."
 
-#: src/modules/rest-api/rest-api.php:560
+#: src/modules/rest-api/rest-api.php:566
 msgid "You do not have permission to edit this author."
 msgstr "Anda tidak memiliki izin untuk mengedit penulis ini."
 
@@ -5251,29 +5457,43 @@ msgstr "Integrasi Yoast SEO"
 msgid "Add compatibility with the Yoast SEO plugin"
 msgstr "Tambahkan kompatibilitas dengan plugin Yoast SEO"
 
-#: src/templates/parts/author-pages-grid.php:152
-#: src/templates/parts/author-pages-list.php:141
+#: src/templates/parts/author-pages-grid.php:155
+#: src/templates/parts/author-pages-list.php:144
 msgid "Comment counts"
 msgstr "Jumlah Komentar"
 
-#: src/templates/parts/author-pages-grid.php:180
-#: src/templates/parts/author-pages-list.php:173
+#: src/templates/parts/author-pages-grid.php:162
+#: src/templates/parts/author-pages-list.php:151
+#. translators: %s: post title
+#, php-format
+msgid "comment on %s"
+msgid_plural "comments on %s"
+msgstr[0] "komentar pada %s"
+msgstr[1] "komentar pada %s"
+
+#: src/templates/parts/author-pages-grid.php:194
+#: src/templates/parts/author-pages-list.php:187
 msgid "Prev"
 msgstr "Sebelumnya"
 
-#: src/templates/parts/author-pages-grid.php:181
-#: src/templates/parts/author-pages-list.php:174
+#: src/templates/parts/author-pages-grid.php:195
+#: src/templates/parts/author-pages-list.php:188
 msgid "Next"
 msgstr "Selanjutnya"
 
-#: src/templates/parts/author-pages-grid.php:187
-#: src/templates/parts/author-pages-list.php:180
+#: src/templates/parts/author-pages-grid.php:201
+#: src/templates/parts/author-pages-list.php:194
 msgid "Post not found for the author"
 msgstr "Artikel tidak ditemukan untuk author ini"
 
-#: src/templates/parts/author-pages-list.php:134
+#: src/templates/parts/author-pages-list.php:137
 msgid "Published date"
 msgstr "Tanggal Terbit"
+
+#: src/views/authors_recent.html.php:27
+#, php-format
+msgid "View %s"
+msgstr "Lihat %s"
 
 #: src/views/footer-base.html.php:14
 #, php-format
@@ -5302,19 +5522,19 @@ msgctxt "taxonomy singular name"
 msgid "Author"
 msgstr "Author"
 
-#: src/modules/author-boxes/author-boxes.php:569
+#: src/modules/author-boxes/author-boxes.php:572
 #, fuzzy, php-format
 msgctxt "Author Box post type name"
 msgid "%2$s"
 msgstr "%2$s"
 
-#: src/modules/author-boxes/author-boxes.php:570
+#: src/modules/author-boxes/author-boxes.php:573
 #, fuzzy, php-format
 msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
-#: src/modules/author-boxes/author-boxes.php:585
+#: src/modules/author-boxes/author-boxes.php:588
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
 msgid "%2$s"

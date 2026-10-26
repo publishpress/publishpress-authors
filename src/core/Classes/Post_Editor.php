@@ -364,6 +364,9 @@ class Post_Editor
 
         $payload = json_decode(wp_unslash((string)$meta[self::BLOCK_EDITOR_AUTHORS_META_KEY]), true);
 
+        // The meta only carries the selection to this save. Keeping it would restore stale authors in the panel.
+        delete_post_meta($post->ID, self::BLOCK_EDITOR_AUTHORS_META_KEY);
+
         if (!is_array($payload)) {
             return;
         }
@@ -578,6 +581,10 @@ class Post_Editor
 
         if (!empty($remaining_authors)) {
             foreach ($remaining_authors as $remaining_author) {
+                if (!is_object($remaining_author)) {
+                    continue;
+                }
+
                 $author_default_category = (int) $remaining_author->author_category;
 
                 $category_index = ($author_default_category > 0)
@@ -629,11 +636,20 @@ class Post_Editor
                 'authors'           => $authors
             ];
         }
+
+        // The selection box can render more than once per page (quick edit and bulk edit), so keep the ids unique.
+        static $author_select_instance = 0;
+        $author_select_instance++;
+        $author_select_id = 'publishpress-authors-author-select';
+        if ($author_select_instance > 1) {
+            $author_select_id .= '-' . $author_select_instance;
+        }
         ?>
         <?php if (current_user_can(get_taxonomy('author')->cap->assign_terms)) : ?>
+            <label class="screen-reader-text" for="<?php echo esc_attr($author_select_id); ?>"><?php esc_html_e('Search for an author', 'publishpress-authors'); ?></label>
             <select data-nonce="<?php
             echo esc_attr(wp_create_nonce('authors-search')); ?>"
-                    id="publishpress-authors-author-select"
+                    id="<?php echo esc_attr($author_select_id); ?>"
                     class="authors-select2 authors-search"
                     data-placeholder="<?php
                     esc_attr_e('Search for an author', 'publishpress-authors'); ?>" style="width: 100%">
@@ -646,6 +662,7 @@ class Post_Editor
                         'display_name' => '{{ data.display_name }}',
                         'term'         => '{{ data.id }}',
                         'is_guest'     => '{{ data.is_guest }}',
+                        'user_id'      => '{{ data.user_id }}',
                         'category_id'  => '{{ data.category_id }}',
                     ]
                 );
@@ -675,14 +692,17 @@ class Post_Editor
                         $term         = is_a($author, 'WP_User') ? 'u' . $author->ID : $author->term_id;
 
                         $isGuest = 0;
+                        $userId  = is_a($author, 'WP_User') ? $author->ID : 0;
                         if (is_a($author, Author::class)) {
                             $isGuest = $author->is_guest() ? 1 : 0;
+                            $userId  = (int)$author->user_id;
                         }
 
                         $args = [
                             'display_name' => $display_name,
                             'term'         => $term,
                             'is_guest'     => $isGuest,
+                            'user_id'      => $userId,
                             'category_id'  => $author_category_data['id'],
                         ];
 
@@ -827,8 +847,10 @@ class Post_Editor
                 }
             }
             ?>
+            <label class="screen-reader-text" for="publishpress-authors-author-filter"><?php esc_html_e('Filter posts by author', 'publishpress-authors'); ?></label>
             <select data-nonce="<?php
                 echo esc_attr(wp_create_nonce('authors-user-search')); ?>"
+                    id="publishpress-authors-author-filter"
                     class="authors-select2 authors-user-slug-search"
                     data-placeholder="<?php
                     esc_attr_e('All Authors', 'publishpress-authors'); ?>" style="width: 150px"
@@ -857,6 +879,7 @@ class Post_Editor
             'avatar'       => '',
             'term'         => '',
             'is_guest'     => 0,
+            'user_id'      => 0,
             'category_id'  => 0,
         ];
 
@@ -870,10 +893,11 @@ class Post_Editor
         echo esc_attr($args['term']); ?>-<?php
         echo esc_attr($args['category_id']); ?>" data-term-id="<?php
         echo esc_attr($args['term']); ?>" data-is-guest="<?php
-        echo esc_attr($args['is_guest']); ?>" class="ui-sortable-handle publishpress-authors-author">
-            <span class="author-remove">
-                <span class="dashicons dashicons-no-alt"></span>
-            </span>
+        echo esc_attr($args['is_guest']); ?>" data-user-id="<?php
+        echo esc_attr($args['user_id']); ?>" class="ui-sortable-handle publishpress-authors-author">
+            <button type="button" class="author-remove" aria-label="<?php echo esc_attr(sprintf(esc_html__('Remove %s', 'publishpress-authors'), $args['display_name'])); ?>">
+                <span class="dashicons dashicons-no-alt" aria-hidden="true"></span>
+            </button>
             <?php
             if (!empty($args['avatar'])) : ?>
                 <?php

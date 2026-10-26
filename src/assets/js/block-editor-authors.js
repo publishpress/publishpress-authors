@@ -70,6 +70,31 @@
         return $.extend(true, {}, {language: getSelect2Language(settings.select2_i18n)}, options);
     }
 
+    /**
+     * Select2 hides the original select, so expose its <label> on the
+     * generated combobox and search field instead.
+     */
+    function applySelect2Label($select) {
+        var select2 = $select.data('ppma_select2');
+        var selectId = $select.attr('id');
+
+        if (!select2 || !selectId) {
+            return;
+        }
+
+        var $label = $select.siblings('label[for="' + selectId + '"]').first();
+
+        if (!$label.length) {
+            return;
+        }
+
+        var labelId = selectId + '-label';
+        $label.attr('id', labelId);
+
+        select2.$selection.attr('aria-labelledby', labelId);
+        select2.$dropdown.find('.ppma_select2-search__field').attr('aria-labelledby', labelId);
+    }
+
     function htmlDecode(value) {
         if (window.htmlEnDeCode && window.htmlEnDeCode.htmlDecode) {
             return window.htmlEnDeCode.htmlDecode(value);
@@ -236,6 +261,7 @@
                     }
                 }
             }));
+            applySelect2Label($authorsSelect);
 
             $authorsSelect.on("ppma_select2:select", function (e) {
                 var $targetList = getAvailableCategoryList($context, e.params.data);
@@ -313,11 +339,35 @@
                 }
             }
         }).on("click", ".author-remove", function () {
+            var $removeButtons = $context.find(".author-remove");
+            var index = $removeButtons.index(this);
+
             $(this).closest("li").remove();
             handleUsersAuthorField($context);
             handleAuthorCategory($context);
             triggerSelectionChange($context);
+            focusAfterAuthorRemoval($context, $removeButtons.not(this), index);
         });
+    }
+
+    function focusAfterAuthorRemoval($context, $remainingButtons, index) {
+        var $target = $remainingButtons.eq(Math.min(index, $remainingButtons.length - 1));
+        var $search;
+
+        if (index === -1) {
+            return;
+        }
+
+        if (!$remainingButtons.length) {
+            $search = $context.find(".authors-select2.authors-search").first();
+            $target = $search.next(".ppma_select2-container").find(".ppma_select2-selection");
+
+            if (!$target.length) {
+                $target = $search;
+            }
+        }
+
+        $target.trigger("focus");
     }
 
     function applyAuthorsSelection(container, data) {
@@ -424,6 +474,7 @@
                 id: selectedVal,
                 display_name: $authorItem.find('.display-name').text(),
                 is_guest: $authorItem.data('is-guest') || 0,
+                user_id: parseInt($authorItem.data('user-id'), 10) || 0,
                 category_id: selectedCategory
             });
         });
@@ -448,11 +499,33 @@
         }
 
         meta[settings.state_meta_key] = JSON.stringify(data);
-        wp.data.dispatch('core/editor').editPost({meta: meta});
+
+        var edits = {meta: meta};
+        var postAuthorId = getPostAuthorUserId(data);
+
+        // Keep the core author in sync: the meta box save sends it back as post_author.
+        if (postAuthorId) {
+            edits.author = postAuthorId;
+        }
+
+        wp.data.dispatch('core/editor').editPost(edits);
+    }
+
+    function getPostAuthorUserId(data) {
+        var i;
+
+        for (i = 0; i < data.selected_authors.length; i++) {
+            if (data.selected_authors[i].is_guest != 1 && data.selected_authors[i].user_id > 0) {
+                return data.selected_authors[i].user_id;
+            }
+        }
+
+        return parseInt(data.fallback_author_user, 10) || 0;
     }
 
     function getEditedPostAuthorsDraft() {
         var postMeta;
+        var savedMeta;
         var draft;
 
         if (!settings.state_meta_key || !wp.data || !wp.data.select('core/editor')) {
@@ -460,8 +533,10 @@
         }
 
         postMeta = wp.data.select('core/editor').getEditedPostAttribute('meta') || {};
+        savedMeta = wp.data.select('core/editor').getCurrentPostAttribute('meta') || {};
 
-        if (!postMeta[settings.state_meta_key]) {
+        // Only restore unsaved edits; a saved value can be older than the post's current authors.
+        if (!postMeta[settings.state_meta_key] || postMeta[settings.state_meta_key] === savedMeta[settings.state_meta_key]) {
             return null;
         }
 

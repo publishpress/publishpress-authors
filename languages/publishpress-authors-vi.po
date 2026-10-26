@@ -10,13 +10,14 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-20T11:51:48+00:00\n"
-"PO-Revision-Date: 2026-09-23 08:25+0000\n"
+"PO-Revision-Date: 2026-10-23 09:17+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: publishpress-authors\n"
 "Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: publishpress-authors.php:3
+#: src/abilities.php:44
 #: src/core/Plugin.php:743
 #: src/modules/settings/settings.php:64
 #. Plugin Name of the plugin
@@ -49,7 +50,7 @@ msgstr "PublishPress"
 msgid "https://publishpress.com"
 msgstr "https://publishpress.com"
 
-#: includes.php:39
+#: includes.php:40
 #, php-format
 msgid ""
 "You're using PublishPress Authors Free. The Pro version has more features "
@@ -58,14 +59,14 @@ msgstr ""
 "Bạn đang sử dụng PublishPress Authors Free. Phiên bản Pro có nhiều tính "
 "năng và hỗ trợ hơn. %sNâng cấp lên Pro%s"
 
-#: includes.php:63
-#: src/modules/author-boxes/author-boxes.php:3291
+#: includes.php:64
+#: src/modules/author-boxes/author-boxes.php:3332
 #: src/modules/author-categories/author-categories.php:739
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:545
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:550
 #: src/modules/author-custom-fields/author-custom-fields.php:995
 #: src/modules/author-custom-fields/author-custom-fields.php:1048
-#: src/modules/author-list/author-list.php:1598
-#: src/modules/author-list/author-list.php:1636
+#: src/modules/author-list/author-list.php:1599
+#: src/modules/author-list/author-list.php:1637
 msgid "Upgrade to Pro"
 msgstr "Nâng cấp lên Pro"
 
@@ -73,8 +74,69 @@ msgstr "Nâng cấp lên Pro"
 msgid "This plugin can be deleted."
 msgstr "Plugin này có thể bị xóa."
 
+#: src/abilities.php:45
+msgid "Read author profiles, available profile fields, and post bylines."
+msgstr "Đọc hồ sơ tác giả, các trường hồ sơ có sẵn và tiêu đề bài viết."
+
+#: src/abilities.php:107
+msgid "List Authors"
+msgstr "Danh sách tác giả"
+
+#: src/abilities.php:108
+msgid "Lists PublishPress Authors. Results never include author email addresses."
+msgstr ""
+"Danh sách các tác giả của PublishPress. Kết quả không bao giờ bao gồm địa "
+"chỉ email của tác giả."
+
+#: src/abilities.php:133
+msgid "Get Author"
+msgstr "Lấy tác giả"
+
+#: src/abilities.php:134
+msgid ""
+"Gets one PublishPress Author by term ID. The response never includes an "
+"email address."
+msgstr ""
+"Lấy một tác giả của PublishPress theo ID thuật ngữ. Phản hồi không bao giờ "
+"bao gồm địa chỉ email."
+
+#: src/abilities.php:157
+msgid "Get Post Authors"
+msgstr "Lấy tác giả bài viết"
+
+#: src/abilities.php:158
+msgid ""
+"Gets the ordered PublishPress Authors assigned to one editable post. The "
+"response never includes author email addresses."
+msgstr ""
+"Lấy các tác giả của PublishPress được sắp xếp gán cho một bài viết có thể "
+"chỉnh sửa. Phản hồi không bao giờ bao gồm địa chỉ email của tác giả."
+
+#: src/abilities.php:181
+msgid "Get Author Fields"
+msgstr "Lấy các trường tác giả"
+
+#: src/abilities.php:182
+msgid ""
+"Lists enabled author-profile field definitions without exposing profile "
+"values."
+msgstr ""
+"Danh sách các định nghĩa trường hồ sơ tác giả đã được kích hoạt mà không "
+"tiết lộ giá trị hồ sơ."
+
+#: src/abilities.php:336
+#: src/modules/rest-api/rest-api.php:487
+#: src/modules/rest-api/rest-api.php:503
+#: src/modules/rest-api/rest-api.php:522
+msgid "Author not found."
+msgstr "Không tìm thấy tác giả."
+
+#: src/abilities.php:359
+msgid "Post not found."
+msgstr "Không tìm thấy bài viết."
+
 #: src/core/Authors_Widget.php:23
-#: src/modules/multiple-authors/multiple-authors.php:1588
+#: src/modules/multiple-authors/multiple-authors.php:1642
 msgid "Authors List"
 msgstr "Danh sách tác giả"
 
@@ -84,14 +146,14 @@ msgstr "Hiển thị danh sách tác giả."
 
 #: src/core/Authors_Widget.php:133
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1334
-#: src/modules/author-list/author-list.php:575
+#: src/modules/author-list/author-list.php:576
 #: src/modules/author-list/classes/AuthorListTable.php:150
 msgid "Title"
 msgstr "Tiêu đề"
 
 #: src/core/Authors_Widget.php:134
 #: src/core/Widget.php:130
-#: src/modules/author-list/author-list.php:584
+#: src/modules/author-list/author-list.php:585
 #: src/modules/author-list/classes/AuthorListTable.php:151
 #: src/modules/author-pages/author-pages.php:118
 msgid "Layout"
@@ -110,6 +172,7 @@ msgid "Limits per page"
 msgstr "Giới hạn mỗi trang"
 
 #: src/core/Authors_Widget.php:141
+#: src/core/Authors_Widget.php:502
 #: src/core/Classes/Post_Editor.php:97
 #: src/core/Classes/Post_Editor.php:222
 #: src/core/Plugin.php:888
@@ -122,20 +185,20 @@ msgstr "Giới hạn mỗi trang"
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:535
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:626
 #: src/modules/author-categories/author-categories.php:787
-#: src/modules/author-list/author-list.php:647
-#: src/modules/author-list/author-list.php:661
+#: src/modules/author-list/author-list.php:648
+#: src/modules/author-list/author-list.php:662
 #: src/modules/editflow-integration/editflow-integration.php:114
-#: src/modules/multiple-authors/multiple-authors.php:337
-#: src/modules/multiple-authors/multiple-authors.php:338
-#: src/modules/multiple-authors/multiple-authors.php:386
-#: src/modules/multiple-authors/multiple-authors.php:387
-#: src/modules/multiple-authors/multiple-authors.php:406
-#: src/modules/multiple-authors/multiple-authors.php:1375
+#: src/modules/multiple-authors/multiple-authors.php:340
+#: src/modules/multiple-authors/multiple-authors.php:341
+#: src/modules/multiple-authors/multiple-authors.php:389
+#: src/modules/multiple-authors/multiple-authors.php:390
+#: src/modules/multiple-authors/multiple-authors.php:409
+#: src/modules/multiple-authors/multiple-authors.php:1429
 msgid "Authors"
 msgstr "Tác giả"
 
 #: src/core/Authors_Widget.php:142
-#: src/modules/author-list/author-list.php:713
+#: src/modules/author-list/author-list.php:714
 msgid "Order"
 msgstr "Thứ tự"
 
@@ -152,8 +215,8 @@ msgid "Author's search box field (Seperate multiple fields by comma(','))"
 msgstr "Trường hộp tìm kiếm của tác giả (Phân tách nhiều trường bằng dấu phẩy(','))"
 
 #: src/core/Authors_Widget.php:188
-#: src/core/Authors_Widget.php:494
-#: src/core/Classes/Post_Editor.php:834
+#: src/core/Authors_Widget.php:528
+#: src/core/Classes/Post_Editor.php:856
 #: src/core/Plugin.php:592
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1112
 msgid "All Authors"
@@ -169,67 +232,98 @@ msgstr "Tác giả người dùng"
 
 #: src/core/Authors_Widget.php:193
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1346
-#: src/modules/author-list/author-list.php:717
+#: src/modules/author-list/author-list.php:718
 msgid "Ascending"
 msgstr "Tăng dần"
 
 #: src/core/Authors_Widget.php:194
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1347
-#: src/modules/author-list/author-list.php:718
+#: src/modules/author-list/author-list.php:719
 msgid "Descending"
 msgstr "Giảm dần"
 
 #: src/core/Authors_Widget.php:197
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:96
-#: src/modules/author-list/author-list.php:702
+#: src/modules/author-list/author-list.php:703
 msgid "Name"
 msgstr "Tên"
 
 #: src/core/Authors_Widget.php:198
-#: src/modules/author-list/author-list.php:703
+#: src/modules/author-list/author-list.php:704
 msgid "Post Counts"
 msgstr "Số bài viết"
 
 #: src/core/Authors_Widget.php:199
 #: src/core/Classes/Author_Editor.php:369
 #: src/modules/author-custom-fields/author-custom-fields.php:933
-#: src/modules/author-list/author-list.php:704
-#: src/modules/multiple-authors/multiple-authors.php:2228
+#: src/modules/author-list/author-list.php:705
+#: src/modules/multiple-authors/multiple-authors.php:2246
 msgid "First Name"
 msgstr "Tên riêng"
 
 #: src/core/Authors_Widget.php:200
 #: src/core/Classes/Author_Editor.php:374
 #: src/modules/author-custom-fields/author-custom-fields.php:941
-#: src/modules/author-list/author-list.php:705
-#: src/modules/multiple-authors/multiple-authors.php:2229
+#: src/modules/author-list/author-list.php:706
+#: src/modules/multiple-authors/multiple-authors.php:2247
 msgid "Last Name"
 msgstr "Họ"
 
-#: src/core/Authors_Widget.php:438
+#: src/core/Authors_Widget.php:261
+#. translators: %s: the letter selected in the authors index
+#, php-format
+msgid "Showing authors starting with %s"
+msgstr "Hiển thị các tác giả bắt đầu bằng %s"
+
+#: src/core/Authors_Widget.php:262
+msgid "Showing all authors"
+msgstr "Hiển thị tất cả các tác giả"
+
+#: src/core/Authors_Widget.php:263
+#: src/core/Plugin.php:609
+msgid "No authors found."
+msgstr "Không tìm thấy tác giả nào."
+
+#: src/core/Authors_Widget.php:264
+msgid "Loading authors..."
+msgstr "Đang tải các tác giả..."
+
+#: src/core/Authors_Widget.php:265
+msgid "Unable to load authors."
+msgstr "Không thể tải các tác giả."
+
+#: src/core/Authors_Widget.php:468
 msgid "Default Search"
 msgstr "Tìm kiếm mặc định"
 
-#: src/core/Authors_Widget.php:447
+#: src/core/Authors_Widget.php:477
 msgid "Search Box"
 msgstr "Hộp tìm kiếm"
 
-#: src/core/Authors_Widget.php:462
-#: src/modules/author-list/author-list.php:346
+#: src/core/Authors_Widget.php:492
+#: src/modules/author-list/author-list.php:347
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: src/core/Authors_Widget.php:498
+#: src/core/Authors_Widget.php:503
+msgid "Search authors"
+msgstr "Tìm kiếm tác giả"
+
+#: src/core/Authors_Widget.php:506
+msgid "Search authors by"
+msgstr "Tìm kiếm tác giả theo"
+
+#: src/core/Authors_Widget.php:532
 msgid "No recent posts from this author"
 msgstr "Không có bài viết gần đây từ tác giả này"
 
 #: src/core/Classes/Admin_Ajax.php:321
-#: src/core/Classes/Admin_Ajax.php:431
+#: src/core/Classes/Admin_Ajax.php:436
 msgid "Request status."
 msgstr "Trạng thái yêu cầu."
 
 #: src/core/Classes/Admin_Ajax.php:328
-#: src/core/Classes/Admin_Ajax.php:438
+#: src/core/Classes/Admin_Ajax.php:443
 #: src/core/Plugin.php:2352
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:41
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:89
@@ -238,15 +332,15 @@ msgstr "Trạng thái yêu cầu."
 #: src/modules/author-categories/author-categories.php:304
 #: src/modules/author-categories/author-categories.php:392
 #: src/modules/author-custom-fields/author-custom-fields.php:1087
-#: src/modules/author-list/author-list.php:1712
+#: src/modules/author-list/author-list.php:1713
 msgid "Security error. Kindly reload this page and try again"
 msgstr "Lỗi bảo mật. Vui lòng tải lại trang này và thử lại"
 
-#: src/core/Classes/Admin_Ajax.php:347
+#: src/core/Classes/Admin_Ajax.php:351
 msgid "You cannot edit an author profile linked to an administrator account."
 msgstr "Bạn không thể chỉnh sửa hồ sơ tác giả liên kết với tài khoản quản trị viên."
 
-#: src/core/Classes/Admin_Ajax.php:359
+#: src/core/Classes/Admin_Ajax.php:364
 msgid ""
 "You do not have permission to edit this author profile because it is linked "
 "to a user account you do not have permission to edit."
@@ -254,8 +348,8 @@ msgstr ""
 "Bạn không có quyền chỉnh sửa hồ sơ tác giả này vì nó liên kết với một tài "
 "khoản người dùng mà bạn không có quyền chỉnh sửa."
 
-#: src/core/Classes/Admin_Ajax.php:374
-#: src/core/Classes/Author_Editor.php:1150
+#: src/core/Classes/Admin_Ajax.php:379
+#: src/core/Classes/Author_Editor.php:1200
 msgid ""
 "Sorry, this WordPress user is already mapped to another Author. By default, "
 "each user can only be connected to one Author profile."
@@ -263,20 +357,20 @@ msgstr ""
 "Xin lỗi, người dùng WordPress này đã được ánh xạ đến một Tác giả khác. Theo "
 "mặc định, mỗi người dùng chỉ có thể được kết nối với một hồ sơ Tác giả."
 
-#: src/core/Classes/Admin_Ajax.php:386
-#: src/core/Classes/Author_Editor.php:1243
+#: src/core/Classes/Admin_Ajax.php:391
+#: src/core/Classes/Author_Editor.php:1293
 msgid "Registered User is required."
 msgstr "Yêu cầu người dùng đã đăng ký."
 
-#: src/core/Classes/Admin_Ajax.php:396
+#: src/core/Classes/Admin_Ajax.php:401
 msgid "Author URL cannot be empty."
 msgstr "URL tác giả không thể để trống."
 
-#: src/core/Classes/Admin_Ajax.php:409
+#: src/core/Classes/Admin_Ajax.php:414
 msgid "Another user with Author URL already exists."
 msgstr "Một người dùng khác với URL tác giả đã tồn tại."
 
-#: src/core/Classes/Admin_Ajax.php:444
+#: src/core/Classes/Admin_Ajax.php:449
 msgid "Author name is required"
 msgstr "Tên tác giả là bắt buộc"
 
@@ -300,26 +394,26 @@ msgid "Email"
 msgstr "Email"
 
 #: src/core/Classes/Author_Editor.php:50
-#: src/modules/author-list/author-list.php:646
-#: src/modules/author-list/author-list.php:660
+#: src/modules/author-list/author-list.php:647
+#: src/modules/author-list/author-list.php:661
 msgid "Author Type"
 msgstr "Loại tác giả"
 
 #: src/core/Classes/Author_Editor.php:118
-#: src/core/Classes/Author_Editor.php:895
-#: src/modules/author-list/author-list.php:1517
+#: src/core/Classes/Author_Editor.php:945
+#: src/modules/author-list/author-list.php:1518
 msgid "Guest Author With User Account"
 msgstr "Tác giả khách với tài khoản người dùng"
 
 #: src/core/Classes/Author_Editor.php:120
-#: src/core/Classes/Author_Editor.php:889
-#: src/modules/author-list/author-list.php:1516
+#: src/core/Classes/Author_Editor.php:939
+#: src/modules/author-list/author-list.php:1517
 msgid "Registered Author With User Account"
 msgstr "Tác giả đã đăng ký với tài khoản người dùng"
 
 #: src/core/Classes/Author_Editor.php:122
-#: src/core/Classes/Author_Editor.php:902
-#: src/modules/author-list/author-list.php:1518
+#: src/core/Classes/Author_Editor.php:952
+#: src/modules/author-list/author-list.php:1519
 msgid "Guest Author With No User Account"
 msgstr "Tác giả khách không có tài khoản người dùng"
 
@@ -338,20 +432,20 @@ msgid "Create Author Profile"
 msgstr "Tạo hồ sơ tác giả"
 
 #: src/core/Classes/Author_Editor.php:314
-#: src/modules/author-list/author-list.php:330
+#: src/modules/author-list/author-list.php:331
 #: src/modules/author-pages/author-pages.php:117
-#: src/modules/multiple-authors/multiple-authors.php:3276
+#: src/modules/multiple-authors/multiple-authors.php:3331
 msgid "General"
 msgstr "Chung"
 
 #: src/core/Classes/Author_Editor.php:317
-#: src/modules/author-boxes/author-boxes.php:1518
+#: src/modules/author-boxes/author-boxes.php:1538
 msgid "Avatar"
 msgstr "Ảnh đại diện"
 
 #: src/core/Classes/Author_Editor.php:346
 #: src/core/Plugin.php:610
-#: src/modules/author-boxes/author-boxes.php:2415
+#: src/modules/author-boxes/author-boxes.php:2455
 #: src/modules/author-categories/author-categories.php:786
 #: src/modules/author-categories/author-categories.php:788
 #: src/views/authors_table.html.php:21
@@ -363,7 +457,7 @@ msgid "Registered User"
 msgstr "Người dùng đã đăng ký"
 
 #: src/core/Classes/Author_Editor.php:363
-#: src/modules/author-boxes/author-boxes.php:1526
+#: src/modules/author-boxes/author-boxes.php:1546
 msgid "Biographical Info"
 msgstr "Thông tin tiểu sử"
 
@@ -372,7 +466,7 @@ msgid "Avatar Source"
 msgstr "Nguồn ảnh đại diện"
 
 #: src/core/Classes/Author_Editor.php:391
-#: src/modules/multiple-authors/multiple-authors.php:1152
+#: src/modules/multiple-authors/multiple-authors.php:1170
 msgid "Default Avatar"
 msgstr "Ảnh đại diện mặc định"
 
@@ -390,16 +484,37 @@ msgid "Custom image"
 msgstr "Hình ảnh tùy chỉnh"
 
 #: src/core/Classes/Author_Editor.php:406
+#: src/modules/multiple-authors/multiple-authors.php:2300
+msgid "Alternative Text"
+msgstr "Văn bản thay thế"
+
+#: src/core/Classes/Author_Editor.php:410
+msgid ""
+"Describe the avatar. Leave blank to use the Media Library alternative text "
+"or author name."
+msgstr ""
+"Mô tả về ảnh đại diện. Để trống để sử dụng văn bản thay thế của Thư viện "
+"phương tiện hoặc tên tác giả."
+
+#: src/core/Classes/Author_Editor.php:416
+msgid "Decorative Image"
+msgstr "Hình ảnh trang trí"
+
+#: src/core/Classes/Author_Editor.php:419
+msgid "Use empty alternative text when this avatar is decorative."
+msgstr "Sử dụng văn bản thay thế trống khi ảnh đại diện này là trang trí."
+
+#: src/core/Classes/Author_Editor.php:425
 #: src/modules/author-custom-fields/author-custom-fields.php:958
 msgid "Website"
 msgstr "Trang web"
 
-#: src/core/Classes/Author_Editor.php:412
+#: src/core/Classes/Author_Editor.php:431
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:28
 msgid "Author Category"
 msgstr "Danh mục Tác giả"
 
-#: src/core/Classes/Author_Editor.php:413
+#: src/core/Classes/Author_Editor.php:432
 msgid ""
 "Select the default Category for this Author. This will be used when the "
 "Author is added to new posts."
@@ -407,31 +522,35 @@ msgstr ""
 "Chọn Danh mục mặc định cho Tác giả này. Điều này sẽ được sử dụng khi Tác "
 "giả được thêm vào các bài viết mới."
 
-#: src/core/Classes/Author_Editor.php:420
+#: src/core/Classes/Author_Editor.php:439
 msgid "Do not show this profile publicly"
 msgstr "Không hiển thị hồ sơ này công khai"
 
-#: src/core/Classes/Author_Editor.php:512
-#: src/core/Classes/Author_Editor.php:561
-#: src/modules/multiple-authors/multiple-authors.php:2262
+#: src/core/Classes/Author_Editor.php:534
+msgid "(required)"
+msgstr "(bắt buộc)"
+
+#: src/core/Classes/Author_Editor.php:551
+#: src/core/Classes/Author_Editor.php:603
+#: src/modules/multiple-authors/multiple-authors.php:2288
 msgid "Select image"
 msgstr "Chọn hình ảnh"
 
-#: src/core/Classes/Author_Editor.php:516
-#: src/core/Classes/Author_Editor.php:565
-#: src/modules/multiple-authors/multiple-authors.php:2266
+#: src/core/Classes/Author_Editor.php:555
+#: src/core/Classes/Author_Editor.php:607
+#: src/modules/multiple-authors/multiple-authors.php:2292
 msgid "Remove this image"
 msgstr "Xóa hình ảnh này"
 
-#: src/core/Classes/Author_Editor.php:579
+#: src/core/Classes/Author_Editor.php:623
 msgid "Select a user"
 msgstr "Chọn một người dùng"
 
-#: src/core/Classes/Author_Editor.php:666
+#: src/core/Classes/Author_Editor.php:710
 msgid "Author email error"
 msgstr "Lỗi email tác giả"
 
-#: src/core/Classes/Author_Editor.php:890
+#: src/core/Classes/Author_Editor.php:940
 msgid ""
 "Create an author profile for a current user account. You can select users "
 "who are allowed to edit posts. This user will be able to update their "
@@ -441,7 +560,7 @@ msgstr ""
 "chọn những người dùng được phép chỉnh sửa bài viết. Người dùng này sẽ có "
 "thể cập nhật hồ sơ của họ."
 
-#: src/core/Classes/Author_Editor.php:896
+#: src/core/Classes/Author_Editor.php:946
 msgid ""
 "Create an author profile and a linked user account. This account will be in "
 "the \"Guest Author\" role and will not be able to login to the WordPress "
@@ -451,7 +570,7 @@ msgstr ""
 "sẽ ở vai trò \"Tác giả Khách\" và sẽ không thể đăng nhập vào bảng điều "
 "khiển WordPress hoặc cập nhật hồ sơ của họ."
 
-#: src/core/Classes/Author_Editor.php:903
+#: src/core/Classes/Author_Editor.php:953
 msgid ""
 "Create an author profile with no linked user account. This option is "
 "lightweight but may have compatibility issues with other themes and plugins."
@@ -459,42 +578,42 @@ msgstr ""
 "Tạo một hồ sơ tác giả mà không có tài khoản người dùng liên kết. Tùy chọn "
 "này nhẹ nhưng có thể gặp vấn đề tương thích với các chủ đề và plugin khác."
 
-#: src/core/Classes/Author_Editor.php:922
+#: src/core/Classes/Author_Editor.php:972
 msgid "Author Email"
 msgstr "Email Tác giả"
 
-#: src/core/Classes/Author_Editor.php:934
+#: src/core/Classes/Author_Editor.php:984
 msgid "User Account"
 msgstr "Tài khoản Người dùng"
 
-#: src/core/Classes/Author_Editor.php:997
-#: src/modules/multiple-authors/multiple-authors.php:4184
+#: src/core/Classes/Author_Editor.php:1047
+#: src/modules/multiple-authors/multiple-authors.php:4299
 msgid "Sync author and user fields"
 msgstr "Đồng bộ hóa các trường tác giả và người dùng"
 
-#: src/core/Classes/Author_Editor.php:1001
+#: src/core/Classes/Author_Editor.php:1051
 msgid "Convert to Guest Author With User Account"
 msgstr "Chuyển đổi thành Tác giả Khách với Tài khoản Người dùng"
 
-#: src/core/Classes/Author_Editor.php:1005
+#: src/core/Classes/Author_Editor.php:1055
 msgid "Update post count"
 msgstr "Cập nhật số lượng bài viết"
 
-#: src/core/Classes/Author_Editor.php:1076
+#: src/core/Classes/Author_Editor.php:1126
 msgid "No authors were updated"
 msgstr "Không có tác giả nào được cập nhật"
 
-#: src/core/Classes/Author_Editor.php:1079
+#: src/core/Classes/Author_Editor.php:1129
 #, php-format
 msgid "Updated %d authors"
 msgstr "Đã cập nhật %d tác giả"
 
-#: src/core/Classes/Author_Editor.php:1176
-#: src/core/Classes/Author_Editor.php:1194
+#: src/core/Classes/Author_Editor.php:1226
+#: src/core/Classes/Author_Editor.php:1244
 msgid "An author with the name provided already exists."
 msgstr "Một tác giả với tên đã cung cấp đã tồn tại."
 
-#: src/core/Classes/Author_Editor.php:1206
+#: src/core/Classes/Author_Editor.php:1256
 msgid "An author email is required when creating new User Author."
 msgstr "Cần có email tác giả khi tạo Tác giả Người dùng mới."
 
@@ -568,18 +687,19 @@ msgstr "Không có thuật ngữ tác giả"
 msgid "\"post_author\" is empty"
 msgstr "\"post_author\" là trống"
 
-#: src/core/Classes/Post_Editor.php:564
+#: src/core/Classes/Post_Editor.php:567
 #, php-format
 msgid "Drag-and-drop Authors to add them to the %s category"
 msgstr "Kéo và thả tác giả để thêm vào danh mục %s"
 
-#: src/core/Classes/Post_Editor.php:639
+#: src/core/Classes/Post_Editor.php:649
+#: src/core/Classes/Post_Editor.php:655
 #: src/core/Plugin.php:1655
-#: src/modules/multiple-authors/multiple-authors.php:2857
+#: src/modules/multiple-authors/multiple-authors.php:2904
 msgid "Search for an author"
 msgstr "Tìm kiếm một tác giả"
 
-#: src/core/Classes/Post_Editor.php:730
+#: src/core/Classes/Post_Editor.php:750
 msgid ""
 "This option is showing because you do not have a WordPress user selected as "
 "an author. For some tasks, it can be helpful to have a user selected here. "
@@ -590,24 +710,33 @@ msgstr ""
 "được chọn ở đây. Người dùng này sẽ không hiển thị trên mặt trước của trang "
 "web của bạn."
 
-#: src/core/Classes/Post_Editor.php:738
+#: src/core/Classes/Post_Editor.php:758
 msgid "Search for an user"
 msgstr "Tìm kiếm một người dùng"
 
-#: src/core/Classes/Post_Editor.php:762
-#: src/modules/author-boxes/author-boxes.php:565
-#: src/modules/author-boxes/author-boxes.php:685
+#: src/core/Classes/Post_Editor.php:782
+#: src/modules/author-boxes/author-boxes.php:568
+#: src/modules/author-boxes/author-boxes.php:688
 msgid "Author Box"
 msgstr "Hộp Tác Giả"
 
-#: src/core/Classes/Post_Editor.php:786
+#: src/core/Classes/Post_Editor.php:806
 #: src/modules/author-boxes/author-boxes.php:206
 msgid "Default Author Box"
 msgstr "Hộp Tác Giả Mặc Định"
 
-#: src/core/Classes/Post_Editor.php:787
+#: src/core/Classes/Post_Editor.php:807
 msgid "Hide Author Box"
 msgstr "Ẩn hộp tác giả"
+
+#: src/core/Classes/Post_Editor.php:850
+msgid "Filter posts by author"
+msgstr "Lọc bài viết theo tác giả"
+
+#: src/core/Classes/Post_Editor.php:898
+#, php-format
+msgid "Remove %s"
+msgstr "Xóa %s"
 
 #: src/core/Classes/Term_Editor.php:42
 msgid "New author added."
@@ -634,7 +763,7 @@ msgid "Authors deleted."
 msgstr "Các tác giả đã bị xóa."
 
 #: src/core/Classes/Term_Editor.php:79
-#: src/modules/multiple-authors/multiple-authors.php:3376
+#: src/modules/multiple-authors/multiple-authors.php:3435
 msgid "Author URL"
 msgstr "URL của tác giả"
 
@@ -642,88 +771,88 @@ msgstr "URL của tác giả"
 msgid "Co-Authors Plus must be installed and active."
 msgstr "Co-Authors Plus phải được cài đặt và hoạt động."
 
-#: src/core/Classes/Utils.php:1121
+#: src/core/Classes/Utils.php:1124
 msgid "Read more."
 msgstr "Đọc thêm."
 
-#: src/core/Classes/Utils.php:1252
+#: src/core/Classes/Utils.php:1255
 msgid "The results could not be loaded."
 msgstr "Không thể tải kết quả."
 
-#: src/core/Classes/Utils.php:1254
+#: src/core/Classes/Utils.php:1257
 #. translators: %d: number of characters over the maximum.
 #, php-format
 msgid "Please delete %d character"
 msgstr "Vui lòng xóa %d ký tự"
 
-#: src/core/Classes/Utils.php:1256
+#: src/core/Classes/Utils.php:1259
 #. translators: %d: number of characters over the maximum.
 #, php-format
 msgid "Please delete %d characters"
 msgstr "Vui lòng xóa %d ký tự"
 
-#: src/core/Classes/Utils.php:1258
+#: src/core/Classes/Utils.php:1261
 #. translators: %d: number of characters still required.
 #, php-format
 msgid "Please enter %d or more character"
 msgstr "Vui lòng nhập %d ký tự hoặc nhiều hơn"
 
-#: src/core/Classes/Utils.php:1260
+#: src/core/Classes/Utils.php:1263
 #. translators: %d: number of characters still required.
 #, php-format
 msgid "Please enter %d or more characters"
 msgstr "Vui lòng nhập %d ký tự hoặc nhiều hơn"
 
-#: src/core/Classes/Utils.php:1261
+#: src/core/Classes/Utils.php:1264
 msgid "Loading more results..."
 msgstr "Đang tải thêm kết quả..."
 
-#: src/core/Classes/Utils.php:1263
+#: src/core/Classes/Utils.php:1266
 #. translators: %d: maximum number of items that can be selected.
 #, php-format
 msgid "You can only select %d item"
 msgstr "Bạn chỉ có thể chọn %d mục"
 
-#: src/core/Classes/Utils.php:1265
+#: src/core/Classes/Utils.php:1268
 #. translators: %d: maximum number of items that can be selected.
 #, php-format
 msgid "You can only select %d items"
 msgstr "Bạn chỉ có thể chọn %d mục"
 
-#: src/core/Classes/Utils.php:1266
+#: src/core/Classes/Utils.php:1269
 msgid "No results found"
 msgstr "Không tìm thấy kết quả"
 
-#: src/core/Classes/Utils.php:1267
+#: src/core/Classes/Utils.php:1270
 msgid "Searching..."
 msgstr "Đang tìm kiếm..."
 
-#: src/core/Classes/Utils.php:1268
+#: src/core/Classes/Utils.php:1271
 msgid "Remove all items"
 msgstr "Xóa tất cả mục"
 
-#: src/core/Classes/Utils.php:1280
+#: src/core/Classes/Utils.php:1283
 #: src/views/settings-tab.html.php:98
 msgid "No results match"
 msgstr "Không có kết quả nào phù hợp"
 
-#: src/core/Classes/Utils.php:1343
+#: src/core/Classes/Utils.php:1348
 msgid "Need PublishPress Authors Support?"
 msgstr "Cần hỗ trợ từ PublishPress Authors?"
 
-#: src/core/Classes/Utils.php:1348
+#: src/core/Classes/Utils.php:1353
 msgid "If you need help or have a new feature request, let us know."
 msgstr "Nếu bạn cần trợ giúp hoặc có yêu cầu tính năng mới, hãy cho chúng tôi biết."
 
-#: src/core/Classes/Utils.php:1350
+#: src/core/Classes/Utils.php:1355
 msgid "Request Support"
 msgstr "Yêu cầu hỗ trợ"
 
-#: src/core/Classes/Utils.php:1359
+#: src/core/Classes/Utils.php:1364
 msgid "Detailed documentation is also available on the plugin website."
 msgstr "Tài liệu chi tiết cũng có sẵn trên trang web của plugin."
 
-#: src/core/Classes/Utils.php:1361
+#: src/core/Classes/Utils.php:1366
 msgid "View Knowledge Base"
 msgstr "Xem Cơ sở Kiến thức"
 
@@ -753,7 +882,7 @@ msgid "Active"
 msgstr "Kích hoạt"
 
 #: src/core/CustomFieldsModel.php:62
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:418
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:423
 #: src/modules/author-custom-fields/author-custom-fields.php:834
 msgid "Disabled"
 msgstr "Vô hiệu hóa"
@@ -778,7 +907,7 @@ msgid "Yes, this is a Social Profile"
 msgstr "Có, đây là Hồ sơ Xã hội"
 
 #: src/core/CustomFieldsModel.php:115
-#: src/modules/author-list/author-list.php:537
+#: src/modules/author-list/author-list.php:538
 msgid "Select an option"
 msgstr "Chọn một tùy chọn"
 
@@ -860,10 +989,6 @@ msgstr "Thêm hoặc xóa tác giả"
 msgid "Choose from the most used Authors"
 msgstr "Chọn từ những tác giả được sử dụng nhiều nhất"
 
-#: src/core/Plugin.php:609
-msgid "No authors found."
-msgstr "Không tìm thấy tác giả nào."
-
 #: src/core/Plugin.php:611
 msgid "Back to Authors"
 msgstr "Quay lại các tác giả"
@@ -875,7 +1000,7 @@ msgstr "Nếu bạn thích %s, vui lòng để lại cho chúng tôi một đán
 
 #: src/core/Plugin.php:808
 #: src/modules/author-pages/author-pages.php:121
-#: src/modules/multiple-authors/multiple-authors.php:167
+#: src/modules/multiple-authors/multiple-authors.php:170
 msgid "Posts"
 msgstr "Bài viết"
 
@@ -893,7 +1018,7 @@ msgid "No co-author exists for that term"
 msgstr "Không có đồng tác giả nào cho thuật ngữ đó"
 
 #: src/core/Plugin.php:1644
-#: src/modules/author-list/classes/AuthorListTable.php:344
+#: src/modules/author-list/classes/AuthorListTable.php:345
 msgid "Edit"
 msgstr "Chỉnh sửa"
 
@@ -956,9 +1081,9 @@ msgstr "Bạn có chắc chắn muốn tạo tác giả cho các vai trò đã c
 #: src/modules/byline-migration/byline-migration.php:148
 #: src/modules/bylines-migration/bylines-migration.php:150
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:137
-#: src/modules/multiple-authors/multiple-authors.php:4188
-#: src/modules/multiple-authors/multiple-authors.php:4219
-#: src/modules/multiple-authors/multiple-authors.php:4256
+#: src/modules/multiple-authors/multiple-authors.php:4303
+#: src/modules/multiple-authors/multiple-authors.php:4334
+#: src/modules/multiple-authors/multiple-authors.php:4371
 msgid "Please, wait..."
 msgstr "Xin vui lòng, chờ chút..."
 
@@ -1018,27 +1143,27 @@ msgstr "Không tìm thấy bài viết nào không có thuật ngữ tác giả"
 msgid "%d posts were found without author terms"
 msgstr "%d bài viết đã được tìm thấy mà không có thuật ngữ tác giả"
 
-#: src/functions/template-tags.php:1047
+#: src/functions/template-tags.php:1054
 #, php-format
 msgid "%1sView all posts%2s by %3s"
 msgstr "%1sXem tất cả bài viết%2s của %3s"
 
-#: src/functions/template-tags.php:1316
-#: src/functions/template-tags.php:1937
+#: src/functions/template-tags.php:1323
+#: src/functions/template-tags.php:1944
 msgid " and "
 msgstr " và "
 
-#: src/functions/template-tags.php:1467
+#: src/functions/template-tags.php:1474
 #, php-format
 msgid "Posts by %s"
 msgstr "Bài viết của %s"
 
-#: src/functions/template-tags.php:1852
+#: src/functions/template-tags.php:1859
 #, php-format
 msgid "Posts by %1$s"
 msgstr "Bài viết của %1$s"
 
-#: src/functions/template-tags.php:1938
+#: src/functions/template-tags.php:1945
 msgid ", and "
 msgstr ", và "
 
@@ -1051,11 +1176,11 @@ msgid "Add compatibility with the All In One Seo Pack plugin"
 msgstr "Thêm khả năng tương thích với plugin All In One Seo Pack"
 
 #: src/modules/author-boxes/author-boxes.php:83
-#: src/modules/author-boxes/author-boxes.php:566
-#: src/modules/author-boxes/author-boxes.php:642
-#: src/modules/author-boxes/author-boxes.php:643
-#: src/modules/author-boxes/author-boxes.php:686
-#: src/modules/multiple-authors/multiple-authors.php:3277
+#: src/modules/author-boxes/author-boxes.php:569
+#: src/modules/author-boxes/author-boxes.php:645
+#: src/modules/author-boxes/author-boxes.php:646
+#: src/modules/author-boxes/author-boxes.php:689
+#: src/modules/multiple-authors/multiple-authors.php:3332
 msgid "Author Boxes"
 msgstr "Hộp tác giả"
 
@@ -1069,15 +1194,24 @@ msgid "Author Category Boxes"
 msgstr "Hộp danh mục tác giả"
 
 #: src/modules/author-boxes/author-boxes.php:211
-#: src/modules/author-boxes/author-boxes.php:1477
-#: src/modules/author-boxes/author-boxes.php:2785
-#: src/modules/author-boxes/author-boxes.php:2796
-#: src/modules/author-list/author-list.php:1254
+#: src/modules/author-boxes/author-boxes.php:1497
+#: src/modules/author-boxes/author-boxes.php:2825
+#: src/modules/author-boxes/author-boxes.php:2836
+#: src/modules/author-list/author-list.php:1255
 #: src/modules/author-list/classes/AuthorListTable.php:152
+#: src/modules/multiple-authors/multiple-authors.php:1844
 msgid "Shortcode"
 msgstr "Mã ngắn"
 
-#: src/modules/author-boxes/author-boxes.php:434
+#: src/modules/author-boxes/author-boxes.php:239
+msgid "Default author box"
+msgstr "Hộp tác giả mặc định"
+
+#: src/modules/author-boxes/author-boxes.php:247
+msgid "Author category box"
+msgstr "Hộp danh mục tác giả"
+
+#: src/modules/author-boxes/author-boxes.php:437
 #, php-format
 msgid ""
 "%s Author Box setting was not saved because it was changed in another "
@@ -1089,247 +1223,245 @@ msgstr[0] ""
 "browser or tab. The latest saved values were kept; review the layout and "
 "try again."
 msgstr[0] ""
-"%s Cài đặt Hộp Tác Giả không được lưu vì nó đã được thay đổi trong trình "
-"duyệt hoặc tab khác. Giá trị được lưu gần nhất đã được giữ lại; hãy xem lại "
-"bố cục và thử lại.|%s Cài đặt Hộp Tác Giả không được lưu vì chúng đã được "
-"thay đổi trong trình duyệt hoặc tab khác. Các giá trị được lưu gần nhất đã "
-"được giữ lại; hãy xem lại bố cục và thử lại."
+"%s Author Box settings were not saved because they were changed in another "
+"browser or tab. The latest saved values were kept; review the layout and "
+"try again."
 
-#: src/modules/author-boxes/author-boxes.php:575
+#: src/modules/author-boxes/author-boxes.php:578
 #: src/modules/author-custom-fields/author-custom-fields.php:172
 #, php-format
 msgid "New %1s"
 msgstr "Mới %1s"
 
-#: src/modules/author-boxes/author-boxes.php:576
+#: src/modules/author-boxes/author-boxes.php:579
 #: src/modules/author-custom-fields/author-custom-fields.php:173
 #, php-format
 msgid "Add New %1$s"
 msgstr "Thêm mới %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:577
+#: src/modules/author-boxes/author-boxes.php:580
 #: src/modules/author-custom-fields/author-custom-fields.php:174
 #, php-format
 msgid "Edit %1$s"
 msgstr "Chỉnh sửa %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:578
+#: src/modules/author-boxes/author-boxes.php:581
 #: src/modules/author-custom-fields/author-custom-fields.php:175
 #, php-format
 msgid "New %1$s"
 msgstr "Mới %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:579
+#: src/modules/author-boxes/author-boxes.php:582
 #: src/modules/author-custom-fields/author-custom-fields.php:176
 #, fuzzy, php-format
 msgid "%2$s"
 msgstr "%2$s"
 
-#: src/modules/author-boxes/author-boxes.php:580
+#: src/modules/author-boxes/author-boxes.php:583
 #: src/modules/author-custom-fields/author-custom-fields.php:177
 #, php-format
 msgid "View %1$s"
 msgstr "Xem %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:581
+#: src/modules/author-boxes/author-boxes.php:584
 #: src/modules/author-custom-fields/author-custom-fields.php:178
 #, php-format
 msgid "Search %2$s"
 msgstr "Tìm kiếm %2$s"
 
-#: src/modules/author-boxes/author-boxes.php:582
+#: src/modules/author-boxes/author-boxes.php:585
 #: src/modules/author-custom-fields/author-custom-fields.php:179
 #, php-format
 msgid "No %2$s found"
 msgstr "Không tìm thấy %2$s"
 
-#: src/modules/author-boxes/author-boxes.php:583
+#: src/modules/author-boxes/author-boxes.php:586
 #: src/modules/author-custom-fields/author-custom-fields.php:180
 #, php-format
 msgid "No %2$s found in Trash"
 msgstr "Không tìm thấy %2$s trong Thùng rác"
 
-#: src/modules/author-boxes/author-boxes.php:586
+#: src/modules/author-boxes/author-boxes.php:589
 #: src/modules/author-custom-fields/author-custom-fields.php:183
 #, php-format
 msgid "%1$s Image"
 msgstr "%1$s Hình ảnh"
 
-#: src/modules/author-boxes/author-boxes.php:587
+#: src/modules/author-boxes/author-boxes.php:590
 #: src/modules/author-custom-fields/author-custom-fields.php:184
 #, php-format
 msgid "Set %1$s Image"
 msgstr "Đặt hình ảnh %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:588
+#: src/modules/author-boxes/author-boxes.php:591
 #: src/modules/author-custom-fields/author-custom-fields.php:185
 #, php-format
 msgid "Remove %1$s Image"
 msgstr "Xóa hình ảnh %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:589
+#: src/modules/author-boxes/author-boxes.php:592
 #: src/modules/author-custom-fields/author-custom-fields.php:186
 #, php-format
 msgid "Use as %1$s Image"
 msgstr "Sử dụng làm hình ảnh %1$s"
 
-#: src/modules/author-boxes/author-boxes.php:590
+#: src/modules/author-boxes/author-boxes.php:593
 #: src/modules/author-custom-fields/author-custom-fields.php:187
 #, php-format
 msgid "Filter %2$s list"
 msgstr "Lọc danh sách %2$s"
 
-#: src/modules/author-boxes/author-boxes.php:591
+#: src/modules/author-boxes/author-boxes.php:594
 #: src/modules/author-custom-fields/author-custom-fields.php:188
 #, php-format
 msgid "%2$s list navigation"
 msgstr "%2$s điều hướng danh sách"
 
-#: src/modules/author-boxes/author-boxes.php:592
+#: src/modules/author-boxes/author-boxes.php:595
 #: src/modules/author-custom-fields/author-custom-fields.php:189
 #, php-format
 msgid "%2$s list"
 msgstr "%2$s danh sách"
 
-#: src/modules/author-boxes/author-boxes.php:659
-#: src/modules/author-boxes/author-boxes.php:660
+#: src/modules/author-boxes/author-boxes.php:662
+#: src/modules/author-boxes/author-boxes.php:663
 msgid "Author Box updated."
 msgstr "Hộp tác giả đã được cập nhật."
 
-#: src/modules/author-boxes/author-boxes.php:661
+#: src/modules/author-boxes/author-boxes.php:664
 msgid "Author Box added."
 msgstr "Hộp tác giả đã được thêm vào."
 
-#: src/modules/author-boxes/author-boxes.php:662
+#: src/modules/author-boxes/author-boxes.php:665
 msgid "Author Box saved."
 msgstr "Hộp tác giả đã được lưu."
 
-#: src/modules/author-boxes/author-boxes.php:663
+#: src/modules/author-boxes/author-boxes.php:666
 msgid "Author Box submitted."
 msgstr "Hộp tác giả đã được gửi đi."
 
-#: src/modules/author-boxes/author-boxes.php:690
+#: src/modules/author-boxes/author-boxes.php:693
 #, php-format
 msgid "%1$s %2$s updated."
 msgid_plural "%1$s %3$s updated."
 msgstr[0] "%1$s %2$s đã được cập nhật."
 
-#: src/modules/author-boxes/author-boxes.php:701
+#: src/modules/author-boxes/author-boxes.php:704
 #, php-format
 msgid "%1$s %2$s not updated, somebody is editing it."
 msgid_plural "%1$s %3$s not updated, somebody is editing them."
 msgstr[0] "%1$s %2$s không được cập nhật, có người đang chỉnh sửa nó."
 
-#: src/modules/author-boxes/author-boxes.php:712
+#: src/modules/author-boxes/author-boxes.php:715
 #, php-format
 msgid "%1$s %2$s permanently deleted."
 msgid_plural "%1$s %3$s permanently deleted."
 msgstr[0] "%1$s %2$s đã bị xóa vĩnh viễn."
 
-#: src/modules/author-boxes/author-boxes.php:723
+#: src/modules/author-boxes/author-boxes.php:726
 #, php-format
 msgid "%1$s %2$s moved to the Trash."
 msgid_plural "%1$s %3$s moved to the Trash."
 msgstr[0] "%1$s %2$s đã được chuyển vào Thùng rác."
 
-#: src/modules/author-boxes/author-boxes.php:734
+#: src/modules/author-boxes/author-boxes.php:737
 #, php-format
 msgid "%1$s %2$s restored from the Trash."
 msgid_plural "%1$s %3$s restored from the Trash."
 msgstr[0] "%1$s %2$s đã được khôi phục từ Thùng rác."
 
-#: src/modules/author-boxes/author-boxes.php:801
+#: src/modules/author-boxes/author-boxes.php:804
 msgid "Duplicate"
 msgstr "Trùng lặp"
 
-#: src/modules/author-boxes/author-boxes.php:834
-#: src/modules/author-boxes/author-boxes.php:839
+#: src/modules/author-boxes/author-boxes.php:837
+#: src/modules/author-boxes/author-boxes.php:842
 msgid "Invalid Author Box."
 msgstr "Hộp tác giả không hợp lệ."
 
-#: src/modules/author-boxes/author-boxes.php:851
+#: src/modules/author-boxes/author-boxes.php:854
 msgid "You are not allowed to duplicate this Author Box."
 msgstr "Bạn không được phép trùng lặp Hộp tác giả này."
 
-#: src/modules/author-boxes/author-boxes.php:855
+#: src/modules/author-boxes/author-boxes.php:858
 msgid "You are not allowed to create Author Boxes."
 msgstr "Bạn không được phép tạo Hộp tác giả."
 
-#: src/modules/author-boxes/author-boxes.php:879
+#: src/modules/author-boxes/author-boxes.php:882
 #, php-format
 msgid "%s (Copy)"
 msgstr "%s (Sao chép)"
 
-#: src/modules/author-boxes/author-boxes.php:894
+#: src/modules/author-boxes/author-boxes.php:897
 msgid "Could not duplicate the Author Box."
 msgstr "Không thể trùng lặp Hộp tác giả."
 
-#: src/modules/author-boxes/author-boxes.php:936
+#: src/modules/author-boxes/author-boxes.php:939
 msgid "Author Box duplicated."
 msgstr "Hộp tác giả đã được trùng lặp."
 
-#: src/modules/author-boxes/author-boxes.php:969
-#: src/modules/author-boxes/author-boxes.php:1007
+#: src/modules/author-boxes/author-boxes.php:972
+#: src/modules/author-boxes/author-boxes.php:1010
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:100
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:267
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:383
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:464
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:551
 #: src/modules/author-boxes/classes/AuthorBoxesDefault.php:642
-#: src/modules/default-layouts/default-layouts.php:107
+#: src/modules/default-layouts/default-layouts.php:118
 #: src/views/authors_grid.html.php:56
 msgid "View all posts"
 msgstr "Xem tất cả bài viết"
 
-#: src/modules/author-boxes/author-boxes.php:1121
+#: src/modules/author-boxes/author-boxes.php:1124
 msgid "Theme"
 msgstr "Giao diện"
 
-#: src/modules/author-boxes/author-boxes.php:1427
+#: src/modules/author-boxes/author-boxes.php:1447
 msgid "Author Box Preview"
 msgstr "Xem trước Hộp Tác Giả"
 
-#: src/modules/author-boxes/author-boxes.php:1444
+#: src/modules/author-boxes/author-boxes.php:1464
 msgid "Author Box Editor"
 msgstr "Trình Soạn Hộp Tác Giả"
 
-#: src/modules/author-boxes/author-boxes.php:1461
+#: src/modules/author-boxes/author-boxes.php:1481
 msgid "Layout Slug"
 msgstr "Slug Bố Cục"
 
-#: src/modules/author-boxes/author-boxes.php:1494
+#: src/modules/author-boxes/author-boxes.php:1514
 #: src/modules/author-custom-fields/author-custom-fields.php:770
 msgid "Banner"
 msgstr "Biểu Ngữ"
 
-#: src/modules/author-boxes/author-boxes.php:1514
+#: src/modules/author-boxes/author-boxes.php:1534
 msgid "Box Title"
 msgstr "Tiêu Đề Hộp"
 
-#: src/modules/author-boxes/author-boxes.php:1522
+#: src/modules/author-boxes/author-boxes.php:1542
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:285
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:299
-#: src/modules/multiple-authors/multiple-authors.php:1141
+#: src/modules/multiple-authors/multiple-authors.php:1158
 msgid "Display Name"
 msgstr "Tên Hiển Thị"
 
-#: src/modules/author-boxes/author-boxes.php:1530
+#: src/modules/author-boxes/author-boxes.php:1550
 msgid "View All Posts"
 msgstr "Xem Tất Cả Bài Viết"
 
-#: src/modules/author-boxes/author-boxes.php:1534
+#: src/modules/author-boxes/author-boxes.php:1554
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:253
 #: src/modules/author-categories/author-categories.php:65
 #: src/modules/author-categories/author-categories.php:261
 #: src/modules/author-categories/author-categories.php:262
 #: src/modules/author-categories/author-categories.php:649
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:29
-#: src/modules/author-list/author-list.php:648
-#: src/modules/author-list/author-list.php:662
+#: src/modules/author-list/author-list.php:649
+#: src/modules/author-list/author-list.php:663
 msgid "Author Categories"
 msgstr "Danh Mục Tác Giả"
 
-#: src/modules/author-boxes/author-boxes.php:1538
+#: src/modules/author-boxes/author-boxes.php:1558
 #: src/modules/author-custom-fields/author-custom-fields.php:64
 #: src/modules/author-custom-fields/author-custom-fields.php:163
 #: src/modules/author-custom-fields/author-custom-fields.php:221
@@ -1337,107 +1469,118 @@ msgstr "Danh Mục Tác Giả"
 msgid "Author Fields"
 msgstr "Trường Tác Giả"
 
-#: src/modules/author-boxes/author-boxes.php:1542
+#: src/modules/author-boxes/author-boxes.php:1562
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1691
-#: src/modules/multiple-authors/multiple-authors.php:3280
+#: src/modules/multiple-authors/multiple-authors.php:3335
 msgid "Shortcodes"
 msgstr "Mã Ngắn"
 
-#: src/modules/author-boxes/author-boxes.php:1546
+#: src/modules/author-boxes/author-boxes.php:1566
 msgid "Author Recent Posts"
 msgstr "Bài Viết Gần Đây của Tác Giả"
 
-#: src/modules/author-boxes/author-boxes.php:1550
+#: src/modules/author-boxes/author-boxes.php:1570
 msgid "Box Layout"
 msgstr "Bố Cục Hộp"
 
-#: src/modules/author-boxes/author-boxes.php:1554
+#: src/modules/author-boxes/author-boxes.php:1574
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1662
 msgid "Custom CSS"
 msgstr "CSS Tùy Chỉnh"
 
-#: src/modules/author-boxes/author-boxes.php:1558
+#: src/modules/author-boxes/author-boxes.php:1578
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1709
 msgid "Export"
 msgstr "Xuất"
 
-#: src/modules/author-boxes/author-boxes.php:1562
+#: src/modules/author-boxes/author-boxes.php:1582
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1728
 msgid "Import"
 msgstr "Nhập"
 
-#: src/modules/author-boxes/author-boxes.php:1566
+#: src/modules/author-boxes/author-boxes.php:1586
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1746
 msgid "Generate Theme Template"
 msgstr "Tạo Mẫu Giao Diện"
 
-#: src/modules/author-boxes/author-boxes.php:1645
+#: src/modules/author-boxes/author-boxes.php:1665
 msgid "Shortcode documentation."
 msgstr "Tài liệu mã ngắn."
 
-#: src/modules/author-boxes/author-boxes.php:2059
+#: src/modules/author-boxes/author-boxes.php:2082
 msgid "Post preview"
 msgstr "Xem trước bài viết"
 
-#: src/modules/author-boxes/author-boxes.php:2068
+#: src/modules/author-boxes/author-boxes.php:2091
 msgid "Select Preview Post"
 msgstr "Chọn Bài Viết Xem Trước"
 
-#: src/modules/author-boxes/author-boxes.php:2459
+#: src/modules/author-boxes/author-boxes.php:2288
+#. translators: 1: Profile field label, e.g. Website or Email. 2: Author name.
+#, php-format
+msgid "%1$s for %2$s"
+msgstr "%1$s cho %2$s"
+
+#: src/modules/author-boxes/author-boxes.php:2293
+#: src/modules/author-boxes/author-boxes.php:2303
+msgid "(opens in a new tab)"
+msgstr "(mở trong tab mới)"
+
+#: src/modules/author-boxes/author-boxes.php:2499
 msgid "No Recent Posts by this Author"
 msgstr "Không có Bài Viết Gần Đây nào của Tác Giả này"
 
-#: src/modules/author-boxes/author-boxes.php:2654
-#: src/modules/author-boxes/author-boxes.php:2735
-#: src/modules/author-boxes/author-boxes.php:3095
+#: src/modules/author-boxes/author-boxes.php:2694
+#: src/modules/author-boxes/author-boxes.php:2775
+#: src/modules/author-boxes/author-boxes.php:3135
 msgid "Pro feature"
 msgstr "Tính năng Pro"
 
-#: src/modules/author-boxes/author-boxes.php:2774
+#: src/modules/author-boxes/author-boxes.php:2814
 msgid "After View all posts Row"
 msgstr "Sau Khi Xem Tất Cả Các Bài Viết"
 
-#: src/modules/author-boxes/author-boxes.php:2775
+#: src/modules/author-boxes/author-boxes.php:2815
 msgid "After Name Row"
 msgstr "Sau Hàng Tên"
 
-#: src/modules/author-boxes/author-boxes.php:2776
+#: src/modules/author-boxes/author-boxes.php:2816
 msgid "After Biographical Info Row"
 msgstr "Sau Hàng Thông Tin Tiểu Sử"
 
-#: src/modules/author-boxes/author-boxes.php:2777
+#: src/modules/author-boxes/author-boxes.php:2817
 msgid "After All Authors"
 msgstr "Sau Tất Cả Tác Giả"
 
-#: src/modules/author-boxes/author-boxes.php:2786
+#: src/modules/author-boxes/author-boxes.php:2826
 msgid "Position"
 msgstr "Vị Trí"
 
-#: src/modules/author-boxes/author-boxes.php:2787
+#: src/modules/author-boxes/author-boxes.php:2827
 msgid "Action"
 msgstr "Hành Động"
 
-#: src/modules/author-boxes/author-boxes.php:2814
-#: src/modules/author-boxes/author-boxes.php:2843
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:145
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:399
+#: src/modules/author-boxes/author-boxes.php:2854
+#: src/modules/author-boxes/author-boxes.php:2883
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:150
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:404
 msgid "Delete"
 msgstr "Xóa"
 
-#: src/modules/author-boxes/author-boxes.php:2815
+#: src/modules/author-boxes/author-boxes.php:2855
 msgid "Add"
 msgstr "Thêm"
 
-#: src/modules/author-boxes/author-boxes.php:2853
+#: src/modules/author-boxes/author-boxes.php:2893
 #, php-format
 msgid "You can use basic HTML in this field. For example: Read Time %1s."
 msgstr "Bạn có thể sử dụng HTML cơ bản trong trường này. Ví dụ: Thời Gian Đọc %1s."
 
-#: src/modules/author-boxes/author-boxes.php:2857
+#: src/modules/author-boxes/author-boxes.php:2897
 msgid "Export Editor Settings"
 msgstr "Xuất Cài Đặt Biên Tập"
 
-#: src/modules/author-boxes/author-boxes.php:2858
+#: src/modules/author-boxes/author-boxes.php:2898
 msgid ""
 "You can use this data to export your author box design and import it to a "
 "new site."
@@ -1445,48 +1588,48 @@ msgstr ""
 "Bạn có thể sử dụng dữ liệu này để xuất thiết kế hộp tác giả của bạn và nhập "
 "nó vào một trang web mới."
 
-#: src/modules/author-boxes/author-boxes.php:2868
-#: src/modules/author-boxes/author-boxes.php:2939
+#: src/modules/author-boxes/author-boxes.php:2908
+#: src/modules/author-boxes/author-boxes.php:2979
 msgid "Copy to Clipboard"
 msgstr "Sao Chép Vào Clipboard"
 
-#: src/modules/author-boxes/author-boxes.php:2872
-#: src/modules/author-boxes/author-boxes.php:2944
+#: src/modules/author-boxes/author-boxes.php:2912
+#: src/modules/author-boxes/author-boxes.php:2984
 msgid "Copied to Clipboard!"
 msgstr "Đã Sao Chép Vào Clipboard!"
 
-#: src/modules/author-boxes/author-boxes.php:2877
+#: src/modules/author-boxes/author-boxes.php:2917
 msgid "Import Editor Settings"
 msgstr "Nhập Cài Đặt Biên Tập"
 
-#: src/modules/author-boxes/author-boxes.php:2878
+#: src/modules/author-boxes/author-boxes.php:2918
 msgid "Paste the editor data from the \"Export\" tab on another site."
 msgstr "Dán dữ liệu biên tập từ tab \"Xuất\" trên một trang khác."
 
-#: src/modules/author-boxes/author-boxes.php:2887
+#: src/modules/author-boxes/author-boxes.php:2927
 msgid "Invalid data"
 msgstr "Dữ liệu không hợp lệ"
 
-#: src/modules/author-boxes/author-boxes.php:2887
-#: src/modules/author-boxes/author-boxes.php:2892
+#: src/modules/author-boxes/author-boxes.php:2927
+#: src/modules/author-boxes/author-boxes.php:2932
 msgid "Settings Imported Successfully!"
 msgstr "Cài Đặt Nhập Thành Công!"
 
-#: src/modules/author-boxes/author-boxes.php:2888
+#: src/modules/author-boxes/author-boxes.php:2928
 msgid "Import Data"
 msgstr "Nhập Dữ Liệu"
 
-#: src/modules/author-boxes/author-boxes.php:2897
+#: src/modules/author-boxes/author-boxes.php:2937
 msgid "How to generate and use a theme template file"
 msgstr "Cách tạo và sử dụng tệp mẫu giao diện"
 
-#: src/modules/author-boxes/author-boxes.php:2900
+#: src/modules/author-boxes/author-boxes.php:2940
 msgid ""
 "Click the \"Generate Template\" button under the text area. Wait for the "
 "code to be generated."
 msgstr "Nhấp vào nút \"Tạo mẫu\" dưới vùng văn bản. Chờ mã được tạo ra."
 
-#: src/modules/author-boxes/author-boxes.php:2901
+#: src/modules/author-boxes/author-boxes.php:2941
 #, php-format
 msgid ""
 "Create an empty php template file with your desired file slug in the %1s "
@@ -1501,38 +1644,38 @@ msgstr ""
 "/wp-content/themes/%5stên-chủ-đề-của-bạn%6s/publishpress-authors/author-"
 "boxes/my-first-custom-author-template.php %7s ."
 
-#: src/modules/author-boxes/author-boxes.php:2902
+#: src/modules/author-boxes/author-boxes.php:2942
 msgid "Copy the generated code and paste it inside the newly created file."
 msgstr "Sao chép mã đã tạo và dán nó vào tệp vừa tạo."
 
-#: src/modules/author-boxes/author-boxes.php:2903
+#: src/modules/author-boxes/author-boxes.php:2943
 msgid ""
 "Congratulations. Your can now choose your template inside the PublishPress "
 "Authors Settings."
 msgstr "Chúc mừng. Bạn có thể chọn mẫu của mình trong Cài đặt PublishPress Authors."
 
-#: src/modules/author-boxes/author-boxes.php:2907
+#: src/modules/author-boxes/author-boxes.php:2947
 #, php-format
 msgid "You can read more information on the %s."
 msgstr "Bạn có thể đọc thêm thông tin trên %s."
 
-#: src/modules/author-boxes/author-boxes.php:2908
+#: src/modules/author-boxes/author-boxes.php:2948
 msgid "documentation page"
 msgstr "trang tài liệu"
 
-#: src/modules/author-boxes/author-boxes.php:2933
+#: src/modules/author-boxes/author-boxes.php:2973
 msgid "Generate Template"
 msgstr "Tạo mẫu"
 
-#: src/modules/author-boxes/author-boxes.php:2947
+#: src/modules/author-boxes/author-boxes.php:2987
 msgid "Template generated successfuly!"
 msgstr "Mẫu đã được tạo thành công!"
 
-#: src/modules/author-boxes/author-boxes.php:2989
+#: src/modules/author-boxes/author-boxes.php:3029
 msgid "Reorder Fields"
 msgstr "Sắp xếp lại các trường"
 
-#: src/modules/author-boxes/author-boxes.php:2997
+#: src/modules/author-boxes/author-boxes.php:3037
 msgid ""
 "Reorder the fields by dragging them to the correct position and saving your "
 "changes."
@@ -1540,39 +1683,39 @@ msgstr ""
 "Sắp xếp lại các trường bằng cách kéo chúng đến vị trí đúng và lưu thay đổi "
 "của bạn."
 
-#: src/modules/author-boxes/author-boxes.php:3011
+#: src/modules/author-boxes/author-boxes.php:3051
 msgid "Save for Current Author Box"
 msgstr "Lưu cho Author Box hiện tại"
 
-#: src/modules/author-boxes/author-boxes.php:3015
+#: src/modules/author-boxes/author-boxes.php:3055
 msgid "Save for All Author Boxes"
 msgstr "Lưu cho tất cả Author Boxes"
 
-#: src/modules/author-boxes/author-boxes.php:3038
+#: src/modules/author-boxes/author-boxes.php:3078
 #, php-format
 msgid "Select %1s"
 msgstr "Chọn %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3039
+#: src/modules/author-boxes/author-boxes.php:3079
 #, php-format
 msgid "Change %1s"
 msgstr "Thay đổi %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3040
+#: src/modules/author-boxes/author-boxes.php:3080
 #, php-format
 msgid "Remove %1s"
 msgstr "Xóa %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3067
+#: src/modules/author-boxes/author-boxes.php:3107
 #, php-format
 msgid "Search %1s Icon"
 msgstr "Tìm kiếm biểu tượng %1s"
 
-#: src/modules/author-boxes/author-boxes.php:3278
+#: src/modules/author-boxes/author-boxes.php:3319
 msgid "New Author Categories Box"
 msgstr "Hộp thể loại tác giả mới"
 
-#: src/modules/author-boxes/author-boxes.php:3286
+#: src/modules/author-boxes/author-boxes.php:3327
 msgid ""
 "PublishPress Authors Pro allows you to unlock the full potential of Author "
 "Categories."
@@ -1580,21 +1723,21 @@ msgstr ""
 "PublishPress Authors Pro cho phép bạn mở khóa toàn bộ tiềm năng của Danh "
 "mục Tác giả."
 
-#: src/modules/author-boxes/author-boxes.php:3288
+#: src/modules/author-boxes/author-boxes.php:3329
 msgid "You can create Author Boxes where Authors are grouped into their categories."
 msgstr ""
 "Bạn có thể tạo các Author Boxes nơi các tác giả được nhóm thành các thể "
 "loại của họ."
 
-#: src/modules/author-boxes/author-boxes.php:3341
+#: src/modules/author-boxes/author-boxes.php:3382
 msgid "PublishPress Authors Box"
 msgstr "Hộp tác giả PublishPress"
 
-#: src/modules/author-boxes/author-boxes.php:3342
+#: src/modules/author-boxes/author-boxes.php:3383
 msgid "Select an author box"
 msgstr "Chọn một hộp tác giả"
 
-#: src/modules/author-boxes/author-boxes.php:3389
+#: src/modules/author-boxes/author-boxes.php:3430
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:47
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:137
 #: src/modules/author-boxes/classes/AuthorBoxesAjax.php:200
@@ -1602,7 +1745,7 @@ msgstr "Chọn một hộp tác giả"
 #: src/modules/author-categories/author-categories.php:397
 #: src/modules/author-categories/author-categories.php:469
 #: src/modules/author-custom-fields/author-custom-fields.php:1093
-#: src/modules/author-list/author-list.php:1718
+#: src/modules/author-list/author-list.php:1719
 msgid "You do not have permission to perform this action"
 msgstr "Bạn không có quyền thực hiện hành động này"
 
@@ -1614,7 +1757,7 @@ msgstr "Bạn không có quyền thực hiện hành động này"
 #: src/modules/author-categories/author-categories.php:451
 #: src/modules/author-categories/author-categories.php:459
 #: src/modules/author-custom-fields/author-custom-fields.php:1080
-#: src/modules/author-list/author-list.php:1705
+#: src/modules/author-list/author-list.php:1706
 msgid "An error occured."
 msgstr "Đã xảy ra lỗi."
 
@@ -1984,8 +2127,8 @@ msgstr "Thẻ HTML tiêu đề hộp"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:841
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1234
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1457
-#: src/modules/multiple-authors/multiple-authors.php:2081
-#: src/modules/multiple-authors/multiple-authors.php:2113, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2120
+#: src/modules/multiple-authors/multiple-authors.php:2149, fuzzy
 msgid "H1"
 msgstr "H1"
 
@@ -1996,8 +2139,8 @@ msgstr "H1"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:842
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1235
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1458
-#: src/modules/multiple-authors/multiple-authors.php:2082
-#: src/modules/multiple-authors/multiple-authors.php:2114, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2121
+#: src/modules/multiple-authors/multiple-authors.php:2150, fuzzy
 msgid "H2"
 msgstr "H2"
 
@@ -2008,8 +2151,8 @@ msgstr "H2"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:843
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1236
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1459
-#: src/modules/multiple-authors/multiple-authors.php:2083
-#: src/modules/multiple-authors/multiple-authors.php:2115, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2122
+#: src/modules/multiple-authors/multiple-authors.php:2151, fuzzy
 msgid "H3"
 msgstr "H3"
 
@@ -2020,8 +2163,8 @@ msgstr "H3"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:844
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1237
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1460
-#: src/modules/multiple-authors/multiple-authors.php:2084
-#: src/modules/multiple-authors/multiple-authors.php:2116, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2123
+#: src/modules/multiple-authors/multiple-authors.php:2152, fuzzy
 msgid "H4"
 msgstr "H4"
 
@@ -2032,8 +2175,8 @@ msgstr "H4"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:845
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1238
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1461
-#: src/modules/multiple-authors/multiple-authors.php:2085
-#: src/modules/multiple-authors/multiple-authors.php:2117, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2124
+#: src/modules/multiple-authors/multiple-authors.php:2153, fuzzy
 msgid "H5"
 msgstr "H5"
 
@@ -2044,8 +2187,8 @@ msgstr "H5"
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:846
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1239
 #: src/modules/author-boxes/classes/AuthorBoxesEditorFields.php:1462
-#: src/modules/multiple-authors/multiple-authors.php:2086
-#: src/modules/multiple-authors/multiple-authors.php:2118, fuzzy
+#: src/modules/multiple-authors/multiple-authors.php:2125
+#: src/modules/multiple-authors/multiple-authors.php:2154, fuzzy
 msgid "H6"
 msgstr "H6"
 
@@ -3011,7 +3154,7 @@ msgid "Add support for author categories."
 msgstr "Thêm hỗ trợ cho các danh mục tác giả."
 
 #: src/modules/author-categories/author-categories.php:280
-#: src/modules/author-list/author-list.php:231
+#: src/modules/author-list/author-list.php:232
 msgid "Number of items per page"
 msgstr "Số lượng mục trên mỗi trang"
 
@@ -3065,7 +3208,7 @@ msgid "Add Author Category"
 msgstr "Thêm Danh mục Tác giả"
 
 #: src/modules/author-categories/author-categories.php:676
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:487
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:492
 msgid "Singular Name"
 msgstr "Tên số ít"
 
@@ -3075,7 +3218,7 @@ msgstr "Nhập tên Danh mục Tác giả khi chỉ có một tác giả"
 
 #: src/modules/author-categories/author-categories.php:681
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:97
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:492
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:497
 msgid "Plural Name"
 msgstr "Tên số nhiều"
 
@@ -3084,13 +3227,13 @@ msgid "Enter the Author Category name when there are more than 1 author"
 msgstr "Nhập tên Danh mục Tác giả khi có nhiều hơn 1 tác giả"
 
 #: src/modules/author-categories/author-categories.php:686
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:497
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:502
 #: src/modules/author-custom-fields/author-custom-fields.php:418
 msgid "Schema Property"
 msgstr "Thuộc tính Lược đồ"
 
 #: src/modules/author-categories/author-categories.php:689
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:500
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:505
 #, php-format
 msgid ""
 "Example: when this value is set to reviewedBy, all users in this category "
@@ -3103,12 +3246,12 @@ msgstr ""
 
 #: src/modules/author-categories/author-categories.php:701
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:98
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:510
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:515
 msgid "Post Types"
 msgstr "Loại Bài Viết"
 
 #: src/modules/author-categories/author-categories.php:712
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:518
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:523
 msgid "Select Post Type..."
 msgstr "Chọn Loại Bài Viết..."
 
@@ -3122,7 +3265,7 @@ msgstr ""
 
 #: src/modules/author-categories/author-categories.php:750
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:100
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:555
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:560
 msgid "Enable Category"
 msgstr "Kích Hoạt Danh Mục"
 
@@ -3157,74 +3300,83 @@ msgstr "Biên Tập Viên"
 msgid "Editors"
 msgstr "Biên Tập Viên"
 
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:95
+msgid "Select all author categories"
+msgstr "Chọn tất cả các danh mục tác giả"
+
 #: src/modules/author-categories/classes/AuthorCategoriesTable.php:99
 #: src/modules/author-custom-fields/author-custom-fields.php:804, fuzzy
 msgid "Slug"
 msgstr "Slug"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:143
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:136
+#, php-format
+msgid "Select %s"
+msgstr "Chọn %s"
+
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:148
 msgid "Enable Categories"
 msgstr "Kích Hoạt Danh Mục"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:144
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:149
 msgid "Disable Categories"
 msgstr "Vô Hiệu Hóa Danh Mục"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:173
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:178
 msgid "Author categories deleted successfully."
 msgstr "Các danh mục tác giả đã được xóa thành công."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:176
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:181
 msgid "Author category deleted successfully."
 msgstr "Danh mục tác giả đã được xóa thành công."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:187
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:192
 msgid "Author categories enabled."
 msgstr "Các danh mục tác giả đã được kích hoạt."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:190
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:195
 msgid "Author category enabled."
 msgstr "Danh mục tác giả đã được kích hoạt."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:201
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:206
 msgid "Author categories disabled."
 msgstr "Các danh mục tác giả đã bị vô hiệu hóa."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:204
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:209
 msgid "Author category disabled."
 msgstr "Danh mục tác giả đã bị vô hiệu hóa."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:288
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:293
 msgid "No author categories."
 msgstr "Không có danh mục tác giả."
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:377
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:382
 #. translators: %s: Taxonomy term name.
 #, php-format
 msgid "Quick edit &#8220;%s&#8221; inline"
 msgstr "Chỉnh sửa nhanh &#8220;%s&#8221; trực tiếp"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:385
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:390
 msgid "Quick&nbsp;Edit"
 msgstr "Chỉnh sửa&nbsp;Nhanh"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:416
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:421
 msgid "Enabled"
 msgstr "Đã bật"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:462
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:467
 msgid "All"
 msgstr "Tất cả"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:484
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:489
 msgid "Quick Edit"
 msgstr "Chỉnh sửa Nhanh"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:563
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:568
 msgid "Update"
 msgstr "Cập nhật"
 
-#: src/modules/author-categories/classes/AuthorCategoriesTable.php:564
+#: src/modules/author-categories/classes/AuthorCategoriesTable.php:569
 msgid "Cancel"
 msgstr "Hủy"
 
@@ -3428,7 +3580,7 @@ msgid "Please enter the full URL to your TikTok profile."
 msgstr "Vui lòng nhập đầy đủ URL đến hồ sơ TikTok của bạn."
 
 #: src/modules/author-list/author-list.php:73
-#: src/modules/author-list/author-list.php:1129
+#: src/modules/author-list/author-list.php:1130
 msgid "Author List"
 msgstr "Danh sách tác giả"
 
@@ -3437,105 +3589,105 @@ msgstr "Danh sách tác giả"
 msgid "Add support for author list."
 msgstr "Thêm hỗ trợ cho danh sách tác giả."
 
-#: src/modules/author-list/author-list.php:210
 #: src/modules/author-list/author-list.php:211
-#: src/modules/author-list/author-list.php:287
-#: src/modules/author-list/author-list.php:1181
+#: src/modules/author-list/author-list.php:212
+#: src/modules/author-list/author-list.php:288
+#: src/modules/author-list/author-list.php:1182
 msgid "Author Lists"
 msgstr "Danh sách tác giả"
 
-#: src/modules/author-list/author-list.php:253
+#: src/modules/author-list/author-list.php:254
 msgid "Settings updated successfully."
 msgstr "Cài đặt đã được cập nhật thành công."
 
-#: src/modules/author-list/author-list.php:257
+#: src/modules/author-list/author-list.php:258
 msgid "Author List deleted successfully."
 msgstr "Danh sách tác giả đã được xóa thành công."
 
-#: src/modules/author-list/author-list.php:261
+#: src/modules/author-list/author-list.php:262
 msgid "Author List restored from the Trash."
 msgstr "Danh sách tác giả đã được khôi phục từ Thùng rác."
 
-#: src/modules/author-list/author-list.php:265
+#: src/modules/author-list/author-list.php:266
 msgid "Author List moved to the Trash."
 msgstr "Danh sách tác giả đã được chuyển vào Thùng rác."
 
-#: src/modules/author-list/author-list.php:293
+#: src/modules/author-list/author-list.php:294
 msgid "Add New"
 msgstr "Thêm mới"
 
-#: src/modules/author-list/author-list.php:298
+#: src/modules/author-list/author-list.php:299
 #. translators: %s: search keywords
 #, php-format
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "Kết quả tìm kiếm cho &#8220;%s&#8221;"
 
-#: src/modules/author-list/author-list.php:307
+#: src/modules/author-list/author-list.php:308
 msgid "Search Author Lists"
 msgstr "Tìm kiếm danh sách tác giả"
 
-#: src/modules/author-list/author-list.php:326
-#: src/modules/author-list/author-list.php:768
+#: src/modules/author-list/author-list.php:327
+#: src/modules/author-list/author-list.php:769
 msgid "Preview"
 msgstr "Xem trước"
 
-#: src/modules/author-list/author-list.php:334
+#: src/modules/author-list/author-list.php:335
 msgid "Fields"
 msgstr "Các trường"
 
-#: src/modules/author-list/author-list.php:338
+#: src/modules/author-list/author-list.php:339
 msgid "Users"
 msgstr "Người dùng"
 
-#: src/modules/author-list/author-list.php:342
+#: src/modules/author-list/author-list.php:343
 msgid "Options"
 msgstr "Tùy chọn"
 
-#: src/modules/author-list/author-list.php:371
+#: src/modules/author-list/author-list.php:372
 msgid "Post Count"
 msgstr "Số lượng bài viết"
 
-#: src/modules/author-list/author-list.php:550
+#: src/modules/author-list/author-list.php:551
 msgid "The original size of the uploaded image"
 msgstr "Kích thước gốc của hình ảnh đã tải lên"
 
-#: src/modules/author-list/author-list.php:551
+#: src/modules/author-list/author-list.php:552
 msgid "Large-sized image (1024px by 1024px)"
 msgstr "Hình ảnh kích thước lớn (1024px x 1024px)"
 
-#: src/modules/author-list/author-list.php:552
+#: src/modules/author-list/author-list.php:553
 msgid "Medium-large image (768px)"
 msgstr "Hình ảnh kích thước vừa lớn (768px)"
 
-#: src/modules/author-list/author-list.php:553
+#: src/modules/author-list/author-list.php:554
 msgid "Medium-sized image (300px by 300px)"
 msgstr "Hình ảnh kích thước vừa (300px x 300px)"
 
-#: src/modules/author-list/author-list.php:554
+#: src/modules/author-list/author-list.php:555
 msgid "Small-sized image (150px by 150px)"
 msgstr "Hình ảnh kích thước nhỏ (150px x 150px)"
 
-#: src/modules/author-list/author-list.php:594
+#: src/modules/author-list/author-list.php:595
 msgid "Columns"
 msgstr "Cột"
 
-#: src/modules/author-list/author-list.php:595
+#: src/modules/author-list/author-list.php:596
 msgid "Choose how many columns to use for grid-style Author Lists."
 msgstr "Chọn số lượng cột để sử dụng cho Danh sách Tác Giả theo kiểu lưới."
 
-#: src/modules/author-list/author-list.php:604
+#: src/modules/author-list/author-list.php:605
 msgid "Group By"
 msgstr "Nhóm theo"
 
-#: src/modules/author-list/author-list.php:615
+#: src/modules/author-list/author-list.php:616
 msgid "Featured Image Size"
 msgstr "Kích thước hình ảnh nổi bật"
 
-#: src/modules/author-list/author-list.php:628
+#: src/modules/author-list/author-list.php:629
 msgid "Display Fields"
 msgstr "Hiển Thị Các Trường"
 
-#: src/modules/author-list/author-list.php:629
+#: src/modules/author-list/author-list.php:630
 msgid ""
 "Choose which author profile fields to show. This applies to Authors Grid "
 "and Authors Table layouts only."
@@ -3543,15 +3695,15 @@ msgstr ""
 "Chọn các trường hồ sơ tác giả để hiển thị. Điều này chỉ áp dụng cho bố cục "
 "Lưới Tác Giả và Bảng Tác Giả."
 
-#: src/modules/author-list/author-list.php:633
+#: src/modules/author-list/author-list.php:634
 msgid "Select fields"
 msgstr "Chọn các trường"
 
-#: src/modules/author-list/author-list.php:641
+#: src/modules/author-list/author-list.php:642
 msgid "Show Authors"
 msgstr "Hiển thị tác giả"
 
-#: src/modules/author-list/author-list.php:642
+#: src/modules/author-list/author-list.php:643
 msgid ""
 "Select an option to limit the results to selected user roles, author types, "
 "specific authors or author Categories."
@@ -3559,16 +3711,16 @@ msgstr ""
 "Chọn một tùy chọn để giới hạn kết quả cho các vai trò người dùng đã chọn, "
 "loại tác giả, tác giả cụ thể hoặc danh mục tác giả."
 
-#: src/modules/author-list/author-list.php:645
-#: src/modules/author-list/author-list.php:659
+#: src/modules/author-list/author-list.php:646
+#: src/modules/author-list/author-list.php:660
 msgid "Roles"
 msgstr "Vai trò"
 
-#: src/modules/author-list/author-list.php:655
+#: src/modules/author-list/author-list.php:656
 msgid "Exclude Authors"
 msgstr "Loại trừ tác giả"
 
-#: src/modules/author-list/author-list.php:656
+#: src/modules/author-list/author-list.php:657
 msgid ""
 "Select an option to exclude selected user roles, author types, specific "
 "authors or author Categories from Author list."
@@ -3576,19 +3728,19 @@ msgstr ""
 "Chọn một tùy chọn để loại trừ các vai trò người dùng đã chọn, loại tác giả, "
 "tác giả cụ thể hoặc danh mục tác giả khỏi danh sách tác giả."
 
-#: src/modules/author-list/author-list.php:672
+#: src/modules/author-list/author-list.php:673
 msgid "Authors Per Page"
 msgstr "Tác giả trên trang"
 
-#: src/modules/author-list/author-list.php:673
+#: src/modules/author-list/author-list.php:674
 msgid "You can set the number of authors to show per page."
 msgstr "Bạn có thể đặt số lượng tác giả hiển thị trên mỗi trang."
 
-#: src/modules/author-list/author-list.php:683
+#: src/modules/author-list/author-list.php:684
 msgid "Show Empty"
 msgstr "Hiển thị trống"
 
-#: src/modules/author-list/author-list.php:684
+#: src/modules/author-list/author-list.php:685
 msgid ""
 "Enable this option to show all authors, including those without any posts. "
 "Disable this option to show only authors who are assigned to posts."
@@ -3597,11 +3749,11 @@ msgstr ""
 "không có bài viết nào. Tắt tùy chọn này để chỉ hiển thị các tác giả được "
 "gán cho các bài viết."
 
-#: src/modules/author-list/author-list.php:692
+#: src/modules/author-list/author-list.php:693
 msgid "Configure Author List Options"
 msgstr "Cấu hình Tùy chọn Danh sách Tác giả"
 
-#: src/modules/author-list/author-list.php:693
+#: src/modules/author-list/author-list.php:694
 msgid ""
 "Authors Pro allows you to add extra features to the Authors List. These "
 "features include pagination, choose the order of authors, and much more."
@@ -3610,15 +3762,15 @@ msgstr ""
 "Các tính năng này bao gồm phân trang, chọn thứ tự của các tác giả và nhiều "
 "hơn nữa."
 
-#: src/modules/author-list/author-list.php:698
+#: src/modules/author-list/author-list.php:699
 msgid "Order By"
 msgstr "Thứ tự Theo"
 
-#: src/modules/author-list/author-list.php:726
+#: src/modules/author-list/author-list.php:727
 msgid "Last Article Date"
 msgstr "Ngày Bài viết Cuối cùng"
 
-#: src/modules/author-list/author-list.php:727
+#: src/modules/author-list/author-list.php:728
 msgid ""
 "You can limit the author list to users with a published post within a "
 "specific time. This option accepts date values such as 1 week ago, 1 month "
@@ -3629,15 +3781,15 @@ msgstr ""
 "trị ngày tháng như 1 tuần trước, 1 tháng trước, 6 tháng trước, 1 năm trước, "
 "v.v."
 
-#: src/modules/author-list/author-list.php:739
+#: src/modules/author-list/author-list.php:740
 msgid "Show Search Box"
 msgstr "Hiển thị Hộp Tìm kiếm"
 
-#: src/modules/author-list/author-list.php:748
+#: src/modules/author-list/author-list.php:749
 msgid "Add Search Box to Author Lists"
 msgstr "Thêm Hộp Tìm kiếm vào Danh sách Tác giả"
 
-#: src/modules/author-list/author-list.php:749
+#: src/modules/author-list/author-list.php:750
 msgid ""
 "Author Pro allows you to add a search box to the Authors List. You can also "
 "show a dropdown menu that allows users to search on specific author fields."
@@ -3646,11 +3798,11 @@ msgstr ""
 "cũng có thể hiển thị một menu thả xuống cho phép người dùng tìm kiếm trên "
 "các trường tác giả cụ thể."
 
-#: src/modules/author-list/author-list.php:754
+#: src/modules/author-list/author-list.php:755
 msgid "Search Field Dropdown"
 msgstr "Menu Dropdown Trường Tìm kiếm"
 
-#: src/modules/author-list/author-list.php:755
+#: src/modules/author-list/author-list.php:756
 msgid ""
 "You can also show a dropdown menu that allows users to search on specific "
 "author fields."
@@ -3658,59 +3810,59 @@ msgstr ""
 "Bạn cũng có thể hiển thị một menu thả xuống cho phép người dùng tìm kiếm "
 "trên các trường tác giả cụ thể."
 
-#: src/modules/author-list/author-list.php:816
+#: src/modules/author-list/author-list.php:817
 msgid "Author Recent List"
 msgstr "Danh sách Tác giả Gần đây"
 
-#: src/modules/author-list/author-list.php:866
+#: src/modules/author-list/author-list.php:867
 msgid "Author Index List"
 msgstr "Danh sách Chỉ mục Tác giả"
 
-#: src/modules/author-list/author-list.php:917
+#: src/modules/author-list/author-list.php:918
 msgid "Author Grid List"
 msgstr "Danh sách Lưới Tác Giả"
 
-#: src/modules/author-list/author-list.php:973
+#: src/modules/author-list/author-list.php:974
 msgid "Author Table List"
 msgstr "Danh sách Bảng Tác Giả"
 
-#: src/modules/author-list/author-list.php:1166
+#: src/modules/author-list/author-list.php:1167
 msgid "Edit Author List"
 msgstr "Chỉnh sửa Danh sách Tác giả"
 
-#: src/modules/author-list/author-list.php:1166
+#: src/modules/author-list/author-list.php:1167
 msgid "Add Author List"
 msgstr "Thêm Danh sách Tác giả"
 
-#: src/modules/author-list/author-list.php:1237
-#: src/modules/author-list/author-list.php:1244
+#: src/modules/author-list/author-list.php:1238
+#: src/modules/author-list/author-list.php:1245
 msgid "Save Changes"
 msgstr "Lưu Thay đổi"
 
-#: src/modules/author-list/author-list.php:1260
+#: src/modules/author-list/author-list.php:1261
 msgid "Dynamic Shortcode"
 msgstr "Mã ngắn Động"
 
-#: src/modules/author-list/author-list.php:1262
+#: src/modules/author-list/author-list.php:1263
 msgid "Static Shortcode"
 msgstr "Mã ngắn Tĩnh"
 
-#: src/modules/author-list/author-list.php:1497
-#: src/modules/author-list/author-list.php:1524
-#: src/modules/multiple-authors/multiple-authors.php:1888
+#: src/modules/author-list/author-list.php:1498
+#: src/modules/author-list/author-list.php:1525
+#: src/modules/multiple-authors/multiple-authors.php:1933
 msgid "Select some options"
 msgstr "Chọn một số tùy chọn"
 
-#: src/modules/author-list/author-list.php:1545
-#: src/modules/author-list/author-list.php:1655
+#: src/modules/author-list/author-list.php:1546
+#: src/modules/author-list/author-list.php:1656
 msgid "Select Users"
 msgstr "Chọn Người dùng"
 
-#: src/modules/author-list/author-list.php:1572
+#: src/modules/author-list/author-list.php:1573
 msgid "Select Author Category"
 msgstr "Chọn Danh mục Tác giả"
 
-#: src/modules/author-list/author-list.php:1620
+#: src/modules/author-list/author-list.php:1621
 msgid ""
 "This is a quick preview of this Author List. Test on frontend pages to see "
 "exactly how it looks with your theme."
@@ -3718,7 +3870,7 @@ msgstr ""
 "Đây là một bản xem trước nhanh của Danh sách Tác giả này. Kiểm tra trên các "
 "trang giao diện để xem chính xác nó trông như thế nào với chủ đề của bạn."
 
-#: src/modules/author-list/author-list.php:1724
+#: src/modules/author-list/author-list.php:1725
 msgid "Invalid form"
 msgstr "Biểu mẫu không hợp lệ"
 
@@ -3743,42 +3895,70 @@ msgstr[0] "Thùng rác %s"
 msgid "No author list avaliable in the selected view."
 msgstr "Không có danh sách tác giả nào có sẵn trong chế độ xem đã chọn."
 
-#: src/modules/author-list/classes/AuthorListTable.php:356
+#: src/modules/author-list/classes/AuthorListTable.php:344
+#, php-format
+msgid "Edit %s"
+msgstr "Chỉnh sửa %s"
+
+#: src/modules/author-list/classes/AuthorListTable.php:357
+#, php-format
+msgid "Move %s to Trash"
+msgstr "Di chuyển %s vào Thùng rác"
+
+#: src/modules/author-list/classes/AuthorListTable.php:358
 msgid "Trash"
 msgstr "Thùng rác"
 
-#: src/modules/author-list/classes/AuthorListTable.php:372
+#: src/modules/author-list/classes/AuthorListTable.php:374
+#, php-format
+msgid "Restore %s"
+msgstr "Khôi phục %s"
+
+#: src/modules/author-list/classes/AuthorListTable.php:375
 msgid "Restore"
 msgstr "Khôi phục"
 
-#: src/modules/author-list/classes/AuthorListTable.php:384
+#: src/modules/author-list/classes/AuthorListTable.php:387
+#, php-format
+msgid "Delete %s permanently"
+msgstr "Xóa %s vĩnh viễn"
+
+#: src/modules/author-list/classes/AuthorListTable.php:388
 msgid "Delete Permanently"
 msgstr "Xóa vĩnh viễn"
 
-#: src/modules/author-list/classes/AuthorListTable.php:427
-#: src/modules/default-layouts/default-layouts.php:127
+#: src/modules/author-list/classes/AuthorListTable.php:431
+#: src/modules/default-layouts/default-layouts.php:138
 msgid "Authors Index"
 msgstr "Chỉ mục tác giả"
 
-#: src/modules/author-list/classes/AuthorListTable.php:428
-#: src/modules/default-layouts/default-layouts.php:128
+#: src/modules/author-list/classes/AuthorListTable.php:432
+#: src/modules/default-layouts/default-layouts.php:139
 msgid "Authors Recent"
 msgstr "Tác giả gần đây"
 
-#: src/modules/author-list/classes/AuthorListTable.php:429
-#: src/modules/default-layouts/default-layouts.php:129
+#: src/modules/author-list/classes/AuthorListTable.php:433
+#: src/modules/default-layouts/default-layouts.php:140
 msgid "Authors Grid"
 msgstr "Lưới Tác Giả"
 
-#: src/modules/author-list/classes/AuthorListTable.php:430
-#: src/modules/default-layouts/default-layouts.php:130
+#: src/modules/author-list/classes/AuthorListTable.php:434
+#: src/modules/default-layouts/default-layouts.php:141
 msgid "Authors Table"
 msgstr "Bảng Tác Giả"
+
+#: src/modules/author-list/classes/AuthorListTable.php:455
+msgid "Dynamic shortcode"
+msgstr "shortcode động"
+
+#: src/modules/author-list/classes/AuthorListTable.php:470
+msgid "Static shortcode"
+msgstr "shortcode tĩnh"
 
 #: src/modules/author-pages/author-pages.php:60
 #: src/modules/author-pages/author-pages.php:106
 #: src/modules/author-pages/author-pages.php:107
-#: src/modules/multiple-authors/multiple-authors.php:3279
+#: src/modules/multiple-authors/multiple-authors.php:3334
 msgid "Author Pages"
 msgstr "Trang Tác giả"
 
@@ -3807,14 +3987,14 @@ msgstr "Thêm tùy chọn di chuyển cho Byline"
 #: src/modules/byline-migration/byline-migration.php:145
 #: src/modules/bylines-migration/bylines-migration.php:147
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:134
-#: src/modules/multiple-authors/multiple-authors.php:4253
+#: src/modules/multiple-authors/multiple-authors.php:4368
 msgid "Collecting data for the migration..."
 msgstr "Đang thu thập dữ liệu cho việc di chuyển..."
 
 #: src/modules/byline-migration/byline-migration.php:146
 #: src/modules/bylines-migration/bylines-migration.php:148
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:135
-#: src/modules/multiple-authors/multiple-authors.php:4254
+#: src/modules/multiple-authors/multiple-authors.php:4369
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:54
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:136
 #: src/modules/multiple-authors/assets/js/Components/DataMigrationBox.jsx:167
@@ -3829,7 +4009,7 @@ msgstr ""
 
 #: src/modules/byline-migration/byline-migration.php:149
 #: src/modules/bylines-migration/bylines-migration.php:151
-#: src/modules/multiple-authors/multiple-authors.php:4257
+#: src/modules/multiple-authors/multiple-authors.php:4372
 msgid "Copying authors' data..."
 msgstr "Đang sao chép dữ liệu của các tác giả..."
 
@@ -4046,8 +4226,8 @@ msgid "Please click here to migrate to PublishPress Authors"
 msgstr "Vui lòng nhấp vào đây để di chuyển đến PublishPress Authors"
 
 #: src/modules/molongui-authorship-migration/molongui-authorship-migration.php:193
-#: src/modules/multiple-authors/multiple-authors.php:4961
-#: src/modules/multiple-authors/multiple-authors.php:5052
+#: src/modules/multiple-authors/multiple-authors.php:5076
+#: src/modules/multiple-authors/multiple-authors.php:5167
 msgid "Dismiss"
 msgstr "Bỏ qua"
 
@@ -4055,217 +4235,221 @@ msgstr "Bỏ qua"
 msgid "Multiple Authors"
 msgstr "Nhiều tác giả"
 
-#: src/modules/multiple-authors/multiple-authors.php:168
+#: src/modules/multiple-authors/multiple-authors.php:171
 msgid "Pages"
 msgstr "Trang"
 
-#: src/modules/multiple-authors/multiple-authors.php:352
-#: src/modules/multiple-authors/multiple-authors.php:353
+#: src/modules/multiple-authors/multiple-authors.php:355
+#: src/modules/multiple-authors/multiple-authors.php:356
 msgid "Author Profile"
 msgstr "Hồ sơ tác giả"
 
-#: src/modules/multiple-authors/multiple-authors.php:407
+#: src/modules/multiple-authors/multiple-authors.php:410
 #: src/modules/settings/settings.php:105
 msgid "Settings"
 msgstr "Cài đặt"
 
-#: src/modules/multiple-authors/multiple-authors.php:600
+#: src/modules/multiple-authors/multiple-authors.php:603
 msgid "Enable PublishPress Authors for these post types:"
 msgstr "Bật PublishPress Authors cho các loại bài viết này:"
 
-#: src/modules/multiple-authors/multiple-authors.php:608
+#: src/modules/multiple-authors/multiple-authors.php:611
 msgid "Post types to display on the author's profile page:"
 msgstr "Các loại bài viết để hiển thị trên trang hồ sơ của tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:616
+#: src/modules/multiple-authors/multiple-authors.php:619
 msgid "Roles available for Author Profiles:"
 msgstr "Vai trò có sẵn cho Hồ sơ Tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:627
+#: src/modules/multiple-authors/multiple-authors.php:631
 msgid "Automatically create author profiles:"
 msgstr "Tự động tạo hồ sơ tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:638
+#: src/modules/multiple-authors/multiple-authors.php:643
 msgid "Show username in the search field:"
 msgstr "Hiển thị tên người dùng trong trường tìm kiếm:"
 
-#: src/modules/multiple-authors/multiple-authors.php:649
+#: src/modules/multiple-authors/multiple-authors.php:654
 msgid "Default author for new posts:"
 msgstr "Tác giả mặc định cho các bài viết mới:"
 
-#: src/modules/multiple-authors/multiple-authors.php:660
+#: src/modules/multiple-authors/multiple-authors.php:666
 msgid "Fallback user for Guest Authors:"
 msgstr "Người dùng dự phòng cho Tác giả Khách:"
 
-#: src/modules/multiple-authors/multiple-authors.php:671
+#: src/modules/multiple-authors/multiple-authors.php:678
 msgid "Remove single author map restriction:"
 msgstr "Loại bỏ hạn chế bản đồ tác giả đơn:"
 
-#: src/modules/multiple-authors/multiple-authors.php:695
+#: src/modules/multiple-authors/multiple-authors.php:702
 msgid "Show above the content:"
 msgstr "Hiển thị trên nội dung:"
 
-#: src/modules/multiple-authors/multiple-authors.php:703
+#: src/modules/multiple-authors/multiple-authors.php:710
 msgid "Show below the content:"
 msgstr "Hiển thị dưới nội dung:"
 
-#: src/modules/multiple-authors/multiple-authors.php:711
+#: src/modules/multiple-authors/multiple-authors.php:718
 msgid "Show Author Box selection:"
 msgstr "Hiển thị lựa chọn hộp tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:719
+#: src/modules/multiple-authors/multiple-authors.php:726
 msgid "Disable the \"Authors\" box when using \"Quick Edit\":"
 msgstr "Vô hiệu hóa hộp \"Tác giả\" khi sử dụng \"Chỉnh sửa nhanh\":"
 
-#: src/modules/multiple-authors/multiple-authors.php:727
+#: src/modules/multiple-authors/multiple-authors.php:734
 msgid "Default Layout:"
 msgstr "Bố cục mặc định:"
 
-#: src/modules/multiple-authors/multiple-authors.php:735
+#: src/modules/multiple-authors/multiple-authors.php:743
 msgid "Title for the author box:"
 msgstr "Tiêu đề cho hộp tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:743
+#: src/modules/multiple-authors/multiple-authors.php:751
 msgid "Color scheme:"
 msgstr "Màu sắc giao diện:"
 
-#: src/modules/multiple-authors/multiple-authors.php:752
+#: src/modules/multiple-authors/multiple-authors.php:760
 msgid "Show email link:"
 msgstr "Hiển thị liên kết email:"
 
-#: src/modules/multiple-authors/multiple-authors.php:760
+#: src/modules/multiple-authors/multiple-authors.php:768
 msgid "Show site link:"
 msgstr "Hiển thị liên kết trang:"
 
-#: src/modules/multiple-authors/multiple-authors.php:768
+#: src/modules/multiple-authors/multiple-authors.php:776
 msgid "Font Awesome icons:"
 msgstr "Biểu tượng Font Awesome:"
 
-#: src/modules/multiple-authors/multiple-authors.php:787
+#: src/modules/multiple-authors/multiple-authors.php:795
 msgid "Enable author pages:"
 msgstr "Bật trang tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:798
+#: src/modules/multiple-authors/multiple-authors.php:806
 msgid "Author pages posts limit:"
 msgstr "Giới hạn bài viết trên trang tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:809
+#: src/modules/multiple-authors/multiple-authors.php:818
 msgid "Author pages layout:"
 msgstr "Bố cục trang tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:820
+#: src/modules/multiple-authors/multiple-authors.php:830
 msgid "Grid layout column:"
 msgstr "Cột bố cục lưới:"
 
-#: src/modules/multiple-authors/multiple-authors.php:831
+#: src/modules/multiple-authors/multiple-authors.php:842
 msgid "Show author bio:"
 msgstr "Hiển thị tiểu sử tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:842
+#: src/modules/multiple-authors/multiple-authors.php:853
 msgid "Author bio layout:"
 msgstr "Bố cục tiểu sử tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:850
+#: src/modules/multiple-authors/multiple-authors.php:862
 msgid "Show author page title:"
 msgstr "Hiển thị tiêu đề trang tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:861
+#: src/modules/multiple-authors/multiple-authors.php:873
 msgid "Author pages excerpt ellipsis:"
 msgstr "Tóm tắt trang tác giả với dấu ba chấm:"
 
-#: src/modules/multiple-authors/multiple-authors.php:872
+#: src/modules/multiple-authors/multiple-authors.php:885
 msgid "Author pages title header:"
 msgstr "Tiêu đề tiêu đề trang tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:880
+#: src/modules/multiple-authors/multiple-authors.php:894
 msgid "Author post title header:"
 msgstr "Tiêu đề bài viết của tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:888
+#: src/modules/multiple-authors/multiple-authors.php:903
 msgid "Show featured image:"
 msgstr "Hiển thị hình ảnh nổi bật:"
 
-#: src/modules/multiple-authors/multiple-authors.php:899
+#: src/modules/multiple-authors/multiple-authors.php:914
 msgid "Link featured image to post:"
 msgstr "Liên kết hình ảnh nổi bật đến bài viết:"
 
-#: src/modules/multiple-authors/multiple-authors.php:910
+#: src/modules/multiple-authors/multiple-authors.php:925
 msgid "Featured image custom width:"
 msgstr "Chiều rộng tùy chỉnh hình ảnh nổi bật:"
 
-#: src/modules/multiple-authors/multiple-authors.php:921
+#: src/modules/multiple-authors/multiple-authors.php:937
 msgid "Featured image custom height:"
 msgstr "Chiều cao tùy chỉnh hình ảnh nổi bật:"
 
-#: src/modules/multiple-authors/multiple-authors.php:932
+#: src/modules/multiple-authors/multiple-authors.php:949
 msgid "Show excerpt:"
 msgstr "Hiển thị đoạn trích:"
 
-#: src/modules/multiple-authors/multiple-authors.php:943
+#: src/modules/multiple-authors/multiple-authors.php:960
 msgid "Show authors:"
 msgstr "Hiển thị tác giả:"
 
-#: src/modules/multiple-authors/multiple-authors.php:954
+#: src/modules/multiple-authors/multiple-authors.php:971
 msgid "Show post date:"
 msgstr "Hiển thị ngày đăng bài:"
 
-#: src/modules/multiple-authors/multiple-authors.php:965
+#: src/modules/multiple-authors/multiple-authors.php:982
 msgid "Show comment counts:"
 msgstr "Hiển thị số lượng bình luận:"
 
-#: src/modules/multiple-authors/multiple-authors.php:976
+#: src/modules/multiple-authors/multiple-authors.php:993
 msgid "Show category:"
 msgstr "Hiển thị danh mục:"
 
-#: src/modules/multiple-authors/multiple-authors.php:987
+#: src/modules/multiple-authors/multiple-authors.php:1004
 msgid "Show tags:"
 msgstr "Hiển thị thẻ:"
 
-#: src/modules/multiple-authors/multiple-authors.php:998
+#: src/modules/multiple-authors/multiple-authors.php:1015
 msgid "Show read more link:"
 msgstr "Hiển thị liên kết đọc thêm:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1009
+#: src/modules/multiple-authors/multiple-authors.php:1026
 msgid "Hide empty posts message:"
 msgstr "Ẩn thông báo bài viết trống:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1097
+#: src/modules/multiple-authors/multiple-authors.php:1114
 msgid "Enable Guest Author With No User Account"
 msgstr "Cho phép Tác giả Khách mà không cần Tài khoản Người dùng"
 
-#: src/modules/multiple-authors/multiple-authors.php:1108
+#: src/modules/multiple-authors/multiple-authors.php:1125
 msgid "Enable Guest Author With User Account"
 msgstr "Cho phép Tác giả Khách với Tài khoản Người dùng"
 
-#: src/modules/multiple-authors/multiple-authors.php:1119
+#: src/modules/multiple-authors/multiple-authors.php:1136
 msgid "Allow users to opt out of Author Boxes"
 msgstr "Cho phép người dùng từ chối Hộp Tác giả"
 
-#: src/modules/multiple-authors/multiple-authors.php:1130
+#: src/modules/multiple-authors/multiple-authors.php:1147
 msgid "Allow authors in multiple categories:"
 msgstr "Cho phép tác giả trong nhiều danh mục:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1163
+#: src/modules/multiple-authors/multiple-authors.php:1181
+msgid "Allow administrators to edit administrator author profiles:"
+msgstr "Cho phép quản trị viên chỉnh sửa hồ sơ tác giả quản trị viên:"
+
+#: src/modules/multiple-authors/multiple-authors.php:1192
 msgid "Boxed legacy layout Author Box:"
 msgstr "Hộp Tác giả kiểu dáng cổ điển có viền:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1171
+#: src/modules/multiple-authors/multiple-authors.php:1201
 msgid "Centered legacy layout Author Box:"
 msgstr "Hộp Tác giả kiểu dáng cổ điển căn giữa:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1179
+#: src/modules/multiple-authors/multiple-authors.php:1210
 msgid "Inline legacy layout Author Box:"
 msgstr "Hộp Tác giả kiểu dáng cổ điển theo dòng:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1187
+#: src/modules/multiple-authors/multiple-authors.php:1219
 msgid "Inline avatar legacy layout Author Box:"
 msgstr "Hộp Tác giả kiểu dáng cổ điển với hình đại diện theo dòng:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1195
+#: src/modules/multiple-authors/multiple-authors.php:1228
 msgid "Simple list legacy layout Author Box:"
 msgstr "Hộp Tác giả kiểu dáng cổ điển danh sách đơn giản:"
 
-#: src/modules/multiple-authors/multiple-authors.php:1295
+#: src/modules/multiple-authors/multiple-authors.php:1329
 #: src/modules/settings/settings.php:275
 #, php-format
 msgid ""
@@ -4275,31 +4459,41 @@ msgstr ""
 "Đã bị vô hiệu hóa vì add_post_type_support('%1$s', '%2$s') được bao gồm "
 "trong một tệp đã được tải."
 
-#: src/modules/multiple-authors/multiple-authors.php:1314
+#: src/modules/multiple-authors/multiple-authors.php:1348
 msgid "This will display the authors box at the top of the content."
 msgstr "Điều này sẽ hiển thị hộp tác giả ở đầu nội dung."
 
-#: src/modules/multiple-authors/multiple-authors.php:1335
+#: src/modules/multiple-authors/multiple-authors.php:1369
 msgid "This will display the authors box at the end of the content."
 msgstr "Điều này sẽ hiển thị hộp tác giả ở cuối nội dung."
 
-#: src/modules/multiple-authors/multiple-authors.php:1356
+#: src/modules/multiple-authors/multiple-authors.php:1390
 msgid "Allow users to choose which Author Box is used on each post."
 msgstr "Cho phép người dùng chọn hộp tác giả nào được sử dụng trên mỗi bài viết."
 
-#: src/modules/multiple-authors/multiple-authors.php:1381
+#: src/modules/multiple-authors/multiple-authors.php:1410
+msgid ""
+"Allow users with the \"manage_options\" capability to edit author profiles "
+"linked to administrator accounts. By default, editing administrator author "
+"profiles is blocked for security reasons."
+msgstr ""
+"Cho phép người dùng có khả năng \"manage_options\" chỉnh sửa hồ sơ tác giả "
+"liên kết với tài khoản quản trị viên. Mặc định, việc chỉnh sửa hồ sơ tác "
+"giả quản trị viên bị chặn vì lý do bảo mật."
+
+#: src/modules/multiple-authors/multiple-authors.php:1435
 msgid "Single"
 msgstr "Đơn"
 
-#: src/modules/multiple-authors/multiple-authors.php:1388
+#: src/modules/multiple-authors/multiple-authors.php:1442
 msgid "Plural"
 msgstr "Số nhiều"
 
-#: src/modules/multiple-authors/multiple-authors.php:1438
+#: src/modules/multiple-authors/multiple-authors.php:1492
 msgid "Authors Box"
 msgstr "Hộp tác giả"
 
-#: src/modules/multiple-authors/multiple-authors.php:1439
+#: src/modules/multiple-authors/multiple-authors.php:1493
 msgid ""
 "With this shortcode you can display the author box in any part of the "
 "content. "
@@ -4307,7 +4501,7 @@ msgstr ""
 "Với shortcode này, bạn có thể hiển thị hộp tác giả ở bất kỳ phần nào của "
 "nội dung."
 
-#: src/modules/multiple-authors/multiple-authors.php:1447
+#: src/modules/multiple-authors/multiple-authors.php:1501
 #, php-format
 msgid ""
 "You can specify layout by using author boxes layout slug. You can see full "
@@ -4317,7 +4511,7 @@ msgstr ""
 "có thể xem chi tiết đầy đủ của từng tùy chọn bố cục %1$s trong hướng dẫn "
 "này %2$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1458
+#: src/modules/multiple-authors/multiple-authors.php:1512
 #, php-format
 msgid ""
 "You can also decide whether or not to show the main title, using %1$s or "
@@ -4326,8 +4520,8 @@ msgstr ""
 "Bạn cũng có thể quyết định có hiển thị tiêu đề chính hay không, sử dụng "
 "%1$s hoặc %2$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1468
-#: src/modules/multiple-authors/multiple-authors.php:1552
+#: src/modules/multiple-authors/multiple-authors.php:1522
+#: src/modules/multiple-authors/multiple-authors.php:1606
 msgid ""
 "You can load the authors for a specific post, even if you are not in that "
 "post currently. For example, this shortcode will load the authors for the "
@@ -4337,7 +4531,7 @@ msgstr ""
 "nằm trong bài viết đó hiện tại. Ví dụ, shortcode này sẽ tải các tác giả cho "
 "bài viết có ID là 32."
 
-#: src/modules/multiple-authors/multiple-authors.php:1475
+#: src/modules/multiple-authors/multiple-authors.php:1529
 msgid ""
 "You can load the authors for a specific user by providing the user id. For "
 "example, this shortcode will load the author with user id of 32"
@@ -4345,7 +4539,7 @@ msgstr ""
 "Bạn có thể tải các tác giả cho một người dùng cụ thể bằng cách cung cấp id "
 "người dùng. Ví dụ, shortcode này sẽ tải tác giả có id người dùng là 32."
 
-#: src/modules/multiple-authors/multiple-authors.php:1482
+#: src/modules/multiple-authors/multiple-authors.php:1536
 msgid ""
 "You can load the authors for a specific author by providing the author term "
 "id for both guest and user author. For example, this shortcode will load "
@@ -4355,7 +4549,7 @@ msgstr ""
 "thuật ngữ tác giả cho cả tác giả khách và tác giả người dùng. Ví dụ, "
 "shortcode này sẽ tải tác giả có id thuật ngữ là 32."
 
-#: src/modules/multiple-authors/multiple-authors.php:1490
+#: src/modules/multiple-authors/multiple-authors.php:1544
 #, php-format
 msgid ""
 "If you are having problems showing PublishPress Authors on author profile "
@@ -4368,7 +4562,7 @@ msgstr ""
 "plugin lấy tác giả từ trang hồ sơ và không lấy từ các bài viết khác trên "
 "cùng một màn hình."
 
-#: src/modules/multiple-authors/multiple-authors.php:1500
+#: src/modules/multiple-authors/multiple-authors.php:1554
 #, php-format
 msgid ""
 "There is one final option to mention. This is mostly useful if you're using "
@@ -4383,7 +4577,7 @@ msgstr ""
 "dụng shortcode sau trên trang tác giả để hiển thị hồ sơ của tác giả hiện "
 "tại. Bạn chỉ cần thêm tham số %s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1509
+#: src/modules/multiple-authors/multiple-authors.php:1563
 msgid ""
 "You can load the authors belonging to a specific author categories by "
 "providing the category slug or slugs separated by comma for more than one "
@@ -4393,11 +4587,11 @@ msgstr ""
 "cung cấp slug danh mục hoặc các slug được phân tách bằng dấu phẩy cho nhiều "
 "danh mục hơn một."
 
-#: src/modules/multiple-authors/multiple-authors.php:1519
+#: src/modules/multiple-authors/multiple-authors.php:1573
 msgid "Authors Data"
 msgstr "Dữ liệu tác giả"
 
-#: src/modules/multiple-authors/multiple-authors.php:1520
+#: src/modules/multiple-authors/multiple-authors.php:1574
 msgid ""
 "With this shortcode you can display the author names or any profile field "
 "in any part of the content."
@@ -4405,7 +4599,7 @@ msgstr ""
 "Với shortcode này, bạn có thể hiển thị tên tác giả hoặc bất kỳ trường hồ sơ "
 "nào ở bất kỳ phần nào của nội dung."
 
-#: src/modules/multiple-authors/multiple-authors.php:1528
+#: src/modules/multiple-authors/multiple-authors.php:1582
 #, php-format
 msgid ""
 "The authors data shortcode accepts field parameter such as: %1$s %2$s %3$s "
@@ -4416,13 +4610,13 @@ msgstr ""
 "%5$s %6$s %7$s. Bạn có thể xem chi tiết đầy đủ và các tham số %8$s trong "
 "hướng dẫn này %9$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1545
+#: src/modules/multiple-authors/multiple-authors.php:1599
 msgid "You can also specify the separator to be used for mulitple authors data."
 msgstr ""
 "Bạn cũng có thể chỉ định dấu phân cách được sử dụng cho dữ liệu tác giả "
 "nhiều."
 
-#: src/modules/multiple-authors/multiple-authors.php:1559
+#: src/modules/multiple-authors/multiple-authors.php:1613
 msgid ""
 "You can retrieve a specific author by providing the author's term ID. For "
 "example, this shortcode will load the author with the term ID of 102."
@@ -4430,7 +4624,7 @@ msgstr ""
 "Bạn có thể lấy một tác giả cụ thể bằng cách cung cấp ID thuật ngữ của tác "
 "giả. Ví dụ, shortcode này sẽ tải tác giả với ID thuật ngữ là 102."
 
-#: src/modules/multiple-authors/multiple-authors.php:1567
+#: src/modules/multiple-authors/multiple-authors.php:1621
 #, php-format
 msgid ""
 "You can also decide to return an array list of authors by using "
@@ -4442,7 +4636,7 @@ msgstr ""
 "tác giả dưới dạng một mảng. Bạn có thể kiểm tra chi tiết đầy đủ và mẫu sử "
 "dụng %2$s trong hướng dẫn này %3$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1578
+#: src/modules/multiple-authors/multiple-authors.php:1632
 msgid ""
 "You can retrieve authors belonging to a specific Author Category by "
 "providing the category slug or slugs. Separate multiple slugs with a comma."
@@ -4450,7 +4644,7 @@ msgstr ""
 "Bạn có thể lấy các tác giả thuộc về một Danh mục Tác giả cụ thể bằng cách "
 "cung cấp slug danh mục hoặc các slug. Tách nhiều slug bằng dấu phẩy."
 
-#: src/modules/multiple-authors/multiple-authors.php:1589
+#: src/modules/multiple-authors/multiple-authors.php:1643
 msgid ""
 "With this shortcode, you can show all the authors together in a single "
 "display."
@@ -4458,7 +4652,7 @@ msgstr ""
 "Với shortcode này, bạn có thể hiển thị tất cả các tác giả cùng nhau trong "
 "một hiển thị duy nhất."
 
-#: src/modules/multiple-authors/multiple-authors.php:1597
+#: src/modules/multiple-authors/multiple-authors.php:1651
 #, php-format
 msgid ""
 "You can specify layout by using author boxes layout slug. You can see full "
@@ -4470,7 +4664,7 @@ msgstr ""
 "này %2$s. %3$s %4$s shortcode này cũng cung cấp bốn bố cục tùy chỉnh: %5$s "
 "%6$s %7$s %8$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1614
+#: src/modules/multiple-authors/multiple-authors.php:1668
 #, php-format
 msgid ""
 "You can define the number of layout columns by using %1$s to show authors "
@@ -4479,7 +4673,7 @@ msgstr ""
 "Bạn có thể xác định số lượng cột bố cục bằng cách sử dụng %1$s để hiển thị "
 "các tác giả trong 2 cột."
 
-#: src/modules/multiple-authors/multiple-authors.php:1624
+#: src/modules/multiple-authors/multiple-authors.php:1678
 #, php-format
 msgid ""
 "You can show authors in a card grid by using %1$s, choose the number of "
@@ -4488,7 +4682,7 @@ msgstr ""
 "Bạn có thể hiển thị tác giả trong lưới thẻ bằng cách sử dụng %1$s, chọn số "
 "cột lưới với %2$s, và chọn các trường tác giả với %3$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1636
+#: src/modules/multiple-authors/multiple-authors.php:1690
 #, php-format
 msgid ""
 "You can show authors in a table by using %1$s and choose author fields with "
@@ -4497,7 +4691,7 @@ msgstr ""
 "Bạn có thể hiển thị tác giả trong một bảng bằng cách sử dụng %1$s và chọn "
 "các trường tác giả với %2$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1647
+#: src/modules/multiple-authors/multiple-authors.php:1701
 #, php-format
 msgid ""
 "You can choose the number of authors per page using %1$s . %2$s Pagination "
@@ -4506,7 +4700,7 @@ msgstr ""
 "Bạn có thể chọn số lượng tác giả mỗi trang bằng cách sử dụng %1$s. %2$s "
 "Phân trang sẽ được tự động thêm nếu cần thiết."
 
-#: src/modules/multiple-authors/multiple-authors.php:1658
+#: src/modules/multiple-authors/multiple-authors.php:1712
 #, php-format
 msgid ""
 "You can limit the result to only authors who are assigned to posts by using "
@@ -4517,7 +4711,7 @@ msgstr ""
 "bằng cách sử dụng %1$s. %2$s Ngoài ra, sử dụng %3$s để hiển thị tất cả các "
 "tác giả, bao gồm cả những người không có bài viết nào."
 
-#: src/modules/multiple-authors/multiple-authors.php:1670
+#: src/modules/multiple-authors/multiple-authors.php:1724
 #, php-format
 msgid ""
 "You can limit the result to only guest authors by using %1$s . %2$s "
@@ -4527,7 +4721,7 @@ msgstr ""
 "%1$s. %2$s Ngoài ra, %3$s sẽ chỉ hiển thị các tác giả có tài khoản "
 "WordPress."
 
-#: src/modules/multiple-authors/multiple-authors.php:1682
+#: src/modules/multiple-authors/multiple-authors.php:1736
 #, php-format
 msgid ""
 "If you are using the authors_recent layout, you can define the number of "
@@ -4536,7 +4730,7 @@ msgstr ""
 "Nếu bạn đang sử dụng bố cục authors_recent, bạn có thể xác định số lượng "
 "cột bằng cách sử dụng %1$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1692
+#: src/modules/multiple-authors/multiple-authors.php:1746
 #, php-format
 msgid ""
 "For authors_index layout, you can group user by profile field by using %1$s "
@@ -4545,7 +4739,7 @@ msgstr ""
 "Đối với bố cục authors_index, bạn có thể nhóm người dùng theo trường hồ sơ "
 "bằng cách sử dụng %1$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1702
+#: src/modules/multiple-authors/multiple-authors.php:1756
 #, php-format
 msgid ""
 "To order the results based on post count, use %1$s . To order the results "
@@ -4556,17 +4750,17 @@ msgstr ""
 "quả theo tên, sử dụng %2$s. Ngoài ra, bạn có thể sắp xếp theo các trường hồ "
 "sơ như %3$s, %4$s, v.v."
 
-#: src/modules/multiple-authors/multiple-authors.php:1715
+#: src/modules/multiple-authors/multiple-authors.php:1769
 #, php-format
 msgid "To further customize the order of results, use %1$s or %2$s ."
 msgstr "Để tùy chỉnh thêm thứ tự của kết quả, sử dụng %1$s hoặc %2$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1726
+#: src/modules/multiple-authors/multiple-authors.php:1780
 #, php-format
 msgid "To display a search box for authors, use %1$s ."
 msgstr "Để hiển thị một hộp tìm kiếm cho các tác giả, sử dụng %1$s."
 
-#: src/modules/multiple-authors/multiple-authors.php:1736
+#: src/modules/multiple-authors/multiple-authors.php:1790
 #, php-format
 msgid ""
 "You can also show a dropdown menu that allows users to search on specific "
@@ -4578,7 +4772,7 @@ msgstr ""
 "xuống bằng cách sử dụng %1$s. Điều này yêu cầu hộp tìm kiếm phải được kích "
 "hoạt."
 
-#: src/modules/multiple-authors/multiple-authors.php:1746
+#: src/modules/multiple-authors/multiple-authors.php:1800
 #, php-format
 msgid ""
 "You can limit the author list to users with a published post within a "
@@ -4590,20 +4784,24 @@ msgstr ""
 "nhận giá trị ngày tiếng Anh như 1 tuần trước, 1 tháng trước, 6 tháng trước, "
 "1 năm trước, v.v."
 
-#: src/modules/multiple-authors/multiple-authors.php:1793
+#: src/modules/multiple-authors/multiple-authors.php:1848
+msgid "Copy shortcode to clipboard"
+msgstr "Sao chép shortcode vào clipboard"
+
+#: src/modules/multiple-authors/multiple-authors.php:1849
 msgid "Copied!"
 msgstr "Đã sao chép!"
 
-#: src/modules/multiple-authors/multiple-authors.php:1794
-#: src/modules/multiple-authors/multiple-authors.php:1795
+#: src/modules/multiple-authors/multiple-authors.php:1850
+#: src/modules/multiple-authors/multiple-authors.php:1851
 msgid "Click To Copy!"
 msgstr "Nhấn để sao chép!"
 
-#: src/modules/multiple-authors/multiple-authors.php:1859
+#: src/modules/multiple-authors/multiple-authors.php:1907
 msgid "Select roles"
 msgstr "Chọn vai trò"
 
-#: src/modules/multiple-authors/multiple-authors.php:1870
+#: src/modules/multiple-authors/multiple-authors.php:1918
 msgid ""
 "Choose which WordPress user roles can be selected using the \"Registered "
 "Author With User Account\" option for author profiles."
@@ -4611,7 +4809,7 @@ msgstr ""
 "Chọn vai trò người dùng WordPress nào có thể được chọn bằng cách sử dụng "
 "tùy chọn \"Tác giả đã đăng ký với tài khoản người dùng\" cho hồ sơ tác giả."
 
-#: src/modules/multiple-authors/multiple-authors.php:1899
+#: src/modules/multiple-authors/multiple-authors.php:1944
 msgid ""
 "Author profiles can be mapped to WordPress user accounts. This option "
 "allows you to automatically create author profiles when users are created "
@@ -4625,7 +4823,7 @@ msgstr ""
 "hiện có bằng cách nhấp vào nút \"Tạo Hồ sơ Tác giả PublishPress cho tất cả "
 "người dùng trong vai trò\" trong tab Bảo trì."
 
-#: src/modules/multiple-authors/multiple-authors.php:1920
+#: src/modules/multiple-authors/multiple-authors.php:1964
 msgid ""
 "If the Author is mapped to a WordPress user, this will display the authors' "
 "\"Display name\" and their \"Username\". The default is to show only the "
@@ -4637,19 +4835,19 @@ msgstr ""
 "chỉ hiển thị \"Tên hiển thị\". Việc hiển thị \"Tên đăng nhập\" là hữu ích "
 "nếu bạn có nhiều tác giả với tên tương tự."
 
-#: src/modules/multiple-authors/multiple-authors.php:1943
+#: src/modules/multiple-authors/multiple-authors.php:1987
 msgid "Allow authors to be created without a real user account."
 msgstr "Cho phép tạo tác giả mà không cần tài khoản người dùng thực tế."
 
-#: src/modules/multiple-authors/multiple-authors.php:1966
+#: src/modules/multiple-authors/multiple-authors.php:2010
 msgid "Show a profile checkbox allowing Authors to be excluded from Author Boxes."
 msgstr "Hiển thị ô kiểm hồ sơ cho phép các Tác giả bị loại trừ khỏi Hộp Tác giả."
 
-#: src/modules/multiple-authors/multiple-authors.php:1989
+#: src/modules/multiple-authors/multiple-authors.php:2033
 msgid "Allow authors to be created without a connected user account."
 msgstr "Cho phép tạo tác giả mà không cần tài khoản người dùng kết nối."
 
-#: src/modules/multiple-authors/multiple-authors.php:2013
+#: src/modules/multiple-authors/multiple-authors.php:2057
 msgid ""
 "If enabled, PublishPress Authors will replace the default WordPress author "
 "pages."
@@ -4657,85 +4855,97 @@ msgstr ""
 "Nếu được kích hoạt, PublishPress Authors sẽ thay thế các trang tác giả mặc "
 "định của WordPress."
 
-#: src/modules/multiple-authors/multiple-authors.php:2018
+#: src/modules/multiple-authors/multiple-authors.php:2062
 msgid "Please note this feature will not work for all themes."
 msgstr "Xin lưu ý rằng tính năng này sẽ không hoạt động cho tất cả các giao diện."
 
-#: src/modules/multiple-authors/multiple-authors.php:2018
-#: src/modules/multiple-authors/multiple-authors.php:2872
+#: src/modules/multiple-authors/multiple-authors.php:2062
+#: src/modules/multiple-authors/multiple-authors.php:2917
 msgid "Click here for more details."
 msgstr "Nhấp vào đây để biết thêm chi tiết."
 
-#: src/modules/multiple-authors/multiple-authors.php:2031
+#: src/modules/multiple-authors/multiple-authors.php:2075
 msgid "View sample Author Page"
 msgstr "Xem mẫu Trang Tác giả"
 
-#: src/modules/multiple-authors/multiple-authors.php:2052
+#: src/modules/multiple-authors/multiple-authors.php:2094
 msgid "List"
 msgstr "Danh sách"
 
-#: src/modules/multiple-authors/multiple-authors.php:2053
+#: src/modules/multiple-authors/multiple-authors.php:2095
 msgid "Grid"
 msgstr "Lưới"
 
-#: src/modules/multiple-authors/multiple-authors.php:2225
+#: src/modules/multiple-authors/multiple-authors.php:2243
 msgid "Allow User to Choose"
 msgstr "Cho phép Người dùng Chọn"
 
-#: src/modules/multiple-authors/multiple-authors.php:2226
+#: src/modules/multiple-authors/multiple-authors.php:2244
 msgid "First Name Last Name"
 msgstr "Tên Họ"
 
-#: src/modules/multiple-authors/multiple-authors.php:2227
+#: src/modules/multiple-authors/multiple-authors.php:2245
 msgid "Last Name First Name"
 msgstr "Họ Tên"
 
-#: src/modules/multiple-authors/multiple-authors.php:2275
+#: src/modules/multiple-authors/multiple-authors.php:2314
 msgid ""
-"This avatar will be used as default avatar instead of gravatar where no "
-"custom avatar is added to profile."
+"Describe the default avatar. Leave blank to use its Media Library "
+"alternative text."
 msgstr ""
-"Hình đại diện này sẽ được sử dụng làm hình đại diện mặc định thay vì "
-"gravatar khi không có hình đại diện tùy chỉnh nào được thêm vào hồ sơ."
+"Mô tả về ảnh đại diện mặc định. Để trống để sử dụng văn bản thay thế của "
+"Thư viện phương tiện."
 
-#: src/modules/multiple-authors/multiple-authors.php:2297
+#: src/modules/multiple-authors/multiple-authors.php:2334
+msgid "This image is decorative"
+msgstr "Hình ảnh này mang tính trang trí"
+
+#: src/modules/multiple-authors/multiple-authors.php:2340
+msgid ""
+"This avatar will be used if no custom avatar is uploaded for an author "
+"profile."
+msgstr ""
+"Ảnh đại diện này sẽ được sử dụng nếu không có ảnh đại diện tùy chỉnh nào "
+"được tải lên cho hồ sơ tác giả."
+
+#: src/modules/multiple-authors/multiple-authors.php:2362
 msgid "This will display the author bio."
 msgstr "Điều này sẽ hiển thị tiểu sử tác giả."
 
-#: src/modules/multiple-authors/multiple-authors.php:2358
-#: src/modules/multiple-authors/multiple-authors.php:2397
-#: src/modules/multiple-authors/multiple-authors.php:2436
-#: src/modules/multiple-authors/multiple-authors.php:2475
-#: src/modules/multiple-authors/multiple-authors.php:2514
+#: src/modules/multiple-authors/multiple-authors.php:2418
+#: src/modules/multiple-authors/multiple-authors.php:2454
+#: src/modules/multiple-authors/multiple-authors.php:2490
+#: src/modules/multiple-authors/multiple-authors.php:2526
+#: src/modules/multiple-authors/multiple-authors.php:2562
 msgid "Select option"
 msgstr "Chọn tùy chọn"
 
-#: src/modules/multiple-authors/multiple-authors.php:2370
-#: src/modules/multiple-authors/multiple-authors.php:2409
-#: src/modules/multiple-authors/multiple-authors.php:2448
-#: src/modules/multiple-authors/multiple-authors.php:2487
-#: src/modules/multiple-authors/multiple-authors.php:2526
+#: src/modules/multiple-authors/multiple-authors.php:2429
+#: src/modules/multiple-authors/multiple-authors.php:2465
+#: src/modules/multiple-authors/multiple-authors.php:2501
+#: src/modules/multiple-authors/multiple-authors.php:2537
+#: src/modules/multiple-authors/multiple-authors.php:2573
 #, php-format
 msgid "This is useful if you use legacy shortcode %s"
 msgstr "Điều này hữu ích nếu bạn sử dụng mã ngắn cũ %s"
 
-#: src/modules/multiple-authors/multiple-authors.php:2546
+#: src/modules/multiple-authors/multiple-authors.php:2593
 msgid "This will display the featured image."
 msgstr "Điều này sẽ hiển thị hình ảnh nổi bật."
 
-#: src/modules/multiple-authors/multiple-authors.php:2570
+#: src/modules/multiple-authors/multiple-authors.php:2617
 msgid "This will make the featured image clickable and link to the post."
 msgstr "Điều này sẽ làm cho hình ảnh nổi bật có thể nhấp và liên kết đến bài viết."
 
-#: src/modules/multiple-authors/multiple-authors.php:2594
+#: src/modules/multiple-authors/multiple-authors.php:2641
 msgid "This will display author page title."
 msgstr "Điều này sẽ hiển thị tiêu đề trang tác giả."
 
-#: src/modules/multiple-authors/multiple-authors.php:2618
+#: src/modules/multiple-authors/multiple-authors.php:2665
 msgid "This will display the excerpt."
 msgstr "Điều này sẽ hiển thị đoạn trích."
 
-#: src/modules/multiple-authors/multiple-authors.php:2642
+#: src/modules/multiple-authors/multiple-authors.php:2689
 msgid ""
 "This will allows you map a WordPress user to more than one author. Don't "
 "use this feature unless requested to do so by the PublishPress team. This "
@@ -4746,7 +4956,7 @@ msgstr ""
 "Plugin này hoạt động tốt hơn khi các tác giả và người dùng được ghép theo "
 "cặp một-một."
 
-#: src/modules/multiple-authors/multiple-authors.php:2665
+#: src/modules/multiple-authors/multiple-authors.php:2712
 msgid ""
 "Allow the same author to be assigned to more than one Author Category on a "
 "single post."
@@ -4754,31 +4964,31 @@ msgstr ""
 "Cho phép cùng một tác giả được gán cho nhiều Danh mục Tác giả trong một bài "
 "viết."
 
-#: src/modules/multiple-authors/multiple-authors.php:2689
+#: src/modules/multiple-authors/multiple-authors.php:2736
 msgid "This will display the authors."
 msgstr "Điều này sẽ hiển thị các tác giả."
 
-#: src/modules/multiple-authors/multiple-authors.php:2713
+#: src/modules/multiple-authors/multiple-authors.php:2760
 msgid "This will display the published date."
 msgstr "Điều này sẽ hiển thị ngày xuất bản."
 
-#: src/modules/multiple-authors/multiple-authors.php:2737
+#: src/modules/multiple-authors/multiple-authors.php:2784
 msgid "This will display the comment count."
 msgstr "Điều này sẽ hiển thị số lượng bình luận."
 
-#: src/modules/multiple-authors/multiple-authors.php:2761
+#: src/modules/multiple-authors/multiple-authors.php:2808
 msgid "This will display the categories."
 msgstr "Điều này sẽ hiển thị các danh mục."
 
-#: src/modules/multiple-authors/multiple-authors.php:2785
+#: src/modules/multiple-authors/multiple-authors.php:2832
 msgid "This will display the tags."
 msgstr "Điều này sẽ hiển thị các thẻ."
 
-#: src/modules/multiple-authors/multiple-authors.php:2809
+#: src/modules/multiple-authors/multiple-authors.php:2856
 msgid "This will display the read more link."
 msgstr "Điều này sẽ hiển thị liên kết đọc thêm."
 
-#: src/modules/multiple-authors/multiple-authors.php:2832
+#: src/modules/multiple-authors/multiple-authors.php:2879
 msgid ""
 "This will hide the \"Post not found for the author\" text when an author "
 "has no posts."
@@ -4786,17 +4996,17 @@ msgstr ""
 "Điều này sẽ ẩn văn bản \"Bài viết không tìm thấy cho tác giả\" khi một tác "
 "giả không có bài viết."
 
-#: src/modules/multiple-authors/multiple-authors.php:2870
+#: src/modules/multiple-authors/multiple-authors.php:2915
 msgid "This setting may be disabled for users who can not edit others posts."
 msgstr ""
 "Cài đặt này có thể bị vô hiệu hóa cho những người dùng không thể chỉnh sửa "
 "bài viết của người khác."
 
-#: src/modules/multiple-authors/multiple-authors.php:2893
+#: src/modules/multiple-authors/multiple-authors.php:2938
 msgid "Search for a fallback author"
 msgstr "Tìm kiếm một tác giả dự phòng"
 
-#: src/modules/multiple-authors/multiple-authors.php:2906
+#: src/modules/multiple-authors/multiple-authors.php:2949
 msgid ""
 "If you only have Guest Authors selected for a post, this user may be used "
 "as a fallback. WordPress sometimes requires a WordPress user to be assigned "
@@ -4807,27 +5017,27 @@ msgstr ""
 "người dùng WordPress được chỉ định cho mỗi bài viết. Người dùng này sẽ "
 "không hiển thị ở mặt trước của trang web của bạn."
 
-#: src/modules/multiple-authors/multiple-authors.php:2924
+#: src/modules/multiple-authors/multiple-authors.php:2967
 msgid "This will display the authors email in the author box."
 msgstr "Điều này sẽ hiển thị email của tác giả trong hộp tác giả."
 
-#: src/modules/multiple-authors/multiple-authors.php:2944
+#: src/modules/multiple-authors/multiple-authors.php:2987
 msgid "This will display the authors site in the author box."
 msgstr "Điều này sẽ hiển thị trang web của tác giả trong hộp tác giả."
 
-#: src/modules/multiple-authors/multiple-authors.php:2964
+#: src/modules/multiple-authors/multiple-authors.php:3007
 msgid "This will load Font Awesome icons for use in Author Boxes."
 msgstr "Điều này sẽ tải các biểu tượng Font Awesome để sử dụng trong Hộp Tác Giả."
 
-#: src/modules/multiple-authors/multiple-authors.php:2982
+#: src/modules/multiple-authors/multiple-authors.php:3025
 msgid "This will remove the Authors Box in \"Quick Edit\"."
 msgstr "Điều này sẽ xóa Hộp Tác Giả trong \"Chỉnh sửa Nhanh\"."
 
-#: src/modules/multiple-authors/multiple-authors.php:3001
+#: src/modules/multiple-authors/multiple-authors.php:3044
 msgid "Create PublishPress Authors Profiles for all post authors"
 msgstr "Tạo Hồ Sơ Tác Giả PublishPress cho tất cả các tác giả bài viết"
 
-#: src/modules/multiple-authors/multiple-authors.php:3002
+#: src/modules/multiple-authors/multiple-authors.php:3045
 msgid ""
 "If a WordPress user is the author of a post, but does not have a "
 "PublishPress Authors profile, this will automatically create a profile for "
@@ -4836,22 +5046,22 @@ msgstr ""
 "Nếu một người dùng WordPress là tác giả của một bài viết, nhưng không có hồ "
 "sơ PublishPress Authors, điều này sẽ tự động tạo một hồ sơ cho họ."
 
-#: src/modules/multiple-authors/multiple-authors.php:3002
-#: src/modules/multiple-authors/multiple-authors.php:3008
-#: src/modules/multiple-authors/multiple-authors.php:3014
-#: src/modules/multiple-authors/multiple-authors.php:3021
+#: src/modules/multiple-authors/multiple-authors.php:3045
+#: src/modules/multiple-authors/multiple-authors.php:3051
+#: src/modules/multiple-authors/multiple-authors.php:3057
+#: src/modules/multiple-authors/multiple-authors.php:3064
 msgid "Click here for documentation"
 msgstr "Nhấp vào đây để xem tài liệu"
 
-#: src/modules/multiple-authors/multiple-authors.php:3003
+#: src/modules/multiple-authors/multiple-authors.php:3046
 msgid "Create missing PublishPress Authors profiles"
 msgstr "Tạo hồ sơ Tác Giả PublishPress còn thiếu"
 
-#: src/modules/multiple-authors/multiple-authors.php:3007
+#: src/modules/multiple-authors/multiple-authors.php:3050
 msgid "Create PublishPress Authors Profiles for all users in a role"
 msgstr "Tạo Hồ sơ Tác giả PublishPress cho tất cả người dùng trong một vai trò"
 
-#: src/modules/multiple-authors/multiple-authors.php:3008
+#: src/modules/multiple-authors/multiple-authors.php:3051
 msgid ""
 "This will find all the users in a role and create author profiles for them. "
 "You can choose the roles using the \"Automatically create author profiles\" "
@@ -4861,15 +5071,15 @@ msgstr ""
 "cho họ. Bạn có thể chọn các vai trò bằng cách sử dụng cài đặt \"Tự động tạo "
 "hồ sơ tác giả\"."
 
-#: src/modules/multiple-authors/multiple-authors.php:3009
+#: src/modules/multiple-authors/multiple-authors.php:3052
 msgid "Create PublishPress Authors profiles"
 msgstr "Tạo hồ sơ Tác giả PublishPress"
 
-#: src/modules/multiple-authors/multiple-authors.php:3013
+#: src/modules/multiple-authors/multiple-authors.php:3056
 msgid "Synchronize PublishPress Authors Fields and user profile fields"
 msgstr "Đồng bộ các trường Tác giả PublishPress và các trường hồ sơ người dùng"
 
-#: src/modules/multiple-authors/multiple-authors.php:3014
+#: src/modules/multiple-authors/multiple-authors.php:3057
 msgid ""
 "This will update all the author profiles in PublishPress Authors to match "
 "the default WordPress fields for each user."
@@ -4877,11 +5087,11 @@ msgstr ""
 "Điều này sẽ cập nhật tất cả hồ sơ tác giả trong PublishPress Authors để "
 "khớp với các trường mặc định của WordPress cho mỗi người dùng."
 
-#: src/modules/multiple-authors/multiple-authors.php:3020
+#: src/modules/multiple-authors/multiple-authors.php:3063
 msgid "Synchronize the author and user URLs"
 msgstr "Đồng bộ các URL tác giả và người dùng"
 
-#: src/modules/multiple-authors/multiple-authors.php:3021
+#: src/modules/multiple-authors/multiple-authors.php:3064
 msgid ""
 "This will update all the Author URLs in PublishPress Authors to match the "
 "default WordPress URLs for each user."
@@ -4889,12 +5099,12 @@ msgstr ""
 "Điều này sẽ cập nhật tất cả URL tác giả trong PublishPress Authors để khớp "
 "với các URL mặc định của WordPress cho mỗi người dùng."
 
-#: src/modules/multiple-authors/multiple-authors.php:3027
-#: src/modules/multiple-authors/multiple-authors.php:3029
+#: src/modules/multiple-authors/multiple-authors.php:3070
+#: src/modules/multiple-authors/multiple-authors.php:3072
 msgid "Create Author Categories"
 msgstr "Tạo Danh mục Tác giả"
 
-#: src/modules/multiple-authors/multiple-authors.php:3028
+#: src/modules/multiple-authors/multiple-authors.php:3071
 msgid ""
 "This will create author categories table if missing and add default "
 "categories."
@@ -4902,11 +5112,11 @@ msgstr ""
 "Điều này sẽ tạo bảng danh mục tác giả nếu thiếu và thêm các danh mục mặc "
 "định."
 
-#: src/modules/multiple-authors/multiple-authors.php:3041
+#: src/modules/multiple-authors/multiple-authors.php:3084
 msgid "Copy Co-Authors Plus Data"
 msgstr "Sao chép Dữ liệu Co-Authors Plus"
 
-#: src/modules/multiple-authors/multiple-authors.php:3042
+#: src/modules/multiple-authors/multiple-authors.php:3085
 msgid ""
 "This action will copy the authors from the plugin Co-Authors Plus allowing "
 "you to migrate to PublishPress Authors without losing any data. This action "
@@ -4916,11 +5126,11 @@ msgstr ""
 "bạn di chuyển sang PublishPress Authors mà không mất bất kỳ dữ liệu nào. "
 "Hành động này có thể được thực hiện nhiều lần."
 
-#: src/modules/multiple-authors/multiple-authors.php:3052
+#: src/modules/multiple-authors/multiple-authors.php:3095
 msgid "Delete Connections Between Author Profiles and Users"
 msgstr "Xóa Kết nối Giữa Hồ sơ Tác giả và Người dùng"
 
-#: src/modules/multiple-authors/multiple-authors.php:3053
+#: src/modules/multiple-authors/multiple-authors.php:3096
 msgid ""
 "This action can reset the PublishPress Authors data before using other "
 "maintenance options. It will delete all author profiles that are mapped to "
@@ -4933,15 +5143,15 @@ msgstr ""
 "người dùng WordPress, nhưng bất kỳ liên kết nào giữa các bài viết và hồ sơ "
 "tác giả sẽ bị mất."
 
-#: src/modules/multiple-authors/multiple-authors.php:3054
+#: src/modules/multiple-authors/multiple-authors.php:3097
 msgid "Delete all authors mapped to users"
 msgstr "Xóa tất cả tác giả được ánh xạ đến người dùng"
 
-#: src/modules/multiple-authors/multiple-authors.php:3059
+#: src/modules/multiple-authors/multiple-authors.php:3102
 msgid "Delete Guest Authors"
 msgstr "Xóa Tác giả Khách"
 
-#: src/modules/multiple-authors/multiple-authors.php:3060
+#: src/modules/multiple-authors/multiple-authors.php:3103
 msgid ""
 "This action can reset the PublishPress Authors data before using other "
 "maintenance options. Guest authors are author profiles that are not mapped "
@@ -4952,11 +5162,11 @@ msgstr ""
 "ánh xạ tới một tài khoản người dùng WordPress. Hành động này sẽ xóa tất cả "
 "tác giả khách."
 
-#: src/modules/multiple-authors/multiple-authors.php:3061
+#: src/modules/multiple-authors/multiple-authors.php:3104
 msgid "Delete all guest authors"
 msgstr "Xóa tất cả tác giả khách"
 
-#: src/modules/multiple-authors/multiple-authors.php:3067
+#: src/modules/multiple-authors/multiple-authors.php:3110
 msgid ""
 "Please be careful clicking these buttons. Before clicking, we recommend "
 "taking a site backup in case anything goes wrong."
@@ -4964,113 +5174,113 @@ msgstr ""
 "Vui lòng cẩn thận khi nhấp vào các nút này. Trước khi nhấp, chúng tôi "
 "khuyên bạn nên sao lưu trang web trong trường hợp có điều gì đó không ổn."
 
-#: src/modules/multiple-authors/multiple-authors.php:3278
+#: src/modules/multiple-authors/multiple-authors.php:3333
 msgid "Author Profiles"
 msgstr "Hồ sơ Tác giả"
 
-#: src/modules/multiple-authors/multiple-authors.php:3281
+#: src/modules/multiple-authors/multiple-authors.php:3336
 msgid "Integration"
 msgstr "Tích hợp"
 
-#: src/modules/multiple-authors/multiple-authors.php:3282
+#: src/modules/multiple-authors/multiple-authors.php:3337
 msgid "Maintenance"
 msgstr "Bảo trì"
 
-#: src/modules/multiple-authors/multiple-authors.php:3283
+#: src/modules/multiple-authors/multiple-authors.php:3338
 msgid "Advanced"
 msgstr "Nâng cao"
 
-#: src/modules/multiple-authors/multiple-authors.php:3878
+#: src/modules/multiple-authors/multiple-authors.php:3993
 msgid "Invalid nonce"
 msgstr "Nonce không hợp lệ"
 
-#: src/modules/multiple-authors/multiple-authors.php:3882
+#: src/modules/multiple-authors/multiple-authors.php:3997
 msgid "Access denied"
 msgstr "Truy cập bị từ chối"
 
-#: src/modules/multiple-authors/multiple-authors.php:4055
+#: src/modules/multiple-authors/multiple-authors.php:4170
 msgid "Error. Author terms could not be reseted."
 msgstr "Lỗi. Điều khoản tác giả không thể được đặt lại."
 
-#: src/modules/multiple-authors/multiple-authors.php:4066
+#: src/modules/multiple-authors/multiple-authors.php:4181
 msgid "Maintenance completed successfully."
 msgstr "Bảo trì hoàn thành thành công."
 
-#: src/modules/multiple-authors/multiple-authors.php:4185
-#: src/modules/multiple-authors/multiple-authors.php:4216
+#: src/modules/multiple-authors/multiple-authors.php:4300
+#: src/modules/multiple-authors/multiple-authors.php:4331
 msgid "Collecting data..."
 msgstr "Đang thu thập dữ liệu..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4186
-#: src/modules/multiple-authors/multiple-authors.php:4217
+#: src/modules/multiple-authors/multiple-authors.php:4301
+#: src/modules/multiple-authors/multiple-authors.php:4332
 msgid "Finishing the process..."
 msgstr "Đang hoàn tất quá trình..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4187
+#: src/modules/multiple-authors/multiple-authors.php:4302
 #, php-format
 msgid "Done! %d posts were updated."
 msgstr "Xong! %d bài viết đã được cập nhật."
 
-#: src/modules/multiple-authors/multiple-authors.php:4189
+#: src/modules/multiple-authors/multiple-authors.php:4304
 msgid "Updating author field on posts..."
 msgstr "Đang cập nhật trường tác giả trên các bài viết..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4190
+#: src/modules/multiple-authors/multiple-authors.php:4305
 #, php-format
 msgid "Updated %d of %d posts..."
 msgstr "Đã cập nhật %d trong số %d bài viết..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4215
+#: src/modules/multiple-authors/multiple-authors.php:4330
 msgid "Sync author and user URLs"
 msgstr "Đồng bộ URL tác giả và người dùng"
 
-#: src/modules/multiple-authors/multiple-authors.php:4218
+#: src/modules/multiple-authors/multiple-authors.php:4333
 #, php-format
 msgid "Done! %d authors were updated."
 msgstr "Xong! %d tác giả đã được cập nhật."
 
-#: src/modules/multiple-authors/multiple-authors.php:4220
+#: src/modules/multiple-authors/multiple-authors.php:4335
 msgid "Updating authors slug..."
 msgstr "Đang cập nhật slug của tác giả..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4221
+#: src/modules/multiple-authors/multiple-authors.php:4336
 #, php-format
 msgid "Updated %d of %d authors..."
 msgstr "Đã cập nhật %d trong số %d tác giả..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4255
+#: src/modules/multiple-authors/multiple-authors.php:4370
 msgid "Creating missed post authors...."
 msgstr "Đang tạo các tác giả bài viết bị thiếu...."
 
-#: src/modules/multiple-authors/multiple-authors.php:4258
+#: src/modules/multiple-authors/multiple-authors.php:4373
 msgid "Copy Co-Authors Plus data"
 msgstr "Sao chép dữ liệu Co-Authors Plus"
 
-#: src/modules/multiple-authors/multiple-authors.php:4259
+#: src/modules/multiple-authors/multiple-authors.php:4374
 msgid "Deactivating Co-uthors Plus..."
 msgstr "Vô hiệu hóa Co-Authors Plus..."
 
-#: src/modules/multiple-authors/multiple-authors.php:4260
+#: src/modules/multiple-authors/multiple-authors.php:4375
 msgid "Done! Co-Authors Plus is deactivated."
 msgstr "Xong! Co-Authors Plus đã được vô hiệu hóa."
 
-#: src/modules/multiple-authors/multiple-authors.php:4261
+#: src/modules/multiple-authors/multiple-authors.php:4376
 msgid "Deactivate Co-Authors Plus"
 msgstr "Vô hiệu hóa Co-Authors Plus"
 
-#: src/modules/multiple-authors/multiple-authors.php:4262
+#: src/modules/multiple-authors/multiple-authors.php:4377
 msgid "Done! Co-Authors Plus data was copied."
 msgstr "Xong! Dữ liệu Co-Authors Plus đã được sao chép."
 
-#: src/modules/multiple-authors/multiple-authors.php:4955
+#: src/modules/multiple-authors/multiple-authors.php:5070
 msgid "It looks like you have Co-Authors Plus installed."
 msgstr "Có vẻ như bạn đã cài đặt Co-Authors Plus."
 
-#: src/modules/multiple-authors/multiple-authors.php:4956
+#: src/modules/multiple-authors/multiple-authors.php:5071
 msgid "Please click here and read this guide!"
 msgstr "Vui lòng nhấp vào đây và đọc hướng dẫn này!"
 
-#: src/modules/multiple-authors/multiple-authors.php:5039
+#: src/modules/multiple-authors/multiple-authors.php:5154
 msgid ""
 "PublishPress Authors could not complete the background database update for "
 "Permissions integration."
@@ -5078,7 +5288,7 @@ msgstr ""
 "PublishPress Authors không thể hoàn thành việc cập nhật cơ sở dữ liệu nền "
 "cho tích hợp Quyền truy cập."
 
-#: src/modules/multiple-authors/multiple-authors.php:5040
+#: src/modules/multiple-authors/multiple-authors.php:5155
 msgid ""
 "PublishPress Authors is waiting to complete the background database update "
 "for Permissions integration."
@@ -5086,11 +5296,11 @@ msgstr ""
 "PublishPress Authors đang chờ hoàn thành việc cập nhật cơ sở dữ liệu nền "
 "cho tích hợp Quyền truy cập."
 
-#: src/modules/multiple-authors/multiple-authors.php:5046
+#: src/modules/multiple-authors/multiple-authors.php:5161
 msgid "Run the update manually"
 msgstr "Chạy cập nhật thủ công"
 
-#: src/modules/multiple-authors/multiple-authors.php:5478
+#: src/modules/multiple-authors/multiple-authors.php:5628
 msgid "Guest Author cannot login on the site."
 msgstr "Tác giả khách không thể đăng nhập vào trang web."
 
@@ -5145,17 +5355,11 @@ msgstr "Người dùng WordPress này đã được ánh xạ đến một tác 
 msgid "Author was created but could not be retrieved."
 msgstr "Tác giả đã được tạo nhưng không thể lấy lại."
 
-#: src/modules/rest-api/rest-api.php:487
-#: src/modules/rest-api/rest-api.php:503
-#: src/modules/rest-api/rest-api.php:522
-msgid "Author not found."
-msgstr "Không tìm thấy tác giả."
-
-#: src/modules/rest-api/rest-api.php:550
+#: src/modules/rest-api/rest-api.php:555
 msgid "You cannot edit author mapped to administrator account."
 msgstr "Bạn không thể chỉnh sửa tác giả đã được ánh xạ đến tài khoản quản trị viên."
 
-#: src/modules/rest-api/rest-api.php:560
+#: src/modules/rest-api/rest-api.php:566
 msgid "You do not have permission to edit this author."
 msgstr "Bạn không có quyền chỉnh sửa tác giả này."
 
@@ -5215,29 +5419,42 @@ msgstr "Tích hợp Yoast SEO"
 msgid "Add compatibility with the Yoast SEO plugin"
 msgstr "Thêm khả năng tương thích với plugin Yoast SEO"
 
-#: src/templates/parts/author-pages-grid.php:152
-#: src/templates/parts/author-pages-list.php:141
+#: src/templates/parts/author-pages-grid.php:155
+#: src/templates/parts/author-pages-list.php:144
 msgid "Comment counts"
 msgstr "Số lượng bình luận"
 
-#: src/templates/parts/author-pages-grid.php:180
-#: src/templates/parts/author-pages-list.php:173
+#: src/templates/parts/author-pages-grid.php:162
+#: src/templates/parts/author-pages-list.php:151
+#. translators: %s: post title
+#, php-format
+msgid "comment on %s"
+msgid_plural "comments on %s"
+msgstr[0] "bình luận về %s"
+
+#: src/templates/parts/author-pages-grid.php:194
+#: src/templates/parts/author-pages-list.php:187
 msgid "Prev"
 msgstr "Trước"
 
-#: src/templates/parts/author-pages-grid.php:181
-#: src/templates/parts/author-pages-list.php:174
+#: src/templates/parts/author-pages-grid.php:195
+#: src/templates/parts/author-pages-list.php:188
 msgid "Next"
 msgstr "Tiếp theo"
 
-#: src/templates/parts/author-pages-grid.php:187
-#: src/templates/parts/author-pages-list.php:180
+#: src/templates/parts/author-pages-grid.php:201
+#: src/templates/parts/author-pages-list.php:194
 msgid "Post not found for the author"
 msgstr "Bài viết không được tìm thấy cho tác giả"
 
-#: src/templates/parts/author-pages-list.php:134
+#: src/templates/parts/author-pages-list.php:137
 msgid "Published date"
 msgstr "Ngày xuất bản"
+
+#: src/views/authors_recent.html.php:27
+#, php-format
+msgid "View %s"
+msgstr "Xem %s"
 
 #: src/views/footer-base.html.php:14
 #, php-format
@@ -5268,19 +5485,19 @@ msgctxt "taxonomy singular name"
 msgid "Author"
 msgstr "Tác giả"
 
-#: src/modules/author-boxes/author-boxes.php:569
+#: src/modules/author-boxes/author-boxes.php:572
 #, fuzzy, php-format
 msgctxt "Author Box post type name"
 msgid "%2$s"
 msgstr "%2$s"
 
-#: src/modules/author-boxes/author-boxes.php:570
+#: src/modules/author-boxes/author-boxes.php:573
 #, fuzzy, php-format
 msgctxt "singular author box post type name"
 msgid "%1$s"
 msgstr "%1$s"
 
-#: src/modules/author-boxes/author-boxes.php:585
+#: src/modules/author-boxes/author-boxes.php:588
 #, fuzzy, php-format
 msgctxt "custom layout post type menu name"
 msgid "%2$s"

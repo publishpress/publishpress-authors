@@ -804,7 +804,7 @@ class Plugin
         }
 
         $columns['posts_count'] = sprintf(
-            '%s <i class="dashicons dashicons-info-outline" title="%s"></i>',
+            '%s <i class="dashicons dashicons-info-outline" aria-hidden="true" title="%s"></i>',
             __('Posts', 'publishpress-authors'),
             sprintf(
                 __('Published posts of the following post types: %s', 'publishpress-authors'),
@@ -1593,7 +1593,7 @@ class Plugin
         wp_enqueue_script(
             'multiple-authors-js',
             PP_AUTHORS_ASSETS_URL . 'js/multiple-authors.js',
-            ['jquery', 'suggest', 'multiple-authors-select2', 'jquery-ui-sortable', 'wp-util'],
+            ['jquery', 'suggest', 'multiple-authors-select2', 'jquery-ui-sortable', 'wp-util', 'wp-a11y'],
             PP_AUTHORS_VERSION
         );
 
@@ -2327,7 +2327,7 @@ class Plugin
             $author_list_data   = isset($author_lists[$attributes['list_id']]) ? $author_lists[$attributes['list_id']] : false;
             if ($author_list_data) {
                 $list_id = $attributes['list_id'];
-                $attributes = $author_list_data['shortcode_args'];
+                $attributes = array_merge($author_list_data['shortcode_args'], $attributes);
                 $attributes['list_id'] = $list_id;
             }
         }

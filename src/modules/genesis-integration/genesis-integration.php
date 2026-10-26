@@ -134,11 +134,11 @@ if (!class_exists('MA_Genesis_Integration')) {
                     $output .= ', ';
                 }
                 $output .= '<span class="entry-author" itemprop="author" itemscope itemtype="https://schema.org/Person">';
-                $output .= $attr['before'];
+                $output .= wp_kses_post($attr['before']);
                 $output .= '<a href="' . $author->link . '" class="entry-author-link" rel="author" itemprop="url">';
                 $output .= '<span class="entry-author-name" itemprop="name">' . $author->display_name;
                 $output .= '</span></a>';
-                $output .= $attr['after'];
+                $output .= wp_kses_post($attr['after']);
                 $output .= '</span>';
             }
 
@@ -170,13 +170,13 @@ if (!class_exists('MA_Genesis_Integration')) {
                     $output .= ', ';
                 }
                 $output = sprintf('<span %s>', genesis_attr('entry-author'));
-                $output .= $atts['before'];
+                $output .= wp_kses_post($atts['before']);
                 $output .= '<a href="' . $author->link . '" class="entry-author-link" rel="author" itemprop="url">';
                 $output .= sprintf('<span %s>', genesis_attr('entry-author-name')) . esc_html(
                         $author->display_name
                     ) . '</span>';
                 $output .= '</span></a>';
-                $output .= $atts['after'];
+                $output .= wp_kses_post($atts['after']);
                 $output .= '</span>';
             }
 
@@ -208,13 +208,13 @@ if (!class_exists('MA_Genesis_Integration')) {
                     $output .= ', ';
                 }
                 $output = sprintf('<span %s>', genesis_attr('entry-author'));
-                $output .= $atts['before'];
+                $output .= wp_kses_post($atts['before']);
                 $output .= sprintf('<a href="%s" %s>', $author->link, genesis_attr('entry-author-link'));
                 $output .= sprintf('<span %s>', genesis_attr('entry-author-name')) . esc_html(
                         $author->display_name
                     ) . '</span>';
                 $output .= '</span></a>';
-                $output .= $atts['after'];
+                $output .= wp_kses_post($atts['after']);
                 $output .= '</span>';
             }
 
