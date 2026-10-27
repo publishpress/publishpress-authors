@@ -221,28 +221,7 @@ class AuthorCategoriesTable extends \WP_List_Table
      */
     private function deleteAuthorCategory($category_id)
     {
-        global $wpdb;
-
-        if (!current_user_can(apply_filters('pp_multiple_authors_manage_categories_cap', 'ppma_manage_author_categories'))) {
-            return false;
-        }
-
-        $table_name = AuthorCategoriesSchema::tableName();
-        $meta_table_name = AuthorCategoriesSchema::metaTableName();
-
-        $delete = $wpdb->delete(
-            $table_name,
-            ['id' => (int) $category_id],
-            ['%d']
-        );
-
-        $wpdb->delete(
-            $meta_table_name,
-            ['category_id' => (int) $category_id],
-            ['%d']
-        );
-
-        return $delete;
+        return \MultipleAuthors\Factory::getLegacyPlugin()->author_categories->deleteAuthorCategory($category_id);
     }
 
     /**

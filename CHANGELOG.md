@@ -1,5 +1,9 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[Unreleased]
+
+* Feature: Add private MCP actions for author profiles, post bylines, settings, boxes, lists and categories with native permissions and previews.
+
 [4.18.0] - 26 October, 2026
 
 * Update: Improve accessibility labels in author forms, #2431
