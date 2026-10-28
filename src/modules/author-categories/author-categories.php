@@ -500,7 +500,10 @@ class MA_Author_Categories extends Module
      *
      * @return array|bool
      */
-    private function addAuthorCategory($insert_args) {
+    public function addAuthorCategory($insert_args) {
+        if (!current_user_can(apply_filters('pp_multiple_authors_manage_categories_cap', 'ppma_manage_author_categories'))) {
+            return false;
+        }
         global $wpdb;
 
         $table_name = AuthorCategoriesSchema::tableName();
@@ -550,7 +553,7 @@ class MA_Author_Categories extends Module
      *
      * @return array|bool
      */
-    private function editAuthorCategory($edit_args, $id) {
+    public function editAuthorCategory($edit_args, $id) {
         global $wpdb;
 
         if (!current_user_can(apply_filters('pp_multiple_authors_manage_categories_cap', 'ppma_manage_author_categories'))) {
@@ -580,6 +583,33 @@ class MA_Author_Categories extends Module
         do_action('publishpress_author_categories_flush_cache', $id);
 
         return get_ppma_author_categories(['id' => $id]);
+    }
+
+    /** Shared native deletion service for the table UI and authorized integrations. @since 4.18.0 */
+    public function deleteAuthorCategory($category_id)
+    {
+        global $wpdb;
+        if (!current_user_can(apply_filters('pp_multiple_authors_manage_categories_cap', 'ppma_manage_author_categories'))) {
+            return false;
+        }
+        $deleted = $wpdb->delete(AuthorCategoriesSchema::tableName(), ['id' => (int) $category_id], ['%d']);
+        if ($deleted) {
+            $wpdb->delete(AuthorCategoriesSchema::metaTableName(), ['category_id' => (int) $category_id], ['%d']);
+            do_action('publishpress_author_categories_flush_cache', $category_id);
+        }
+        return $deleted;
+    }
+
+    /** Check native post relationships and default profile categories. @since 4.18.0 */
+    public function categoryHasReferences($category_id)
+    {
+        global $wpdb;
+        $table = AuthorCategoriesSchema::relationTableName();
+        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Native internal table name.
+        $relationships = $wpdb->get_var($wpdb->prepare("SELECT id FROM {$table} WHERE category_id = %d LIMIT 1", $category_id));
+        $defaults = get_terms(['taxonomy' => 'author', 'hide_empty' => false, 'fields' => 'ids', 'number' => 1,
+            'meta_key' => 'author_category', 'meta_value' => (string) $category_id]);
+        return $relationships || (is_array($defaults) && !empty($defaults));
     }
 
     public function updateAuthorCategoryMeta($category_id, $meta_key, $meta_value) {

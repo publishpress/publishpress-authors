@@ -164,9 +164,10 @@ class Utils
      * @param array $authors Bylines to set on the post.
      * @param bool $syncPostAuthor
      * @param int $fallbackUserId User ID for using as the author in case no author or if only guests are selected
-     * @param array $categories for authors
+     * @param array $author_categories Categories for authors
+     * @param bool $replaceCategories Replace all category relationships, including explicit empty input.
      */
-    public static function set_post_authors($postId, $authors, $syncPostAuthor = false, $fallbackUserId = null, $author_categories = [])
+    public static function set_post_authors($postId, $authors, $syncPostAuthor = false, $fallbackUserId = null, $author_categories = [], $replaceCategories = false)
     {
         $post_type = get_post_field('post_type', $postId);
         $enabledPostTypes = Utils::get_enabled_post_types();
@@ -192,7 +193,7 @@ class Utils
         }
 
         $authors = wp_list_pluck($authors, 'term_id');
-        self::updatePostAuthorCategory($postId, $authors, $author_categories);
+        self::updatePostAuthorCategory($postId, $authors, $author_categories, $replaceCategories);
         wp_set_object_terms($postId, $authors, 'author');
     }
 
@@ -205,7 +206,7 @@ class Utils
      *
      * @return void
      */
-    public static function updatePostAuthorCategory($post_id, $authors, $post_author_categories) {
+    public static function updatePostAuthorCategory($post_id, $authors, $post_author_categories, $replace = false) {
         global $wpdb;
 
         if (!current_user_can(get_taxonomy('author')->cap->assign_terms)) {
@@ -213,6 +214,9 @@ class Utils
         }
 
         $table_name = $wpdb->prefix . 'ppma_author_relationships';
+        if ($replace) {
+            $wpdb->delete($table_name, ['post_id' => (int) $post_id], ['%d']);
+        }
         $authors    = array_values(array_unique(array_map('intval', $authors)));
 
         if (empty($authors)) {
