@@ -141,6 +141,7 @@ class Lists
         $options = (array) $legacy->modules->author_list->options;
         $id = $input['id'] ?? ((int) $options['author_list_last_id'] + 1);
         $stored['ID'] = $id;
+        $stored['dynamic_shortcode'] = '[publishpress_authors_list list_id="' . $id . '"]';
         $stored['status'] = $input['status'] ?? ($stored['status'] ?? 'active');
         $shortcode = '[publishpress_authors_list';
         foreach (array_intersect_key($stored, (array) self::fields()['schema']['properties']) as $name => $value) {

@@ -99,8 +99,41 @@ try {
     $layout = array_values(array_filter($listFields['schema']['properties']['layout']['enum']))[0];
     $list = $success($call('save-author-list', ['fields' => ['title' => 'Synthetic MCP List', 'layout' => $layout]]), 'Create native list preset');
     $check(strpos($list['shortcode'], '[publishpress_authors_list') === 0, 'List generates a native shortcode');
+    $expectedDynamic = '[publishpress_authors_list list_id="' . $list['id'] . '"]';
+    $savedList = $legacy->modules->author_list->options->author_list_data[$list['id']];
+    $check($savedList['dynamic_shortcode'] === $expectedDynamic, 'MCP creation stores the native dynamic shortcode');
+    $secondList = $success($call('save-author-list', ['fields' => ['title' => 'Second synthetic MCP List', 'layout' => $layout]]), 'Create another native list preset');
+    $secondSaved = $legacy->modules->author_list->options->author_list_data[$secondList['id']];
+    $check($secondList['id'] !== $list['id'] && $secondSaved['dynamic_shortcode'] === '[publishpress_authors_list list_id="' . $secondList['id'] . '"]', 'Each MCP list gets its own dynamic shortcode');
+    require_once dirname(__DIR__, 2) . '/src/modules/author-list/classes/AuthorListTable.php';
+    $tableClass = new ReflectionClass(\MultipleAuthorList\AuthorListTable::class);
+    $table = $tableClass->newInstanceWithoutConstructor();
+    $column = $tableClass->getMethod('column_dynamic_shortcode');
+    $column->setAccessible(true);
+    $legacyList = $savedList;
+    unset($legacyList['dynamic_shortcode']);
+    $beforeRender = serialize($legacy->modules->author_list->options);
+    set_error_handler(static function ($level, $message) {
+        throw new RuntimeException($message);
+    }, E_WARNING | E_NOTICE);
+    try {
+        $legacyHtml = $column->invoke($table, $legacyList);
+        $legacyList['dynamic_shortcode'] = '';
+        $emptyHtml = $column->invoke($table, $legacyList);
+        $savedHtml = $column->invoke($table, $secondSaved);
+    } finally {
+        restore_error_handler();
+    }
+    $check(strpos($legacyHtml, esc_attr($expectedDynamic)) !== false && $emptyHtml === $legacyHtml, 'Existing lists with missing or empty shortcode render without warnings');
+    $check(strpos($savedHtml, esc_attr($secondSaved['dynamic_shortcode'])) !== false, 'Saved MCP shortcode renders in the native table');
+    $check(serialize($legacy->modules->author_list->options) === $beforeRender, 'Rendering an older list does not change stored options');
+    $previewOptions = serialize($legacy->modules->author_list->options);
+    $previewList = $success($call('save-author-list', ['fields' => ['title' => 'Preview list', 'layout' => $layout], 'dry_run' => true]), 'Preview list shortcode');
+    $check($previewList['dry_run'] && serialize($legacy->modules->author_list->options) === $previewOptions, 'List shortcode preview saves nothing');
+
     $success($call('save-author-list', ['id' => $list['id'], 'expected_hash' => $list['hash'], 'fields' => ['title' => 'Renamed synthetic list']]), 'Patch list without replacing layout');
     $check(is_wp_error($call('save-author-list', ['id' => $list['id'], 'expected_hash' => $list['hash'], 'fields' => ['title' => 'Stale']])), 'List revision check protects concurrent edits');
+    $check($legacy->modules->author_list->options->author_list_data[$list['id']]['dynamic_shortcode'] === $expectedDynamic, 'List update keeps the same dynamic shortcode');
     $inventory = $success($call('list-features'), 'Discover native modules and workflows');
     $check(count($inventory['features']) >= 10, 'Inventory covers native modules');
     require __DIR__ . '/workflow-cases.php';
