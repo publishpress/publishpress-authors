@@ -1,6 +1,6 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[Unreleased]
+[4.20.0] - [Unreleased]
 
 * Feature: Add private MCP actions for author profiles, post bylines, settings, boxes, lists and categories with native permissions and previews.
 
