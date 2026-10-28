@@ -46,6 +46,8 @@ try {
         $users[$role] = $id;
     }
     wp_set_current_user($users['administrator']);
+    register_post_type('mcp_public_no_author', ['public' => true, 'label' => 'Fixture public type', 'supports' => ['title']]);
+    register_post_type('mcp_private_author', ['public' => false, 'label' => 'Fixture private type', 'supports' => ['title', 'author']]);
     $abilities = array_filter(wp_get_abilities(), static function ($a) { return strpos($a->get_name(), 'publishpress-authors/') === 0; });
     $check(count($abilities) === (getenv('AUTHORS_MCP_MODE') === 'pro' ? 38 : 35), 'Full distribution registers the expected actions');
     foreach ($abilities as $ability) {
@@ -55,6 +57,27 @@ try {
     $check(is_wp_error($call('get-plugin-settings', ['unexpected' => 'value'])), 'Unknown empty-input fields return a validation error');
     $settings = $success($call('get-plugin-settings'), 'Discover native settings');
     $check(isset($settings['schema']['properties']['enable_guest_author_user']), 'Guest-author switch has a typed schema');
+    $registeredSettings = wp_get_ability('publishpress-authors/update-plugin-settings')->get_input_schema()['properties']['settings'];
+    $check($registeredSettings['properties']['mapped_author_roles']['type'] === 'array'
+        && $registeredSettings['properties']['author_for_new_users']['type'] === 'array', 'Registered settings schema exposes role lists as arrays');
+    $beforeRoles = serialize($legacy->modules->multiple_authors->options);
+    $rolesPreview = $success($call('update-plugin-settings', ['settings' => ['mapped_author_roles' => ['editor', 'author'], 'author_for_new_users' => ['subscriber']], 'dry_run' => true]), 'Preview both role-list settings');
+    $check($rolesPreview['settings']->mapped_author_roles === ['editor', 'author'] && $rolesPreview['settings']->author_for_new_users === ['subscriber']
+        && serialize($legacy->modules->multiple_authors->options) === $beforeRoles, 'Role-list previews preserve saved settings');
+    $rolesSaved = $success($call('update-plugin-settings', ['settings' => ['mapped_author_roles' => ['editor', 'author'], 'author_for_new_users' => ['subscriber']]]), 'Save both role-list settings');
+    $rolesRead = $success($call('get-plugin-settings'), 'Read saved role-list settings');
+    $check($rolesRead['settings']->mapped_author_roles === ['editor', 'author'] && $rolesRead['settings']->author_for_new_users === ['subscriber'], 'Removing Administrator and adding Subscriber round-trip through native settings');
+    $check($rolesRead['settings']->append_to_content === $settings['settings']->append_to_content, 'Role-list changes preserve unrelated settings');
+    $success($call('update-plugin-settings', ['settings' => ['author_for_new_users' => []]]), 'Clear automatic profile role selection');
+    $check($call('get-plugin-settings')['settings']->author_for_new_users === [], 'Empty role list remains supported');
+    $check(is_wp_error($call('update-plugin-settings', ['settings' => ['mapped_author_roles' => ['not-a-role']]])), 'Unknown roles are rejected');
+    $check(is_wp_error($call('update-plugin-settings', ['settings' => ['mapped_author_roles' => ['subscriber' => true]]])), 'Boolean role maps are rejected');
+    $check(is_wp_error($call('update-plugin-settings', ['settings' => ['author_for_new_users' => 'subscriber']])), 'Role strings are rejected');
+    $check(is_wp_error($call('update-plugin-settings', ['settings' => ['author_for_new_users' => ['subscriber', 'subscriber']]])), 'Duplicate roles are rejected');
+    $check(is_wp_error($call('update-plugin-settings', ['settings' => ['author_for_new_users' => ['subscriber', true]]])), 'Mixed role lists are rejected');
+    $success($call('update-plugin-settings', ['settings' => ['mapped_author_roles' => $settings['settings']->mapped_author_roles,
+        'author_for_new_users' => $settings['settings']->author_for_new_users]]), 'Restore initial role settings for remaining fixtures');
+
     $before = serialize($legacy->modules->multiple_authors->options);
     $preview = $success($call('update-plugin-settings', ['settings' => ['enable_guest_author_user' => true], 'dry_run' => true]), 'Settings preview');
     $check($before === serialize($legacy->modules->multiple_authors->options) && $preview['settings']->enable_guest_author_user, 'Settings preview saves nothing');
@@ -136,6 +159,7 @@ try {
     $check($legacy->modules->author_list->options->author_list_data[$list['id']]['dynamic_shortcode'] === $expectedDynamic, 'List update keeps the same dynamic shortcode');
     $inventory = $success($call('list-features'), 'Discover native modules and workflows');
     $check(count($inventory['features']) >= 10, 'Inventory covers native modules');
+    require __DIR__ . '/settings-cases.php';
     require __DIR__ . '/workflow-cases.php';
     require __DIR__ . '/permission-cases.php';
     require __DIR__ . '/edition-cases.php';
@@ -152,6 +176,9 @@ try {
     if (isset($argv[2])) {
         $tool = \WP\MCP\Domain\Tools\McpTool::fromAbility(wp_get_ability('publishpress-authors/get-plugin-settings'));
         $check(!is_wp_error($tool->execute([])), 'Custom-server tool executes with native identity');
+        $settingsTool = \WP\MCP\Domain\Tools\McpTool::fromAbility(wp_get_ability('publishpress-authors/update-plugin-settings'));
+        $check(!is_wp_error($settingsTool->execute(['settings' => ['mapped_author_roles' => ['editor'], 'author_for_new_users' => ['subscriber']], 'dry_run' => true])), 'Released adapter accepts both role-list array inputs');
+
     }
     echo "Completed $checks Authors checks in " . getenv('AUTHORS_MCP_MODE') . " mode.\n";
 } finally {

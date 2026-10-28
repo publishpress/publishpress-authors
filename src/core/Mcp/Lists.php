@@ -143,11 +143,33 @@ class Lists
         $stored['ID'] = $id;
         $stored['dynamic_shortcode'] = '[publishpress_authors_list list_id="' . $id . '"]';
         $stored['status'] = $input['status'] ?? ($stored['status'] ?? 'active');
-        $shortcode = '[publishpress_authors_list';
+        // Retain native or extension arguments not edited through this field schema.
+        $arguments = (array) ($stored['shortcode_args'] ?? $legacy->author_list->extract_shortcode_params($stored['static_shortcode'] ?? ''));
         foreach (array_intersect_key($stored, (array) self::fields()['schema']['properties']) as $name => $value) {
             if ($name !== 'title') {
-                $value = is_array($value) ? implode(',', $value) : (string) $value;
-                $shortcode .= ' ' . $name . '="' . esc_attr($value) . '"';
+                $arguments[$name] = is_array($value) ? implode(',', $value) : (string) $value;
+            }
+        }
+        unset($arguments['title']);
+        if ($stored['layout'] === 'authors_recent' && isset($arguments['layout_columns'])) {
+            $arguments['authors_recent_col'] = $arguments['layout_columns'];
+            unset($arguments['layout_columns']);
+        } elseif ($stored['layout'] === 'authors_table') {
+            unset($arguments['layout_columns']);
+        }
+        if ($stored['layout'] !== 'authors_recent') {
+            unset($arguments['authors_recent_col'], $arguments['featured_image_size']);
+        }
+        if ($stored['layout'] !== 'authors_index') {
+            unset($arguments['group_by']);
+        }
+        if (!in_array($stored['layout'], ['authors_grid', 'authors_table'], true)) {
+            unset($arguments['display_fields']);
+        }
+        $shortcode = '[publishpress_authors_list';
+        foreach ($arguments as $name => $value) {
+            if (preg_match('/^[a-zA-Z0-9_-]+$/D', $name) && is_scalar($value)) {
+                $shortcode .= ' ' . $name . '="' . esc_attr((string) $value) . '"';
             }
         }
         $stored['static_shortcode'] = $shortcode . ']';

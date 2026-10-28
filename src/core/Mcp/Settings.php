@@ -30,7 +30,7 @@ class Settings
             'update-plugin-settings',
             __('Update Authors settings', 'publishpress-authors'),
             __('Patch only supplied Authors settings; preserves unrelated settings. Use get-plugin-settings for exact fields and native choices. dry_run validates and returns proposed values without saving. Author Pages changes refresh rewrite rules. Pro branding requires Pro.', 'publishpress-authors'),
-            Registry::object(['settings' => ['type' => 'object', 'minProperties' => 1, 'maxProperties' => 100, 'additionalProperties' => ['type' => ['string', 'integer', 'boolean', 'object', 'array'], 'items' => ['type' => 'string'], 'additionalProperties' => ['type' => 'boolean']]], 'dry_run' => Registry::preview()], ['settings']),
+            Registry::object(['settings' => array_merge(self::schema(), ['minProperties' => 1, 'maxProperties' => 100]), 'dry_run' => Registry::preview()], ['settings']),
             $output,
             [__CLASS__, 'update'],
             [Capability::class, 'currentUserCanManageSettings'],
@@ -94,13 +94,13 @@ class Settings
         $properties['title_appended_to_content'] = ['type' => 'string', 'maxLength' => 200, 'default' => __('Author', 'publishpress-authors')];
         $properties['title_appended_to_content_plural'] = ['type' => 'string', 'maxLength' => 200, 'default' => __('Authors', 'publishpress-authors')];
         $properties['color_scheme'] = ['type' => 'string', 'pattern' => '^#[a-fA-F0-9]{6}$', 'default' => '#655997', 'title' => __('Legacy Author Box color scheme', 'publishpress-authors')];
-        $layouts = array_map('strval', array_keys(apply_filters('pp_multiple_authors_author_layouts', [])));
+        $layouts = array_values(array_diff(array_map('strval', array_keys(apply_filters('pp_multiple_authors_author_layouts', []))), ['authors_index', 'authors_recent', 'authors_grid', 'authors_table']));
         foreach (['layout', 'author_pages_bio_layout', 'author_legacy_layout_boxed', 'author_legacy_layout_centered', 'author_legacy_layout_inline', 'author_legacy_layout_inline_avatar', 'author_legacy_layout_simple_list'] as $key) {
-            $properties[$key] = ['type' => 'string', 'enum' => array_values(array_unique(array_merge([''], $layouts))), 'description' => __('Choose a native Author Box layout ID or slug from discovery.', 'publishpress-authors')];
+            $properties[$key] = ['type' => 'string', 'enum' => array_values(array_unique(array_merge(strpos($key, 'author_legacy_layout_') === 0 ? [''] : [], $layouts))), 'description' => __('Choose a native Author Box layout ID or slug from discovery.', 'publishpress-authors')];
         }
         foreach (['post_types', 'author_page_post_types'] as $key) {
             $fields = [];
-            foreach (Utils::get_post_types_that_support_authors() as $postType) {
+            foreach (array_keys(Factory::getLegacyPlugin()->multiple_authors->get_all_post_types()) as $postType) {
                 $fields[$postType] = ['type' => 'boolean'];
             }
             $properties[$key] = Registry::object($fields);
@@ -109,14 +109,19 @@ class Settings
             $properties[$key] = ['type' => 'array', 'maxItems' => 100, 'uniqueItems' => true,
                 'items' => ['type' => 'string', 'enum' => array_keys(apply_filters('editable_roles', wp_roles()->roles))]];
         }
-        $properties['author_pages_layout'] = ['type' => 'string', 'enum' => ['list', 'grid']];
+        $pageLayouts = apply_filters('pp_multiple_authors_pages_layout', [
+            'list' => __('List', 'publishpress-authors'), 'grid' => __('Grid', 'publishpress-authors'),
+        ]);
+        $properties['author_pages_layout'] = ['type' => 'string', 'enum' => array_map('strval', array_keys($pageLayouts))];
         foreach (['author_pages_title_header', 'author_post_title_header'] as $key) {
             $properties[$key] = ['type' => 'string', 'enum' => ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']];
         }
-        foreach (['author_post_custom_width', 'author_post_custom_height', 'default_avatar'] as $key) {
-            $properties[$key] = ['type' => 'string', 'maxLength' => 1000];
+        $properties['default_avatar'] = ['type' => 'string', 'maxLength' => 1000];
+        foreach (['author_post_custom_width', 'author_post_custom_height'] as $key) {
+            $properties[$key] = ['type' => ['integer', 'string'], 'pattern' => '^$', 'minimum' => 1, 'maximum' => 100000,
+                'description' => __('Positive pixel size, or an empty string to use the native image size.', 'publishpress-authors')];
         }
-        foreach (['author_pages_posts_limit' => [1, 1000], 'author_pages_grid_layout_column' => [1, 12], 'fallback_user_for_guest_post' => [0, PHP_INT_MAX], 'default_author_for_new_posts' => [0, PHP_INT_MAX]] as $key => $range) {
+        foreach (['author_pages_posts_limit' => [-1, 1000], 'author_pages_grid_layout_column' => [1, 1000], 'fallback_user_for_guest_post' => [0, PHP_INT_MAX], 'default_author_for_new_posts' => [0, PHP_INT_MAX]] as $key => $range) {
             $properties[$key] = ['type' => 'integer', 'minimum' => $range[0], 'maximum' => $range[1]];
         }
         $properties['author_post_excerpt_ellipsis'] = ['type' => 'string', 'maxLength' => 100];
@@ -130,6 +135,30 @@ class Settings
         $properties['default_author_for_new_posts']['description'] = __('Default author taxonomy term ID for new posts; zero uses native defaults.', 'publishpress-authors');
         $properties['fallback_user_for_guest_post']['description'] = __('Existing WordPress user ID used as the core post author for guest bylines.', 'publishpress-authors');
         $properties['enable_guest_author_acount']['description'] = __('Native guest account setting. MCP profile actions only link existing accounts and never create user accounts.', 'publishpress-authors');
+        $properties['author_pages_posts_limit']['description'] = __('Posts per author page: -1 shows all posts; zero uses the native default of 10.', 'publishpress-authors');
+        $defaults = (array) (Factory::getLegacyPlugin()->modules->multiple_authors->default_options ?? []);
+        foreach ($properties as $key => &$field) {
+            if (!array_key_exists($key, $defaults)) {
+                continue;
+            }
+            $value = $defaults[$key];
+            if ($field['type'] === 'boolean') {
+                $value = in_array($value, ['yes', 'on', true, 1, '1'], true);
+            } elseif ($field['type'] === 'integer') {
+                $value = (int) $value;
+            } elseif ($field['type'] === 'string') {
+                $value = (string) $value;
+            } elseif (is_array($field['type'])) {
+                $value = $value === '' ? '' : (int) $value;
+            } elseif ($field['type'] === 'object') {
+                $value = (object) array_map(static function ($enabled) { return $enabled === 'on'; }, (array) $value);
+            }
+            if ($key === 'author_page_post_types' && !(array) $value) {
+                $value = (object) ['post' => true];
+            }
+            $field['default'] = $value;
+        }
+        unset($field);
         return Registry::object($properties);
     }
 
@@ -138,16 +167,23 @@ class Settings
         $result = [];
         foreach (self::schema()['properties'] as $name => $field) {
             $value = $raw[$name] ?? ($field['default'] ?? ($field['type'] === 'integer' ? 0 : ($field['type'] === 'array' ? [] : '')));
-            if ($field['type'] === 'boolean') {
+            if (is_array($field['type'])) {
+                $value = $value === '' || $value === null ? '' : (int) $value;
+            } elseif ($field['type'] === 'boolean') {
                 $value = in_array($value, ['yes', 'on', true, 1, '1'], true);
             } elseif ($field['type'] === 'integer') {
                 $value = (int) $value;
+            } elseif ($field['type'] === 'array') {
+                $value = array_values(array_map('strval', (array) $value));
             } elseif ($field['type'] === 'object') {
                 $values = [];
                 foreach ((array) $value as $key => $enabled) {
                     if (isset($field['properties'][$key])) {
                         $values[$key] = in_array($enabled, ['on', true, 1, '1'], true);
                     }
+                }
+                if ($name === 'author_page_post_types' && !array_key_exists('post', $values) && !array_filter($values)) {
+                    $values['post'] = true;
                 }
                 $value = (object) $values;
             }
@@ -173,8 +209,18 @@ class Settings
         $values = $current;
         foreach ($input['settings'] as $name => $value) {
             $type = $schema['properties'][$name]['type'];
-            if (($type === 'boolean' && !is_bool($value)) || ($type === 'integer' && !is_int($value))) {
+            if (($type === 'boolean' && !is_bool($value)) || ($type === 'integer' && !is_int($value))
+                || ($type === 'string' && !is_string($value))
+                || (is_array($type) && !is_int($value) && $value !== '')
+                || ($type === 'array' && (!is_array($value) || ($value && array_keys($value) !== range(0, count($value) - 1))))) {
                 return Registry::error(__('Use exact setting types from discovery.', 'publishpress-authors'));
+            }
+            if ($type === 'array') {
+                foreach ($value as $role) {
+                    if (!is_string($role)) {
+                        return Registry::error(__('Role lists require role-name strings from discovery.', 'publishpress-authors'));
+                    }
+                }
             }
             if ($type === 'boolean') {
                 $value = $name === 'display_branding' ? ($value ? 'on' : 'off') : ($value ? 'yes' : 'no');

@@ -126,9 +126,30 @@ class Fields
                 $result[$name] = '';
                 continue;
             }
+            if ($expected === 'array') {
+                if (!is_array($value) || ($value && array_keys($value) !== range(0, count($value) - 1))) {
+                    return Registry::error(__('Choose a list of values from field discovery.', 'publishpress-authors'));
+                }
+                foreach ($value as $item) {
+                    if (!is_string($item)) {
+                        return Registry::error(__('Field choice lists require string values from discovery.', 'publishpress-authors'));
+                    }
+                }
+            }
             $field = $definitions[$name];
             if ($field['type'] === 'shortcodes') {
                 $value = (array) $value;
+                foreach (['shortcode', 'position'] as $part) {
+                    if (!isset($value[$part]) || !is_array($value[$part])
+                        || ($value[$part] && array_keys($value[$part]) !== range(0, count($value[$part]) - 1))) {
+                        return Registry::error(__('Box shortcodes require parallel lists of shortcode and position strings.', 'publishpress-authors'));
+                    }
+                    foreach ($value[$part] as $item) {
+                        if (!is_string($item)) {
+                            return Registry::error(__('Box shortcodes require string values.', 'publishpress-authors'));
+                        }
+                    }
+                }
                 if (count($value['shortcode']) !== count($value['position'])) {
                     return Registry::error(__('Each box shortcode needs one matching position.', 'publishpress-authors'));
                 }
