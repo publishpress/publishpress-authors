@@ -7,6 +7,16 @@ try {
     $settingsState = $success($call('get-plugin-settings'), 'Read the complete settings contract');
     $check(!is_wp_error(rest_validate_value_from_schema((array) $settingsState['settings'], $settingsState['schema'])), 'Every discovered setting value matches its schema');
     $schema = $settingsState['schema']['properties'];
+    $staleRoles = clone $initialSettingsOptions;
+    $staleRoles->mapped_author_roles = ['editor', 'mcp_removed_role'];
+    $staleRoles->author_for_new_users = ['subscriber', 'mcp_removed_role'];
+    $success(\MultipleAuthors\Mcp\Registry::saveModuleOptions('multiple_authors', (array) $staleRoles), 'Seed native settings with an unavailable role');
+    $visibleRoles = $success($call('get-plugin-settings'), 'Read available role selections');
+    $check($visibleRoles['settings']->mapped_author_roles === ['editor'] && $visibleRoles['settings']->author_for_new_users === ['subscriber'], 'Role discovery matches the native available choices');
+    $success($call('update-plugin-settings', ['settings' => ['append_to_content' => true]]), 'Update an unrelated setting with stale stored roles');
+    $check($legacy->modules->multiple_authors->options->mapped_author_roles === ['editor', 'mcp_removed_role']
+        && $legacy->modules->multiple_authors->options->author_for_new_users === ['subscriber', 'mcp_removed_role'], 'Omitted stale role settings remain unchanged in native storage');
+    $success(\MultipleAuthors\Mcp\Registry::saveModuleOptions('multiple_authors', (array) $initialSettingsOptions), 'Restore native settings after unavailable-role checks');
     $check(isset($schema['post_types']['properties']['mcp_public_no_author']) && !isset($schema['post_types']['properties']['mcp_private_author']), 'Post-type choices match the native public custom-type controls');
     foreach (['layout', 'author_pages_bio_layout', 'author_legacy_layout_boxed', 'author_legacy_layout_centered', 'author_legacy_layout_inline', 'author_legacy_layout_inline_avatar', 'author_legacy_layout_simple_list', 'author_pages_layout', 'author_pages_title_header', 'author_post_title_header', 'display_name_format'] as $key) {
         $method = 'settings_' . $key . (in_array($key, ['layout'], true) ? '_option' : '');

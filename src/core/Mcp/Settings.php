@@ -150,6 +150,8 @@ class Settings
                 $value = (string) $value;
             } elseif (is_array($field['type'])) {
                 $value = $value === '' ? '' : (int) $value;
+            } elseif ($field['type'] === 'array') {
+                $value = self::availableRoleValues($value, $field);
             } elseif ($field['type'] === 'object') {
                 $value = (object) array_map(static function ($enabled) { return $enabled === 'on'; }, (array) $value);
             }
@@ -160,6 +162,12 @@ class Settings
         }
         unset($field);
         return Registry::object($properties);
+    }
+
+    /** Keep discovered role selections consistent with the native editable-role control. */
+    private static function availableRoleValues($value, array $field): array
+    {
+        return array_values(array_intersect(array_map('strval', (array) $value), $field['items']['enum']));
     }
 
     private static function publicValues(array $raw): array
@@ -174,7 +182,7 @@ class Settings
             } elseif ($field['type'] === 'integer') {
                 $value = (int) $value;
             } elseif ($field['type'] === 'array') {
-                $value = array_values(array_map('strval', (array) $value));
+                $value = self::availableRoleValues($value, $field);
             } elseif ($field['type'] === 'object') {
                 $values = [];
                 foreach ((array) $value as $key => $enabled) {

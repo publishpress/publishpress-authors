@@ -39,7 +39,7 @@ Keep shared operations in `src/core/Mcp/` and the existing read actions in `src/
 
 ## Verification
 
-`tests/Mcp/registration.php` verifies the shared category, private flags and translated labels/descriptions. `tests/Mcp/compatibility.php` checks missing-API loading. `tests/Mcp/smoke.php` requires an isolated `mcp_smoke_` database and a real Free or Pro plugin bootstrap selected by `AUTHORS_MCP_MODE`. It restores module options and deletes its synthetic users, posts, terms and categories. The test loader and runtime packaging are test-environment setup, not plugin code.
+`tests/Mcp/smoke.php` verifies the shared category, private flags and translated labels/descriptions against the native bootstrap. `tests/Mcp/compatibility.php` checks missing-API loading. `tests/Mcp/smoke.php` requires an isolated `mcp_smoke_` database and a real Free or Pro plugin bootstrap selected by `AUTHORS_MCP_MODE`. It restores module options and deletes its synthetic users, posts, terms and categories. The test loader and runtime packaging are test-environment setup, not plugin code.
 
 Run native round trips, previews, stale revisions, unknown fields/objects, mixed-validity batches, denied capabilities including Administrators, native edition gates, hidden fields and released-adapter projection/execution. Keep request examples in `docs/mcp-prompt-examples.md` and coverage in `docs/mcp-feature-coverage.md`. Do not run mutating tests on a live site or commit credentials.
 

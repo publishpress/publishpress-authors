@@ -48,10 +48,24 @@ try {
     wp_set_current_user($users['administrator']);
     register_post_type('mcp_public_no_author', ['public' => true, 'label' => 'Fixture public type', 'supports' => ['title']]);
     register_post_type('mcp_private_author', ['public' => false, 'label' => 'Fixture private type', 'supports' => ['title', 'author']]);
-    $abilities = array_filter(wp_get_abilities(), static function ($a) { return strpos($a->get_name(), 'publishpress-authors/') === 0; });
+    $translateMetadata = static function ($translated, $original, $domain) {
+        return in_array($domain, ['publishpress-authors', 'publishpress-authors-pro'], true)
+            ? 'translated:' . $translated : $translated;
+    };
+    add_filter('gettext', $translateMetadata, 10, 3);
+    try {
+        $abilities = array_filter(wp_get_abilities(), static function ($a) { return strpos($a->get_name(), 'publishpress-authors/') === 0; });
+    } finally {
+        remove_filter('gettext', $translateMetadata, 10);
+    }
+    $category = wp_get_ability_category('publishpress');
+    PP_Authors_Abilities::register_category();
+    PP_Authors_Abilities::register_category();
+    $check($category && $category === wp_get_ability_category('publishpress'), 'Repeated registration preserves the shared category');
     $check(count($abilities) === (getenv('AUTHORS_MCP_MODE') === 'pro' ? 38 : 35), 'Full distribution registers the expected actions');
     foreach ($abilities as $ability) {
         $meta = $ability->get_meta();
+        $check(strpos($ability->get_label(), 'translated:') === 0 && strpos($ability->get_description(), 'translated:') === 0, $ability->get_name() . ' metadata uses its plugin text domain');
         $check($ability->get_category() === 'publishpress' && !$meta['public'] && !$meta['show_in_rest'] && !$meta['mcp']['public'], $ability->get_name() . ' is private');
     }
     $check(is_wp_error($call('get-plugin-settings', ['unexpected' => 'value'])), 'Unknown empty-input fields return a validation error');
