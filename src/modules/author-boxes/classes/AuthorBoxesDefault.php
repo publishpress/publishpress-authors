@@ -655,7 +655,7 @@ class AuthorBoxesDefault
         $editor_data['author_recent_posts_title_border_bottom_style'] = 'dotted';
         $editor_data['author_recent_posts_alignment'] = 'left';
         //box layout default
-        $editor_data['box_layout_border_style'] = 'solid';
+        $editor_data['box_layout_border_style'] = 'none';
         $editor_data['box_layout_border_color'] = '#999999';
         $editor_data['box_layout_shadow_horizontal_offset'] = 10;
         $editor_data['box_layout_shadow_vertical_offset'] = 10;
