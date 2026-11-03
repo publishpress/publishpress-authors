@@ -744,7 +744,7 @@ class Plugin
                     'plugin_slug'    => 'publishpress-authors',
                     'plugin_url'     => PP_AUTHORS_URL,
                     'rating_message' => __(
-                        'If you like %s please leave us a %s rating. Thank you!',
+                        'If you like %1$s please leave us a %2$s rating. Thank you!',
                         'publishpress-authors'
                     ),
                 ]
