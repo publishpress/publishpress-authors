@@ -1702,7 +1702,6 @@ class Plugin
             'fieldTitleRequired'             => esc_html__('Field title is required', 'publishpress-authors'),
             'display_name_format'           => $display_name_format,
             'author_user_login'             => $author_user_login,
-            'display_name_html'             => $author_display_name_html,
             'author_details'                => $author_details,
             'author_menu_link'              => esc_url(admin_url('edit-tags.php?taxonomy=author')),
             'allow_author_multiple_categories' => Utils::isAuthorMultipleCategoriesEnabled() ? 'yes' : 'no',
@@ -1713,6 +1712,15 @@ class Plugin
             'multiple-authors-js',
             'MultipleAuthorsStrings',
             $js_strings
+        );
+        // Keep escaped option text intact: wp_localize_script() decodes HTML entities.
+        wp_add_inline_script(
+            'multiple-authors-js',
+            'MultipleAuthorsStrings.display_name_html = ' . wp_json_encode(
+                $author_display_name_html,
+                JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+            ) . ';',
+            'before'
         );
         wp_localize_script(
             'multiple-authors-js',
