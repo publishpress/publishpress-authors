@@ -1525,7 +1525,7 @@ class Utils
         <select name="name" id="name" aria-required="true" aria-describedby="name-description">
             <?php foreach ( $public_display as $id => $item ) : ?>
                 <?php if (!empty($item )) : ?>
-                    <option <?php selected( $profile_user->display_name, $item ); ?>><?php echo $item; ?></option>
+                    <option <?php selected( $profile_user->display_name, $item ); ?>><?php echo esc_html($item); ?></option>
                 <?php endif; ?>
             <?php endforeach; ?>
         </select>
