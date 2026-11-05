@@ -1494,8 +1494,6 @@ class Plugin
         $search = trim($args['custom_author_search']);
         $search_parts = preg_split('/\s+/', $search);
 
-        $taxonomy = esc_sql(self::$coauthor_taxonomy);
-
         $or_clauses = [];
 
         foreach ($search_parts as $part) {
@@ -1506,20 +1504,26 @@ class Plugin
             $or_clauses[] = $wpdb->prepare("t.slug LIKE %s", "%$esc%");
 
             // Search meta using EXISTS subquery to avoid duplicates
-            $or_clauses[] = "EXISTS (
-                SELECT 1
-                FROM $wpdb->termmeta AS tm
-                WHERE tm.term_id = t.term_id
-                AND (
-                    (tm.meta_key = 'first_name' AND tm.meta_value LIKE '{$esc}%')
-                    OR (tm.meta_key = 'last_name' AND tm.meta_value LIKE '{$esc}%')
-                    OR (tm.meta_key = 'user_email' AND tm.meta_value LIKE '{$esc}%')
-                )
-            )";
+            $or_clauses[] = $wpdb->prepare(
+                "EXISTS (
+                    SELECT 1
+                    FROM $wpdb->termmeta AS tm
+                    WHERE tm.term_id = t.term_id
+                    AND (
+                        (tm.meta_key = 'first_name' AND tm.meta_value LIKE %s)
+                        OR (tm.meta_key = 'last_name' AND tm.meta_value LIKE %s)
+                        OR (tm.meta_key = 'user_email' AND tm.meta_value LIKE %s)
+                    )
+                )",
+                $esc . '%',
+                $esc . '%',
+                $esc . '%'
+            );
         }
 
         if (!empty($or_clauses)) {
-            $clauses['where'] .= " AND tt.taxonomy = '{$taxonomy}' AND (" . implode(' OR ', $or_clauses) . ")";
+            $clauses['where'] .= $wpdb->prepare(" AND tt.taxonomy = %s", self::$coauthor_taxonomy)
+                . " AND (" . implode(' OR ', $or_clauses) . ")";
         }
 
         if (!empty($clauses['orderby']) && stripos($clauses['fields'], "t.name") === false) {

@@ -5457,13 +5457,29 @@ echo '<span class="ppma_settings_field_description">'
             if (in_array($cap, ['edit_term', 'ppma_manage_authors']) && in_array('ppma_manage_authors', $caps, true)) {
 
                 $term_id = 0;
-                if (isset($args[0])) {
+                if ($cap === 'edit_term' && isset($args[0])) {
                     $term_id = (int)$args[0];
-                }else if (isset($_POST['action']) && $_POST['action'] === 'editedtag' && isset($_POST['tag_ID']) && (int)$_POST['tag_ID'] > 0) {
-                    //this is needed for when saving the profile as it run through edit-tags.php which user doesn't have permission
+                } elseif (
+                    $cap === 'ppma_manage_authors' &&
+                    (int)$user_id === get_current_user_id() &&
+                    isset($GLOBALS['pagenow']) && $GLOBALS['pagenow'] === 'edit-tags.php' &&
+                    isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' &&
+                    isset($_POST['action'], $_REQUEST['action']) &&
+                    $_POST['action'] === 'editedtag' && $_REQUEST['action'] === 'editedtag' &&
+                    empty($_REQUEST['filter_action']) &&
+                    isset($_POST['taxonomy'], $_REQUEST['taxonomy']) &&
+                    $_POST['taxonomy'] === 'author' && $_REQUEST['taxonomy'] === 'author' &&
+                    isset($_POST['tag_ID'], $_REQUEST['tag_ID'], $_POST['_wpnonce']) &&
+                    is_scalar($_POST['tag_ID']) && is_scalar($_REQUEST['tag_ID']) &&
+                    (int)$_POST['tag_ID'] > 0 &&
+                    (string)$_POST['tag_ID'] === (string)$_REQUEST['tag_ID'] &&
+                    is_string($_POST['_wpnonce']) &&
+                    wp_verify_nonce(wp_unslash($_POST['_wpnonce']), 'update-tag_' . (int)$_POST['tag_ID'])
+                ) {
+                    // Only a verified profile save may pass edit-tags.php's page-level permission check.
                     $term_id = (int)$_POST['tag_ID'];
                 }
-                $current_author = Author::get_by_user_id(get_current_user_id());
+                $current_author = Author::get_by_user_id($user_id);
 
                 //allow user to edit own profile.
                 if (
