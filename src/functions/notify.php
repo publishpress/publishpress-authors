@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!function_exists('wp_notify_postauthor')) {
     /**
      * Notify a co-author of a comment/trackback/pingback to one of their posts.
@@ -41,7 +45,7 @@ if (!function_exists('wp_notify_postauthor')) {
 
             // The blogname option is escaped with esc_html on the way into the database in sanitize_option
             // we want to reverse this for the plain text arena of emails.
-            $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
+            $blogname = wp_specialchars_decode(get_blog_option(get_current_blog_id(), 'blogname'), ENT_QUOTES);
 
             if (empty($comment_type)) {
                 $comment_type = 'comment';

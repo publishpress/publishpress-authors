@@ -385,6 +385,14 @@ class Plugin
             'wp_ajax_author_get_user_data',
             ['MultipleAuthors\\Classes\\Admin_Ajax', 'handle_author_get_user_data']
         );
+        add_action(
+            'wp_ajax_ppma_render_block_editor_authors',
+            ['MultipleAuthors\\Classes\\Post_Editor', 'render_block_editor_authors']
+        );
+        add_action(
+            'wp_ajax_ppma_save_block_editor_authors',
+            ['MultipleAuthors\\Classes\\Post_Editor', 'save_block_editor_authors']
+        );
         add_action('wp_ajax_ppma_authors_index_filter', [$this, 'handle_authors_index_filter']);
         add_action('wp_ajax_nopriv_ppma_authors_index_filter', [$this, 'handle_authors_index_filter']);
 
@@ -631,6 +639,7 @@ class Plugin
 
         $supported_post_types = Utils::get_enabled_post_types();
         register_taxonomy(self::$coauthor_taxonomy, $supported_post_types, $args);
+        Post_Editor::register_block_editor_authors_meta($supported_post_types);
 
         if (apply_filters('publishpress_authors_flush_rewrite_rules', PUBLISHPRESS_AUTHORS_FLUSH_REWRITE_RULES)) {
             /**
@@ -650,6 +659,7 @@ class Plugin
     {
         // Add the main JS script and CSS file
         add_action('admin_enqueue_scripts', [$this, 'enqueue_scripts']);
+        add_action('enqueue_block_editor_assets', [$this, 'enqueue_block_editor_assets']);
 
         // Add quick-edit author select field
         add_action('quick_edit_custom_box', [$this, '_action_quick_edit_custom_box'], 10, 2);
@@ -734,7 +744,7 @@ class Plugin
                     'plugin_slug'    => 'publishpress-authors',
                     'plugin_url'     => PP_AUTHORS_URL,
                     'rating_message' => __(
-                        'If you like %s please leave us a %s rating. Thank you!',
+                        'If you like %1$s please leave us a %2$s rating. Thank you!',
                         'publishpress-authors'
                     ),
                 ]
@@ -794,7 +804,7 @@ class Plugin
         }
 
         $columns['posts_count'] = sprintf(
-            '%s <i class="dashicons dashicons-info-outline" title="%s"></i>',
+            '%s <i class="dashicons dashicons-info-outline" aria-hidden="true" title="%s"></i>',
             __('Posts', 'publishpress-authors'),
             sprintf(
                 __('Published posts of the following post types: %s', 'publishpress-authors'),
@@ -1161,16 +1171,21 @@ class Plugin
             $post_types = ['post'];
         }
 
-        $post_types = array_map('esc_sql', $post_types);
-        $post_types_in = "'" . implode("','", $post_types) . "'";
+        $post_types = array_values(array_filter(array_map('sanitize_key', $post_types)));
+        $post_types_placeholders = implode(', ', array_fill(0, count($post_types), '%s'));
+        $query_args = array_merge([$user_id], $post_types);
 
-        $count = (int) $wpdb->get_var($wpdb->prepare(
+        $count = (int) $wpdb->get_var(
+            // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Post type placeholders are generated from a sanitized array.
+            $wpdb->prepare(
             "SELECT COUNT(*) FROM {$wpdb->posts}
             WHERE post_author = %d
-            AND post_type IN ({$post_types_in})
+            AND post_type IN ({$post_types_placeholders})
             AND post_status = 'publish'",
-            $user_id
-        ));
+                $query_args
+            )
+            // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        );
 
         return $count;
     }
@@ -1479,8 +1494,6 @@ class Plugin
         $search = trim($args['custom_author_search']);
         $search_parts = preg_split('/\s+/', $search);
 
-        $taxonomy = esc_sql(self::$coauthor_taxonomy);
-
         $or_clauses = [];
 
         foreach ($search_parts as $part) {
@@ -1491,20 +1504,26 @@ class Plugin
             $or_clauses[] = $wpdb->prepare("t.slug LIKE %s", "%$esc%");
 
             // Search meta using EXISTS subquery to avoid duplicates
-            $or_clauses[] = "EXISTS (
-                SELECT 1
-                FROM $wpdb->termmeta AS tm
-                WHERE tm.term_id = t.term_id
-                AND (
-                    (tm.meta_key = 'first_name' AND tm.meta_value LIKE '{$esc}%')
-                    OR (tm.meta_key = 'last_name' AND tm.meta_value LIKE '{$esc}%')
-                    OR (tm.meta_key = 'user_email' AND tm.meta_value LIKE '{$esc}%')
-                )
-            )";
+            $or_clauses[] = $wpdb->prepare(
+                "EXISTS (
+                    SELECT 1
+                    FROM $wpdb->termmeta AS tm
+                    WHERE tm.term_id = t.term_id
+                    AND (
+                        (tm.meta_key = 'first_name' AND tm.meta_value LIKE %s)
+                        OR (tm.meta_key = 'last_name' AND tm.meta_value LIKE %s)
+                        OR (tm.meta_key = 'user_email' AND tm.meta_value LIKE %s)
+                    )
+                )",
+                $esc . '%',
+                $esc . '%',
+                $esc . '%'
+            );
         }
 
         if (!empty($or_clauses)) {
-            $clauses['where'] .= " AND tt.taxonomy = '{$taxonomy}' AND (" . implode(' OR ', $or_clauses) . ")";
+            $clauses['where'] .= $wpdb->prepare(" AND tt.taxonomy = %s", self::$coauthor_taxonomy)
+                . " AND (" . implode(' OR ', $or_clauses) . ")";
         }
 
         if (!empty($clauses['orderby']) && stripos($clauses['fields'], "t.name") === false) {
@@ -1578,7 +1597,7 @@ class Plugin
         wp_enqueue_script(
             'multiple-authors-js',
             PP_AUTHORS_ASSETS_URL . 'js/multiple-authors.js',
-            ['jquery', 'suggest', 'multiple-authors-select2', 'jquery-ui-sortable', 'wp-util'],
+            ['jquery', 'suggest', 'multiple-authors-select2', 'jquery-ui-sortable', 'wp-util', 'wp-a11y'],
             PP_AUTHORS_VERSION
         );
 
@@ -1683,7 +1702,6 @@ class Plugin
             'fieldTitleRequired'             => esc_html__('Field title is required', 'publishpress-authors'),
             'display_name_format'           => $display_name_format,
             'author_user_login'             => $author_user_login,
-            'display_name_html'             => $author_display_name_html,
             'author_details'                => $author_details,
             'author_menu_link'              => esc_url(admin_url('edit-tags.php?taxonomy=author')),
             'allow_author_multiple_categories' => Utils::isAuthorMultipleCategoriesEnabled() ? 'yes' : 'no',
@@ -1695,6 +1713,15 @@ class Plugin
             'MultipleAuthorsStrings',
             $js_strings
         );
+        // Keep escaped option text intact: wp_localize_script() decodes HTML entities.
+        wp_add_inline_script(
+            'multiple-authors-js',
+            'MultipleAuthorsStrings.display_name_html = ' . wp_json_encode(
+                $author_display_name_html,
+                JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+            ) . ';',
+            'before'
+        );
         wp_localize_script(
             'multiple-authors-js',
             'bulkEditNonce',
@@ -1702,9 +1729,112 @@ class Plugin
                 'nonce' => wp_create_nonce('bulk-edit-nonce')
             )
         );
+
         if ($enqueue_media_script) {
             wp_enqueue_media();
         }
+    }
+
+    /**
+     * Enqueue Authors assets during the block editor asset pass.
+     *
+     * Some Gutenberg script handles are registered later than admin_enqueue_scripts,
+     * so the custom Authors document panel must also be enqueued here.
+     */
+    public function enqueue_block_editor_assets()
+    {
+        $current_post_type = $this->get_current_admin_post_type();
+
+        if (
+            !Post_Editor::is_block_editor_page($current_post_type)
+            || !Utils::is_post_type_enabled($current_post_type)
+        ) {
+            return;
+        }
+
+        wp_enqueue_script('jquery');
+        wp_enqueue_script('jquery-ui-sortable');
+
+        wp_enqueue_style(
+            'multiple-authors-style',
+            PP_AUTHORS_ASSETS_URL . 'css/multiple-authors.css',
+            [],
+            PP_AUTHORS_VERSION
+        );
+
+        wp_enqueue_script(
+            'multiple-authors-select2',
+            PP_AUTHORS_ASSETS_URL . 'lib/select2/js/select2.full.min.js',
+            ['jquery'],
+            PP_AUTHORS_VERSION
+        );
+
+        wp_enqueue_style(
+            'multiple-authors-select2',
+            PP_AUTHORS_ASSETS_URL . 'lib/select2/css/select2.min.css',
+            [],
+            PP_AUTHORS_VERSION
+        );
+
+        wp_add_inline_style(
+            'multiple-authors-select2',
+            '.publishpress-authors-block-editor-panel .ppma_select2-hidden-accessible{' .
+                'border:0!important;clip:rect(0 0 0 0)!important;' .
+                '-webkit-clip-path:inset(50%)!important;clip-path:inset(50%)!important;' .
+                'height:1px!important;overflow:hidden!important;padding:0!important;' .
+                'position:absolute!important;width:1px!important;white-space:nowrap!important;' .
+            '}' .
+            '.publishpress-authors-block-editor-panel .ppma_select2-container{' .
+                'max-width:100%;width:100%!important;' .
+            '}' .
+            '.publishpress-authors-block-editor-panel .authors-list{margin-top:8px;}'
+        );
+
+        $this->enqueue_block_editor_authors_panel();
+    }
+
+    private function enqueue_block_editor_authors_panel()
+    {
+        $post_id = $this->get_current_admin_post_id();
+
+        if ($post_id <= 0) {
+            return;
+        }
+
+        wp_enqueue_script(
+            'publishpress-authors-block-editor',
+            PP_AUTHORS_ASSETS_URL . 'js/block-editor-authors.js',
+            [
+                'jquery',
+                'jquery-ui-sortable',
+                'multiple-authors-select2',
+                'wp-components',
+                'wp-data',
+                'wp-edit-post',
+                'wp-editor',
+                'wp-element',
+                'wp-plugins',
+                'wp-util',
+            ],
+            PP_AUTHORS_VERSION
+        );
+
+        wp_localize_script(
+            'publishpress-authors-block-editor',
+            'PublishPressAuthorsBlockEditor',
+            [
+                'ajax_url'                         => admin_url('admin-ajax.php'),
+                'allow_author_multiple_categories' => Utils::isAuthorMultipleCategoriesEnabled() ? 'yes' : 'no',
+                'load_error'                       => __('Sorry, the request returned an error.', 'publishpress-authors'),
+                'nonce'                            => wp_create_nonce('ppma-block-editor-authors'),
+                'post_id'                          => $post_id,
+                'save_error'                       => __('Sorry, the request returned an error.', 'publishpress-authors'),
+                'saving'                           => __('Please, wait...', 'publishpress-authors'),
+                'select2_i18n'                     => Utils::getSelect2I18n(),
+                'state_meta_key'                   => Post_Editor::BLOCK_EDITOR_AUTHORS_META_KEY,
+                'title'                            => __('Authors', 'publishpress-authors'),
+            ]
+        );
     }
 
     private function should_enqueue_admin_assets($hook_suffix)
@@ -1778,6 +1908,28 @@ class Plugin
         }
 
         return 'post';
+    }
+
+    private function get_current_admin_post_id()
+    {
+        global $post;
+
+        $screen = function_exists('get_current_screen') ? get_current_screen() : null;
+
+        if (
+            is_object($screen)
+            && !empty($screen->base)
+            && $screen->base === 'post'
+            && !empty($_GET['post'])
+        ) {
+            return (int)$_GET['post'];
+        }
+
+        if (is_object($post) && !empty($post->ID)) {
+            return (int)$post->ID;
+        }
+
+        return 0;
     }
 
     /**
@@ -2187,7 +2339,7 @@ class Plugin
             $author_list_data   = isset($author_lists[$attributes['list_id']]) ? $author_lists[$attributes['list_id']] : false;
             if ($author_list_data) {
                 $list_id = $attributes['list_id'];
-                $attributes = $author_list_data['shortcode_args'];
+                $attributes = array_merge($author_list_data['shortcode_args'], $attributes);
                 $attributes['list_id'] = $list_id;
             }
         }

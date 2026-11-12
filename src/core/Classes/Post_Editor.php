@@ -25,6 +25,8 @@ use WP_REST_Response;
  */
 class Post_Editor
 {
+    public const BLOCK_EDITOR_AUTHORS_META_KEY = '_ppma_block_editor_authors';
+
     /**
      * Register callbacks for managing custom columns
      */
@@ -244,7 +246,7 @@ class Post_Editor
             $taxonomy_name === 'author'
             && $context === 'edit'
             && $taxonomy->meta_box_cb === false
-            && apply_filters('publishpress_authors_hide_author_taxonomy_in_block_editor', false, $taxonomy, $request)
+            && apply_filters('publishpress_authors_hide_author_taxonomy_in_block_editor', true, $taxonomy, $request)
         ) {
             $data_response = $response->get_data();
             $data_response['visibility']['show_ui'] = false;
@@ -266,6 +268,187 @@ class Post_Editor
         $authors = get_post_authors(0, true);
 
         echo self::get_rendered_authors_selection($authors, false);  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    }
+
+    /**
+     * Render the Authors selector for the block editor document panel.
+     */
+    public static function render_block_editor_authors()
+    {
+        $post_id = isset($_GET['post_id']) ? (int)$_GET['post_id'] : 0;
+
+        if (
+            empty($post_id)
+            || empty($_GET['nonce'])
+            || !wp_verify_nonce(sanitize_key($_GET['nonce']), 'ppma-block-editor-authors')
+            || !current_user_can('edit_post', $post_id)
+        ) {
+            wp_send_json_error(null, 403);
+        }
+
+        $post = get_post($post_id);
+
+        if (!$post || !Utils::is_post_type_enabled($post->post_type)) {
+            wp_send_json_error(null, 404);
+        }
+
+        $GLOBALS['post'] = $post;
+        setup_postdata($post);
+
+        ob_start();
+        echo self::get_rendered_authors_selection(get_post_authors($post_id, true), false); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+        $html = ob_get_clean();
+
+        wp_reset_postdata();
+
+        wp_send_json_success(
+            [
+                'html' => $html,
+            ]
+        );
+    }
+
+    /**
+     * Register the block editor Authors panel state meta.
+     *
+     * @param array $post_types Post types that support Authors.
+     */
+    public static function register_block_editor_authors_meta($post_types)
+    {
+        foreach ((array)$post_types as $post_type) {
+            register_post_meta(
+                $post_type,
+                self::BLOCK_EDITOR_AUTHORS_META_KEY,
+                [
+                    'auth_callback' => function ($allowed, $meta_key, $post_id) {
+                        return current_user_can('edit_post', $post_id);
+                    },
+                    'default'       => '',
+                    'single'        => true,
+                    'show_in_rest'  => true,
+                    'type'          => 'string',
+                ]
+            );
+
+            add_action(
+                'rest_after_insert_' . $post_type,
+                [self::class, 'save_block_editor_authors_from_rest_meta'],
+                10,
+                3
+            );
+        }
+    }
+
+    /**
+     * Save Authors selected in the block editor document panel after a REST post save.
+     *
+     * @param WP_Post $post     Inserted or updated post object.
+     * @param mixed   $request  Request object.
+     * @param bool    $creating Whether this is a new post.
+     */
+    public static function save_block_editor_authors_from_rest_meta($post, $request, $creating)
+    {
+        if (
+            !$post
+            || !Utils::is_post_type_enabled($post->post_type)
+            || !current_user_can('edit_post', $post->ID)
+        ) {
+            return;
+        }
+
+        $meta = $request->get_param('meta');
+
+        if (!is_array($meta) || !array_key_exists(self::BLOCK_EDITOR_AUTHORS_META_KEY, $meta)) {
+            return;
+        }
+
+        $payload = json_decode(wp_unslash((string)$meta[self::BLOCK_EDITOR_AUTHORS_META_KEY]), true);
+
+        // The meta only carries the selection to this save. Keeping it would restore stale authors in the panel.
+        delete_post_meta($post->ID, self::BLOCK_EDITOR_AUTHORS_META_KEY);
+
+        if (!is_array($payload)) {
+            return;
+        }
+
+        self::save_block_editor_authors_payload($post->ID, $payload);
+    }
+
+    /**
+     * Save Authors selected in the block editor document panel.
+     */
+    public static function save_block_editor_authors()
+    {
+        $post_id = isset($_POST['post_id']) ? (int)$_POST['post_id'] : 0;
+
+        if (
+            empty($post_id)
+            || empty($_POST['nonce'])
+            || !wp_verify_nonce(sanitize_key($_POST['nonce']), 'ppma-block-editor-authors')
+            || !current_user_can('edit_post', $post_id)
+        ) {
+            wp_send_json_error(null, 403);
+        }
+
+        $post = get_post($post_id);
+
+        if (!$post || !Utils::is_post_type_enabled($post->post_type)) {
+            wp_send_json_error(null, 404);
+        }
+
+        $taxonomy = get_taxonomy('author');
+
+        if (!$taxonomy || !current_user_can($taxonomy->cap->assign_terms)) {
+            wp_send_json_error(null, 403);
+        }
+
+        $payload = [
+            'authors'                => isset($_POST['authors']) ? Utils::sanitizeArray($_POST['authors']) : [],
+            'author_categories'      => isset($_POST['author_categories']) ? Utils::sanitizeArray($_POST['author_categories']) : [],
+            'fallback_author_user'   => isset($_POST['fallback_author_user']) ? (int)$_POST['fallback_author_user'] : null,
+            'ppma_author_box_select' => isset($_POST['ppma_author_box_select'])
+                ? sanitize_text_field($_POST['ppma_author_box_select'])
+                : null,
+        ];
+
+        self::save_block_editor_authors_payload($post_id, $payload);
+
+        wp_send_json_success(true);
+    }
+
+    /**
+     * Save Authors selected in the block editor document panel.
+     *
+     * @param int   $post_id Post ID.
+     * @param array $payload Authors panel payload.
+     */
+    private static function save_block_editor_authors_payload($post_id, $payload)
+    {
+        $authors           = isset($payload['authors']) ? Utils::sanitizeArray($payload['authors']) : [];
+        $author_categories = isset($payload['author_categories']) ? Utils::sanitizeArray($payload['author_categories']) : [];
+        $authors           = self::remove_dirty_authors_from_authors_arr($authors);
+        $fallback_user_id  = isset($payload['fallback_author_user']) ? (int)$payload['fallback_author_user'] : null;
+
+        Utils::set_post_authors($post_id, $authors, true, $fallback_user_id, $author_categories);
+
+        $legacyPlugin = Factory::getLegacyPlugin();
+        $show_editor_author_box = isset($legacyPlugin->modules->multiple_authors->options->show_editor_author_box_selection)
+                && 'yes' === $legacyPlugin->modules->multiple_authors->options->show_editor_author_box_selection;
+
+        if ($show_editor_author_box && isset($payload['ppma_author_box_select'])) {
+            $selected_box = sanitize_text_field($payload['ppma_author_box_select']);
+
+            if (empty($selected_box)) {
+                delete_post_meta($post_id, 'ppma_selected_author_box');
+            } else {
+                update_post_meta($post_id, 'ppma_selected_author_box', $selected_box);
+            }
+
+            delete_post_meta($post_id, 'ppma_disable_author_box');
+        }
+
+        do_action('publishpress_authors_post_authors_metabox_action_saved', $post_id);
+        do_action('publishpress_authors_flush_cache_for_post', $post_id);
     }
 
     /**
@@ -398,6 +581,10 @@ class Post_Editor
 
         if (!empty($remaining_authors)) {
             foreach ($remaining_authors as $remaining_author) {
+                if (!is_object($remaining_author)) {
+                    continue;
+                }
+
                 $author_default_category = (int) $remaining_author->author_category;
 
                 $category_index = ($author_default_category > 0)
@@ -449,11 +636,20 @@ class Post_Editor
                 'authors'           => $authors
             ];
         }
+
+        // The selection box can render more than once per page (quick edit and bulk edit), so keep the ids unique.
+        static $author_select_instance = 0;
+        $author_select_instance++;
+        $author_select_id = 'publishpress-authors-author-select';
+        if ($author_select_instance > 1) {
+            $author_select_id .= '-' . $author_select_instance;
+        }
         ?>
         <?php if (current_user_can(get_taxonomy('author')->cap->assign_terms)) : ?>
+            <label class="screen-reader-text" for="<?php echo esc_attr($author_select_id); ?>"><?php esc_html_e('Search for an author', 'publishpress-authors'); ?></label>
             <select data-nonce="<?php
             echo esc_attr(wp_create_nonce('authors-search')); ?>"
-                    id="publishpress-authors-author-select"
+                    id="<?php echo esc_attr($author_select_id); ?>"
                     class="authors-select2 authors-search"
                     data-placeholder="<?php
                     esc_attr_e('Search for an author', 'publishpress-authors'); ?>" style="width: 100%">
@@ -466,6 +662,7 @@ class Post_Editor
                         'display_name' => '{{ data.display_name }}',
                         'term'         => '{{ data.id }}',
                         'is_guest'     => '{{ data.is_guest }}',
+                        'user_id'      => '{{ data.user_id }}',
                         'category_id'  => '{{ data.category_id }}',
                     ]
                 );
@@ -495,14 +692,17 @@ class Post_Editor
                         $term         = is_a($author, 'WP_User') ? 'u' . $author->ID : $author->term_id;
 
                         $isGuest = 0;
+                        $userId  = is_a($author, 'WP_User') ? $author->ID : 0;
                         if (is_a($author, Author::class)) {
                             $isGuest = $author->is_guest() ? 1 : 0;
+                            $userId  = (int)$author->user_id;
                         }
 
                         $args = [
                             'display_name' => $display_name,
                             'term'         => $term,
                             'is_guest'     => $isGuest,
+                            'user_id'      => $userId,
                             'category_id'  => $author_category_data['id'],
                         ];
 
@@ -568,17 +768,18 @@ class Post_Editor
     }
 
     public static function render_editor_author_box_settings($post_id) {
-        ob_start();
         $legacyPlugin = Factory::getLegacyPlugin();
         $show_editor_author_box = isset($legacyPlugin->modules->multiple_authors->options->show_editor_author_box_selection)
                 && 'yes' === $legacyPlugin->modules->multiple_authors->options->show_editor_author_box_selection;
 
         if (!$show_editor_author_box) {
-            return;
+            return '';
         }
+
+        ob_start();
         ?>
         <div class="ppma-author-box-selection" style="margin-bottom: 15px;">
-            <label for="ppma_author_box_select"><?php _e('Author Box', 'publishpress-authors'); ?></label>
+            <label for="ppma_author_box_select"><?php esc_html_e('Author Box', 'publishpress-authors'); ?></label>
             <?php
             $layouts = apply_filters('pp_multiple_authors_author_layouts', []);
             if (isset($layouts['authors_index'])) {
@@ -602,8 +803,8 @@ class Post_Editor
             }
             ?>
             <select name="ppma_author_box_select" class="authors-select2-default-select" id="ppma_author_box_select" style="width: 100%;">
-                <option value=""><?php _e('Default Author Box', 'publishpress-authors'); ?></option>
-                <option value="none"<?php selected($selected_box, 'none'); ?>><?php _e('Hide Author Box', 'publishpress-authors'); ?></option>
+                <option value=""><?php esc_html_e('Default Author Box', 'publishpress-authors'); ?></option>
+                <option value="none"<?php selected($selected_box, 'none'); ?>><?php esc_html_e('Hide Author Box', 'publishpress-authors'); ?></option>
                 <?php foreach ($layouts as $layout => $text):
                     $selected = $selected_box == $layout;
                     ?>
@@ -646,8 +847,10 @@ class Post_Editor
                 }
             }
             ?>
+            <label class="screen-reader-text" for="publishpress-authors-author-filter"><?php esc_html_e('Filter posts by author', 'publishpress-authors'); ?></label>
             <select data-nonce="<?php
                 echo esc_attr(wp_create_nonce('authors-user-search')); ?>"
+                    id="publishpress-authors-author-filter"
                     class="authors-select2 authors-user-slug-search"
                     data-placeholder="<?php
                     esc_attr_e('All Authors', 'publishpress-authors'); ?>" style="width: 150px"
@@ -676,6 +879,7 @@ class Post_Editor
             'avatar'       => '',
             'term'         => '',
             'is_guest'     => 0,
+            'user_id'      => 0,
             'category_id'  => 0,
         ];
 
@@ -689,10 +893,11 @@ class Post_Editor
         echo esc_attr($args['term']); ?>-<?php
         echo esc_attr($args['category_id']); ?>" data-term-id="<?php
         echo esc_attr($args['term']); ?>" data-is-guest="<?php
-        echo esc_attr($args['is_guest']); ?>" class="ui-sortable-handle publishpress-authors-author">
-            <span class="author-remove">
-                <span class="dashicons dashicons-no-alt"></span>
-            </span>
+        echo esc_attr($args['is_guest']); ?>" data-user-id="<?php
+        echo esc_attr($args['user_id']); ?>" class="ui-sortable-handle publishpress-authors-author">
+            <button type="button" class="author-remove" aria-label="<?php echo esc_attr(sprintf(esc_html__('Remove %s', 'publishpress-authors'), $args['display_name'])); ?>">
+                <span class="dashicons dashicons-no-alt" aria-hidden="true"></span>
+            </button>
             <?php
             if (!empty($args['avatar'])) : ?>
                 <?php
@@ -937,10 +1142,14 @@ class Post_Editor
      */
     public static function flush_cache()
     {
-        wp_cache_flush_group('get_post_authors');
-        wp_cache_flush_group('author_categories_relation_cache');
-        wp_cache_flush_group('publishpress_authors_user_checks');
-        wp_cache_flush_group('ppma_categorized_authors');
+        self::flush_cache_groups(
+            [
+                'get_post_authors',
+                'author_categories_relation_cache',
+                'publishpress_authors_user_checks',
+                'ppma_categorized_authors',
+            ]
+        );
     }
 
     /**
@@ -975,7 +1184,32 @@ class Post_Editor
             wp_cache_delete($authors_cache_key, 'get_post_authors:authors');
         }
 
-        wp_cache_flush_group('publishpress_authors_user_checks');
-        wp_cache_flush_group('ppma_categorized_authors');
+        self::flush_cache_groups(
+            [
+                'publishpress_authors_user_checks',
+                'ppma_categorized_authors',
+            ]
+        );
+    }
+
+    /**
+     * Flush object cache groups when supported, with a fallback for older WordPress versions.
+     *
+     * @param array $groups Cache group names.
+     * @return void
+     */
+    private static function flush_cache_groups($groups)
+    {
+        $flush_group = 'wp_cache_flush_group';
+
+        if (function_exists($flush_group)) {
+            foreach ($groups as $group) {
+                $flush_group($group);
+            }
+
+            return;
+        }
+
+        wp_cache_flush();
     }
 }

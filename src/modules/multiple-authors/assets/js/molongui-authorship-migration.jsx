@@ -134,42 +134,31 @@ class PPAuthorsMolonguiAuthorshipMigrationBox extends React.Component {
     }
 
     render() {
-        if (this.state.step === 'form') {
-            return (
-                <div>
-                    <p>Total items to migrate: <strong>{this.state.total}</strong></p>
-                    <PPAuthorsMaintenanceButton
-                        onClick={this.startMigration}
-                        enabled={this.state.buttonEnabled}
-                        label={ppmaMolonguiAuthorshipMigration.copy_message}
-                    />
-                </div>
-            );
-        }
-
-        if (this.state.step === 'migration') {
-            return (
-                <div>
+        return (
+            <div>
+                {this.state.step === 'form' && (
+                    <div>
+                        <p>Total items to migrate: <strong>{this.state.total}</strong></p>
+                        <PPAuthorsMaintenanceButton
+                            onClick={this.startMigration}
+                            enabled={this.state.buttonEnabled}
+                            label={ppmaMolonguiAuthorshipMigration.copy_message}
+                        />
+                    </div>
+                )}
+                {this.state.step === 'migration' && (
                     <PPAuthorsProgressBar value={this.state.progress} />
-                    <PPAuthorsMaintenanceLog log={this.state.log} />
-                </div>
-            );
-        }
-
-        if (this.state.step === 'completed') {
-            return (
-                <div>
-                    <PPAuthorsMaintenanceLog log={this.state.log} />
+                )}
+                <PPAuthorsMaintenanceLog key="migration-log" log={this.state.log} />
+                {this.state.step === 'completed' && (
                     <PPAuthorsMaintenanceButton
                         onClick={this.deactivateMolongui}
                         enabled={this.state.buttonEnabled}
                         label={ppmaMolonguiAuthorshipMigration.deactivate_message}
                     />
-                </div>
-            );
-        }
-
-        return null;
+                )}
+            </div>
+        );
     }
 }
 
@@ -190,7 +179,7 @@ class PPAuthorsMaintenanceLog extends React.Component {
     render() {
         return (
             <div>
-                <div className="ppma_maintenance_log" readOnly={true}>{this.props.log}</div>
+                <div className="ppma_maintenance_log" role="status" aria-live="polite" aria-atomic="true" readOnly={true}>{this.props.log}</div>
             </div>
         );
     }
@@ -200,10 +189,12 @@ class PPAuthorsProgressBar extends React.Component {
     render() {
         let className = 'p-progressbar p-component p-progressbar-determinate';
         let label = <div className="p-progressbar-label">{this.props.value} %</div>;
+        let progressLabel = 'Migration progress';
+        let valueText = this.props.value + '% complete';
 
         return (
             <div role="progressbar" className={className} aria-valuemin="0"
-                aria-valuenow={this.props.value} aria-valuemax="100">
+                aria-valuenow={this.props.value} aria-valuemax="100" aria-label={progressLabel} aria-valuetext={valueText}>
                 <div className="p-progressbar-value p-progressbar-value-animate"
                     style={{ width: this.props.value + '%', display: 'block' }}></div>
                 {label}

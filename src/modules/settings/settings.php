@@ -34,6 +34,10 @@ use MultipleAuthors\Classes\Legacy\Util;
 use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Settings')) {
     class MA_Settings extends Module
     {
@@ -335,8 +339,10 @@ if (!class_exists('MA_Settings')) {
             }
 
             if ($author_pages_settings) {
-                // Flush rewrite rules due to authors page slug
-                set_transient('ppma_flush_rewrite_rules', true);
+                // Flush rewrite rules due to authors page slug. This flag is
+                // consumed and deleted on the next admin load; the expiration is
+                // a safety net so it can't persist indefinitely if that never runs.
+                set_transient('ppma_flush_rewrite_rules', true, WEEK_IN_SECONDS);
             }
 
             // Redirect back to the settings page that was submitted without any previous messages

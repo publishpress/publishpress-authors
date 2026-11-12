@@ -11,6 +11,7 @@ namespace MultipleAuthors\Classes\Objects;
 
 use MultipleAuthors\Classes\Objects\Author;
 use MultipleAuthors\Classes\Author_Utils;
+use MultipleAuthors\Classes\Author_Editor;
 use MultipleAuthors\Factory;
 use WP_Error;
 use WP_User;
@@ -335,10 +336,7 @@ class Author
      */
     public static function convert_into_guest_author($term_id)
     {
-        if (!get_role('ppma_guest_author')) {
-            //Make sure Guest authir role exist
-            add_role('ppma_guest_author', 'Guest Author', []);
-        }
+        Author_Editor::ensure_guest_author_role();
 
         $userId = get_term_meta($term_id, 'user_id', true);
         $author = Author::get_by_term_id($term_id);
@@ -347,8 +345,8 @@ class Author
 
         if ($userId && is_object($author) && isset($author->display_name)) {
             $user_data = [
-                'ID'    => $userId,
-                'role'  => 'ppma_guest_author'
+                'ID'   => (int)$userId,
+                'role' => Author_Editor::GUEST_AUTHOR_ROLE
             ];
             wp_update_user($user_data);
             update_term_meta($term_id, 'user_id', $userId);
@@ -361,13 +359,11 @@ class Author
             } else {
                 $user_login = sanitize_title($new_author_email);
             }
-            $user_data = [
-                'user_login'    => $user_login,
-                'display_name'  => $author->display_name,
-                'user_email'    => $new_author_email,
-                'user_pass'     => wp_generate_password(),
-                'role'          => 'ppma_guest_author',
-            ];
+            $user_data = Author_Editor::get_guest_author_user_data(
+                $user_login,
+                $author->display_name,
+                $new_author_email
+            );
             $userId = wp_insert_user($user_data);
 
             if (!is_wp_error($userId)) {
@@ -741,7 +737,7 @@ class Author
             if ($this->has_custom_avatar()) {
                 $avatar = $this->get_custom_avatar($size);
             } else {
-                $avatar = get_avatar($this->user_email, $size, '', $this->display_name);
+                $avatar = get_avatar($this->user_email, $size, '', $this->getAvatarAltText([], $size));
             }
 
             /**
@@ -776,24 +772,7 @@ class Author
             'avatar',
         ];
 
-        /**
-         * Filters avatar alt.
-         *
-         * Passing a non-null value will prevent us fetching for avatar alt.
-         *
-         * @param string $avatar_alt text for the author's avatar. Default null.
-         * @param Author $author The author's instance.
-         * @param array $urls The avatar urls.
-         * @param int $size The size of the avatar.
-         *
-         * @since 4.7.3
-         *
-         */
-        $alt = apply_filters('multiple_authors_avatar_alt_text', null, $this, $urls, $size);
-        if (is_null($alt)) {
-            $imageId = attachment_url_to_postid($urls['url']);
-            $alt = get_post_meta( $imageId, '_wp_attachment_image_alt', true );
-        }
+        $alt = $this->getAvatarAltText($urls, $size);
 
         // Build the HTML tag.
         $avatar = sprintf(
@@ -807,6 +786,76 @@ class Author
         );
 
         return $avatar;
+    }
+
+    /**
+     * Return the alternative text for the author's avatar.
+     *
+     * @param array $urls Avatar URLs.
+     * @param int   $size Avatar size.
+     *
+     * @return string
+     */
+    protected function getAvatarAltText($urls = [], $size = 96)
+    {
+        /**
+         * Filters avatar alt.
+         *
+         * Passing a non-null value will prevent us fetching for avatar alt.
+         *
+         * @param string $avatar_alt Text for the author's avatar. Default null.
+         * @param Author $author     The author's instance.
+         * @param array  $urls       The avatar URLs.
+         * @param int    $size       The size of the avatar.
+         *
+         * @since 4.7.3
+         */
+        $alt = apply_filters('multiple_authors_avatar_alt_text', null, $this, $urls, $size);
+
+        if (!is_null($alt)) {
+            return (string)$alt;
+        }
+
+        if ('1' === (string)get_term_meta($this->term_id, 'avatar_decorative', true)) {
+            return '';
+        }
+
+        $alt = get_term_meta($this->term_id, 'avatar_alt', true);
+        if (!empty($alt)) {
+            return (string)$alt;
+        }
+
+        $legacy_plugin       = Factory::getLegacyPlugin();
+        $avatar_attachment_id = (int)get_term_meta($this->term_id, 'avatar', true);
+        $using_default_avatar = 0 === $avatar_attachment_id;
+
+        if ($using_default_avatar) {
+            $options           = $legacy_plugin->modules->multiple_authors->options;
+            $default_avatar_id = isset($options->default_avatar) ? (int)$options->default_avatar : 0;
+
+            if (
+                !empty($default_avatar_id)
+                && isset($options->default_avatar_decorative)
+                && 'yes' === $options->default_avatar_decorative
+            ) {
+                return '';
+            }
+
+            if (!empty($default_avatar_id) && !empty($options->default_avatar_alt)) {
+                return (string)$options->default_avatar_alt;
+            }
+
+            $avatar_attachment_id = $default_avatar_id;
+        }
+
+        if (!empty($avatar_attachment_id)) {
+            $alt = get_post_meta($avatar_attachment_id, '_wp_attachment_image_alt', true);
+        } elseif (!empty($urls['url'])) {
+            $image_id = attachment_url_to_postid($urls['url']);
+            $alt      = get_post_meta($image_id, '_wp_attachment_image_alt', true);
+        }
+
+        return !empty($alt) ? (string)$alt : (string)$this->display_name;
     }
 
     /**
@@ -995,6 +1044,7 @@ class Author
              */
             $query    = apply_filters('ppma_author_posts_count_query', $query, $term_id, $post_type);
 
+            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Query is built from prepared fragments, then passed through the existing filter for backward compatibility.
             $counts = (int)$wpdb->get_var($query);
 
             /**

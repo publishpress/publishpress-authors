@@ -1,4 +1,9 @@
-<?php 
+<?php
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 $show_sidebar   = $context['show_sidebar'];
 $show_tabs      = $context['show_tabs'];
 $modules        = $context['modules'];

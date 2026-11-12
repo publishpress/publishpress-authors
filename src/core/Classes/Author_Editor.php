@@ -25,6 +25,7 @@ class Author_Editor
 {
 
     const AUTHOR_EDITOR_DEFAULT_TAB = 'general';
+    const GUEST_AUTHOR_ROLE = 'ppma_guest_author';
 
     /**
      * Customize the term table to look more like the users table.
@@ -82,10 +83,10 @@ class Author_Editor
             $author = Author::get_by_term_id($term_id);
 
             $retval = $author->get_avatar(32);
-            $retval .= '<strong><a class="row-title" aria-label="' . $author->display_name . '" href="' . get_edit_term_link(
+            $retval .= '<strong><a class="row-title" aria-label="' . esc_attr($author->display_name) . '" href="' . esc_url(get_edit_term_link(
                     $author->term_id,
                     'author'
-                ) . '">' . $author->display_name . '</a>';
+                )) . '">' . esc_html($author->display_name) . '</a>';
 
             /*if (!$author->is_guest()) {
                 $retval .= ' — <span class="post-state">' . __('User', 'publishpress-authors') . '</span>';
@@ -100,8 +101,8 @@ class Author_Editor
 
             // Inline edit data (quick edit)
             $retval .= '<div class="hidden" id="inline_' . $term_id . '">';
-            $retval .= '<div class="name">' . $author->display_name . '</div>';
-            $retval .= '<div class="slug">' . $author->slug . '</div>';
+            $retval .= '<div class="name">' . esc_html($author->display_name) . '</div>';
+            $retval .= '<div class="slug">' . esc_html($author->slug) . '</div>';
             $retval .= '<div class="parent">0</div></div>';
         } elseif ('author_user_email' === $column_name) {
             $author = Author::get_by_term_id($term_id);
@@ -390,7 +391,7 @@ class Author_Editor
                         'label'         => __('Default Avatar', 'publishpress-authors'),
                         'description'   => sprintf(
                                             esc_html__(
-                                                '(Uses the %1s Email field %2s to find the Gravatar account if default avatar is not uploaded in Authors Settings)',
+                                                '(Uses the %1$s Email field %2$s to find the Gravatar account if default avatar is not uploaded in Authors Settings)',
                                                 'publishpress-authors'
                                             ),
                                             '<a href="#" class="ppma-image-general-author-focus">', '</a>'
@@ -400,6 +401,25 @@ class Author_Editor
                         'label'         => __('Custom image', 'publishpress-authors'),
                     ],
                 ],
+            ],
+            'avatar_alt'  => [
+                'label'       => esc_html__('Alternative Text', 'publishpress-authors'),
+                'type'        => 'textarea',
+                'sanitize'    => [self::class, 'sanitizeAvatarAlt'],
+                'tab'         => 'image',
+                'description' => esc_html__(
+                    'Describe the avatar. Leave blank to use the Media Library alternative text or author name.',
+                    'publishpress-authors'
+                ),
+            ],
+            'avatar_decorative' => [
+                'label'       => esc_html__('Decorative Image', 'publishpress-authors'),
+                'type'        => 'checkbox',
+                'tab'         => 'image',
+                'description' => esc_html__(
+                    'Use empty alternative text when this avatar is decorative.',
+                    'publishpress-authors'
+                ),
             ],
             'user_url'    => [
                 'label'    => esc_html__('Website', 'publishpress-authors'),
@@ -455,6 +475,18 @@ class Author_Editor
     }
 
     /**
+     * Sanitize avatar alternative text.
+     *
+     * @param string $value Alternative text.
+     *
+     * @return string
+     */
+    public static function sanitizeAvatarAlt($value)
+    {
+        return mb_substr(sanitize_text_field($value), 0, 500);
+    }
+
+    /**
      * Get a rendered field partial
      *
      * @param array $args Arguments to render in the partial.
@@ -480,6 +512,9 @@ class Author_Editor
         } else {
             $required  = false;
         }
+        // Field types without a single form control the row label can point at.
+        $labelable     = !in_array($args['type'], ['image', 'avatar', 'button_group'], true);
+        $aria_required = $required ? ' aria-required="true"' : '';
         ob_start();
         ?>
         <tr
@@ -489,9 +524,14 @@ class Author_Editor
             >
             <th scope="row">
                 <?php if (!empty($args['label'])) : ?>
-                    <label for="<?php echo esc_attr($key); ?>"><?php echo esc_html($args['label']); ?></label>
+                    <?php if ($labelable) : ?>
+                        <label for="<?php echo esc_attr($key); ?>"><?php echo esc_html($args['label']); ?></label>
+                    <?php else : ?>
+                        <label><?php echo esc_html($args['label']); ?></label>
+                    <?php endif; ?>
                     <?php if ($required) : ?>
-                        <span class="required">*</span>
+                        <span class="required" aria-hidden="true">*</span>
+                        <span class="screen-reader-text"><?php esc_html_e('(required)', 'publishpress-authors'); ?></span>
                     <?php endif; ?>
                 <?php endif; ?>
             </th>
@@ -533,6 +573,8 @@ class Author_Editor
                     }
                     ?>
 
+                    <fieldset>
+                    <legend class="screen-reader-text"><?php echo esc_html($args['label']); ?></legend>
                     <?php foreach ($avatar_options as $avatar_option_key => $avatar_option_data) { ?>
                         <p>
                             <input name="<?php echo esc_attr($key.'-options'); ?>" type="radio"
@@ -548,6 +590,7 @@ class Author_Editor
                             </label>
                         </p>
                     <?php } ?>
+                    </fieldset>
 
                     <div class="author-image-field-wrapper" style="<?php echo esc_attr($image_field_style); ?>">
                         <div class="author-image-field-container">
@@ -569,12 +612,14 @@ class Author_Editor
                     </div>
                 <?php elseif ('textarea' === $args['type']) : ?>
                     <textarea
-                            name="<?php echo esc_attr($key); ?>"><?php echo esc_textarea($args['value']); ?></textarea>
+                            name="<?php echo esc_attr($key); ?>"
+                            id="<?php echo esc_attr($key); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo esc_textarea($args['value']); ?></textarea>
                 <?php
                 elseif ('ajax_user_select' === $args['type']) :
                     $user = !empty($args['value']) ? get_user_by('id', $args['value']) : false;
                     ?>
                     <select data-nonce="<?php echo esc_attr(wp_create_nonce('authors-user-search')); ?>"
+                            id="<?php echo esc_attr($key); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                             placeholder="<?php esc_attr_e('Select a user', 'publishpress-authors'); ?>"
                             class="authors-select2-user-select" name="<?php echo esc_attr($key); ?>" style="width: 95%">
                         <option></option>
@@ -604,7 +649,7 @@ class Author_Editor
                         <?php echo $group_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
                     </div>
                 <?php elseif ('wysiwyg' === $args['type']) : ?>
-                    <?php wp_editor($args['value'], $key, []); ?>
+                    <?php wp_editor($args['value'], $key, self::get_wysiwyg_editor_settings($key)); ?>
                 <?php elseif ('checkbox' === $args['type']) :
                     $checked = !empty($args['value']);
                     ?>
@@ -613,7 +658,7 @@ class Author_Editor
 
                 <?php elseif ('select' === $args['type']) :
                     ?>
-                    <select name="<?php echo esc_attr($key); ?>" id="<?php echo esc_attr($key); ?>"/>
+                    <select name="<?php echo esc_attr($key); ?>" id="<?php echo esc_attr($key); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
                     <?php foreach ($args['options'] as $option_value => $option_text) :
                      ?>
                         <option value="<?php echo esc_attr($option_value); ?>" <?php selected($option_value, $args['value']); ?>><?php echo esc_html($option_text); ?></option>
@@ -621,7 +666,7 @@ class Author_Editor
                     </select>
                 <?php else : ?>
                     <input name="<?php echo esc_attr($key); ?>" type="<?php echo esc_attr($args['type']); ?>"
-                           id="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr($args['value']); ?>"/>
+                           id="<?php echo esc_attr($key); ?>" value="<?php echo esc_attr($args['value']); ?>"<?php echo $aria_required; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>/>
                 <?php endif; ?>
 
                 <?php if (!empty($args['description'])) : ?>
@@ -669,6 +714,27 @@ class Author_Editor
     }
 
     /**
+     * Get settings for WYSIWYG author fields.
+     *
+     * @param string $field_key Rendered field key.
+     *
+     * @return array
+     */
+    private static function get_wysiwyg_editor_settings($field_key)
+    {
+        if ($field_key !== 'authors-description') {
+            return [];
+        }
+
+        return [
+            'wpautop' => false,
+            'tinymce' => [
+                'wpautop' => false,
+            ],
+        ];
+    }
+
+    /**
      * Handle saving of term meta
      *
      * @param int $term_id ID for the term being edited.
@@ -682,6 +748,7 @@ class Author_Editor
         }
         $author = Author::get_by_term_id($term_id);
         $updated_args = [];
+        $saved_description = null;
 
         $user_id = false;
         $user    = false;
@@ -698,13 +765,19 @@ class Author_Editor
          * Make sure current user is set as user ID if user does not
          * have capability to edit other authors/users.
          *
-         * Note: Prevent ability to edit administrator completely.
+         * Note: Only administrators can edit administrator accounts if setting is enabled.
          */
         if ($user && (int)$user_id !== get_current_user_id()) {
-            // Prevent editing administrators completely
+            // Only administrators can edit administrators if setting is enabled
             if (in_array('administrator', $user->roles)) {
-                $user_id = false;
-                $user = false;
+                $legacyPlugin = Factory::getLegacyPlugin();
+                $allow_admin_edit = isset($legacyPlugin->modules->multiple_authors->options->allow_admin_edit_admin_profiles)
+                    && $legacyPlugin->modules->multiple_authors->options->allow_admin_edit_admin_profiles === 'yes';
+
+                if (!current_user_can('manage_options') || !$allow_admin_edit) {
+                    $user_id = false;
+                    $user = false;
+                }
             }
             // Check if the user lacks the necessary capabilities and prevent the user update
             elseif (!current_user_can(get_taxonomy('author')->cap->manage_terms)
@@ -764,13 +837,15 @@ class Author_Editor
             if ($key === 'user_id') {
                 Author::clear_cache();
             }
-            if ($user_id && $key !== 'user_email') {
+            if ($user_id && self::can_sync_author_field_to_user_meta($key)) {
                 update_user_meta($user_id, $key, $field_value);
                 // Don't route the bio through wp_update_user(): core's
                 // pre_user_description filter (wp_filter_kses) strips block-level
                 // HTML (<p>, headings, lists) that wp_kses_post above allows. The
                 // update_user_meta() call just above already stored the correct value.
-                if ($key !== 'description') {
+                if ($key === 'description') {
+                    $saved_description = $field_value;
+                } elseif (self::can_sync_author_field_to_user_account($key)) {
                     $updated_args[$key] = $field_value;
                 }
             }
@@ -791,6 +866,11 @@ class Author_Editor
                     $updated_args['display_name'] = sanitize_text_field($_POST['name']);
                 }
                 wp_update_user($updated_args);
+
+                if (!is_null($saved_description)) {
+                    update_user_meta($user_id, 'description', $saved_description);
+                    update_term_meta($term_id, 'description', $saved_description);
+                }
             }
 
             // Do they have the same slug and nicename?
@@ -889,7 +969,7 @@ class Author_Editor
             echo '</div>';
             ?>
             <div class="form-field term-author_email-wrap" style="display: none;">
-                <label class="ppma-account-email"><?php echo esc_html__('Author Email', 'publishpress-authors'); ?> <span class="required">*</span></label>
+                <label class="ppma-account-email" for="authors-author_email"><?php echo esc_html__('Author Email', 'publishpress-authors'); ?> <span class="required">*</span></label>
                 <?php
                 echo static::get_rendered_author_partial( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     [
@@ -901,7 +981,7 @@ class Author_Editor
             echo '</div>';
             ?>
             <div class="form-field term-user_id-wrap">
-                <label for="tag-user-id"><?php echo esc_html__('User Account', 'publishpress-authors'); ?> <span class="required">*</span></label>
+                <label for="authors-new"><?php echo esc_html__('User Account', 'publishpress-authors'); ?> <span class="required">*</span></label>
                 <?php
                 echo static::get_rendered_author_partial( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     [
@@ -1185,18 +1265,13 @@ class Author_Editor
                         return $email_validation;
                     }
 
-                    if (!get_role('ppma_guest_author')) {
-                        //Make sure Guest authir role exist
-                        add_role('ppma_guest_author', 'Guest Author', []);
-                    }
+                    self::ensure_guest_author_role();
 
-                    // Add new user
-                    $user_data = array(
-                        'user_login'    => $slug,
-                        'display_name'  => sanitize_text_field($_POST['tag-name']),
-                        'user_email'    => sanitize_text_field($_POST['authors-author_email']),
-                        'user_pass'     => wp_generate_password(),
-                        'role'          => 'ppma_guest_author',
+                    // Add a restricted guest-author user. Do not pass request data through to role-sensitive keys.
+                    $user_data = self::get_guest_author_user_data(
+                        $slug,
+                        sanitize_text_field($_POST['tag-name']),
+                        sanitize_text_field($_POST['authors-author_email'])
                     );
                     $user_id = wp_insert_user($user_data);
 
@@ -1224,5 +1299,106 @@ class Author_Editor
         }
 
         return $term;
+    }
+
+    /**
+     * Build the only user fields permitted when creating a guest-author account.
+     *
+     * @param string $user_login User login.
+     * @param string $display_name Display name.
+     * @param string $user_email User email.
+     *
+     * @return array
+     */
+    public static function get_guest_author_user_data($user_login, $display_name, $user_email)
+    {
+        return [
+            'user_login'   => sanitize_user($user_login, true),
+            'display_name' => sanitize_text_field($display_name),
+            'user_email'   => sanitize_email($user_email),
+            'user_pass'    => wp_generate_password(),
+            'role'         => self::GUEST_AUTHOR_ROLE,
+        ];
+    }
+
+    /**
+     * Ensure the guest-author role exists before assigning it.
+     *
+     * @return void
+     */
+    public static function ensure_guest_author_role()
+    {
+        if (!get_role(self::GUEST_AUTHOR_ROLE)) {
+            // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.custom_role_add_role -- Required plugin role for guest authors.
+            add_role(self::GUEST_AUTHOR_ROLE, 'Guest Author', []);
+        }
+    }
+
+    /**
+     * Check if an author field can be mirrored to WordPress user meta.
+     *
+     * @param string $field_name Author field name.
+     *
+     * @return bool
+     */
+    public static function can_sync_author_field_to_user_meta($field_name)
+    {
+        $field_name = (string)$field_name;
+
+        if ($field_name === 'user_email') {
+            return false;
+        }
+
+        return !self::is_sensitive_user_field($field_name);
+    }
+
+    /**
+     * Check if an author field can be passed to wp_update_user().
+     *
+     * @param string $field_name Author field name.
+     *
+     * @return bool
+     */
+    public static function can_sync_author_field_to_user_account($field_name)
+    {
+        $allowed_fields = [
+            'display_name',
+            'first_name',
+            'last_name',
+            'nickname',
+            'user_nicename',
+            'user_url',
+        ];
+
+        return in_array($field_name, $allowed_fields, true);
+    }
+
+    /**
+     * User fields that can mutate roles, auth state, or privileged account data.
+     *
+     * @param string $field_name Field name.
+     *
+     * @return bool
+     */
+    public static function is_sensitive_user_field($field_name)
+    {
+        global $wpdb;
+
+        $field_name = strtolower((string)$field_name);
+
+        $blocked_fields = [
+            'role',
+            'roles',
+            'capabilities',
+            'user_capabilities',
+            $wpdb->prefix . 'capabilities',
+            'user_pass',
+            'user_activation_key',
+            'user_status',
+            'session_tokens',
+            'default_password_nag',
+        ];
+
+        return in_array($field_name, $blocked_fields, true) || substr($field_name, -13) === '_capabilities';
     }
 }

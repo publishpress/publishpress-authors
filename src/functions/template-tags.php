@@ -15,6 +15,10 @@ use MultipleAuthors\Classes\Objects\Author;
 use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!function_exists('get_archive_author')) {
     /**
      * Get the author on the archive page.
@@ -97,6 +101,9 @@ if (!function_exists('get_post_authors')) {
                 $postTypes = Util::get_selected_post_types();
 
                 if (in_array($post->post_type, $postTypes)) {
+                    if (!$updateAuthors) {
+                        return [];
+                    }
                     $author = Author::create_from_user($post->post_author);
                     $authorsInstances = [$author];
                 } else {
@@ -168,6 +175,9 @@ if (!function_exists('get_post_authors')) {
                 $postTypes = Util::get_selected_post_types();
 
                 if (in_array($post->post_type, $postTypes)) {
+                    if (!$updateAuthors) {
+                        return [];
+                    }
                     $author = Author::create_from_user($post->post_author);
                     $authorsInstances = [$author];
                 } else {
@@ -701,11 +711,10 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
 
         if (true === $args['hide_empty'] || $search_text || $meta_order || $last_article_date || !empty($user_roles) || $guests_only || $exclude_real_user || $exclude_guest_user || !empty($exclude_user_roles) || $exclude_guests_only || $exclude_exclude_real_user || $exclude_exclude_guest_user || !empty($exclude_category_ids) || $alphabet_filter) {
 
-            $postTypes = Utils::get_enabled_post_types();
-            $postTypes = array_map(function($item) {
-                return '"' . $item . '"';
-            }, $postTypes);
-            $postTypes = implode(', ', $postTypes);
+            $postTypes = array_values(array_filter(array_map('sanitize_key', Utils::get_enabled_post_types())));
+            if (empty($postTypes)) {
+                $postTypes = ['post'];
+            }
 
             $term_query = "SELECT t.term_id as `term_id` ";
             $term_query .= "FROM {$wpdb->terms} AS t ";
@@ -800,7 +809,6 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
             }
 
             if ($exclude_real_user) {
-                $role_condition = '%"ppma_guest_author"%';
                 $term_query .= "AND (
                     tm2.meta_key IS NULL
                     OR tm2.meta_value IS NULL
@@ -808,7 +816,7 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
                     OR tm2.meta_value = '0'
                     OR (
                         tm.meta_key = 'user_id'
-                        AND um.meta_value LIKE '{$role_condition}'
+                        AND " . $wpdb->prepare('um.meta_value LIKE %s', '%"ppma_guest_author"%') . "
                     )
                 ) ";
             }
@@ -905,7 +913,10 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
 
             if (true === $args['hide_empty'] || $last_article_date) {
                 $term_query .= "AND p.post_status IN ('publish') ";
-                $term_query .= "AND p.post_type IN ({$postTypes}) ";
+                $term_query .= $wpdb->prepare(
+                    'AND p.post_type IN (' . implode(', ', array_fill(0, count($postTypes), '%s')) . ') ',
+                    ...$postTypes
+                );
 
                 if ($last_article_date) {
                     $last_article_date = str_replace(' ago', '', $last_article_date);
@@ -913,21 +924,23 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
                 }
             }
             if ($search_text && !$search_field) {
+                $search_like = '%' . $wpdb->esc_like($search_text) . '%';
                 $term_query .= $wpdb->prepare(
-                    "AND (t.name LIKE '%%%s%%' OR t.slug LIKE '%%%s%%')",
-                    $search_text,
-                    $search_text
+                    'AND (t.name LIKE %s OR t.slug LIKE %s)',
+                    $search_like,
+                    $search_like
                 );
             } elseif ($search_text && $search_field) {
+                $search_like = '%' . $wpdb->esc_like($search_text) . '%';
                 $term_query .= $wpdb->prepare(
-                    "AND (tm.meta_key = '%s' AND tm.meta_value LIKE '%%%s%%') ",
+                    'AND (tm.meta_key = %s AND tm.meta_value LIKE %s) ',
                     $search_field,
-                    $search_text
+                    $search_like
                 );
             }
 
             if ($meta_order) {
-                $term_query .= "AND (tm.meta_key = '{$args['orderby']}') ";
+                $term_query .= $wpdb->prepare('AND (tm.meta_key = %s) ', $args['orderby']);
             }
 
             //get term count before before limit and group by in case it's paginated query
@@ -943,6 +956,7 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
                  */
                 $term_count_query = apply_filters('pp_multiple_authors_get_all_authors_term_count_query', $term_count_query, $args, $instance);
 
+                // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Query is built from prepared fragments, then passed through a legacy SQL filter.
                 $term_counts = $wpdb->get_var($term_count_query);
             }
 
@@ -972,7 +986,8 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
              */
             $term_query = apply_filters('pp_multiple_authors_get_all_authors_term_query', $term_query, $args, $instance);
 
-            $terms = $wpdb->get_results($term_query);// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Query is built from prepared fragments, then passed through a legacy SQL filter.
+            $terms = $wpdb->get_results($term_query);
         } else {
             $terms   = get_terms('author', $args);
             if ($paged) {
@@ -1015,6 +1030,7 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
                         $post_index++;
                         if ($post_index === 1) {
                             $featured_image = PP_AUTHORS_ASSETS_URL . 'img/no-image.jpeg';
+                            $featured_image_alt = '';
                             if (has_post_thumbnail($author_recent_post)) {
                                 if (!empty($featured_image_size)) {
                                     $featured_image_data = wp_get_attachment_image_src(get_post_thumbnail_id($author_recent_post), $featured_image_size);
@@ -1024,23 +1040,29 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
                                 if ($featured_image_data && is_array($featured_image_data)) {
                                     $featured_image = $featured_image_data[0];
                                 }
+                                $featured_image_alt = get_post_meta(get_post_thumbnail_id($author_recent_post), '_wp_attachment_image_alt', true);
+                                if (empty($featured_image_alt)) {
+                                    $featured_image_alt = get_the_title($author_recent_post);
+                                }
                             }
 
                         } else {
                             $featured_image = false;
+                            $featured_image_alt = '';
                         }
                         $author_recent[$author_recent_post] = [
                             'ID'              => $author_recent_post,
                             'post_title'      => html_entity_decode(get_the_title($author_recent_post)),
                             'permalink'       => get_the_permalink($author_recent_post),
-                            'featuired_image' => $featured_image
+                            'featuired_image' => $featured_image,
+                            'featured_image_alt' => $featured_image_alt,
 
                         ];
                     }
                     //only add show more link if author has more than limit posts
                     if ($post_index > 4) {
                         $author_view_text = sprintf(
-                            esc_html__('%1sView all posts%2s by %3s', 'publishpress-authors'),
+                            esc_html__('%1$sView all posts%2$s by %3$s', 'publishpress-authors'),
                             '<span>',
                             '</span>',
                             $author->display_name
@@ -2005,7 +2027,19 @@ if (!function_exists('get_ppma_author_categories')) {
         $category_name   = sanitize_text_field($args['category_name']);
         $plural_name     = sanitize_text_field($args['plural_name']);
         $search          = sanitize_text_field($args['search']);
-        $orderby         = sanitize_sql_orderby($args['orderby'] . ' ' . strtoupper($args['order']));
+        $allowed_orderby = [
+            'id',
+            'category_name',
+            'plural_name',
+            'slug',
+            'category_order',
+            'category_status',
+            'created_at',
+            'meta_data',
+        ];
+        $orderby_column  = in_array($args['orderby'], $allowed_orderby, true) ? $args['orderby'] : 'category_order';
+        $order           = strtoupper($args['order']) === 'DESC' ? 'DESC' : 'ASC';
+        $orderby         = $orderby_column . ' ' . $order;
         $category_status = sanitize_text_field($args['category_status']);
         $count_only      = boolval($args['count_only']);
         $no_cache        = boolval($args['no_cache']);
@@ -2039,6 +2073,7 @@ if (!function_exists('get_ppma_author_categories')) {
             $category_results = [];
             if ($field_search) {
                 // Single result
+                // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table, column, and order fragments are internal whitelisted values.
                 $query = $wpdb->prepare(
                     "SELECT * FROM {$table_name}
                     WHERE {$table_name}.{$field_search} = %s
@@ -2046,16 +2081,21 @@ if (!function_exists('get_ppma_author_categories')) {
                     LIMIT 1",
                     $field_value
                 );
+                // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Query is prepared above with whitelisted SQL fragments.
                 $category_row = $wpdb->get_row($query, ARRAY_A);
 
                 if ($category_row) {
                     // Fetch all meta for this ID
+                    // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name is generated internally.
                     $meta_query = $wpdb->prepare(
                         "SELECT meta_key, meta_value
                         FROM {$meta_table_name}
                         WHERE category_id = %d",
                         $category_row['id']
                     );
+                    // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                    // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Query is prepared above with an internal table name.
                     $metas = $wpdb->get_results($meta_query, ARRAY_A);
 
                     // Merge meta into main row
@@ -2073,32 +2113,35 @@ if (!function_exists('get_ppma_author_categories')) {
                 $offset = ($paged - 1) * $limit;
 
                 if ($count_only) {
+                    // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name is generated internally.
                     $query = "SELECT COUNT(*) FROM {$table_name} WHERE 1=1";
                 } else {
+                    // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name is generated internally.
                     $query = "SELECT * FROM {$table_name} WHERE 1=1";
                 }
 
                 if (!empty($post_types)) {
                     $like_conditions = [];
-                    $prepare_values = [];
 
                     foreach ($post_types as $post_type) {
-                        $like_conditions[] = "meta_value LIKE %s";
-                        $prepare_values[] = '%"' . $wpdb->esc_like($post_type) . '"%';
+                        $like_conditions[] = $wpdb->prepare(
+                            'meta_value LIKE %s',
+                            '%"' . $wpdb->esc_like($post_type) . '"%'
+                        );
                     }
 
-                    $subquery = $wpdb->prepare(
-                        "SELECT DISTINCT category_id
+                    // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name and prepared LIKE conditions are generated internally.
+                    $subquery = "SELECT DISTINCT category_id
                         FROM {$meta_table_name}
                         WHERE meta_key = 'post_types'
-                        AND (" . implode(' OR ', $like_conditions) . ")",
-                        ...$prepare_values
-                    );
+                        AND (" . implode(' OR ', $like_conditions) . ")";
 
+                    // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name and subquery are internally built.
                     $query .= " AND {$table_name}.id IN ({$subquery})";
                 } elseif (!empty($post_type_and_empty)) {
                     $post_type = $post_type_and_empty;
 
+                    // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name is generated internally.
                     $subquery = $wpdb->prepare(
                         "SELECT DISTINCT category_id
                         FROM {$meta_table_name}
@@ -2106,7 +2149,9 @@ if (!function_exists('get_ppma_author_categories')) {
                         AND (meta_value LIKE %s OR meta_value IS NULL OR meta_value = '')",
                         '%"' . $wpdb->esc_like($post_type) . '"%'
                     );
+                    // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
+                    // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table names and subquery are internally built.
                     $query .= " AND ({$table_name}.id IN ({$subquery}) OR {$table_name}.id NOT IN (
                         SELECT DISTINCT category_id
                         FROM {$meta_table_name}
@@ -2117,11 +2162,12 @@ if (!function_exists('get_ppma_author_categories')) {
                 }
 
                 if (!empty($search)) {
+                    $search_like = '%' . $wpdb->esc_like($search) . '%';
                     $query .= $wpdb->prepare(
-                        " AND (slug LIKE '%%%s%%' OR category_name LIKE '%%%s%%' OR plural_name LIKE '%%%s%%')",
-                        $search,
-                        $search,
-                        $search
+                        " AND (slug LIKE %s OR category_name LIKE %s OR plural_name LIKE %s)",
+                        $search_like,
+                        $search_like,
+                        $search_like
                     );
                 }
 
@@ -2133,12 +2179,16 @@ if (!function_exists('get_ppma_author_categories')) {
                 }
 
                 if ($count_only) {
+                    // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Query fragments above are prepared or internal whitelisted SQL fragments.
                     return $wpdb->get_var($query);
                 }
 
+                // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared -- ORDER BY fragment is whitelisted above and query contains prepared fragments.
                 $query .= " ORDER BY {$orderby} LIMIT %d OFFSET %d";
                 $query = $wpdb->prepare($query, $limit, $offset);
+                // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared,WordPress.DB.PreparedSQL.NotPrepared
 
+                // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Query is prepared above after adding limit and offset placeholders.
                 $categories = $wpdb->get_results($query, ARRAY_A);
                 if (!$categories) {
                     return [];
@@ -2146,13 +2196,12 @@ if (!function_exists('get_ppma_author_categories')) {
 
                 // Query metas
                 $ids = wp_list_pluck($categories, 'id');
-                $placeholders = implode(',', array_fill(0, count($ids), '%d'));
-                $meta_query = $wpdb->prepare(
-                    "SELECT category_id, meta_key, meta_value
+                $ids = array_map('absint', $ids);
+                // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name is generated internally and IDs are cast to integers.
+                $meta_query = "SELECT category_id, meta_key, meta_value
                     FROM {$meta_table_name}
-                    WHERE category_id IN ($placeholders)",
-                    ...$ids
-                );
+                    WHERE category_id IN (" . implode(',', $ids) . ")";
+                // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Query contains only an internal table name and integer IDs.
                 $metas = $wpdb->get_results($meta_query, ARRAY_A);
 
                 // Merge metas into main categories
@@ -2272,8 +2321,7 @@ if (!function_exists('get_ppma_author_relations')) {
             $relationships_table    = $wpdb->prefix . 'ppma_author_relationships';
             $categories_table       = $wpdb->prefix . 'ppma_author_categories';
 
-            $sql = "SELECT * FROM $relationships_table WHERE 1=1";
-
+            // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table names are generated internally.
             $sql = "SELECT r.*, c.category_name, c.plural_name FROM $relationships_table r LEFT JOIN $categories_table c ON r.category_id = c.id  WHERE 1=1";
 
             if ($post_id !== '') {
@@ -2286,6 +2334,7 @@ if (!function_exists('get_ppma_author_relations')) {
 
             $sql .= ' ORDER BY r.id ASC';
 
+            // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Query fragments above are prepared or internal table names.
             $results = $wpdb->get_results($sql, ARRAY_A);
 
             wp_cache_set($cache_key, $results, 'author_categories_relation_cache', 3600);
@@ -2426,7 +2475,8 @@ if (!function_exists('publishpress_authors_remove_single_user_map_restriction'))
     function publishpress_authors_remove_single_user_map_restriction() {
          $legacyPlugin = Factory::getLegacyPlugin();
 
-         $remove = $legacyPlugin->modules->multiple_authors->options->enable_guest_author_user === 'yes';
+         $remove = isset($legacyPlugin->modules->multiple_authors->options->remove_single_user_map_restriction)
+            && $legacyPlugin->modules->multiple_authors->options->remove_single_user_map_restriction === 'yes';
 
          if (function_exists('pll_current_language') && function_exists('pll_get_term')) {
             // This restriction should be removed for Polylang due to multi-lang feature

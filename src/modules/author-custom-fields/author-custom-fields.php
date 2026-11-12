@@ -1042,7 +1042,7 @@ class MA_Author_Custom_Fields extends Module
                             $row.addClass('ppma-promo-overlay-row');
                             $row.css('cursor', 'default');
                             $row.removeClass('ppma-blur');
-                            $row.find('td').addClass('ppma-blur');
+                            $row.children('th, td').addClass('ppma-blur');
                             var promoHtml = '<div class="ppma-promo-upgrade-notice">' +
                                 '<p><?php echo esc_html__('With PublishPress Authors Pro, you can add new fields for social networks and more.', 'publishpress-authors'); ?></p>' +
                                 '<p><a class="upgrade-link" href="https://publishpress.com/links/authors-banner" target="_blank"><?php echo esc_html__('Upgrade to Pro', 'publishpress-authors'); ?></a></p>' +

@@ -64,7 +64,7 @@ class AuthorBoxesAjax
                     update_post_meta($author_box, MA_Author_Boxes::META_PREFIX . 'author_fields_order', $field_orders);
                 }
                 $response['status']  = 'success';
-                $response['content'] = sprintf(esc_html__('Field Order updated. %1sClick here%2s to reload this page to see new order changes.', 'publishpress-authors'), '<a href="'. esc_url(admin_url('post.php?post='. $post_id .'&action=edit')) .'">', '</a>');
+                $response['content'] = sprintf(esc_html__('Field Order updated. %1$sClick here%2$s to reload this page to see new order changes.', 'publishpress-authors'), '<a href="'. esc_url(admin_url('post.php?post='. $post_id .'&action=edit')) .'">', '</a>');
             }
         }
 
@@ -430,7 +430,7 @@ endif;
 $display_field_value = '';
 if ($profile_display === 'icon_prefix_value_suffix') {
     if (!empty($profile_display_icon)) {
-        $display_field_value .= html_entity_decode($profile_display_icon) . ' ';
+        $display_field_value .= MA_Author_Boxes::addAriaHiddenToIcon(html_entity_decode($profile_display_icon)) . ' ';
     }
     if (!empty($profile_display_prefix)) {
         $display_field_value .= esc_html($profile_display_prefix) . ' ';
@@ -447,7 +447,7 @@ if ($profile_display === 'icon_prefix_value_suffix') {
 } elseif ($profile_display === 'suffix') {
     $display_field_value .= esc_html($profile_display_suffix);
 } elseif ($profile_display === 'icon') {
-    $display_field_value .= html_entity_decode($profile_display_icon) . ' ';
+    $display_field_value .= MA_Author_Boxes::addAriaHiddenToIcon(html_entity_decode($profile_display_icon)) . ' ';
 } elseif ($profile_display === 'prefix_value_suffix') {
     if (!empty($profile_display_prefix)) {
         $display_field_value .= esc_html($profile_display_prefix) . ' ';
@@ -468,14 +468,23 @@ $profile_field_html = '
         $profile_field_html  .= '                  <span class="ppma-author-field-meta-prefix"> '. $profile_before_display_prefix .' </span>';
     }
     $profile_field_html .= '                        <'. esc_html($profile_html_tag) .'';
-    $profile_field_html .= ' class="ppma-author-'. esc_attr($key) .'-profile-data ppma-author-field-meta '. esc_attr('ppma-author-field-type-' . $data['type']) .'" aria-label="'. esc_attr(($data['label'])) .'"';
+    $profile_field_html .= ' class="ppma-author-'. esc_attr($key) .'-profile-data ppma-author-field-meta '. esc_attr('ppma-author-field-type-' . $data['type']) .'"';
+    $profile_opens_new_tab = $profile_html_tag === 'a' && !empty($data['target']);
     if ($profile_html_tag === 'a') {
-
-        $profile_field_html .= ' href="'. $profile_value_prefix. '</?php echo $author->'. esc_attr($key) .'; ?>' .'" '. $rel_html .' '. $target_html .'';
+        $profile_field_html .= ' href="</?php echo esc_url(' . var_export($profile_value_prefix, true) . ' . $author->' . esc_attr($key) . '); ?>" '. $rel_html .' '. $target_html .'';
+        // Icon-only links have no visible text, so give them an accessible name.
+        if ($profile_display === 'icon') {
+            $profile_field_html .= ' aria-label="</?php echo esc_attr(sprintf(__(\'%1$s for %2$s\', \'publishpress-authors\'), ' . var_export((string) $data['label'], true) . ', $author->display_name)'
+                . ($profile_opens_new_tab ? ' . \' \' . __(\'(opens in a new tab)\', \'publishpress-authors\')' : '')
+                . '); ?>"';
+        }
     }
     $profile_field_html .= '>' . "\n" . str_repeat(" ", 32);
     if ($profile_show_field) {
         $profile_field_html .= '    ' . $display_field_value;
+    }
+    if ($profile_opens_new_tab && $profile_display !== 'icon') {
+        $profile_field_html .= '<span class="screen-reader-text"> </?php esc_html_e(\'(opens in a new tab)\', \'publishpress-authors\'); ?></span>';
     }
     $profile_field_html .=  "\n" . str_repeat(" ", 32) . '</'. esc_html($profile_html_tag) .'>';
     if (!empty(trim($profile_after_display_suffix))) {
@@ -633,7 +642,7 @@ endif ?>
                             <?php echo $bio_row_extra ; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 
 <?php if ($args['meta_view_all_show']['value']) :
- $view_all_link = !empty($args['meta_custom_link']['value']) ? $args['meta_custom_link']['value'] : '</?php echo esc_url($author->link); ?>'; ?>
+ $view_all_link = !empty($args['meta_custom_link']['value']) ? esc_url($args['meta_custom_link']['value']) : '</?php echo esc_url($author->link); ?>'; ?>
                             <<?php echo esc_html($args['meta_html_tag']['value']); ?> class="pp-author-boxes-meta multiple-authors-links">
                                 <a href="<?php echo $view_all_link; ?>">
                                     <span>

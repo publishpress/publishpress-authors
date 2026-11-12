@@ -852,7 +852,7 @@ class AuthorBoxesEditorFields
                     'group_end' => true,
                     'description' => esc_html__('This is useful when linking to an email, URL, or phone number. For example, \'mailto:\', \'https://\' or \'tel:\' can be added as the prefix.', 'publishpress-authors'),
                     'type'        => 'text',
-                    'sanitize'    => 'sanitize_text_field',
+                    'sanitize'    => 'esc_url_raw',
                     'tabbed'      => 1,
                     'tab_name'    => $key,
                     'tab'         => 'profile_fields',
@@ -937,7 +937,7 @@ class AuthorBoxesEditorFields
                     'tab'      => 'profile_fields',
                 ];
                 $fields['profile_fields_' . $key . '_display_icon_border_radius'] = [
-                    'label'      => sprintf(esc_html__('%1s Display Icon Border Radius (%2s)', 'publishpress-authors'), $data['label'], '%'),
+                    'label'      => sprintf(esc_html__('%1$s Display Icon Border Radius (%2$s)', 'publishpress-authors'), $data['label'], '%'),
                     'group_end' => true,
                     'type'       => 'number',
                     'min'        => '0',

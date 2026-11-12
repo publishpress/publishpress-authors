@@ -28,7 +28,8 @@
       "publishpress/dev-workspace": true,
       "php-http/discovery": true,
       "dealerdirect/phpcodesniffer-composer-installer": true,
-      "phpstan/extension-installer": true
+      "phpstan/extension-installer": true,
+      "composer/installers": true
     }
   },
   "minimum-stability": "dev",

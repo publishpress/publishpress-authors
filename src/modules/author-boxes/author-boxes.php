@@ -235,14 +235,16 @@ class MA_Author_Boxes extends Module
                 || ( (empty($legacyPlugin->modules->multiple_authors->options->layout) || in_array($legacyPlugin->modules->multiple_authors->options->layout, ['author_boxes_boxed', 'boxed'])) && get_post_field('post_name', $postId) === 'author_boxes_boxed')
             ) :
             ?>
-             <span class="dashicons dashicons-yes-alt ppma-green-check"></span>
+             <span class="dashicons dashicons-yes-alt ppma-green-check" aria-hidden="true"></span>
+             <span class="screen-reader-text"><?php esc_html_e('Default author box', 'publishpress-authors'); ?></span>
            <?php endif;
         } elseif ($column === 'author_category_boxes') {
             $layout_parent = get_post_meta($postId, self::META_PREFIX . 'layout_parent_author_box', true);
 
             if (!empty($layout_parent)) :
             ?>
-               <span class="dashicons dashicons-yes-alt ppma-green-check"></span>
+               <span class="dashicons dashicons-yes-alt ppma-green-check" aria-hidden="true"></span>
+               <span class="screen-reader-text"><?php esc_html_e('Author category box', 'publishpress-authors'); ?></span>
            <?php endif;
         }
     }
@@ -257,6 +259,16 @@ class MA_Author_Boxes extends Module
     public function saveAuthorBoxesData($post_id) {
         if (empty($_POST['author-boxes-editor-nonce'])
             || !wp_verify_nonce(sanitize_key($_POST['author-boxes-editor-nonce']), 'author-boxes-editor')) {
+            return;
+        }
+
+        $postTypeObject = get_post_type_object(self::POST_TYPE_BOXES);
+        $editCapability = !empty($postTypeObject->cap->edit_post)
+            ? $postTypeObject->cap->edit_post
+            : 'edit_post';
+
+        if (!current_user_can(apply_filters('pp_multiple_authors_manage_layouts_cap', 'ppma_manage_layouts'))
+            || !current_user_can($editCapability, $post_id)) {
             return;
         }
 
@@ -373,7 +385,8 @@ class MA_Author_Boxes extends Module
             return $value;
         }
 
-        if ($value === null || $value === false) {
+        // Unchecked checkboxes arrive as '' from the editor but are stored as 0.
+        if ($value === null || $value === false || $value === '' || $value === 0 || $value === '0') {
             return '';
         }
 
@@ -586,6 +599,7 @@ class MA_Author_Boxes extends Module
             $postTypeLabels[$labelKey] = sprintf($labelValue, $labelSingular, $labelPlural);
         }
 
+        $manageLayoutsCapability = apply_filters('pp_multiple_authors_manage_layouts_cap', 'ppma_manage_layouts');
         $postTypeArgs = [
             'labels' => $postTypeLabels,
             'public' => false,
@@ -593,6 +607,23 @@ class MA_Author_Boxes extends Module
             'show_ui' => true,
             'show_in_menu' => false,
             'map_meta_cap' => true,
+            'capabilities' => [
+                'edit_post'              => 'edit_ppma_box',
+                'read_post'              => 'read_ppma_box',
+                'delete_post'            => 'delete_ppma_box',
+                'read'                   => $manageLayoutsCapability,
+                'edit_posts'             => $manageLayoutsCapability,
+                'edit_others_posts'      => $manageLayoutsCapability,
+                'delete_posts'           => $manageLayoutsCapability,
+                'publish_posts'          => $manageLayoutsCapability,
+                'read_private_posts'     => $manageLayoutsCapability,
+                'delete_private_posts'   => $manageLayoutsCapability,
+                'delete_published_posts' => $manageLayoutsCapability,
+                'delete_others_posts'    => $manageLayoutsCapability,
+                'edit_private_posts'     => $manageLayoutsCapability,
+                'edit_published_posts'   => $manageLayoutsCapability,
+                'create_posts'           => $manageLayoutsCapability,
+            ],
             'has_archive' => self::POST_TYPE_BOXES,
             'hierarchical' => false,
             'rewrite' => false,
@@ -749,14 +780,15 @@ class MA_Author_Boxes extends Module
             return $actions;
         }
 
-        if (!current_user_can('edit_post', $post->ID)) {
-            return $actions;
-        }
-
         $postTypeObject = get_post_type_object(self::POST_TYPE_BOXES);
-        $createCapability = !empty($postTypeObject->cap->create_posts) ? $postTypeObject->cap->create_posts : 'edit_posts';
+        $editCapability = !empty($postTypeObject->cap->edit_post)
+            ? $postTypeObject->cap->edit_post
+            : 'edit_post';
+        $createCapability = !empty($postTypeObject->cap->create_posts)
+            ? $postTypeObject->cap->create_posts
+            : 'edit_posts';
 
-        if (!current_user_can($createCapability)) {
+        if (!current_user_can($editCapability, $post->ID) || !current_user_can($createCapability)) {
             return $actions;
         }
 
@@ -810,12 +842,18 @@ class MA_Author_Boxes extends Module
             wp_die(esc_html__('Invalid Author Box.', 'publishpress-authors'));
         }
 
-        if (!current_user_can('edit_post', $postId)) {
+        $postTypeObject = get_post_type_object(self::POST_TYPE_BOXES);
+        $editCapability = !empty($postTypeObject->cap->edit_post)
+            ? $postTypeObject->cap->edit_post
+            : 'edit_post';
+        $createCapability = !empty($postTypeObject->cap->create_posts)
+            ? $postTypeObject->cap->create_posts
+            : 'edit_posts';
+
+        if (!current_user_can($editCapability, $postId)) {
             wp_die(esc_html__('You are not allowed to duplicate this Author Box.', 'publishpress-authors'));
         }
 
-        $postTypeObject = get_post_type_object(self::POST_TYPE_BOXES);
-        $createCapability = !empty($postTypeObject->cap->create_posts) ? $postTypeObject->cap->create_posts : 'edit_posts';
         if (!current_user_can($createCapability)) {
             wp_die(esc_html__('You are not allowed to create Author Boxes.', 'publishpress-authors'));
         }
@@ -1239,9 +1277,26 @@ class MA_Author_Boxes extends Module
             $icon = '<span class="dashicons dashicons-media-text"></span>';
         }
 
-        $icon = wp_kses_post(html_entity_decode((string) $icon));
+        $icon = self::addAriaHiddenToIcon(wp_kses_post(html_entity_decode((string) $icon)));
 
         return $icon;
+    }
+
+    /**
+     * Mark a decorative icon (an <i> or <span> glyph) as hidden from assistive technology.
+     *
+     * @param string $icon_html
+     *
+     * @return string
+     */
+    public static function addAriaHiddenToIcon($icon_html)
+    {
+        return preg_replace(
+            '/^(\s*<(?:i|span)\b)(?![^>]*\baria-hidden\s*=)/i',
+            '$1 aria-hidden="true"',
+            (string) $icon_html,
+            1
+        );
     }
 
     /**
@@ -1646,8 +1701,11 @@ class MA_Author_Boxes extends Module
         }
 
         // set boxed_categories defautlt fields
+        // Pro saves author_categories_layout for every box (boxed_categories is the first option),
+        // so only boxes that group authors by category get the first-author-only bio default.
         if (
-        isset($editor_data['author_categories_layout'])
+        !empty($editor_data['author_categories_group'])
+        && isset($editor_data['author_categories_layout'])
         && $editor_data['author_categories_layout'] === 'boxed_categories'
         && !isset($editor_data['author_bio_display_position'])
         ) {
@@ -2179,7 +2237,7 @@ class MA_Author_Boxes extends Module
                                                                 $display_field_value = '';
                                                                 if ($profile_display === 'icon_prefix_value_suffix') {
                                                                     if (!empty($profile_display_icon)) {
-                                                                        $display_field_value .= html_entity_decode($profile_display_icon) . ' ';
+                                                                        $display_field_value .= self::addAriaHiddenToIcon(html_entity_decode($profile_display_icon)) . ' ';
                                                                     }
                                                                     if (!empty($profile_display_prefix)) {
                                                                         $display_field_value .= esc_html($profile_display_prefix) . ' ';
@@ -2198,7 +2256,7 @@ class MA_Author_Boxes extends Module
                                                                 } elseif ($profile_display === 'suffix') {
                                                                     $display_field_value .= esc_html($profile_display_suffix);
                                                                 } elseif ($profile_display === 'icon') {
-                                                                    $display_field_value .= html_entity_decode($profile_display_icon) . ' ';
+                                                                    $display_field_value .= self::addAriaHiddenToIcon(html_entity_decode($profile_display_icon)) . ' ';
                                                                 } elseif ($profile_display === 'prefix_value_suffix') {
                                                                     if (!empty($profile_display_prefix)) {
                                                                         $display_field_value .= esc_html($profile_display_prefix) . ' ';
@@ -2219,13 +2277,30 @@ class MA_Author_Boxes extends Module
                                                                         $profile_field_html  .= '<span class="ppma-author-field-meta-prefix"> '. $profile_before_display_prefix .' </span>';
                                                                     }
                                                                     $profile_field_html .= '<'. esc_html($profile_html_tag) .'';
-                                                                    $profile_field_html .= ' class="ppma-author-'. esc_attr($key) .'-profile-data ppma-author-field-meta '. esc_attr('ppma-author-field-type-' . $data['type']) .'" aria-label="'. esc_attr(($data['label'])) .'"';
+                                                                    $profile_field_html .= ' class="ppma-author-'. esc_attr($key) .'-profile-data ppma-author-field-meta '. esc_attr('ppma-author-field-type-' . $data['type']) .'"';
+                                                                    $profile_opens_new_tab = $profile_html_tag === 'a' && !empty($data['target']);
                                                                     if ($profile_html_tag === 'a') {
-                                                                        $profile_field_html .= ' href="'. $profile_value_prefix.$field_value .'" '. $rel_html .' '. $target_html .'';
+                                                                        $profile_field_html .= ' href="'. esc_url($profile_value_prefix . $author->$key) .'" '. $rel_html .' '. $target_html .'';
+                                                                        // Icon-only links have no visible text, so give them an accessible name.
+                                                                        if ($profile_display === 'icon') {
+                                                                            $profile_link_label = sprintf(
+                                                                                /* translators: 1: Profile field label, e.g. Website or Email. 2: Author name. */
+                                                                                __('%1$s for %2$s', 'publishpress-authors'),
+                                                                                $data['label'],
+                                                                                $author->display_name
+                                                                            );
+                                                                            if ($profile_opens_new_tab) {
+                                                                                $profile_link_label .= ' ' . __('(opens in a new tab)', 'publishpress-authors');
+                                                                            }
+                                                                            $profile_field_html .= ' aria-label="'. esc_attr($profile_link_label) .'"';
+                                                                        }
                                                                     }
                                                                     $profile_field_html .= '>';
                                                                     if ($profile_show_field) {
                                                                         $profile_field_html .= $display_field_value;
+                                                                    }
+                                                                    if ($profile_opens_new_tab && $profile_display !== 'icon') {
+                                                                        $profile_field_html .= '<span class="screen-reader-text"> '. esc_html__('(opens in a new tab)', 'publishpress-authors') .'</span>';
                                                                     }
                                                                     $profile_field_html .= '</'. esc_html($profile_html_tag) .'>';
                                                                     if (!empty(trim($profile_after_display_suffix))) {
@@ -2775,10 +2850,10 @@ class MA_Author_Boxes extends Module
                                         </select>
                                         </td>
                                         <td class="shortcode-field">
-                                            <div class="add-new-shortcode button"
+                                            <button type="button" class="add-new-shortcode button"
                                                 data-delete="<?php echo esc_attr__('Delete', 'publishpress-authors'); ?>">
                                                 <?php echo esc_html__('Add', 'publishpress-authors'); ?>
-                                            </div>
+                                            </button>
                                         </td>
                                     </tr>
                                     <?php if (is_array($shortcodes_data) && !empty($shortcodes_data)) : ?>
@@ -2804,9 +2879,9 @@ class MA_Author_Boxes extends Module
                                                         type="hidden"
                                                         value="<?php echo esc_attr($shortcode_position); ?>"
                                                     />
-                                                    <span class="delete-shortcode">
+                                                    <button type="button" class="delete-shortcode">
                                                         <?php echo esc_html__('Delete', 'publishpress-authors'); ?>
-                                                    </span>
+                                                    </button>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -2863,7 +2938,7 @@ class MA_Author_Boxes extends Module
                     <div class="input-area-text">
                         <ul class="template-generator-instruction">
                             <li><?php echo esc_html__('Click the "Generate Template" button under the text area. Wait for the code to be generated.', 'publishpress-authors'); ?></li>
-                            <li><?php echo sprintf(esc_html__('Create an empty php template file with your desired file slug in the %1s /publishpress-authors/author-boxes/ %2s folder of your theme. %3s For example, the file can be located here: %4s /wp-content/themes/%5syour-theme-name%6s/publishpress-authors/author-boxes/my-first-custom-author-template.php %7s .', 'publishpress-authors'), '<font color="red">', '</font>', '<br />', '<font color="red">', '<strong>', '</strong>', '</font>'); ?></li>
+                            <li><?php echo sprintf(esc_html__('Create an empty php template file with your desired file slug in the %1$s /publishpress-authors/author-boxes/ %2$s folder of your theme. %3$s For example, the file can be located here: %4$s /wp-content/themes/%5$syour-theme-name%6$s/publishpress-authors/author-boxes/my-first-custom-author-template.php %7$s .', 'publishpress-authors'), '<font color="red">', '</font>', '<br />', '<font color="red">', '<strong>', '</strong>', '</font>'); ?></li>
                             <li><?php echo esc_html__('Copy the generated code and paste it inside the newly created file.', 'publishpress-authors'); ?></li>
                             <li><?php echo sprintf(esc_html__('Congratulations. Your can now choose your template inside the PublishPress Authors Settings.', 'publishpress-authors'), '<font color="red">', '</font>'); ?></li>
                         </ul>
@@ -2949,10 +3024,10 @@ class MA_Author_Boxes extends Module
                     $additional_class .= ' profile-header-' .$args['tab_name'];
                     ?>
                     <?php if ((int)$args['index'] === 1) : ?>
-                        <div class="ppma-editor-field-reorder-btn">
+                        <button type="button" class="ppma-editor-field-reorder-btn">
                             <span class="dashicons dashicons-admin-generic"></span>
                             <?php esc_html_e('Reorder Fields', 'publishpress-authors'); ?>
-                        </div>
+                        </button>
                         <?php
 
                         $profile_fields   = self::get_profile_fields($args['post_id']);
@@ -3131,7 +3206,8 @@ class MA_Author_Boxes extends Module
                 'code-editor',
                 'wp-color-picker',
                 'jquery-ui-sortable',
-                'js-beautify'
+                'js-beautify',
+                'wp-a11y'
             ],
             PP_AUTHORS_VERSION
         );

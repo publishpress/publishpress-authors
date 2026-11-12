@@ -11,6 +11,11 @@ namespace MultipleAuthorList;
 
 use MultipleAuthors\Factory;
 
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('WP_List_Table')) {
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 }
@@ -333,7 +338,7 @@ class AuthorListTable extends \WP_List_Table
         if ($this->list_view === 'active') {
             $actions = [
                 'edit'   => sprintf(
-                    '<a href="%s">%s</a>',
+                    '<a href="%s" aria-label="%s">%s</a>',
                     add_query_arg(
                         [
                             'page'              => 'ppma-author-list',
@@ -341,10 +346,11 @@ class AuthorListTable extends \WP_List_Table
                         ],
                         admin_url('admin.php')
                     ),
+                    esc_attr(sprintf(esc_html__('Edit %s', 'publishpress-authors'), $item['title'])),
                     esc_html__('Edit', 'publishpress-authors')
                 ),
                 'delete' => sprintf(
-                    '<a href="%s" class="delete-author-list">%s</a>',
+                    '<a href="%s" class="delete-author-list" aria-label="%s">%s</a>',
                     add_query_arg([
                             'page'              => 'ppma-author-list',
                             'action'            => 'ppma-trash-author-list',
@@ -353,13 +359,14 @@ class AuthorListTable extends \WP_List_Table
                         ],
                         admin_url('admin.php')
                     ),
+                    esc_attr(sprintf(esc_html__('Move %s to Trash', 'publishpress-authors'), $item['title'])),
                     esc_html__('Trash', 'publishpress-authors')
                 ),
             ];
         } else {
             $actions = [
                 'edit'   => sprintf(
-                    '<a href="%s">%s</a>',
+                    '<a href="%s" aria-label="%s">%s</a>',
                     add_query_arg(
                         [
                             'page'              => 'ppma-author-list',
@@ -369,10 +376,11 @@ class AuthorListTable extends \WP_List_Table
                         ],
                         admin_url('admin.php')
                     ),
+                    esc_attr(sprintf(esc_html__('Restore %s', 'publishpress-authors'), $item['title'])),
                     esc_html__('Restore', 'publishpress-authors')
                 ),
                 'delete' => sprintf(
-                    '<a href="%s" class="delete-author-list">%s</a>',
+                    '<a href="%s" class="delete-author-list" aria-label="%s">%s</a>',
                     add_query_arg([
                             'page'              => 'ppma-author-list',
                             'action'            => 'ppma-delete-author-list',
@@ -381,6 +389,7 @@ class AuthorListTable extends \WP_List_Table
                         ],
                         admin_url('admin.php')
                     ),
+                    esc_attr(sprintf(esc_html__('Delete %s permanently', 'publishpress-authors'), $item['title'])),
                     esc_html__('Delete Permanently', 'publishpress-authors')
                 ),
             ];
@@ -446,8 +455,13 @@ class AuthorListTable extends \WP_List_Table
      */
     protected function column_dynamic_shortcode($item)
     {
+        $input_id = 'author-list-shortcode-' . (int) $item['ID'];
+        $shortcode = !empty($item['dynamic_shortcode'])
+            ? $item['dynamic_shortcode']
+            : '[publishpress_authors_list list_id="' . (int) $item['ID'] . '"]';
 
-        return '<input readonly type="text" value=\'' . $item['dynamic_shortcode'] . '\' />';
+        return '<label class="screen-reader-text" for="' . esc_attr($input_id) . '">' . esc_html__('Dynamic shortcode', 'publishpress-authors') . '</label>'
+            . '<input id="' . esc_attr($input_id) . '" readonly type="text" value="' . esc_attr($shortcode) . '" />';
     }
 
     /**
@@ -459,8 +473,10 @@ class AuthorListTable extends \WP_List_Table
      */
     protected function column_static_shortcode($item)
     {
+        $textarea_id = 'author-list-static-shortcode-' . (int) $item['ID'];
 
-        return '<textarea style="resize:none; width: 99%;" readonly>' . $item['static_shortcode'] . '</textarea>';
+        return '<label class="screen-reader-text" for="' . esc_attr($textarea_id) . '">' . esc_html__('Static shortcode', 'publishpress-authors') . '</label>'
+            . '<textarea id="' . esc_attr($textarea_id) . '" style="resize:none; width: 99%;" readonly>' . esc_textarea($item['static_shortcode']) . '</textarea>';
     }
 
     /**

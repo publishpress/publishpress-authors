@@ -25,6 +25,10 @@ use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Default_Layouts')) {
     /**
      * class MA_Default_Layouts
@@ -103,12 +107,23 @@ if (!class_exists('MA_Default_Layouts')) {
             if (!isset($args['layout'])) {
                 $args['layout'] = Utils::getDefaultLayout();
             }
+
+            // Skip rendering custom author boxes (handled by author-boxes module)
+            if (strpos($args['layout'], 'ppma_boxes_') === 0) {
+                return $html;
+            }
+
+            // Skip rendering theme boxes (handled by author-boxes module)
+            if (in_array($args['layout'], ['simple_list', 'centered', 'boxed', 'inline', 'inline_avatar'])) {
+                return $html;
+            }
+
             $args['strings'] = [
                 'view_all' => __('View all posts', 'publishpress-authors'),
             ];
 
             $container = Factory::get_container();
-            
+
             $view      = $container['view'];
             $html = $view->render($args['layout'], $args);
 

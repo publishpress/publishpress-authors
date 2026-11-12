@@ -425,4 +425,33 @@ class get_the_author_metaCest
             'The ID should match the term_id as negative integer'
         );
     }
+
+    public function tryToGetGuestAuthorDisplayNameWhenThemePassesPostAuthorId(WpunitTester $I)
+    {
+        $fallbackUserID = $I->factory('a fallback post author')->user->create(['role' => 'administrator']);
+        $postId         = $I->factory('a new post')->post->create(['post_author' => $fallbackUserID]);
+        $post           = get_post($postId);
+
+        $GLOBALS['post'] = $post;
+
+        $authorSlug = sprintf('guest_author_%s', rand(1, PHP_INT_MAX));
+        $authorName = strtoupper($authorSlug);
+
+        $author = Author::create(
+            [
+                'slug'         => $authorSlug,
+                'display_name' => $authorName,
+            ]
+        );
+
+        Utils::set_post_authors($postId, [$author]);
+
+        $metaValue = get_the_author_meta('display_name', $fallbackUserID);
+
+        $I->assertEquals(
+            $authorName,
+            $metaValue,
+            'Themes passing the WordPress post_author ID should receive the selected PublishPress author name'
+        );
+    }
 }

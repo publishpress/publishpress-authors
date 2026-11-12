@@ -4,8 +4,11 @@ namespace core\Classes;
 
 use Codeception\Example;
 use MultipleAuthors\Classes\Author_Editor;
+use MultipleAuthors\Classes\Post_Editor;
 use MultipleAuthors\Classes\Objects\Author;
 use MultipleAuthors\Factory;
+use WP_REST_Request;
+use WP_REST_Response;
 use WpunitTester;
 
 class PluginCest
@@ -102,6 +105,88 @@ class PluginCest
         $author = Author::get_by_user_id($userID);
 
         $I->assertInstanceOf(Author::class, $author);
+    }
+
+    public function actionEditedAuthor_forMappedAuthor_preservesParagraphTagsInDescription(WpunitTester $I)
+    {
+        $userID = $I->factory('a new user')->user->create(
+            [
+                'role'          => 'author',
+                'display_name'  => 'Original Author',
+                'first_name'    => 'Original',
+                'last_name'     => 'Author',
+                'user_email'    => 'original-author@example.com',
+                'user_login'    => 'original-author',
+                'user_nicename' => 'original-author',
+                'user_url'      => 'https://example.com/original-author',
+                'description'   => 'Original author bio.',
+            ]
+        );
+
+        $author = Author::create_from_user($userID);
+
+        wp_set_current_user($userID);
+
+        $_POST = [
+            'author-edit-nonce' => wp_create_nonce('author-edit'),
+            'authors-user_id' => $userID,
+            'authors-description' => '<p>First paragraph.</p><p>Second paragraph.</p>',
+            'authors-first_name' => 'Updated',
+        ];
+
+        Author_Editor::action_edited_author($author->term_id);
+
+        $I->assertEquals('<p>First paragraph.</p><p>Second paragraph.</p>', get_user_meta($userID, 'description', true));
+        $I->assertEquals('<p>First paragraph.</p><p>Second paragraph.</p>', get_term_meta($author->term_id, 'description', true));
+    }
+
+    public function userProfileUpdate_forMappedAuthor_keepsParagraphTagsInDescription(WpunitTester $I)
+    {
+        $userID = $I->factory('a new user')->user->create(
+            [
+                'role'        => 'author',
+                'description' => 'Original author bio.',
+            ]
+        );
+
+        $author = Author::create_from_user($userID);
+
+        $description = '<p>First paragraph.</p><p>Second paragraph.</p>';
+        update_user_meta($userID, 'description', $description);
+        update_term_meta($author->term_id, 'description', $description);
+
+        wp_update_user(['ID' => $userID, 'display_name' => 'Updated Name']);
+
+        $I->assertEquals($description, get_user_meta($userID, 'description', true));
+        $I->assertEquals($description, get_term_meta($author->term_id, 'description', true));
+    }
+
+    public function getGuestAuthorUserData_alwaysUsesGuestAuthorRole(WpunitTester $I)
+    {
+        $userData = Author_Editor::get_guest_author_user_data(
+            'Example User',
+            '<strong>Example User</strong>',
+            'example@example.com'
+        );
+
+        $I->assertEquals('ExampleUser', $userData['user_login']);
+        $I->assertEquals('Example User', $userData['display_name']);
+        $I->assertEquals('example@example.com', $userData['user_email']);
+        $I->assertEquals(Author_Editor::GUEST_AUTHOR_ROLE, $userData['role']);
+        $I->assertNotEmpty($userData['user_pass']);
+    }
+
+    /**
+     * @example ["role"]
+     * @example ["roles"]
+     * @example ["wp_capabilities"]
+     * @example ["user_pass"]
+     * @example ["session_tokens"]
+     */
+    public function canSyncAuthorFieldToUserMeta_blocksSensitiveUserFields(WpunitTester $I, Example $example)
+    {
+        $I->assertFalse(Author_Editor::can_sync_author_field_to_user_meta($example[0]));
+        $I->assertFalse(Author_Editor::can_sync_author_field_to_user_account($example[0]));
     }
 
     public function profileUpdate_forMappedAuthor_syncsAuthorProfileFields(WpunitTester $I)
@@ -316,4 +401,25 @@ class PluginCest
 
         $_POST = [];
     }
+
+    public function actionRemoveGutenbergAuthorMetaboxHidesNativeAuthorTaxonomyPanelByDefault(WpunitTester $I)
+    {
+        $taxonomy = get_taxonomy('author');
+        $request  = new WP_REST_Request('GET', '/wp/v2/taxonomies/author');
+        $response = new WP_REST_Response(
+            [
+                'visibility' => [
+                    'show_ui' => true,
+                ],
+            ]
+        );
+
+        $request['context'] = 'edit';
+
+        $filtered = Post_Editor::action_remove_gutenberg_author_metabox($response, $taxonomy, $request);
+        $data     = $filtered->get_data();
+
+        $I->assertFalse($data['visibility']['show_ui']);
+    }
+
 }

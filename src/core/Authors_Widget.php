@@ -239,6 +239,35 @@ class Authors_Widget extends WP_Widget
 
 
     /**
+     * Localize the strings used by the authors index AJAX filter script.
+     *
+     * @return void
+     */
+    public static function localize_widget_script()
+    {
+        static $localized = false;
+
+        if ($localized) {
+            return;
+        }
+
+        $localized = true;
+
+        wp_localize_script(
+            'multiple-authors-widget',
+            'ppmaAuthorsIndex',
+            [
+                /* translators: %s: the letter selected in the authors index */
+                'showingLetter' => esc_html__('Showing authors starting with %s', 'publishpress-authors'),
+                'showingAll'    => esc_html__('Showing all authors', 'publishpress-authors'),
+                'noResults'     => esc_html__('No authors found.', 'publishpress-authors'),
+                'loading'       => esc_html__('Loading authors...', 'publishpress-authors'),
+                'loadError'     => esc_html__('Unable to load authors.', 'publishpress-authors'),
+            ]
+        );
+    }
+
+    /**
      * Get HTML markdown
      *
      * @param array $args The args.
@@ -282,7 +311,7 @@ class Authors_Widget extends WP_Widget
                 $column_width = ((100)/(int)$instance['layout_columns']);
                 $wrapper_class_selector = '';
                 if (!is_null($layout)) {
-                    $wrapper_class_selector = '.' . $layout;
+                    $wrapper_class_selector = '.' . sanitize_html_class($layout);
                 }
                 $inline_style .= '@media (min-width: 768px) {
                     .pp-multiple-authors-wrapper'. $wrapper_class_selector .' ul,
@@ -310,6 +339,7 @@ class Authors_Widget extends WP_Widget
             ['jquery'],
             PP_AUTHORS_VERSION
         );
+        self::localize_widget_script();
 
         $ajax_instance = $instance;
         unset($ajax_instance['page']);
@@ -465,18 +495,22 @@ class Authors_Widget extends WP_Widget
         $search_box_html = '';
         if (isset($instance['search_box']) && $instance['search_box']) {
             $current_url = remove_query_arg(['ppma_page', 'paged', 'seach_query', 'search_field'], $_SERVER['REQUEST_URI']);
+            $search_input_id  = wp_unique_id('authors-search-input-');
+            $search_filter_id = wp_unique_id('authors-search-filter-');
 
             $search_box_html .= '<div class="pp-multiple-authors-searchbox searchbox">';
-            $search_box_html .= '<form action="' . esc_url($current_url) . '" method="GET">';
-            $search_box_html .= '<input class="widefat" id="authors-search-input" name="seach_query" type="search" value="'. esc_attr($search_query) .'" placeholder="'. esc_attr($search_placeholder) .'">';
+            $search_box_html .= '<form action="' . esc_url($current_url) . '" method="GET" role="search" aria-label="' . esc_attr__('Authors', 'publishpress-authors') . '">';
+            $search_box_html .= '<label class="screen-reader-text" for="' . esc_attr($search_input_id) . '">' . esc_html__('Search authors', 'publishpress-authors') . '</label>';
+            $search_box_html .= '<input class="widefat" id="' . esc_attr($search_input_id) . '" name="seach_query" type="search" value="'. esc_attr($search_query) .'" placeholder="'. esc_attr($search_placeholder) .'">';
             if ($filter_fields) {
-                $search_box_html .= '<select id="authors-search-filter" name="search_field">';
+                $search_box_html .= '<label class="screen-reader-text" for="' . esc_attr($search_filter_id) . '">' . esc_html__('Search authors by', 'publishpress-authors') . '</label>';
+                $search_box_html .= '<select id="' . esc_attr($search_filter_id) . '" name="search_field">';
                 foreach ($filter_fields as $option => $label) :
                     $search_box_html .= '<option value="'. esc_attr($option) .'" '. selected($option, $selected_option, false) .'> '. esc_html($label) .' </option>';
                 endforeach;
                 $search_box_html .= '</select>';
             }
-            $search_box_html .= '<input type="submit" class="button search-submit" id="" name="submit" value="'. esc_attr($search_submit) .'"/>';
+            $search_box_html .= '<input type="submit" class="button search-submit" name="submit" value="'. esc_attr($search_submit) .'"/>';
             $search_box_html .= '</form>';
             $search_box_html .= '</div>';
         }
