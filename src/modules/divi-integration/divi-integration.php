@@ -26,6 +26,10 @@ use MultipleAuthors\Classes\Objects\Author;
 use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Divi_Integration')) {
     /**
      * class MA_Divi_Integration

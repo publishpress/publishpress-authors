@@ -7,6 +7,10 @@
  * @since       1.0.7
  */
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!function_exists('get_bylines')) {
     /**
      * Get all bylines for a post.

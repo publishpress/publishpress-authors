@@ -34,6 +34,10 @@ use MultipleAuthors\Classes\Legacy\Util;
 use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Settings')) {
     class MA_Settings extends Module
     {
