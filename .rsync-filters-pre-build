@@ -62,3 +62,7 @@
 - .ide.php
 - .web
 - .ddev
+- /docs/
+- .agents/
+- AGENTS.md
+- /lib/vendor/publishpress/publishpress-authors/docs/
