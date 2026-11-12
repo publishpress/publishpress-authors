@@ -97,6 +97,9 @@ if (!function_exists('get_post_authors')) {
                 $postTypes = Util::get_selected_post_types();
 
                 if (in_array($post->post_type, $postTypes)) {
+                    if (!$updateAuthors) {
+                        return [];
+                    }
                     $author = Author::create_from_user($post->post_author);
                     $authorsInstances = [$author];
                 } else {
@@ -168,6 +171,9 @@ if (!function_exists('get_post_authors')) {
                 $postTypes = Util::get_selected_post_types();
 
                 if (in_array($post->post_type, $postTypes)) {
+                    if (!$updateAuthors) {
+                        return [];
+                    }
                     $author = Author::create_from_user($post->post_author);
                     $authorsInstances = [$author];
                 } else {
