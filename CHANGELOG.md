@@ -1,8 +1,20 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.20.0] - [Unreleased]
+[4.20.0] - 12 November, 2026
 
-* Feature: Add private MCP actions for author profiles, post bylines, settings, boxes, lists and categories with native permissions and previews.
+* Feature: Add private MCP actions for author profiles, post bylines, settings, boxes, lists and categories with native permissions and previews, #2557
+* Feature: Add an Authors Data block to display author profile details in the block editor, #2448
+* Feature: Add an Author List block to display saved author lists in the block editor, #2447
+* Feature: Add Author Box and Author List widgets for Elementor, including the free version of Elementor, #2422
+* Update: Refresh the Simple List author box with larger avatars, default name styling and improved spacing, #2421
+* Update: Remove the default border from the Simple List author box, #2420
+* Fixed: Correct translated messages that include multiple values, #2486
+* Fixed: Improve database query handling when displaying or syncing authors across multiple post types, #2485
+* Fixed: Prevent errors on older supported WordPress versions when clearing caches or loading block templates, #2484
+* Fixed: Keep author management redirects safely within the site, #2483
+* Fixed: Prevent direct access to plugin PHP files and templates, #2482
+* Fixed: Safely display author names containing special characters in the profile editor, #2559
+* Fixed: Handle special characters safely in author searches and strengthen permission checks when saving author profiles, #2560
 
 [4.18.0] - 26 October, 2026
 
