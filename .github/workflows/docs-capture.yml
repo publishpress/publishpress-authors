@@ -1,0 +1,37 @@
+# Started by Scribe to map this plugin's admin UI or capture a how-to's screenshots.
+# The work happens in publishpress/docs-capture at the pinned commit; results come back as an artifact.
+name: docs-capture
+run-name: docs-capture ${{ inputs.job }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: Plugin commit to check out
+        required: true
+        type: string
+      mode:
+        description: map or capture
+        required: true
+        type: string
+      job:
+        description: Scribe's capture job ID
+        required: true
+        type: string
+      spec_url:
+        description: Capture spec URL (capture mode only)
+        required: false
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  docs-capture:
+    uses: publishpress/docs-capture/.github/workflows/capture.yml@dad4b3252f8236f0e86b4b860e0cd47ba5476aae # v1.9.0
+    with:
+      commit: ${{ inputs.commit }}
+      mode: ${{ inputs.mode }}
+      job: ${{ inputs.job }}
+      spec_url: ${{ inputs.spec_url }}
