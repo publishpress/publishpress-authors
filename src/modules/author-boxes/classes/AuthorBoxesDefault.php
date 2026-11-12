@@ -658,7 +658,7 @@ class AuthorBoxesDefault
         //box layout default
         $editor_data['box_layout_margin_top'] = 15;
         $editor_data['box_layout_margin_bottom'] = 15;
-        $editor_data['box_layout_border_style'] = 'solid';
+        $editor_data['box_layout_border_style'] = 'none';
         $editor_data['box_layout_border_color'] = '#999999';
         $editor_data['box_layout_shadow_horizontal_offset'] = 10;
         $editor_data['box_layout_shadow_vertical_offset'] = 10;
