@@ -13,6 +13,11 @@ namespace MultipleAuthorCategories;
 use MultipleAuthorCategories\AuthorCategoriesSchema;
 use MultipleAuthors\Classes\Utils;
 
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('WP_List_Table')) {
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 }
@@ -92,7 +97,7 @@ class AuthorCategoriesTable extends \WP_List_Table
     function get_columns()
     {
         $columns = [
-            'cb' => '<input type="checkbox" />',
+            'cb' => '<input type="checkbox" aria-label="' . esc_attr__('Select all author categories', 'publishpress-authors') . '" />',
             'category_name' => esc_html__('Name', 'publishpress-authors'),
             'plural_name' => esc_html__('Plural Name', 'publishpress-authors'),
             'post_types' => esc_html__('Post Types', 'publishpress-authors'),
@@ -129,7 +134,12 @@ class AuthorCategoriesTable extends \WP_List_Table
      */
     function column_cb($item)
     {
-        return sprintf('<input type="checkbox" name="%1$s[]" value="%2$s" />', 'author_categories', $item['id']);
+        return sprintf(
+            '<input type="checkbox" name="%1$s[]" value="%2$s" aria-label="%3$s" />',
+            'author_categories',
+            $item['id'],
+            esc_attr(sprintf(esc_html__('Select %s', 'publishpress-authors'), $item['category_name']))
+        );
     }
 
     /**
@@ -216,30 +226,7 @@ class AuthorCategoriesTable extends \WP_List_Table
      */
     private function deleteAuthorCategory($category_id)
     {
-        global $wpdb;
-
-        if (!current_user_can(apply_filters('pp_multiple_authors_manage_categories_cap', 'ppma_manage_author_categories'))) {
-            return false;
-        }
-
-        $table_name = AuthorCategoriesSchema::tableName();
-        $meta_table_name = AuthorCategoriesSchema::metaTableName();
-
-        $delete = $wpdb->query(
-            $wpdb->prepare(
-                "DELETE FROM {$table_name} WHERE id = %d",
-                $category_id
-            )
-        );
-
-        $wpdb->query(
-            $wpdb->prepare(
-                "DELETE FROM {$meta_table_name} WHERE category_id = %d",
-                $category_id
-            )
-        );
-
-        return $delete;
+        return \MultipleAuthors\Factory::getLegacyPlugin()->author_categories->deleteAuthorCategory($category_id);
     }
 
     /**

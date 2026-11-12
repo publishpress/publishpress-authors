@@ -33,6 +33,10 @@ use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Factory;
 use PublishPress\WordPressBanners\BannersMain;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Modules_Settings')) {
     /**
      * class MA_Modules_Settings

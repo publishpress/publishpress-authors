@@ -132,6 +132,31 @@ jQuery(document).ready(function ($) {
         return $.extend(true, {}, {language: select2Language}, options);
     }
 
+    /**
+     * Select2 hides the original select, so expose its <label> on the
+     * generated combobox and search field instead.
+     */
+    function applySelect2Label($select) {
+        var select2 = $select.data('ppma_select2');
+        var selectId = $select.attr('id');
+
+        if (!select2 || !selectId) {
+            return;
+        }
+
+        var $label = $select.siblings('label[for="' + selectId + '"]').first();
+
+        if (!$label.length) {
+            return;
+        }
+
+        var labelId = selectId + '-label';
+        $label.attr('id', labelId);
+
+        select2.$selection.attr('aria-labelledby', labelId);
+        select2.$dropdown.find('.ppma_select2-search__field').attr('aria-labelledby', labelId);
+    }
+
     function authorExistsInCategory($authorsList, authorId, $excludeAuthorItem) {
         var exists = false;
         var authorIdValue = String(authorId);
@@ -216,6 +241,7 @@ jQuery(document).ready(function ($) {
                     }
                 }
             }));
+            applySelect2Label(authorsSearch);
             authorsSearch.on("ppma_select2:select", function (e) {
                 var template = wp.template("authors-author-partial");
                 var $targetList = getAvailableCategoryList(authorsSearch.closest("div"), e.params.data);
@@ -364,6 +390,7 @@ jQuery(document).ready(function ($) {
                     }
                 }
             }));
+            applySelect2Label(authorsSearch);
         });
     }
 
@@ -432,6 +459,13 @@ jQuery(document).ready(function ($) {
             var $authorsList = $quickEditTr.find('.authors-current-user-can-assign');
             var $usersList = $quickEditTr.find('.authors-user-search');
             var $authorList = '';
+
+            // The quick edit row is a clone of a hidden template, so give its select a unique id.
+            $select.each(function () {
+                var cloneId = $(this).attr('id') + '-' + postId;
+                $(this).siblings('label[for="' + $(this).attr('id') + '"]').attr('for', cloneId);
+                $(this).attr('id', cloneId);
+            });
 
             authorsSelect2($select);
             authorsUserSelect2($usersList);
@@ -591,9 +625,33 @@ jQuery(document).ready(function ($) {
             },
         }).on("click", ".author-remove", function () {
             var el = $(this);
+            var $container = el.closest(".authors-list").parent();
+            var $removeButtons = $container.find(".author-remove");
+            var index = $removeButtons.index(el);
             el.closest("li").remove();
             handleUsersAuthorField($(this).parent('.authors-list'));
+            focusAfterAuthorRemoval($container, $removeButtons.not(el), index);
         });
+    }
+
+    function focusAfterAuthorRemoval($container, $remainingButtons, index) {
+        var $target = $remainingButtons.eq(Math.min(index, $remainingButtons.length - 1));
+        var $search;
+
+        if (index === -1) {
+            return;
+        }
+
+        if (!$remainingButtons.length) {
+            $search = $container.find(".authors-search").first();
+            $target = $search.next(".ppma_select2-container").find(".ppma_select2-selection");
+
+            if (!$target.length) {
+                $target = $search;
+            }
+        }
+
+        $target.trigger("focus");
     }
 
     $(".authors-select2-user-select").each(function () {
@@ -1020,6 +1078,26 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    function bindAvatarAlternativeTextToggle(checkbox, altText) {
+        if (!checkbox.length || !altText.length) {
+            return;
+        }
+
+        function updateAlternativeTextState() {
+            altText.prop('disabled', checkbox.is(':checked'));
+        }
+
+        checkbox.on('change', updateAlternativeTextState);
+        updateAlternativeTextState();
+    }
+
+    bindAvatarAlternativeTextToggle($('#authors-avatar_decorative'), $('#authors-avatar_alt'));
+
+    $('.ppma-avatar-decorative').each(function () {
+        var checkbox = $(this);
+        bindAvatarAlternativeTextToggle(checkbox, $('#' + checkbox.data('alt-target')));
+    });
+
     /**
      * Switch focus to general email from image tab handler
      */
@@ -1041,6 +1119,7 @@ jQuery(document).ready(function ($) {
 
         $('.author-response-notice').remove();
         $('form#edittag tr.form-field').removeClass('form-invalid');
+        $('form#edittag tr.form-field.required-tab [aria-invalid]').removeAttr('aria-invalid');
 
         event.preventDefault();
 
@@ -1048,7 +1127,9 @@ jQuery(document).ready(function ($) {
         var field_label,
         field_object,
         field_error_count = 0,
-        field_error_message = '<div style="color:red;">' + MultipleAuthorsStrings.isRequiredWarning + '</div><ul>';
+        first_invalid_field = null,
+        field_error_speak = [],
+        field_error_message = '<div style="color:#d63638;">' + MultipleAuthorsStrings.isRequiredWarning + '</div><ul>';
 
         $.each($('form#edittag tr.form-field.required-tab'), function (i, field) {
             field_object = $(this).find('td input');
@@ -1062,6 +1143,11 @@ jQuery(document).ready(function ($) {
                 field_label = field_object.closest('tr').addClass('form-invalid').find('label').html();
                 field_error_count = 1;
                 field_error_message += '<li>' + field_label + ' ' + MultipleAuthorsStrings.isRequired + ' <span class="required">*</span></li>';
+                field_object.attr('aria-invalid', 'true');
+                if (first_invalid_field === null) {
+                    first_invalid_field = field_object.first();
+                }
+                field_error_speak.push($('<div>').html(field_label).find('.required').remove().end().text().trim() + ' ' + MultipleAuthorsStrings.isRequired);
             }
         });
         field_error_message += '</ul>';
@@ -1069,6 +1155,13 @@ jQuery(document).ready(function ($) {
         if (field_error_count > 0) {
             $('.ppma-thickbox-modal-content').html(field_error_message);
             $('.ppma-required-field-thickbox-botton').trigger('click');
+            if (window.wp && wp.a11y) {
+                wp.a11y.speak($('<div>').html(MultipleAuthorsStrings.isRequiredWarning).text() + ' ' + field_error_speak.join(', '), 'assertive');
+            }
+            //move focus to the first invalid field once the modal is closed
+            $('body').off('thickbox:removed.ppmaValidation').one('thickbox:removed.ppmaValidation', function () {
+                first_invalid_field.trigger('focus');
+            });
           return;
         }
 
@@ -1091,6 +1184,9 @@ jQuery(document).ready(function ($) {
             if (response.status === 'error') {
                 $('.edit-tag-actions').after('<div class="author-response-notice notice notice-error" style="margin-top: 10px;"><p> ' + response.content + ' </p></div>');
                 $('.author-loading-spinner').removeClass('is-active');
+                if (window.wp && wp.a11y) {
+                    wp.a11y.speak($('.author-response-notice').text().trim(), 'assertive');
+                }
             } else {
                 $form.unbind('submit').submit();
             }
@@ -1098,12 +1194,19 @@ jQuery(document).ready(function ($) {
 
     });
 
+    //clear invalid state from a required field once it has a value.
+    $(document).on('input change', 'body.taxonomy-author form#edittag tr.form-field.required-tab [aria-invalid="true"]', function () {
+        if (!isEmptyOrSpaces($(this).val())) {
+            $(this).removeAttr('aria-invalid').closest('tr').removeClass('form-invalid');
+        }
+    });
+
     //prevent custon field submission if title is empty.
     $('body.post-type-ppmacf_field form#post').submit(function (event) {
 
         if (isEmptyOrSpaces($('input[name="post_title"]').val())) {
             event.preventDefault();
-            var field_error_message = '<div style="color:red;">' + MultipleAuthorsStrings.isRequiredWarning + '</div><ul>';
+            var field_error_message = '<div style="color:#d63638;">' + MultipleAuthorsStrings.isRequiredWarning + '</div><ul>';
             field_error_message += '<li>' + MultipleAuthorsStrings.fieldTitleRequired + ' <span class="required">*</span></li>';
             field_error_message += '</ul>';
             $('.ppma-thickbox-modal-content').html(field_error_message);
@@ -1155,6 +1258,7 @@ jQuery(document).ready(function ($) {
      * Settings shortcode copy to clipboard
      */
     $(document).on('click', '.ppma-copy-clipboard', function (event) {
+        var copy_button = event.target.closest('.ppma-copy-clipboard');
         //get the text field
         var shortcode_input = event.target.closest('.ppma-settings-shortcodes-shortcode').querySelector('.shortcode-field');
         //select the text field
@@ -1163,21 +1267,23 @@ jQuery(document).ready(function ($) {
         //copy the text inside the text field
         navigator.clipboard.writeText(shortcode_input.value);
         //update tooltip notification
-        event.target.closest('.ppma-settings-shortcodes-shortcode')
-            .querySelector('.ppma-copy-clipboard span')
-            .innerHTML = event.target.closest('.ppma-settings-shortcodes-shortcode').querySelector('.ppma-copy-clipboard span')
-                .getAttribute('data-copied');
+        var copy_message = copy_button.querySelector('span');
+        copy_message.innerHTML = copy_message.getAttribute('data-copied');
+        copy_button.setAttribute('aria-label', copy_message.getAttribute('data-copied'));
+        if (window.wp && wp.a11y) {
+            wp.a11y.speak(copy_message.getAttribute('data-copied'), 'polite');
+        }
     });
 
     /**
      * Copy to clipboard copied text change
      */
     $(document).on('mouseleave', '.ppma-copy-clipboard', function (event) {
+        var copy_button = event.target.closest('.ppma-copy-clipboard');
         //update tooltip text
-        event.target.closest('.ppma-settings-shortcodes-shortcode')
-            .querySelector('.ppma-copy-clipboard span')
-            .innerHTML = event.target.closest('.ppma-settings-shortcodes-shortcode').querySelector('.ppma-copy-clipboard span')
-                .getAttribute('data-copy');
+        var copy_message = copy_button.querySelector('span');
+        copy_message.innerHTML = copy_message.getAttribute('data-copy');
+        copy_button.setAttribute('aria-label', copy_message.getAttribute('data-copy'));
     });
 
     /**

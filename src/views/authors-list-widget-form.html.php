@@ -1,3 +1,8 @@
+<?php
+if (!defined('ABSPATH')) {
+    exit;
+}
+?>
 <p>
     <label for="<?php echo esc_attr($context['ids']['title']); ?>"><?php echo esc_html($context['labels']['title']); ?></label>
     <input class="widefat" id="<?php echo esc_attr($context['ids']['title']); ?>" name="<?php echo esc_attr($context['names']['title']); ?>" type="text"
@@ -59,6 +64,12 @@
     <label for="<?php echo esc_attr($context['ids']['limit_per_page']); ?>"><?php echo esc_html($context['labels']['limit_per_page']); ?></label>
     <input class="widefat" id="<?php echo esc_attr($context['ids']['limit_per_page']); ?>" name="<?php echo esc_attr($context['names']['limit_per_page']); ?>" type="number"
            value="<?php echo esc_attr($context['values']['limit_per_page']); ?>">
+</p>
+
+<p>
+    <label for="<?php echo esc_attr($context['ids']['layout_columns']); ?>"><?php echo esc_html($context['labels']['layout_columns']); ?></label>
+    <input class="widefat" id="<?php echo esc_attr($context['ids']['layout_columns']); ?>" name="<?php echo esc_attr($context['names']['layout_columns']); ?>" type="number"
+           min="1" max="6" value="<?php echo esc_attr($context['values']['layout_columns']); ?>">
 </p>
 
 <p>

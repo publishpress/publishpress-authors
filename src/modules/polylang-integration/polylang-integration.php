@@ -25,6 +25,9 @@ use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 if (!class_exists('MA_Polylang_Integration')) {
     /**

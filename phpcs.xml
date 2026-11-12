@@ -38,4 +38,6 @@
     </rule>
 <!--    <rule ref="WordPress-VIP-Go"/>-->
 <!--    <rule ref="VariableAnalysis"/>-->
+    <exclude-pattern>/\.web/</exclude-pattern>
+    <exclude-pattern>/\.ddev/</exclude-pattern>
 </ruleset>

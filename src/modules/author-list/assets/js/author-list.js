@@ -3,6 +3,8 @@
 
     jQuery(document).ready(function ($) {
         var chosenI18n = typeof authorList !== 'undefined' && authorList.chosen_i18n ? authorList.chosen_i18n : {};
+        var displayFieldDefaults = typeof authorList !== 'undefined' && authorList.displayFieldDefaults ? authorList.displayFieldDefaults : {};
+        var displayFieldsTouched = false;
 
         if ($(".chosen-select").length > 0) {
             $(".chosen-select").chosen({
@@ -14,27 +16,23 @@
         /**
          * Update static shortcode on input change
          */
-        $(document).on('input', '.author-list-tab-content .input input, .author-list-tab-content .input select', function (event) {
-            $('.author-list-wrap .shortcode-textarea.static').val(getShortCodes());
-
-            if ($(this).attr('id') == 'layout') {
-                if ($(this).val() == 'authors_index') {
-                    $('.ppma-author-list-editor-tab-content.ppma-editor-group_by').show();
-                } else {
-                    $('.ppma-author-list-editor-tab-content.ppma-editor-group_by').hide();
-                }
-                if ($(this).val() == 'authors_recent') {
-                    $('.ppma-author-list-editor-tab-content.ppma-editor-featured_image_size').show();
-                } else {
-                    $('.ppma-author-list-editor-tab-content.ppma-editor-featured_image_size').hide();
-                }
+        $(document).on('input change', '.author-list-tab-content .input input, .author-list-tab-content .input select', function (event) {
+            if ($(this).attr('id') === 'display_fields') {
+                displayFieldsTouched = true;
             }
+
+            if ($(this).attr('id') === 'layout') {
+                updateLayoutFields($(this).val());
+            }
+
+            $('.author-list-wrap .shortcode-textarea.static').val(getShortCodes());
         });
 
         /**
          * Author list editor tab switch
          */
         if ($('.author-list-wrap .shortcode-textarea.static').length) {
+            updateLayoutFields($('.author-list-tab-content .input #layout').val());
             $('.author-list-wrap .shortcode-textarea.static').val(getShortCodes());
         }
         $(document).on('click', '.author-list-tab li', function (event) {
@@ -72,7 +70,7 @@
             }
             // add layout_columns
             var layout_columns = $('.author-list-tab-content .input #layout_columns').val();
-            if (!isEmptyOrSpaces(layout_columns)) {
+            if (!isEmptyOrSpaces(layout_columns) && layout !== 'authors_table') {
                 if (layout === 'authors_recent') {
                     shortcode += ' authors_recent_col="' + layout_columns + '"';
                     // add featured_image_size
@@ -86,8 +84,13 @@
             }
             // add group_by
             var group_by = $('.author-list-tab-content .input #group_by').val();
-            if (!isEmptyOrSpaces(group_by)) {
+            if (layout === 'authors_index' && !isEmptyOrSpaces(group_by)) {
                 shortcode += ' group_by="' + group_by + '"';
+            }
+            // add display fields
+            var display_fields = $('.author-list-tab-content .input #display_fields').val();
+            if ((layout === 'authors_grid' || layout === 'authors_table') && display_fields && display_fields.length > 0) {
+                shortcode += ' display_fields="' + display_fields.join(',') + '"';
             }
             // add user roles, authors, term_id or category_id
             var author_type = $('.author-list-tab-content .input input[name="author_list[author_type]"]:checked').val();
@@ -179,6 +182,53 @@
 
         function isEmptyOrSpaces(str) {
             return !str || str == '' || str === null || str.match(/^ *$/) !== null;
+        }
+
+        function updateLayoutFields(layout) {
+            $('.ppma-author-list-editor-tab-content.ppma-editor-group_by').toggle(layout === 'authors_index');
+            $('.ppma-author-list-editor-tab-content.ppma-editor-featured_image_size').toggle(layout === 'authors_recent');
+            $('.ppma-author-list-editor-tab-content.ppma-editor-layout_columns').toggle(layout !== 'authors_table');
+
+            updateDisplayFieldsForLayout(layout);
+        }
+
+        function updateDisplayFieldsForLayout(layout) {
+            var defaults = displayFieldDefaults[layout];
+            var $displayFields = $('.author-list-tab-content .input #display_fields');
+
+            if (!defaults || !$displayFields.length || displayFieldsTouched) {
+                return;
+            }
+
+            var currentFields = $displayFields.val() || [];
+            var currentIsDefault = currentFields.length === 0;
+
+            $.each(displayFieldDefaults, function (defaultLayout, defaultFields) {
+                if (valuesMatch(currentFields, defaultFields)) {
+                    currentIsDefault = true;
+                }
+            });
+
+            if (currentIsDefault && !valuesMatch(currentFields, defaults)) {
+                $displayFields.val(defaults).trigger('chosen:updated');
+            }
+        }
+
+        function valuesMatch(firstValues, secondValues) {
+            firstValues = firstValues || [];
+            secondValues = secondValues || [];
+
+            if (firstValues.length !== secondValues.length) {
+                return false;
+            }
+
+            for (var i = 0; i < firstValues.length; i++) {
+                if (firstValues[i] !== secondValues[i]) {
+                    return false;
+                }
+            }
+
+            return true;
         }
     });
 

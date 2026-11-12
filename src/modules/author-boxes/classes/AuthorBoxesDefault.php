@@ -220,6 +220,13 @@ class AuthorBoxesDefault
         $editor_data['profile_fields_linkedin_display_icon_background_color'] = '#655997';
         $editor_data['profile_fields_linkedin_color'] = '#ffffff';
         $editor_data['profile_fields_linkedin_display_icon_border_radius'] = 100;
+        // pinterest default
+        $editor_data['profile_fields_pinterest_html_tag'] = 'a';
+        $editor_data['profile_fields_pinterest_display'] = 'icon';
+        $editor_data['profile_fields_pinterest_display_icon'] = '<span class="dashicons dashicons-pinterest"></span>';
+        $editor_data['profile_fields_pinterest_display_icon_background_color'] = '#655997';
+        $editor_data['profile_fields_pinterest_color'] = '#ffffff';
+        $editor_data['profile_fields_pinterest_display_icon_border_radius'] = 100;
         // instagram default
         $editor_data['profile_fields_instagram_html_tag'] = 'a';
         $editor_data['profile_fields_instagram_display'] = 'icon';
@@ -334,7 +341,7 @@ class AuthorBoxesDefault
         // hide non essential author fields
         $profile_fields   = apply_filters('multiple_authors_author_fields', [], false);
         foreach ($profile_fields as $key => $data) {
-            if (!in_array($key, ['user_email', 'user_url', 'tiktok', 'youtube', 'linkedin', 'instagram', 'twitter', 'x', 'facebook', 'job_title'])) {
+            if (!in_array($key, ['user_email', 'user_url', 'tiktok', 'youtube', 'linkedin', 'pinterest', 'instagram', 'twitter', 'x', 'facebook', 'job_title'])) {
                 $editor_data['profile_fields_hide_' . $key] = 1;
             }
         }
@@ -621,11 +628,12 @@ class AuthorBoxesDefault
         $editor_data['box_tab_custom_wrapper_class'] = 'pp-multiple-authors-layout-simple_list';
         //avatar default
         $editor_data['avatar_show'] = 1;
-        $editor_data['avatar_size'] = 35;
+        $editor_data['avatar_size'] = 100;
         $editor_data['avatar_border_radius'] = 0;
         //name default
         $editor_data['name_show'] = 1;
         $editor_data['name_disable_link'] = 0;
+        $editor_data['name_style'] = '';
         $editor_data['name_html_tag'] = 'div';
         //bio default
         $editor_data['author_bio_html_tag'] = 'div';
@@ -648,6 +656,8 @@ class AuthorBoxesDefault
         $editor_data['author_recent_posts_title_border_bottom_style'] = 'dotted';
         $editor_data['author_recent_posts_alignment'] = 'left';
         //box layout default
+        $editor_data['box_layout_margin_top'] = 15;
+        $editor_data['box_layout_margin_bottom'] = 15;
         $editor_data['box_layout_border_style'] = 'none';
         $editor_data['box_layout_border_color'] = '#999999';
         $editor_data['box_layout_shadow_horizontal_offset'] = 10;
@@ -699,7 +709,15 @@ class AuthorBoxesDefault
      */
     public static function addEditorDataDefaultValues($editor_data) {
         $profile_fields   = apply_filters('multiple_authors_author_fields', [], false);
-        $social_fields   = ['facebook', 'twitter', 'x', 'instagram', 'linkedin', 'youtube', 'user_url', 'user_email', 'tiktok'];
+        $social_fields   = ['facebook', 'twitter', 'x', 'instagram', 'linkedin', 'pinterest', 'youtube', 'user_url', 'user_email', 'tiktok'];
+
+        if (!isset($editor_data['display_name_source'])) {
+            $editor_data['display_name_source'] = 'display_name';
+        }
+
+        if (!isset($editor_data['author_recent_posts_icon'])) {
+            $editor_data['author_recent_posts_icon'] = '<span class="dashicons dashicons-media-text"></span>';
+        }
 
         foreach ($profile_fields as $key => $data) {
             if ($data['type'] === 'url' && !in_array($key, $social_fields)) {

@@ -24,6 +24,10 @@
 use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Wpengine_Integration')) {
     /**
      * class MA_Wpengine_Integration

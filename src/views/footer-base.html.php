@@ -1,4 +1,9 @@
-<?php 
+<?php
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 $rating_star = '';
 $rating_star .= '<span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span>';
 $rating_star .= '<span class="dashicons dashicons-star-filled"></span><span class="dashicons dashicons-star-filled"></span>';
@@ -33,7 +38,7 @@ $rating_star .= '<span class="dashicons dashicons-star-filled"></span>';
     </nav>
     <div class="ppma-pressshack-logo">
         <a href="//publishpress.com" target="_blank" rel="noopener noreferrer">
-            <img src="<?php echo esc_attr($context['plugin_url']); ?>src/assets/img/publishpress-logo.png">
+            <img src="<?php echo esc_attr($context['plugin_url']); ?>src/assets/img/publishpress-logo.png" alt="<?php echo esc_attr($context['plugin_name']); ?>">
         </a>
     </div>
 </footer>

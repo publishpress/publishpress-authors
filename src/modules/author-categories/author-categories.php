@@ -106,6 +106,63 @@ class MA_Author_Categories extends Module
         add_filter('removable_query_args', [$this, 'removableQueryArgs']);
         add_action('delete_post', [$this, 'deleteAuthorCategoryRelation']);
         add_action('publishpress_author_categories_flush_cache', [$this, 'flush_cache'], 15);
+        add_action('wp_initialize_site', [$this, 'createTablesForNewNetworkSite'], 100);
+    }
+
+    /**
+     * Create the plugin's custom tables for a newly created Multisite sub-site.
+     *
+     * On Multisite the custom tables are created per-site by the installer, but a
+     * newly created sub-site never runs that installer, so its author-categories
+     * tables are missing and any query against them fails. This hooks
+     * wp_initialize_site (WP 5.1+) to run the install tasks on the new site when
+     * the plugin is network-active.
+     *
+     * @param \WP_Site $new_site The new site object.
+     *
+     * @return void
+     */
+    public function createTablesForNewNetworkSite($new_site)
+    {
+        if (!is_multisite() || !is_a($new_site, 'WP_Site')) {
+            return;
+        }
+
+        // Only act when PublishPress Authors is network-active; otherwise the
+        // new sub-site is not running this plugin and should not get its tables.
+        if (!$this->isPluginActiveForNetwork()) {
+            return;
+        }
+
+        switch_to_blog((int) $new_site->blog_id);
+        $this->runInstallTasks(PP_AUTHORS_VERSION);
+        restore_current_blog();
+    }
+
+    /**
+     * Check if PublishPress Authors free or Pro is network-active.
+     *
+     * @return bool
+     */
+    private function isPluginActiveForNetwork()
+    {
+        if (!function_exists('is_plugin_active_for_network')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        $plugin_files = [PP_AUTHORS_FILE];
+
+        if (defined('PP_AUTHORS_PRO_FILE')) {
+            $plugin_files[] = PP_AUTHORS_PRO_FILE;
+        }
+
+        foreach ($plugin_files as $plugin_file) {
+            if (is_plugin_active_for_network($plugin_file)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -189,7 +246,15 @@ class MA_Author_Categories extends Module
      * Flush author category cache
      */
     public function flush_cache($category_id) {
-        wp_cache_flush_group('author_categories_results_cache');
+        $flush_group = 'wp_cache_flush_group';
+
+        if (function_exists($flush_group)) {
+            $flush_group('author_categories_results_cache');
+
+            return;
+        }
+
+        wp_cache_flush();
     }
 
     /**
@@ -443,7 +508,10 @@ class MA_Author_Categories extends Module
      *
      * @return array|bool
      */
-    private function addAuthorCategory($insert_args) {
+    public function addAuthorCategory($insert_args) {
+        if (!current_user_can(apply_filters('pp_multiple_authors_manage_categories_cap', 'ppma_manage_author_categories'))) {
+            return false;
+        }
         global $wpdb;
 
         $table_name = AuthorCategoriesSchema::tableName();
@@ -457,10 +525,8 @@ class MA_Author_Categories extends Module
         // Check if the slug already exists
         if (isset($insert_args['slug'])) {
             $slug = $insert_args['slug'];
-            $existing_id = $wpdb->get_var($wpdb->prepare(
-                "SELECT id FROM $table_name WHERE slug = %s",
-                $slug
-            ));
+            // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name is generated internally by AuthorCategoriesSchema.
+            $existing_id = $wpdb->get_var($wpdb->prepare("SELECT id FROM {$table_name} WHERE slug = %s", $slug));
 
             if ($existing_id) {
                 return get_ppma_author_categories(['id' => $existing_id]);
@@ -495,7 +561,7 @@ class MA_Author_Categories extends Module
      *
      * @return array|bool
      */
-    private function editAuthorCategory($edit_args, $id) {
+    public function editAuthorCategory($edit_args, $id) {
         global $wpdb;
 
         if (!current_user_can(apply_filters('pp_multiple_authors_manage_categories_cap', 'ppma_manage_author_categories'))) {
@@ -527,19 +593,52 @@ class MA_Author_Categories extends Module
         return get_ppma_author_categories(['id' => $id]);
     }
 
+    /** Shared native deletion service for the table UI and authorized integrations. @since 4.18.0 */
+    public function deleteAuthorCategory($category_id)
+    {
+        global $wpdb;
+        if (!current_user_can(apply_filters('pp_multiple_authors_manage_categories_cap', 'ppma_manage_author_categories'))) {
+            return false;
+        }
+        $deleted = $wpdb->delete(AuthorCategoriesSchema::tableName(), ['id' => (int) $category_id], ['%d']);
+        if ($deleted) {
+            $wpdb->delete(AuthorCategoriesSchema::metaTableName(), ['category_id' => (int) $category_id], ['%d']);
+            do_action('publishpress_author_categories_flush_cache', $category_id);
+        }
+        return $deleted;
+    }
+
+    /** Check native post relationships and default profile categories. @since 4.18.0 */
+    public function categoryHasReferences($category_id)
+    {
+        global $wpdb;
+        $table = AuthorCategoriesSchema::relationTableName();
+        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Native internal table name.
+        $relationships = $wpdb->get_var($wpdb->prepare("SELECT id FROM {$table} WHERE category_id = %d LIMIT 1", $category_id));
+        $defaults = get_terms(['taxonomy' => 'author', 'hide_empty' => false, 'fields' => 'ids', 'number' => 1,
+            'meta_key' => 'author_category', 'meta_value' => (string) $category_id]);
+        return $relationships || (is_array($defaults) && !empty($defaults));
+    }
+
     public function updateAuthorCategoryMeta($category_id, $meta_key, $meta_value) {
         global $wpdb;
 
         $table_name     = AuthorCategoriesSchema::metaTableName();
 
         if (empty($meta_value)) {
-            $result = $wpdb->query(
-                $wpdb->prepare(
-                    "DELETE FROM {$table_name} WHERE meta_key = %s AND category_id = %d",
-                    $meta_key, $category_id
-                )
+            $result = $wpdb->delete(
+                $table_name,
+                [
+                    'meta_key'    => $meta_key,
+                    'category_id' => (int) $category_id,
+                ],
+                [
+                    '%s',
+                    '%d',
+                ]
             );
         } else {
+            // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name is generated internally by AuthorCategoriesSchema.
             $meta_ids = $wpdb->get_col($wpdb->prepare("SELECT meta_id FROM $table_name WHERE meta_key = %s AND category_id = %d", $meta_key, $category_id));
 
             if (empty($meta_ids)) {
@@ -644,9 +743,9 @@ class MA_Author_Categories extends Module
                                     <select
                                         style="width: 95%;"
                                         class="authors-select2-default-select"
+                                        id="category-post-types"
                                         <?php if ($proActive) : ?>
                                         name="category-post-types[]"
-                                        id="category-post-types"
                                         <?php endif; ?>
                                         data-placeholder="<?php esc_attr_e('Select Post Type...', 'publishpress-authors'); ?>"
                                         multiple

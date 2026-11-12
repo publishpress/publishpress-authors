@@ -164,9 +164,10 @@ class Utils
      * @param array $authors Bylines to set on the post.
      * @param bool $syncPostAuthor
      * @param int $fallbackUserId User ID for using as the author in case no author or if only guests are selected
-     * @param array $categories for authors
+     * @param array $author_categories Categories for authors
+     * @param bool $replaceCategories Replace all category relationships, including explicit empty input.
      */
-    public static function set_post_authors($postId, $authors, $syncPostAuthor = false, $fallbackUserId = null, $author_categories = [])
+    public static function set_post_authors($postId, $authors, $syncPostAuthor = false, $fallbackUserId = null, $author_categories = [], $replaceCategories = false)
     {
         $post_type = get_post_field('post_type', $postId);
         $enabledPostTypes = Utils::get_enabled_post_types();
@@ -192,7 +193,7 @@ class Utils
         }
 
         $authors = wp_list_pluck($authors, 'term_id');
-        self::updatePostAuthorCategory($postId, $authors, $author_categories);
+        self::updatePostAuthorCategory($postId, $authors, $author_categories, $replaceCategories);
         wp_set_object_terms($postId, $authors, 'author');
     }
 
@@ -205,7 +206,7 @@ class Utils
      *
      * @return void
      */
-    public static function updatePostAuthorCategory($post_id, $authors, $post_author_categories) {
+    public static function updatePostAuthorCategory($post_id, $authors, $post_author_categories, $replace = false) {
         global $wpdb;
 
         if (!current_user_can(get_taxonomy('author')->cap->assign_terms)) {
@@ -213,6 +214,9 @@ class Utils
         }
 
         $table_name = $wpdb->prefix . 'ppma_author_relationships';
+        if ($replace) {
+            $wpdb->delete($table_name, ['post_id' => (int) $post_id], ['%d']);
+        }
         $authors    = array_values(array_unique(array_map('intval', $authors)));
 
         if (empty($authors)) {
@@ -222,6 +226,7 @@ class Utils
         }
 
         if (empty(array_filter(array_values($post_author_categories)))) {
+            self::deletePostAuthorCategoryRelationshipsForRemovedAuthors($post_id, $authors);
             return;
         }
 
@@ -256,10 +261,13 @@ class Utils
 
         if (!$allow_multiple_categories) {
             $existing_relations = $wpdb->get_results(
+                // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name is generated internally.
                 $wpdb->prepare(
                     "SELECT category_id, author_term_id FROM {$table_name} WHERE post_id = %d ORDER BY id ASC",
                     $post_id
-                ),
+                )
+                // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                ,
                 ARRAY_A
             );
 
@@ -301,6 +309,11 @@ class Utils
         $wpdb->delete($table_name, ['post_id' => $post_id], ['%d']);
 
         if (!empty($authors)) {
+            // Collect every relationship row first, then write them in a single
+            // multi-row INSERT instead of one query per row (avoids N+1 on save).
+            $row_placeholders = [];
+            $row_values       = [];
+
             foreach ($authors as $author) {
                 if (isset($author_category_map[$author])) {
                     foreach ($author_category_map[$author] as $category_id) {
@@ -308,25 +321,62 @@ class Utils
                             continue;
                         }
 
-                        $wpdb->insert(
-                            $table_name,
-                            [
-                                'category_id'       => $all_author_categories[$category_id]['id'],
-                                'category_slug'     => $all_author_categories[$category_id]['slug'],
-                                'post_id'           => $post_id,
-                                'author_term_id'    => $author,
-                            ],
-                            [
-                                '%d',
-                                '%s',
-                                '%d',
-                                '%d',
-                            ]
-                        );
+                        $row_placeholders[] = '(%d, %s, %d, %d)';
+                        $row_values[] = (int) $all_author_categories[$category_id]['id'];
+                        $row_values[] = $all_author_categories[$category_id]['slug'];
+                        $row_values[] = (int) $post_id;
+                        $row_values[] = (int) $author;
                     }
                 }
             }
+
+            if (!empty($row_placeholders)) {
+                $sql = "INSERT INTO {$table_name} (category_id, category_slug, post_id, author_term_id) VALUES "
+                    . implode(', ', $row_placeholders);
+
+                // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+                $wpdb->query($wpdb->prepare($sql, $row_values));
+            }
         }
+        do_action('publishpress_authors_flush_cache_for_post', $post_id);
+    }
+
+    /**
+     * Delete author category relationships for authors no longer assigned to a post.
+     *
+     * @param int $post_id Post ID.
+     * @param array $authors Author term IDs still assigned to the post.
+     *
+     * @return void
+     */
+    private static function deletePostAuthorCategoryRelationshipsForRemovedAuthors($post_id, $authors)
+    {
+        global $wpdb;
+
+        $table_name = $wpdb->prefix . 'ppma_author_relationships';
+        $post_id    = (int) $post_id;
+        $authors    = array_values(array_unique(array_map('intval', (array) $authors)));
+
+        if (empty($post_id) || empty($authors)) {
+            return;
+        }
+
+        if ($wpdb->get_var($wpdb->prepare('SHOW TABLES LIKE %s', $table_name)) !== $table_name) {
+            return;
+        }
+
+        $placeholders = implode(', ', array_fill(0, count($authors), '%d'));
+        $query_args   = array_merge([$post_id], $authors);
+
+        $wpdb->query(
+            // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name and placeholders are generated internally from integer IDs.
+            $wpdb->prepare(
+                "DELETE FROM {$table_name} WHERE post_id = %d AND author_term_id NOT IN ({$placeholders})",
+                $query_args
+            )
+            // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        );
+
         do_action('publishpress_authors_flush_cache_for_post', $post_id);
     }
 
@@ -788,14 +838,29 @@ class Utils
 
     public static function isElementorInstalled()
     {
-        // For now we only integrate with the Pro version because the Free one doesn't have the posts modules.
+        // Free Elementor is enough for the Authors List widget. The Pro-only
+        // skins are conditionally registered inside the integration module.
 
-        if (! defined('ELEMENTOR_PRO_VERSION')) {
+        if (! defined('ELEMENTOR_VERSION')) {
             return false;
         }
 
-        if (version_compare(ELEMENTOR_PRO_VERSION, '2.9.3', '<')) {
+        if (version_compare(ELEMENTOR_VERSION, '2.9.3', '<')) {
             return false;
+        }
+
+        if (! class_exists('\\Elementor\\Widget_Base')) {
+            return false;
+        }
+
+        // The posts/archive skins require Elementor Pro. Without it we still
+        // load the module (for the free widgets) but skip the Pro skins.
+        if (! defined('ELEMENTOR_PRO_VERSION')) {
+            return true;
+        }
+
+        if (version_compare(ELEMENTOR_PRO_VERSION, '2.9.3', '<')) {
+            return true;
         }
 
         $abort = false;
@@ -1115,9 +1180,10 @@ class Utils
     {
 
         $block_theme_header = '';
+        $get_block_template = 'get_block_template';
 
-        if (self::ppma_is_block_theme()) {
-            $header_template_part = get_block_template(get_stylesheet() . '//header', 'wp_template_part');
+        if (self::ppma_is_block_theme() && function_exists($get_block_template)) {
+            $header_template_part = $get_block_template(get_stylesheet() . '//header', 'wp_template_part');
             if ($header_template_part && isset($header_template_part->content)) {
                 $block_theme_header = do_blocks($header_template_part->content);
             }
@@ -1135,9 +1201,10 @@ class Utils
     {
 
         $block_theme_footer = '';
+        $get_block_template = 'get_block_template';
 
-        if (self::ppma_is_block_theme()) {
-            $footer_template_part = get_block_template(get_stylesheet() . '//footer', 'wp_template_part');
+        if (self::ppma_is_block_theme() && function_exists($get_block_template)) {
+            $footer_template_part = $get_block_template(get_stylesheet() . '//footer', 'wp_template_part');
             if ($footer_template_part && isset($footer_template_part->content)) {
                 $block_theme_footer = do_blocks($footer_template_part->content);
             }
@@ -1282,7 +1349,9 @@ class Utils
         </div>
         <a
             href="#TB_inline?&width=<?php echo esc_attr($width); ?>&height=<?php echo esc_attr($height); ?>&inlineId=<?php echo esc_attr($button_id); ?>"
-            class="<?php echo esc_attr($button_class); ?> thickbox">
+            class="<?php echo esc_attr($button_class); ?> thickbox"
+            aria-hidden="true"
+            tabindex="-1">
         </a>
         <?php
     }
@@ -1379,17 +1448,26 @@ class Utils
         global $wpdb;
 
         if ( is_array( $post_type ) ) {
-            $post_type           = esc_sql( $post_type );
-            $post_type_in_string = "'" . implode( "','", $post_type ) . "'";
-            $sql                 = $wpdb->prepare(
+            $post_type = array_values(array_filter(array_map('sanitize_key', $post_type)));
+
+            if (empty($post_type)) {
+                return null;
+            }
+
+            $post_type_placeholders = implode(', ', array_fill(0, count($post_type), '%s'));
+            $query_args             = array_merge([$page_title], $post_type);
+
+            // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Post type placeholders are generated from a sanitized array.
+            $sql                    = $wpdb->prepare(
                 "
                 SELECT ID
                 FROM $wpdb->posts
                 WHERE post_title = %s
-                AND post_type IN ($post_type_in_string)
+                AND post_type IN ($post_type_placeholders)
             ",
-                $page_title
+                $query_args
             );
+            // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         } else {
             $sql = $wpdb->prepare(
                 "
@@ -1403,6 +1481,7 @@ class Utils
             );
         }
 
+        // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared -- Query is prepared above.
         $page = $wpdb->get_var( $sql );
 
         if ( $page ) {
@@ -1467,7 +1546,7 @@ class Utils
         <select name="name" id="name" aria-required="true" aria-describedby="name-description">
             <?php foreach ( $public_display as $id => $item ) : ?>
                 <?php if (!empty($item )) : ?>
-                    <option <?php selected( $profile_user->display_name, $item ); ?>><?php echo $item; ?></option>
+                    <option <?php selected( $profile_user->display_name, $item ); ?>><?php echo esc_html($item); ?></option>
                 <?php endif; ?>
             <?php endforeach; ?>
         </select>

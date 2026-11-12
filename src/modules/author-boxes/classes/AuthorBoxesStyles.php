@@ -497,7 +497,12 @@ class AuthorBoxesStyles
     }' . "\n" . "\n";
         }
         if (!empty($args['author_recent_posts_icon_color']['value'])) {
-            $custom_styles .= '    .pp-multiple-authors-boxes-wrapper.'.$args['additional_class'].' .pp-author-boxes-recent-posts-item span.dashicons {
+            $custom_styles .= '    .pp-multiple-authors-boxes-wrapper.'.$args['additional_class'].' .pp-author-boxes-recent-posts-item span.dashicons,
+    .pp-multiple-authors-boxes-wrapper.'.$args['additional_class'].' .pp-author-boxes-recent-posts-item i.dashicons,
+    .pp-multiple-authors-boxes-wrapper.'.$args['additional_class'].' .pp-author-boxes-recent-posts-item i.fa,
+    .pp-multiple-authors-boxes-wrapper.'.$args['additional_class'].' .pp-author-boxes-recent-posts-item i.fas,
+    .pp-multiple-authors-boxes-wrapper.'.$args['additional_class'].' .pp-author-boxes-recent-posts-item i.far,
+    .pp-multiple-authors-boxes-wrapper.'.$args['additional_class'].' .pp-author-boxes-recent-posts-item i.fab {
         color: '. $args['author_recent_posts_icon_color']['value'] .' !important; 
     }' . "\n" . "\n";
         }

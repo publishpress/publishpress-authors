@@ -1,5 +1,6 @@
 <?php namespace core\Classes;
 
+use MultipleAuthorCategories\AuthorCategoriesSchema;
 use MultipleAuthors\Classes\Author_Utils;
 use MultipleAuthors\Classes\Objects\Author;
 use MultipleAuthors\Classes\Utils;
@@ -519,5 +520,74 @@ class Author_UtilsCest
         $I->assertEquals($user->display_name, $term->name);
         $I->assertEquals($user->user_nicename, $term->slug);
         $I->assertEquals($originalPostAuthorUserId, $termUserId);
+    }
+
+    public function updatePostAuthorCategoryShouldRemoveRelationshipsForRemovedAuthorsWithoutCategoryPayload(
+        WpunitTester $I
+    ) {
+        global $wpdb;
+
+        AuthorCategoriesSchema::createTableIfNotExists();
+        AuthorCategoriesSchema::createRelationTableIfNotExists();
+
+        $currentUserId = $I->factory('a new admin user')->user->create(['role' => 'administrator']);
+        wp_set_current_user($currentUserId);
+
+        $authors = $I->haveAuthorsMappedToUsers(2);
+        $postId  = $I->haveAPost();
+
+        $categoriesTable   = AuthorCategoriesSchema::tableName();
+        $relationshipTable = AuthorCategoriesSchema::relationTableName();
+        $categorySlug      = 'reviewer-' . wp_rand(1, PHP_INT_MAX);
+
+        $wpdb->insert(
+            $categoriesTable,
+            [
+                'category_name'   => 'Reviewer',
+                'plural_name'     => 'Reviewers',
+                'slug'            => $categorySlug,
+                'category_order'  => 1,
+                'category_status' => 1,
+                'created_at'      => current_time('mysql'),
+                'meta_data'       => '',
+            ],
+            [
+                '%s',
+                '%s',
+                '%s',
+                '%d',
+                '%d',
+                '%s',
+                '%s',
+            ]
+        );
+
+        $categoryId = (int) $wpdb->insert_id;
+
+        wp_cache_flush();
+
+        Utils::set_post_authors(
+            $postId,
+            $authors,
+            false,
+            null,
+            [
+                $authors[0]->term_id => [$categoryId],
+                $authors[1]->term_id => [$categoryId],
+            ]
+        );
+
+        Utils::set_post_authors($postId, [$authors[1]], false, null, []);
+
+        $relationships = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT author_term_id FROM {$relationshipTable} WHERE post_id = %d ORDER BY id ASC",
+                $postId
+            ),
+            ARRAY_A
+        );
+
+        $I->assertCount(1, $relationships);
+        $I->assertEquals($authors[1]->term_id, (int) $relationships[0]['author_term_id']);
     }
 }

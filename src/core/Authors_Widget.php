@@ -111,6 +111,7 @@ class Authors_Widget extends WP_Widget
                 'authors'        => '',
                 'order'          => 'asc',
                 'orderby'        => 'name',
+                'layout_columns' => 3,
                 'search_field'    => 'first_name,last_name'
             )
         );
@@ -123,6 +124,8 @@ class Authors_Widget extends WP_Widget
         $authors        = esc_html($instance['authors']);
         $order          = esc_html($instance['order']);
         $orderBy        = esc_html($instance['orderby']);
+        $layoutColumns  = isset($instance['layout_columns']) ? (int)$instance['layout_columns'] : 3;
+        $layoutColumns  = max(1, min(6, $layoutColumns));
         $search_field    = esc_html($instance['search_field']);
 
         $context   = array(
@@ -138,6 +141,7 @@ class Authors_Widget extends WP_Widget
                 'authors'        => esc_html__('Authors', 'publishpress-authors'),
                 'order'          => esc_html__('Order', 'publishpress-authors'),
                 'orderby'        => esc_html__('Order by', 'publishpress-authors'),
+                'layout_columns' => esc_html__('Grid Columns', 'publishpress-authors'),
                 'search_field'    => esc_html__('Author\'s search box field (Seperate multiple fields by comma(\',\'))', 'publishpress-authors')
             ),
             'ids'     => array(
@@ -149,6 +153,7 @@ class Authors_Widget extends WP_Widget
                 'limit_per_page' => esc_html($this->get_field_id('limit_per_page')),
                 'authors'        => esc_html($this->get_field_id('authors')),
                 'order'          => esc_html($this->get_field_id('order')),
+                'layout_columns' => esc_html($this->get_field_id('layout_columns')),
 				'nonce'          => esc_html($this->get_field_id( 'nonce' )),
                 'orderby'        => esc_html($this->get_field_id('orderby'))
             ),
@@ -161,6 +166,7 @@ class Authors_Widget extends WP_Widget
                 'limit_per_page' => esc_html($this->get_field_name('limit_per_page')),
                 'authors'        => esc_html($this->get_field_name('authors')),
                 'order'          => esc_html($this->get_field_name('order')),
+                'layout_columns' => esc_html($this->get_field_name('layout_columns')),
 				'nonce'          => esc_html($this->get_field_name( 'nonce' )),
                 'orderby'        => esc_html($this->get_field_name('orderby'))
             ),
@@ -173,6 +179,7 @@ class Authors_Widget extends WP_Widget
                 'limit_per_page' => $limitPerPage,
                 'authors'        => $authors,
                 'order'          => $order,
+                'layout_columns' => $layoutColumns,
                 'nonce'          => wp_create_nonce('pp_multiple_authors_widget_form'),
                 'orderby'        => $orderBy
             ),
@@ -217,6 +224,7 @@ class Authors_Widget extends WP_Widget
         $instance['authors']        = isset($new_instance['authors']) ? sanitize_text_field($new_instance['authors']) : '';
         $instance['order']          = isset($new_instance['order']) ? sanitize_text_field($new_instance['order']) : '';
         $instance['orderby']        = isset($new_instance['orderby']) ? sanitize_text_field($new_instance['orderby']) : '';
+        $instance['layout_columns'] = isset($new_instance['layout_columns']) ? max(1, min(6, (int)$new_instance['layout_columns'])) : 3;
         $instance['show_empty']     = isset($new_instance['show_empty']) ? (bool)$new_instance['show_empty'] : false;
         $instance['search_field']    = isset($new_instance['search_field']) ? sanitize_text_field($new_instance['search_field']) : '';
         $instance['search_box']     = isset($new_instance['search_box']) ? (bool)$new_instance['search_box'] : false;
@@ -229,6 +237,35 @@ class Authors_Widget extends WP_Widget
         return $instance;
     }
 
+
+    /**
+     * Localize the strings used by the authors index AJAX filter script.
+     *
+     * @return void
+     */
+    public static function localize_widget_script()
+    {
+        static $localized = false;
+
+        if ($localized) {
+            return;
+        }
+
+        $localized = true;
+
+        wp_localize_script(
+            'multiple-authors-widget',
+            'ppmaAuthorsIndex',
+            [
+                /* translators: %s: the letter selected in the authors index */
+                'showingLetter' => esc_html__('Showing authors starting with %s', 'publishpress-authors'),
+                'showingAll'    => esc_html__('Showing all authors', 'publishpress-authors'),
+                'noResults'     => esc_html__('No authors found.', 'publishpress-authors'),
+                'loading'       => esc_html__('Loading authors...', 'publishpress-authors'),
+                'loadError'     => esc_html__('Unable to load authors.', 'publishpress-authors'),
+            ]
+        );
+    }
 
     /**
      * Get HTML markdown
@@ -274,7 +311,7 @@ class Authors_Widget extends WP_Widget
                 $column_width = ((100)/(int)$instance['layout_columns']);
                 $wrapper_class_selector = '';
                 if (!is_null($layout)) {
-                    $wrapper_class_selector = '.' . $layout;
+                    $wrapper_class_selector = '.' . sanitize_html_class($layout);
                 }
                 $inline_style .= '@media (min-width: 768px) {
                     .pp-multiple-authors-wrapper'. $wrapper_class_selector .' ul,
@@ -302,6 +339,10 @@ class Authors_Widget extends WP_Widget
             ['jquery'],
             PP_AUTHORS_VERSION
         );
+        self::localize_widget_script();
+
+        $ajax_instance = $instance;
+        unset($ajax_instance['page']);
 
         if (!function_exists('publishpress_authors_get_all_authors')) {
             require_once PP_AUTHORS_BASE_PATH . 'functions/template-tags.php';
@@ -392,6 +433,29 @@ class Authors_Widget extends WP_Widget
             $pagination = false;
         }
 
+        $navigation_results = $authors;
+        if (isset($instance['layout']) && $instance['layout'] === 'authors_index'
+            && (isset($author_results['page']) || !empty($_GET['ppma_author_letter']))) {
+            $navigation_instance = $instance;
+            unset($navigation_instance['page'], $navigation_instance['limit_per_page']);
+            $navigation_instance['skip_alphabet_filter'] = true;
+            $navigation_author_results = publishpress_authors_get_all_authors(
+                ['hide_empty' => !$showEmpty],
+                $navigation_instance
+            );
+            $navigation_results = isset($navigation_author_results['authors'])
+                ? $navigation_author_results['authors'] : $navigation_author_results;
+        }
+
+        $selected_letter = '';
+        if (isset($_GET['ppma_author_letter']) && is_scalar($_GET['ppma_author_letter'])) {
+            $selected_letter = strtolower(
+                publishpress_authors_normalize_character(
+                    sanitize_text_field(wp_unslash($_GET['ppma_author_letter']))
+                )
+            );
+        }
+
         // search options
         $filter_fields = false;
         $allowed_search_field_options = [];
@@ -431,18 +495,22 @@ class Authors_Widget extends WP_Widget
         $search_box_html = '';
         if (isset($instance['search_box']) && $instance['search_box']) {
             $current_url = remove_query_arg(['ppma_page', 'paged', 'seach_query', 'search_field'], $_SERVER['REQUEST_URI']);
+            $search_input_id  = wp_unique_id('authors-search-input-');
+            $search_filter_id = wp_unique_id('authors-search-filter-');
 
             $search_box_html .= '<div class="pp-multiple-authors-searchbox searchbox">';
-            $search_box_html .= '<form action="' . esc_url($current_url) . '" method="GET">';
-            $search_box_html .= '<input class="widefat" id="authors-search-input" name="seach_query" type="search" value="'. esc_attr($search_query) .'" placeholder="'. esc_attr($search_placeholder) .'">';
+            $search_box_html .= '<form action="' . esc_url($current_url) . '" method="GET" role="search" aria-label="' . esc_attr__('Authors', 'publishpress-authors') . '">';
+            $search_box_html .= '<label class="screen-reader-text" for="' . esc_attr($search_input_id) . '">' . esc_html__('Search authors', 'publishpress-authors') . '</label>';
+            $search_box_html .= '<input class="widefat" id="' . esc_attr($search_input_id) . '" name="seach_query" type="search" value="'. esc_attr($search_query) .'" placeholder="'. esc_attr($search_placeholder) .'">';
             if ($filter_fields) {
-                $search_box_html .= '<select id="authors-search-filter" name="search_field">';
+                $search_box_html .= '<label class="screen-reader-text" for="' . esc_attr($search_filter_id) . '">' . esc_html__('Search authors by', 'publishpress-authors') . '</label>';
+                $search_box_html .= '<select id="' . esc_attr($search_filter_id) . '" name="search_field">';
                 foreach ($filter_fields as $option => $label) :
                     $search_box_html .= '<option value="'. esc_attr($option) .'" '. selected($option, $selected_option, false) .'> '. esc_html($label) .' </option>';
                 endforeach;
                 $search_box_html .= '</select>';
             }
-            $search_box_html .= '<input type="submit" class="button search-submit" id="" name="submit" value="'. esc_attr($search_submit) .'"/>';
+            $search_box_html .= '<input type="submit" class="button search-submit" name="submit" value="'. esc_attr($search_submit) .'"/>';
             $search_box_html .= '</form>';
             $search_box_html .= '</div>';
         }
@@ -453,9 +521,14 @@ class Authors_Widget extends WP_Widget
             'title'        => $title,
             'authors'      => $authors,
             'results'      => $authors,
+            'navigation_results' => $navigation_results,
+            'selected_letter' => $selected_letter,
             'pagination'   => $pagination,
             'search_box_html' => $search_box_html,
             'all_text'     => esc_html__('All Authors', 'publishpress-authors'),
+            'ajax_url'     => admin_url('admin-ajax.php'),
+            'ajax_nonce'   => wp_create_nonce('ppma-authors-index'),
+            'ajax_instance' => wp_json_encode($ajax_instance),
             'no_post_text' => esc_html__('No recent posts from this author', 'publishpress-authors'),
             'target'       => $target,
             'item_class'   => 'author url fn',

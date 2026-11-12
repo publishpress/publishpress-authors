@@ -1,5 +1,68 @@
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
+The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
+
+[4.20.0] - [Unreleased]
+
+* Feature: Add private MCP actions for author profiles, post bylines, settings, boxes, lists and categories with native permissions and previews.
+
+[4.18.0] - 26 October, 2026
+
+* Update: Improve accessibility labels in author forms, #2431
+* Update: Add accessible image alternatives for authors, #2432
+* Update: Improve keyboard access to author controls, #2433
+* Fixed: Author metadata for theme bylines, #2470
+* Fixed: Use multisite aware blog name lookup, #2473
+* Fixed: Conflict with the old style Ultimate Member metabox, #2487
+* Fixed: False "changed in another tab" conflicts when enabling Author Box checkboxes, #2490
+* Fixed: Author List shortcode ignoring show_title when list_id is set, #2495
+* Fixed: Add an expiration to the rewrite rule flush transient, #2497
+* Update: Batch author category relationship inserts into a single query, #2498
+* Fixed: Allow administrators to edit author profiles linked to administrator accounts, #2510
+* Fixed: Attempt to read property "display_name" on false, #2513
+* Fixed: Attempt to read property "author_category" on false, #2512
+* Fixed: View is not readable: my-custom-author-box, #2511
+* Fixed: Bio loses <p> tags or reverts to an older version when the linked WP user is updated, #2507
+* Fixed: Escape author names, edit links, and quick-edit data in the admin Authors list.
+* Feature: Add read-only WordPress Abilities API support for author profiles, profile fields, and post authors, #2546
+* Update: Improve accessible labels for front-end author search, #2514
+* Update: Announce admin validation errors, save errors, and copy confirmations to screen readers, #2515
+* Update: Improve visible keyboard focus on admin controls, #2516
+* Update: Make remove-author controls keyboard accessible and easier to target, #2517
+* Update: Preserve Authors Index focus, announce filtered results, and identify the current letter, #2518
+* Update: Improve admin text contrast, #2519
+* Update: Add accessible names to icon-only links and hide decorative icons from screen readers, #2520
+* Update: Improve accessible labels for author search, profile links, author editor fields, and settings, #2521, #2522, #2523
+* Update: Add accessible names and progress values to migration progress bars, #2524
+* Update: Announce migration and author-sync log updates to screen readers, #2525
+* Update: Add custom alternative text and decorative-image options for author avatars, #2541
+* Fixed: Author Boxes incorrectly showing only the first author biography after an upgrade, #2526
+* Fixed: Saved block editor data restoring stale post author selections, #2528
+* Fixed: Skip invalid authors when processing workflow author assignments, #2544
+* Fixed: Treat Authors Data shortcode separators as text and normalize author list and Genesis shortcode formatting.
+
+[4.17.0] - 23 September, 2026
+
+* Fixed: Authors editor sidebar panel fails to load when "Show Author Box selection" is disabled, #2468
+* Fixed: REST authors on multi-post queries, #2475
+* Fixed: Prepared SQL placeholder handling, #2472
+* Fixed: Harden author user writes, #2471
+
+[4.16.0] - 09 September, 2026
+
+* Fixed: block-level HTML stripped from mapped-user Biographical Info on save, #2373
+* Fixed: create author-categories tables for new Multisite sub-sites, #2414
+* Fixed: Removing email in Authors profile deletes the email from the mapped WordPress user account, #2423
+* Fixed: Restrict unauthenticated access to user mapped authors on REST read route, #2417
+* Update: Add Authors Data block, #2413
+* Update: Add Author List block, #2411
+* Update: Sync Author List query with Alphabet filter, #2384
+* Update: Add author box icon and display-name options, #2412
+* Fixed: WordPress 7.1 Visual Revisions compatibility, #2410
+* Fixed: Prevent stale Author Box sessions from overwriting newer layout settings, #2401
+* Fixed: Author Box Layout Settings Lost on Save (Large Field Count), #2393
+* Fixed: Limit Chosen and Select2 assets enqueue to only author pages, #2385
+* Fixed: PHP Deprecated warning — strip_tags(): Passing null to parameter #1 ($string) in Widget.php, #2386
+* Update: Add default Pinterest author field [PRO], #342,
+* Update: Update sidebar link, #2371
 
 [4.15.0] - 04 June, 2026
 

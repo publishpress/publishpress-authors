@@ -1,3 +1,8 @@
+<?php
+if (!defined('ABSPATH')) {
+    exit;
+}
+?>
 <div class="pp-multiple-authors-wrapper pp-multiple-authors-recent alignwide <?php echo esc_attr($context['css_class']); ?> pp-multiple-authors-layout-<?php echo esc_attr($context['layout']); ?>">
     <?php if (!empty($context['search_box_html'])) : ?>
         <?php echo $context['search_box_html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
@@ -24,8 +29,8 @@
                             <?php foreach ($result['recent_posts'] as $post_id => $post) : ?>
                                 <?php if ($post['featuired_image']) : ?>
                                     <div class="ppma-col-5 featured-image-col post-<?php echo esc_attr($post_id); ?>">
-                                        <a href="<?php echo esc_url($post['permalink']); ?>">
-                                            <img src="<?php echo esc_url($post['featuired_image']); ?>">
+                                        <a href="<?php echo esc_url($post['permalink']); ?>" aria-label="<?php echo esc_attr(sprintf(__('View %s', 'publishpress-authors'), $post['post_title'])); ?>">
+                                            <img src="<?php echo esc_url($post['featuired_image']); ?>" alt="<?php echo esc_attr($post['featured_image_alt']); ?>">
                                         </a>
                                     </div>
 

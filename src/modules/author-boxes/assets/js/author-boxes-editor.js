@@ -372,7 +372,11 @@
             //copy original text to clipboard
             navigator.clipboard.writeText(data_input.value);
             //show notification
-            $(this).closest('.input').find(".ppma-editor-copied-to-clipboard").show().delay(2000).fadeOut('slow');
+            var $copied_notice = $(this).closest('.input').find(".ppma-editor-copied-to-clipboard");
+            $copied_notice.show().delay(2000).fadeOut('slow');
+            if (window.wp && wp.a11y) {
+                wp.a11y.speak($copied_notice.text().trim(), 'polite');
+            }
         });
 
         /**
@@ -654,7 +658,8 @@
                 'author_recent_posts_empty_show',
                 'author_recent_posts_limit',
                 'author_recent_posts_orderby',
-                'author_recent_posts_order'
+                'author_recent_posts_order',
+                'author_recent_posts_icon'
             ];
             var name_refresh_trigger = [
                 'name_show',
@@ -663,6 +668,7 @@
                 'name_author_categories_divider',
                 'name_author_categories_position',
                 'display_name_position',
+                'display_name_source',
                 'display_name_prefix',
                 'display_name_suffix'
             ];
@@ -1249,7 +1255,7 @@
                         break;
                     case 'author_recent_posts_icon_color':
                         if (value) {
-                            editor_preview_styles += '.pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item span.dashicons { color: ' + value + ' !important; } ';
+                            editor_preview_styles += '.pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item span.dashicons, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.dashicons, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.fa, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.fas, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.far, .pp-multiple-authors-boxes-wrapper.' + additional_class + '  .pp-author-boxes-recent-posts-item i.fab { color: ' + value + ' !important; } ';
                         }
                         break;
                     //box layout styles
@@ -1451,7 +1457,7 @@
             var new_entry = '<tr class="shortcode-entry">';
             new_entry += '<td class="shortcode">' + escAttr(shortcode) + '</td>';
             new_entry += '<td class="position">' + position.charAt(0).toUpperCase() + position.slice(1) + '</td>';
-            new_entry += '<td class="action"><input name="shortcodes[shortcode][]" id="shortcodes-shortcode" type="hidden" value="' + escAttr(shortcode) + '"><input name="shortcodes[position][]" id="shortcodes-position" type="hidden" value="' + position + '"><span class="delete-shortcode">' + $('.ppma-boxes-shortcodes-wrap .shortcode-entries .add-new-shortcode').attr('data-delete') +'</span></td>';
+            new_entry += '<td class="action"><input name="shortcodes[shortcode][]" id="shortcodes-shortcode" type="hidden" value="' + escAttr(shortcode) + '"><input name="shortcodes[position][]" id="shortcodes-position" type="hidden" value="' + position + '"><button type="button" class="delete-shortcode">' + $('.ppma-boxes-shortcodes-wrap .shortcode-entries .add-new-shortcode').attr('data-delete') +'</button></td>';
             new_entry += '</tr>';
             $('.ppma-boxes-shortcodes-wrap .shortcode-form .shortcodes-shortcode-input').val('');
             $('.ppma-boxes-shortcodes-wrap .shortcode-form').after(new_entry);

@@ -25,7 +25,12 @@ use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthors\Classes\Legacy\Util;
 use MultipleAuthors\Classes\Objects\Author;
 use MultipleAuthors\Classes\Author_Editor;
+use MultipleAuthors\Classes\Author_Utils;
 use MultipleAuthors\Factory;
+
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 if (!class_exists('MA_REST_API')) {
     /**
@@ -149,7 +154,34 @@ if (!class_exists('MA_REST_API')) {
 
         public function checkReadPermissions($request)
         {
-            return true;
+            if (current_user_can('ppma_manage_authors')) {
+                return true;
+            }
+
+            // Allow unauthenticated read only for publicly viewable authors.
+            return $this->isPubliclyViewableAuthor((int) $request['id']);
+        }
+
+        /**
+         * Check whether an author term is safe to expose publicly:
+         * it must belong to the author taxonomy and not be mapped to
+         * a real user account (user-linked authors can carry user meta).
+         *
+         * @param int $author_id Author term ID.
+         *
+         * @return bool
+         */
+        private function isPubliclyViewableAuthor($author_id)
+        {
+            $term = get_term($author_id, 'author');
+
+            if (!$term || is_wp_error($term)) {
+                return false;
+            }
+
+            $user_id = get_term_meta($author_id, 'user_id', true);
+
+            return empty((int) $user_id);
         }
 
         public function getCreateAuthorArgs()
@@ -201,19 +233,32 @@ if (!class_exists('MA_REST_API')) {
             return $this->getUpdateAuthorArgs();
         }
 
-        public function getPostAuthorsCallBack($postData)
+        public function getPostAuthorsCallBack($postData, $fieldName = '', $request = null, $objectType = '')
         {
             $legacyPlugin = Factory::getLegacyPlugin();
 
-            $selectedPostTypes = array_values(Util::get_post_types_for_module($legacyPlugin->modules->multiple_authors));
+            $selectedPostTypes = Util::get_post_types_for_module($legacyPlugin->modules->multiple_authors);
+            if (!is_array($selectedPostTypes)) {
+                return [];
+            }
+            $selectedPostTypes = array_values($selectedPostTypes);
 
-            $post = get_post($postData['id']);
+            $post_id = $this->getPostIdFromRestData($postData, $request);
+            if (empty($post_id)) {
+                return [];
+            }
+
+            $post = get_post($post_id);
+
+            if (!$post || is_wp_error($post)) {
+                return [];
+            }
 
             if (!in_array($post->post_type, $selectedPostTypes)) {
                 return [];
             }
 
-            $authors = get_post_authors($postData['id']);
+            $authors = get_post_authors($post_id, false, false);
 
             $authorsData = [];
 
@@ -230,6 +275,22 @@ if (!class_exists('MA_REST_API')) {
                 }
 
                 if (!is_object($author) || is_wp_error($author)) {
+                    continue;
+                }
+
+                if (!is_a($author, Author::class)) {
+                    if (!($author instanceof WP_User)) {
+                        continue;
+                    }
+
+                    $authorsData[] = [
+                        'term_id'      => 0,
+                        'user_id'      => (int) $author->ID,
+                        'is_guest'     => 0,
+                        'slug'         => $author->user_nicename,
+                        'display_name' => $author->display_name,
+                        'avatar_url'   => get_avatar_url($author->ID),
+                    ];
                     continue;
                 }
 
@@ -261,6 +322,36 @@ if (!class_exists('MA_REST_API')) {
 
             return $authorsData = apply_filters('ppma_rest_api_authors_data', $authorsData);
         }
+
+        private function getPostIdFromRestData($postData, $request = null)
+        {
+            if (is_array($postData)) {
+                if (!empty($postData['id'])) {
+                    return absint($postData['id']);
+                }
+
+                if (!empty($postData['ID'])) {
+                    return absint($postData['ID']);
+                }
+            }
+
+            if (is_object($postData)) {
+                if (!empty($postData->id)) {
+                    return absint($postData->id);
+                }
+
+                if (!empty($postData->ID)) {
+                    return absint($postData->ID);
+                }
+            }
+
+            if ($request instanceof WP_REST_Request && !empty($request['id'])) {
+                return absint($request['id']);
+            }
+
+            return 0;
+        }
+
         public function createAuthorCallback($request)
         {
             $legacyPlugin = Factory::getLegacyPlugin();
@@ -324,17 +415,9 @@ if (!class_exists('MA_REST_API')) {
                 $mapped_user_id = 0;
 
                 if ($author_type === 'new_user') {
-                    if (!get_role('ppma_guest_author')) {
-                        add_role('ppma_guest_author', 'Guest Author', []);
-                    }
+                    Author_Editor::ensure_guest_author_role();
 
-                    $user_data = [
-                        'user_login' => $slug,
-                        'display_name' => $display_name,
-                        'user_email' => $user_email,
-                        'user_pass' => wp_generate_password(),
-                        'role' => 'ppma_guest_author',
-                    ];
+                    $user_data = Author_Editor::get_guest_author_user_data($slug, $display_name, $user_email);
 
                     $new_user_id = wp_insert_user($user_data);
 
@@ -455,19 +538,28 @@ if (!class_exists('MA_REST_API')) {
         {
             $term_id = $author->term_id;
 
-            $author_user_id = $author->user_id;
+            $previous_author_user_id = (int)$author->user_id;
+            $author_user_id          = !empty($params['user_id']) ? (int)$params['user_id'] : $previous_author_user_id;
+            $linked_user_changed     = false;
 
             if (!empty($author_user_id)) {
                 $user = get_user_by('id', $author_user_id);
+                $linked_user_changed = is_a($user, 'WP_User') && $previous_author_user_id !== (int)$author_user_id;
 
                 if ($user && (int)$author_user_id !== get_current_user_id()) {
-                    // Prevent editing administrators completely
+                    // Only administrators can edit administrators if setting is enabled
                     if (in_array('administrator', $user->roles)) {
-                        return new WP_Error(
-                            'cannot_edit_administrator',
-                            __('You cannot edit author mapped to administrator account.', 'publishpress-authors'),
-                            ['status' => 403]
-                        );
+                        $legacyPlugin = Factory::getLegacyPlugin();
+                        $allow_admin_edit = isset($legacyPlugin->modules->multiple_authors->options->allow_admin_edit_admin_profiles)
+                            && $legacyPlugin->modules->multiple_authors->options->allow_admin_edit_admin_profiles === 'yes';
+
+                        if (!current_user_can('manage_options') || !$allow_admin_edit) {
+                            return new WP_Error(
+                                'cannot_edit_administrator',
+                                __('You cannot edit author mapped to administrator account.', 'publishpress-authors'),
+                                ['status' => 403]
+                            );
+                        }
                     }
 
                     // Check if the user lacks the necessary capabilities
@@ -482,10 +574,53 @@ if (!class_exists('MA_REST_API')) {
                 }
             }
 
+            if ($linked_user_changed) {
+                $params['user_email'] = $user->user_email;
+
+                if (array_key_exists('user_email', $author_fields)) {
+                    $author_fields['user_email'] = $user->user_email;
+                }
+            }
+
             // update user args data
             $updated_args = [];
             if ($author_user_id) {
                 $updated_args['ID'] = $author_user_id;
+            }
+
+            $has_email_update = array_key_exists('user_email', $params) || array_key_exists('user_email', $author_fields);
+            if ($has_email_update) {
+                $new_author_email = array_key_exists('user_email', $author_fields)
+                    ? sanitize_email($author_fields['user_email'])
+                    : sanitize_email($params['user_email']);
+                $current_author_email = sanitize_email($author->user_email);
+
+                if ($new_author_email !== $current_author_email) {
+                    $email_validation = Author_Utils::validate_author_email_available(
+                        $new_author_email,
+                        $author_user_id
+                    );
+
+                    if (is_wp_error($email_validation)) {
+                        $email_validation->add_data(['status' => 409]);
+
+                        return $email_validation;
+                    }
+
+                    $email_user_id = !empty($new_author_email) ? email_exists($new_author_email) : false;
+
+                    if ($author_user_id && (empty($email_user_id) || (int)$email_user_id !== (int)$author_user_id)) {
+                        Author_Utils::unlink_author_from_user($term_id);
+
+                        $author_user_id = 0;
+                        $updated_args   = [];
+                    }
+                }
+            }
+
+            if ($linked_user_changed) {
+                update_term_meta($term_id, 'user_id', $author_user_id);
+                Author::clear_cache();
             }
 
             // update terms args data
@@ -512,13 +647,9 @@ if (!class_exists('MA_REST_API')) {
                 }
             }
 
-            // Update email and sync to user if mapped
-            if (!empty($params['user_email'])) {
+            // Update author email without changing the mapped WordPress user account email.
+            if (array_key_exists('user_email', $params)) {
                 update_term_meta($term_id, 'user_email', sanitize_email($params['user_email']));
-                if ($author_user_id) {
-                    update_user_meta($author_user_id, 'user_email', sanitize_email($params['user_email']));
-                    $updated_args['user_email'] = sanitize_email($params['user_email']);
-                }
             }
 
             $this->setAuthorFields($term_id, $author_fields, $author_user_id, $updated_args);
@@ -557,10 +688,12 @@ if (!class_exists('MA_REST_API')) {
                     $sanitized_value = $this->sanitizeFieldValue($field_value, $field_config);
                     update_term_meta($term_id, $field_name, $sanitized_value);
 
-                    // Also update user meta if there's a mapped user
-                    if ($user_id) {
+                    // Also update user meta if there's a mapped user, except the core account email.
+                    if ($user_id && Author_Editor::can_sync_author_field_to_user_meta($field_name)) {
                         update_user_meta($user_id, $field_name, $sanitized_value);
-                        $updated_args[$field_name] = $sanitized_value;
+                        if (Author_Editor::can_sync_author_field_to_user_account($field_name)) {
+                            $updated_args[$field_name] = $sanitized_value;
+                        }
                     }
                 }
             }

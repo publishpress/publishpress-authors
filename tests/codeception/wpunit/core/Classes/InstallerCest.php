@@ -290,6 +290,19 @@ class InstallerCest
         $I->assertEquals($post->post_author, $usersWithNoTerms[3]);
     }
 
+    public function getUsersAuthorsWithNoAuthorTerm__withZeroPostsPerPage__returnsNoResults(WpunitTester $I)
+    {
+        $I->havePostsWithDifferentAuthors(2);
+
+        $usersWithNoTerms = Installer::getUsersAuthorsWithNoAuthorTerm(
+            [
+                'posts_per_page' => 0,
+            ]
+        );
+
+        $I->assertSame([], $usersWithNoTerms);
+    }
+
     public function getUsersAuthorsWithNoAuthorTerm__withPaged__returnsListOfUsersLimitedToTheSpecifiedNumber(
         WpunitTester $I
     ) {
@@ -391,6 +404,33 @@ class InstallerCest
         $I->assertEquals($postIds[9], $postsWithNoTerm[0]->ID);
     }
 
+    public function getPostsWithoutAuthorTerms__withPreviouslySupportedOrderByColumn__returnsOnCorrectOrder(
+        WpunitTester $I
+    ) {
+        $postIds = $I->havePostsWithDifferentAuthors(4);
+
+        foreach ($postIds as $menuOrder => $postId) {
+            wp_update_post(
+                [
+                    'ID'         => $postId,
+                    'menu_order' => $menuOrder,
+                ]
+            );
+        }
+
+        $postsWithNoTerm = Installer::getPostsWithoutAuthorTerms(
+            [
+                'orderby' => 'menu_order',
+                'order'   => 'desc',
+            ]
+        );
+
+        $I->assertSame(
+            array_reverse($postIds),
+            array_map('intval', wp_list_pluck($postsWithNoTerm, 'ID'))
+        );
+    }
+
     public function getPostsWithoutAuthorTerms__withPostPorPageArgument__returnsOnlyTheSpecifiedNumberOfResults(
         WpunitTester $I
     ) {
@@ -406,6 +446,19 @@ class InstallerCest
         $I->assertCount(2, $postsWithNoTerm);
         $I->assertEquals($postIds[6], $postsWithNoTerm[0]->ID);
         $I->assertEquals($postIds[7], $postsWithNoTerm[1]->ID);
+    }
+
+    public function getPostsWithoutAuthorTerms__withZeroPostsPerPage__returnsNoResults(WpunitTester $I)
+    {
+        $I->havePostsWithDifferentAuthors(2);
+
+        $postsWithNoTerm = Installer::getPostsWithoutAuthorTerms(
+            [
+                'posts_per_page' => 0,
+            ]
+        );
+
+        $I->assertSame([], $postsWithNoTerm);
     }
 
     public function getPostsWithoutAuthorTerms__withPagedArgument__returnsOnlyTheSpecifiedNumberOfResults(

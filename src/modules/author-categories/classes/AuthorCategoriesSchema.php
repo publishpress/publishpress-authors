@@ -63,7 +63,9 @@ class AuthorCategoriesSchema
     {
         global $wpdb;
 
-        return $wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") === $table_name;
+        return $wpdb->get_var(
+            $wpdb->prepare('SHOW TABLES LIKE %s', $wpdb->esc_like($table_name))
+        ) === $table_name;
     }
 
     /**
