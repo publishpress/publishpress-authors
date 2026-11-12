@@ -418,7 +418,13 @@ if (!class_exists('MA_Multiple_Authors')) {
             }
             $shortcode .= ']';
 
-            return do_shortcode($shortcode);
+            $content = do_shortcode($shortcode);
+
+            if ($content === '') {
+                return '';
+            }
+
+            return '<div ' . get_block_wrapper_attributes() . '>' . $content . '</div>';
         }
 
         /**
