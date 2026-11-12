@@ -49,3 +49,4 @@ output.log export-ignore
 .agents export-ignore
 AGENTS.md export-ignore
 /lib/vendor/publishpress/publishpress-authors/docs export-ignore
+/scripts export-ignore
