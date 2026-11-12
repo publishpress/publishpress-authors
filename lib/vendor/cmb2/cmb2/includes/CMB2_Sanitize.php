@@ -256,6 +256,8 @@ class CMB2_Sanitize {
 	 * @return string Empty string or sanitized money value
 	 */
 	public function text_money() {
+		// A lone 0 is removed like an empty value, not saved as 0.00 (#457, #577).
+		// Repeatable entries keep 0; see C14.
 		if ( ! $this->value ) {
 			return '';
 		}
@@ -272,7 +274,7 @@ class CMB2_Sanitize {
 		// for repeatable.
 		if ( is_array( $this->value ) ) {
 			foreach ( $this->value as $key => $val ) {
-				if ( $val ) {
+				if ( CMB2_Utils::notempty( $val ) ) {
 					$this->value[ $key ] = number_format_i18n( (float) str_ireplace( $search, $replace, $val ), 2 );
 				}
 			}
@@ -591,9 +593,9 @@ class CMB2_Sanitize {
 
 		$new_value = array();
 		foreach ( $values_array as $this->value ) {
-			if ( $this->value ) {
+			if ( CMB2_Utils::notempty( $this->value ) ) {
 				$val = $this->$method( true );
-				if ( ! empty( $val ) ) {
+				if ( CMB2_Utils::notempty( $val ) ) {
 					$new_value[] = $val;
 				}
 			}
@@ -613,7 +615,8 @@ class CMB2_Sanitize {
 	 */
 	public function _is_empty_array( $to_check ) {
 		if ( is_array( $to_check ) ) {
-			$cleaned_up = array_filter( $to_check );
+			// Keep 0 and '0'. They can be real values, like a multicheck option key.
+			$cleaned_up = CMB2_Utils::filter_empty( $to_check );
 			return empty( $cleaned_up );
 		}
 		return false;
