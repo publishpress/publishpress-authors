@@ -1,3 +1,8 @@
+<?php
+if (!defined('ABSPATH')) {
+    exit;
+}
+?>
 <div class="pp-multiple-authors-wrapper pp-multiple-authors-index alignwide <?php echo esc_attr($context['css_class']); ?> pp-multiple-authors-layout-<?php echo esc_attr($context['layout']); ?>" data-ajax-url="<?php echo esc_url($context['ajax_url']); ?>" data-ajax-nonce="<?php echo esc_attr($context['ajax_nonce']); ?>" data-ajax-instance="<?php echo esc_attr($context['ajax_instance']); ?>">
     <?php if (!empty($context['search_box_html'])) : ?>
         <?php echo $context['search_box_html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>

@@ -9,6 +9,10 @@
 
 use MultipleAuthors\Classes\Authors_Iterator;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!function_exists('get_coauthors')) {
     function get_coauthors($post_id = 0)
     {

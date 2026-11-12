@@ -31,6 +31,9 @@ use MultipleAuthors\Classes\Objects\Author;
 use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
 
 if (!class_exists('MA_Multiple_Authors')) {
     /**
@@ -258,6 +261,11 @@ if (!class_exists('MA_Multiple_Authors')) {
             add_action('wp_ajax_finish_sync_author_slug', [$this, 'finishSyncAuthorSlug']);
             add_action('wp_ajax_deactivate_coauthors_plus', [$this, 'deactivateCoAuthorsPlus']);
 
+            // Authors Data block.
+            add_action('enqueue_block_editor_assets', [$this, 'author_data_block_enqueue_assets']);
+            add_action('wp_ajax_ppma_block_fetch_author_fields', [$this, 'ppma_block_fetch_author_fields']);
+            $this->author_data_block_register();
+
             // PublishPress compatibility hooks.
             add_filter('publishpress_search_authors_results_pre_search', [$this, 'publishpressSearchAuthors'], 10, 2);
             add_filter('publishpress_author_can_edit_posts', [$this, 'publishpressAuthorCanEditPosts'], 10, 2);
@@ -329,6 +337,135 @@ if (!class_exists('MA_Multiple_Authors')) {
 
             // Redirect on plugin activation
             add_action('admin_init', [$this, 'redirect_on_activate'], 2000);
+        }
+
+        /**
+         * Enqueue block editor assets for the Authors Data block.
+         */
+        public function author_data_block_enqueue_assets()
+        {
+            wp_enqueue_script(
+                'author-data-block',
+                PP_AUTHORS_URL . 'src/assets/js/author-data-block.min.js',
+                ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-data'],
+                PP_AUTHORS_VERSION
+            );
+
+            wp_localize_script('author-data-block', 'authorDataBlock', [
+                'ajax_url'                 => admin_url('admin-ajax.php'),
+                'block_title'              => __('PublishPress Authors Data', 'publishpress-authors'),
+                'field_label'              => __('Field', 'publishpress-authors'),
+                'default_field_label'      => __('Display Name', 'publishpress-authors'),
+                'separator_label'          => __('Separator', 'publishpress-authors'),
+                'archive_label'            => __('Use author archive page', 'publishpress-authors'),
+                'post_id_label'            => __('Post ID', 'publishpress-authors'),
+                'post_id_help'             => __('Optional. Load the authors for a specific post.', 'publishpress-authors'),
+                'term_id_label'            => __('Author term ID', 'publishpress-authors'),
+                'term_id_help'             => __('Optional. Load a specific author by term ID.', 'publishpress-authors'),
+                'author_categories_label'  => __('Author categories', 'publishpress-authors'),
+                'author_categories_help'   => __('Optional. Comma-separated author category slugs.', 'publishpress-authors'),
+            ]);
+        }
+
+        /**
+         * Register the Authors Data block.
+         */
+        public function author_data_block_register()
+        {
+            register_block_type('publishpress-authors/author-data-block', [
+                'editor_script'   => 'author-data-block',
+                'render_callback' => [$this, 'author_data_block_render'],
+                'attributes'      => [
+                    'field'            => ['type' => 'string', 'default' => 'display_name'],
+                    'separator'        => ['type' => 'string', 'default' => ', '],
+                    'postId'           => ['type' => 'string', 'default' => ''],
+                    'termId'           => ['type' => 'string', 'default' => ''],
+                    'archive'          => ['type' => 'boolean', 'default' => false],
+                    'authorCategories' => ['type' => 'string', 'default' => ''],
+                ],
+            ]);
+        }
+
+        /**
+         * Render callback for the Authors Data block.
+         *
+         * @param array $attributes
+         *
+         * @return string
+         */
+        public function author_data_block_render($attributes)
+        {
+            $field             = !empty($attributes['field']) ? sanitize_text_field($attributes['field']) : 'display_name';
+            $separator         = isset($attributes['separator']) ? $attributes['separator'] : ', ';
+            $post_id           = !empty($attributes['postId']) ? (int)$attributes['postId'] : 0;
+            $term_id           = !empty($attributes['termId']) ? (int)$attributes['termId'] : 0;
+            $archive           = !empty($attributes['archive']);
+            $author_categories = !empty($attributes['authorCategories']) ? sanitize_text_field($attributes['authorCategories']) : '';
+
+            $shortcode  = '[publishpress_authors_data field="' . esc_attr($field) . '"';
+            $shortcode .= ' separator="' . esc_attr($separator) . '"';
+            if ($post_id) {
+                $shortcode .= ' post_id="' . $post_id . '"';
+            }
+            if ($term_id) {
+                $shortcode .= ' term_id="' . $term_id . '"';
+            }
+            if ($archive) {
+                $shortcode .= ' archive="true"';
+            }
+            if (!empty($author_categories)) {
+                $shortcode .= ' author_categories="' . esc_attr($author_categories) . '"';
+            }
+            $shortcode .= ']';
+
+            $content = do_shortcode($shortcode);
+
+            if ($content === '') {
+                return '';
+            }
+
+            return '<div ' . get_block_wrapper_attributes() . '>' . $content . '</div>';
+        }
+
+        /**
+         * AJAX handler returning the author fields available to the Authors Data block.
+         */
+        public function ppma_block_fetch_author_fields()
+        {
+            if (!current_user_can('edit_posts') && !current_user_can('edit_pages')) {
+                wp_send_json_error(
+                    [
+                        'message' => esc_html__('You do not have permission to perform this action', 'publishpress-authors'),
+                    ],
+                    403
+                );
+            }
+
+            $fields = [
+                ['value' => 'display_name', 'label' => esc_html__('Display Name', 'publishpress-authors')],
+                ['value' => 'first_name', 'label' => esc_html__('First Name', 'publishpress-authors')],
+                ['value' => 'last_name', 'label' => esc_html__('Last Name', 'publishpress-authors')],
+                ['value' => 'user_email', 'label' => esc_html__('Email', 'publishpress-authors')],
+                ['value' => 'user_url', 'label' => esc_html__('Website', 'publishpress-authors')],
+                ['value' => 'description', 'label' => esc_html__('Biographical Info', 'publishpress-authors')],
+                ['value' => 'avatar', 'label' => esc_html__('Avatar', 'publishpress-authors')],
+            ];
+
+            $existing = wp_list_pluck($fields, 'value');
+
+            // Include configured/custom author profile fields.
+            $profile_fields = apply_filters('multiple_authors_author_fields', [], false);
+            if (is_array($profile_fields)) {
+                foreach ($profile_fields as $key => $data) {
+                    if (in_array($key, $existing, true)) {
+                        continue;
+                    }
+                    $label = (is_array($data) && !empty($data['label'])) ? $data['label'] : $key;
+                    $fields[] = ['value' => $key, 'label' => $label];
+                }
+            }
+
+            wp_send_json($fields);
         }
 
         /**
@@ -4002,13 +4139,13 @@ echo '<span class="ppma_settings_field_description">'
 
                 do_action('multiple_authors_' . $action);
 
-                wp_redirect(
+                wp_safe_redirect(
                     admin_url('/admin.php?page=ppma-modules-settings&author_term_reset_notice=success'),
                     301
                 );
                 exit;
             } catch (Exception $e) {
-                wp_redirect(
+                wp_safe_redirect(
                     admin_url('/admin.php?page=ppma-modules-settings&author_term_reset_notice=fail'),
                     301
                 );
@@ -4302,7 +4439,7 @@ echo '<span class="ppma_settings_field_description">'
                         'messageDone'      => esc_html__('Done! %d posts were updated.', 'publishpress-authors'),
                         'messageWait'      => esc_html__('Please, wait...', 'publishpress-authors'),
                         'messageStarting'      => esc_html__('Updating author field on posts...', 'publishpress-authors'),
-                        'messageProgress'      => esc_html__('Updated %d of %d posts...', 'publishpress-authors'),
+                        'messageProgress'      => esc_html__('Updated %1$d of %2$d posts...', 'publishpress-authors'),
                     ]
                 );
 
@@ -4333,7 +4470,7 @@ echo '<span class="ppma_settings_field_description">'
                         'messageDone'      => esc_html__('Done! %d authors were updated.', 'publishpress-authors'),
                         'messageWait'      => esc_html__('Please, wait...', 'publishpress-authors'),
                         'messageStarting'      => esc_html__('Updating authors slug...', 'publishpress-authors'),
-                        'messageProgress'      => esc_html__('Updated %d of %d authors...', 'publishpress-authors'),
+                        'messageProgress'      => esc_html__('Updated %1$d of %2$d authors...', 'publishpress-authors'),
                     ]
                 );
 
@@ -4481,16 +4618,11 @@ echo '<span class="ppma_settings_field_description">'
                 wp_send_json(['total' => 0]);
             }
 
-            $postTypePlaceholders = implode(', ', array_fill(0, count($postTypes), '%s'));
-
             $result = $wpdb->get_results(
-                // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Post type placeholders are generated from a sanitized array.
                 $wpdb->prepare(
-                    "SELECT ID FROM {$wpdb->posts} WHERE post_type IN ({$postTypePlaceholders}) AND post_status NOT IN ('trash')",
+                    'SELECT ID FROM ' . $wpdb->posts . ' WHERE post_type IN (' . implode(', ', array_fill(0, count($postTypes), '%s')) . ") AND post_status NOT IN ('trash')",
                     ...$postTypes
-                )
-                // phpcs:enable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-                ,
+                ),
                 ARRAY_N
             );
 
@@ -5457,13 +5589,29 @@ echo '<span class="ppma_settings_field_description">'
             if (in_array($cap, ['edit_term', 'ppma_manage_authors']) && in_array('ppma_manage_authors', $caps, true)) {
 
                 $term_id = 0;
-                if (isset($args[0])) {
+                if ($cap === 'edit_term' && isset($args[0])) {
                     $term_id = (int)$args[0];
-                }else if (isset($_POST['action']) && $_POST['action'] === 'editedtag' && isset($_POST['tag_ID']) && (int)$_POST['tag_ID'] > 0) {
-                    //this is needed for when saving the profile as it run through edit-tags.php which user doesn't have permission
+                } elseif (
+                    $cap === 'ppma_manage_authors' &&
+                    (int)$user_id === get_current_user_id() &&
+                    isset($GLOBALS['pagenow']) && $GLOBALS['pagenow'] === 'edit-tags.php' &&
+                    isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] === 'POST' &&
+                    isset($_POST['action'], $_REQUEST['action']) &&
+                    $_POST['action'] === 'editedtag' && $_REQUEST['action'] === 'editedtag' &&
+                    empty($_REQUEST['filter_action']) &&
+                    isset($_POST['taxonomy'], $_REQUEST['taxonomy']) &&
+                    $_POST['taxonomy'] === 'author' && $_REQUEST['taxonomy'] === 'author' &&
+                    isset($_POST['tag_ID'], $_REQUEST['tag_ID'], $_POST['_wpnonce']) &&
+                    is_scalar($_POST['tag_ID']) && is_scalar($_REQUEST['tag_ID']) &&
+                    (int)$_POST['tag_ID'] > 0 &&
+                    (string)$_POST['tag_ID'] === (string)$_REQUEST['tag_ID'] &&
+                    is_string($_POST['_wpnonce']) &&
+                    wp_verify_nonce(wp_unslash($_POST['_wpnonce']), 'update-tag_' . (int)$_POST['tag_ID'])
+                ) {
+                    // Only a verified profile save may pass edit-tags.php's page-level permission check.
                     $term_id = (int)$_POST['tag_ID'];
                 }
-                $current_author = Author::get_by_user_id(get_current_user_id());
+                $current_author = Author::get_by_user_id($user_id);
 
                 //allow user to edit own profile.
                 if (
@@ -5655,7 +5803,7 @@ echo '<span class="ppma_settings_field_description">'
         {
             if (get_option('ppma_activated')) {
                 delete_option('ppma_activated');
-                wp_redirect(admin_url("edit-tags.php?taxonomy=author&welcome"));
+                wp_safe_redirect(admin_url("edit-tags.php?taxonomy=author&welcome"));
                 exit;
               }
         }

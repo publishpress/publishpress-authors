@@ -937,7 +937,7 @@ class AuthorBoxesEditorFields
                     'tab'      => 'profile_fields',
                 ];
                 $fields['profile_fields_' . $key . '_display_icon_border_radius'] = [
-                    'label'      => sprintf(esc_html__('%1s Display Icon Border Radius (%2s)', 'publishpress-authors'), $data['label'], '%'),
+                    'label'      => sprintf(esc_html__('%1$s Display Icon Border Radius (%2$s)', 'publishpress-authors'), $data['label'], '%'),
                     'group_end' => true,
                     'type'       => 'number',
                     'min'        => '0',

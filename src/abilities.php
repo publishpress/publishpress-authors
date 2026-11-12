@@ -1,6 +1,6 @@
 <?php
 /**
- * Registers read-only WordPress Abilities API integrations.
+ * Registers private WordPress Abilities API integrations.
  *
  * @package MultipleAuthors
  */
@@ -18,7 +18,7 @@ if (!function_exists('wp_register_ability')) {
 
 class PP_Authors_Abilities
 {
-    const CATEGORY = 'publishpress-authors';
+    const CATEGORY = 'publishpress';
 
     /**
      * Register hooks for the Abilities API.
@@ -38,11 +38,14 @@ class PP_Authors_Abilities
      */
     public static function register_category()
     {
+        if (wp_has_ability_category(self::CATEGORY)) {
+            return;
+        }
         wp_register_ability_category(
             self::CATEGORY,
             [
-                'label'       => __('PublishPress Authors', 'publishpress-authors'),
-                'description' => __('Read author profiles, available profile fields, and post bylines.', 'publishpress-authors'),
+                'label'       => __('PublishPress', 'publishpress-authors'),
+                'description' => __('Actions provided by PublishPress plugins.', 'publishpress-authors'),
             ]
         );
     }
@@ -58,6 +61,8 @@ class PP_Authors_Abilities
         wp_register_ability('publishpress-authors/get-author', self::get_author_ability());
         wp_register_ability('publishpress-authors/get-post-authors', self::get_post_authors_ability());
         wp_register_ability('publishpress-authors/get-author-fields', self::get_author_fields_ability());
+        \MultipleAuthors\Mcp\Bootstrap::register();
+        do_action('publishpress_authors_mcp_register');
     }
 
     /**
@@ -84,9 +89,10 @@ class PP_Authors_Abilities
             'permission_callback' => $permission_callback,
             'meta'                => [
                 // Core REST discovery and execution.
-                'show_in_rest' => true,
+                'public' => false,
+                'show_in_rest' => false,
                 // Discovery hint for MCP adapters.
-                'mcp'          => ['public' => true],
+                'mcp'          => ['public' => false],
                 'annotations'  => [
                     'readonly'    => true,
                     'destructive' => false,
@@ -254,9 +260,9 @@ class PP_Authors_Abilities
      *
      * @return bool
      */
-    public static function can_manage_authors()
+    public static function can_manage_authors($input = [])
     {
-        return Capability::currentUserCanManageAuthors();
+        return \MultipleAuthors\Mcp\Profiles::canManage($input);
     }
 
     /**
@@ -270,9 +276,7 @@ class PP_Authors_Abilities
     {
         $post_id = isset($input['post_id']) ? absint($input['post_id']) : 0;
 
-        return $post_id
-            && Capability::currentUserCanEditPostAuthors()
-            && current_user_can('edit_post', $post_id);
+        return \MultipleAuthors\Mcp\Bylines::canEdit($input);
     }
 
     /**
@@ -307,6 +311,9 @@ class PP_Authors_Abilities
         $type    = isset($input['type']) ? $input['type'] : 'all';
         $authors = [];
         foreach ($terms as $term) {
+            if (!current_user_can('edit_term', $term->term_id)) {
+                continue;
+            }
             $author = Author::get_by_term_id($term->term_id);
             if (!$author || ('all' !== $type && ('guest' === $type) !== $author->is_guest())) {
                 continue;
@@ -315,7 +322,10 @@ class PP_Authors_Abilities
             $authors[] = self::format_author($author, $term);
         }
 
-        return ['authors' => $authors];
+        $countArgs = $args;
+        unset($countArgs['number'], $countArgs['offset']);
+        $total = wp_count_terms($countArgs);
+        return ['authors' => $authors, 'page' => $page, 'total_pages' => is_wp_error($total) ? 0 : (int) ceil((int) $total / $per_page)];
     }
 
     /**
@@ -361,8 +371,11 @@ class PP_Authors_Abilities
             );
         }
 
-        // $updateAuthors = false prevents legacy reads from writing author terms.
-        $post_authors = get_post_authors($post_id, false, false);
+        // Read stored relationships without legacy fallback profile creation.
+        $post_authors = \MultipleAuthors\Mcp\Registry::postAuthors($post_id);
+        if (is_wp_error($post_authors)) {
+            return $post_authors;
+        }
         $authors      = [];
         foreach ($post_authors as $author) {
             if (!($author instanceof Author)) {
@@ -387,9 +400,12 @@ class PP_Authors_Abilities
      */
     public static function get_author_fields()
     {
-        $definitions = Author_Editor::get_fields(false);
+        $definitions = apply_filters('multiple_authors_author_fields', Author_Editor::get_fields(false), false);
         $fields      = [];
         foreach ($definitions as $name => $definition) {
+            if (\MultipleAuthors\Mcp\Fields::sensitive($name)) {
+                continue;
+            }
             $fields[] = [
                 'name'     => $name,
                 'label'    => isset($definition['label']) ? wp_strip_all_tags($definition['label']) : $name,

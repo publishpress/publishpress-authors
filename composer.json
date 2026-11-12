@@ -41,6 +41,11 @@
     "publishpress/dev-workspace": "^1.0"
   },
   "scripts": {
+    "translate:setup": "vendor/publishpress/dev-workspace/scripts/run.sh bash scripts/setup-potomatic.sh",
+    "translate": [
+      "@translate:setup",
+      "vendor/publishpress/dev-workspace/scripts/run.sh vendor/publishpress/dev-workspace/scripts/translate-locales.sh"
+    ],
     "check:phpcs": "vendor/bin/phpcs --standard=PSR12 ./src/ publishpress-authors.php --colors",
     "check:lint": "vendor/bin/phplint",
     "check:mess": "vendor/bin/phpmd ./src ansi phpmd-ruleset.xml",

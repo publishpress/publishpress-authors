@@ -164,9 +164,10 @@ class Utils
      * @param array $authors Bylines to set on the post.
      * @param bool $syncPostAuthor
      * @param int $fallbackUserId User ID for using as the author in case no author or if only guests are selected
-     * @param array $categories for authors
+     * @param array $author_categories Categories for authors
+     * @param bool $replaceCategories Replace all category relationships, including explicit empty input.
      */
-    public static function set_post_authors($postId, $authors, $syncPostAuthor = false, $fallbackUserId = null, $author_categories = [])
+    public static function set_post_authors($postId, $authors, $syncPostAuthor = false, $fallbackUserId = null, $author_categories = [], $replaceCategories = false)
     {
         $post_type = get_post_field('post_type', $postId);
         $enabledPostTypes = Utils::get_enabled_post_types();
@@ -192,7 +193,7 @@ class Utils
         }
 
         $authors = wp_list_pluck($authors, 'term_id');
-        self::updatePostAuthorCategory($postId, $authors, $author_categories);
+        self::updatePostAuthorCategory($postId, $authors, $author_categories, $replaceCategories);
         wp_set_object_terms($postId, $authors, 'author');
     }
 
@@ -205,7 +206,7 @@ class Utils
      *
      * @return void
      */
-    public static function updatePostAuthorCategory($post_id, $authors, $post_author_categories) {
+    public static function updatePostAuthorCategory($post_id, $authors, $post_author_categories, $replace = false) {
         global $wpdb;
 
         if (!current_user_can(get_taxonomy('author')->cap->assign_terms)) {
@@ -213,6 +214,9 @@ class Utils
         }
 
         $table_name = $wpdb->prefix . 'ppma_author_relationships';
+        if ($replace) {
+            $wpdb->delete($table_name, ['post_id' => (int) $post_id], ['%d']);
+        }
         $authors    = array_values(array_unique(array_map('intval', $authors)));
 
         if (empty($authors)) {
@@ -834,14 +838,29 @@ class Utils
 
     public static function isElementorInstalled()
     {
-        // For now we only integrate with the Pro version because the Free one doesn't have the posts modules.
+        // Free Elementor is enough for the Authors List widget. The Pro-only
+        // skins are conditionally registered inside the integration module.
 
-        if (! defined('ELEMENTOR_PRO_VERSION')) {
+        if (! defined('ELEMENTOR_VERSION')) {
             return false;
         }
 
-        if (version_compare(ELEMENTOR_PRO_VERSION, '2.9.3', '<')) {
+        if (version_compare(ELEMENTOR_VERSION, '2.9.3', '<')) {
             return false;
+        }
+
+        if (! class_exists('\\Elementor\\Widget_Base')) {
+            return false;
+        }
+
+        // The posts/archive skins require Elementor Pro. Without it we still
+        // load the module (for the free widgets) but skip the Pro skins.
+        if (! defined('ELEMENTOR_PRO_VERSION')) {
+            return true;
+        }
+
+        if (version_compare(ELEMENTOR_PRO_VERSION, '2.9.3', '<')) {
+            return true;
         }
 
         $abort = false;
@@ -1161,9 +1180,10 @@ class Utils
     {
 
         $block_theme_header = '';
+        $get_block_template = 'get_block_template';
 
-        if (self::ppma_is_block_theme()) {
-            $header_template_part = get_block_template(get_stylesheet() . '//header', 'wp_template_part');
+        if (self::ppma_is_block_theme() && function_exists($get_block_template)) {
+            $header_template_part = $get_block_template(get_stylesheet() . '//header', 'wp_template_part');
             if ($header_template_part && isset($header_template_part->content)) {
                 $block_theme_header = do_blocks($header_template_part->content);
             }
@@ -1181,9 +1201,10 @@ class Utils
     {
 
         $block_theme_footer = '';
+        $get_block_template = 'get_block_template';
 
-        if (self::ppma_is_block_theme()) {
-            $footer_template_part = get_block_template(get_stylesheet() . '//footer', 'wp_template_part');
+        if (self::ppma_is_block_theme() && function_exists($get_block_template)) {
+            $footer_template_part = $get_block_template(get_stylesheet() . '//footer', 'wp_template_part');
             if ($footer_template_part && isset($footer_template_part->content)) {
                 $block_theme_footer = do_blocks($footer_template_part->content);
             }
@@ -1525,7 +1546,7 @@ class Utils
         <select name="name" id="name" aria-required="true" aria-describedby="name-description">
             <?php foreach ( $public_display as $id => $item ) : ?>
                 <?php if (!empty($item )) : ?>
-                    <option <?php selected( $profile_user->display_name, $item ); ?>><?php echo $item; ?></option>
+                    <option <?php selected( $profile_user->display_name, $item ); ?>><?php echo esc_html($item); ?></option>
                 <?php endif; ?>
             <?php endforeach; ?>
         </select>

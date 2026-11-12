@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "cmb2/cmb2",
-            "version": "v2.13.4",
+            "version": "v2.13.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CMB2/CMB2.git",
-                "reference": "9916c5b21b0f0618f878d4ba4b625ae124d1fae7"
+                "reference": "c4d9cfa1a1a8707b22140a5bec1749b74f9829f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CMB2/CMB2/zipball/9916c5b21b0f0618f878d4ba4b625ae124d1fae7",
-                "reference": "9916c5b21b0f0618f878d4ba4b625ae124d1fae7",
+                "url": "https://api.github.com/repos/CMB2/CMB2/zipball/c4d9cfa1a1a8707b22140a5bec1749b74f9829f0",
+                "reference": "c4d9cfa1a1a8707b22140a5bec1749b74f9829f0",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,8 @@
                 "issues": "https://github.com/CMB2/CMB2/issues",
                 "source": "http://wordpress.org/support/plugin/cmb2"
             },
-            "time": "2026-10-08T15:38:53+00:00"
+            "time": "2026-10-26T23:16:04+00:00",
+            "published-time": "2026-10-26T23:21:02+00:00"
         },
         {
             "name": "publishpress/instance-protection",
@@ -99,7 +100,8 @@
                 "issues": "https://github.com/publishpress/library-instance-protection/issues",
                 "source": "https://github.com/publishpress/library-instance-protection/tree/v1.0.3"
             },
-            "time": "2022-10-28T16:14:03+00:00"
+            "time": "2022-10-28T16:14:03+00:00",
+            "published-time": "2023-04-18T17:43:58+00:00"
         },
         {
             "name": "publishpress/pimple-pimple",
@@ -183,7 +185,8 @@
                 "issues": "https://github.com/publishpress/library-pimple-pimple/issues",
                 "source": "https://github.com/publishpress/library-pimple-pimple/tree/3.5.0.11"
             },
-            "time": "2026-09-11T18:31:32+00:00"
+            "time": "2026-09-11T18:31:32+00:00",
+            "published-time": "2026-09-11T18:33:28+00:00"
         },
         {
             "name": "publishpress/psr-container",
@@ -282,7 +285,8 @@
                 "issues": "https://github.com/publishpress/library-psr-container/issues",
                 "source": "https://github.com/publishpress/library-psr-container/tree/2.0.2.1"
             },
-            "time": "2025-12-09T15:18:16+00:00"
+            "time": "2025-12-09T15:18:16+00:00",
+            "published-time": "2025-12-09T15:19:09+00:00"
         },
         {
             "name": "publishpress/wordpress-banners",
@@ -323,7 +327,8 @@
                 "issues": "https://github.com/publishpress/library-wordpress-banners/issues",
                 "source": "https://github.com/publishpress/library-wordpress-banners/tree/v1.3.1"
             },
-            "time": "2022-08-15T18:07:23+00:00"
+            "time": "2022-08-15T18:07:23+00:00",
+            "published-time": "2022-08-15T18:08:58+00:00"
         },
         {
             "name": "publishpress/wordpress-reviews",
@@ -387,7 +392,8 @@
                 "issues": "https://github.com/publishpress/library-wordpress-reviews/issues",
                 "source": "https://github.com/publishpress/library-wordpress-reviews/tree/1.2.2"
             },
-            "time": "2026-09-11T02:52:42+00:00"
+            "time": "2026-09-11T02:52:42+00:00",
+            "published-time": "2026-09-11T02:54:21+00:00"
         },
         {
             "name": "publishpress/wordpress-version-notices",
@@ -462,7 +468,8 @@
                 "issues": "https://github.com/publishpress/library-wordpress-version-notices/issues",
                 "source": "https://github.com/publishpress/library-wordpress-version-notices/tree/2.2.1"
             },
-            "time": "2026-05-13T15:05:11+00:00"
+            "time": "2026-05-13T15:05:11+00:00",
+            "published-time": "2026-05-13T15:06:15+00:00"
         }
     ],
     "packages-dev": [],
@@ -475,5 +482,5 @@
         "php": ">=7.2.5"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }
