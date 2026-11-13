@@ -8,4 +8,6 @@ jobs:
     permissions:
       contents: write
     uses: publishpress/github-workflows/.github/workflows/deploy-free.yml@v3
+    with:
+      stable_branch: master
     secrets: inherit
