@@ -2,6 +2,7 @@
 title: "Author Box Shortcode"
 order: 70
 doc_category: publishpress-authors
+section: Author Shortcodes
 ---
 
 # Author Box Shortcode

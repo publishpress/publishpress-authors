@@ -2,6 +2,7 @@
 title: "Multiple Ways To Show Author Field Values"
 order: 71
 doc_category: publishpress-authors
+section: Author Fields
 ---
 
 # Multiple Ways To Show Author Field Values

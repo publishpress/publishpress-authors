@@ -2,6 +2,7 @@
 title: "Schema Data for Authors"
 order: 68
 doc_category: publishpress-authors
+section: Author SEO Schema
 ---
 
 # Schema Data for Authors

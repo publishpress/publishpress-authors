@@ -2,6 +2,7 @@
 title: "PublishPress Authors Child Themes"
 order: 65
 doc_category: publishpress-authors
+section: Authors and Themes
 ---
 
 # PublishPress Authors Child Themes

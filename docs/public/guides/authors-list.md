@@ -2,6 +2,7 @@
 title: "Introduction to Author Lists"
 order: 28
 doc_category: publishpress-authors
+section: Author Lists
 ---
 
 # Introduction to Author Lists

@@ -2,6 +2,7 @@
 title: "Add Author Boxes Snippets to Your Theme"
 order: 57
 doc_category: publishpress-authors
+section: Authors and Themes
 ---
 
 # Add Author Boxes Snippets to Your Theme

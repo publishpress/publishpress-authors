@@ -2,6 +2,7 @@
 title: "The PublishPress Authors API"
 order: 64
 doc_category: publishpress-authors
+section: Authors and REST API
 ---
 
 # The PublishPress Authors API

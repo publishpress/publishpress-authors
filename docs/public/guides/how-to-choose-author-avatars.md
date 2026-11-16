@@ -2,6 +2,7 @@
 title: "How to Choose Author Avatars"
 order: 49
 doc_category: publishpress-authors
+section: Author Profiles
 ---
 
 # How to Choose Author Avatars

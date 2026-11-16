@@ -2,6 +2,7 @@
 title: "PublishPress Authors and Rank Math SEO"
 order: 31
 doc_category: publishpress-authors
+section: Author SEO Schema
 ---
 
 # PublishPress Authors and Rank Math SEO

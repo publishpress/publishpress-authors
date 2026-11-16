@@ -2,6 +2,7 @@
 title: "PublishPress Authors and Polylang"
 order: 30
 doc_category: publishpress-authors
+section: Author Integrations
 ---
 
 # PublishPress Authors and Polylang

@@ -2,6 +2,7 @@
 title: "Author Pages Troubleshooting"
 order: 15
 doc_category: publishpress-authors
+section: Author Pages
 ---
 
 # Author Pages Troubleshooting

@@ -2,6 +2,7 @@
 title: "Add Social Links to Author Profiles (Pro)"
 order: 5
 doc_category: publishpress-authors
+section: Author Fields
 ---
 
 # Add Social Links to Author Profiles (Pro)

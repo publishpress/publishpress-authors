@@ -2,6 +2,7 @@
 title: "Retrieving Authors Data via the REST API"
 order: 32
 doc_category: publishpress-authors
+section: Authors and REST API
 ---
 
 # Retrieving Authors Data via the REST API

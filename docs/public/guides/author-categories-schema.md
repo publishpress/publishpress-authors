@@ -2,6 +2,7 @@
 title: "Author Categories Schema"
 order: 11
 doc_category: publishpress-authors
+section: Author Categories
 ---
 
 # Author Categories Schema

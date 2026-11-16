@@ -2,6 +2,7 @@
 title: "Author Categories Boxes (Pro)"
 order: 10
 doc_category: publishpress-authors
+section: Author Categories
 ---
 
 # Author Categories Boxes (Pro)

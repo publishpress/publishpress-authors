@@ -2,6 +2,7 @@
 title: "Create Author Profiles for Guests"
 order: 3
 doc_category: publishpress-authors
+section: Create Authors
 ---
 
 # Create Author Profiles for Guests

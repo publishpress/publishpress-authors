@@ -2,6 +2,7 @@
 title: "Using the WordPress Core Authors Page"
 order: 2
 doc_category: publishpress-authors
+section: Author Pages
 ---
 
 # Using the WordPress Core Authors Page
