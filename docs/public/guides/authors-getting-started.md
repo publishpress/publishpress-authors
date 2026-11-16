@@ -2,6 +2,7 @@
 title: "Getting Started With PublishPress Authors"
 order: 25
 doc_category: publishpress-authors
+section: Getting Started with Authors
 ---
 
 # Getting Started With PublishPress Authors
