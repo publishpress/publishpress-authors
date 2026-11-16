@@ -2,6 +2,7 @@
 title: "Introduction to Author Categories"
 order: 54
 doc_category: publishpress-authors
+section: Author Categories
 ---
 
 # Introduction to Author Categories

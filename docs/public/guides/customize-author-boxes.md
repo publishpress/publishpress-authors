@@ -2,6 +2,7 @@
 title: "How to Customize Author Boxes"
 order: 42
 doc_category: publishpress-authors
+section: Author Boxes
 ---
 
 # How to Customize Author Boxes

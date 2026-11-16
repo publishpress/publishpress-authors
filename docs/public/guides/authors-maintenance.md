@@ -2,6 +2,7 @@
 title: "PublishPress Authors Maintenance"
 order: 29
 doc_category: publishpress-authors
+section: Troubleshooting Authors
 ---
 
 # PublishPress Authors Maintenance

@@ -2,6 +2,7 @@
 title: "Add ACF Custom Fields to Author Profiles"
 order: 1
 doc_category: publishpress-authors
+section: Author Fields
 ---
 
 # Add ACF Custom Fields to Author Profiles

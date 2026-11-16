@@ -2,6 +2,7 @@
 title: "Author Profile Permissions in PublishPress Authors"
 order: 60
 doc_category: publishpress-authors
+section: Authors Permissions
 ---
 
 # Author Profile Permissions in PublishPress Authors

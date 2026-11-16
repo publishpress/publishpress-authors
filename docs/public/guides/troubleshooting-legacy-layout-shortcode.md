@@ -2,6 +2,7 @@
 title: "Troubleshooting Legacy Layout Shortcodes"
 order: 73
 doc_category: publishpress-authors
+section: Troubleshooting Authors
 ---
 
 # Troubleshooting Legacy Layout Shortcodes

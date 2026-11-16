@@ -2,6 +2,7 @@
 title: "Post Editing Permissions in PublishPress Authors"
 order: 61
 doc_category: publishpress-authors
+section: Authors Permissions
 ---
 
 # Post Editing Permissions in PublishPress Authors

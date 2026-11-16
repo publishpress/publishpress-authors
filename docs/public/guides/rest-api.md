@@ -2,6 +2,7 @@
 title: "Adding Authors to Posts via the REST API"
 order: 67
 doc_category: publishpress-authors
+section: Authors and REST API
 ---
 
 # Adding Authors to Posts via the REST API

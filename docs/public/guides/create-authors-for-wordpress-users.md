@@ -2,6 +2,7 @@
 title: "Create Author Profiles for Existing WordPress Users"
 order: 38
 doc_category: publishpress-authors
+section: Create Authors
 ---
 
 # Create Author Profiles for Existing WordPress Users

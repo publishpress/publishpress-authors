@@ -2,6 +2,7 @@
 title: "PublishPress Authors and Elementor"
 order: 21
 doc_category: publishpress-authors
+section: Author Integrations
 ---
 
 # PublishPress Authors and Elementor

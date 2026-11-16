@@ -2,6 +2,7 @@
 title: "The Authors List Widget"
 order: 27
 doc_category: publishpress-authors
+section: Author Widgets
 ---
 
 # The Authors List Widget

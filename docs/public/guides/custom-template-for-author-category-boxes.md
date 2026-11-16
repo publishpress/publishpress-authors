@@ -2,6 +2,7 @@
 title: "Templates for Author Category Boxes (Pro)"
 order: 41
 doc_category: publishpress-authors
+section: Author Categories
 ---
 
 # Templates for Author Category Boxes (Pro)

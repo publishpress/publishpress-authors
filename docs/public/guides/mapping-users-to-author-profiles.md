@@ -2,6 +2,7 @@
 title: "Types of Author Profile"
 order: 56
 doc_category: publishpress-authors
+section: Create Authors
 ---
 
 # Types of Author Profile

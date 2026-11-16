@@ -2,6 +2,7 @@
 title: "Authors List Shortcode"
 order: 26
 doc_category: publishpress-authors
+section: Author Shortcodes
 ---
 
 # Authors List Shortcode

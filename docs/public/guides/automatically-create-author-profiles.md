@@ -2,6 +2,7 @@
 title: "Automatically Create Author Profiles"
 order: 34
 doc_category: publishpress-authors
+section: Create Authors
 ---
 
 # Automatically Create Author Profiles

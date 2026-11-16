@@ -2,6 +2,7 @@
 title: "Add Author Boxes Code to Your Theme"
 order: 9
 doc_category: publishpress-authors
+section: Author Boxes
 ---
 
 # Add Author Boxes Code to Your Theme

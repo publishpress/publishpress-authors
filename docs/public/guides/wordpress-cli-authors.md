@@ -2,6 +2,7 @@
 title: "WordPress CLI and PublishPress Authors"
 order: 76
 doc_category: publishpress-authors
+section: Migrate to Authors
 ---
 
 # WordPress CLI and PublishPress Authors
