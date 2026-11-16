@@ -2,6 +2,7 @@
 title: "Import WordPress Users to Author Profiles"
 order: 58
 doc_category: publishpress-authors
+section: Create Authors
 ---
 
 # Import WordPress Users to Author Profiles
