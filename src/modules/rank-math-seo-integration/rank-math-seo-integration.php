@@ -26,6 +26,10 @@ use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Factory;
 use MA_Author_Custom_Fields as PPAuthorFields;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Rank_Math_Seo_Integration')) {
     /**
      * class MA_Rank_Math_Seo_Integration

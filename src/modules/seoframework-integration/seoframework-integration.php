@@ -31,6 +31,10 @@ use PublishPressAuthors\ElementorIntegration\Modules\ThemeBuilder\Skins\ArchiveP
 use PublishPressAuthors\ElementorIntegration\Modules\ThemeBuilder\Skins\ArchivePostsSkinClassic;
 use PublishPressAuthors\ElementorIntegration\Modules\ThemeBuilder\Skins\ArchivePostsSkinFullContent;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Seoframework_Integration')) {
     /**
      * class MA_Seoframework_Integration

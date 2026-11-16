@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!function_exists('cap_add_amp_actions')) {
     add_action('pre_amp_render_post', 'cap_add_amp_actions');
 

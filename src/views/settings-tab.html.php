@@ -1,4 +1,8 @@
 <?php
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 global $ppma_custom_settings;
 
 $section_content = get_ppma_section_content($context['options_group_name']);

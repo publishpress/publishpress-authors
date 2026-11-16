@@ -7,6 +7,10 @@
  * @since       1.0.0
  */
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 global $multiple_authors_addon;
 
 $multiple_authors_addon->activation_hook();

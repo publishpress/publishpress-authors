@@ -45,3 +45,8 @@ dev-workspace-cache export-ignore
 DOCKER_ENV export-ignore
 docker_tag export-ignore
 output.log export-ignore
+/docs export-ignore
+.agents export-ignore
+AGENTS.md export-ignore
+/lib/vendor/publishpress/publishpress-authors/docs export-ignore
+/scripts export-ignore

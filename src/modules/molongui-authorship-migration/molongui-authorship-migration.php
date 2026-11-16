@@ -27,6 +27,10 @@ use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Capability;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Molongui_Authorship_Migration')) {
     /**
      * class MA_Molongui_Authorship_Migration

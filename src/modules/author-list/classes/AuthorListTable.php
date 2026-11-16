@@ -11,6 +11,11 @@ namespace MultipleAuthorList;
 
 use MultipleAuthors\Factory;
 
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('WP_List_Table')) {
     require_once(ABSPATH . 'wp-admin/includes/class-wp-list-table.php');
 }
@@ -451,9 +456,12 @@ class AuthorListTable extends \WP_List_Table
     protected function column_dynamic_shortcode($item)
     {
         $input_id = 'author-list-shortcode-' . (int) $item['ID'];
+        $shortcode = !empty($item['dynamic_shortcode'])
+            ? $item['dynamic_shortcode']
+            : '[publishpress_authors_list list_id="' . (int) $item['ID'] . '"]';
 
         return '<label class="screen-reader-text" for="' . esc_attr($input_id) . '">' . esc_html__('Dynamic shortcode', 'publishpress-authors') . '</label>'
-            . '<input id="' . esc_attr($input_id) . '" readonly type="text" value="' . esc_attr($item['dynamic_shortcode']) . '" />';
+            . '<input id="' . esc_attr($input_id) . '" readonly type="text" value="' . esc_attr($shortcode) . '" />';
     }
 
     /**

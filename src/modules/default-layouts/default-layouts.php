@@ -25,6 +25,10 @@ use MultipleAuthors\Classes\Legacy\Module;
 use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!class_exists('MA_Default_Layouts')) {
     /**
      * class MA_Default_Layouts

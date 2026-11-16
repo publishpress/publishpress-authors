@@ -744,7 +744,7 @@ class Plugin
                     'plugin_slug'    => 'publishpress-authors',
                     'plugin_url'     => PP_AUTHORS_URL,
                     'rating_message' => __(
-                        'If you like %s please leave us a %s rating. Thank you!',
+                        'If you like %1$s please leave us a %2$s rating. Thank you!',
                         'publishpress-authors'
                     ),
                 ]
@@ -1494,8 +1494,6 @@ class Plugin
         $search = trim($args['custom_author_search']);
         $search_parts = preg_split('/\s+/', $search);
 
-        $taxonomy = esc_sql(self::$coauthor_taxonomy);
-
         $or_clauses = [];
 
         foreach ($search_parts as $part) {
@@ -1506,20 +1504,26 @@ class Plugin
             $or_clauses[] = $wpdb->prepare("t.slug LIKE %s", "%$esc%");
 
             // Search meta using EXISTS subquery to avoid duplicates
-            $or_clauses[] = "EXISTS (
-                SELECT 1
-                FROM $wpdb->termmeta AS tm
-                WHERE tm.term_id = t.term_id
-                AND (
-                    (tm.meta_key = 'first_name' AND tm.meta_value LIKE '{$esc}%')
-                    OR (tm.meta_key = 'last_name' AND tm.meta_value LIKE '{$esc}%')
-                    OR (tm.meta_key = 'user_email' AND tm.meta_value LIKE '{$esc}%')
-                )
-            )";
+            $or_clauses[] = $wpdb->prepare(
+                "EXISTS (
+                    SELECT 1
+                    FROM $wpdb->termmeta AS tm
+                    WHERE tm.term_id = t.term_id
+                    AND (
+                        (tm.meta_key = 'first_name' AND tm.meta_value LIKE %s)
+                        OR (tm.meta_key = 'last_name' AND tm.meta_value LIKE %s)
+                        OR (tm.meta_key = 'user_email' AND tm.meta_value LIKE %s)
+                    )
+                )",
+                $esc . '%',
+                $esc . '%',
+                $esc . '%'
+            );
         }
 
         if (!empty($or_clauses)) {
-            $clauses['where'] .= " AND tt.taxonomy = '{$taxonomy}' AND (" . implode(' OR ', $or_clauses) . ")";
+            $clauses['where'] .= $wpdb->prepare(" AND tt.taxonomy = %s", self::$coauthor_taxonomy)
+                . " AND (" . implode(' OR ', $or_clauses) . ")";
         }
 
         if (!empty($clauses['orderby']) && stripos($clauses['fields'], "t.name") === false) {
@@ -1698,7 +1702,6 @@ class Plugin
             'fieldTitleRequired'             => esc_html__('Field title is required', 'publishpress-authors'),
             'display_name_format'           => $display_name_format,
             'author_user_login'             => $author_user_login,
-            'display_name_html'             => $author_display_name_html,
             'author_details'                => $author_details,
             'author_menu_link'              => esc_url(admin_url('edit-tags.php?taxonomy=author')),
             'allow_author_multiple_categories' => Utils::isAuthorMultipleCategoriesEnabled() ? 'yes' : 'no',
@@ -1709,6 +1712,15 @@ class Plugin
             'multiple-authors-js',
             'MultipleAuthorsStrings',
             $js_strings
+        );
+        // Keep escaped option text intact: wp_localize_script() decodes HTML entities.
+        wp_add_inline_script(
+            'multiple-authors-js',
+            'MultipleAuthorsStrings.display_name_html = ' . wp_json_encode(
+                $author_display_name_html,
+                JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+            ) . ';',
+            'before'
         );
         wp_localize_script(
             'multiple-authors-js',

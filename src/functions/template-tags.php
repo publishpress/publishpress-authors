@@ -15,6 +15,10 @@ use MultipleAuthors\Classes\Objects\Author;
 use MultipleAuthors\Classes\Utils;
 use MultipleAuthors\Factory;
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if (!function_exists('get_archive_author')) {
     /**
      * Get the author on the archive page.
@@ -97,6 +101,9 @@ if (!function_exists('get_post_authors')) {
                 $postTypes = Util::get_selected_post_types();
 
                 if (in_array($post->post_type, $postTypes)) {
+                    if (!$updateAuthors) {
+                        return [];
+                    }
                     $author = Author::create_from_user($post->post_author);
                     $authorsInstances = [$author];
                 } else {
@@ -168,6 +175,9 @@ if (!function_exists('get_post_authors')) {
                 $postTypes = Util::get_selected_post_types();
 
                 if (in_array($post->post_type, $postTypes)) {
+                    if (!$updateAuthors) {
+                        return [];
+                    }
                     $author = Author::create_from_user($post->post_author);
                     $authorsInstances = [$author];
                 } else {
@@ -903,9 +913,10 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
 
             if (true === $args['hide_empty'] || $last_article_date) {
                 $term_query .= "AND p.post_status IN ('publish') ";
-                $post_type_placeholders = implode(', ', array_fill(0, count($postTypes), '%s'));
-                // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Post type placeholders are generated from a sanitized array.
-                $term_query .= $wpdb->prepare("AND p.post_type IN ({$post_type_placeholders}) ", ...$postTypes);
+                $term_query .= $wpdb->prepare(
+                    'AND p.post_type IN (' . implode(', ', array_fill(0, count($postTypes), '%s')) . ') ',
+                    ...$postTypes
+                );
 
                 if ($last_article_date) {
                     $last_article_date = str_replace(' ago', '', $last_article_date);
@@ -1051,7 +1062,7 @@ if (!function_exists('publishpress_authors_get_all_authors')) {
                     //only add show more link if author has more than limit posts
                     if ($post_index > 4) {
                         $author_view_text = sprintf(
-                            esc_html__('%1sView all posts%2s by %3s', 'publishpress-authors'),
+                            esc_html__('%1$sView all posts%2$s by %3$s', 'publishpress-authors'),
                             '<span>',
                             '</span>',
                             $author->display_name

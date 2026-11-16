@@ -1,4 +1,9 @@
-<?php 
+<?php
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 $url            = $context['url'];
 $has_config_link = $context['has_config_link'];
 $slug           = $context['slug'];
