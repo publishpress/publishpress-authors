@@ -2,6 +2,7 @@
 title: "Settings Permissions in PublishPress Authors"
 order: 6
 doc_category: publishpress-authors
+section: Authors Permissions
 ---
 
 # Settings Permissions in PublishPress Authors

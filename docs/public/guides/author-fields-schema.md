@@ -2,6 +2,7 @@
 title: "Author Fields Schema"
 order: 13
 doc_category: publishpress-authors
+section: Author SEO Schema
 ---
 
 # Author Fields Schema

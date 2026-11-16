@@ -2,6 +2,7 @@
 title: "Where is Author Data Stored in the Database?"
 order: 18
 doc_category: publishpress-authors
+section: Authors Plugin Data
 ---
 
 # Where is Author Data Stored in the Database?

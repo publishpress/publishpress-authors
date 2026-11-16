@@ -2,6 +2,7 @@
 title: "How to Include a Design for PublishPress Authors in Your Theme"
 order: 52
 doc_category: publishpress-authors
+section: Authors and Themes
 ---
 
 # How to Include a Design for PublishPress Authors in Your Theme

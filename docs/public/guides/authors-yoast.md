@@ -2,6 +2,7 @@
 title: "PublishPress Authors and Yoast SEO"
 order: 33
 doc_category: publishpress-authors
+section: Author SEO Schema
 ---
 
 # PublishPress Authors and Yoast SEO

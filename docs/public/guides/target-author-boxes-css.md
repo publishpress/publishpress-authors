@@ -2,6 +2,7 @@
 title: "Target the Author Boxes With CSS"
 order: 72
 doc_category: publishpress-authors
+section: Authors and Themes
 ---
 
 # Target the Author Boxes With CSS

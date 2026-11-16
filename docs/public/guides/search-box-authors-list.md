@@ -2,6 +2,7 @@
 title: "Add a Search Box to the Author Lists (Pro)"
 order: 69
 doc_category: publishpress-authors
+section: Author Lists
 ---
 
 # Add a Search Box to the Author Lists (Pro)

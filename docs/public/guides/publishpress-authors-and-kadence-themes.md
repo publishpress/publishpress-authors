@@ -2,6 +2,7 @@
 title: "PublishPress Authors and Kadence Themes"
 order: 63
 doc_category: publishpress-authors
+section: Authors and Themes
 ---
 
 # PublishPress Authors and Kadence Themes

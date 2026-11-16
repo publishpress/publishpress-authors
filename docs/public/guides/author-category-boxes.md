@@ -2,6 +2,7 @@
 title: "Add New Author Category Boxes (Pro)"
 order: 12
 doc_category: publishpress-authors
+section: Author Categories
 ---
 
 # Add New Author Category Boxes (Pro)

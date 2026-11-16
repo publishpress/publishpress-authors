@@ -2,6 +2,7 @@
 title: "Import from Molongui Authorship to PublishPress Authors"
 order: 50
 doc_category: publishpress-authors
+section: Migrate to Authors
 ---
 
 # Import from Molongui Authorship to PublishPress Authors

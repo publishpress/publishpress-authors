@@ -2,6 +2,7 @@
 title: "Import from Co-Authors Plus to PublishPress Authors"
 order: 37
 doc_category: publishpress-authors
+section: Migrate to Authors
 ---
 
 # Import from Co-Authors Plus to PublishPress Authors

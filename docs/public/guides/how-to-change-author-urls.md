@@ -2,6 +2,7 @@
 title: "How to Change Author Pages URLs"
 order: 48
 doc_category: publishpress-authors
+section: Author Pages
 ---
 
 # How to Change Author Pages URLs

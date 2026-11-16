@@ -2,6 +2,7 @@
 title: "How to Customize Author Pages"
 order: 43
 doc_category: publishpress-authors
+section: Author Pages
 ---
 
 # How to Customize Author Pages

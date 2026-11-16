@@ -2,6 +2,7 @@
 title: "Calling Author Profile Fields With Code"
 order: 35
 doc_category: publishpress-authors
+section: Authors and REST API
 ---
 
 # Calling Author Profile Fields With Code

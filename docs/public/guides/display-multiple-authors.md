@@ -2,6 +2,7 @@
 title: "How to Add Author Boxes to Your Site"
 order: 46
 doc_category: publishpress-authors
+section: Author Boxes
 ---
 
 # How to Add Author Boxes to Your Site

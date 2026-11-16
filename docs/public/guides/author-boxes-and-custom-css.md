@@ -2,6 +2,7 @@
 title: "Author Boxes and Custom CSS"
 order: 8
 doc_category: publishpress-authors
+section: Author Boxes
 ---
 
 # Author Boxes and Custom CSS

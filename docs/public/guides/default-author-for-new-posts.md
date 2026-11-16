@@ -2,6 +2,7 @@
 title: "Default Author For New Posts"
 order: 44
 doc_category: publishpress-authors
+section: Author Profiles
 ---
 
 # Default Author For New Posts

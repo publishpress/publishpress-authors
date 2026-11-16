@@ -2,6 +2,7 @@
 title: "Introduction to Author Pages"
 order: 16
 doc_category: publishpress-authors
+section: Author Pages
 ---
 
 # Introduction to Author Pages
