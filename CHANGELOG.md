@@ -1,6 +1,6 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.20.0] - 12 November, 2026
+[4.20.0] - 16 November, 2026
 
 * Feature: Add private MCP actions for author profiles, post bylines, settings, boxes, lists and categories with native permissions and previews, #2557
 * Feature: Add an Authors Data block to display author profile details in the block editor, #2448
