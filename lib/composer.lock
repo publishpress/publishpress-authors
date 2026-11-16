@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5eecb0086b61dc4479d48dc300e06b01",
+    "content-hash": "afb33a851062f646ba8e32f27d5e6189",
     "packages": [
         {
             "name": "cmb2/cmb2",
@@ -479,7 +479,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2.5"
+        "php": ">=8.2"
     },
     "platform-dev": {},
     "plugin-api-version": "2.11.0"
