@@ -2,6 +2,7 @@
 title: "PublishPress Authors and Divi"
 order: 20
 doc_category: publishpress-authors
+section: Author Integrations
 ---
 
 # PublishPress Authors and Divi

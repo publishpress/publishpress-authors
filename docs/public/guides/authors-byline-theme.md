@@ -2,6 +2,7 @@
 title: "Update the Authors Byline in Your Theme"
 order: 17
 doc_category: publishpress-authors
+section: Authors and Themes
 ---
 
 # Update the Authors Byline in Your Theme

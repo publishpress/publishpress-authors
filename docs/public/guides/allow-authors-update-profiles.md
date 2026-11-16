@@ -2,6 +2,7 @@
 title: "Allow Authors to Update Their Profiles"
 order: 7
 doc_category: publishpress-authors
+section: Author Profiles
 ---
 
 # Allow Authors to Update Their Profiles

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1de6f587d22012bf9ba588d8fcfc6996",
+    "content-hash": "16235214d5523fca09c1dcfba74cfee8",
     "packages": [],
     "packages-dev": [
         {
@@ -3045,16 +3045,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.13.2",
+            "version": "2.13.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "adee536f95101929f262b8c59e8a61472f347d58"
+                "reference": "6d3cd8285a97eaa352956a4ada92fa03ecce1c4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/adee536f95101929f262b8c59e8a61472f347d58",
-                "reference": "adee536f95101929f262b8c59e8a61472f347d58",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/6d3cd8285a97eaa352956a4ada92fa03ecce1c4e",
+                "reference": "6d3cd8285a97eaa352956a4ada92fa03ecce1c4e",
                 "shasum": ""
             },
             "require": {
@@ -3144,7 +3144,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.13.2"
+                "source": "https://github.com/guzzle/psr7/tree/2.13.3"
             },
             "funding": [
                 {
@@ -3160,8 +3160,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-10-17T23:49:46+00:00",
-            "published-time": "2026-10-17T23:51:00+00:00"
+            "time": "2026-11-12T15:57:42+00:00",
+            "published-time": "2026-11-12T15:58:42+00:00"
         },
         {
             "name": "justinrainbow/json-schema",
@@ -5602,16 +5602,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.66",
+            "version": "10.5.67",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "747c9889613d0b3ffa08b74272e50ed3b8fa6d72"
+                "reference": "1f3e67dd433817bddfc64afab63977cc4b011374"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/747c9889613d0b3ffa08b74272e50ed3b8fa6d72",
-                "reference": "747c9889613d0b3ffa08b74272e50ed3b8fa6d72",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1f3e67dd433817bddfc64afab63977cc4b011374",
+                "reference": "1f3e67dd433817bddfc64afab63977cc4b011374",
                 "shasum": ""
             },
             "require": {
@@ -5683,7 +5683,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.66"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.67"
             },
             "funding": [
                 {
@@ -5691,8 +5691,8 @@
                     "type": "other"
                 }
             ],
-            "time": "2026-10-05T05:46:26+00:00",
-            "published-time": "2026-10-05T05:47:29+00:00"
+            "time": "2026-11-13T11:07:03+00:00",
+            "published-time": "2026-11-13T11:07:54+00:00"
         },
         {
             "name": "psr/cache",
@@ -6145,16 +6145,16 @@
         },
         {
             "name": "publishpress/dev-workspace",
-            "version": "1.8.19",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/library-dev-workspace.git",
-                "reference": "a31830c4f1cbc7e850361771e09b0396ab181b3e"
+                "reference": "ef57a10f0ca8dcb69df18ebf7235130a46dea2f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-dev-workspace/zipball/a31830c4f1cbc7e850361771e09b0396ab181b3e",
-                "reference": "a31830c4f1cbc7e850361771e09b0396ab181b3e",
+                "url": "https://api.github.com/repos/publishpress/library-dev-workspace/zipball/ef57a10f0ca8dcb69df18ebf7235130a46dea2f6",
+                "reference": "ef57a10f0ca8dcb69df18ebf7235130a46dea2f6",
                 "shasum": ""
             },
             "require": {
@@ -6184,7 +6184,7 @@
                 "phpstan/extension-installer": "^1.3",
                 "phpstan/phpstan": "^1.10",
                 "phpunit/phpunit": "^10",
-                "publishpress/publishpress-phpcs-standards": "dev-development",
+                "publishpress/publishpress-phpcs-standards": "^1.2",
                 "publishpress/translations": "^1.4",
                 "spatie/ray": "^1.41",
                 "squizlabs/php_codesniffer": "^3.8",
@@ -6211,23 +6211,23 @@
             "description": "Shared Composer scripts for PublishPress plugins",
             "support": {
                 "issues": "https://github.com/publishpress/library-dev-workspace/issues",
-                "source": "https://github.com/publishpress/library-dev-workspace/tree/1.8.19"
+                "source": "https://github.com/publishpress/library-dev-workspace/tree/2.1.0"
             },
-            "time": "2026-10-15T20:15:44+00:00",
-            "published-time": "2026-10-15T20:15:58+00:00"
+            "time": "2026-11-12T15:17:35+00:00",
+            "published-time": "2026-11-12T15:17:54+00:00"
         },
         {
             "name": "publishpress/publishpress-phpcs-standards",
-            "version": "dev-development",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/publishpress-phpcs-standards.git",
-                "reference": "5abbf4c68de324c0a540df4ac374e646c4317a46"
+                "reference": "739a1b5e2b55a02f817f0b3019f1c2d5e5716d56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/publishpress-phpcs-standards/zipball/5abbf4c68de324c0a540df4ac374e646c4317a46",
-                "reference": "5abbf4c68de324c0a540df4ac374e646c4317a46",
+                "url": "https://api.github.com/repos/publishpress/publishpress-phpcs-standards/zipball/739a1b5e2b55a02f817f0b3019f1c2d5e5716d56",
+                "reference": "739a1b5e2b55a02f817f0b3019f1c2d5e5716d56",
                 "shasum": ""
             },
             "require": {
@@ -6244,7 +6244,6 @@
                 "squizlabs/php_codesniffer": "^3.5",
                 "vimeo/psalm": "^4.17"
             },
-            "default-branch": true,
             "type": "phpcodesniffer-standard",
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -6261,10 +6260,10 @@
             "description": "PublishPress PHPCS standards, including vendored WordPress.org Plugin Check rules",
             "support": {
                 "issues": "https://github.com/publishpress/publishpress-phpcs-standards/issues",
-                "source": "https://github.com/publishpress/publishpress-phpcs-standards/tree/development"
+                "source": "https://github.com/publishpress/publishpress-phpcs-standards/tree/1.2.0"
             },
-            "time": "2026-10-23T18:08:55+00:00",
-            "published-time": "2026-10-23T18:09:01+00:00"
+            "time": "2026-10-23T18:08:40+00:00",
+            "published-time": "2026-10-23T18:08:55+00:00"
         },
         {
             "name": "publishpress/translations",
@@ -6448,16 +6447,16 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "4.9.4",
+            "version": "4.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "75d73f48d02797c2c285a7e9f348fadc0102ffe2"
+                "reference": "f9aa3efc8015fcbc013d84d699583b268ccb593a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/75d73f48d02797c2c285a7e9f348fadc0102ffe2",
-                "reference": "75d73f48d02797c2c285a7e9f348fadc0102ffe2",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/f9aa3efc8015fcbc013d84d699583b268ccb593a",
+                "reference": "f9aa3efc8015fcbc013d84d699583b268ccb593a",
                 "shasum": ""
             },
             "require": {
@@ -6469,23 +6468,22 @@
                 "rhumsaa/uuid": "self.version"
             },
             "require-dev": {
-                "captainhook/captainhook": "^5.25",
-                "captainhook/plugin-composer": "^5.3",
-                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-                "ergebnis/composer-normalize": "^2.47",
-                "mockery/mockery": "^1.6",
-                "paragonie/random-lib": "^2",
-                "php-mock/php-mock": "^2.6",
-                "php-mock/php-mock-mockery": "^1.5",
+                "captainhook/captainhook": "^5.29.3",
+                "captainhook/plugin-composer": "^5.3.3",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.2.1",
+                "mockery/mockery": "^1.6.15",
+                "paragonie/random-lib": "^2.0.3",
+                "php-mock/php-mock": "^2.7.0",
+                "php-mock/php-mock-mockery": "^1.5.0",
                 "php-parallel-lint/php-parallel-lint": "^1.4.0",
                 "phpbench/phpbench": "^1.2.14",
-                "phpstan/extension-installer": "^1.4",
-                "phpstan/phpstan": "^2.1",
-                "phpstan/phpstan-mockery": "^2.0",
-                "phpstan/phpstan-phpunit": "^2.0",
-                "phpunit/phpunit": "^9.6",
-                "slevomat/coding-standard": "^8.18",
-                "squizlabs/php_codesniffer": "^3.13"
+                "phpstan/extension-installer": "^1.4.3",
+                "phpstan/phpstan": "^2.3.5",
+                "phpstan/phpstan-mockery": "^2.0.0",
+                "phpstan/phpstan-phpunit": "^2.1.2",
+                "phpunit/phpunit": "^9.6.39",
+                "slevomat/coding-standard": "^8.31.3",
+                "squizlabs/php_codesniffer": "^4.0.4"
             },
             "suggest": {
                 "ext-bcmath": "Enables faster math with arbitrary-precision integers using BCMath.",
@@ -6520,10 +6518,10 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/uuid/issues",
-                "source": "https://github.com/ramsey/uuid/tree/4.9.4"
+                "source": "https://github.com/ramsey/uuid/tree/4.10.0"
             },
-            "time": "2026-09-16T11:39:30+00:00",
-            "published-time": "2026-09-16T11:41:15+00:00"
+            "time": "2026-11-14T23:23:20+00:00",
+            "published-time": "2026-11-14T23:35:39+00:00"
         },
         {
             "name": "react/cache",

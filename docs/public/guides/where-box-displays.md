@@ -2,6 +2,7 @@
 title: "Change Where the Author Box Displays"
 order: 75
 doc_category: publishpress-authors
+section: Authors and Themes
 ---
 
 # Change Where the Author Box Displays

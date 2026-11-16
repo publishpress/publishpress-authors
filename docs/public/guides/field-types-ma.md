@@ -2,6 +2,7 @@
 title: "Introduction to Author Fields"
 order: 47
 doc_category: publishpress-authors
+section: Author Fields
 ---
 
 # Introduction to Author Fields

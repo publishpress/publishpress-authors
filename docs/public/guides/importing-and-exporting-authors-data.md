@@ -2,6 +2,7 @@
 title: "Importing and Exporting Authors Data"
 order: 51
 doc_category: publishpress-authors
+section: Authors Plugin Data
 ---
 
 # Importing and Exporting Authors Data

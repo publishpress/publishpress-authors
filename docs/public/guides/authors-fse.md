@@ -2,6 +2,7 @@
 title: "PublishPress Authors and Full-Site Editing"
 order: 24
 doc_category: publishpress-authors
+section: Author Integrations
 ---
 
 # PublishPress Authors and Full-Site Editing

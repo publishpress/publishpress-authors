@@ -2,6 +2,7 @@
 title: "How to Add Author Fields (Pro)"
 order: 40
 doc_category: publishpress-authors
+section: Author Fields
 ---
 
 # How to Add Author  Fields (Pro)

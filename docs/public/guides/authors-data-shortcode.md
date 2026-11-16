@@ -2,6 +2,7 @@
 title: "Authors Data Shortcode"
 order: 19
 doc_category: publishpress-authors
+section: Author Shortcodes
 ---
 
 # Authors Data Shortcode

@@ -2,6 +2,7 @@
 title: "Default Layouts for Author Boxes"
 order: 55
 doc_category: publishpress-authors
+section: Author Boxes
 ---
 
 # Default Layouts for Author Boxes

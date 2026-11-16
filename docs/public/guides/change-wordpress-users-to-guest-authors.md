@@ -2,6 +2,7 @@
 title: "Change WordPress Users to Guest Authors"
 order: 36
 doc_category: publishpress-authors
+section: Migrate to Authors
 ---
 
 # Change WordPress Users to Guest Authors

@@ -2,6 +2,7 @@
 title: "Introduction to Author Boxes"
 order: 53
 doc_category: publishpress-authors
+section: Author Boxes
 ---
 
 # Introduction to Author Boxes

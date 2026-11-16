@@ -2,6 +2,7 @@
 title: "Differences Between Authors Free and Pro"
 order: 23
 doc_category: publishpress-authors
+section: Getting Started with Authors
 ---
 
 # Differences Between Authors Free and Pro

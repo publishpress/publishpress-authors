@@ -2,6 +2,7 @@
 title: "The Post Author Widget"
 order: 62
 doc_category: publishpress-authors
+section: Author Widgets
 ---
 
 # The Post Author Widget

@@ -2,6 +2,7 @@
 title: "Where are PublishPress Authors Settings Stored in the Database?"
 order: 66
 doc_category: publishpress-authors
+section: Authors Plugin Data
 ---
 
 # Where are PublishPress Authors Settings Stored in the Database?

@@ -2,6 +2,7 @@
 title: "Troubleshooting PublishPress Authors"
 order: 74
 doc_category: publishpress-authors
+section: Troubleshooting Authors
 ---
 
 # Troubleshooting PublishPress Authors

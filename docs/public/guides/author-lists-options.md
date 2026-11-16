@@ -2,6 +2,7 @@
 title: "Author Lists Options"
 order: 14
 doc_category: publishpress-authors
+section: Author Lists
 ---
 
 # Author Lists Options

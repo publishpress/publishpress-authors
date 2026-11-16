@@ -2,6 +2,7 @@
 title: "Creating Authors via the REST API"
 order: 39
 doc_category: publishpress-authors
+section: Authors and REST API
 ---
 
 # Creating Authors via the REST API

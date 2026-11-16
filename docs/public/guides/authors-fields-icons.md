@@ -2,6 +2,7 @@
 title: "How to Add Icons to Author Fields"
 order: 22
 doc_category: publishpress-authors
+section: Author Fields
 ---
 
 # How to Add Icons to Author Fields

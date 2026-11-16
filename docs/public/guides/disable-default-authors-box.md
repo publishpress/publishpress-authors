@@ -2,6 +2,7 @@
 title: "Using the Default Authors Box Below Posts"
 order: 45
 doc_category: publishpress-authors
+section: Author Boxes
 ---
 
 # Using the Default Authors Box Below Posts

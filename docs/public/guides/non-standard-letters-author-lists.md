@@ -2,6 +2,7 @@
 title: "Using Non-Standard Letters in Author Lists"
 order: 59
 doc_category: publishpress-authors
+section: Author Lists
 ---
 
 # Using Non-Standard Letters in Author Lists
