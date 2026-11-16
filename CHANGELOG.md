@@ -2,6 +2,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 [4.20.0] - 16 November, 2026
 
+* Update: Require PHP 8.2 and stop loading on older PHP versions
 * Feature: Add private MCP actions for author profiles, post bylines, settings, boxes, lists and categories with native permissions and previews, #2557
 * Feature: Add an Authors Data block to display author profile details in the block editor, #2448
 * Feature: Add an Author List block to display saved author lists in the block editor, #2447
