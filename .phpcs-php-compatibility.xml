@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<ruleset name="PublishPress Authors PHP Compatibility">
+    <description>Check PHP compatibility of plugin-owned runtime code.</description>
+
+    <arg name="extensions" value="php"/>
+    <arg name="basepath" value="."/>
+    <arg name="parallel" value="4"/>
+    <arg value="ps"/>
+    <ini name="memory_limit" value="256M"/>
+
+    <file>src</file>
+    <file>activation.php</file>
+    <file>bylines-functions.php</file>
+    <file>coauthors-functions.php</file>
+    <file>defines.php</file>
+    <file>deprecated.php</file>
+    <file>includes.php</file>
+    <file>publishpress-authors.php</file>
+    <file>template-tags.php</file>
+
+    <exclude-pattern>*/src/assets/lib/*</exclude-pattern>
+    <rule ref="PHPCompatibility"/>
+</ruleset>

@@ -177,7 +177,13 @@ class MA_Author_List extends Module
             return '';
         }
 
-        return do_shortcode('[publishpress_authors_list list_id="' . esc_attr($list_id) . '"]');
+        $content = do_shortcode('[publishpress_authors_list list_id="' . esc_attr($list_id) . '"]');
+
+        if ($content === '') {
+            return '';
+        }
+
+        return '<div ' . get_block_wrapper_attributes() . '>' . $content . '</div>';
     }
 
     /**
