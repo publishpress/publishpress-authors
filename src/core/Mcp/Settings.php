@@ -100,7 +100,10 @@ class Settings
         }
         foreach (['post_types', 'author_page_post_types'] as $key) {
             $fields = [];
-            foreach (array_keys(Factory::getLegacyPlugin()->multiple_authors->get_all_post_types()) as $postType) {
+            // Abilities can be registered before the legacy modules load (init priority 1000), when another
+            // plugin starts the Abilities API registry early. get_all_post_types() needs no module state.
+            $module = Factory::getLegacyPlugin()->multiple_authors ?? new \MultipleAuthors\Classes\Legacy\Module();
+            foreach (array_keys($module->get_all_post_types()) as $postType) {
                 $fields[$postType] = ['type' => 'boolean'];
             }
             $properties[$key] = Registry::object($fields);
