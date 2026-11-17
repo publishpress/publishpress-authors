@@ -1,5 +1,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.20.1] - 17 November, 2026
+
+* Update: Require PHP 8.2 and show a compatibility notice on older PHP versions.
+* Fixed: Prevent an error that could block other plugins' abilities when the WordPress Abilities API loads early, #2581
+
 [4.20.0] - 16 November, 2026
 
 * Update: Require PHP 8.2 and stop loading on older PHP versions
