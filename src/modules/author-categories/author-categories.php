@@ -512,6 +512,16 @@ class MA_Author_Categories extends Module
         if (!current_user_can(apply_filters('pp_multiple_authors_manage_categories_cap', 'ppma_manage_author_categories'))) {
             return false;
         }
+        return $this->insertAuthorCategory($insert_args);
+    }
+
+    /**
+     * Insert a category after authorization, or during internal installation.
+     *
+     * @param array $insert_args
+     * @return array|bool
+     */
+    private function insertAuthorCategory($insert_args) {
         global $wpdb;
 
         $table_name = AuthorCategoriesSchema::tableName();
@@ -857,7 +867,7 @@ class MA_Author_Categories extends Module
         ];
 
         foreach ($default_categories as $default_category) {
-            $this->addAuthorCategory($default_category);
+            $this->insertAuthorCategory($default_category);
         }
     }
 
@@ -915,6 +925,14 @@ class MA_Author_Categories extends Module
         } elseif (empty(get_option('ppma_author_categories_meta_installed'))) {
             AuthorCategoriesSchema::createMetaTableIfNotExists();
             update_option('ppma_author_categories_meta_installed', 1);
+        }
+
+        // Older installers marked setup complete even when the permission check rejected every default.
+        // Repair only empty installations; leave existing category sets untouched.
+        if (version_compare($currentVersion, '4.20.1', '<')
+            && !get_ppma_author_categories(['count_only' => true, 'no_cache' => true])
+        ) {
+            $this->insertDefaultCategories();
         }
 
         if (empty(get_option('ppma_author_categories_cap_upgrade'))) {

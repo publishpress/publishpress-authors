@@ -30,7 +30,7 @@ class Settings
             'update-plugin-settings',
             __('Update Authors settings', 'publishpress-authors'),
             __('Patch only supplied Authors settings; preserves unrelated settings. Use get-plugin-settings for exact fields and native choices. dry_run validates and returns proposed values without saving. Author Pages changes refresh rewrite rules. Pro branding requires Pro.', 'publishpress-authors'),
-            Registry::object(['settings' => array_merge(self::schema(), ['minProperties' => 1, 'maxProperties' => 100]), 'dry_run' => Registry::preview()], ['settings']),
+            Registry::object(['settings' => array_merge(self::schema(true), ['minProperties' => 1, 'maxProperties' => 100]), 'dry_run' => Registry::preview()], ['settings']),
             $output,
             [__CLASS__, 'update'],
             [Capability::class, 'currentUserCanManageSettings'],
@@ -57,7 +57,8 @@ class Settings
         );
     }
 
-    public static function schema(): array
+    /** Registration uses stable types; execution validates current native choices. */
+    public static function schema(bool $registration = false): array
     {
         $properties = [
             'append_to_content' => ['type' => 'boolean', 'default' => true, 'title' => __('Show Author Box below content', 'publishpress-authors')],
@@ -100,10 +101,16 @@ class Settings
         }
         foreach (['post_types', 'author_page_post_types'] as $key) {
             $fields = [];
-            foreach (array_keys(Factory::getLegacyPlugin()->multiple_authors->get_all_post_types()) as $postType) {
+            // Abilities can be registered before the legacy modules load (init priority 1000), when another
+            // plugin starts the Abilities API registry early. get_all_post_types() needs no module state.
+            $module = Factory::getLegacyPlugin()->multiple_authors ?? new \MultipleAuthors\Classes\Legacy\Module();
+            foreach ($registration ? [] : array_keys($module->get_all_post_types()) as $postType) {
                 $fields[$postType] = ['type' => 'boolean'];
             }
             $properties[$key] = Registry::object($fields);
+            if ($registration) {
+                $properties[$key]['additionalProperties'] = ['type' => 'boolean'];
+            }
         }
         foreach (['mapped_author_roles', 'author_for_new_users'] as $key) {
             $properties[$key] = ['type' => 'array', 'maxItems' => 100, 'uniqueItems' => true,
@@ -153,7 +160,9 @@ class Settings
             } elseif ($field['type'] === 'array') {
                 $value = self::availableRoleValues($value, $field);
             } elseif ($field['type'] === 'object') {
-                $value = (object) array_map(static function ($enabled) { return $enabled === 'on'; }, (array) $value);
+                $value = (object) array_map(static function ($enabled) {
+                    return $enabled === 'on';
+                }, (array) $value);
             }
             if ($key === 'author_page_post_types' && !(array) $value) {
                 $value = (object) ['post' => true];
@@ -161,6 +170,19 @@ class Settings
             $field['default'] = $value;
         }
         unset($field);
+        if ($registration) {
+            // Choices may be registered later on init; the live schema remains authoritative.
+            foreach ($properties as $name => &$field) {
+                if (in_array($name, ['author_pages_title_header', 'author_post_title_header', 'display_name_format'], true)) {
+                    continue;
+                }
+                unset($field['enum']);
+                if (isset($field['items'])) {
+                    unset($field['items']['enum']);
+                }
+            }
+            unset($field);
+        }
         return Registry::object($properties);
     }
 
@@ -217,10 +239,12 @@ class Settings
         $values = $current;
         foreach ($input['settings'] as $name => $value) {
             $type = $schema['properties'][$name]['type'];
-            if (($type === 'boolean' && !is_bool($value)) || ($type === 'integer' && !is_int($value))
+            if (
+                ($type === 'boolean' && !is_bool($value)) || ($type === 'integer' && !is_int($value))
                 || ($type === 'string' && !is_string($value))
                 || (is_array($type) && !is_int($value) && $value !== '')
-                || ($type === 'array' && (!is_array($value) || ($value && array_keys($value) !== range(0, count($value) - 1))))) {
+                || ($type === 'array' && (!is_array($value) || ($value && array_keys($value) !== range(0, count($value) - 1))))
+            ) {
                 return Registry::error(__('Use exact setting types from discovery.', 'publishpress-authors'));
             }
             if ($type === 'array') {
