@@ -4,6 +4,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 * Update: Require PHP 8.2 and show a compatibility notice on older PHP versions.
 * Fixed: Prevent an error that could block other plugins' abilities when the WordPress Abilities API loads early, #2581
+* Fixed: Create default author categories on new installations and restore them when upgrading an affected site with no categories, #2558
+* Fixed: New posts by users without edit_others_posts get no author term, so author queries miss them, #2585
 
 [4.20.0] - 16 November, 2026
 
