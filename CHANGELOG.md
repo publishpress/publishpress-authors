@@ -1,5 +1,13 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.20.1] - 17 November, 2026
+
+* Update: Require PHP 8.2 and show a compatibility notice on older PHP versions.
+* Fixed: Prevent an error that could block other plugins' abilities when the WordPress Abilities API loads early, #2581
+* Fixed: Create default author categories on new installations and restore them when upgrading an affected site with no categories, #2558
+* Fixed: New posts by users without edit_others_posts get no author term, so author queries miss them, #2585
+* Fixed: Allow changing Author Box name and category positions without false warnings about changes in another browser or tab, #2565
+
 [4.20.0] - 16 November, 2026
 
 * Update: Require PHP 8.2 and stop loading on older PHP versions

@@ -1092,8 +1092,12 @@ class Post_Editor
         /*
          * If the user can't edit others posts, we shouldn't set another user as author for the post.
          * That could bring back a bug that blocks them to create new posts.
+         * Their own author profile is fine, otherwise their new posts get no author term.
          */
-        if (! current_user_can('edit_others_posts') && ! $defaultAuthor->is_guest()) {
+        if (! current_user_can('edit_others_posts')
+            && ! $defaultAuthor->is_guest()
+            && (int) $defaultAuthor->user_id !== get_current_user_id()
+        ) {
             return;
         }
 
