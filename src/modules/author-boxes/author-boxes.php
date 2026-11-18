@@ -326,16 +326,16 @@ class MA_Author_Boxes extends Module
             if (is_array($baseline_data) && array_key_exists($key, $baseline_data)) {
                 $baseline_value = $baseline_data[$key];
                 $latest_value = array_key_exists($key, $latest_data) ? $latest_data[$key] : '';
-                $client_changed = $this->normalizeAuthorBoxFieldValue($value)
-                    !== $this->normalizeAuthorBoxFieldValue($baseline_value);
-                $server_changed = $this->normalizeAuthorBoxFieldValue($latest_value)
-                    !== $this->normalizeAuthorBoxFieldValue($baseline_value);
+                $client_changed = $this->normalizeAuthorBoxFieldValue($value, $args)
+                    !== $this->normalizeAuthorBoxFieldValue($baseline_value, $args);
+                $server_changed = $this->normalizeAuthorBoxFieldValue($latest_value, $args)
+                    !== $this->normalizeAuthorBoxFieldValue($baseline_value, $args);
 
                 if (!$client_changed) {
                     $value = $latest_value;
                 } elseif ($server_changed
-                    && $this->normalizeAuthorBoxFieldValue($value)
-                        !== $this->normalizeAuthorBoxFieldValue($latest_value)
+                    && $this->normalizeAuthorBoxFieldValue($value, $args)
+                        !== $this->normalizeAuthorBoxFieldValue($latest_value, $args)
                 ) {
                     $value = $latest_value;
                     $conflicts[] = $key;
@@ -373,10 +373,22 @@ class MA_Author_Boxes extends Module
      * integers or booleans after their field sanitizers have run.
      *
      * @param mixed $value Field value.
+     * @param array $args Field definition.
      *
      * @return mixed
      */
-    protected function normalizeAuthorBoxFieldValue($value) {
+    protected function normalizeAuthorBoxFieldValue($value, $args = []) {
+        // A single-select displays its first option when the stored value has no matching option.
+        // Compare that effective value with the browser baseline, rather than flagging an empty
+        // or obsolete stored value as a concurrent edit.
+        if (isset($args['type']) && $args['type'] === 'select'
+            && !empty($args['options']) && is_array($args['options'])
+            && !is_array($value) && !is_object($value)
+            && !array_key_exists((string) $value, $args['options'])
+        ) {
+            $value = array_key_first($args['options']);
+        }
+
         if (is_array($value)) {
             foreach ($value as $key => $item) {
                 $value[$key] = $this->normalizeAuthorBoxFieldValue($item);
