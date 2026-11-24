@@ -1,9 +1,9 @@
 (function (wp) {
     const { registerBlockType } = wp.blocks;
     const { useState, useEffect } = wp.element;
-    const { InspectorControls } = wp.blockEditor;
+    const { InspectorControls, useBlockProps } = wp.blockEditor;
     const { PanelBody, SelectControl, TextControl, ToggleControl, Spinner, Placeholder } = wp.components;
-    const { ServerSideRender } = wp.editor;
+    const ServerSideRender = wp.serverSideRender || wp.editor.ServerSideRender;
 
     // Define server rendering loading placeholder
     const LoadingPlaceholder = () => (
@@ -15,6 +15,7 @@
     const blockName = 'publishpress-authors/author-data-block';
 
     registerBlockType(blockName, {
+        apiVersion: 3,
         title: authorDataBlock.block_title,
         icon: {
             src: 'id-alt',
@@ -36,6 +37,7 @@
         },
         edit: (props) => {
             const { attributes, setAttributes } = props;
+            const blockProps = useBlockProps();
             const { field, separator, postId, termId, archive, authorCategories } = attributes;
             const [fields, setFields] = useState([]);
 
@@ -54,7 +56,7 @@
                 : [{ label: authorDataBlock.default_field_label, value: 'display_name' }];
 
             return (
-                <>
+                <div {...blockProps}>
                     <InspectorControls>
                         <PanelBody title={authorDataBlock.block_title}>
                             <SelectControl
@@ -98,7 +100,7 @@
                         attributes={attributes}
                         LoadingResponsePlaceholder={LoadingPlaceholder}
                     />
-                </>
+                </div>
             );
         },
         save: function () {

@@ -126,7 +126,7 @@ class MA_Author_List extends Module
         wp_enqueue_script(
             'author-list-block',
             PP_AUTHORS_URL . 'src/assets/js/author-list-block.min.js',
-            ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-data'],
+            ['wp-blocks', 'wp-element', 'wp-editor', 'wp-block-editor', 'wp-server-side-render', 'wp-components', 'wp-data'],
             PP_AUTHORS_VERSION
         );
 
@@ -151,6 +151,7 @@ class MA_Author_List extends Module
     public function author_list_block_register()
     {
         register_block_type('publishpress-authors/author-list-block', [
+            'api_version'     => 3,
             'editor_script'   => 'author-list-block',
             'editor_style'    => 'multiple-authors-widget-css',
             'render_callback' => [$this, 'author_list_block_render'],
