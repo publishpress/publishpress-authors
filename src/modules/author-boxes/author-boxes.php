@@ -3385,7 +3385,7 @@ class MA_Author_Boxes extends Module
         wp_enqueue_script(
             'author-boxes-block',
             PP_AUTHORS_URL . 'src/assets/js/author-boxes-block.min.js',
-            ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-data'],
+            ['wp-blocks', 'wp-element', 'wp-editor', 'wp-block-editor', 'wp-server-side-render', 'wp-components', 'wp-data'],
             PP_AUTHORS_VERSION
         );
 
@@ -3409,6 +3409,7 @@ class MA_Author_Boxes extends Module
      */
     public function author_boxes_block_register() {
         register_block_type( 'publishpress-authors/author-boxes-block', [
+            'api_version'   => 3,
             'editor_script' => 'author-boxes-block',
             'editor_style'  => 'multiple-authors-widget-css',
             'render_callback' => [$this, 'author_boxes_block_render'],

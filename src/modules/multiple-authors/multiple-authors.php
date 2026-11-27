@@ -347,7 +347,7 @@ if (!class_exists('MA_Multiple_Authors')) {
             wp_enqueue_script(
                 'author-data-block',
                 PP_AUTHORS_URL . 'src/assets/js/author-data-block.min.js',
-                ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-data'],
+                ['wp-blocks', 'wp-element', 'wp-editor', 'wp-block-editor', 'wp-server-side-render', 'wp-components', 'wp-data'],
                 PP_AUTHORS_VERSION
             );
 
@@ -373,6 +373,7 @@ if (!class_exists('MA_Multiple_Authors')) {
         public function author_data_block_register()
         {
             register_block_type('publishpress-authors/author-data-block', [
+                'api_version'     => 3,
                 'editor_script'   => 'author-data-block',
                 'render_callback' => [$this, 'author_data_block_render'],
                 'attributes'      => [
